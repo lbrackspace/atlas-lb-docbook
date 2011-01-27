@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.rackspace.cloud.docs.loadbalancers.docbook</groupId>
+    <artifactId>docbook-conversions</artifactId>
+    <version>1.0.0</version>
+
+    <name>Loadbalancing Public API Spec</name>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>clouddocs-maven-plugin</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+
+                <executions>
+                    <execution>
+                        <id>g1</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <xincludeSupported>true</xincludeSupported>
+                            <sourceDirectory>src/resources</sourceDirectory>
+                            <includes>ManagementAPISpec.xml</includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>g2</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <xincludeSupported>true</xincludeSupported>
+                            <sourceDirectory>src/resources</sourceDirectory>
+                            <includes>PublicAPISpec.xml</includes>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.docbook</groupId>
+                        <artifactId>docbook-xml</artifactId>
+                        <version>4.4</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
