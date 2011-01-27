@@ -434,7 +434,7 @@ Content-Type: text/plain; charset=UTF-8
          status="ONLINE" />
    </nodes>
    <sessionPersistence persistenceType="HTTP_COOKIE"/>
-   <connectionThrottle xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+   <connectionThrottle
       minConnections="10"
       maxConnections="100"
       maxConnectionRate="50"
