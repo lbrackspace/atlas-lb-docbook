@@ -302,7 +302,7 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response (/loadbalancers)</title>
                     <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" ?>
-<loadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<loadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
 	<loadBalancer id="71" name="lb-site1" status="ACTIVE"
 		protocol="HTTP" port="80" algorithm="RANDOM">
 		<virtualIps>
@@ -403,8 +403,8 @@ Content-Type: text/plain; charset=UTF-8
                 </sect3>
                 <sect3>
                     <title>Sample XML Response</title>
-                    <literallayout>
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+                    <literallayout class="monospaced">
+<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    id="2000"
    name="sample-loadbalancer"
    protocol="HTTP"
@@ -542,7 +542,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (Required Attributes Only)</title>
                     <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
               name="a-new-loadbalancer"
               port="80"
               protocol="HTTP">
@@ -581,7 +581,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (Required Attributes Only w/ Shared IP)</title>
                     <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    name="a-new-loadbalancer"
    port="80"
    protocol="HTTP">
@@ -621,7 +621,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    id="1041"
    name="a-new-loadbalancer"
    status="BUILD"
@@ -722,7 +722,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (POST)(Required attributes only)</title>
                     <literallayout class="monospaced">
-<![CDATA[<nodes xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <node
             address="10.1.1.1"
             port="80"
@@ -733,7 +733,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (POST)</title>
                     <literallayout class="monospaced">
-<![CDATA[<nodes xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <node
             address="10.1.1.1"
             port="80"
@@ -775,7 +775,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/nodes/nodeId) Mutable Attributes Only</title>
                     <literallayout class="monospaced">
-<![CDATA[<node xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
       condition="DISABLED"/>]]>
                     </literallayout>
                 </sect3>
@@ -854,7 +854,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML (PUT)(Mutable Attributes Only)</title>
                     <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
         name="sample-loadbalancer"
         algorithm="RANDOM"
         protocol="HTTP"
@@ -919,7 +919,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML GET Response (/loadbalancers/loadBalancerId/virtualips)</title>
                     <literallayout class="monospaced">
-<![CDATA[<virtualIps xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<virtualIps xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <virtualIp
             id="1000"
             address="206.10.10.210"
@@ -985,7 +985,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET - for all usage)</title>
                     <literallayout class="monospaced">
-<![CDATA[<loadBalancerUsage xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
   <loadBalancerUsageRecord id="394" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="1" numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
   <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
   <loadBalancerUsageRecord id="474" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
@@ -1026,7 +1026,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (/loadbalancers/usage?startDate=2010-11-30&amp;endDate=2010-12-01)</title>
                     <literallayout>
-<![CDATA[<accountBilling xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" accountId="1106">
+<![CDATA[<accountBilling xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="1106">
   <accountUsage>
     <accountUsageRecord numLoadBalancers="2" numPublicVips="1" numServicenetVips="0" startTime="2010-12-01T14:09:14-06:00"/>
   </accountUsage>
@@ -1084,7 +1084,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
-<![CDATA[<accessList xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
    <networkItem
           id="1000"
           address="206.160.165.40"
@@ -1148,7 +1148,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (POST)(Required attributes)</title>
                     <literallayout class="monospaced">
-<![CDATA[<accessList xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
    <networkItem
       address="206.160.165.1"
       type="ALLOW" />
@@ -1296,7 +1296,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET) [Connect Monitor]</title>
                     <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="CONNECT"
    delay="10"
    timeout="10"
@@ -1317,7 +1317,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET) [HTTP Monitor]</title>
                     <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="HTTP"
    delay="10"
    timeout="10"
@@ -1330,7 +1330,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET) [HTTPS Monitor]</title>
                     <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="HTTPS"
    delay="10"
    timeout="10"
@@ -1347,7 +1347,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (PUT) [Connect Monitor]</title>
                     <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="CONNECT"
    delay="10"
    timeout="10"
@@ -1420,7 +1420,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
-<![CDATA[<sessionPersistence xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
+<![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
                 </sect3>
                 <sect3>
@@ -1436,7 +1436,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (POST)</title>
                     <literallayout class="monospaced">
-<![CDATA[<sessionPersistence xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
+<![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
                 </sect3>
                 <sect3>
@@ -1496,7 +1496,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
-<![CDATA[<connectionLogging xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" enabled="true"/>]]>
+<![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
                     </literallayout>
                 </sect3>
                 <sect3>
@@ -1512,7 +1512,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (PUT)</title>
                     <literallayout class="monospaced">
-<![CDATA[<connectionLogging xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" enabled="true"/>]]>
+<![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
                     </literallayout>
                 </sect3>
                 <sect3>
@@ -1575,7 +1575,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
-<![CDATA[<connectionThrottle xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    minConnections="10"
    maxConnections="100"
    maxConnectionRate="50"
@@ -1599,7 +1599,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Request (PUT)</title>
                     <literallayout class="monospaced">
-<![CDATA[<connectionThrottle xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
+<![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     minConnections="10"
     maxConnections="100"
     maxConnectionRate="50"
@@ -1663,7 +1663,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
-<![CDATA[<protocols xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<protocols xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <protocol name="FTP" port="21" />
     <protocol name="HTTP" port="80" />
     <protocol name="IMAPv4" port="143" />
@@ -1753,7 +1753,7 @@ Content-Type: text/plain; charset=UTF-8
                 <sect3>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
-<![CDATA[<algorithms xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<algorithms xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
    <algorithm name="LEAST_CONNECTIONS" />
    <algorithm name="RANDOM" />
    <algorithm name="ROUND_ROBIN" />
@@ -1843,7 +1843,7 @@ Content-Type: text/plain; charset=UTF-8
                 The LoadBalancer fault shall be returned in the event that an error occurred during a loadbalancer operation.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Invalid authentication token. Please renew</message>
 </loadBalancerFault>]]>
             </literallayout>
@@ -1854,7 +1854,7 @@ Content-Type: text/plain; charset=UTF-8
                 The operation was not a valid request. This fault indicates that the data in the request object is invalid, for example a string was used on a parameter that was expecting an integer. The fault will wrap validation errors.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<badRequest xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" code="400">
+<![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
     <message>Validation fault</message>
     <details>The object is not valid</details>
         <validationErrors>
@@ -1868,7 +1868,7 @@ Content-Type: text/plain; charset=UTF-8
             <para>
             </para>
             <literallayout class="monospaced">
-<![CDATA[<itemNotFound code="404" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Object not Found</message>
 </itemNotFound>]]>
             </literallayout>
@@ -1879,7 +1879,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when the user had exceeded their currently allocated limit.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<overLimit code="500" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<overLimit code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Your account is currently over the limit so your request could not be processed.</message>
 </overLimit>]]>
             </literallayout>
@@ -1890,7 +1890,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when you attempt to perform an operation you are not authorized to perform.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<unauthorized code="404" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>You are not authorized to execute this operation.</message>
 </unauthorized>]]>
             </literallayout>
@@ -1901,7 +1901,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault indicates that there are no virtual IPs left to assign to a new loadbalancer. In practice, you should not see this fault as virtual IPs will be ordered as capacity is required, but if you do see this simply alert support so that we may make more IPs available.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>
         Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
     </message>
@@ -1914,7 +1914,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when a user attempts to modify an item that is not currently in a state that allows modification. For example, load balancers in a status of PENDING_UPDATE, BUILD, or DELETED may not be modified.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<immutableEntity code="422" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The object at the specified URI is immutable and can not be overwritten.</message>
 </immutableEntity>]]>
             </literallayout>
@@ -1925,7 +1925,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when an operation is requested on an item that does not support the operation, but the request is properly formed.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The Object at the specified URI is unprocessable.</message>
 </unprocessableEntity>]]>
             </literallayout>
@@ -1936,7 +1936,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when the service is unavailable. For example, if the service is undergoing maintenance or otherwise unavailable. Note that this does not necessarily mean the currently configured loadbalancers are unable to process traffic, It simply means that the API is currently unable service requests.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The Load balancing service is currently not available</message>
 </serviceUnavailable>]]>
             </literallayout>

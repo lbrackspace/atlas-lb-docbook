@@ -35,72 +35,32 @@
         <title>Management API Operations</title>
         <sect1>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Clusters</title>
-
-<!--
-<table xml:id="ex.calstable" frame='all'>
-<title>Sample CALS Table</title>
-<tgroup cols='5' align='left' colsep='1' rowsep='1'>
-<colspec colname='c1'/>
-<colspec colname='c2'/>
-<colspec colname='c3'/>
-<colspec colnum='5' colname='c5'/>
-<thead>
-<row>
-  <entry namest="c1" nameend="c2" align="center">Horizontal Span</entry>
-  <entry>a3</entry>
-  <entry>a4</entry>
-  <entry>a5</entry>
-</row>
-</thead>
-<tfoot>
-<row>
-  <entry>f1</entry>
-  <entry>f2</entry>
-  <entry>f3</entry>
-  <entry>f4</entry>
-  <entry>f5</entry>
-</row>
-</tfoot>
-<tbody>
-<row>
-  <entry>b1</entry>
-  <entry>b2</entry>
-  <entry>b3</entry>
-  <entry>b4</entry>
-  <entry morerows='1' valign='middle'><para>Vertical Span</para></entry>
-</row>
-<row>
-  <entry>c1</entry>
-  <entry namest="c2" nameend="c3" align='center' morerows='1' valign='bottom'>Span Both</entry>
-  <entry>c4</entry>
-</row>
-<row>
-  <entry>d1</entry>
-  <entry>d4</entry>
-  <entry>d5</entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-
-
+            <!--
             Verb    URI                     Description                                                             Access Level
             GET     /clusters               Retrieve a list of all clusters                                         Support, Service Admin
             POST    /clusters               Create a new cluster                                                    Service Admin
             PUT     /clusters/clusterId 	Update the name or description or username or password of a cluster     Service Admin
             DELETE  /clusters/clusterId     Remove a cluster                                                        Service Admin 
             -->
-            <para><emphasis>Normal Response Code(s):</emphasis> 200</para>
-            <para><emphasis>Error Response Code(s):</emphasis> loadBalancerManagementFault (400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)</para>
+            <para>
+                <emphasis>Normal Response Code(s):</emphasis> 200
+            </para>
+            <para>
+                <emphasis>Error Response Code(s):</emphasis> loadBalancerManagementFault (400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
+            </para>
             <sect2>
                 <title>Description</title>
-                <para>The cluster operations allow for listing and manipulating clusters.  In order to remove a cluster, it may not have any host machines or virtual IP's associated with it. To create a new cluster, the caller must supply their username, password, cluster name, cluster description and datacenter attributes within the request.</para>
-                <para>The GET response contains numerous attributes (numberOfLoadBalancingConfigurations, numberOfUniqueCustomers, numberOfHostMachines, and utilization) that are generated and immutable.  These attributes are calculated based on configurations associated with this cluster.</para>
+                <para>
+                    The cluster operations allow for listing and manipulating clusters.  In order to remove a cluster, it may not have any host machines or virtual IP's associated with it. To create a new cluster, the caller must supply their username, password, cluster name, cluster description and datacenter attributes within the request.
+                </para>
+                <para>
+                    The GET response contains numerous attributes (numberOfLoadBalancingConfigurations, numberOfUniqueCustomers, numberOfHostMachines, and utilization) that are generated and immutable.  These attributes are calculated based on configurations associated with this cluster.
+                </para>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/clusters)</title>
-                <para>
-<![CDATA[<clusters xmlns="http://docs.rackspacecloud.com/loadbalancers/api/mgmt/v1.0">
+                <literallayout class="monospaced">
+<![CDATA[<clusters xmlns="http://docs.openstack.org/loadbalancers/api/mgmt/v1.0">
    <cluster
       id="1"
       name="Cluster Alpha"
@@ -120,11 +80,11 @@
       numberOfHostMachines="8"
       utilization="76%" />
 </clusters>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/clusters)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"clusters": {
         "cluster": [
             {
@@ -150,23 +110,53 @@
         ]
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample SML POST Request (/clusters)</title>
-                <para>
+                <title>Sample XML Response (/clusters/clusterId)</title>
+                <literallayout class="monospaced">
 <![CDATA[<cluster
-   xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-   name="Cluster Gamma"
-   description="The third best cluster, ever."
-   dataCenter="DFW"
-   username="my username"
-   password="my password"/>]]>
-                </para>
+      id="1"
+      name="Cluster Alpha"
+      description="The best cluster, ever."
+      datacenter="DFW"
+      numberOfLoadBalancingConfigurations="410"
+      numberOfUniqueCustomers="348"
+      numberOfHostMachines="8"
+      utilization="59%" />]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample JSON Response (/clusters/clusterId)</title>
+                <literallayout class="monospaced">
+<![CDATA[{"cluster": {
+        "id": "1",
+        "name": "Cluster Alpha",
+        "description": "The best cluster, ever.",
+        "dataCenter": "DFW",
+        "numberOfLoadBalancingConfigurations": "410",
+        "numberOfUniqueCustomers": "348",
+        "numberOfHostMachines": "8",
+        "utilization": "59%"
+    }
+}]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample XML Request (POST) (/clusters)</title>
+                <literallayout class="monospaced">
+<![CDATA[<cluster
+       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+       name="Cluster Gamma"
+       description="The third best cluster, ever."
+       dataCenter="DFW"
+       username="my username"
+       password="my password"/>]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON POST Request (/clusters)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"cluster": {
         "name": "Cluster Gamma",
         "description": "The third best cluster, ever.",
@@ -175,102 +165,144 @@
         "password" : "my password"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML PUT Request (/clusters/clusterid)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<cluster
-   xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-   name="Cluster Delta"
-   description="The fourth best cluster, ever."
-   username="aaa"/>]]>
-                </para>
+       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+       name="Cluster Delta"
+       description="The fourth best cluster, ever."
+       username="aaa"/>]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON PUT Request (/clusters/clusterid)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"cluster": {
         "name": "Cluster Delta",
         "description": "The fourth best cluster, ever.",
         "username": "aaa"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
         <!--
-        Verb    URI                         Description                                             Access Level
-        GET     /hosts                      Retrieve a list of all hosts within the region.         Support, Service Admin
-        GET     /clusters/clusterId/hosts   Retrieve a list of all hosts belonging to a cluster.    Support, Service Admin
-        POST    /hosts                      Create a new load balancing host                        Service Admin
-        PUT     /hosts/hostId               Update the mutable attributes of a load balancing host  Service Admin
-        DELETE  /hosts/hostId               Remove a load balancing host                            Service Admin
+        Verb    URI                                 Description                                                                             Access Level
+        GET     /hosts                              Retrieve a list of all hosts within the region.                                         Support, Service Admin
+        GET     /clusters/clusterId/hosts           Retrieve a list of all hosts belonging to a cluster.                                    Support, Service Admin
+        POST    /hosts                              Create a new load balancing host                                                        Service Admin
+        PUT     /hosts/hostId                       Update the mutable attributes of a load balancing host                                  Service Admin
+        DELETE  /hosts/hostId                       Remove a load balancing host                                                            Service Admin
+        GET     /clusters/clusterId/endpoint        Retrieves the host that is currently the active SOAP endpoint                           Support, Service Admin
+        PUT     /hosts/hostid/endpoint/enable       Enable this hosts SOAP endpoint (Warning: can be overwritten by pollendpoints call)     Service Admin
+        PUT     /hosts/hostid/endpoint/disable      Disable this hosts SOAP endpoint (Warning: can be overwritten by pollendpoints call)    Service Admin
+        PUT     /clusters/pollendpoints             tests all endpoints and sets soap_endpoint_active if endpoint works                     Service Admin
         -->
             <sect2>
                 <title>Description</title>
-                <para>The host operations allow for retrieval of host configuration data and statistics as well as the ability to add, manipulate or delete load balancing hosts.</para>
-                <para><emphasis>Creating a New Host</emphasis></para>
-                <para>When creating a new host, the caller must supply the following attributes:</para>
                 <para>
+                    The host operations allow for retrieval of host configuration data and statistics as well as the ability to add, manipulate or delete load balancing hosts.
+                </para>
+                <sect4>
+                    <title>Creating a New Host</title>
+                    <para>
+                        When creating a new host, the caller must supply the following attributes:
+                    </para>
                     <itemizedlist>
                         <listitem>
-                            <para>name</para>
+                            <para>
+                                name
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>clusterid</para>
+                            <para>
+                                clusterid
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>coreDeviceId</para>
+                            <para>
+                                coreDeviceId
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>zone</para>
+                            <para>
+                                zone
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>maxConcurrentConnections</para>
+                            <para>
+                                maxConcurrentConnections
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>managementIpAddress</para>
+                            <para>
+                                managementIpAddress
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>managementSoapInterface</para>
+                            <para>
+                                managementSoapInterface
+                            </para>
                         </listitem>
                     </itemizedlist>
-                </para>
-                <para>Additionally, the system will attempt to validate that it can properly access the host based on the managementSoapInterface, managementSoapUsername, and managementSoapPassword. The system should automatically apply a BURN_IN status to all newly added host machines.</para>
-                <para>For an example of how a new host is created, see the "Sample XML Post Request" below.</para>
-                <para><emphasis>Mutable Attributes</emphasis></para>
-                <para>The following list of attributes are mutable via the PUT HTTP operation:</para>
-                <para>
+                    <para>
+                        Additionally, the system will attempt to validate that it can properly access the host based on the managementSoapInterface, managementSoapUsername, and managementSoapPassword. The system should automatically apply a BURN_IN status to all newly added host machines.
+                    </para>
+                    <node>
+                        For an example of how a new host is created, see the "Sample XML Post Request" below.
+                    </node>
+                </sect4>
+                <sect4>
+                    <title>Mutable Attributes</title>
+                    <para>
+                        The following list of attributes are mutable via the PUT HTTP operation:
+                    </para>
                     <itemizedlist>
                         <listitem>
-                            <para>name</para>
+                            <para>
+                                name
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>coreDeviceId</para>
+                            <para>
+                                coreDeviceId
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>status (Active, Active Target, Maintenance, Failover</para>
+                            <para>
+                                status (Active, Active Target, Maintenance, Failover
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>maxConcurrentConnections</para>
+                            <para>
+                                maxConcurrentConnections
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>managementIpAddress</para>
+                            <para>
+                                managementIpAddress
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>managementSoapInterface</para>
+                            <para>
+                                managementSoapInterface
+                            </para>
                         </listitem>
                     </itemizedlist>
-                </para>
-                <para>The GET response contains numerous attributes (utilization, numberOfLoadBalancingConfigurations, and numberOfUniqueCustomers) that are generated based on state data and are immutable. These attributes are calculated based on configurations associated with this host.</para>
+                    <para>
+                        The GET response contains numerous attributes (utilization, numberOfLoadBalancingConfigurations, and numberOfUniqueCustomers) that are generated based on state data and are immutable. These attributes are calculated based on configurations associated with this host.
+                    </para>
+                </sect4>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/hosts) (/clusters/clusterId/hosts)</title>
-                <para>
-<![CDATA[<hosts xmlns="http://docs.rackspacecloud.com/loadbalancers/api/mgmt/v1.0">
+                <literallayout class="monospaced">
+<![CDATA[<hosts xmlns="http://docs.openstack.org/loadbalancers/api/mgmt/v1.0">
    <host
       id="1"
       name="host1"
@@ -283,7 +315,8 @@
       managementSoapInterface="http://10.1.1.1:9090/soap"
       utilization="60%"
       numberOfLoadBalancingConfigurations="414"
-      numberOfUniqueCustomers="141" />
+      numberOfUniqueCustomers="141"
+      soapEndpointActive="true"/>
    <host
       id="2"
       name="host2"
@@ -296,13 +329,14 @@
       managementSoapInterface="http://10.1.1.2:9090/soap"
       utilization="59%"
       numberOfLoadBalancingConfigurations="520"
-      numberOfUniqueCustomers="515" />
+      numberOfUniqueCustomers="515"
+      soapEndpointActive="true/>
 </hosts>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/hosts) (/clusters/clusterId/hosts)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"hosts": {
         "host": [
             {
@@ -317,7 +351,8 @@
                 "managementSoapInterface": "http://10.1.1.1:9090/soap",
                 "utilization": "60%",
                 "numberOfLoadBalancingConfiguraions": "414",
-                "numberOfUniqueCustomers": "141"
+                "numberOfUniqueCustomers": "141",
+                "soapEndpointActive": "true"
             },
             {
                 "id": "2",
@@ -331,70 +366,78 @@
                 "managementSoapInterface": "httpd://10.1.1.2:9090/soap",
                 "utilization": "59%",
                 "numberOfLoadBalancingConfigurations": "520",
-                "numberOfUniqueCustomers": "515"
+                "numberOfUniqueCustomers": "515",
+                "soapEndpointActive": "true"
             }
         ]
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample XML POST Request (/hosts)</title>
-                <para>
-<![CDATA[<host xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-   name="my-new-host"
-   clusterId="1"
-   zone="A"
-   coreDeviceId="144410-44000"
-   status="BURN_IN"
-   maxConcurrentConnections="150000"
-   managementIpAddress="10.1.1.1"
-   managementSoapInterface="http://10.1.1.1:9090/soap"
-   />]]>
-                </para>
+                <title>Sample XML Request (POST) (/hosts)</title>
+                <literallayout class="monospaced">
+<![CDATA[<host xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        clusterId="1"
+        coreDeviceId="SomeCoreDevice"
+        managementIp="12.34.56.78"
+        managementSoapInterface="https://SomeSoapNode.com:9090"
+        maxConcurrentConnections="5"
+        name="someName"
+        status="BURN_IN"
+        trafficManagerName="zues01.blah.blah"
+        type="FAILOVER"
+        zone="B"
+        soapEndpointActive="true" />]]>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample JSON POST Request (/hosts)</title>
-                <para>
+                <title>Sample JSON Request (POST) (/hosts)</title>
+                <literallayout class="monospaced">
 <![CDATA[{"host": {
-        "name": "my-new-host",
-        "clusterId": "1",
-        "zone": "A",
-        "coreDeviceId": "144410-44000",
         "status": "BURN_IN",
-        "maxConcurrentConnections": "150000",
-        "managementIpAddress": "10.1.1.1",
-        "managementSoapInterface": "http://10.1.1.1:9090/soap"
+        "name": "someName",
+        "zone": "B",
+        "type": "FAILOVER",
+        "managementIp": "12.34.56.78",
+        "trafficManagerName": "zues01.blah.blah",
+        "clusterId": 1,
+        "maxConcurrentConnections": 5,
+        "coreDeviceId": "SomeCoreDevice",
+        "managementSoapInterface": "https://SomeSoapNode.com:9090",
+        "soapEndpointActive": "true"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML PUT Request (/hosts/hostid)</title>
-                <para>
-<![CDATA[<host xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-   name="my-next-host"
-   coreDeviceId="144410-44001"
-   status="BURN_IN"
-   maxConcurrentConnections="150000"
-   managementIpAddress="10.1.1.2"
-   managementSoapInterfac="http://10.1.1.2:9090/soap"
- />]]>
-                </para>
+                <literallayout class="monospaced">
+<![CDATA[<host xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        name="my-next-host"
+        coreDeviceId="144410-44001"
+        status="BURN_IN"
+        maxConcurrentConnections="150000"
+        managementIpAddress="10.1.1.2"
+        managementSoapInterfac="http://10.1.1.2:9090/soap"
+        soapEndpointActive="true" />
+   ]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON PUT Request (/hosts/hostid)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"host": {
         "name": "my-next-host",
         "coreDeviceId": "144410-44001",
         "status": "BURN_IN",
         "maxConcurrentConnections": "150000",
         "managementIpAddress": "10.1.1.2",
-        "managementSoapInterface": "http://10.1.1.2:9090/soap"
+        "managementSoapInterface": "http://10.1.1.2:9090/soap",
+        "soapEndpointActive": "true"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -411,13 +454,22 @@
         -->
             <sect2>
                 <title>Description</title>
-                <para>The virtual IP operations allow the caller to view, create, and remove virtual IPs from an environment.  Virtual IPs are automatically assigned to every newly created load balancer and can be added on-demand by a support or service administrator with proper justification.  Management of the service requires blocks of IP addresses to be allocated from time-to-time to ensure availability for customers.</para>
-                <para>In order to assign a virtual IP to the environment via the POST operation, the caller must supply the address, and type attributes as part of the virtualip element.  A sample POST request can be found below.</para>
-                <para>Note: In the event a virtual IP must be removed from the cluster, the DELETE operation can be used; however, to delete a virtual IP it must not have a load balancer associated to it.</para>
+                <para>
+                    The virtual IP operations allow the caller to view, create, and remove virtual IPs from an environment.  Virtual IPs are automatically assigned to every newly created load balancer and can be added on-demand by a support or service administrator with proper justification.  Management of the service requires blocks of IP addresses to be allocated from time-to-time to ensure availability for customers.
+                </para>
+                <para>
+                    In order to assign a virtual IP to the environment via the POST operation, the caller must supply the address, and type attributes as part of the virtualip element.  A sample POST request can be found below.
+                </para>
+                <note>
+                    In the event a virtual IP must be removed from the cluster, the DELETE operation can be used; however, to delete a virtual IP it must not have a load balancer associated to it.
+                </note>
+                <note>
+                    To add a single or multiple specific virtual ip's simply specify the first and lastIp fields identically(not a range).
+                </note>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/virtualips) (/clusters/clusterId/virtualips)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<virtualips>
    <virtualip id="411"
       loadBalancerId="1"
@@ -430,11 +482,11 @@
       address="10.41.133.4"
       type="SERVICENET" />
 </virtualips>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/virtualips) (/clusters/clusterId/virtualips)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"virtualips": {
         "virtualip": [
             {
@@ -454,11 +506,11 @@
         ]
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML POST Request (/clusters/clusterId/virtualips)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<virtualips>
    <virtualip
       address="98.128.33.4"
@@ -467,161 +519,198 @@
       address="98.128.33.5"
       type="PUBLIC" />
 </virtualips>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample XML POST Request (/clusters/clusterId/virtualipsblocks)</title>
-                <para>
+                <title>Sample XML Request (POST) (/clusters/clusterId/virtualipsblocks)</title>
+                <literallayout class="monospaced">
 <![CDATA[<virtualIpBlocks type="PUBLIC"
-       xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-       xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
-    <virtualIpBlock value="192.168.0.0/24"/>
-    <virtualIpBlock value="127.0.0.1/24"/>
+       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+       xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0">
+	<ns2:virtualIpBlock firstIp="10.0.0.5" lastIp="10.0.0.5"/>
+	<ns2:virtualIpBlock firstIp="172.16.0.64" lastIp="172.16.0.64"/>
 </virtualIpBlocks>
 ]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample JSON POST Request (/clusters/clusterId/virtualips)</title>
-                <para>
-<![CDATA[{"virtualips": {
-        "virtualip": [
-            {
-                "address": "98.128.33.4",
-                "type": "PUBLIC"
-            },
-            {
-                "address": "98.128.33.5",
-                "type": "PUBLIC"
-            }
-        ]
-    }
+                <title>Sample JSON Request (POST) (/clusters/clusterId/virtualips)</title>
+                <literallayout class="monospaced">
+<![CDATA[{"virtualIpBlocks": [
+        {
+            "firstIp": "10.0.0.5",
+            "lastIp": "10.0.0.5"
+        },
+        {
+            "firstIp": "172.16.0.64",
+            "lastIp": "172.16.0.64"
+        },
+        {
+            "firstIp": "192.168.0.3",
+            "lastIp": "192.168.0.3"
+        }
+    ],
+    "type": "SERVICENET"
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
             <title>Rate Limiting a Load Balancer</title>
         <!--
-        Verb        URI                                         Description                                                                 Access Level
-        GET         /loadbalancers/loadBalancerId/ratelimit     Retrieve the rate limit information for a specified load balancer           Service Admin
-        POST        /loadbalancers/loadBalancerId/ratelimit     Impose a new rate limit on the specified load balancer                      Service Admin
-        PUT         /loadbalancers/loadBalancerId/ratelimit     Modify the expiration time and/or ticket associated with the rate limit     Service Admin
-        DELETE      /loadbalancers/loadBalancerId/ratelimit     Immediately removed the defined rate limit                                  Service Admin
+        Verb        URI                                                         Description                                                                 Access Level
+        GET         /loadbalancers/loadBalancerId/ratelimit                     Retrieve the rate limit information for a specified load balancer           Service Admin
+        POST        /loadbalancers/loadBalancerId/ratelimit                     Impose a new rate limit on the specified load balancer                      Service Admin
+        PUT         /loadbalancers/loadBalancerId/ratelimit                     Modify the expiration time and/or ticket associated with the rate limit     Service Admin
+        DELETE      /loadbalancers/loadBalancerId/ratelimit                     Immediately removed the defined rate limit                                  Service Admin
+        DELETE      /loadbalancers/loadBalancerId/ratelimit/removeoldlimits     Immediately remove expired limits                                           Service Admin
         -->
             <sect2>
                 <title>Description</title>
-                <para>Rate limiting allows a service administrator to artificially limit the number of requests that are permitted to transit a given load balancer.  This action can be taken when a particular load balancer is servicing questionable traffic, the victim of a DDoS, etc.  To define a rate limit, the caller must supply a ticket id, maximum number of connections per second, and an expiration time.</para>
-                <para>Additionally, rate limit information is returned as part of the "extended details of a load balancer", which is documented below.</para>
+                <para>
+                    Rate limiting allows a service administrator to artificially limit the number of requests that are permitted to transit a given load balancer.  This action can be taken when a particular load balancer is servicing questionable traffic, the victim of a DDoS, etc.  To define a rate limit, the caller must supply a ticket id, maximum number of connections per second, and an expiration time.
+                </para>
+                <para>
+                    Additionally, rate limit information is returned as part of the "extended details of a load balancer", which is documented below.
+                </para>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<rateLimit
    ticketId="44410"
    expirationTime="2010-10-17T00:00:00-05:00"
    maxRequestsPerSecond="150" />]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"rateLimit": {
         "ticketId": "44410",
         "expirationTime": "2010-10-17 00:00:00",
         "maxRequestPerSecond": "150"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample XML POST Request (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
-<![CDATA[<rateLimit xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
+                <title>Sample XML Request (POST) (/loadbalancers/loadBalancerId/ratelimit)</title>
+                <literallayout class="monospaced">
+<![CDATA[<rateLimit xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
    ticketId="44410"
    expirationTime="2010-10-17T00:00:00"
    maxRequestsPerSecond="150" />
 ]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample JSON POST Request (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
+                <title>Sample JSON Request (POST) (/loadbalancers/loadBalancerId/ratelimit)</title>
+                <literallayout class="monospaced">
 <![CDATA[{"rateLimit": {
         "ticketId": "44411",
         "expirationTime": "2010-10-17 00:00:00",
         "maxRequestsPerSecond": "150"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample XML PUT Request (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
-<![CDATA[<rateLimit xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
+                <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/ratelimit)</title>
+                <literallayout class="monospaced">
+<![CDATA[<rateLimit xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
    ticketId="44411"
    expirationTime="2010-10-18 00:00:00"
    maxRequestsPerSecond="150" />]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample JSON PUT Request (/loadbalancers/loadBalancerId/ratelimit)</title>
-                <para>
+                <title>Sample JSON Request (PUT) (/loadbalancers/loadBalancerId/ratelimit)</title>
+                <literallayout class="monospaced">
 <![CDATA[{"rateLimit": {
         "ticketId": "44411",
         "expirationTime": "2010-10-17 00:00:00",
         "maxRequestsPerSecond": "150"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
             <title>Moving Load Balancers Between Host Machines / Adjusting Stickiness of Load Balancer Hosts</title>
             <!--
-            Verb    URI                                         Description                                                     Access Level
-            PUT     /loadbalancers/loadBalancerId/makesticky    Make the specified load balancer sticky                         Support, Service Admin
-            PUT     /loadbalancers/loadBalancerId/deletestciky  Turn off the "sticky" flag on the specified load balancer       Support, Service Admin
-            PUT     /loadbalancers/loadBalancerId/hosts         Update the host assignment(s) for a specified load balancer     Service Admin
-            PUT     /loadbalancers/reassignhosts                Update the host assignment(s) for a list of load balancer       Service Admin
+            Verb        URI                                         Description                                                     Access Level
+            PUT         /loadbalancers/loadBalancerId/sticky        Make the specified load balancer sticky                         Support, Service Admin
+            DELETE      /loadbalancers/loadBalancerId/sticky        Turn off the "sticky" flag on the specified load balancer       Support, Service Admin
+            GET         /loadbalancers/loadBalancerId/host          Get the host assignment(s) for a specified load balancer        Service Admin
+            PUT         /loadbalancers/loadBalancerId/hosts         Update the host assignment(s) for a specified load balancer     Service Admin
+            PUT         /loadbalancers/reassignhosts                Update the host assignment(s) for a list of load balancers      Service Admin
             -->
             <sect2>
                 <title>Description</title>
-                <para>Service administrators may re-assign a load balancer to a different host machine within the same cluster.  This action can be taken if capacity warrants it or if a particular configuration needs to be isolated from others within the environment.  Both active and failover hosts may be changed.</para>
-                <para>Additionally, this operation allows for a service administrator to define a load balancer's host configurations as being "sticky", which will prohibit the system from automatically moving this configuration between hosts to balance the host performance.</para>
-                <para>A load balancer that is defined as being ACTIVE on multiple hosts will allow the load balancer host machines to service traffic for a single VIP across multiple systems.  This is an advanced feature that should be used cautiously as it can potentially amplify DDoS and other types of malicious traffic.</para>
-            </sect2>
-            <sect2>
-                <title>Sample XML PUT Request (/loadbalancers/loadBalancerId/hosts)</title>
                 <para>
-<![CDATA[<host xmlns=http://docs.rackspacecloud.com/host/api/management/v1.0">
-   <id="1"/>
-</host>]]>
+                    Service administrators may re-assign a load balancer to a different host machine within the same cluster.  This action can be taken if capacity warrants it or if a particular configuration needs to be isolated from others within the environment.  Both active and failover hosts may be changed.
+                </para>
+                <para>
+                    Additionally, this operation allows for a service administrator to define a load balancer's host configurations as being "sticky", which will prohibit the system from automatically moving this configuration between hosts to balance the host performance.
+                </para>
+                <para>
+                    A load balancer that is defined as being ACTIVE on multiple hosts will allow the load balancer host machines to service traffic for a single VIP across multiple systems.  This is an advanced feature that should be used cautiously as it can potentially amplify DDoS and other types of malicious traffic.
                 </para>
             </sect2>
             <sect2>
-                <title>Sample JSON PUT Request (/loadbalancers/loadBalancerId/hosts)</title>
-                <para>
-<![CDATA[{"host": {
-        "host": {
-            "id": "1",
-            "type": "ACTIVE"
-        }
+                <title>Sample XML Request (GET) (/loadbalancers/loadBalancerId/host)</title>
+                <literallayout class="monospaced">
+<![CDATA[<host xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
+            id="1"
+            name="host1"
+            clusterId="1"
+            coreDeviceId="10"
+            maxConcurrentConnections="1500"
+            managementIp="10.2.2.3"
+            trafficManagerName="ztm-n01.dev.lbaas.rackspace.com"
+            managementSoapInterface="https://173.203.239.70:9090/soap" />]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample XML Request (PUT) (/loadbalancers/reassignhosts)</title>
+                <literallayout class="monospaced">
+<![CDATA[<loadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+   <loadBalancer id="49" >
+     <host id="2"/>
+   </loadBalancer>
+</loadBalancers>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample JSON Request (PUT) (/loadbalancers/loadBalancerId/hosts)</title>
+                <literallayout class="monospaced">
+<![CDATA[{"loadbalancers": {
+        "loadbalancer": [
+            {
+                "id": "1"
+            }
+          ],
+           "host": [
+           {
+             "id": "2"
+           }
+        ]
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/loadbalancers/reassignhosts)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<loadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
    <loadBalancer id="1" />
 </loadBalancers>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/loadbalancers/reassignhosts)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"loadbalancers": {
         "loadbalancer": [
             {
@@ -633,7 +722,7 @@
         ]
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -642,32 +731,51 @@
         Verb        URI                                         Description                                                     Access Levels
         GET         /hosts/backups                              View a list of available backups for all host machines          Service Admin
         GET         /hosts/hostId/backups                       View a list of available backups for a specified host machine   Service Admin
+        GET         /hosts/hostId/subnetmappings                View the list of Subnetmappings for this host                   Service Admin
+        PUT         /hosts/hostId/subnetmappings                Add subnet mappings on this host                                Service Admin
+        POST        /hosts/hostId/subnetmappings/delete         Delete the specified subnet mappings on this host               Service Admin
         PUT         /hosts/hostId/activate                      Activate Host Machine                                           Service Admin
-        PUT         /hosts/hostId/inactivate                    Inactivate Host Machine                                         Service Admin
+        PUT         /hosts/hostId/inactivate                    Deactivate Host Machine                                         Service Admin
         PUT         /hosts/hostId/backups                       Create a new backup of the host configuration                   Service Admin
         DELETE      /hosts/hostId/backups/backupId              Purge a backup with the specified backup id.                    Service Admin
         PUT         /hosts/hostId/backups/backupId/restore      Restore the specified backup to the host machine                Service Admin 
         -->
             <sect2>
                 <title>Description</title>
-                <para>The host backup and restoration tools allow for service administrators to take periodic backups of the current state of the configuration on any given host machine.  These functions allow the caller to view, create new backups, purge backups, and restore any available configuration.</para>
-                <para><emphasis>Non mutable Parameters:</emphasis></para>
+                <para>
+                    The host backup and restoration tools allow for service administrators to take periodic backups of the current state of the configuration on any given host machine.  These functions allow the caller to view, create new backups, purge backups, and restore any available configuration.
+                </para>
+            </sect2>
+            <sect2>
+                <title>Non mutable Parameters:</title>
                 <para>
                     <itemizedlist>
                         <listitem>
-                            <para>backupTime</para>
+                            <para>
+                                backupTime
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>hostId</para>
+                            <para>
+                                hostId
+                            </para>
                         </listitem>
                         <listitem>
-                            <para>id</para>
+                            <para>
+                                id
+                            </para>
                         </listitem>
                     </itemizedlist>
                 </para>
-                <para>Callers are not required to supply request bodies for the PUT (Restore Backup) operations.</para>
-                <para><emphasis>Creating a New Backup</emphasis></para>
-                <para>When creating a new backup, the caller must supply the following attributes:</para>
+                <para>
+                    Callers are not required to supply request bodies for the PUT (Restore Backup) operations.
+                </para>
+            </sect2>
+            <sect2>
+                <title>Creating a New Backup</title>
+                <para>
+                    When creating a new backup, the caller must supply the following attributes:
+                </para>
                 <para>
                     <itemizedlist>
                         <listitem>
@@ -678,7 +786,7 @@
             </sect2>
             <sect2>
                 <title>Sample XML Response (/hosts/backups)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<backups>
    <backup
       id="1"
@@ -686,11 +794,11 @@
       backupTime="2010-10-17 00:00:00"
       hostId="1234" />
 </backups>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/hosts/backups)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"backups": {
         "backup": {
             "id": "1",
@@ -700,22 +808,22 @@
         }
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML Response (hosts/hostId/backups)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<backups>
    <backup
       id="1"
       name="great backup"
       backupTime="2010-10-17 00:00:00" />
 </backups>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (hosts/hostId/backups)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"backups": {
         "backup": {
             "id": "1",
@@ -724,24 +832,73 @@
         }
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample XML POST Request (/hosts/hostId/backups)</title>
-                <para>
+                <title>Sample XML Request (POST) (/hosts/hostId/backups)</title>
+                <literallayout class="monospaced">
 <![CDATA[<backup
-   xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
+   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
    name="NightlyBackUp" />]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
-                <title>Sample JSON POST Request (/hosts/hostId/backups)</title>
-                <para>
+                <title>Sample JSON Request (POST) (/hosts/hostId/backups)</title>
+                <literallayout class="monospaced">
 <![CDATA[{"backup": {
         "name": "NightlyBackup"
     }
 }]]>
-                </para>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample XML Response (GET) (/hosts/hostId/subnetmappings)</title>
+                <literallayout class="monospaced">
+<![CDATA[<?xml version="1.0" ?>
+<ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+    <ns2:hostsubnet name="api-zxtm-n01.stage.dfw1.stabletransit.com">
+        <ns2:netInterface name="eth0">
+            <ns2:cidr block="10.69.1.0/24"/>
+            <ns2:cidr block="10.69.0.0/24"/>
+        </ns2:netInterface>
+    </ns2:hostsubnet>
+</ns2:hostssubnet>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample XML Request (PUT) (/hosts/hostId/subnetmappings)</title>
+                <literallayout class="monospaced">
+<![CDATA[<?xml version="1.0" ?>
+<ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+       <ns2:hostsubnet name="n01.zeus.something">
+           <ns2:netInterface name="eth1">
+	            <ns2:cidr block="192.168.0.0/16"/>
+           </ns2:netInterface>
+       </ns2:hostsubnet>
+</ns2:hostssubnet>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Sample JSON Request (PUT) (/hosts/hostId/subnetmappings)</title>
+                <literallayout class="monospaced">
+<![CDATA[{
+    "hostsubnets": [
+        {
+            "netInterfaces": [
+                {
+                    "cidrs": [
+                        {
+                          "block": "192.168.0.0/16"
+                        }
+                    ],
+                    "name": "eth1"
+                }
+            ],
+            "name": "n01.zeus.something"
+        }
+    ]
+}]]>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -753,30 +910,33 @@
             -->
             <sect2>
                 <title>Description</title>
-                <para>The generated customer list allows external services, which contain customer contact information, to query the load balancing service to determine the breakdown of customers at either the cluster or host level.</para>
+                <para>
+                    The generated customer list allows external services, which contain customer contact information, to query the load balancing service to determine the breakdown of customers at either the cluster or host level.
+                </para>
             </sect2>
             <sect2>
                 <title>Sample XML Request ByName (/hosts/customers) (/clusters/customers)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<byIdOrName
-xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
-name="newhost" />]]>
-                </para>
+            xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+            xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
+            name="newhost" />]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML Request ById (/hosts/customers) (/clusters/customers)</title>
-                <para>
-<![CDATA[<byIdOrName xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
-xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
-id="2" />]]>
-                </para>
+                <literallayout class="monospaced">
+<![CDATA[<byIdOrName
+            xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+            xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
+            id="2" />]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/hosts/customers) (/clusters/customers)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" ?>
-<customerList xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
+<customerList xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0">
 	<customer accountId="666">
 		<loadBalancer id="52" name="LB.4707"/>
 		<loadBalancer id="53" name="LB.3133"/>
@@ -817,11 +977,11 @@ id="2" />]]>
 		</loadBalancer>
 	</customer>
 </customerList>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/hosts/hostId/customers) (/clusters/clusterId/customers)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"customerlist": {
         "customer": {
             "id": "327957",
@@ -838,7 +998,7 @@ id="2" />]]>
         }
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
     </chapter>
@@ -853,27 +1013,29 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>The load balancing host capacity reports provide insight into the available capacity of a given host machine.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).</para>
-            </sect2>
-            <sect2>
-                <title>Sample XML Response (/hosts/capacityreport) (/hosts/hostId/capacityreport)</title>
                 <para>
-<![CDATA[<hostcapacityreports>
-   <hostcapacityreport
-      hostId="1"
-      hostName="The Best Host Ever"
-      totalConcurrentConnectionCapacity="150000"
-      availableConcurrentConnections="100000"
-      allocatedConcurrentConnections="50000"
-      allocatedConcurrentConnectionsToday="14000"
-      allocatedConcurrentConnectionsInPastSevenDays="25000"
-      remainingDaysOfCapacity="9.55" />
-</hostcapacityreports>]]>
+                    The load balancing host capacity reports provide insight into the available capacity of a given host machine.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).
                 </para>
             </sect2>
             <sect2>
+                <title>Sample XML Response (/hosts/capacityreport) (/hosts/hostId/capacityreport)</title>
+                <literallayout class="monospaced">
+<![CDATA[<hostcapacityreports>
+    <hostcapacityreport
+                hostId="1"
+                hostName="The Best Host Ever"
+                totalConcurrentConnectionCapacity="150000"
+                availableConcurrentConnections="100000"
+                allocatedConcurrentConnections="50000"
+                allocatedConcurrentConnectionsToday="14000"
+                allocatedConcurrentConnectionsInPastSevenDays="25000"
+                remainingDaysOfCapacity="9.55" />
+</hostcapacityreports>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
                 <title>Sample JSON Response (/hosts/capacityreport) (/hosts/hostId/capacityreport)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"hostcapacityreports": {
         "hostcapacityreport": {
             "hostId": "1",
@@ -886,7 +1048,7 @@ id="2" />]]>
         }
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -898,33 +1060,35 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>The virtual IP availability report provides insight into the availability of both public and ServiceNet IP addresses that are provisioned to a cluster.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).</para>
-            </sect2>
-            <sect2>
-                <title>Sample XML Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
                 <para>
-<![CDATA[<virtualipavailabilityreports>
-   <virtualipavailabilityreport
-      clusterId="1"
-      clusterName="My Little Cluster"
-      totalPublicIpAddresses="254"
-      totalServiceNetAddresses="254"
-      freeAndClearPublicIpAddresses="128"
-      freeAndClearServiceNetIpAddresses="128"
-      publicIpAddressesInHolding="14"
-      serviceNetIpAddressesInHolding="21"
-      publicIpAddressesAllocatedToday="15"
-      serviceNetIpAddressesAllocatedToday="4"
-      allocatedPublicIpAddressesInLastSevenDays="45"
-      allocatedServiceNetIpAddressesInLastSevenDays="15"
-      remainingDaysOfPublicIpAddresses="50.11"
-      remainingDaysOfServiceNetIpAddresses="14.41" />
-</virtualipavailabilityreports>]]>
+                    The virtual IP availability report provides insight into the availability of both public and ServiceNet IP addresses that are provisioned to a cluster.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).
                 </para>
             </sect2>
             <sect2>
+                <title>Sample XML Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
+                <literallayout>
+<![CDATA[<virtualipavailabilityreports>
+   <virtualipavailabilityreport
+              clusterId="1"
+              clusterName="My Little Cluster"
+              totalPublicIpAddresses="254"
+              totalServiceNetAddresses="254"
+              freeAndClearPublicIpAddresses="128"
+              freeAndClearServiceNetIpAddresses="128"
+              publicIpAddressesInHolding="14"
+              serviceNetIpAddressesInHolding="21"
+              publicIpAddressesAllocatedToday="15"
+              serviceNetIpAddressesAllocatedToday="4"
+              allocatedPublicIpAddressesInLastSevenDays="45"
+              allocatedServiceNetIpAddressesInLastSevenDays="15"
+              remainingDaysOfPublicIpAddresses="50.11"
+              remainingDaysOfServiceNetIpAddresses="14.41" />
+</virtualipavailabilityreports>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
                 <title>Sample JSON Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"virtualipavailabilityreport": {
         "clusterId": "1",
         "clusterName": "My Little Cluster",
@@ -942,7 +1106,7 @@ id="2" />]]>
         "remainingDaysOfServiceNetIpAddresses": "14.41"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
     </chapter>
@@ -956,23 +1120,27 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>This feature allows a user to provision a new PUBLIC or SERVICENET address to the specified load balancer.  This feature is restricted because a user must justify the need for additional IP addresses due to IANA requirements. An example of a reasonable justification would be the need to have a dedicated IP address for SSL termination.</para>
-                <para>To retrieve the assigned virtual IP, the caller must perform a subsequent GET on the /loadbalancers/loadBalancerId/virtualips URI.</para>
-            </sect2>
-            <sect2>
-                <title>Sample XML POST Request (/loadbalancers/loadBalancerId/virtualips)</title>
                 <para>
-<![CDATA[<virtualIp xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0 type="PUBLIC" />]]>
+                    This feature allows a user to provision a new PUBLIC or SERVICENET address to the specified load balancer.  This feature is restricted because a user must justify the need for additional IP addresses due to IANA requirements. An example of a reasonable justification would be the need to have a dedicated IP address for SSL termination.
+                </para>
+                <para>
+                    To retrieve the assigned virtual IP, the caller must perform a subsequent GET on the /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
             </sect2>
             <sect2>
+                <title>Sample XML POST Request (/loadbalancers/loadBalancerId/virtualips)</title>
+                <literallayout class="monospaced">
+<![CDATA[<virtualIp xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0 type="PUBLIC" />]]>
+                </literallayout>
+            </sect2>
+            <sect2>
                 <title>Sample JSON POST Request (/loadbalancers/loadBalancerId/virtualips)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[]{"virtualip": {
         "type": "PUBLIC"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -983,7 +1151,9 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>This feature allows for a caller to synchronize the specified load balancer with a particular authoritative resource. At the time of this writing the authoritative source is the database in which all load balancer configurations are stored. We may plan on adding Zeus as an authoritative source later. If a caller chooses to synchronize from the database then Zeus will be updated to match the load balancer's configuration in the database. The caller only needs to send a POST request without a body to the specified URI. This feature should only be used in the event that Zeus contains mismatching configuration information (which should hopefully never even happen).</para>
+                <para>
+                    This feature allows for a caller to synchronize the specified load balancer with a particular authoritative resource. At the time of this writing the authoritative source is the database in which all load balancer configurations are stored. We may plan on adding Zeus as an authoritative source later. If a caller chooses to synchronize from the database then Zeus will be updated to match the load balancer's configuration in the database. The caller only needs to send a POST request without a body to the specified URI. This feature should only be used in the event that Zeus contains mismatching configuration information (which should hopefully never even happen).
+                </para>
             </sect2>
         </sect1>
         <sect1>
@@ -996,51 +1166,57 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>This feature allows for a caller to suspend and or unsuspend the specified load balancer.  In order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a ticket identifier, which can be viewed by other users with support and service admin access levels.</para>
-                <para>If a caller requests suspension details for an unsuspended load balancer, an empty suspension element <![CDATA[(<suspension />)]]> will be returned.</para>
-                <note>While customers are not permitted to delete suspended load balancers, a user with elevated permissions may do so by issuing a DELETE request against the /loadbalancers/loadBalancerId URI.</note>
+                <para>
+                    This feature allows for a caller to suspend and or unsuspend the specified load balancer.  In order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a ticket identifier, which can be viewed by other users with support and service admin access levels.
+                </para>
+                <para>
+                    If a caller requests suspension details for an unsuspended load balancer, an empty suspension element <![CDATA[(<suspension />)]]> will be returned.
+                </para>
+                <note>
+                    While customers are not permitted to delete suspended load balancers, a user with elevated permissions may do so by issuing a DELETE request against the /loadbalancers/loadBalancerId URI.
+                </note>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/suspension)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<suspension
-   xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.00"
+   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.00"
    reason="User suspected of fraud"
    ticketId="1054"
    user="jdoe" />]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/loadbalancers/loadBalancerId/suspension)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"suspension": {
         "reason": "User suspected of fraud",
         "ticketId": "1054",
         "user": "jdoe"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample XML POST Request (/loadbalancers/loadBalancerId/suspension)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<suspension
-   xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
+   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
    reason="Non-payment"
    ticketId="4141"
    user="bob"/>]]>
-                </para>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/loadbalancers/loadBalancerId/suspension)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"suspension": {
         "reason": "Non-payment",
         "ticketId": "4141",
         "user": "bob"
     }
 }]]>
-                </para>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
@@ -1051,12 +1227,16 @@ id="2" />]]>
             -->
             <sect2>
                 <title>Description</title>
-                <para>This operation provides the detailed output for a specific load balancer configured and associated with the designated account.  It differs from the customer view because it provides the total active connections, host machine information, and a rate limit (if applicable) as part of the loadbalancer element.</para>
-                <note>An extended detail view is not available for a list of load balancers.</note>
+                <para>
+                    This operation provides the detailed output for a specific load balancer configured and associated with the designated account.  It differs from the customer view because it provides the total active connections, host machine information, and a rate limit (if applicable) as part of the loadbalancer element.
+                </para>
+                <note>
+                    An extended detail view is not available for a list of load balancers.
+                </note>
             </sect2>
             <sect2>
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/extendedview)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
    id="2000"
    name="sample-loadbalancer"
@@ -1095,7 +1275,7 @@ id="2" />]]>
       maxConnectionsFromIp="100"
       maxConnectionRateFromIp="50"
       maxConnectionRateTimer="60" />
-   <connectionLoggging />
+   <connectionLogging enabled="false" />
    <cluster name="c1.dfw1" />
       <ratelimit
           ticketId="4100"
@@ -1103,12 +1283,13 @@ id="2" />]]>
           maxRequestsPerSecond="100" />
    <created time="2010-06-01T12:00:00Z" />
    <updated time="2010-06-01T12:00:00Z" />
-</loadBalancer>]]>
-                </para>
+</loadBalancer>
+]]>
+                </literallayout>
             </sect2>
             <sect2>
                 <title>Sample JSON Response (/loadbalancers/loadBalancerId/extendedview)</title>
-                <para>
+                <literallayout class="monospaced">
 <![CDATA[{"loadbalancer": {
         "id": "2000",
         "name": "sample-loadbalancer",
@@ -1150,7 +1331,9 @@ id="2" />]]>
                 }
             ]
         },
-        "connectionLogging":"true",
+        "connectionLogging": {
+            "enabled": "true"
+        },
         "rateLimit": {
             "ticketId": "1123",
             "expirationTime": "1283277190574",
@@ -1176,65 +1359,120 @@ id="2" />]]>
             "time": "2010-06-01 00: 00: 00"
         }
     }
-}
-]]>
-                </para>
+}]]>
+                </literallayout>
             </sect2>
         </sect1>
         <sect1>
-            <title>Listing Account Info</title>
+            <title>Account Loadbalancers and Usage (Billing)</title>
             <!--
-            Verb        URI                                     Description                                         Access Level
-            GET         /account/accountId/loadbalancers        Retrieve a list loadbalancers on this accountId     Support, Service Admin
-            GET         /account/accountId/billing/daysago      Retrieve a list loadbalancers on this accountId     Support, Service Admin
+            Verb    URI                                 Description                                         Access Level
+            GET     /accounts/accountId/loadbalancers   Retrieves a list loadbalancers on this account      Support, Service Admin
+            GET     /accounts/billing/date              Retrieve usage for all accounts for a single day    Support, Service Admin, Billing
             -->
-            <para><emphasis>Normal Response Code(s):</emphasis> 200</para>
-            <para><emphasis>Error Response Code(s):</emphasis> loadBalancerManagementFault (400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)</para>
+            <para>
+                <emphasis>Normal Response Code(s):</emphasis> 200
+            </para>
+            <para>
+                <emphasis>Error Response Code(s):</emphasis> loadBalancerManagementFault (400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
+            </para>
             <sect2>
                 <title>Description</title>
-                <para>Gets info on accounts</para>
-            </sect2>
-            <sect2>
-                <title>Sample XML Response (/account/354934/loadbalancers)</title>
                 <para>
-<![CDATA[<?xml version="1.0" ?>
-<accountLoadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="3" loadBalancerName="DieAlready" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="5" loadBalancerName="DontDeleteMyStuff" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="7" loadBalancerName="WhatTheHell" protocol="HTTP"  Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="8" loadBalancerName="Rats" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="11" loadBalancerName="WorkAlready" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="25" loadBalancerName="Testing123" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="14" clusterName="YYYY Delta" loadBalancerId="45" loadBalancerName="LB.5001" protocol="LDAP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="14" clusterName="YYYY Delta" loadBalancerId="46" loadBalancerName="LB.9540" protocol="IMAPS" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="62" loadBalancerName="TestForFailure" protocol="HTTP" Concurrent Connections"/>
-	<accountLoadBalancer clusterId="1" clusterName="My Cluster" loadBalancerId="63" loadBalancerName="TestForPass" protocol="HTTP" Concurrent Connections"/>
-</accountLoadBalancers>]]>
+                    A user can list all loadbalancers and their usage for the given account using these methods. The date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a maximum of 90 days.
                 </para>
             </sect2>
             <sect2>
-                <title>Sample XML Response (/account/1106/billing/5) for fetch 5 days worth of info</title>
+                <title>Sample XML Response (/accounts/accountId/loadbalancers)</title>
+                <literallayout class="monospaced">
+<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:accountLoadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0" accountId="1106">
+    <ns2:accountLoadBalancer loadBalancerId="61" loadBalancerName="test1" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="DELETED"/>
+    <ns2:accountLoadBalancer loadBalancerId="62" loadBalancerName="test2" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="DELETED"/>
+    <ns2:accountLoadBalancer loadBalancerId="66" loadBalancerName="My first loadbalancer" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="ACTIVE"/>
+    <ns2:accountLoadBalancer loadBalancerId="75" loadBalancerName="test3" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="DELETED"/>
+    <ns2:accountLoadBalancer loadBalancerId="76" loadBalancerName="test4" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="PENDING_UPDATE"/>
+    <ns2:accountLoadBalancer loadBalancerId="77" loadBalancerName="My second loadbalancer" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="ACTIVE"/>
+</ns2:accountLoadBalancers>]]>
+                </literallayout>
+            </sect2>
+        </sect1>
+        <sect1>
+            <title>Load Balancer Status URL Management</title>
+            <para>
+                More often then not a LoadBalancer gets stuck in pending update due to a broken transaction that should have rolled back in the database but didn't.
+            </para>
+            <para>
+                In this case an ops personal can use the following URL's to correct the issues.
+            </para>
+            <sect2>
+                <title>Examples</title>
+                <literallayout class="monospaced">
+<![CDATA[loadbalancers/68/setstatus/ACTIVE
+loadbalancers/68/setstatus/BUILD
+loadbalancers/68/setstatus/DELETED
+loadbalancers/68/setstatus/ERROR
+loadbalancers/68/setstatus/PENDING_DELETE
+loadbalancers/68/setstatus/PENDING_UPDATE
+]]>
+                </literallayout>
+            </sect2>
+        </sect1>
+        <sect1>
+            <title>Listing and Acknowledging Alerts</title>
+            <para>
+                This operations allows user to list all the alerts in the system. Additional information about the alert can be retrieved by alert id. The status of the alert can be changed to ACKNOWLEDGED using the PUT method
+            </para>
+            <!--
+            Verb    URI                                     Description                                                         Access Level
+            GET     /alerts                                 Retrieve all alerts, if any                                         Support, Service Admin
+            GET     /alerts/unacknowledged                  Retrieve unacknowledged alrets, if any                              Support, Service Admin
+            GET     /alerts/alertId                         Retrieve details for that alert                                     Support, Service Admin
+            GET     /loadbalancers/loadbalancerId/alerts    Retrieve all alerts for loadbalancer if any                         Support, Service Admin
+            PUT     /alerts/alertId/acknowledged            Acknowledge alert.  Changes the status of alert to ACKNOWLEDGED     Support, Service Admin
+            -->
+            <sect2>
+                <title>Sample XML Response (/alerts)</title>
+                <literallayout class="monospaced">
+<![CDATA[<alerts>
+   <alert id="1" accountId="38" loadbalancerid="1000" messageName="Error updating node" status=UNACKNOWLEDGED" created="2010-11-23"/>
+</alerts>]]>
+                </literallayout>
+            </sect2>
+            <sect2>
+                <title>Adding group rate limiting</title>
                 <para>
-<![CDATA[<?xml version="1.0" ?>
-<accountBilling accountId="1106" xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/v1.0">
-	<loadBalancerBilling loadBalancerId="2" loadBalancerName="JORGE-1">
-		<historicalUsage endTime="2010-10-14T17:36:22-05:00" incomingTransfer="67792981391" outgoingTransfer="39363803171" startTime="2010-10-15T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-13T17:36:22-05:00" incomingTransfer="23429715567" outgoingTransfer="27522102645" startTime="2010-10-14T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-12T17:36:22-05:00" incomingTransfer="15508685570" outgoingTransfer="29388548611" startTime="2010-10-13T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-11T17:36:22-05:00" incomingTransfer="49975945079" outgoingTransfer="55074868570" startTime="2010-10-12T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-10T17:36:22-05:00" incomingTransfer="45605244326" outgoingTransfer="43370190617" startTime="2010-10-11T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-09T17:36:22-05:00" incomingTransfer="39903649162" outgoingTransfer="23770260692" startTime="2010-10-10T17:36:22-05:00"/>
-	</loadBalancerBilling>
-	<loadBalancerBilling loadBalancerId="9" loadBalancerName="JORGE-2">
-		<historicalUsage endTime="2010-10-14T17:36:22-05:00" incomingTransfer="11079393993" outgoingTransfer="59238355558" startTime="2010-10-15T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-13T17:36:22-05:00" incomingTransfer="46272183689" outgoingTransfer="65643291367" startTime="2010-10-14T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-12T17:36:22-05:00" incomingTransfer="58595481935" outgoingTransfer="33592995296" startTime="2010-10-13T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-11T17:36:22-05:00" incomingTransfer="45913967625" outgoingTransfer="25494936095" startTime="2010-10-12T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-10T17:36:22-05:00" incomingTransfer="64363283540" outgoingTransfer="43166334902" startTime="2010-10-11T17:36:22-05:00"/>
-		<historicalUsage endTime="2010-10-09T17:36:22-05:00" incomingTransfer="23504069748" outgoingTransfer="23423742286" startTime="2010-10-10T17:36:22-05:00"/>
-	</loadBalancerBilling>
-</accountBilling>]]>
+                    This operation allows user to add a group that will be used for API rate limiting. The definitions of the group are maintained in the rate limiting configuration file. The name of the group added has to match the name of the group in the configuration file
                 </para>
+                <!--
+                Verb    URI                             Description                                 Access Level
+                POST    /groups?name=xxx&default=Y      Add group name and default                  Support, Service Admin
+                -->
+            </sect2>
+        </sect1>
+        <sect1>
+            <title>Viewing Events</title>
+            <para>
+                These operations allow support to view events.
+            </para>
+            <!--
+            Verb    URI                                                                         Description                                                 Access Level
+            GET     /event/account/accountId/loadbalancer?startDate=2010-1-1&endDate=2010-1-1   List revent loadbalancer service events on this account.    Support, Service Admin, Every one else too it seems
+            -->
+            <sect2>
+                <title>GET /management/event/account/accountId/loadbalancer?startDate=2010-1-1&endDate=2010-1-1</title>
+                <para>
+The date parameters are optional. The results will list will be all load balancer service events that occurred between the start and end dates. by default the start date will be 60 days from the time of the request and the end date will be the date of the request. The result list will be inclusive for both dates.                </para>
+            </sect2>
+            <sect2>
+                <title>Sample XML Response (/alerts)</title>
+                <literallayout class="monospaced">
+<![CDATA[<accountLoadBalancerServiceEvents xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" accountId="546428">
+         <loadBalancerServiceEvents loadbalancerId="8">
+              <loadBalancerServiceEvent author="abc" description="LoadBalancer successfully created" category="CREATE" severity="INFO" created="01/06/2011 10:37"/>
+         </loadBalancerServiceEvents>
+</accountLoadBalancerServiceEvents>]]>
+                </literallayout>
             </sect2>
         </sect1>
     </chapter>
