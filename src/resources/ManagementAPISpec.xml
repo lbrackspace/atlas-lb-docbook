@@ -1460,7 +1460,7 @@ loadbalancers/68/setstatus/PENDING_UPDATE
             GET     /event/account/accountId/loadbalancer?startDate=2010-1-1&endDate=2010-1-1   List revent loadbalancer service events on this account.    Support, Service Admin, Every one else too it seems
             -->
             <sect2>
-                <title>GET /management/event/account/accountId/loadbalancer?startDate=2010-1-1&endDate=2010-1-1</title>
+                <title>GET /management/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1</title>
                 <para>
 The date parameters are optional. The results will list will be all load balancer service events that occurred between the start and end dates. by default the start date will be 60 days from the time of the request and the end date will be the date of the request. The result list will be inclusive for both dates.                </para>
             </sect2>
