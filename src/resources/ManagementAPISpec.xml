@@ -1386,7 +1386,7 @@
                 <title>Sample XML Response (/accounts/accountId/loadbalancers)</title>
                 <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:accountLoadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0" accountId="1106">
+<ns2:accountLoadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0" accountId="1106">
     <ns2:accountLoadBalancer loadBalancerId="61" loadBalancerName="test1" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="DELETED"/>
     <ns2:accountLoadBalancer loadBalancerId="62" loadBalancerName="test2" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="DELETED"/>
     <ns2:accountLoadBalancer loadBalancerId="66" loadBalancerName="My first loadbalancer" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="ACTIVE"/>
@@ -1467,7 +1467,7 @@ The date parameters are optional. The results will list will be all load balance
             <sect2>
                 <title>Sample XML Response (/alerts)</title>
                 <literallayout class="monospaced">
-<![CDATA[<accountLoadBalancerServiceEvents xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" accountId="546428">
+<![CDATA[<accountLoadBalancerServiceEvents xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="546428">
          <loadBalancerServiceEvents loadbalancerId="8">
               <loadBalancerServiceEvent author="abc" description="LoadBalancer successfully created" category="CREATE" severity="INFO" created="01/06/2011 10:37"/>
          </loadBalancerServiceEvents>
