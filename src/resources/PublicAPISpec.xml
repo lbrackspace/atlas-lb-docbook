@@ -22,7 +22,6 @@
             <holder>Rackspace Hosting, Inc.</holder>
         </copyright>
 
-        <!-- Sort out the release information -->
         <releaseinfo/>
 
         <productname>Cloud Sites: LBaaS</productname>
@@ -31,7 +30,6 @@
             <para/>
         </abstract>
     </info>
-    <!-- The following should not be a chapter; but I don't know another way have this preceding the chapters -->
     <chapter>
         <title>Intended Audience</title>
         <para>This guide is intended for software developers who want to develop applications using the Load balancing Service API. It assumes the reader has a general understanding of the Load Balancing service and is familiar with:
@@ -223,23 +221,63 @@ Content-Type: text/plain; charset=UTF-8
             <para>
                 Some operations support an Atom representation that can be used to efficiently determine when the state of services has changed.
             </para>
-            <!-- Make me a table for the information below:
-            Format	    Accept Header	        Query Extension	    Default
-            JSON        application/json        .json   	        Yes
-            XML         application/xml         .xml                No
-            Atom        applicaiton/atom+xml    .atom               No
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Format</td>
+                        <td>Accept Header</td>
+                        <td>Query Extension</td>
+                        <td>Default</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Json</td>
+                        <td>application/json</td>
+                        <td>.json</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>XML</td>
+                        <td>application/xml</td>
+                        <td>.xml</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Atom</td>
+                        <td>application/atom+xml</td>
+                        <td>.atom</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
         </sect1>
         <sect1 id="content-compression">
             <title>Content Compression</title>
             <para>
                 Request and response body data may be encoded with gzip compression in order to accelerate interactive performance of API calls and responses. This is controlled using the Accept-Encoding header on the request from the client and indicated by the Content-Encoding header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
-            <!--
-            Header Type             Name                Value
-            HTTP/1.1 Request        Accept-Encoding     gzip
-            HTTP/1.1 Response       Content-Encoding    gzip
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Header Type</td>
+                        <td>Name</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTTP/1.1 Request</td>
+                        <td>Accept-Encoding</td>
+                        <td>gzip</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP/1.1 Response</td>
+                        <td>Content-Encoding</td>
+                        <td>gzip</td>
+                    </tr>
+                </tbody>
+            </table>
         </sect1>
         <sect1 id="persistence-connections">
             <title>Persistence Connections</title>
@@ -270,10 +308,24 @@ Content-Type: text/plain; charset=UTF-8
         <sect1 id="load-balancers">
             <sect2 id="list-load-balancers">
                 <title>List Load Balancers</title>
-                <!--
-                Verb    URI                     Description                                                                         Representation
-                GET     /loadbalancers          List all load balancers configured for the account (IDs, names and status only)     XML, JSON
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                            <td>Representation</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers</td>
+                            <td>List all load balancers configured for the account (IDs, names and status only)</td>
+                            <td>XML, JSON</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
@@ -379,10 +431,24 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2 id="list-load-balancer-details">
                 <title>List Load Balancer Details</title>
-                <!--
-                Verb    URI                     Description                                         Representations
-                GET     /loadblancers/id        List details of the specified load balancer         JSON, XML, ATOM
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                            <td>Representations</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId</td>
+                            <td>List details of the specified load balancer</td>
+                            <td>JSON, XML, ATOM</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
@@ -508,10 +574,22 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Create Load Balancer</title>
-                <!--
-                Verb 	URI                 Description
-                POST    /loadbalancers      Create a new load balancer with the configuration defined by the request.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>POST</td>
+                            <td>/loadbalancers</td>
+                            <td>Create a new load balancer with the configuration defined by the request.</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Reponse Code(s):</emphasis> 202
                 </para>
@@ -642,10 +720,22 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Remove Load Balancer</title>
-                <!--
-                Verb        URI                                 Description
-                DELETE      /loadbalancers/loadBalancerId       Removes a load balancers from your account.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId</td>
+                            <td>Removes a load balancer from your account</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 202
                 </para>
@@ -673,14 +763,42 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>List, Add, Modify, and Remove Nodes</title>
-                <!--
-                Verb 	    URI                                         Description
-                GET     	/loadbalancers/loadBalancerId/nodes 	    List node(s) configured for the load balancer.
-                POST    	/loadbalancers/loadBalancerId/nodes 	    Add a new node to the load balancer.
-                PUT     	/loadbalancers/loadBalancerId/nodes/nodeId	Modifies the configuration of a node on the load balancer.
-                DELETE  	/loadbalancers/loadBalancerId/nodes/nodeId	Removes a node from the load balancer.
-                GET     	/loadbalancers/loadBalancerId/nodes/nodeId	List details for a specific node.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/nodes</td>
+                            <td>List node(s) configured for the load balancer</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/loadbalancers/loadBalancerId/nodes</td>
+                            <td>Add a new node to the load balancer</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                            <td>Modifies the configuration of a node on the load balancer</td>
+                        </tr>
+                        <tr>
+                            <td>DELTE</td>
+                            <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                            <td>Removes a node from the load balancer</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                            <td>List details for a specific node</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 20, 202
                 </para>
@@ -810,10 +928,22 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Update Name, Algorithm, Protocol, Port, and/or Maximum Concurrent Connection Attributes of a Load Balancer</title>
-                <!--
-                Verb	URI	                                Description
-                PUT 	/loadbalancers/loadBalancerId   	Update the properties of a load balancer.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId</td>
+                            <td>Update the properites of a load balancer</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 202
                 </para>
@@ -882,11 +1012,27 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Virtual IP Management</title>
-                <!--
-                Verb 	URI                 	                                Description
-                GET 	/loadbalancers/loadBalancerId/virtualips	            List all associated virtual IPs.
-                DELETE 	/loadbalancers/loadBalancerId/virtualips/virtualIpId	Remove the Virtual IP
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/virtualips</td>
+                            <td>List all associated virtual IPs</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/virtualIpId</td>
+                            <td>Remove the Virtual IP</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
@@ -904,11 +1050,24 @@ Content-Type: text/plain; charset=UTF-8
                 </sect3>
                 <sect3>
                     <title>Virtual IP Types</title>
-                    <!--
-                    Name    	Description
-                    PUBLIC  	An address that is routable on the public Internet
-                    SERVICENET	An address that is routable only on ServiceNet.
-                    -->
+                    <table border="box">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PUBLIC</td>
+                                <td>An address that is routable on the public Internet</td>
+                            </tr>
+                            <tr>
+                                <td>SERVICENET</td>
+                                <td>An address that is routable only on ServiceNet</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </sect3>
                 <sect3>
                     <title>Request (GET)</title>
@@ -955,12 +1114,32 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Usage Reporting</title>
-                <!--
-                Verb        	URI                                     	        Description
-                GET         	/loadbalancers/loadBalancerId/usage     	        List current and historical usage
-                GET             /loadbalancers/loadBalancerId/usage/current         List current usage
-                GET         	/loadbalancers/loadBalancerId/usage/historical  	List historical usage
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/usage</td>
+                            <td>List current and historical usage</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/usage/current</td>
+                            <td>List current usage</td>
+                        </tr>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/historical</td>
+                            <td>List historical usage</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
@@ -1052,14 +1231,42 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Access List Management</title>
-                <!--
-                Verb 	URI             Description
-                GET 	/loadbalancers/loadBalancerId/accesslist    	            List the access list.
-                POST	/loadbalancers/loadBalancerId/accesslist    	            Create a new access list or replace an existing access list.
-                PUT 	/loadbalancers/loadBalancerId/accesslist    	            Append additional network items to the access list.
-                DELETE  /loadbalancers/loadBalancerId/accesslist/networkItemId  	Remove an a network item from the access list.
-                DELETE	/loadbalancers/loadBalancerId/accesslist                	Remove the entire access list.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/accesslist</td>
+                            <td>List the access list</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/loadbalancers/loadBalancerId/accesslist</td>
+                            <td>Create a new access list or replace an existing access list</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId/accesslist</td>
+                            <td>Append additional network items to the access list</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/accesslist/networkItemId</td>
+                            <td>Remove a network item from the access list</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/accesslist</td>
+                            <td>Remove the netire access list</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
@@ -1198,12 +1405,32 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Active Health Monitoring</title>
-                <!--
-                Verb 	URI                                         	Description
-                GET 	/loadbalancers/loadBalancerId/healthmonitor 	Retrieves the health monitor configuration, if one exists.
-                PUT 	/loadbalancers/loadBalancerId/healthmonitor*	Updates the settings for a health monitor.
-                DELETE	/loadbalancers/loadBalancerId/healthmonitor 	Removes the health monitor.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                            <td>Retrieves the health monitor configuration, if one exists</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                            <td>Updates the settings for a health monitor</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                            <td>Removes the health monitor</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
@@ -1286,12 +1513,28 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         All health monitors have a type attribute to signify what kind of monitor it is.
                     </para>
-                    <!--
-                    Name        	Description
-                    CONNECT     	Health monitor is a connect monitor.
-                    HTTP            Health monitor is a HTTP monitor.
-                    HTTPS       	Health monitor is a HTTPS monitor.
-                    -->
+                    <table border="box">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CONNECT</td>
+                                <td>Health monitor is a connect monitor</td>
+                            </tr>
+                            <tr>
+                                <td>HTTP</td>
+                                <td>Health monitor is a HTTP monitor</td>
+                            </tr>
+                            <tr>
+                                <td>GET</td>
+                                <td>Health monitor is a HTTPS monitor</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </sect3>
                 <sect3>
                     <title>Sample XML Response (GET) [Connect Monitor]</title>
@@ -1392,12 +1635,32 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Session Persistence</title>
-                <!--
-                Verb 	URI                                                 Description
-                GET 	/loadbalancers/loadBalancerId/sessionpersistence	List session persistence configuration.
-                POST	/loadbalancers/loadBalancerId/sessionpersistence	Enable session persistence.
-                DELETE	/loadbalancers/loadBalancerId/sessionpersistence	Disable session persistence.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>List session persistence configuration</td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Enable session persistence</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Disable session persistence</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
@@ -1412,10 +1675,20 @@ Content-Type: text/plain; charset=UTF-8
                 </sect3>
                 <sect3>
                     <title>Session Persistence Modes</title>
-                    <!--
-                    Name            Description
-                    HTTP_COOKIE     A session persistence mechanism that inserts an HTTP cookie and is used to determine the destination backend node. (Supported for HTTP load balancing only.)
-                    -->
+                    <table border="box">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTTP_COOKIE</td>
+                                <td>A session persistence mechanism that inserts an HTTP cookie and is used to determine the destination backend node. (Supported for HTTP load balancing only.)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </sect3>
                 <sect3>
                     <title>Sample XML Response (GET)</title>
@@ -1470,15 +1743,31 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Connection Logging</title>
-                <!--
-                Verb        URI                                                 Description
-                GET         /loadbalancers/loadBalancerId/connectionLogging     View current configuration of connection logging
-                PUT         /loadbalancers/loadBalancerId/connectionLogging     Enable or disable connection logging
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/connectionLogging</td>
+                            <td>View current configuration of connection logging</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId/connectionLogging</td>
+                            <td>Enable or disable connection logging</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
-                <para>
+                <para> 
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
                 <sect3>
@@ -1528,12 +1817,32 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Connection Throttling</title>
-                <!--
-                Verb        URI                                                 Description
-                GET         /loadbalancers/loadBalancerId/connectionthrottle    List connection throttling configuration
-                PUT         /loadbalancers/loadBalancerId/connectionthrottle    Update throttling configuration
-                DELETE      /loadbalancers/loadBalancerId/connectionthrottle    Remove connection throttling configuration
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>List connection throttling configuration</td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>Update throttling configuration</td>
+                        </tr>
+                        <tr>
+                            <td>DELETE</td>
+                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>Remove connection throttling configurations</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
@@ -1638,10 +1947,22 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Load Balancing Protocols</title>
-                <!--
-                Verb    URI                         Description
-                GET     /loadbalancers/protocols    List all supported load balancing protocols.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/protocols</td>
+                            <td>List all supported load balancing protocols</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
@@ -1728,10 +2049,22 @@ Content-Type: text/plain; charset=UTF-8
             </sect2>
             <sect2>
                 <title>Load Balancing Algorithms</title>
-                <!--
-                Verb        URI                         Description
-                GET         /loadbalancers/algorithms   List all supported load balancing algorithms.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>/loadbalancers/algorithms</td>
+                            <td>List all supported load balancing algorithms</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
@@ -1787,14 +2120,36 @@ Content-Type: text/plain; charset=UTF-8
                 </sect3>
                 <sect3>
                     <title>Load Balancing Algorithms Overview</title>
-                    <!--
-                    Name                            Description
-                    LEAST_CONNECTIONS               The node with the fewest number of connections will receive requests.
-                    RANDOM                          Backend servers are selected at random.
-                    ROUND_ROBIN                     Connections are routed to each of the backend servers in turn.
-                    WEIGHTED_LEAST_CONNECTIONS      Each request will be assigned to a node based on the number of concurrent connections to the node and its weight.
-                    WEIGHTED_ROUND_ROBIN            A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.
-                    -->
+                    <table border="box">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Description</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LEAST_CONNECTIONS</td>
+                                <td>The node with the fewest number of connections will receive requests</td>
+                            </tr>
+                            <tr>
+                                <td>RANDOM</td>
+                                <td>Backend servers are selected at random</td>
+                            </tr>
+                            <tr>
+                                <td>ROUND_ROBIN</td>
+                                <td>Connections are routed to each of the backend servers in turn</td>
+                            </tr>
+                            <tr>
+                                <td>WEIGHTED_LEAST_CONNECTIONS</td>
+                                <td>Each request will be assigned to a node based on the number of concurrent connections to the node and its weight</td>
+                            </tr>
+                            <tr>
+                                <td>WEIGHTED_ROUND_ROBIN</td>
+                                <td>A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </sect3>
             </sect2>
             <sect2>
@@ -1802,27 +2157,68 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     All load balancers have a status attribute to signify the current configuration status of the device. This status is immutable by the caller and is updated automatically based on state changes within the service.  When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  Once the configuration is applied and finalized, it will be in an ACTIVE status.  In the event of a configuration change or update, the status of the load balancer will change to PENDING_UPDATE to signify configuration changes are being made, but have not yet been finalized.  Load balancers in a suspended status are configured to reject traffic and will not forward requests to backend nodes.
                 </para>
-                <!--
-                Name                    Description
-                ACTIVE                  Load balancer is configured properly and ready to serve traffic to incoming requests via the configured virtual IPs.
-                BUILD                   Load balancer is being provisioned for the first time and configuration is being applied to bring the service online.  The service will not yet be ready to serve incoming requests.
-                PENDING_UPDATE          Load balancer is online, but configuration changes are being applied to update the service based on a previous request.
-                PENDING_DELETE          Load balancer is online, but configuration changes are being applied to begin deletion of the service based on a previous request.
-                SUSPENDED               Load balancer has been taken offline and disabled, contact support.
-                ERROR                   The system encountered an error when attempting to configure the load balancer, contact support.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ACTIVE</td>
+                            <td>Load balancer is configured properly and ready to serve traffic to incoming requests via the configured virtual IPs.</td>
+                        </tr>
+                        <tr>
+                            <td>BUILD</td>
+                            <td>Load balancer is being provisioned for the first time and configuration is being applied to bring the service online.  The service will not yet be ready to serve incoming requests.</td>
+                        </tr>
+                        <tr>
+                            <td>PENDING_UPDATE</td>
+                            <td>Load balancer is online, but configuration changes are being applied to update the service based on a previous request.</td>
+                        </tr>
+                        <tr>
+                            <td>PENDING_DELETE</td>
+                            <td>Load balancer is online, but configuration changes are being applied to begin deletion of the service based on a previous request.</td>
+                        </tr>
+                        <tr>
+                            <td>SUSPENDED</td>
+                            <td>Load balancer has been taken offline and disabled, contact support.</td>
+                        </tr>
+                        <tr>
+                            <td>ERROR</td>
+                            <td>The system encountered an error when attempting to configure the laod balancer, contact support</td>
+                        </tr>
+                    </tbody>
+                </table>
             </sect2>
             <sect2>
                 <title>Node Condition</title>
                 <para>
                     Every node in the load balancer has an associated condition, which determines its role within the load balancer.
                 </para>
-                <!--
-                Name            Description
-                ENABLED         Node is permitted to accept new connections.
-                DISABLED        Node is not permitted to accept any new connections regardless of session persistence configuration.  Existing connections are forcibly terminated.
-                DRAINING        Node is allowed to service existing established connections and connections that are being directed to it as a result of the session persistence configuration.
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ENABLED</td>
+                            <td>Node is permitted to accept new connections</td>
+                        </tr>
+                        <tr>
+                            <td>DISABLED</td>
+                            <td>Node is not permitted to accept any new connections regardless of session persistence configuration.  Existing connections are forcibly terminated</td>
+                        </tr>
+                        <tr>
+                            <td>DRAINING</td>
+                            <td>Node is allowed to service existing established connections and connections that are being directed to it as a result of the session persistence configuration</td>
+                        </tr>
+                    </tbody>
+                </table>
             </sect2>
         </sect1>
     </chapter>
