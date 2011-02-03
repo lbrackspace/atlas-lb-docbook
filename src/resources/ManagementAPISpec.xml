@@ -21,7 +21,6 @@
             <year>2010</year>
             <holder>Rackspace Hosting, Inc.</holder>
         </copyright>
-
         <releaseinfo/>
 
         <productname>Cloud Sites: LBaaS</productname>
@@ -34,13 +33,42 @@
         <title>Management API Operations</title>
         <sect1>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Clusters</title>
-            <!--
-            Verb    URI                     Description                                                             Access Level
-            GET     /clusters               Retrieve a list of all clusters                                         Support, Service Admin
-            POST    /clusters               Create a new cluster                                                    Service Admin
-            PUT     /clusters/clusterId 	Update the name or description or username or password of a cluster     Service Admin
-            DELETE  /clusters/clusterId     Remove a cluster                                                        Service Admin 
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/clusters</td>
+                        <td>Retrieve a list of all clusters</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/clusters</td>
+                        <td>Create a new cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/clusters/clusterId</td>
+                        <td>Upate the name, description, username, or password of a cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/clusters/clusterId</td>
+                        <td>Remove a cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <para>
                 <emphasis>Normal Response Code(s):</emphasis> 200
             </para>
@@ -190,18 +218,72 @@
         </sect1>
         <sect1>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
-        <!--
-        Verb    URI                                 Description                                                                             Access Level
-        GET     /hosts                              Retrieve a list of all hosts within the region.                                         Support, Service Admin
-        GET     /clusters/clusterId/hosts           Retrieve a list of all hosts belonging to a cluster.                                    Support, Service Admin
-        POST    /hosts                              Create a new load balancing host                                                        Service Admin
-        PUT     /hosts/hostId                       Update the mutable attributes of a load balancing host                                  Service Admin
-        DELETE  /hosts/hostId                       Remove a load balancing host                                                            Service Admin
-        GET     /clusters/clusterId/endpoint        Retrieves the host that is currently the active SOAP endpoint                           Support, Service Admin
-        PUT     /hosts/hostid/endpoint/enable       Enable this hosts SOAP endpoint (Warning: can be overwritten by pollendpoints call)     Service Admin
-        PUT     /hosts/hostid/endpoint/disable      Disable this hosts SOAP endpoint (Warning: can be overwritten by pollendpoints call)    Service Admin
-        PUT     /clusters/pollendpoints             tests all endpoints and sets soap_endpoint_active if endpoint works                     Service Admin
-        -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts</td>
+                        <td>Retrieve a list of all hosts within the region</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/clusters/clusterId/hosts</td>
+                        <td>Retrieve a list of all hosts belonging to a cluster</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/hosts</td>
+                        <td>Create a new load balancing host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId</td>
+                        <td>Update the mutable attributes of a load balancing host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/hosts/hostId</td>
+                        <td>Remove a load balancing host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/clusters/clusterId/endpoint</td>
+                        <td>Retrieves the host that is currently the active SOAP endpoint</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/endpoint/enable</td>
+                        <td>Enable this host's SOAP endpoint (Warning: can be overwritten by pollendpoints call)</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/endpoint/disable</td>
+                        <td>Disable this host's SOAP endpoint (Warning: can be overwritten by pollendpoints call)</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/clusters/pollendpoints</td>
+                        <td>tests all endpoints and sets soap_endpoint_active if endpoint works</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -441,16 +523,60 @@
         </sect1>
         <sect1>
             <title>Virtual IP Management</title>
-        <!--
-        Verb    URI                                         Description                                                         Access Level
-        GET     /virtualips                                 Retrieve a list of all virtual IPs associated to the region.        Service Admin
-        GET     /clusters/clusterId/virtualips              Retrieve a list of all virtual IPs associated to a cluster.         Service Admin
-        GET     /virtualips/virtualIpId/loadbalancers       Retrieve a list of LoadBalancers associated with this VirtualIp     Service Admin
-        GET     /loadbalancers/loadBalancerId/virtualips    Retrieve a list of all virtual IPs associated with a loadbalancer.  Service Admin
-        POST    /clusters/clusterId/virtualips              Assign one-or-more additional virtual IPs to a cluster.             Service Admin
-        POST    /clusters/clusterId/virtualipblocks         Assign a set of IP Blocks to the cluster                            Service Admin
-        DELETE  /virtualips/virtualIpId                     Remove the specified virtual IP from the cluster.                   Service Admin
-        -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/virtualips</td>
+                        <td>Retrieve a list of all virtual IPs associated to the region</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/clusters/clusterId/virtualips</td>
+                        <td>Retrieve a list of all virutal IPs associate to a cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/virtualips/virtualIpId/loadbalancers</td>
+                        <td>Retrieve a list of load balancers associated with this virtual IP</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>Retrieve a list of all virtual IPs associated with a load balancer</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/clusters/clusterId/virtualips</td>
+                        <td>Assign one-or-more additional virtual IPs to a cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/clusters/clusterId/virtualipblocks</td>
+                        <td>Assign a set of IP blocks to the cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/clusters/clusterId/virtualips/virtualIpId</td>
+                        <td>Remove the specified virtual IP from the cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -556,14 +682,48 @@
         </sect1>
         <sect1>
             <title>Rate Limiting a Load Balancer</title>
-        <!--
-        Verb        URI                                                         Description                                                                 Access Level
-        GET         /loadbalancers/loadBalancerId/ratelimit                     Retrieve the rate limit information for a specified load balancer           Service Admin
-        POST        /loadbalancers/loadBalancerId/ratelimit                     Impose a new rate limit on the specified load balancer                      Service Admin
-        PUT         /loadbalancers/loadBalancerId/ratelimit                     Modify the expiration time and/or ticket associated with the rate limit     Service Admin
-        DELETE      /loadbalancers/loadBalancerId/ratelimit                     Immediately removed the defined rate limit                                  Service Admin
-        DELETE      /loadbalancers/loadBalancerId/ratelimit/removeoldlimits     Immediately remove expired limits                                           Service Admin
-        -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>Retrieve the rate limit information for a specified load balancer</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>Impose a new rate limit on the specified load balancer</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>Modify the expiration time and/or ticket associated with the rate limit</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>Immediately remove the defined rate limit</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerId/ratelimit/removeoldlimits</td>
+                        <td>Immediately remove expired limits</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -637,14 +797,48 @@
         </sect1>
         <sect1>
             <title>Moving Load Balancers Between Host Machines / Adjusting Stickiness of Load Balancer Hosts</title>
-            <!--
-            Verb        URI                                         Description                                                     Access Level
-            PUT         /loadbalancers/loadBalancerId/sticky        Make the specified load balancer sticky                         Support, Service Admin
-            DELETE      /loadbalancers/loadBalancerId/sticky        Turn off the "sticky" flag on the specified load balancer       Support, Service Admin
-            GET         /loadbalancers/loadBalancerId/host          Get the host assignment(s) for a specified load balancer        Service Admin
-            PUT         /loadbalancers/loadBalancerId/hosts         Update the host assignment(s) for a specified load balancer     Service Admin
-            PUT         /loadbalancers/reassignhosts                Update the host assignment(s) for a list of load balancers      Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/loadbalancers/loadBalancerId/sticky</td>
+                        <td>Make the specified load balancer sticky</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerid/sticky</td>
+                        <td>Turn off the "sticky" flag on the specified load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>loadbalancers/loadBalancerId/hosts</td>
+                        <td>Get the host assignment(s) for a specified load balancer</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/loadbalancers/loadBalancerId/hosts</td>
+                        <td>Update the host assignment(s) for a specified load balancer</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/loadbalancers/reassignhosts</td>
+                        <td>update the host assignment(s) for a list of load balancers</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -726,19 +920,78 @@
         </sect1>
         <sect1>
             <title>Host machine Configuration Backup &amp; Restoration</title>
-        <!--
-        Verb        URI                                         Description                                                     Access Levels
-        GET         /hosts/backups                              View a list of available backups for all host machines          Service Admin
-        GET         /hosts/hostId/backups                       View a list of available backups for a specified host machine   Service Admin
-        GET         /hosts/hostId/subnetmappings                View the list of Subnetmappings for this host                   Service Admin
-        PUT         /hosts/hostId/subnetmappings                Add subnet mappings on this host                                Service Admin
-        POST        /hosts/hostId/subnetmappings/delete         Delete the specified subnet mappings on this host               Service Admin
-        PUT         /hosts/hostId/activate                      Activate Host Machine                                           Service Admin
-        PUT         /hosts/hostId/inactivate                    Deactivate Host Machine                                         Service Admin
-        PUT         /hosts/hostId/backups                       Create a new backup of the host configuration                   Service Admin
-        DELETE      /hosts/hostId/backups/backupId              Purge a backup with the specified backup id.                    Service Admin
-        PUT         /hosts/hostId/backups/backupId/restore      Restore the specified backup to the host machine                Service Admin 
-        -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Levels</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts/backups</td>
+                        <td>View a list of available backups for all host machines</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts/hostId/backups</td>
+                        <td>View a list of available backups for a specified host machine</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts/hostId/subnetmappings</td>
+                        <td>View the list of subnet mappings for this host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/subnetmappings</td>
+                        <td>Add subnet mappings on this host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/host/hostId/subnetmappings/delete</td>
+                        <td>Delete the specified subnet mappings on this host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/activate</td>
+                        <td>Activate Host Machine</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/inactive</td>
+                        <td>Deactivate Host Machine</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/backups</td>
+                        <td>Create a new backup of the host configuration</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/hosts/hostId/backups/backupId</td>
+                        <td>Purge a backup with the specified backup ID</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/hosts/hostId/backups/backupId/restore</td>
+                        <td>Restore the specified backup to the host machine</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -902,11 +1155,30 @@
         </sect1>
         <sect1>
             <title>Customer List by Host/Cluster</title>
-            <!--
-            Verb    URI                     Description                             Access Level
-            POST    /hosts/customers        Generate a customer list by host        Support, Service Admin SITESLB-235
-            POST    /clusters/customers     Generate a customer list by cluster     Support, Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>POST</td>
+                        <td>/hosts/customers</td>
+                        <td>Generate a customer list by host</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/clusters/customers</td>
+                        <td>Generate a customer list by cluster</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1005,11 +1277,30 @@
         <title>Capacity and Availability Reports</title>
         <sect1>
             <title>Load Balancing Host Capacity Planning Board</title>
-            <!--
-            Verb        URI                                 Description                                                                 Access Level
-            GET         /hosts/capacityreport               Generate a capacity planning report for all load balancing hosts            Service Admin
-            GET         /hosts/hostId/capacityreport        Generate a capacity planning report for a specified load balancing host     Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts/capacityreport</td>
+                        <td>Generate a capacity planning report for all load balancing hosts</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/hosts/hostId/capacityreport</td>
+                        <td>Generate a capacity planning report for a specified load balancing host</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1052,11 +1343,30 @@
         </sect1>
         <sect1>
             <title>Load Balancing Cluster Virtual IP Availability Report</title>
-            <!--
-            Verb    URI                                                 Description                                                                                     Access level
-            GET     /virtualips/availabilityreport                      Generate an availability report for all virtual IPs associated to any cluster.                  Service Admin
-            GET     /clusters/clusterId/virtualips/availabilityreport   Generate an availability report for all virtual IPs associated to the specified cluster.        Service Admin
-            -->
+            <table>
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/virtualips/availabilityreport</td>
+                        <td>Generate an availability report for all virtual IPs associated to any cluster.</td>
+                        <td>Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/clusters/clusterId/virtualips/availabilityreport</td>
+                        <td>Generate an availability report for all virtual IPs associated to the specific cluster</td>
+                        <td>Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1113,10 +1423,24 @@
         <title>Extended Customer API Operations</title>
         <sect1>
             <title>Assigning New Virtual IPs to a Load Balancer</title>
-            <!--
-            Verb        URI                                         Description                                             Access Level
-            POST        /loadbalancers/loadBalancerId/virtualips    Provision an additional virtual IP to a load balancer.  Support, Service Admin
-            -->
+            <table>
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>POST</td>
+                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>Provision an additional virtual IP to a load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1144,10 +1468,24 @@
         </sect1>
         <sect1>
             <title>Synchronizing a Load Balancer</title>
-            <!--
-            Verb        URI                                         Description                                                     Access Level
-            POST        /loadbalancers/loadBalancerId/sync          Synchronizes the load balancer with the authoritative source    Support, Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>POST</td>
+                        <td>/loadbalancers/loadBalancerId/sync</td>
+                        <td>Synchronizes the load balancer with the authoritative source</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1157,12 +1495,36 @@
         </sect1>
         <sect1>
             <title>Suspending a Load Balancer</title>
-            <!--
-            Verb        URI                                         Description                                                                 Access Level
-            GET         /loadbalancers/loadBalancerId/suspension    Retrieve the current suspension information for the load balancer, if any.  Support, Service Admin
-            POST        /loadbalancers/loadBalancerId/suspension    Issues an immediate service suspension for a load balancer                  Support, Service Admin
-            DELETE      /loadbalancers/loadBalancerId/suspension    Removes a suspension for a load balancer                                    Support, Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/loadbalancers/loadBalancerId/suspension</td>
+                        <td>Retrieve the current suspension information for the load balancer, if any</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/loadbalancers/loadBalancerId/suspension</td>
+                        <td>Issues an immediate service suspension for a load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerId/suspension</td>
+                        <td>Removes the suspension for a load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1220,10 +1582,24 @@
         </sect1>
         <sect1>
             <title>Viewing Extended Details of a Load Balancer</title>
-            <!--
-            Verb    URI                                             Description                                 Access Level
-            GET     /loadbalancers/loadBalancerId/extendedview      View extended details of a load balancer    Support, Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/loadbalancers/loadBalancerId/extendedview</td>
+                        <td>View extended details of a load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Description</title>
                 <para>
@@ -1364,11 +1740,30 @@
         </sect1>
         <sect1>
             <title>Account Loadbalancers and Usage (Billing)</title>
-            <!--
-            Verb    URI                                 Description                                         Access Level
-            GET     /accounts/accountId/loadbalancers   Retrieves a list loadbalancers on this account      Support, Service Admin
-            GET     /accounts/billing/date              Retrieve usage for all accounts for a single day    Support, Service Admin, Billing
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/accounts/accountId/loadbalancers</td>
+                        <td>Retrieves a list of load balancers on this account</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/accounts/billing/date</td>
+                        <td>Retrieve usage for all accounts for a single day</td>
+                        <td>Support, Service Admin, Billing</td>
+                    </tr>
+                </tbody>
+            </table>
             <para>
                 <emphasis>Normal Response Code(s):</emphasis> 200
             </para>
@@ -1422,14 +1817,48 @@ loadbalancers/68/setstatus/PENDING_UPDATE
             <para>
                 This operations allows user to list all the alerts in the system. Additional information about the alert can be retrieved by alert id. The status of the alert can be changed to ACKNOWLEDGED using the PUT method
             </para>
-            <!--
-            Verb    URI                                     Description                                                         Access Level
-            GET     /alerts                                 Retrieve all alerts, if any                                         Support, Service Admin
-            GET     /alerts/unacknowledged                  Retrieve unacknowledged alrets, if any                              Support, Service Admin
-            GET     /alerts/alertId                         Retrieve details for that alert                                     Support, Service Admin
-            GET     /loadbalancers/loadbalancerId/alerts    Retrieve all alerts for loadbalancer if any                         Support, Service Admin
-            PUT     /alerts/alertId/acknowledged            Acknowledge alert.  Changes the status of alert to ACKNOWLEDGED     Support, Service Admin
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/alert</td>
+                        <td>Retrieve all alerts, if any</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/alerts/unacknowledged</td>
+                        <td>Retrieve unacknowledged alerts, if any</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/alers/alertId</td>
+                        <td>Retrieve details for the alert</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/loadbalancers/loadBalancerId/alerts</td>
+                        <td>Retrieve all alerts for the specified load balancer, if any</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>/alerts/alertId/acknowledged</td>
+                        <td>Acknowledge alert.  Changes the status of alert to ACKNOWLEDGED</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>Sample XML Response (/alerts)</title>
                 <literallayout class="monospaced">
@@ -1443,10 +1872,24 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                 <para>
                     This operation allows user to add a group that will be used for API rate limiting. The definitions of the group are maintained in the rate limiting configuration file. The name of the group added has to match the name of the group in the configuration file
                 </para>
-                <!--
-                Verb    URI                             Description                                 Access Level
-                POST    /groups?name=xxx&default=Y      Add group name and default                  Support, Service Admin
-                -->
+                <table border="box">
+                    <thead>
+                        <tr>
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                            <td>Access Level</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>POST</td>
+                            <td>/groups?name=xxx&amp;default=Y</td>
+                            <td>Add group name and default</td>
+                            <td>Support, Service Admin</td>
+                        </tr>
+                    </tbody>
+                </table>
             </sect2>
         </sect1>
         <sect1>
@@ -1454,10 +1897,24 @@ loadbalancers/68/setstatus/PENDING_UPDATE
             <para>
                 These operations allow support to view events.
             </para>
-            <!--
-            Verb    URI                                                                         Description                                                 Access Level
-            GET     /event/account/accountId/loadbalancer?startDate=2010-1-1&endDate=2010-1-1   List revent loadbalancer service events on this account.    Support, Service Admin, Every one else too it seems
-            -->
+            <table border="box">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1</td>
+                        <td>List recent load balancer service events on this account</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </table>
             <sect2>
                 <title>GET /management/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1</title>
                 <para>

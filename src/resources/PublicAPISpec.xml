@@ -1165,11 +1165,24 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response (GET - for all usage)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-  <loadBalancerUsageRecord id="394" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="1" numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
-  <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-  <loadBalancerUsageRecord id="474" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-  <loadBalancerUsageRecord id="475" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-  <loadBalancerUsageRecord id="476" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
+  <loadBalancerUsageRecord
+        id="394"
+        averageNumConnections="0.0"
+        incomingTransfer="0"
+        outgoingTransfer="0"
+        numVips="1"
+        numPolls="32"
+        startTime="2010-12-21T12:32:07-06:00"
+        endTime="2010-12-21T16:23:54-06:00" />
+  <loadBalancerUsageRecord
+        id="473"
+        averageNumConnections="0.0"
+        incomingTransfer="0"
+        outgoingTransfer="0"
+        numVips="2"
+        numPolls="5"
+        startTime="2010-12-21T12:32:07-06:00"
+        endTime="2010-12-21T12:36:30-06:00" />
 </loadBalancerUsage>]]>
                     </literallayout>
                 </sect3>
@@ -1177,26 +1190,26 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample JSON Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
-    "loadBalancerUsage": [
+    "loadBalancerUsageRecords": [
         {
-            "id": "1",
-            "averageNumConnections": "12.45",
-            "incomingTransfer": "323425",
-            "outgoingTransfer": "6934400",
+            "id": "394",
+            "averageNumConnections": "0.0",
+            "incomingTransfer": "0",
+            "outgoingTransfer": "0",
             "numVips": "1",
             "numPolls" "32",
-            "startTime": "2010-02-01T05:00:00Z",
-            "endTime": "2010-02-01T06:00:00Z"
+            "startTime": "2010-12-21T12:32:07-06:00",
+            "endTime": "2010-12-21T16:23:54-06:00"
         },
         {
-            "id": "2",
-            "averageNumConnections": "16.78",
-            "incomingTransfer": "95109",
-            "outgoingTransfer": "81401088",
+            "id": "473",
+            "averageNumConnections": "0.0",
+            "incomingTransfer": "0",
+            "outgoingTransfer": "0",
             "numVips": "2",
             "numPolls": "5",
-            "startTime": "2010-01-01T07:57:00Z",
-            "endTime": "2010-01-01T08:57:00Z"
+            "startTime": "2010-12-21T12:32:07-06:00",
+            "endTime": "2010-12-21T12:36:30-06:00"
         }
     ]
 }]]>
