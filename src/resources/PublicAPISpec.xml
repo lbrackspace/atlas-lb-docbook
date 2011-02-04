@@ -32,7 +32,8 @@
     </info>
     <chapter>
         <title>Intended Audience</title>
-        <para>This guide is intended for software developers who want to develop applications using the Load balancing Service API. It assumes the reader has a general understanding of the Load Balancing service and is familiar with:
+        <para>
+            This guide is intended for software developers who want to develop applications using the Load balancing Service API. It assumes the reader has a general understanding of the Load Balancing service and is familiar with:
         </para>
         <para>
             <itemizedlist>
@@ -88,33 +89,25 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>
-                            The connection is refused by the backend server or if the connection takes longer than 4 seconds to be established.
-                        </para>
+                        <para>The connection is refused by the backend server or if the connection takes longer than 4 seconds to be established.</para>
                     </listitem>
                     <listitem>
-                        <para>
-                            The connection is closed prematurely or if the beginning of the response is not received within 30 seconds.
-                        </para>
+                        <para>The connection is closed prematurely or if the beginning of the response is not received within 30 seconds.</para>
                     </listitem>
                     <listitem>
-                        <para>
-                            HTTP - If an invalid HTTP response is received or a 503 (Service Unavailable) response code is received.
-                        </para>
+                        <para>HTTP - If an invalid HTTP response is received or a 503 (Service Unavailable) response code is received.</para>
                     </listitem>
                     <listitem>
-                        <para>
-                            SSL Passthrough - If the SSL handshake to the backend server fails.
-                        </para>
+                        <para>SSL Passthrough - If the SSL handshake to the backend server fails.</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 If the tests above fail, then the service will attempt to locate another configured node that is capable of supporting the request until every node is exhausted.  If this occurs, the requestor will receive a 503/Service Unavailable for HTTP traffic or the connection will be dropped.
             </para>
-            <para>
-                <emphasis>Note:</emphasis> If a given node fails a passive health monitor check for three consecutive times, then the service assumes the node has failed and will place it in the OFFLINE status.  The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
-            </para>
+            <note>
+                If a given node fails a passive health monitor check for three consecutive times, then the service assumes the node has failed and will place it in the OFFLINE status.  The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
+            </note>
         </sect3>
         <sect3 id="active-health-monitor">
             <title>Active Health Monitor</title>
@@ -927,7 +920,7 @@ Content-Type: text/plain; charset=UTF-8
                 </sect3>
             </sect2>
             <sect2>
-                <title>Update Name, Algorithm, Protocol, Port, and/or Maximum Concurrent Connection Attributes of a Load Balancer</title>
+                <title>Update Name, Algorithm, Protocol, and/or Port Attributes of a Load Balancer</title>
                 <table border="box">
                     <thead>
                         <tr>
@@ -957,24 +950,16 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                     <itemizedlist mark='opencircle'>
                         <listitem>
-                            <para>
-                                name
-                            </para>
+                            <para>name</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                algorithm
-                            </para>
+                            <para>algorithm</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                protocol
-                            </para>
+                            <para>protocol</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                port
-                            </para>
+                            <para>port</para>
                         </listitem>
                     </itemizedlist>
                     <note>
@@ -1489,34 +1474,22 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         <itemizedlist>
                             <listitem>
-                                <para>
-                                    <emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.
-                                </para>
+                                <para><emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.</para>
                             </listitem>
                             <listitem>
-                                <para>
-                                    <emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.
-                                </para>
+                                <para><emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.</para>
                             </listitem>
                             <listitem>
-                                <para>
-                                    <emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.
-                                </para>
+                                <para><emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.</para>
                             </listitem>
                             <listitem>
-                                <para>
-                                    <emphasis>path</emphasis> - The HTTP path that will be used in the sample request
-                                </para>
+                                <para><emphasis>path</emphasis> - The HTTP path that will be used in the sample request</para>
                             </listitem>
                             <listitem>
-                                <para>
-                                    <emphasis>statusRegex</emphasis> - A regular expression that will be used to evaluate the HTTP status code returned in the response.
-                                </para>
+                                <para><emphasis>statusRegex</emphasis> - A regular expression that will be used to evaluate the HTTP status code returned in the response.</para>
                             </listitem>
                             <listitem>
-                                <para>
-                                    <emphasis>bodyRegex</emphasis> - A regular expression that will be used to evaluate the contents of the body of the response.
-                                </para>
+                                <para><emphasis>bodyRegex</emphasis> - A regular expression that will be used to evaluate the contents of the body of the response.</para>
                             </listitem>
                         </itemizedlist>
                     </para>
@@ -1869,24 +1842,16 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                     <itemizedlist>
                         <listitem>
-                            <para>
-                                <emphasis>minConnection</emphasis> - Allow at least this number of connections per IP address before applying throttling restrictions.
-                            </para>
+                            <para><emphasis>minConnection</emphasis> - Allow at least this number of connections per IP address before applying throttling restrictions.</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                <emphasis>maxConnections</emphasis> - Maximum number of connection to allow for a single IP address.
-                            </para>
+                            <para><emphasis>maxConnections</emphasis> - Maximum number of connection to allow for a single IP address.</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                <emphasis>macConnectionRate</emphasis> - Maximum number of connections allowed from a single IP address in the defined rateInterval.
-                            </para>
+                            <para><emphasis>macConnectionRate</emphasis> - Maximum number of connections allowed from a single IP address in the defined rateInterval.</para>
                         </listitem>
                         <listitem>
-                            <para>
-                                <emphasis>rateInterval</emphasis> - Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.
-                            </para>
+                            <para><emphasis>rateInterval</emphasis> - Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.</para>
                         </listitem>
                     </itemizedlist>
                 </sect3>
