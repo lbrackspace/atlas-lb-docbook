@@ -693,20 +693,26 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   id="1041"
-   name="a-new-loadbalancer"
-   status="BUILD"
-   port="80"
-   protocol="HTTP">
-   <virtualIps>
-      <virtualIp
-         id="1000"
-         address="206.10.10.210"
-         type="PUBLIC" />
-   </virtualIps>
-   <nodes>
-      <node address="10.1.1.1" port="80" condition="ENABLED" />
-   </nodes>
+    id="1041"
+    name="a-new-loadbalancer"
+    algorithm="RANDOM"
+    status="BUILD"
+    port="80"
+    protocol="HTTP">
+    <virtualIps>
+        <virtualIp
+            id="1000"
+            address="206.10.10.210"
+            ipVersion="IPV4"
+            type="PUBLIC" />
+    </virtualIps>
+    <nodes>
+        <node id="78923" address="10.1.1.1" port="80" condition="ENABLED" status="ONLINE" weight="1" />
+    </nodes>
+    <cluster name="ztm-n03.staging.lbaas.ord1.rackspace.net"/>
+    <created time="2011-02-07T14:57:53Z"/>
+    <updated time="2011-02-07T14:57:53Z"/>
+    <connectionLogging enabled="false"/>
 </loadBalancer>]]>
                     </literallayout>
                 </sect3>
@@ -1246,12 +1252,7 @@ Content-Type: text/plain; charset=UTF-8
                         <tr>
                             <td>POST</td>
                             <td>/loadbalancers/loadBalancerId/accesslist</td>
-                            <td>Create a new access list or replace an existing access list</td>
-                        </tr>
-                        <tr>
-                            <td>PUT</td>
-                            <td>/loadbalancers/loadBalancerId/accesslist</td>
-                            <td>Append additional network items to the access list</td>
+                            <td>Create a new access list or append to an existing access list</td>
                         </tr>
                         <tr>
                             <td>DELETE</td>
