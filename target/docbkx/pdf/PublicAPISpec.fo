@@ -413,26 +413,32 @@ Content-Type: text/plain; charset=UTF-8
 }
                     </fo:block></fo:block><fo:block id="d0e535"><fo:block xmlns:d="http://docbook.org/ns/docbook"><fo:block><fo:block keep-together.within-column="always" margin-left="0pt" font-family="CartoGothic Std"><fo:block keep-with-next.within-column="always"><fo:block font-family="CartoGothic Std" font-weight="bold" keep-with-next.within-column="always" space-before.minimum="0.8em" space-before.optimum="1.0em" space-before.maximum="1.2em" text-align="start" start-indent="0pt" color="rgb(196,0,34)"><fo:marker marker-class-name="section.head.marker">Sample XML Response</fo:marker><fo:block font-size="17.28pt">4.3.7. Sample XML Response</fo:block></fo:block></fo:block></fo:block></fo:block></fo:block><fo:block space-before.minimum="0.8em" space-before.optimum="1em" space-before.maximum="1.2em" space-after.minimum="0.8em" space-after.optimum="1em" space-after.maximum="1.2em" hyphenate="false" wrap-option="wrap" white-space-collapse="false" white-space-treatment="preserve" linefeed-treatment="preserve" text-align="start" font-family="monospace" font-size="inherit" hyphenation-character="\" background-color="#E0E0E0" id="d0e538">
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-    id="1041"
-    name="a-new-loadbalancer"
-    algorithm="RANDOM"
-    status="BUILD"
-    port="80"
-    protocol="HTTP"&gt;
+        id="144"
+        name="a-new-loadbalancer"
+        algorithm="RANDOM"
+        protocol="HTTP"
+        port="83"
+        status="BUILD"&gt;
     &lt;virtualIps&gt;
         &lt;virtualIp
-            id="1000"
-            address="206.10.10.210"
-            ipVersion="IPV4"
-            type="PUBLIC" /&gt;
+                id="39"
+                address="206.10.10.210"
+                ipVersion="IPV4"
+                type="PUBLIC" /&gt;
     &lt;/virtualIps&gt;
     &lt;nodes&gt;
-        &lt;node id="78923" address="10.1.1.1" port="80" condition="ENABLED" status="ONLINE" weight="1" /&gt;
+        &lt;node
+                id="653"
+                address="10.1.1.1"
+                port="80"
+                condition="ENABLED"
+                status="ONLINE"
+                weight="1" /&gt;
     &lt;/nodes&gt;
-    &lt;cluster name="ztm-n03.staging.lbaas.ord1.rackspace.net"/&gt;
-    &lt;created time="2011-02-07T14:57:53Z"/&gt;
-    &lt;updated time="2011-02-07T14:57:53Z"/&gt;
-    &lt;connectionLogging enabled="false"/&gt;
+    &lt;cluster name="ztm-n03.staging1.lbaas.rackspace.net" /&gt;
+    &lt;created time="2011-02-08T21:19:55Z" /&gt;
+    &lt;updated time="2011-02-08T21:19:55Z" /&gt;
+    &lt;connectionLogging enabled="false" /&gt;
 &lt;/loadBalancer&gt;
                     </fo:block></fo:block></fo:block><fo:block id="d0e540"><fo:block xmlns:d="http://docbook.org/ns/docbook"><fo:block><fo:block keep-together.within-column="always" margin-left="0pt" font-family="CartoGothic Std"><fo:block keep-with-next.within-column="always"><fo:block font-family="CartoGothic Std" font-weight="bold" keep-with-next.within-column="always" space-before.minimum="0.8em" space-before.optimum="1.0em" space-before.maximum="1.2em" text-align="start" start-indent="0pt" color="rgb(196,0,34)"><fo:marker marker-class-name="section.head.marker">Remove Load Balancer</fo:marker><fo:block font-size="20.735999999999997pt">4.4. Remove Load Balancer</fo:block></fo:block></fo:block></fo:block></fo:block></fo:block><fo:block xmlns:rx="http://www.renderx.com/XSL/Extensions" space-before.minimum="0.5em" space-before.optimum="1em" space-before.maximum="2em" space-after.minimum="0.5em" space-after.optimum="1em" space-after.maximum="2em" id="d0e543"><fo:table border-before-width.conditionality="retain" border-collapse="collapse" width="100%" border-start-style="solid" border-end-style="solid" border-top-style="solid" border-bottom-style="solid" border-start-width="0.5pt" border-end-width="0.5pt" border-top-width="0.5pt" border-bottom-width="0.5pt" border-start-color="black" border-end-color="black" border-top-color="black" border-bottom-color="black"><fo:table-header start-indent="0pt" end-indent="0pt"><fo:table-row keep-with-next.within-column="always">
                             <fo:table-cell padding-start="2pt" padding-end="2pt" padding-top="2pt" padding-bottom="2pt" border-start-style="none" border-top-style="none" border-bottom-style="solid" border-bottom-width="0.5pt" border-bottom-color="black" border-end-style="solid" border-end-width="0.5pt" border-end-color="black"><fo:block font-weight="bold">Verb</fo:block></fo:table-cell>
