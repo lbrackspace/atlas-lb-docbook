@@ -750,7 +750,7 @@ Content-Type: text/plain; charset=UTF-8
                     </thead>
                     <tbody>
                         <tr>
-                            <td>GET</td>
+                            <td>DELETE</td>
                             <td>/loadbalancers/loadBalancerId</td>
                             <td>Removes a load balancer from your account</td>
                         </tr>
