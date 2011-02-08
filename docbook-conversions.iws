@@ -76,7 +76,7 @@
       <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1886" column="54" selection-start="77195" selection-end="77195" vertical-scroll-proportion="0.0">
+            <state line="1905" column="28" selection-start="77858" selection-end="77858" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1262" column="43" selection-start="59866" selection-end="59866" vertical-scroll-proportion="0.5090293">
+            <state line="1303" column="241" selection-start="61913" selection-end="61913" vertical-scroll-proportion="0.3905192">
               <folding />
             </state>
           </provider>
@@ -392,14 +392,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1886" column="54" selection-start="77195" selection-end="77195" vertical-scroll-proportion="0.0">
+        <state line="1905" column="28" selection-start="77858" selection-end="77858" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1262" column="43" selection-start="59866" selection-end="59866" vertical-scroll-proportion="0.5090293">
+        <state line="1303" column="241" selection-start="61913" selection-end="61913" vertical-scroll-proportion="0.3905192">
           <folding />
         </state>
       </provider>
