@@ -52,36 +52,36 @@
             </itemizedlist>
         </para>
     </chapter>
-    <chapter id="concepts-and-definitions">
+    <chapter>
         <title>Concepts and Definitions</title>
         <para>
             The load balancing API specification has several key concepts that are important to understand.
         </para>
-        <sect3 id="load-balancer">
+        <section>
             <title>Load balancer</title>
             <para>
                 A load balancer is a logical device, which belongs to a cloud account. It is used to distribute workloads between multiple back-end systems or services, based on the criteria defined as part of the configuration.
             </para>
-        </sect3>
-        <sect3 id="virtual-ip">
+        </section>
+        <section>
             <title>Virtual IP</title>
             <para>
                 A virtual IP is an address configured on the load balancer for use by clients connecting to a service that is load balanced. Incoming connections are distributed to back-end nodes based on the configuration of the load balancer.
             </para>
-        </sect3>
-        <sect3 id="node">
+        </section>
+        <section>
             <title>Node</title>
             <para>
                 A nodes is a back-end device providing a service on a given IP and port.
             </para>
-        </sect3>
-        <sect3 id="health-monitor">
+        </section>
+        <section>
             <title>Health Monitor</title>
             <para>
                 A health monitor is a feature of the load balancer that is used to determine whether or not a backend node is usable for processing a request.  The service supports two types of health monitors, passive and active.
             </para>
-        </sect3>
-        <sect3 id="passive-health-monitor">
+        </section>
+        <section>
             <title>Passive Health Monitor</title>
             <para>
                 By default, all load balancing configurations utilize a passive health monitor, which is a technique that analyzes the response of the backend server to determine whether or not its capable of processing a request.  Passive health monitoring verifies the condition of a node using the following criteria:
@@ -106,10 +106,12 @@
                 If the tests above fail, then the service will attempt to locate another configured node that is capable of supporting the request until every node is exhausted.  If this occurs, the requestor will receive a 503/Service Unavailable for HTTP traffic or the connection will be dropped.
             </para>
             <note>
+                <para>
                 If a given node fails a passive health monitor check for three consecutive times, then the service assumes the node has failed and will place it in the OFFLINE status.  The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
+                </para>
             </note>
-        </sect3>
-        <sect3 id="active-health-monitor">
+        </section>
+        <section>
             <title>Active Health Monitor</title>
             <para>
                 Active health monitoring is a technique that uses synthetic transactions that are executed at periodic intervals to determine the condition of a node.  One of the advantages of active health monitoring is that it does not require active transactions to be processed by the load balancer to determine whether or not a node is suitable for handling traffic.  When both active and passive monitoring are enabled, the decisions made by the active monitor override inferences made by the passive monitoring system.
@@ -117,38 +119,42 @@
             <para>
                 The active health monitor can use one of three types of probes: connect, http, and https.  These probes are run at configured intervals and in the event of a failure, the node status changes to OFFLINE and the node will not receive traffic.  Once the probe has detected that the node has recovered (by running a subsequent test), then the node is changed to the ONLINE status and will be capable of servicing requests.
             </para>
-        </sect3>
-        <sect3 id="session-persistence">
+        </section>
+        <section>
             <title>Session Persistence</title>
             <para>
                 Session persistence is a feature of the load balancing service that attempts to force subsequent connections to a service to be redirected to the same node as long as its online.
             </para>
-        </sect3>
-        <sect3 id="connection-logging">
+        </section>
+        <section>
             <title>Connection Logging</title>
             <para>
                 The connection logging feature allows for Apache-style access logs (for HTTP-based protocol traffic) or connection and transfer logging (for all other traffic) to your Cloud Files account. Logs are delivered to your account every hour.
             </para>
-        </sect3>
+        </section>
     </chapter>
-    <chapter id="general-api-information">
+    <chapter>
         <title>General API Information</title>
         <para>
             The Load Balancing Service API is implemented using a RESTful web service interface. Like other products in the Rackspace Cloud suite. The Load Balancing Service shares a common token-based authentication system that allows seamless access between products and services.
         </para>
-            <note>All requests to authenticate and operate the service are performed using SSL over HTTP (HTTPS) on TCP port 443.</note>
-        <sect1 id="authentication">
+            <note>
+                <para>
+                All requests to authenticate and operate the service are performed using SSL over HTTP (HTTPS) on TCP port 443.
+                </para>
+            </note>
+        <section>
             <title>Authentication</title>
             <para>
                 Every REST request against the load balancing service requires the inclusion of a specific authorization token, which is supplied by the X-Auth-Token HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication Service and supplying a valid username and API access key.
             </para>
-            <sect2 id="auth-request">
+            <section>
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace Cloud APIs and is itself a RESTful web service. It is accessible at
                     <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate, you must supply your username and API access key in the X-Auth-Key HTTP headers. Username is your common Rackspace Cloud username and your API access key can be obtained from the Rackspace Cloud Control Panel in the Your Account | API Access section.
                 </para>
-            </sect2>
-            <sect2 id="auth-request-sample">
+            </section>
+            <section>
                 <title>Sample Request</title>
                 <para>
                     <literallayout class="monospaced">
@@ -158,13 +164,13 @@ X-Auth-User: jdoe
 X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
                 </para>
-            </sect2>
-            <sect2 id="auth-response">
+            </section>
+            <section>
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status 204 No Content is returned with an X-Auth-Token (along with other Cloud Service headers that are not applicable to the load balancing service). An HTTP status of 401 Unauthorized is returned if authentication fails. All operations against the load balancing service must include the X-Auth-Token header as noted above.
                 </para>
-            </sect2>
-            <sect2>
+            </section>
+            <section>
                 <title>Sample Response</title>
                 <para>
                     <literallayout class="monospaced">
@@ -179,15 +185,17 @@ Content-Length: 0
 Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </para>
-            </sect2>
             <para>
                 Authentication tokens are typically valid for 24 hours. Applications should be designed to re-authenticate after receiving a 401 Unauthorized response from a service endpoint.
             </para>
             <note>
+                <para>
                 LBaaS will depend on Cloud Auth 1.1, which will include the endpoints in the response payload - To be updated once contract is solidified with auth developers.
+                </para>
             </note>
-        </sect1>
-        <sect1 id="service-access">
+            </section>
+        </section>
+        <section>
             <title>Service Access</title>
             <para>
                 The load balancing service is a regionalized service, which allows for the caller to select a region to provision a load balancer into. In the response payload provided by the authentication service, the caller can choose the appropriate region-based endpoint.
@@ -198,8 +206,8 @@ Content-Type: text/plain; charset=UTF-8
             <para>
                 <emphasis>If load balancing external servers</emphasis>, you can determine the appropriate region to select by choosing the region that is geographically as close to your external servers as possible.
             </para>
-        </sect1>
-        <sect1 id="request-response-types">
+        </section>
+        <section>
             <title>Request/Response Types</title>
             <para>The load balancing API supports both the JSON and XML data serialization formats. The request format is specified using the
                 <emphasis>Content-Type</emphasis>
@@ -214,7 +222,7 @@ Content-Type: text/plain; charset=UTF-8
             <para>
                 Some operations support an Atom representation that can be used to efficiently determine when the state of services has changed.
             </para>
-            <table border="box">
+            <informaltable rules="all">
                 <thead>
                     <tr>
                         <td>Format</td>
@@ -243,14 +251,14 @@ Content-Type: text/plain; charset=UTF-8
                         <td>No</td>
                     </tr>
                 </tbody>
-            </table>
-        </sect1>
-        <sect1 id="content-compression">
+            </informaltable>
+        </section>
+        <section>
             <title>Content Compression</title>
             <para>
                 Request and response body data may be encoded with gzip compression in order to accelerate interactive performance of API calls and responses. This is controlled using the Accept-Encoding header on the request from the client and indicated by the Content-Encoding header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
-            <table border="box">
+            <informaltable rules="all">
                 <thead>
                     <tr>
                         <td>Header Type</td>
@@ -270,9 +278,9 @@ Content-Type: text/plain; charset=UTF-8
                         <td>gzip</td>
                     </tr>
                 </tbody>
-            </table>
-        </sect1>
-        <sect1 id="persistence-connections">
+            </informaltable>
+        </section>
+        <section>
             <title>Persistence Connections</title>
             <para>
                 By default, the API supports persistent connections via HTTP/1.1 keepalives. All connections will be kept alive unless the connection header is set to close.
@@ -281,27 +289,28 @@ Content-Type: text/plain; charset=UTF-8
                 To prevent abuse, HTTP sessions have a timeout of 20 seconds before being closed.
             </para>
             <note>
+            <para>
                 The server may close the connection at any time and clients should not rely on this behavior.
+            </para>
             </note>
-        </sect1>
-        <sect1 id="paginated-collections">
+        </section>
+        <section>
             <title>Paginated Collections</title>
             <para>
                 To reduce load on the service, list operations will return a maximum of 100 items at a time. To navigate the collection, the parameters limit and offset can be set in the URI (e.g.?limit=0&amp;offset=0). If an offset is given beyond the end of a list an empty list will be returned. Note that list operations never return itemNotFound (404) faults.
             </para>
-        </sect1>
-        <sect1 id="efficient-polling-changes-since-parameter">
+        </section>
+        <section>
             <title>Efficient Polling with the Changes-Since Parameter</title>
             <para>The REST API allows you to poll for the status of certain operations by performing a GET on various URIs. Rather than re-downloading and re-parsing the full status at each polling interval, your REST client may use the changes-since parameter to check for changes since a previous request. The changes-since time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing has changed since the changes-since time, a 304 Not Modified response will be returned. If data has changed, only the items changed since the specified time will be returned in the response. For example, performing a GET against https://URL/v1.0/1234/loadbalancers?changes-since=1244012982 would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
             </para>
-        </sect1>
+        </section>
     </chapter>
     <chapter>
         <title>API Operations</title>
-        <sect1 id="load-balancers">
-            <sect2 id="list-load-balancers">
+            <section>
                 <title>List Load Balancers</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -318,14 +327,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>XML, JSON</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault (400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
@@ -336,14 +345,14 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         Load balancer which have been deleted will be shown in this list until all usage has been processed and invoiced. A deleted load balancer is immutable and irrecoverable. Only a limited set of attributes will be returned in the response object (id, name, status, created, and updated).
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (/loadbalancers)</title>
                     <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" ?>
@@ -368,8 +377,8 @@ Content-Type: text/plain; charset=UTF-8
 	</loadBalancer>
 </loadBalancers>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample Json Response (/loadbalancers)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"loadBalancers":[
@@ -420,11 +429,11 @@ Content-Type: text/plain; charset=UTF-8
    ]
 }]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2 id="list-load-balancer-details">
+                </section>
+            </section>
+            <section>
                 <title>List Load Balancer Details</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -441,26 +450,26 @@ Content-Type: text/plain; charset=UTF-8
                             <td>JSON, XML, ATOM</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         This operation provides the detailed output for a specific load balancer configured and associated with your account.  This operation is not capable of returning details for a load balancer which has been deleted.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -503,8 +512,8 @@ Content-Type: text/plain; charset=UTF-8
    <updated time="2010-11-30T03:23:44Z" />
 </loadBalancer>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response</title>
                     <literallayout>
 <![CDATA[{
@@ -563,11 +572,11 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Create Load Balancer</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -582,35 +591,41 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Create a new load balancer with the configuration defined by the request.</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Reponse Code(s):</emphasis> 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         This operation asynchronously provisions a new load balancer based on the configuration defined in the request object. Once the request is validated and progress has started on the provisioning process, a response object will be returned. The object will contain a unique identifier and status of the request. Using the identifier, the caller can check on the progress of the operation by performing a GET on loadbalancers/id (for more details on this operation see the "List Load Balancer Details" section of this document). If the corresponding request cannot be fulfilled due to insufficient or invalid data, an HTTP 400 "Bad Request" error response will be returned with information regarding the nature of the failure in the body of the response. Failures in the validation process are non-recoverable and require the caller to correct the cause of the failure and POST the request again.
                     </para>
                     <note>
+                    <para>
                         A load balancer's name must be less than or equal to 128 characters.
+                    </para>
                     </note>
                     <note>
+                    <para>
                         Users may configure all documented features of the load balancer at creation time by simply providing the additional elements / attributes in the request. Refer to the subsequent sections of this specification for an overview of all features the load balancing service supports.
+                    </para>
                     </note>
-                </sect3>
-                <sect3 id="sharing-virtual-ips-between-load-balancers">
-                    Sharing Virutal IPs Between Load Balancers
+                </section>
+                <section>
+                    <title>Sharing Virutal IPs Between Load Balancers</title>
                     <para>
                         In order to conserve IPv4 address space, Rackspace highly recommends sharing Virtual IPs between your load balancers. If you have at least one load balancer, you may create subsequent load balancers that share a single virtual IP by issuing a POST and supplying a virtualIp ID instead of a type. (see below for a sample request). Additionally, this feature is highly desirable if you wish to load balance both an unsecured and secure protocol using one IP / DNS name (for example, HTTP and HTTPS).
                     </para>
                     <note>
+                        <para>
                         Load balancers sharing a virtual IP <emphasis>must</emphasis> utilize a unique port.
+                        </para>
                     </note>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (Required Attributes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -625,8 +640,8 @@ Content-Type: text/plain; charset=UTF-8
     </nodes>
 </loadBalancer>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (Required Attributes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"loadBalancer": {
@@ -648,8 +663,8 @@ Content-Type: text/plain; charset=UTF-8
     }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (Required Attributes Only w/ Shared IP)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -664,8 +679,8 @@ Content-Type: text/plain; charset=UTF-8
    </nodes>
 </loadBalancer>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (Required Attributes Only w/ Shared IP)</title>
                     <literallayout>
 <![CDATA[{
@@ -688,8 +703,8 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -715,11 +730,11 @@ Content-Type: text/plain; charset=UTF-8
     <connectionLogging enabled="false"/>
 </loadBalancer>]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Remove Load Balancer</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -734,35 +749,35 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Removes a load balancer from your account</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable(503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The remove load balancer function removes the specified load balancer and its associated configuration from the account. Any and all configuration data is immediately purged and is not recoverable.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>List, Add, Modify, and Remove Nodes</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -797,14 +812,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List details for a specific node</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 20, 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The nodes defined by the load balancer are responsible for servicing the requests received through the load balancers virtual IP. By default, the load balancer employs a basic "health check" that ensures the node is listening on its defined port. The node is checked at the time of addition and at regular intervals as defined by the load balancer health check configuration (for more information on health check settings, see the "Health Check" section of this document) If a back-end node is not listening on its port or does not meet the conditions of the defined health check for the load balancer, then the load balancer will not forward connections and its status will be listed as <emphasis>"OFFLINE"</emphasis>. Only nodes that are in an <emphasis>"ONLINE"</emphasis> stats will receive and be able to service traffic from the load balancer.
@@ -818,14 +833,14 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         When a node is added, it is assigned a unique identifier that can be used for mutating operations such as changing the port and condition, or removing it. Every load balancer is dual homed on both the public Internet and ServiceNet and as a result, nodes can either be internal ServiceNet addresses or addresses on the public Internet.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (GET)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (Get)</title>
                     <literallayout class="monospaced">
 <![CDATA[<node
@@ -835,8 +850,8 @@ Content-Type: text/plain; charset=UTF-8
         condition="ENABLED"
         status="ONLINE"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (POST)(Required attributes only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -846,8 +861,8 @@ Content-Type: text/plain; charset=UTF-8
             condition="ENABLED"/>
 </nodes>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (POST)</title>
                     <literallayout class="monospaced">
 <![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -858,8 +873,8 @@ Content-Type: text/plain; charset=UTF-8
             status="ONLINE" />
 </nodes>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (POST)(Required attributes) (/loadbalancers/loadBalancerId/nodes)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"nodes": [
@@ -871,8 +886,8 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (POST)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"nodes": [
@@ -885,18 +900,20 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
                 <note>
+                    <para>
                     The node's IP and Port are immutable attributes and cannot be modified by the caller for a PUT request. Supplying an unsupported attribute will result in a badRequest (400) fault.
+                    </para>
                 </note>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/nodes/nodeId) Mutable Attributes Only</title>
                     <literallayout class="monospaced">
 <![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
       condition="DISABLED"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (PUT) (/loadbalancers/loadBalancerId/nodes/nodeId)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -905,29 +922,29 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (PUT)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (DELETE)</title>
                     <para>
                         This operation does not require a method body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Update Name, Algorithm, Protocol, and/or Port Attributes of a Load Balancer</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -942,14 +959,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Update the properites of a load balancer</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         This operation asynchronously updates the attributes of a given load balancer. Upon successful validation of the request, the service will return a 202/Accepted response code. A caller can subscribe to event notifications through the notification service <emphasis>or</emphasis> poll the load balancer with its ID to wait for the changes to be applied and the load balancer to return to an <emphasis>ACTIVE</emphasis> status. This operation allows the caller to change one or more of the following attributes:
@@ -969,10 +986,12 @@ Content-Type: text/plain; charset=UTF-8
                         </listitem>
                     </itemizedlist>
                     <note>
+                    <para>
                         The load balancer's ID and status are immutable attributes and cannot be modified by the caller. Supplying an unsupported attribute will result in a badRequest (400) fault.
+                    </para>
                     </note>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML (PUT)(Mutable Attributes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -981,8 +1000,8 @@ Content-Type: text/plain; charset=UTF-8
         protocol="HTTP"
         port="80" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON (PUT)(Mutable Attributes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -993,17 +1012,17 @@ Content-Type: text/plain; charset=UTF-8
     "connectionLogging": "true"
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Virtual IP Management</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1023,25 +1042,27 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Remove the Virtual IP</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para>
                     <emphasis>Error REsponse Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         A virtual IP (VIP) is how your load balancer is reached by clients. The load balancing service, supports either a public VIP, which is routable on the public Internet or a ServiceNet address, which is routable only within the region your load balancer resides in.
                     </para>
                     <note>
+                        <para>
                         All load balancers must have at least one Virtual IP associated to them at all times. Attempting to delete the last virtual IP will result in a badRequest (400) fault.
+                        </para>
                     </note>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Virtual IP Types</title>
-                    <table border="box">
+                    <informaltable rules="all">
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -1058,15 +1079,15 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>An address that is routable only on ServiceNet</td>
                             </tr>
                         </tbody>
-                    </table>
-                </sect3>
-                <sect3>
+                    </informaltable>
+                </section>
+                <section>
                     <title>Request (GET)</title>
                     <para>
                         This request does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML GET Response (/loadbalancers/loadBalancerId/virtualips)</title>
                     <literallayout class="monospaced">
 <![CDATA[<virtualIps xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -1076,8 +1097,8 @@ Content-Type: text/plain; charset=UTF-8
             type="PUBLIC"/>
 </virtualIps>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON XML Response (/loadbalancers/loadBalancerId/virtualips)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"virtualIps": [
@@ -1089,23 +1110,23 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (DELETE)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Usage Reporting</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -1130,29 +1151,31 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List historical usage</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. Current usage represents any usage that been incurred since the endDate of the most recent historical usage object. Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute (for example, changing the tier profiles of a load balancer). Values for both incomingTransfer and outgoingTransfer are expressed in bytes transferred.
                     </para>
                     <note>
+                    <para>
                         Historical usage is available for up to 90 days of service activity.
+                    </para>
                     </note>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET - for all usage)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -1176,8 +1199,8 @@ Content-Type: text/plain; charset=UTF-8
         endTime="2010-12-21T12:36:30-06:00" />
 </loadBalancerUsage>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1205,8 +1228,8 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (/loadbalancers/usage?startDate=2010-11-30&amp;endDate=2010-12-01)</title>
                     <literallayout>
 <![CDATA[<accountBilling xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="1106">
@@ -1231,11 +1254,11 @@ Content-Type: text/plain; charset=UTF-8
  <loadBalancerUsage/>
 </accountBilling>]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Access List Management</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -1265,14 +1288,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Remove the netire access list</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <emphasis>DENY</emphasis> type will always take precedence over items with the <emphasis>ALLOW</emphasis> type. To reject traffic from all items, except for those with the <emphasis>ALLOW</emphasis> type, a networkItem with an address of "0.0.0.0/0" should be added with a <emphasis>DENY</emphasis> type.
@@ -1280,14 +1303,14 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         When issuing a POST to add to an access list, one or more network items are required. If a populated access list already exists for the load balancer, it will be replaced with subsequent POST requests.  To append to the access list, a PUT request should be issued. Like the POST operation the PUT operation requires one or more network items. A single address or subnet definition is considered unique and cannot be duplicated between items in an access list. There are two DELETE operations for the access list. One allows for deletion of the entire access list and the other for deletion of a specific network item in the access list.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (GET)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -1301,8 +1324,8 @@ Content-Type: text/plain; charset=UTF-8
           type="DENY" />
 </accessList>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1350,8 +1373,8 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (POST)(Required attributes)</title>
                     <literallayout class="monospaced">
 <![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -1363,8 +1386,8 @@ Content-Type: text/plain; charset=UTF-8
       type="DENY" />
 </accessList>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (POST)(Required attributes)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1382,29 +1405,29 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (DELETE)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (POST)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Active Health Monitoring</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1429,20 +1452,20 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Removes the health monitor</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The load balancing service includes a health monitoring operation, which periodically checks your backend nodes to ensure they are responding correctly.  In the event that the node is not responding, it will be removed from rotation until the health check determines the node is functional. In addition to being run at periodic intervals, the health check also is run against every node that is added to ensure it is operating properly before allowing it to service traffic.  Only one health monitor is allowed to be enabled on a load balancer at a time. An overview of the supported health monitors are detailed below:
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Connection Monitor</title>
                     <para>
                         The monitor connects to each node on its defined port to ensure that the service is listening properly.  The connect monitor is the most basic type of health check and does no post-processing or protocol specific health checks.   It includes several configurable properties, which are detailed below.
@@ -1466,8 +1489,8 @@ Content-Type: text/plain; charset=UTF-8
                             </listitem>
                         </itemizedlist>
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>HTTP/HTTPS Monitor</title>
                     <para>
                         The HTTP &amp; HTTPS monitor is a more intelligent monitor that is capable of processing a HTTP or HTTPS response to determine the condition of a node.  It supports the same basic properties as the connect monitor and includes three additional attributes that are used to evaluate the HTTP response.
@@ -1494,13 +1517,13 @@ Content-Type: text/plain; charset=UTF-8
                             </listitem>
                         </itemizedlist>
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Health Monitor Types</title>
                     <para>
                         All health monitors have a type attribute to signify what kind of monitor it is.
                     </para>
-                    <table border="box">
+                    <informaltable rules="all">
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -1521,9 +1544,9 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>Health monitor is a HTTPS monitor</td>
                             </tr>
                         </tbody>
-                    </table>
-                </sect3>
-                <sect3>
+                    </informaltable>
+                </section>
+                <section>
                     <title>Sample XML Response (GET) [Connect Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1532,8 +1555,8 @@ Content-Type: text/plain; charset=UTF-8
    timeout="10"
    attemptsBeforeDeactivation="3" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (GET) [Connect Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1543,8 +1566,8 @@ Content-Type: text/plain; charset=UTF-8
     "attemptsBeforeDeactivation": "3"
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET) [HTTP Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1556,8 +1579,8 @@ Content-Type: text/plain; charset=UTF-8
    statusRegex="^[234][0-9][0-9]$"
    bodyRegex="" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET) [HTTPS Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1570,11 +1593,13 @@ Content-Type: text/plain; charset=UTF-8
    bodyRegex="" />
 ]]>
                     </literallayout>
-                </sect3>
             <note>
+            <para>
                 Attributes that are required for a POST request are displayed in the samples, unless otherwise specified.
+            </para>
             </note>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (PUT) [Connect Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1583,8 +1608,8 @@ Content-Type: text/plain; charset=UTF-8
    timeout="10"
    attemptsBeforeDeactivation="3" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON (PUT) [Connect Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1594,35 +1619,35 @@ Content-Type: text/plain; charset=UTF-8
     "attemptsBeforeDeactivation": "3"
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (POST)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (PUT)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (PUT)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Session Persistence</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1647,22 +1672,22 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Disable session persistence</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         Session persistence is a feature of the load balancing service which forces subsequent requests from clients to be directed to the same node.  This is common with many web applications that do not inheritly share application state between backend servers.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Session Persistence Modes</title>
-                    <table border="box">
+                    <informaltable rules="all">
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -1675,15 +1700,15 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>A session persistence mechanism that inserts an HTTP cookie and is used to determine the destination backend node. (Supported for HTTP load balancing only.)</td>
                             </tr>
                         </tbody>
-                    </table>
-                </sect3>
-                <sect3>
+                    </informaltable>
+                </section>
+                <section>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1692,14 +1717,14 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (POST)</title>
                     <literallayout class="monospaced">
 <![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (POST)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1708,29 +1733,29 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (POST)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (DELETE)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Connection Logging</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1750,32 +1775,32 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Enable or disable connection logging</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para> 
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         This operation allows the user to enable/disable connection logging.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (GET)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1784,14 +1809,14 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Request (PUT)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Request (PUT)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1800,11 +1825,11 @@ Content-Type: text/plain; charset=UTF-8
    }
 }]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Connection Throttling</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1829,14 +1854,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Remove connection throttling configurations</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200, 202
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         The connection throttling feature imposes limits on the number of connections per IP address to help mitigate malicious or abusive traffic to your applications.  The following properties can be configured based on the traffic patterns for your sites.
@@ -1855,12 +1880,12 @@ Content-Type: text/plain; charset=UTF-8
                             <para><emphasis>rateInterval</emphasis> - Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.</para>
                         </listitem>
                     </itemizedlist>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (GET)</title>
                     <para>This operation does not require a request body.</para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1869,8 +1894,8 @@ Content-Type: text/plain; charset=UTF-8
    maxConnectionRate="50"
    rateInterval="60" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response (GET)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1880,11 +1905,13 @@ Content-Type: text/plain; charset=UTF-8
     "rateInterval": 60
 }]]>
                     </literallayout>
-                </sect3>
             <note>
+            <para>
                 Attributes that are required are displayed in the samples unless otherwise stated.
+            </para>
             </note>
-                <sect3>
+                    </section>
+                <section>
                     <title>Sample XML Request (PUT)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
@@ -1893,8 +1920,8 @@ Content-Type: text/plain; charset=UTF-8
     maxConnectionRate="50"
     rateInterval="60" />]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON (PUT)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -1904,29 +1931,29 @@ Content-Type: text/plain; charset=UTF-8
     "rateInterval": 60
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (PUT)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request (DELETE)</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Response (DELETE)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Load Balancing Protocols</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -1941,26 +1968,26 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List all supported load balancing protocols</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
                 <para>
                     <emphasis>Error Response Code(S):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         All load balancers must define the protocol of the service which is being load balanced.   The protocol selection should be based on the protocol of the backend nodes. When configuring a load balancer, the port selected will be the default port for the given protocol unless otherwise specified.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<protocols xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -1976,8 +2003,8 @@ Content-Type: text/plain; charset=UTF-8
     <protocol name="SMTP" port="25" />
 </protocols>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response</title>
                     <literallayout>
 <![CDATA[{"protocols": [
@@ -2024,11 +2051,11 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-            </sect2>
-            <sect2>
+                </section>
+            </section>
+            <section>
                 <title>Load Balancing Algorithms</title>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Verb</td>
@@ -2043,26 +2070,26 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List all supported load balancing algorithms</td>
                         </tr>
                     </tbody>
-                </table>
+                </informaltable>
                 <para>
                     <emphasis>Normal Response Code(s):</emphasis> 200
                 </para>
                 <para>
                     <emphasis>Error Response Code(s):</emphasis> loadBalancerFault(400, 500), serviceUnavailable (503), unauthorized (401), badRequest (400), overLimit (413)
                 </para>
-                <sect3>
+                <section>
                     <title>Description</title>
                     <para>
                         All load balancers utilize a "load balancer algorithm" that defines how traffic should be directed between backend nodes.  The default algorithm for newly created load balancers is Random, which can be overrided at creation time or changed after the load balancer has been initially provisioned.  The algorithm name is to be constant within a major revision of the load balancing API, though new algorithms may be created with a unique algorithm name within a given major revision of the service API.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Request</title>
                     <para>
                         This operation does not require a request body.
                     </para>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<algorithms xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2073,8 +2100,8 @@ Content-Type: text/plain; charset=UTF-8
    <algorithm name="WEIGHTED_ROUND_ROBIN" />
 </algorithms>]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Sample JSON Response</title>
                     <literallayout>
 <![CDATA[{"algorithms": [
@@ -2096,10 +2123,10 @@ Content-Type: text/plain; charset=UTF-8
     ]
 }]]>
                     </literallayout>
-                </sect3>
-                <sect3>
+                </section>
+                <section>
                     <title>Load Balancing Algorithms Overview</title>
-                    <table border="box">
+                    <informaltable rules="all">
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -2128,15 +2155,15 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.</td>
                             </tr>
                         </tbody>
-                    </table>
-                </sect3>
-            </sect2>
-            <sect2>
+                    </informaltable>
+                </section>
+            </section>
+            <section>
                 <title>Load Balancer Status</title>
                 <para>
                     All load balancers have a status attribute to signify the current configuration status of the device. This status is immutable by the caller and is updated automatically based on state changes within the service.  When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  Once the configuration is applied and finalized, it will be in an ACTIVE status.  In the event of a configuration change or update, the status of the load balancer will change to PENDING_UPDATE to signify configuration changes are being made, but have not yet been finalized.  Load balancers in a suspended status are configured to reject traffic and will not forward requests to backend nodes.
                 </para>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -2169,14 +2196,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td>The system encountered an error when attempting to configure the laod balancer, contact support</td>
                         </tr>
                     </tbody>
-                </table>
-            </sect2>
-            <sect2>
+                    </informaltable>
+            </section>
+            <section>
                 <title>Node Condition</title>
                 <para>
                     Every node in the load balancer has an associated condition, which determines its role within the load balancer.
                 </para>
-                <table border="box">
+                <informaltable rules="all">
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -2197,22 +2224,22 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Node is allowed to service existing established connections and connections that are being directed to it as a result of the session persistence configuration</td>
                         </tr>
                     </tbody>
-                </table>
-            </sect2>
-        </sect1>
+                </informaltable>
+            </section>
+        
     </chapter>
-    <chapter id="api-faults">
+    <chapter>
         <title>API Faults</title>
         <para>
             API calls that return an error will return one of the following fault objects.  All fault objects will extend from the base fault, <emphasis>serviceFault</emphasis>, for easier exception handling for languages that support it.
         </para>
-        <sect3 id="service-fault">
+        <section>
             <title>serviceFault</title>
             <para>
                 The serviceFault and by extension all other faults shall contain a message and detail element containing strings describing the nature of the fault as well as a "code" attribute representing the HTTP response code for convenience. The "code" attribute of the fault is for the convenience of the caller so that they may retrieve the response code from the HTTP response headers or directly from the fault object if they choose. The caller should not expect the serviceFault to be returned directly but should instead expect only one of the child faults to be returned.
             </para>
-        </sect3>
-        <sect3 id="load-balancer-fault">
+        </section>
+        <section>
             <title>loadBalancerFault</title>
             <para>
                 The LoadBalancer fault shall be returned in the event that an error occurred during a loadbalancer operation.
@@ -2222,8 +2249,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>Invalid authentication token. Please renew</message>
 </loadBalancerFault>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="bad-request">
+        </section>
+        <section>
             <title>badRequest</title>
             <para>
                 The operation was not a valid request. This fault indicates that the data in the request object is invalid, for example a string was used on a parameter that was expecting an integer. The fault will wrap validation errors.
@@ -2237,8 +2264,8 @@ Content-Type: text/plain; charset=UTF-8
         </validationErrors>
 </badRequest>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="item-not-found">
+        </section>
+        <section>
             <title>itemNotFound</title>
             <para>
             </para>
@@ -2247,8 +2274,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>Object not Found</message>
 </itemNotFound>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="over-limit">
+        </section>
+        <section>
             <title>overLimit</title>
             <para>
                 This fault is returned when the user had exceeded their currently allocated limit.
@@ -2258,8 +2285,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>Your account is currently over the limit so your request could not be processed.</message>
 </overLimit>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="unauthorized">
+        </section>
+        <section>
             <title>unauthorized</title>
             <para>
                 This fault is returned when you attempt to perform an operation you are not authorized to perform.
@@ -2269,8 +2296,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>You are not authorized to execute this operation.</message>
 </unauthorized>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="out-of-virtual-ips">
+        </section>
+        <section>
             <title>outOfVirtualIps</title>
             <para>
                 This fault indicates that there are no virtual IPs left to assign to a new loadbalancer. In practice, you should not see this fault as virtual IPs will be ordered as capacity is required, but if you do see this simply alert support so that we may make more IPs available.
@@ -2282,8 +2309,8 @@ Content-Type: text/plain; charset=UTF-8
     </message>
 </outOfVirtualips>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="immutable-entity">
+        </section>
+        <section>
             <title>immutableEntity</title>
             <para>
                 This fault is returned when a user attempts to modify an item that is not currently in a state that allows modification. For example, load balancers in a status of PENDING_UPDATE, BUILD, or DELETED may not be modified.
@@ -2293,8 +2320,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>The object at the specified URI is immutable and can not be overwritten.</message>
 </immutableEntity>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="unprocessable-entity">
+        </section>
+        <section>
             <title>unprocessableEntity</title>
             <para>
                 This fault is returned when an operation is requested on an item that does not support the operation, but the request is properly formed.
@@ -2304,8 +2331,8 @@ Content-Type: text/plain; charset=UTF-8
     <message>The Object at the specified URI is unprocessable.</message>
 </unprocessableEntity>]]>
             </literallayout>
-        </sect3>
-        <sect3 id="service-unavailable">
+        </section>
+        <section>
             <title>serviceUnavailable</title>
             <para>
                 This fault is returned when the service is unavailable. For example, if the service is undergoing maintenance or otherwise unavailable. Note that this does not necessarily mean the currently configured loadbalancers are unable to process traffic, It simply means that the API is currently unable service requests.
@@ -2315,6 +2342,6 @@ Content-Type: text/plain; charset=UTF-8
     <message>The Load balancing service is currently not available</message>
 </serviceUnavailable>]]>
             </literallayout>
-        </sect3>
+        </section>
     </chapter>
 </book>
