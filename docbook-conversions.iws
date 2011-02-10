@@ -76,7 +76,7 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="752" column="38" selection-start="34252" selection-end="34252" vertical-scroll-proportion="0.37358916">
+            <state line="356" column="22" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.4627907">
               <folding />
             </state>
           </provider>
@@ -158,13 +158,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -383,14 +383,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1905" column="28" selection-start="77858" selection-end="77858" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1905" column="28" selection-start="77858" selection-end="77858" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="752" column="38" selection-start="34252" selection-end="34252" vertical-scroll-proportion="0.37358916">
+        <state line="356" column="22" selection-start="19550" selection-end="19550" vertical-scroll-proportion="0.4627907">
           <folding />
         </state>
       </provider>

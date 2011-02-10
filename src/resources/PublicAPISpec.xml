@@ -369,7 +369,7 @@ Content-Type: text/plain; charset=UTF-8
                         <emphasis>Deleted Load Balancers</emphasis>
                     </para>
                     <para>
-                        Load balancer which have been deleted will be shown in this list until all usage has been processed and invoiced. A deleted load balancer is immutable and irrecoverable. Only a limited set of attributes will be returned in the response object (id, name, status, created, and updated).
+                        Load balancers which have been deleted will be shown in this list until all usage has been processed and invoiced. A deleted load balancer is immutable and irrecoverable. Only a limited set of attributes will be returned in the response object (id, name, status, created, and updated).
                     </para>
                 </section>
                 <section>
