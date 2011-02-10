@@ -1114,7 +1114,7 @@ Content-Type: text/plain; charset=UTF-8
                     </informaltable>
                 </section>
                 <section>
-                    <title>Request (GET)</title>
+                    <title>Request (&GET;)</title>
                     <para>
                         This request does not require a request body.
                     </para>
@@ -1343,7 +1343,7 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                 </section>
                 <section>
-                    <title>Sample XML Response (GET)</title>
+                    <title>Sample XML Response (&GET;)</title>
                     <literallayout class="monospaced">
 <![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
    <networkItem
@@ -1671,7 +1671,7 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                 </section>
                 <section>
-                    <title>Response (DELETE)</title>
+                    <title>Response (&DELETE;)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
