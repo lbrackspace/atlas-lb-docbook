@@ -1120,7 +1120,7 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                 </section>
                 <section>
-                    <title>Sample XML &GET; Response (/loadbalancers/loadBalancerId/virtualips)</title>
+                    <title>Sample XML (&GET;) Response (/loadbalancers/loadBalancerId/virtualips)</title>
                     <literallayout class="monospaced">
 <![CDATA[<virtualIps xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <virtualIp
@@ -1131,7 +1131,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON XML Response (/loadbalancers/loadBalancerId/virtualips)</title>
+                    <title>Sample JSON (&GET;) Response (/loadbalancers/loadBalancerId/virtualips)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"virtualIps": [
         {
