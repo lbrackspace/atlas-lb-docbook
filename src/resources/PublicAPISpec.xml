@@ -734,26 +734,32 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-    id="1041"
-    name="a-new-loadbalancer"
-    algorithm="RANDOM"
-    status="BUILD"
-    port="80"
-    protocol="HTTP">
+        id="144"
+        name="a-new-loadbalancer"
+        algorithm="RANDOM"
+        protocol="HTTP"
+        port="83"
+        status="BUILD">
     <virtualIps>
         <virtualIp
-            id="1000"
-            address="206.10.10.210"
-            ipVersion="IPV4"
-            type="PUBLIC" />
+                id="39"
+                address="206.10.10.210"
+                ipVersion="IPV4"
+                type="PUBLIC" />
     </virtualIps>
     <nodes>
-        <node id="78923" address="10.1.1.1" port="80" condition="ENABLED" status="ONLINE" weight="1" />
+        <node
+                id="653"
+                address="10.1.1.1"
+                port="80"
+                condition="ENABLED"
+                status="ONLINE"
+                weight="1" />
     </nodes>
-    <cluster name="ztm-n03.staging.lbaas.ord1.rackspace.net"/>
-    <created time="2011-02-07T14:57:53Z"/>
-    <updated time="2011-02-07T14:57:53Z"/>
-    <connectionLogging enabled="false"/>
+    <cluster name="ztm-n03.staging1.lbaas.rackspace.net" />
+    <created time="2011-02-08T21:19:55Z" />
+    <updated time="2011-02-08T21:19:55Z" />
+    <connectionLogging enabled="false" />
 </loadBalancer>]]>
                     </literallayout>
                 </section>
@@ -770,7 +776,7 @@ Content-Type: text/plain; charset=UTF-8
                     </thead>
                     <tbody>
                         <tr>
-                            <td>&GET;</td>
+                            <td>&DELETE;</td>
                             <td>/loadbalancers/loadBalancerId</td>
                             <td>Removes a load balancer from your account</td>
                         </tr>
