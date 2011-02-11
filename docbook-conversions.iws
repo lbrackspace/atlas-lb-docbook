@@ -15,8 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="901500db-4578-4b10-8a77-38904ceb765f" name="Default" comment="" />
-    <ignored path="$USER_HOME_GRIFFON$/" />
     <ignored path="$USER_HOME_GRAILS$/" />
+    <ignored path="$USER_HOME_GRIFFON$/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +76,26 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1518" column="207" selection-start="72673" selection-end="72673" vertical-scroll-proportion="0.6666667">
-              <folding />
+            <state line="2242" column="0" selection-start="102245" selection-end="102245" vertical-scroll-proportion="18.490566">
+              <folding>
+                <element signature="tag#info#0;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#2;tag#book#0" expanded="false" />
+                <element signature="tag#section#0;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#1;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#2;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#3;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#4;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#5;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#6;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#7;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#8;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#4;tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#15;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#section#16;tag#chapter#3;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#4;tag#book#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -193,13 +211,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -423,8 +441,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1518" column="207" selection-start="72673" selection-end="72673" vertical-scroll-proportion="0.6666667">
-          <folding />
+        <state line="2242" column="0" selection-start="102245" selection-end="102245" vertical-scroll-proportion="18.490566">
+          <folding>
+            <element signature="tag#info#0;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#2;tag#book#0" expanded="false" />
+            <element signature="tag#section#0;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#1;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#2;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#3;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#4;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#5;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#6;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#7;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#8;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#4;tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#15;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#section#16;tag#chapter#3;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#4;tag#book#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
