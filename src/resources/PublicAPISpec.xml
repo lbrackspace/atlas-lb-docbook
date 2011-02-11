@@ -858,6 +858,9 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         If the weighted round robin load balancer algorithm mode is selected (WEIGHTED_ROUND_ROBIN), then the caller should assign the relevant weights to the node as part of the weight attribute of the node element. When the algorithm of the load balancer is changed to weighted round robin and the nodes do not already have an assigned weight, the service will automatically set the weight to "1" for all nodes.
                     </para>
+                    <note>
+                        <para>The max value for a single node's weight is "100"</para>
+                    </note>
                     <para>
                         When a node is added, it is assigned a unique identifier that can be used for mutating operations such as changing the port and condition, or removing it. Every load balancer is dual homed on both the public Internet and ServiceNet and as a result, nodes can either be internal ServiceNet addresses or addresses on the public Internet.
                     </para>
@@ -1337,7 +1340,7 @@ Content-Type: text/plain; charset=UTF-8
                 <section>
                     <title>Description</title>
                     <para>
-                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <emphasis>DENY</emphasis> type will always take precedence over items with the <emphasis>ALLOW</emphasis> type. To reject traffic from all items, except for those with the <emphasis>ALLOW</emphasis> type, a networkItem with an address of "0.0.0.0/0" should be added with a <emphasis>DENY</emphasis> type.
+                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <emphasis>ALLOW</emphasis> type will always take precedence over items with the <emphasis>DENY</emphasis> type. To reject traffic from all items, except for those with the <emphasis>ALLOW</emphasis> type, a networkItem with an address of "0.0.0.0/0" should be added with a <emphasis>DENY</emphasis> type.
                     </para>
                     <para>
                         When issuing a &POST; to add to an access list, one or more network items are required. If a populated access list already exists for the load balancer, it will be replaced with subsequent &POST; requests.  To append to the access list, a &PUT; request should be issued. Like the &POST; operation the &PUT; operation requires one or more network items. A single address or subnet definition is considered unique and cannot be duplicated between items in an access list. There are two &DELETE; operations for the access list. One allows for deletion of the entire access list and the other for deletion of a specific network item in the access list.
@@ -1483,17 +1486,17 @@ Content-Type: text/plain; charset=UTF-8
                         <itemizedlist>
                             <listitem>
                                 <para>
-                                    <emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.
+                                    <emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor. (Must have a value in the range of 1 - 3600)
                                 </para>
                             </listitem>
                             <listitem>
                                 <para>
-                                    <emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.
+                                    <emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out. (Must have a value in the range of 1 - 300)
                                 </para>
                             </listitem>
                             <listitem>
                                 <para>
-                                    <emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.
+                                    <emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation. (Must have a value in the range of 1 - 10)
                                 </para>
                             </listitem>
                         </itemizedlist>
@@ -1507,22 +1510,22 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         <itemizedlist>
                             <listitem>
-                                <para><emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.</para>
+                                <para><emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor. (Must have a value in the range of 1 - 3600)</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.</para>
+                                <para><emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out. (Must have a value in the range of 1 - 300)</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.</para>
+                                <para><emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation. (Must have a value in the range of 1 - 10)</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>path</emphasis> - The HTTP path that will be used in the sample request</para>
+                                <para><emphasis>path</emphasis> - The HTTP path that will be used in the sample request (Path must begin with "/" and must have a length of less than or equal to 128)</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>statusRegex</emphasis> - A regular expression that will be used to evaluate the HTTP status code returned in the response.</para>
+                                <para><emphasis>statusRegex</emphasis> - A regular expression that will be used to evaluate the HTTP status code returned in the response. (Must have a length of less than or equal to 128)</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>bodyRegex</emphasis> - A regular expression that will be used to evaluate the contents of the body of the response.</para>
+                                <para><emphasis>bodyRegex</emphasis> - A regular expression that will be used to evaluate the contents of the body of the response. (Must have a length of less than or equal to 128)</para>
                             </listitem>
                         </itemizedlist>
                     </para>
