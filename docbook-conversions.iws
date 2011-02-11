@@ -76,7 +76,7 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1910" column="0" selection-start="88600" selection-end="88600" vertical-scroll-proportion="0.6543779">
+            <state line="2015" column="36" selection-start="93723" selection-end="93723" vertical-scroll-proportion="0.6698113">
               <folding>
                 <element signature="tag#info#0;tag#book#0" expanded="false" />
                 <element signature="tag#chapter#0;tag#book#0" expanded="false" />
@@ -94,7 +94,6 @@
                 <element signature="tag#section#9;tag#chapter#3;tag#book#0" expanded="false" />
                 <element signature="tag#section#10;tag#chapter#3;tag#book#0" expanded="false" />
                 <element signature="tag#section#11;tag#chapter#3;tag#book#0" expanded="false" />
-                <element signature="tag#section#12;tag#chapter#3;tag#book#0" expanded="false" />
                 <element signature="tag#section#13;tag#chapter#3;tag#book#0" expanded="false" />
                 <element signature="tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
                 <element signature="tag#section#4;tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
@@ -447,7 +446,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1910" column="0" selection-start="88600" selection-end="88600" vertical-scroll-proportion="0.6543779">
+        <state line="2015" column="36" selection-start="93723" selection-end="93723" vertical-scroll-proportion="0.6698113">
           <folding>
             <element signature="tag#info#0;tag#book#0" expanded="false" />
             <element signature="tag#chapter#0;tag#book#0" expanded="false" />
@@ -465,7 +464,6 @@
             <element signature="tag#section#9;tag#chapter#3;tag#book#0" expanded="false" />
             <element signature="tag#section#10;tag#chapter#3;tag#book#0" expanded="false" />
             <element signature="tag#section#11;tag#chapter#3;tag#book#0" expanded="false" />
-            <element signature="tag#section#12;tag#chapter#3;tag#book#0" expanded="false" />
             <element signature="tag#section#13;tag#chapter#3;tag#book#0" expanded="false" />
             <element signature="tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
             <element signature="tag#section#4;tag#section#14;tag#chapter#3;tag#book#0" expanded="false" />
