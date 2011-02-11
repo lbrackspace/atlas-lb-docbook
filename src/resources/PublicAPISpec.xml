@@ -527,7 +527,6 @@ Content-Type: text/plain; charset=UTF-8
          condition="ENABLED"
          status="ONLINE" />
    </nodes>
-   <sessionPersistence persistenceType="HTTP_COOKIE"/>
    <connectionThrottle
       minConnections="10"
       maxConnections="100"
@@ -577,9 +576,6 @@ Content-Type: text/plain; charset=UTF-8
             "status":"ONLINE"
          }
       ],
-      "sessionPersistence":{
-         "persistenceType":"HTTP_COOKIE"
-      },
       "connectionThrottle":{
          "minConnections":"10",
          "maxConnections":"100",
@@ -902,7 +898,8 @@ Content-Type: text/plain; charset=UTF-8
             address="10.1.1.1"
             port="80"
             condition="ENABLED"
-            status="ONLINE" />
+            status="ONLINE"
+            weight="1" />
 </nodes>]]>
                     </literallayout>
                 </section>
@@ -925,9 +922,10 @@ Content-Type: text/plain; charset=UTF-8
 <![CDATA[{"nodes": [
         {
             "address": "10.1.1.1",
-            "port": "80",
-            "condition": "ENABLED"
-            "status": "PENDING_UPDATE"
+            "port": 80,
+            "condition": "ENABLED",
+            "status": "PENDING_UPDATE",
+            "weight": 1
         }
     ]
 }]]>
@@ -946,7 +944,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON Request (&PUT;) (/loadbalancers/loadBalancerId/nodes/nodeId)</title>
+                    <title>Sample JSON Request (&PUT;) (/loadbalancers/loadBalancerId/nodes/nodeId) Mutable Attributes Only</title>
                     <literallayout class="monospaced">
 <![CDATA[{
    "node":{
@@ -1040,8 +1038,7 @@ Content-Type: text/plain; charset=UTF-8
     "name": "sample-loadbalancer",
     "algorithm": "RANDOM",
     "protocol": "HTTP",
-    "port": "80",
-    "connectionLogging": "true"
+    "port": "80"
 }]]>
                     </literallayout>
                 </section>
@@ -1126,7 +1123,8 @@ Content-Type: text/plain; charset=UTF-8
     <virtualIp
             id="1000"
             address="206.10.10.210"
-            type="PUBLIC"/>
+            type="PUBLIC"
+            ipVersion="IPV4" />
 </virtualIps>]]>
                     </literallayout>
                 </section>
@@ -1137,7 +1135,8 @@ Content-Type: text/plain; charset=UTF-8
         {
             "id": "1000",
             "address": "206.10.10.210",
-            "type": "PUBLIC"
+            "type": "PUBLIC",
+            "ipVersion": "IPV4"
         }
     ]
 }]]>
@@ -1170,7 +1169,7 @@ Content-Type: text/plain; charset=UTF-8
                         <tr>
                             <td>&GET;</td>
                             <td>/loadbalancers/loadBalancerId/usage</td>
-                            <td>List current and historical usage</td>
+                            <td>List all usage (with optional startDate and endDate parameters)</td>
                         </tr>
                         <tr>
                             <td>&GET;</td>
@@ -1179,8 +1178,8 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                         <tr>
                             <td>&GET;</td>
-                            <td>/loadbalancers/loadBalancerId/historical</td>
-                            <td>List historical usage</td>
+                            <td>/loadbalancers/usage</td>
+                            <td>List all account usage (with optional startDate and endDate parameters)</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1193,11 +1192,10 @@ Content-Type: text/plain; charset=UTF-8
                 <section>
                     <title>Description</title>
                     <para>
-                        The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. Current usage represents any usage that been incurred since the endDate of the most recent historical usage object. Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute (for example, changing the tier profiles of a load balancer). Values for both incomingTransfer and outgoingTransfer are expressed in bytes transferred.
-                    </para>
+                        The load balancer usage reports provide a view of all transfer, average number of connections and number of virtual IPs associated with the load balancing service.  Current usage represents all usage recorded within the last 24 hours. Values for both incomingTransfer and outgoingTransfer are expressed in bytes transferred. The optional startDate and endDate parameters can be used to filter all usage. If the startDate parameter is supplied, but the endDate parameter is not then all usage beginning with the startDate will be provided. Likewise, if the endDate parameter is supplied but the startDate parameter is not then all usage will be returned up to the endDate specified.                    </para>
                     <note>
                     <para>
-                        Historical usage is available for up to 90 days of service activity.
+                        Usage is retained for a maximum of 90 days.
                     </para>
                     </note>
                 </section>
@@ -1211,29 +1209,31 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response (&GET; - for all usage)</title>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-  <loadBalancerUsageRecord
-        id="394"
-        averageNumConnections="0.0"
-        incomingTransfer="0"
-        outgoingTransfer="0"
-        numVips="1"
-        numPolls="32"
-        startTime="2010-12-21T12:32:07-06:00"
-        endTime="2010-12-21T16:23:54-06:00" />
-  <loadBalancerUsageRecord
-        id="473"
-        averageNumConnections="0.0"
-        incomingTransfer="0"
-        outgoingTransfer="0"
-        numVips="2"
-        numPolls="5"
-        startTime="2010-12-21T12:32:07-06:00"
-        endTime="2010-12-21T12:36:30-06:00" />
+    <loadBalancerUsageRecord
+            id="394"
+            averageNumConnections="0.0"
+            incomingTransfer="0"
+            outgoingTransfer="0"
+            numVips="1"
+            numPolls="32"
+            startTime="2010-12-21T12:32:07-06:00"
+            endTime="2010-12-21T16:23:54-06:00"
+            eventType="CREATE_LOADBALANCER" />
+    <loadBalancerUsageRecord
+            id="473"
+            averageNumConnections="0.0"
+            incomingTransfer="0"
+            outgoingTransfer="0"
+            numVips="2"
+            numPolls="5"
+            startTime="2010-12-21T12:32:07-06:00"
+            endTime="2010-12-21T12:36:30-06:00"
+            eventType="DELETE_LOADBALANCER" />
 </loadBalancerUsage>]]>
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON Response (&GET;)</title>
+                    <title>Sample JSON Response (&GET; - for all usage)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
     "loadBalancerUsageRecords": [
@@ -1245,7 +1245,8 @@ Content-Type: text/plain; charset=UTF-8
             "numVips": "1",
             "numPolls" "32",
             "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T16:23:54-06:00"
+            "endTime": "2010-12-21T16:23:54-06:00",
+            "eventType": "CREATE_LOADBALANCER"
         },
         {
             "id": "473",
@@ -1255,7 +1256,8 @@ Content-Type: text/plain; charset=UTF-8
             "numVips": "2",
             "numPolls": "5",
             "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T12:36:30-06:00"
+            "endTime": "2010-12-21T12:36:30-06:00",
+            "eventType": "DELETE_LOADBALANCER"
         }
     ]
 }]]>
@@ -1263,7 +1265,7 @@ Content-Type: text/plain; charset=UTF-8
                 </section>
                 <section>
                     <title>Sample XML Response (/loadbalancers/usage?startDate=2010-11-30&amp;endDate=2010-12-01)</title>
-                    <literallayout>
+                    <literallayout class="monospaced">
 <![CDATA[<accountBilling xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="1106">
   <accountUsage>
     <accountUsageRecord numLoadBalancers="2" numPublicVips="1" numServicenetVips="0" startTime="2010-12-01T14:09:14-06:00"/>
@@ -1280,9 +1282,9 @@ Content-Type: text/plain; charset=UTF-8
 </loadBalancerUsage>
   <loadBalancerUsage loadBalancerId="77" loadBalancerName="My second loadbalancer">
     <loadBalancerUsageRecord id="394" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="1"
-       numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
-   <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5"
-       startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
+        numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
+    <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2"
+        numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
  <loadBalancerUsage/>
 </accountBilling>]]>
                     </literallayout>
@@ -1296,6 +1298,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Name</td>
                             <td>URI</td>
                             <td>Description</td>
+                            <td>Representations</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -1303,21 +1306,25 @@ Content-Type: text/plain; charset=UTF-8
                             <td>&GET;</td>
                             <td>/loadbalancers/loadBalancerId/accesslist</td>
                             <td>List the access list</td>
+                            <td>JSON, XML, ATOM</td>
                         </tr>
                         <tr>
                             <td>&POST;</td>
                             <td>/loadbalancers/loadBalancerId/accesslist</td>
                             <td>Create a new access list or append to an existing access list</td>
+                            <td>JSON, XML, ATOM</td>
                         </tr>
                         <tr>
                             <td>&DELETE;</td>
                             <td>/loadbalancers/loadBalancerId/accesslist/networkItemId</td>
                             <td>Remove a network item from the access list</td>
+                            <td>JSON, XML, ATOM</td>
                         </tr>
                         <tr>
                             <td>&DELETE;</td>
                             <td>/loadbalancers/loadBalancerId/accesslist</td>
                             <td>Remove the netire access list</td>
+                            <td>JSON, XML, ATOM</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1348,11 +1355,11 @@ Content-Type: text/plain; charset=UTF-8
 <![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
    <networkItem
           id="1000"
-          address="206.160.165.40"
+          address="206.160.165.1"
           type="ALLOW" />
    <networkItem
           id="1001"
-          address="206.160.165.0/24"
+          address="206.160.165.2"
           type="DENY" />
 </accessList>]]>
                     </literallayout>
@@ -1361,45 +1368,15 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample JSON Response (&GET;)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
-    "networkItems": [
+    "accessList": [
         {
-            "address": "206.160.163.21",
-            "id": 23,
-            "type": "DENY"
+            "address": "206.160.165.1",
+            "id": 1000,
+            "type": "ALLOW"
         },
         {
-            "address": "206.160.165.11",
-            "id": 24,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.163.21",
-            "id": 25,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.165.11",
-            "id": 26,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.123.11",
-            "id": 27,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.122.21",
-            "id": 28,
-            "type": "DENY"
-        },
-        {
-            "address": "206.140.123.11",
-            "id": 29,
-            "type": "DENY"
-        },
-        {
-            "address": "206.140.122.21",
-            "id": 30,
+            "address": "206.160.165.2",
+            "id": 1001,
             "type": "DENY"
         }
     ]
@@ -1423,7 +1400,7 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample JSON Request (&POST;)(Required attributes)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
-    "networkItems": [
+    "accessList": [
         {
             "address": "206.160.163.21",
             "id": 23,
@@ -1609,7 +1586,23 @@ Content-Type: text/plain; charset=UTF-8
    attemptsBeforeDeactivation="3"
    path="/"
    statusRegex="^[234][0-9][0-9]$"
-   bodyRegex="" />]]>
+   bodyRegex="^[234][0-9][0-9]$" />]]>
+                    </literallayout>
+                </section>
+                <section>
+                    <title>Sample JSON Response (&GET;) [HTTP Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[{"healthMonitor":
+    {
+        "type":"HTTP",
+        "path":"/",
+        "delay":10,
+        "timeout":10,
+        "attemptsBeforeDeactivation":3,
+        "statusRegex":"^[234][0-9][0-9]$",
+        "bodyRegex":"^[234][0-9][0-9]$"
+    }
+}]]>
                     </literallayout>
                 </section>
                 <section>
@@ -1622,14 +1615,30 @@ Content-Type: text/plain; charset=UTF-8
    attemptsBeforeDeactivation="3"
    path="/"
    statusRegex="^[234][0-9][0-9]$"
-   bodyRegex="" />
+   bodyRegex="^[234][0-9][0-9]$" />
 ]]>
                     </literallayout>
-            <note>
-            <para>
-                Attributes that are required for a &POST; request are displayed in the samples, unless otherwise specified.
-            </para>
-            </note>
+                <section>
+                    <title>Sample JSON Response (&GET;) [HTTPS Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[{"healthMonitor":
+    {
+        "type":"HTTPS",
+        "path":"/",
+        "delay":10,
+        "timeout":10,
+        "attemptsBeforeDeactivation":3,
+        "statusRegex":"^[234][0-9][0-9]$",
+        "bodyRegex":"^[234][0-9][0-9]$"
+    }
+}]]>
+                    </literallayout>
+                </section>
+                <note>
+                <para>
+                    Attributes that are required for a &PUT; request are displayed in the samples, unless otherwise specified.
+                </para>
+                </note>
                 </section>
                 <section>
                     <title>Sample XML Request (&PUT;) [Connect Monitor]</title>
@@ -1642,7 +1651,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON (&PUT;) [Connect Monitor]</title>
+                    <title>Sample JSON (&PUT;) [CONNECT Monitor]</title>
                     <literallayout class="monospaced">
 <![CDATA[{
     "type": "CONNECT",
@@ -1653,16 +1662,58 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Response (&POST;)</title>
-                    <para>
-                        This operation does not return a response body.
-                    </para>
+                    <title>Sample XML Request (&PUT;) [HTTP Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+   type="HTTP"
+   delay="10"
+   timeout="10"
+   attemptsBeforeDeactivation="3"
+   path="/"
+   statusRegex="^[234][0-9][0-9]$"
+   bodyRegex="^[234][0-9][0-9]$" />]]>
+                    </literallayout>
                 </section>
                 <section>
-                    <title>Response (&PUT;)</title>
-                    <para>
-                        This operation does not return a response body.
-                    </para>
+                    <title>Sample JSON (&PUT;) [HTTP Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[{
+    "type": "HTTP",
+    "delay": "10",
+    "timeout": "10",
+    "attemptsBeforeDeactivation": "3",
+    "path": "/",
+    "statusRegex": "^[234][0-9][0-9]$",
+    "bodyRegex": "^[234][0-9][0-9]$"
+}]]>
+                    </literallayout>
+                </section>
+                <section>
+                    <title>Sample XML Request (&PUT;) [HTTPS Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+   type="HTTPS"
+   delay="10"
+   timeout="10"
+   attemptsBeforeDeactivation="3"
+   path="/"
+   statusRegex="^[234][0-9][0-9]$"
+   bodyRegex="^[234][0-9][0-9]$" />]]>
+                    </literallayout>
+                </section>
+                <section>
+                    <title>Sample JSON (&PUT;) [HTTPS Monitor]</title>
+                    <literallayout class="monospaced">
+<![CDATA[{
+    "type": "HTTPS",
+    "delay": "10",
+    "timeout": "10",
+    "attemptsBeforeDeactivation": "3",
+    "path": "/",
+    "statusRegex": "^[234][0-9][0-9]$",
+    "bodyRegex": "^[234][0-9][0-9]$"
+}]]>
+                    </literallayout>
                 </section>
                 <section>
                     <title>Response (&PUT;)</title>
@@ -1694,7 +1745,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List session persistence configuration</td>
                         </tr>
                         <tr>
-                            <td>&POST;</td>
+                            <td>&PUT;</td>
                             <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
                             <td>Enable session persistence</td>
                         </tr>
@@ -1751,13 +1802,13 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample XML Request (&POST;)</title>
+                    <title>Sample XML Request (&PUT;)</title>
                     <literallayout class="monospaced">
 <![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON Request (&POST;)</title>
+                    <title>Sample JSON Request (&PUT;)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
    "sessionPersistence":{
@@ -1767,7 +1818,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Response (&POST;)</title>
+                    <title>Response (&PUT;)</title>
                     <para>
                         This operation does not return a response body.
                     </para>
@@ -1921,20 +1972,21 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Response (&GET;)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   minConnections="10"
-   maxConnections="100"
-   maxConnectionRate="50"
-   rateInterval="60" />]]>
+        minConnections="10"
+        maxConnections="100"
+        maxConnectionRate="50"
+        rateInterval="60" />]]>
                     </literallayout>
                 </section>
                 <section>
                     <title>Sample JSON Response (&GET;)</title>
                     <literallayout class="monospaced">
-<![CDATA[{
-    "maxConnections": 100,
-    "minConnections": 10,
-    "maxConnectionRate": 50,
-    "rateInterval": 60
+<![CDATA[{"connectionThrottle": {
+        "maxConnections": 100,
+        "minConnections": 10,
+        "maxConnectionRate": 50,
+        "rateInterval": 60
+    }
 }]]>
                     </literallayout>
             <note>
@@ -1947,20 +1999,21 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Sample XML Request (&PUT;)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-    minConnections="10"
-    maxConnections="100"
-    maxConnectionRate="50"
-    rateInterval="60" />]]>
+        minConnections="10"
+        maxConnections="100"
+        maxConnectionRate="50"
+        rateInterval="60" />]]>
                     </literallayout>
                 </section>
                 <section>
                     <title>Sample JSON (&PUT;)</title>
                     <literallayout class="monospaced">
-<![CDATA[{
-    "maxConnections": 10,
-    "minConnections": 100,
-    "maxConnectionRate": 50,
-    "rateInterval": 60
+<![CDATA[{"connectionThrottle": {
+        "maxConnections": 10,
+        "minConnections": 100,
+        "maxConnectionRate": 50,
+        "rateInterval": 60
+    }
 }]]>
                     </literallayout>
                 </section>
@@ -1974,12 +2027,6 @@ Content-Type: text/plain; charset=UTF-8
                     <title>Request (&DELETE;)</title>
                     <para>
                         This operation does not require a request body.
-                    </para>
-                </section>
-                <section>
-                    <title>Response (&DELETE;)</title>
-                    <para>
-                        This operation does not return a response body.
                     </para>
                 </section>
             </section>
@@ -2025,12 +2072,12 @@ Content-Type: text/plain; charset=UTF-8
 <![CDATA[<protocols xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <protocol name="FTP" port="21" />
     <protocol name="HTTP" port="80" />
-    <protocol name="IMAPv4" port="143" />
-    <protocol name="POP3" port="110" />
-    <protocol name="LDAP" port="389" />
-    <protocol name="LDAPS" port="636" />
     <protocol name="HTTPS" port="443" />
     <protocol name="IMAPS" port="993" />
+    <protocol name="IMAPv4" port="143" />
+    <protocol name="LDAP" port="389" />
+    <protocol name="LDAPS" port="636" />
+    <protocol name="POP3" port="110" />
     <protocol name="POP3S" port="995" />
     <protocol name="SMTP" port="25" />
 </protocols>]]>
@@ -2041,28 +2088,12 @@ Content-Type: text/plain; charset=UTF-8
                     <literallayout>
 <![CDATA[{"protocols": [
         {
-            "name": "HTTP",
-            "port": "80"
-        },
-        {
             "name": "FTP",
             "port": "21"
         },
         {
-            "name": "IMAPv4",
-            "port": "143"
-        },
-        {
-            "name": "POP3",
-            "port": "110"
-        },
-        {
-            "name": "SMTP",
-            "port": "25"
-        },
-        {
-            "name": "LDAP",
-            "port": "389"
+            "name": "HTTP",
+            "port": "80"
         },
         {
             "name": "HTTPS",
@@ -2073,12 +2104,28 @@ Content-Type: text/plain; charset=UTF-8
             "port": "993"
         },
         {
-            "name": "POP3S",
-            "port": "995"
+            "name": "IMAPv4",
+            "port": "143"
+        },
+        {
+            "name": "LDAP",
+            "port": "389"
         },
         {
             "name": "LDAPS",
             "port": "636"
+        },
+        {
+            "name": "POP3",
+            "port": "110"
+        },
+        {
+            "name": "POP3S",
+            "port": "995"
+        },
+        {
+            "name": "SMTP",
+            "port": "25"
         }
     ]
 }]]>
