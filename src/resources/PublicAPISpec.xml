@@ -1637,14 +1637,9 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
                 </section>
-                <note>
-                <para>
-                    Attributes that are required for a &PUT; request are displayed in the samples, unless otherwise specified.
-                </para>
-                </note>
                 </section>
                 <section>
-                    <title>Sample XML Request (&PUT;) [Connect Monitor]</title>
+                    <title>Sample XML Request (&PUT;) [Connect Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="CONNECT"
@@ -1654,7 +1649,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON (&PUT;) [CONNECT Monitor]</title>
+                    <title>Sample JSON Request (&PUT;) [CONNECT Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
     "type": "CONNECT",
@@ -1665,7 +1660,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample XML Request (&PUT;) [HTTP Monitor]</title>
+                    <title>Sample XML Request (&PUT;) [HTTP Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="HTTP"
@@ -1678,7 +1673,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON (&PUT;) [HTTP Monitor]</title>
+                    <title>Sample JSON Request (&PUT;) [HTTP Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
     "type": "HTTP",
@@ -1692,7 +1687,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample XML Request (&PUT;) [HTTPS Monitor]</title>
+                    <title>Sample XML Request (&PUT;) [HTTPS Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    type="HTTPS"
@@ -1705,7 +1700,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON (&PUT;) [HTTPS Monitor]</title>
+                    <title>Sample JSON Request (&PUT;) [HTTPS Monitor] (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
     "type": "HTTPS",
@@ -1721,7 +1716,7 @@ Content-Type: text/plain; charset=UTF-8
                 <section>
                     <title>Response (&PUT;)</title>
                     <para>
-                        This operation does not require a request body.
+                        This operation does not return a response body.
                     </para>
                 </section>
                 <section>
@@ -1805,13 +1800,13 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample XML Request (&PUT;)</title>
+                    <title>Sample XML Request (&PUT;)  (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON Request (&PUT;)</title>
+                    <title>Sample JSON Request (&PUT;) (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
    "sessionPersistence":{
@@ -1897,13 +1892,13 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample XML Request (&PUT;)</title>
+                    <title>Sample XML Request (&PUT;) (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON Request (&PUT;)</title>
+                    <title>Sample JSON Request (&PUT;) (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{
    "connectionLogging":{
@@ -1999,7 +1994,7 @@ Content-Type: text/plain; charset=UTF-8
             </note>
                     </section>
                 <section>
-                    <title>Sample XML Request (&PUT;)</title>
+                    <title>Sample XML Request (&PUT;) (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
         minConnections="10"
@@ -2009,7 +2004,7 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </section>
                 <section>
-                    <title>Sample JSON (&PUT;)</title>
+                    <title>Sample JSON (&PUT;) (Required/Mutable Attribtes Only)</title>
                     <literallayout class="monospaced">
 <![CDATA[{"connectionThrottle": {
         "maxConnections": 10,
