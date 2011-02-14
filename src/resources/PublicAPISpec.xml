@@ -2205,7 +2205,8 @@ Content-Type: text/plain; charset=UTF-8
                 </section>
                 <section>
                     <title>Load Balancing Algorithms Overview</title>
-                    <informaltable rules="all">
+                    <table rules="all">
+                        <caption>Load Balancing Algorithms</caption>
                         <thead>
                             <tr>
                                 <td>Name</td>
@@ -2234,7 +2235,7 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.</td>
                             </tr>
                         </tbody>
-                    </informaltable>
+                    </table>
                 </section>
             </section>
             <section>
@@ -2242,7 +2243,8 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     All load balancers have a status attribute to signify the current configuration status of the device. This status is immutable by the caller and is updated automatically based on state changes within the service.  When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  Once the configuration is applied and finalized, it will be in an ACTIVE status.  In the event of a configuration change or update, the status of the load balancer will change to PENDING_UPDATE to signify configuration changes are being made, but have not yet been finalized.  Load balancers in a suspended status are configured to reject traffic and will not forward requests to backend nodes.
                 </para>
-                <informaltable rules="all">
+                <table rules="all">
+                    <caption>Load Balancer Statuses</caption>
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -2275,14 +2277,15 @@ Content-Type: text/plain; charset=UTF-8
                             <td>The system encountered an error when attempting to configure the laod balancer, contact support</td>
                         </tr>
                     </tbody>
-                    </informaltable>
+                    </table>
             </section>
             <section>
                 <title>Node Condition</title>
                 <para>
                     Every node in the load balancer has an associated condition, which determines its role within the load balancer.
                 </para>
-                <informaltable rules="all">
+                <table rules="all">
+                    <caption>Load Balancer Node Conditions</caption>
                     <thead>
                         <tr>
                             <td>Name</td>
@@ -2303,7 +2306,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Node is allowed to service existing established connections and connections that are being directed to it as a result of the session persistence configuration</td>
                         </tr>
                     </tbody>
-                </informaltable>
+                </table>
             </section>
         
     </chapter>
