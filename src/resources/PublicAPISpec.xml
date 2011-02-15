@@ -121,9 +121,9 @@ format="SVG" scale="60"/>
         </section>
         <section>
             <title>Additional Resources</title>
-            <para> You can download the most current version this and other API-related documents,
-                including this document, from <link xlink:href="http://docs.rackspacecloud.com/api/"
-                    > http://docs.rackspacecloud.com/api/</link>. </para>
+            <para> You can download the most current version of API-related documents, including
+                this document, from <link xlink:href="http://docs.rackspacecloud.com/api/">
+                    http://docs.rackspacecloud.com/api/</link>. </para>
             <para> For more details about the Cloud Sites service, refer to <link
                 xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/sites/"
                 >http://www.rackspace.com/cloud/cloud_hosting_products/sites/</link>. 
@@ -141,7 +141,7 @@ format="SVG" scale="60"/>
             The load balancing API specification has several key concepts that are important to understand.
         </para>
         <section>
-            <title>Load balancer</title>
+            <title>Load Balancer</title>
             <para> A load balancer is a logical device which belongs to a cloud account. It is used
                 to distribute workloads between multiple back-end systems or services, based on the
                 criteria defined as part of its configuration. </para>
