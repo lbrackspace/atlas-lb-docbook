@@ -15,8 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="901500db-4578-4b10-8a77-38904ceb765f" name="Default" comment="" />
-    <ignored path="$USER_HOME_GRIFFON$/" />
     <ignored path="$USER_HOME_GRAILS$/" />
+    <ignored path="$USER_HOME_GRIFFON$/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +73,29 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="912" column="4" selection-start="38079" selection-end="38079" vertical-scroll-proportion="0.50564337">
+              <folding>
+                <element signature="tag#info#0;tag#book#0" expanded="false" />
+                <element signature="tag#section#0;tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="752" column="38" selection-start="34252" selection-end="34252" vertical-scroll-proportion="0.37358916">
-              <folding />
+            <state line="2032" column="16" selection-start="94334" selection-end="94361" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#2;tag#book#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,8 +114,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
+        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
       </list>
     </option>
   </component>
@@ -145,11 +163,46 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Favorites" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docbook-conversions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docbook-conversions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadbalancing-docbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docbook-conversions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadbalancing-docbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -302,7 +355,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22671568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3002451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -381,17 +434,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1905" column="28" selection-start="77858" selection-end="77858" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="2032" column="16" selection-start="94334" selection-end="94361" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#2;tag#book#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="752" column="38" selection-start="34252" selection-end="34252" vertical-scroll-proportion="0.37358916">
-          <folding />
+        <state line="912" column="4" selection-start="38079" selection-end="38079" vertical-scroll-proportion="0.50564337">
+          <folding>
+            <element signature="tag#info#0;tag#book#0" expanded="false" />
+            <element signature="tag#section#0;tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
