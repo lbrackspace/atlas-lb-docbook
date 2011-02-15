@@ -175,11 +175,15 @@ format="SVG" scale="60"/>
                 </itemizedlist>
             </para>
             <para>
-                If the tests above fail, then the service will attempt to locate another configured node that is capable of supporting the request until every node is exhausted.  If this occurs, the requestor will receive a 503/Service Unavailable for HTTP traffic or the connection will be dropped.
+                If the tests above fail, then the service will attempt to locate another configured node that is capable of supporting the request until every node is exhausted.  
+                If this occurs, the requestor will receive a <returnvalue>503 (Service Unavailable)</returnvalue> for HTTP traffic or the connection will be dropped.
             </para>
             <note>
                 <para>
-                If a given node fails a passive health monitor check for three consecutive times, then the service assumes the node has failed and will place it in the OFFLINE status.  The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
+                    If a given node fails a passive health monitor check for three consecutive times, 
+                    then the service assumes the node has failed and will place it in the <code>OFFLINE</code> status.  
+                    The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will 
+                    speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
                 </para>
             </note>
         </section>
@@ -189,7 +193,9 @@ format="SVG" scale="60"/>
                 Active health monitoring is a technique that uses synthetic transactions that are executed at periodic intervals to determine the condition of a node.  One of the advantages of active health monitoring is that it does not require active transactions to be processed by the load balancer to determine whether or not a node is suitable for handling traffic.  When both active and passive monitoring are enabled, the decisions made by the active monitor override inferences made by the passive monitoring system.
             </para>
             <para>
-                The active health monitor can use one of three types of probes: connect, http, and https.  These probes are run at configured intervals and in the event of a failure, the node status changes to OFFLINE and the node will not receive traffic.  Once the probe has detected that the node has recovered (by running a subsequent test), then the node is changed to the ONLINE status and will be capable of servicing requests.
+                The active health monitor can use one of three types of probes: connect, http, and https.  
+                These probes are run at configured intervals and in the event of a failure, the node status changes to <code>OFFLINE</code> and the node will not receive traffic.  
+                Once the probe has detected that the node has recovered (by running a subsequent test), then the node is changed to <code>ONLINE</code> status and will be capable of servicing requests.
             </para>
         </section>
         <section>
@@ -218,12 +224,12 @@ format="SVG" scale="60"/>
         <section>
             <title>Authentication</title>
             <para>
-                Every REST request against the load balancing service requires the inclusion of a specific authorization token, which is supplied by the X-Auth-Token HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication Service and supplying a valid username and API access key.
+                Every REST request against the load balancing service requires the inclusion of a specific authorization token, which is supplied by the <code>X-Auth-Token</code> HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication Service and supplying a valid username and API access key.
             </para>
             <section>
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace Cloud APIs and is itself a RESTful web service. It is accessible at
-                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate, you must supply your username and API access key in the X-Auth-Key HTTP headers. Username is your common Rackspace Cloud username and your API access key can be obtained from the Rackspace Cloud Control Panel in the Your Account | API Access section.
+                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate, you must supply your username and API access key in the <code>X-Auth-Key</code> HTTP headers. Username is your common Rackspace Cloud username and your API access key can be obtained from the Rackspace Cloud Control Panel in the Your Account | API Access section.
                 </para>
             </section>
             <section>
@@ -239,7 +245,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </section>
             <section>
                 <title>Response</title>
-                <para>If authentication is successful, an HTTP status 204 No Content is returned with an X-Auth-Token (along with other Cloud Service headers that are not applicable to the load balancing service). An HTTP status of 401 Unauthorized is returned if authentication fails. All operations against the load balancing service must include the X-Auth-Token header as noted above.
+                <para>If authentication is successful, an HTTP status <returnvalue>204 (No Content)</returnvalue> is returned with an <code>X-Auth-Token</code> (along with other Cloud Service headers that are not applicable to the load balancing service). An HTTP status of <returnvalue>401 (Unauthorized)</returnvalue> is returned if authentication fails. All operations against the load balancing service must include the <code>X-Auth-Token</code> header as noted above.
                 </para>
             </section>
             <section>
@@ -282,14 +288,14 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>Request/Response Types</title>
             <para>The load balancing API supports both the JSON and XML data serialization formats. The request format is specified using the
-                <emphasis>Content-Type</emphasis>
+                <code>Content-Type</code>
                 header and is required for operations that have a request body. The response format can be specified in requests using either the
-                <emphasis>Accept</emphasis>
+                <code>Accept</code>
                 header or adding an
                 <emphasis>.xml</emphasis>
                 or
                 <emphasis>.json</emphasis>
-                extension to the request URI. Note that it is possible for a response to be serialized using a format different from the request (see example below). If no response format is specified, JSON is the default. If conflicting formats are specified using both an Accept header and a query extension, the query extension takes precedence.
+                extension to the request URI. Note that it is possible for a response to be serialized using a format different from the request (see example below). If no response format is specified, JSON is the default. If conflicting formats are specified using both an <code>Accept</code> header and a query extension, the query extension takes precedence.
             </para>
             <para>
                 Some operations support an Atom representation that can be used to efficiently determine when the state of services has changed.
@@ -328,7 +334,7 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>Content Compression</title>
             <para>
-                Request and response body data may be encoded with gzip compression in order to accelerate interactive performance of API calls and responses. This is controlled using the Accept-Encoding header on the request from the client and indicated by the Content-Encoding header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
+                Request and response body data may be encoded with gzip compression in order to accelerate interactive performance of API calls and responses. This is controlled using the <code>Accept-Encoding</code> header on the request from the client and indicated by the <code>Content-Encoding</code> header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
             <informaltable rules="all">
                 <thead>
@@ -373,8 +379,13 @@ Content-Type: text/plain; charset=UTF-8
             </para>
         </section>
         <section>
-            <title>Efficient Polling with the Changes-Since Parameter</title>
-            <para>The REST API allows you to poll for the status of certain operations by performing a &GET; on various URIs. Rather than re-downloading and re-parsing the full status at each polling interval, your REST client may use the changes-since parameter to check for changes since a previous request. The changes-since time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing has changed since the changes-since time, a 304 Not Modified response will be returned. If data has changed, only the items changed since the specified time will be returned in the response. For example, performing a &GET; against https://URL/v1.0/1234/loadbalancers?changes-since=1244012982 would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
+            <title>Efficient Polling with the <code>Changes-Since</code> Parameter</title>
+            <para>The REST API allows you to poll for the status of certain operations by performing a &GET; on various URIs. 
+                Rather than re-downloading and re-parsing the full status at each polling interval, your REST client may use the <code>Changes-Since</code> parameter to check for changes since a previous request. 
+                The c<code>Changes-Since</code> time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). 
+                If nothing has changed since the changes-since time, a <returnvalue>304 (Not Modified)</returnvalue> response will be returned. 
+                If data has changed, only the items changed since the specified time will be returned in the response. 
+                For example, performing a &GET; against https://URL/v1.0/1234/loadbalancers?changes-since=1244012982 would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
             </para>
         </section>
     </chapter>
@@ -898,13 +909,21 @@ Content-Type: text/plain; charset=UTF-8
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
                     <para>
-                        The nodes defined by the load balancer are responsible for servicing the requests received through the load balancers virtual IP. By default, the load balancer employs a basic "health check" that ensures the node is listening on its defined port. The node is checked at the time of addition and at regular intervals as defined by the load balancer health check configuration (for more information on health check settings, see the "Health Check" section of this document) If a back-end node is not listening on its port or does not meet the conditions of the defined health check for the load balancer, then the load balancer will not forward connections and its status will be listed as <emphasis>"OFFLINE"</emphasis>. Only nodes that are in an <emphasis>"ONLINE"</emphasis> stats will receive and be able to service traffic from the load balancer.
+                        The nodes defined by the load balancer are responsible for servicing the requests received through the load balancers virtual IP. By default, the load balancer employs a basic "health check" that ensures the node is listening on its defined port. The node is checked at the time of addition and at regular intervals as defined by the load balancer health check configuration (for more information on health check settings, see the "Health Check" section of this document) If a back-end node is not listening on its port or does not meet the conditions of the defined health check for the load balancer, 
+                        then the load balancer will not forward connections and its status will be listed as <code>OFFLINE</code>. 
+                        Only nodes that are in an <code>ONLINE</code> stats will receive and be able to service traffic from the load balancer.
                     </para>
                     <para>
-                        All nodes have an associated status that indicates if the node is online, offline or draining. Only nodes that are in an "<emphasis>ONLINE</emphasis>" status will receive and be able to service traffic from the load balancer. The "<emphasis>OFFLINE</emphasis>" status represents a node that cannot accept or service traffic. A node in "<emphasis>DRAINING</emphasis>" status represents a node that stops the traffic manager from sending any more new connections to the node, but honors established sessions. If the traffic manager receives a request and session persistence requires that the node is used, the traffic manager will use it. The status is determined either by the passive or active health monitors.  For more information on health monitoring, see the concepts and definitions section (above).
+                        All nodes have an associated status that indicates whether the node is online, offline, or draining. 
+                        Only nodes that are in an <code>ONLINE</code> status will receive and be able to service traffic from the load balancer. 
+                        The <code>OFFLINE</code> status represents a node that cannot accept or service traffic. 
+                        A node in <code>DRAINING</code> status represents a node that stops the traffic manager from sending any more new connections to the node, but honors established sessions. 
+                        If the traffic manager receives a request and session persistence requires that the node is used, the traffic manager will use it. 
+                        The status is determined either by the passive or active health monitors.  
+                        For more information on health monitoring, see the concepts and definitions section (above).
                     </para>
                     <para>
-                        If the weighted round robin load balancer algorithm mode is selected (WEIGHTED_ROUND_ROBIN), then the caller should assign the relevant weights to the node as part of the weight attribute of the node element. When the algorithm of the load balancer is changed to weighted round robin and the nodes do not already have an assigned weight, the service will automatically set the weight to "1" for all nodes.
+                        If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is selected, then the caller should assign the relevant weights to the node as part of the weight attribute of the node element. When the algorithm of the load balancer is changed to weighted round robin and the nodes do not already have an assigned weight, the service will automatically set the weight to "1" for all nodes.
                     </para>
                     <para>
                         When a node is added, it is assigned a unique identifier that can be used for mutating operations such as changing the port and condition, or removing it. Every load balancer is dual homed on both the public Internet and ServiceNet and as a result, nodes can either be internal ServiceNet addresses or addresses on the public Internet.
@@ -1026,7 +1045,7 @@ Content-Type: text/plain; charset=UTF-8
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>                
                     <para>
-                        This operation asynchronously updates the attributes of the specified load balancer. Upon successful validation of the request, the service will return a 202/Accepted response code. A caller can subscribe to event notifications through the notification service <emphasis>or</emphasis> poll the load balancer with its ID to wait for the changes to be applied and the load balancer to return to an <emphasis>ACTIVE</emphasis> status. This operation allows the caller to change one or more of the following attributes:
+                        This operation asynchronously updates the attributes of the specified load balancer. Upon successful validation of the request, the service will return a 202/Accepted response code. A caller can subscribe to event notifications through the notification service <emphasis>or</emphasis> poll the load balancer with its ID to wait for the changes to be applied and the load balancer to return to an <code>ACTIVE</code> status. This operation allows the caller to change one or more of the following attributes:
                     </para>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -1343,7 +1362,7 @@ Content-Type: text/plain; charset=UTF-8
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
                     <para>
-                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <emphasis>DENY</emphasis> type will always take precedence over items with the <emphasis>ALLOW</emphasis> type. To reject traffic from all items, except for those with the <emphasis>ALLOW</emphasis> type, a networkItem with an address of "0.0.0.0/0" should be added with a <emphasis>DENY</emphasis> type.
+                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <code>DENY</code> type will always take precedence over items with the <code>ALLOW</code> type. To reject traffic from all items, except for those with the <code>ALLOW</code> type, a networkItem with an address of "0.0.0.0/0" should be added with a <code>DENY</code> type.
                     </para>
                     <para>
                         When issuing a &POST; to add to an access list, one or more network items are required. If a populated access list already exists for the load balancer, it will be replaced with subsequent &POST; requests.  To append to the access list, a &PUT; request should be issued. Like the &POST; operation the &PUT; operation requires one or more network items. A single address or subnet definition is considered unique and cannot be duplicated between items in an access list. There are two &DELETE; operations for the access list. One allows for deletion of the entire access list and the other for deletion of a specific network item in the access list.
@@ -1602,17 +1621,17 @@ Content-Type: text/plain; charset=UTF-8
                         <itemizedlist spacing="compact">
                             <listitem>
                                 <para>
-                                    <emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.
+                                    <code>delay</code>: The minimum number of seconds to wait before executing the health monitor.
                                 </para>
                             </listitem>
                             <listitem>
                                 <para>
-                                    <emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.
+                                    <code>timeout</code>: Maximum number of seconds to wait for a connection to be established before timing out.
                                 </para>
                             </listitem>
                             <listitem>
                                 <para>
-                                    <emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.
+                                    <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures before removing a node from rotation.
                                 </para>
                             </listitem>
                         </itemizedlist>
@@ -1626,22 +1645,22 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         <itemizedlist spacing="compact">
                             <listitem>
-                                <para><emphasis>delay</emphasis> - The minimum number of seconds to wait before executing the health monitor.</para>
+                                <para><code>delay</code>: The minimum number of seconds to wait before executing the health monitor.</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>timeout</emphasis> - Maximum number of seconds to wait for a connection to be established before timing out.</para>
+                                <para><code>timeout</code>: Maximum number of seconds to wait for a connection to be established before timing out.</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>attemptsBeforeDeactivation</emphasis> - Number of permissible monitor failures before removing a node from rotation.</para>
+                                <para><code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures before removing a node from rotation.</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>path</emphasis> - The HTTP path that will be used in the sample request</para>
+                                <para><code>path</code>: The HTTP path that will be used in the sample request</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>statusRegex</emphasis> - A regular expression that will be used to evaluate the HTTP status code returned in the response.</para>
+                                <para><code>statusRegex</code>: A regular expression that will be used to evaluate the HTTP status code returned in the response.</para>
                             </listitem>
                             <listitem>
-                                <para><emphasis>bodyRegex</emphasis> - A regular expression that will be used to evaluate the contents of the body of the response.</para>
+                                <para><code>bodyRegex</code>: A regular expression that will be used to evaluate the contents of the body of the response.</para>
                             </listitem>
                         </itemizedlist>
                     </para>
@@ -1861,22 +1880,21 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                 <itemizedlist spacing="compact">
                         <listitem>
-                            <para><emphasis>minConnection</emphasis> - Allow at least this number of connections per IP address before applying throttling restrictions.</para>
+                            <para><code>minConnection</code>: Allow at least this number of connections per IP address before applying throttling restrictions.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis>maxConnections</emphasis> - Maximum number of connection to allow for a single IP address.</para>
+                            <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP address.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis>macConnectionRate</emphasis> - Maximum number of connections allowed from a single IP address in the defined rateInterval.</para>
+                            <para><code>macConnectionRate</code>: Maximum number of connections allowed from a single IP address in the defined rateInterval.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis>rateInterval</emphasis> - Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.</para>
+                            <para><code>rateInterval</code>: Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.</para>
                         </listitem>
                     </itemizedlist>             
                     <para>This operation does not require a request body.</para>
                 <example>
-                    <title>List Connection Throttling Configuration Response: XML
-                    </title>
+                    <title>List Connection Throttling Configuration Response: XML</title>
                     <literallayout class="monospaced">
 <![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
    minConnections="10"
@@ -2070,23 +2088,23 @@ Content-Type: text/plain; charset=UTF-8
                     </thead>
                     <tbody>
                         <tr>
-                            <td>LEAST_CONNECTIONS</td>
+                            <td><code>LEAST_CONNECTIONS</code></td>
                             <td>The node with the fewest number of connections will receive requests</td>
                         </tr>
                         <tr>
-                            <td>RANDOM</td>
+                            <td><code>RANDOM</code></td>
                             <td>Backend servers are selected at random</td>
                         </tr>
                         <tr>
-                            <td>ROUND_ROBIN</td>
+                            <td><code>ROUND_ROBIN</code></td>
                             <td>Connections are routed to each of the backend servers in turn</td>
                         </tr>
                         <tr>
-                            <td>WEIGHTED_LEAST_CONNECTIONS</td>
+                            <td><code>WEIGHTED_LEAST_CONNECTIONS</code></td>
                             <td>Each request will be assigned to a node based on the number of concurrent connections to the node and its weight</td>
                         </tr>
                         <tr>
-                            <td>WEIGHTED_ROUND_ROBIN</td>
+                            <td><code>WEIGHTED_ROUND_ROBIN</code></td>
                             <td>A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.</td>
                         </tr>
                     </tbody>
@@ -2130,7 +2148,12 @@ Content-Type: text/plain; charset=UTF-8
             <section>
                 <title>Load Balancer Status</title>
                 <para>
-                    All load balancers have a status attribute to signify the current configuration status of the device. This status is immutable by the caller and is updated automatically based on state changes within the service.  When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  Once the configuration is applied and finalized, it will be in an ACTIVE status.  In the event of a configuration change or update, the status of the load balancer will change to PENDING_UPDATE to signify configuration changes are being made, but have not yet been finalized.  Load balancers in a suspended status are configured to reject traffic and will not forward requests to backend nodes.
+                    All load balancers have a status attribute to signify the current configuration status of the device. 
+                    This status is immutable by the caller and is updated automatically based on state changes within the service.  
+                    When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  
+                    Once the configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.  
+                    In the event of a configuration change or update, the status of the load balancer will change to <code>PENDING_UPDATE</code> to signify configuration changes are being made, but have not yet been finalized.  
+                    Load balancers in a <code>SUSPENDED</code> status are configured to reject traffic and will not forward requests to backend nodes.
                 </para>
                 <table rules="all">
                     <caption>Load Balancer Statuses</caption>
@@ -2142,27 +2165,27 @@ Content-Type: text/plain; charset=UTF-8
                     </thead>
                     <tbody>
                         <tr>
-                            <td>ACTIVE</td>
+                            <td><code>ACTIVE</code></td>
                             <td>Load balancer is configured properly and ready to serve traffic to incoming requests via the configured virtual IPs.</td>
                         </tr>
                         <tr>
-                            <td>BUILD</td>
+                            <td><code>BUILD</code></td>
                             <td>Load balancer is being provisioned for the first time and configuration is being applied to bring the service online.  The service will not yet be ready to serve incoming requests.</td>
                         </tr>
                         <tr>
-                            <td>PENDING_UPDATE</td>
+                            <td><code>PENDING_UPDATE</code></td>
                             <td>Load balancer is online, but configuration changes are being applied to update the service based on a previous request.</td>
                         </tr>
                         <tr>
-                            <td>PENDING_DELETE</td>
+                            <td><code>PENDING_DELETE</code></td>
                             <td>Load balancer is online, but configuration changes are being applied to begin deletion of the service based on a previous request.</td>
                         </tr>
                         <tr>
-                            <td>SUSPENDED</td>
+                            <td><code>SUSPENDED</code></td>
                             <td>Load balancer has been taken offline and disabled, contact support.</td>
                         </tr>
                         <tr>
-                            <td>ERROR</td>
+                            <td><code>ERROR</code></td>
                             <td>The system encountered an error when attempting to configure the laod balancer, contact support</td>
                         </tr>
                     </tbody>
@@ -2201,7 +2224,7 @@ Content-Type: text/plain; charset=UTF-8
     <chapter>
         <title>API Faults</title>
         <para>
-            API calls that return an error will return one of the following fault objects.  All fault objects will extend from the base fault, <emphasis>serviceFault</emphasis>, for easier exception handling for languages that support it.
+            API calls that return an error will return one of the following fault objects.  All fault objects will extend from the base fault, <code>serviceFault</code>, for easier exception handling for languages that support it.
         </para>
         <section>
             <title>serviceFault</title>
@@ -2283,7 +2306,8 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>immutableEntity</title>
             <para>
-                This fault is returned when a user attempts to modify an item that is not currently in a state that allows modification. For example, load balancers in a status of PENDING_UPDATE, BUILD, or DELETED may not be modified.
+                This fault is returned when a user attempts to modify an item that is not currently in a state that allows modification. 
+                For example, load balancers in a status of <code>PENDING_UPDATE</code>, <code>BUILD</code>, or <code>DELETED</code> may not be modified.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2305,7 +2329,10 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>serviceUnavailable</title>
             <para>
-                This fault is returned when the service is unavailable. For example, if the service is undergoing maintenance or otherwise unavailable. Note that this does not necessarily mean the currently configured loadbalancers are unable to process traffic, It simply means that the API is currently unable service requests.
+                This fault is returned when the service is unavailable, such as when
+                if the service is undergoing maintenance. 
+                Note that this does not necessarily mean the currently configured loadbalancers are unable to process traffic; 
+                it simply means that the API is currently unable to service requests.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
