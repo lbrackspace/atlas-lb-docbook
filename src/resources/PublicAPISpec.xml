@@ -78,7 +78,7 @@ format="SVG" scale="60"/>
         <para>
             <itemizedlist spacing="compact">
                 <listitem>
-                    <para>RESTful Web Services</para>
+                    <para>ReSTful Web Services</para>
                 </listitem>
                 <listitem>
                     <para>HTTP/1.1 Conventions</para>
@@ -131,9 +131,9 @@ format="SVG" scale="60"/>
         </para>
         <section>
             <title>Load balancer</title>
-            <para>
-                A load balancer is a logical device, which belongs to a cloud account. It is used to distribute workloads between multiple back-end systems or services, based on the criteria defined as part of the configuration.
-            </para>
+            <para> A load balancer is a logical device which belongs to a cloud account. It is used
+                to distribute workloads between multiple back-end systems or services, based on the
+                criteria defined as part of its configuration. </para>
         </section>
         <section>
             <title>Virtual IP</title>
@@ -143,62 +143,72 @@ format="SVG" scale="60"/>
         </section>
         <section>
             <title>Node</title>
-            <para>
-                A nodes is a back-end device providing a service on a given IP and port.
-            </para>
+            <para> A node is a back-end device providing a service on a given IP and port. </para>
         </section>
         <section>
             <title>Health Monitor</title>
-            <para>
-                A health monitor is a feature of the load balancer that is used to determine whether or not a backend node is usable for processing a request.  The service supports two types of health monitors, passive and active.
-            </para>
-        </section>
+            <para> A health monitor is a feature of the load balancer that is used to determine
+                whether or not a back-end node is usable for processing a request. The service
+                supports two types of health monitors: passive and active. </para>
         <section>
             <title>Passive Health Monitor</title>
-            <para>
-                By default, all load balancing configurations utilize a passive health monitor, which is a technique that analyzes the response of the backend server to determine whether or not its capable of processing a request.  Passive health monitoring verifies the condition of a node using the following criteria:
-            </para>
+            <para> By default, all load balancing configurations utilize a passive health monitor,
+                    which is a technique that analyzes the response of the back-end server to
+                    determine whether or not it is capable of processing a request. Passive health
+                    monitoring verifies the condition of a node using the following criteria: </para>
             <para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>The connection is refused by the backend server or if the connection takes longer than 4 seconds to be established.</para>
+                        <para>The connection is refused by the back-end server or the connection
+                                takes longer than 4 seconds to be established.</para>
                     </listitem>
                     <listitem>
-                        <para>The connection is closed prematurely or if the beginning of the response is not received within 30 seconds.</para>
+                        <para>The connection is closed prematurely or the beginning of the response
+                                is not received within 30 seconds.</para>
                     </listitem>
                     <listitem>
-                        <para>HTTP - If an invalid HTTP response is received or a 503 (Service Unavailable) response code is received.</para>
+                        <para>HTTP: An invalid HTTP response is received or a <returnvalue>503
+                                    (Service Unavailable)</returnvalue> response code is
+                                received.</para>
                     </listitem>
                     <listitem>
-                        <para>SSL Passthrough - If the SSL handshake to the backend server fails.</para>
+                        <para>SSL Passthrough: If the SSL handshake to the back-end server
+                                fails.</para>
                     </listitem>
                 </itemizedlist>
             </para>
-            <para>
-                If the tests above fail, then the service will attempt to locate another configured node that is capable of supporting the request until every node is exhausted.  
-                If this occurs, the requestor will receive a <returnvalue>503 (Service Unavailable)</returnvalue> for HTTP traffic or the connection will be dropped.
-            </para>
+            <para> If the tests above fail, then the service will attempt to locate another
+                    configured node that is capable of supporting the request until every node is
+                    exhausted. If this occurs, the requestor will receive a <returnvalue>503
+                        (Service Unavailable)</returnvalue> response for HTTP traffic or the
+                    connection will be dropped. </para>
             <note>
-                <para>
-                    If a given node fails a passive health monitor check for three consecutive times, 
-                    then the service assumes the node has failed and will place it in the <code>OFFLINE</code> status.  
-                    The service will not attempt to send any new requests to the node for at least 60 seconds after which the service will 
-                    speculatively begin sending requests to occasionally probe it to determine whether or not it has recovered.
-                </para>
+                <para> If a given node fails a passive health monitor check for three consecutive
+                        times, then the service assumes the node has failed and will place it in the
+                            <code>OFFLINE</code> status. The service will not attempt to send any
+                        new requests to the node for at least 60 seconds, after which the service
+                        will speculatively begin sending requests to occasionally probe it to
+                        determine whether or not it has recovered. </para>
             </note>
         </section>
         <section>
             <title>Active Health Monitor</title>
-            <para>
-                Active health monitoring is a technique that uses synthetic transactions that are executed at periodic intervals to determine the condition of a node.  One of the advantages of active health monitoring is that it does not require active transactions to be processed by the load balancer to determine whether or not a node is suitable for handling traffic.  When both active and passive monitoring are enabled, the decisions made by the active monitor override inferences made by the passive monitoring system.
-            </para>
-            <para>
-                The active health monitor can use one of three types of probes: connect, http, and https.  
-                These probes are run at configured intervals and in the event of a failure, the node status changes to <code>OFFLINE</code> and the node will not receive traffic.  
-                Once the probe has detected that the node has recovered (by running a subsequent test), then the node is changed to <code>ONLINE</code> status and will be capable of servicing requests.
-            </para>
+            <para> Active health monitoring is a technique that uses synthetic transactions that are
+                    executed at periodic intervals to determine the condition of a node. One of the
+                    advantages of active health monitoring is that it does not require active
+                    transactions to be processed by the load balancer to determine whether or not a
+                    node is suitable for handling traffic. When both active and passive monitoring
+                    are enabled, the decisions made by the active monitor override inferences made
+                    by the passive monitoring system. </para>
+            <para> The active health monitor can use one of three types of probes: connect, http,
+                    and https. These probes are run at configured intervals; in the event of a
+                    failure, the node status changes to <code>OFFLINE</code> and the node will not
+                    receive traffic. If, after running a subsequent test, the probe detects that the
+                    node has recovered, then the node's status is changed to <code>ONLINE</code> and
+                    it is capable of servicing requests. </para>
         </section>
-        <section>
+        </section>
+            <section>
             <title>Session Persistence</title>
             <para>
                 Session persistence is a feature of the load balancing service that attempts to force subsequent connections to a service to be redirected to the same node as long as its online.
@@ -213,9 +223,10 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>General API Information</title>
-        <para>
-            The Load Balancing Service API is implemented using a RESTful web service interface. Like other products in the Rackspace Cloud suite. The Load Balancing Service shares a common token-based authentication system that allows seamless access between products and services.
-        </para>
+        <para> The Load Balancing Service API is implemented using a ReSTful web service interface.
+            Like other products in the Rackspace Cloud suite, the Load Balancing Service shares a
+            common token-based authentication system that allows seamless access between products
+            and services. </para>
             <note>
                 <para>
                 All requests to authenticate and operate the service are performed using SSL over HTTP (HTTPS) on TCP port 443.
@@ -223,14 +234,20 @@ format="SVG" scale="60"/>
             </note>
         <section>
             <title>Authentication</title>
-            <para>
-                Every REST request against the load balancing service requires the inclusion of a specific authorization token, which is supplied by the <code>X-Auth-Token</code> HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication Service and supplying a valid username and API access key.
-            </para>
+            <para> Every ReST request against the load balancing service requires the inclusion of a
+                specific authorization token, is supplied by the <code>X-Auth-Token</code> HTTP
+                header. Customers obtain this token by first using the Rackspace Cloud
+                Authentication Service and supplying a valid username and API access key. </para>
             <section>
                 <title>Request</title>
-                <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace Cloud APIs and is itself a RESTful web service. It is accessible at
-                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate, you must supply your username and API access key in the <code>X-Auth-Key</code> HTTP headers. Username is your common Rackspace Cloud username and your API access key can be obtained from the Rackspace Cloud Control Panel in the Your Account | API Access section.
-                </para>
+                <para>The Rackspace Cloud Authentication Service serves as the entry point to all
+                    Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
+                        <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
+                        >https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate,
+                    you must supply your username and API access key in the <code>X-Auth-Key</code>
+                    HTTP headers. Username is your common Rackspace Cloud username and your API
+                    access key can be obtained from the Rackspace Cloud Control Panel in the Your
+                    Account | API Access section. </para>
             </section>
             <section>
                 <title>Sample Request</title>
@@ -275,12 +292,17 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Service Access</title>
+            <para> The load balancing service is a regionalized service, which allows for the caller
+                to select a region into which a load balancer is to be provisioned. In the response
+                payload provided by the authentication service, the caller can choose the
+                appropriate region-based endpoint. </para>
             <para>
-                The load balancing service is a regionalized service, which allows for the caller to select a region to provision a load balancer into. In the response payload provided by the authentication service, the caller can choose the appropriate region-based endpoint.
-            </para>
-            <para>
-                <emphasis>If load balancing Cloud Servers</emphasis>, you can determine the appropriate region to select by viewing your Cloud Servers list and creating a load balancer within the same region as the data center in which your Cloud Server resides in. When your resources reside in the same region as your load balancer, it ensures your devices are in close proximity to each other and allows you to take advantage of ServiceNet connectivity for free data transfer between services.
-            </para>
+                <emphasis>If load balancing Cloud Servers</emphasis>, you can determine the
+                appropriate region to select by viewing your Cloud Servers list and creating a load
+                balancer within the same region as the data center in which your Cloud Server
+                resides. When your resources reside in the same region as your load balancer, it
+                ensures your devices are in close proximity to each other and allows you to take
+                advantage of ServiceNet connectivity for free data transfer between services. </para>
             <para>
                 <emphasis>If load balancing external servers</emphasis>, you can determine the appropriate region to select by choosing the region that is geographically as close to your external servers as possible.
             </para>
@@ -292,9 +314,9 @@ Content-Type: text/plain; charset=UTF-8
                 header and is required for operations that have a request body. The response format can be specified in requests using either the
                 <code>Accept</code>
                 header or adding an
-                <emphasis>.xml</emphasis>
+                <code>.xml</code>
                 or
-                <emphasis>.json</emphasis>
+                <code>.json</code>
                 extension to the request URI. Note that it is possible for a response to be serialized using a format different from the request (see example below). If no response format is specified, JSON is the default. If conflicting formats are specified using both an <code>Accept</code> header and a query extension, the query extension takes precedence.
             </para>
             <para>
@@ -346,12 +368,12 @@ Content-Type: text/plain; charset=UTF-8
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td><code>HTTP/1.1 Request</code></td>
+                        <td>HTTP/1.1 Request</td>
                         <td><code>Accept-Encoding</code></td>
                         <td><code>gzip</code></td>
                     </tr>
                     <tr align="left">
-                        <td><code>HTTP/1.1 Response</code></td>
+                        <td>HTTP/1.1 Response</td>
                         <td><code>Content-Encoding</code></td>
                         <td><code>gzip</code></td>
                     </tr>
@@ -375,18 +397,25 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>Paginated Collections</title>
             <para>
-                To reduce load on the service, list operations will return a maximum of 100 items at a time. To navigate the collection, the parameters limit and offset can be set in the URI (e.g.?limit=0&amp;offset=0). If an offset is given beyond the end of a list an empty list will be returned. Note that list operations never return itemNotFound (404) faults.
+                To reduce load on the service, list operations will return a maximum of 100 items at a time. 
+                To navigate the collection, the <code>limit</code> and <code>offset</code> parameters (for example, <code>?limit=0&amp;offset=0</code>)can be set in the URI. 
+                If an offset is given beyond the end of a list an empty list will be returned. Note that list operations never return <returnvalue>404 (itemNotFound)</returnvalue> faults.
             </para>
         </section>
         <section>
             <title>Efficient Polling with the <code>Changes-Since</code> Parameter</title>
-            <para>The REST API allows you to poll for the status of certain operations by performing a &GET; on various URIs. 
-                Rather than re-downloading and re-parsing the full status at each polling interval, your REST client may use the <code>Changes-Since</code> parameter to check for changes since a previous request. 
-                The c<code>Changes-Since</code> time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). 
-                If nothing has changed since the changes-since time, a <returnvalue>304 (Not Modified)</returnvalue> response will be returned. 
-                If data has changed, only the items changed since the specified time will be returned in the response. 
-                For example, performing a &GET; against https://URL/v1.0/1234/loadbalancers?changes-since=1244012982 would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
-            </para>
+            <para>The ReST API allows you to poll for the status of certain operations by performing
+                a &GET; on various URIs. Rather than re-downloading and re-parsing the full status
+                at each polling interval, your ReST client may use the <code>Changes-Since</code>
+                parameter to check for changes since a previous request. The
+                    c<code>Changes-Since</code> time is specified as Unix time (the number of
+                seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing
+                has changed since the changes-since time, a <returnvalue>304 (Not
+                    Modified)</returnvalue> response will be returned. If data has changed, only the
+                items changed since the specified time will be returned in the response. For
+                example, performing a &GET; against
+                    <code>https://URL/v1.0/1234/loadbalancers?changes-since=1244012982</code> would
+                list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC. </para>
         </section>
     </chapter>
     <chapter>
@@ -543,9 +572,9 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        This operation provides the detailed output for a specific load balancer configured and associated with your account.  This operation is not capable of returning details for a load balancer which has been deleted.
-                    </para>
+                    <para> This operation provides detailed output for a specific load balancer
+                configured and associated with your account. This operation is not capable of
+                returning details for a load balancer which has been deleted. </para>
                     <para>
                         This operation does not require a request body.
                     </para>             
@@ -683,9 +712,16 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        This operation asynchronously provisions a new load balancer based on the configuration defined in the request object. Once the request is validated and progress has started on the provisioning process, a response object will be returned. The object will contain a unique identifier and status of the request. Using the identifier, the caller can check on the progress of the operation by performing a &GET; on loadbalancers/id (for more details on this operation see the "List Load Balancer Details" section of this document). If the corresponding request cannot be fulfilled due to insufficient or invalid data, an HTTP 400 "Bad Request" error response will be returned with information regarding the nature of the failure in the body of the response. Failures in the validation process are non-recoverable and require the caller to correct the cause of the failure and POST the request again.
-                    </para>
+                    <para> This operation asynchronously provisions a new load balancer based on the
+                configuration defined in the request object. Once the request is validated and
+                progress has started on the provisioning process, a response object will be
+                returned. The object will contain a unique identifier and status of the request.
+                Using the identifier, the caller can check on the progress of the operation by
+                performing a &GET; on <code>loadbalancers/id</code>. If the corresponding request cannot be
+                        fulfilled due to insufficient or invalid data, an HTTP <returnvalue>400 (Bad Request)</returnvalue> error
+                response will be returned with information regarding the nature of the failure in
+                the body of the response. Failures in the validation process are non-recoverable and
+                require the caller to correct the cause of the failure and &POST; the request again. </para>
                     <note>
                     <para>
                         A load balancer's name must be less than or equal to 128 characters.
@@ -693,7 +729,8 @@ Content-Type: text/plain; charset=UTF-8
                     </note>
                     <note>
                     <para>
-                        Users may configure all documented features of the load balancer at creation time by simply providing the additional elements / attributes in the request. Refer to the subsequent sections of this specification for an overview of all features the load balancing service supports.
+                        Users may configure all documented features of the load balancer at creation time by simply providing the additional elements / attributes in the request. 
+                        Refer to the subsequent sections of this specification for an overview of all features the load balancing service supports.
                     </para>
                     </note>                            
                 <example>
@@ -735,9 +772,12 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
                 </example>
-                <para>
-                    to conserve IPv4 address space, Rackspace highly recommends sharing Virtual IPs between your load balancers. If you have at least one load balancer, you may create subsequent load balancers that share a single virtual IP by issuing a &POST; and supplying a virtualIp ID instead of a type. (see below for a sample request). Additionally, this feature is highly desirable if you wish to load balance both an unsecured and secure protocol using one IP / DNS name (for example, HTTP and HTTPS).
-                </para>
+                <para> To conserve IPv4 address space, Rackspace highly recommends sharing Virtual
+                IPs between your load balancers. If you have at least one load balancer, you may
+                create subsequent load balancers that share a single virtual IP by issuing a &POST;
+                and supplying a virtualIp ID instead of a type. Additionally, this feature is highly
+                desirable if you wish to load balance both an unsecured and secure protocol using
+                one IP / DNS name (for example, HTTP and HTTPS). </para>
                 <note>
                     <para>
                         Load balancers sharing a virtual IP <emphasis>must</emphasis> utilize a unique port.
@@ -908,26 +948,35 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        The nodes defined by the load balancer are responsible for servicing the requests received through the load balancers virtual IP. By default, the load balancer employs a basic "health check" that ensures the node is listening on its defined port. The node is checked at the time of addition and at regular intervals as defined by the load balancer health check configuration (for more information on health check settings, see the "Health Check" section of this document) If a back-end node is not listening on its port or does not meet the conditions of the defined health check for the load balancer, 
-                        then the load balancer will not forward connections and its status will be listed as <code>OFFLINE</code>. 
-                        Only nodes that are in an <code>ONLINE</code> stats will receive and be able to service traffic from the load balancer.
-                    </para>
-                    <para>
-                        All nodes have an associated status that indicates whether the node is online, offline, or draining. 
-                        Only nodes that are in an <code>ONLINE</code> status will receive and be able to service traffic from the load balancer. 
-                        The <code>OFFLINE</code> status represents a node that cannot accept or service traffic. 
-                        A node in <code>DRAINING</code> status represents a node that stops the traffic manager from sending any more new connections to the node, but honors established sessions. 
-                        If the traffic manager receives a request and session persistence requires that the node is used, the traffic manager will use it. 
-                        The status is determined either by the passive or active health monitors.  
-                        For more information on health monitoring, see the concepts and definitions section (above).
-                    </para>
-                    <para>
-                        If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is selected, then the caller should assign the relevant weights to the node as part of the weight attribute of the node element. When the algorithm of the load balancer is changed to weighted round robin and the nodes do not already have an assigned weight, the service will automatically set the weight to "1" for all nodes.
-                    </para>
-                    <para>
-                        When a node is added, it is assigned a unique identifier that can be used for mutating operations such as changing the port and condition, or removing it. Every load balancer is dual homed on both the public Internet and ServiceNet and as a result, nodes can either be internal ServiceNet addresses or addresses on the public Internet.
-                    </para>
+                    <para> The nodes defined by the load balancer are responsible for servicing the
+                requests received through the load balancer's virtual IP. By default, the load
+                balancer employs a basic health check that ensures the node is listening on its
+                defined port. The node is checked at the time of addition and at regular intervals
+                as defined by the load balancer health check configuration. If a back-end node is
+                not listening on its port or does not meet the conditions of the defined health
+                check for the load balancer, then the load balancer will not forward connections and
+                its status will be listed as <code>OFFLINE</code>. Only nodes that are in an
+                    <code>ONLINE</code> status will receive and be able to service traffic from the
+                load balancer. </para>
+                    <para> All nodes have an associated status that indicates whether the node is
+                online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
+                will receive and be able to service traffic from the load balancer. The
+                    <code>OFFLINE</code> status represents a node that cannot accept or service
+                traffic. A node in <code>DRAINING</code> status represents a node that stops the
+                traffic manager from sending any more new connections to the node, but honors
+                established sessions. If the traffic manager receives a request and session
+                persistence requires that the node is used, the traffic manager will use it. The
+                status is determined by the passive or active health monitors. </para>
+                    <para> If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is
+                selected, then the caller should assign the relevant weights to the node as part of
+                the weight attribute of the node element. When the algorithm of the load balancer is
+                changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
+                assigned weight, the service will automatically set the weight to "1" for all nodes. </para>
+                    <para> When a node is added, it is assigned a unique identifier that can be used
+                for mutating operations such as changing the port and condition or removing it.
+                Every load balancer is dual-homed on both the public Internet and ServiceNet;  as a
+                result, nodes can either be internal ServiceNet addresses or addresses on the public
+                Internet. </para>
                     <para>
                         This operation does not require a request body.
                     </para>          
@@ -1029,7 +1078,7 @@ Content-Type: text/plain; charset=UTF-8
                         <tr align="left">
                             <td>&PUT;</td>
                             <td>/loadbalancers/loadBalancerId</td>
-                            <td>Update the properites of a load balancer</td>
+                            <td>Update the properties of a load balancer</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1045,20 +1094,26 @@ Content-Type: text/plain; charset=UTF-8
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>                
                     <para>
-                        This operation asynchronously updates the attributes of the specified load balancer. Upon successful validation of the request, the service will return a 202/Accepted response code. A caller can subscribe to event notifications through the notification service <emphasis>or</emphasis> poll the load balancer with its ID to wait for the changes to be applied and the load balancer to return to an <code>ACTIVE</code> status. This operation allows the caller to change one or more of the following attributes:
+                        This operation asynchronously updates the attributes of the specified load balancer. 
+                        Upon successful validation of the request, the service will return a <returnvalue>202 (Accepted)</returnvalue> response code. 
+                        A caller can subscribe to event notifications through the notification service or poll the load balancer with its ID to wait 
+                        for the changes to be applied and the load balancer to return to an <code>ACTIVE</code> status. 
+                    </para>
+                    <para>
+                        This operation allows the caller to change one or more of the following attributes:
                     </para>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>name</para>
+                            <para><code>name</code></para>
                         </listitem>
                         <listitem>
-                            <para>algorithm</para>
+                            <para><code>algorithm</code></para>
                         </listitem>
                         <listitem>
-                            <para>protocol</para>
+                            <para><code>protocol</code></para>
                         </listitem>
                         <listitem>
-                            <para>port</para>
+                            <para><code>port</code></para>
                         </listitem>
                     </itemizedlist>
                 <para>
@@ -1066,7 +1121,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
                     <note>
                     <para>
-                        The load balancer's ID and status are immutable attributes and cannot be modified by the caller. Supplying an unsupported attribute will result in a badRequest (400) fault.
+                        The load balancer's ID and status are immutable attributes and cannot be modified by the caller. Supplying an unsupported attribute will result in a <returnvalue>400 (badRequest)</returnvalue> fault.
                     </para>
                     </note>
                 <example>
@@ -1128,16 +1183,17 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        A virtual IP (VIP) is how your load balancer is reached by clients. The load balancing service supports either a public VIP, which is routable on the public Internet or a ServiceNet address, which is routable only within the region your load balancer resides in.
-                    </para>
+                    <para> A virtual IP (VIP) makes a load balancer accessible by clients. The load
+                balancing service supports either a public VIP, routable on the public Internet, or
+                a ServiceNet address, routable only within the region in which the load balancer
+                resides. </para>
                 <para>
                     This request does not require a request body.
                 </para>
                     <note>
-                        <para>
-                        All load balancers must have at least one Virtual IP associated to them at all times. Attempting to delete the last virtual IP will result in a badRequest (400) fault.
-                        </para>
+                        <para> All load balancers must have at least one virtual IP associated with
+                    them at all times. Attempting to delete the last virtual IP will result in a
+                    badRequest (400) fault. </para>
                     </note>
                     <table rules="all">
                         <caption>Virtual IP Types</caption>
@@ -1224,7 +1280,11 @@ Content-Type: text/plain; charset=UTF-8
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
                     <para>
-                        The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. Current usage represents any usage that been incurred since the endDate of the most recent historical usage object. Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute (for example, changing the tier profiles of a load balancer). Values for both incomingTransfer and outgoingTransfer are expressed in bytes transferred.
+                        The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. 
+                        Current usage represents any usage that been incurred since the <code>endDate</code> of the most recent historical usage object. 
+                        Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute 
+                        For example, changing the tier profiles of a load balancer changes a billing-related attribute, so such an event would prompt current usage data to be processed into historical usage objects.. 
+                        Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes transferred.
                     </para>
                     <note>
                     <para>
@@ -1508,9 +1568,41 @@ Content-Type: text/plain; charset=UTF-8
                 badRequest (<errorcode>400</errorcode>),                     
                 overLimit (<errorcode>413</errorcode>)                 
             </simpara>
-                <para>
-                    The load balancing service includes a health monitoring operation, which periodically checks your backend nodes to ensure they are responding correctly.  In the event that the node is not responding, it will be removed from rotation until the health check determines the node is functional. In addition to being run at periodic intervals, the health check also is run against every node that is added to ensure it is operating properly before allowing it to service traffic.  Only one health monitor is allowed to be enabled on a load balancer at a time. An overview of the supported health monitors are detailed below:
+                <para> 
+                    The load balancing service includes a health monitoring operation which
+                periodically checks your back-end nodes to ensure they are responding correctly. If
+                a node is not responding, it is removed from rotation until the health check
+                determines that the node is functional. In addition to being performed periodically,
+                the health check also is performed against every node that is added to ensure that
+                the node is operating properly before allowing it to service traffic. Only one
+                health monitor is allowed to be enabled on a load balancer at a time.  
                 </para>
+                <para>
+                    Every health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
+                </para>
+                <table rules="all">
+                    <caption>Health Monitor Types</caption>
+                    <thead>
+                        <tr align="center">
+                            <td>Name</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>CONNECT</td>
+                            <td>Health monitor is a connect monitor</td>
+                        </tr>
+                        <tr align="left">
+                            <td>HTTP</td>
+                            <td>Health monitor is a HTTP monitor</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&GET;</td>
+                            <td>Health monitor is a HTTPS monitor</td>
+                        </tr>
+                    </tbody>
+                </table>   
             <example>
                 <title>Monitor Connections Response: XML</title>
                 <literallayout class="monospaced">
@@ -1585,33 +1677,6 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
             </example>
-            <section>
-                <title>Health Monitor Types</title>
-                <para>
-                    Every health monitor has a type attribute to signify what kind of monitor it is.
-                </para>
-                <informaltable rules="all">
-                    <thead>
-                        <tr align="center">
-                            <td>Name</td>
-                            <td>Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td>CONNECT</td>
-                            <td>Health monitor is a connect monitor</td>
-                        </tr>
-                        <tr align="left">
-                            <td>HTTP</td>
-                            <td>Health monitor is a HTTP monitor</td>
-                        </tr>
-                        <tr align="left">
-                            <td>&GET;</td>
-                            <td>Health monitor is a HTTPS monitor</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
                 <section>
                     <title>Connection Monitor</title>
                     <para>
@@ -1665,7 +1730,7 @@ Content-Type: text/plain; charset=UTF-8
                         </itemizedlist>
                     </para>
                 </section>
-            </section>                  
+                              
         </section>               
             <section>
                 <title>Session Persistence</title>
@@ -1708,9 +1773,10 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        Session persistence is a feature of the load balancing service which forces subsequent requests from clients to be directed to the same node.  This is common with many web applications that do not inheritly share application state between backend servers.
-                    </para> 
+                    <para> Session persistence is a feature of the load balancing service which
+                forces subsequent requests from clients to be directed to the same node. This is
+                common with many web applications that do not inherently share application state
+                between back-end servers. </para> 
                     <table rules="all">
                         <caption>Session Persistence Modes</caption>
                         <thead>
@@ -1722,7 +1788,9 @@ Content-Type: text/plain; charset=UTF-8
                         <tbody>
                             <tr align="left">
                                 <td>HTTP_COOKIE</td>
-                                <td>A session persistence mechanism that inserts an HTTP cookie and is used to determine the destination backend node. (Supported for HTTP load balancing only.)</td>
+                                <td>A session persistence mechanism that inserts an HTTP cookie and
+                            is used to determine the destination back-end node. This is supported
+                            for HTTP load balancing only.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1886,10 +1954,13 @@ Content-Type: text/plain; charset=UTF-8
                             <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP address.</para>
                         </listitem>
                         <listitem>
-                            <para><code>macConnectionRate</code>: Maximum number of connections allowed from a single IP address in the defined rateInterval.</para>
+                            <para><code>macConnectionRate</code>: Maximum number of connections allowed from a single IP address in the defined <code>rateInterval</code>.</para>
                         </listitem>
                         <listitem>
-                            <para><code>rateInterval</code>: Frequency the maxConnectionRate is assessed (in seconds).  For example, A maxConnectionRate of 30 with a rateInterval of 60 would allow a maximum of 30 connections per minute for a single IP address.</para>
+                            <para><code>rateInterval</code>: Frequency (in seconds) at which the <code>maxConnectionRate</code> is
+                                assessed. For example, a <code>maxConnectionRate</code> of 30 with a
+                                <code>rateInterval</code> of 60 would allow a maximum of 30 connections per minute for a
+                        single IP address.</para>
                         </listitem>
                     </itemizedlist>             
                     <para>This operation does not require a request body.</para>
@@ -1914,11 +1985,6 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
                 </example>
-                <note>
-                    <para>
-                        Attributes that are required are displayed in the samples unless otherwise stated.
-                    </para>
-                </note>
                 <example>
                     <title>Update Connection Throttling Configuration Request: XML</title>
                     <literallayout class="monospaced">
@@ -1970,9 +2036,10 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        All load balancers must define the protocol of the service which is being load balanced.   The protocol selection should be based on the protocol of the backend nodes. When configuring a load balancer, the port selected will be the default port for the given protocol unless otherwise specified.
-                    </para>                
+                    <para> All load balancers must define the protocol of the service which is being
+                load balanced. The protocol selection should be based on the protocol of the
+                back-end nodes. When configuring a load balancer, the port selected will be the
+                default port for the given protocol unless otherwise specified. </para>                
                     <para>
                         This operation does not require a request body.
                     </para>
@@ -2072,9 +2139,13 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        All load balancers utilize a "load balancer algorithm" that defines how traffic should be directed between backend nodes.  The default algorithm for newly created load balancers is Random, which can be overrided at creation time or changed after the load balancer has been initially provisioned.  The algorithm name is to be constant within a major revision of the load balancing API, though new algorithms may be created with a unique algorithm name within a given major revision of the service API.
-                    </para>
+                    <para> All load balancers utilize an algorithm that defines how traffic should
+                be directed between back-end nodes. The default algorithm for newly created load
+                balancers is <code>RANDOM</code>, which can be overridden at creation time or
+                changed after the load balancer has been initially provisioned. The algorithm name
+                is to be constant within a major revision of the load balancing API, though new
+                algorithms may be created with a unique algorithm name within a given major revision
+                of the service API. </para>
                     <para>
                         This operation does not require a request body.
                     </para>
@@ -2089,15 +2160,16 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td><code>LEAST_CONNECTIONS</code></td>
-                            <td>The node with the fewest number of connections will receive requests</td>
+                            <td>The node with the lowest number of connections will receive
+                            requests</td>
                         </tr>
                         <tr align="left">
                             <td><code>RANDOM</code></td>
-                            <td>Backend servers are selected at random</td>
+                            <td>Back-end servers are selected at random</td>
                         </tr>
                         <tr align="left">
                             <td><code>ROUND_ROBIN</code></td>
-                            <td>Connections are routed to each of the backend servers in turn</td>
+                            <td>Connections are routed to each of the back-end servers in turn</td>
                         </tr>
                         <tr align="left">
                             <td><code>WEIGHTED_LEAST_CONNECTIONS</code></td>
@@ -2105,7 +2177,9 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                         <tr align="left">
                             <td><code>WEIGHTED_ROUND_ROBIN</code></td>
-                            <td>A round robin algorithm, but with different proportions of traffic being directed to the backend nodes.  Weights must be defined as part of the load balancer's node configuration.</td>
+                            <td>A round robin algorithm, but with different proportions of traffic
+                            being directed to the back-end nodes. Weights must be defined as part of
+                            the load balancer's node configuration.</td>
                         </tr>
                     </tbody>
                 </table>                
@@ -2147,14 +2221,17 @@ Content-Type: text/plain; charset=UTF-8
             </section>
             <section>
                 <title>Load Balancer Status</title>
-                <para>
-                    All load balancers have a status attribute to signify the current configuration status of the device. 
-                    This status is immutable by the caller and is updated automatically based on state changes within the service.  
-                    When a load balancer is first created, it will be placed into a build status where the configuration is being generated and applied based on the request.  
-                    Once the configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.  
-                    In the event of a configuration change or update, the status of the load balancer will change to <code>PENDING_UPDATE</code> to signify configuration changes are being made, but have not yet been finalized.  
-                    Load balancers in a <code>SUSPENDED</code> status are configured to reject traffic and will not forward requests to backend nodes.
-                </para>
+                <para> All load balancers have a status attribute to signify the current
+                configuration status of the device. This status is immutable by the caller and is
+                updated automatically based on state changes within the service. When a load
+                balancer is first created, it will be placed into a build status where the
+                configuration is being generated and applied based on the request. Once the
+                configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.
+                In the event of a configuration change or update, the status of the load balancer
+                will change to <code>PENDING_UPDATE</code> to signify configuration changes are in
+                progress but have not yet been finalized. Load balancers in a <code>SUSPENDED</code>
+                status are configured to reject traffic and will not forward requests to back-end
+                nodes. </para>
                 <table rules="all">
                     <caption>Load Balancer Statuses</caption>
                     <thead>
@@ -2193,9 +2270,8 @@ Content-Type: text/plain; charset=UTF-8
             </section>
             <section>
                 <title>Node Condition</title>
-                <para>
-                    Every node in the load balancer has an associated condition, which determines its role within the load balancer.
-                </para>
+                <para> Every node in the load balancer has an associated condition which determines
+                its role within the load balancer. </para>
                 <table rules="all">
                     <caption>Load Balancer Node Conditions</caption>
                     <thead>
@@ -2227,15 +2303,19 @@ Content-Type: text/plain; charset=UTF-8
             API calls that return an error will return one of the following fault objects.  All fault objects will extend from the base fault, <code>serviceFault</code>, for easier exception handling for languages that support it.
         </para>
         <section>
-            <title>serviceFault</title>
+            <title><code>serviceFault</code></title>
             <para>
-                The serviceFault and by extension all other faults shall contain a message and detail element containing strings describing the nature of the fault as well as a "code" attribute representing the HTTP response code for convenience. The "code" attribute of the fault is for the convenience of the caller so that they may retrieve the response code from the HTTP response headers or directly from the fault object if they choose. The caller should not expect the serviceFault to be returned directly but should instead expect only one of the child faults to be returned.
+                The <code>serviceFault</code> and by extension all other faults include <code>message</code> and <code>detail</code> elements which contain strings describing the nature of the fault 
+                as well as a <code>code</code> attribute representing the HTTP response code for convenience. 
+                The <code>code</code> attribute of the fault is for the convenience of the caller so that they may retrieve the response code from the HTTP response headers 
+                or directly from the fault object if they choose. 
+                The caller should not expect the <code>serviceFault</code> to be returned directly but should instead expect only one of the child faults to be returned.
             </para>
         </section>
         <section>
-            <title>loadBalancerFault</title>
+            <title><code>loadBalancerFault</code></title>
             <para>
-                The LoadBalancer fault shall be returned in the event that an error occurred during a loadbalancer operation.
+                The <code>loadBalancerFault</code> fault shall be returned in the event that an error occurred during a loadbalancer operation.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2244,9 +2324,10 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>badRequest</title>
+            <title><code>badRequest</code></title>
             <para>
-                The operation was not a valid request. This fault indicates that the data in the request object is invalid, for example a string was used on a parameter that was expecting an integer. The fault will wrap validation errors.
+                The operation was not a valid request. This fault indicates that the data in the request object is invalid; for example, a string was used in a parameter that was expecting an integer. 
+                The fault will wrap validation errors.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
@@ -2259,7 +2340,7 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>itemNotFound</title>
+            <title><code>itemNotFound</code></title>
             <para>
             </para>
             <literallayout class="monospaced">
@@ -2269,9 +2350,9 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>overLimit</title>
+            <title><code>overLimit</code></title>
             <para>
-                This fault is returned when the user had exceeded their currently allocated limit.
+                This fault is returned when the user has exceeded a currently allocated limit.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<overLimit code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2280,9 +2361,9 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>unauthorized</title>
+            <title><code>unauthorized</code></title>
             <para>
-                This fault is returned when you attempt to perform an operation you are not authorized to perform.
+                This fault is returned when the user is not authorized to perform an attempted operation.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2291,9 +2372,10 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>outOfVirtualIps</title>
+            <title><code>outOfVirtualIps</code></title>
             <para>
-                This fault indicates that there are no virtual IPs left to assign to a new loadbalancer. In practice, you should not see this fault as virtual IPs will be ordered as capacity is required, but if you do see this simply alert support so that we may make more IPs available.
+                This fault indicates that there are no virtual IPs left to assign to a new loadbalancer. 
+                In practice, you should not see this fault as virtual IPs will be ordered as capacity is required, but if you do see this simply alert support so that we may make more IPs available.
             </para>
             <literallayout class="monospaced">
 <![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
@@ -2304,7 +2386,7 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>immutableEntity</title>
+            <title><code>immutableEntity</code></title>
             <para>
                 This fault is returned when a user attempts to modify an item that is not currently in a state that allows modification. 
                 For example, load balancers in a status of <code>PENDING_UPDATE</code>, <code>BUILD</code>, or <code>DELETED</code> may not be modified.
@@ -2316,7 +2398,7 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>unprocessableEntity</title>
+            <title><code>unprocessableEntity</code></title>
             <para>
                 This fault is returned when an operation is requested on an item that does not support the operation, but the request is properly formed.
             </para>
@@ -2327,11 +2409,11 @@ Content-Type: text/plain; charset=UTF-8
             </literallayout>
         </section>
         <section>
-            <title>serviceUnavailable</title>
+            <title><code>serviceUnavailable</code></title>
             <para>
                 This fault is returned when the service is unavailable, such as when
-                if the service is undergoing maintenance. 
-                Note that this does not necessarily mean the currently configured loadbalancers are unable to process traffic; 
+                the service is undergoing maintenance. 
+                Note that this does not necessarily mean that the currently configured loadbalancers are unable to process traffic; 
                 it simply means that the API is currently unable to service requests.
             </para>
             <literallayout class="monospaced">
