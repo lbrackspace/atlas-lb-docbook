@@ -1006,7 +1006,7 @@ Content-Type: text/plain; charset=UTF-8
                 will receive and be able to service traffic from the load balancer. The
                     <code>OFFLINE</code> status represents a node that cannot accept or service
                 traffic. A node in <code>DRAINING</code> status represents a node that stops the
-                traffic manager from sending any more new connections to the node, but honors
+                traffic manager from sending any additional new connections to the node, but honors
                 established sessions. If the traffic manager receives a request and session
                 persistence requires that the node is used, the traffic manager will use it. The
                 status is determined by the passive or active health monitors. </para>
@@ -1024,9 +1024,9 @@ Content-Type: text/plain; charset=UTF-8
                         This operation does not require a request body.
                     </para>          
                 <example>
-                    <title>List Nodes Response: XML</title>
+                    <title>List Specific Node Response: XML</title>
                     <literallayout class="monospaced">
-<![CDATA[<node
+<![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
         id="410"
         address="10.1.1.1"
         port="80"
@@ -1085,9 +1085,10 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </example>
                 <note>
-                    <para>
-                        The node's IP and Port are immutable attributes and cannot be modified by the caller for a &PUT; request. Supplying an unsupported attribute will result in a badRequest (400) fault.
-                    </para>
+                    <para> The node's IP and Port are immutable attributes and cannot be modified by
+                    the caller for a &PUT; request. Supplying an unsupported attribute will result
+                    in a badRequest (400) fault.   Additionally, a load balancer supports a maximum
+                    of 25 nodes.</para>
                 </note>
                 <example>
                     <title>Update Node Attributes Request: XML</title>
@@ -1303,11 +1304,6 @@ Content-Type: text/plain; charset=UTF-8
                             <td>/loadbalancers/loadBalancerId/usage/current</td>
                             <td>List current usage</td>
                         </tr>
-                        <tr align="left">
-                            <td>&GET;</td>
-                            <td>/loadbalancers/loadBalancerId/historical</td>
-                            <td>List historical usage</td>
-                        </tr>
                     </tbody>
                 </informaltable>
                 <simpara>
@@ -1322,17 +1318,17 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. 
-                        Current usage represents any usage that been incurred since the <code>endDate</code> of the most recent historical usage object. 
-                        Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute 
-                        For example, changing the tier profiles of a load balancer changes a billing-related attribute, so such an event would prompt current usage data to be processed into historical usage objects.. 
-                        Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes transferred.
-                    </para>
+                    <para> The load balancer usage reports provide a view of all transfer, average
+                number of connections and number of virtual IPs associated with the load balancing
+                service. Current usage represents all usage recorded within the last 24 hours.
+                Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes
+                        transferred. The optional <code>startDate</code> and <code>endDate</code> parameters can be used to filter all
+                usage. If the <code>startDate</code> parameter is supplied, but the <code>endDate</code> parameter is not then
+                        all usage beginning with the startDate will be provided. Likewise, if the <code>endDate</code>
+                        parameter is supplied but the <code>startDate</code> parameter is not then all usage will be
+                        returned up to the <code>endDate</code> specified. </para>
                     <note>
-                    <para>
-                        Historical usage is available for up to 90 days of service activity.
-                    </para>
+                    <para> Usage is available for up to 90 days of service activity. </para>
                     </note>
                     <para>
                         This operation does not require a request body.
@@ -1464,9 +1460,13 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <code>DENY</code> type will always take precedence over items with the <code>ALLOW</code> type. To reject traffic from all items, except for those with the <code>ALLOW</code> type, a networkItem with an address of "0.0.0.0/0" should be added with a <code>DENY</code> type.
-                    </para>
+                    <para> The access list management feature allows for fine-grained network access
+                controls to be applied to the load balancer's virtual IP address. A single IP
+                address, multiple IP addresses, or entire network subnets can be added as a
+                networkItem. Items that are configured with the <code>ALLOW</code> type will always
+                take precedence over items with the <code>DENY</code> type. To reject traffic from
+                all items, except for those with the <code>ALLOW</code> type, a networkItem with an
+                address of "0.0.0.0/0" should be added with a <code>DENY</code> type. </para>
                     <para>
                         When issuing a &POST; to add to an access list, one or more network items are required. If a populated access list already exists for the load balancer, it will be replaced with subsequent &POST; requests.  To append to the access list, a &PUT; request should be issued. Like the &POST; operation the &PUT; operation requires one or more network items. A single address or subnet definition is considered unique and cannot be duplicated between items in an access list. There are two &DELETE; operations for the access list. One allows for deletion of the entire access list and the other for deletion of a specific network item in the access list.
                     </para>   
