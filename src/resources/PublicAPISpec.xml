@@ -32,8 +32,8 @@ format="SVG" scale="60"/>
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
-    <title>Cloud Sites™ LBaaS Developer Guide</title>
-    <titleabbrev>Cloud Sites™ LBaaS Dev Guide</titleabbrev>
+    <title>Cloud Load Balancers™ Developer Guide</title>
+    <titleabbrev>Cloud LBaaS Dev Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -652,10 +652,12 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
                     </para>
-                    <para> Load balancer which have been deleted will be shown in this list for at
+                    <para> 
+                        Load balancers which have been deleted will be shown in this list for at
                 least 90 days after deletion. A deleted load balancer is immutable and
-                irrecoverable. Only a limited set of attributes will be returned in the response
-                object (id, name, status, created, and updated). </para>
+                irrecoverable. Only a limited set of attributes (<code>id</code>, <code>name</code>, <code>status</code>, <code>created</code>, and
+                        <code>updated</code>) will be returned in the response object. 
+                    </para>
                     <para>
                         This operation does not require a request body.
                     </para>             
