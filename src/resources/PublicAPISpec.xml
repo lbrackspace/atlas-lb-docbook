@@ -49,7 +49,7 @@ format="SVG" scale="60"/>
             <year>2011</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
-        <releaseinfo>API v1.0 (BETA)</releaseinfo>
+        <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Cloud Load Balancers™</productname>
         <pubdate>02/17/11</pubdate>
         <legalnotice role="rs-api">
@@ -59,8 +59,8 @@ format="SVG" scale="60"/>
         </legalnotice>
         <abstract>
             <para> This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Load Balancers (<abbrev>API</abbrev>) for
-                Load Balancing as a Service. </para>
+                applications using the Rackspace Cloud Load Balancers™ Application Program Interface (<abbrev>API</abbrev>) for
+                Load Balancing as a Service (<abbrev>LBaaS</abbrev>). </para>
         </abstract>
         <cover>
             <para>this is a placeholder for the front cover</para>
@@ -74,21 +74,21 @@ format="SVG" scale="60"/>
         <section>
         <title>Intended Audience</title>
         <para> This guide is intended for software developers who want to create applications using
-                the Cloud Load Balancers API. It assumes the reader has a general understanding of
+            the Cloud Load Balancers™ API. It assumes the reader has a general understanding of
                 load balancing concepts and is familiar with: </para>
         <para>
             <itemizedlist spacing="compact">
                 <listitem>
-                    <para>RESTful Web Services</para>
+                    <para>RESTful web services</para>
                 </listitem>
                 <listitem>
-                    <para>HTTP/1.1 Conventions</para>
+                    <para>HTTP/1.1 conventions</para>
                 </listitem>
                 <listitem>
-                    <para>JSON and/or XML Serialization Formats</para>
+                    <para>JSON and/or XML serialization formats</para>
                 </listitem>
                 <listitem>
-                    <para>ATOM Syndication Format</para>
+                    <para>ATOM syndication format</para>
                 </listitem>
             </itemizedlist>
         </para>
@@ -96,7 +96,7 @@ format="SVG" scale="60"/>
         <?hard-pagebreak?>
         <section>
             <title>Document Change History</title>
-            <para>This version of the Developer Guide replaces and supercedes all previous versions.
+            <para>This version of the Developer Guide replaces and supersedes all previous versions.
                 The most recent changes are described in the table below:</para>
             <informaltable rules='all'>
                 <thead>
@@ -121,9 +121,10 @@ format="SVG" scale="60"/>
         </section>
         <section>
             <title>Additional Resources</title>
-            <para> You can download the most current version this and other API-related documents,
-                including this document, from <link xlink:href="http://docs.rackspacecloud.com/api/"
-                    > http://docs.rackspacecloud.com/api/</link>. </para>
+            <para> You can download the most current version pf this and other API-related
+                documents, including this document, from <link
+                    xlink:href="http://docs.rackspacecloud.com/api/">
+                    http://docs.rackspacecloud.com/api/</link>. </para>
             <para> For more details about the Cloud Load Balancers service, refer to <link
                     xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/sites/"
                     >http://www.rackspace.com/cloud</link>. This site also offers links to
@@ -137,8 +138,8 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>Concepts</title>
-        <para> The Cloud Load Balancers API specification has several key concepts that are
-            important to understand. </para>
+        <para> To use the Cloud Load Balancers API effectively, you should understand several key
+            concepts:</para>
         <section>
             <title>Load Balancer</title>
             <para> A load balancer is a logical device which belongs to a cloud account. It is used
@@ -182,7 +183,7 @@ format="SVG" scale="60"/>
                                 received.</para>
                     </listitem>
                     <listitem>
-                        <para>SSL Passthrough: If the SSL handshake to the back-end server
+                        <para>SSL Passthrough: The SSL handshake to the back-end server
                                 fails.</para>
                     </listitem>
                 </itemizedlist>
@@ -193,8 +194,8 @@ format="SVG" scale="60"/>
                         Unavailable)</returnvalue> response for HTTP traffic or the connection will
                     be dropped. </para>
             <note>
-                <para>If a given node fails a passive health monitor check for three consecutive
-                        times, then the service assumes the node has failed and will place it in the
+                <para>If a given node fails a passive health monitor check three consecutive times,
+                        then the service assumes the node has failed and will place it in
                             <code>OFFLINE</code> status. The service will not attempt to send any
                         new requests to the node for at least 60 seconds, after which the service
                         will speculatively begin sending requests to occasionally probe it to
@@ -232,21 +233,21 @@ format="SVG" scale="60"/>
         </section>
             <section>
             <title>Session Persistence</title>
-            <para>
-                Session persistence is a feature of the load balancing service that attempts to force subsequent connections to a service to be redirected to the same node as long as its online.
-            </para>
+            <para> Session persistence is a feature of the load balancing service that attempts to
+                force subsequent connections to a service to be redirected to the same node as long
+                as it is online. </para>
         </section>
         <section>
             <title>Connection Logging</title>
-            <para>
-                The connection logging feature allows for Apache-style access logs (for HTTP-based protocol traffic) or connection and transfer logging (for all other traffic) to your Cloud Files account. Logs are delivered to your account every hour.
-            </para>
+            <para> The connection logging feature allows for Apache-style access logs (for
+                HTTP-based protocol traffic) or connection and transfer logging (for all other
+                traffic) to a Cloud Files account. Logs are delivered to the account every hour. </para>
         </section>
     </chapter>
     <chapter>
         <title>General API Information</title>
         <para> The Cloud Load Balancers API is implemented using a ReSTful web service interface.
-            Like other products in the Rackspace Cloud suite, the Load Balancing Service shares a
+            Like other products in the Rackspace Cloud suite, the load balancing service shares a
             common token-based authentication system that allows seamless access between products
             and services. </para>
             <note>
@@ -256,32 +257,48 @@ format="SVG" scale="60"/>
         <section>
             <title>Authentication</title>
             <para> Every ReST request against the load balancing service requires the inclusion of a
-                specific authorization token, is supplied by the <code>X-Auth-Token</code> HTTP
-                header. Customers obtain this token by first using the Rackspace Cloud
-                Authentication Service and supplying a valid username and API access key. </para>
-            <section>
+                specific authorization token, supplied by the <code>X-Auth-Token</code> HTTP header.
+                Customers obtain this token by first using the Rackspace Cloud Authentication
+                Service and supplying a valid username and API access key. </para>
+            
+            <simplesect>
                 <title>Request</title>
-                <para>The Rackspace Cloud Authentication Service serves as the entry point to all
+                <para> The Rackspace Cloud Authentication Service serves as the entry point to all
                     Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
                         <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
-                        >https://auth.api.rackspacecloud.com/v1.0</link>. In order to authenticate,
-                    you must supply your username and API access key in the <code>X-Auth-Key</code>
-                    HTTP headers. Username is your common Rackspace Cloud username and your API
-                    access key can be obtained from the Rackspace Cloud Control Panel in the Your
-                    Account | API Access section. </para>
-            </section>
-            <section>
-                <title>Sample Request</title>
+                        >https://auth.api.rackspacecloud.com/v1.0</link>. To authenticate, you must
+                    supply your username and API access key in x-headers: </para>
                 <para>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Use your Rackspace Cloud
+                                username as the username for the API. Place it in the
+                                <code>X-Auth-User</code> x-header.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                Obtain your API access
+                                key from the Rackspace Cloud Control Panel in the Your Account |
+                                API Access section. Place it in the <code>X-Auth-User</code>
+                                x-header.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para> </para>
+                <example>
+                    <title>Authentication Request (US-Based Account)</title>
                     <literallayout class="monospaced">
 GET /v1.0 HTTP/1.1
 Host: auth.api.rackspacecloud.com
 X-Auth-User: jdoe
 X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
-                </para>
-            </section>
-            <section>
+                </example>
+            </simplesect>
+            <simplesect>
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status <returnvalue>204 (No
                         Content)</returnvalue> is returned with an <code>X-Auth-Token</code> (along
@@ -289,9 +306,9 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     service). An HTTP status of <returnvalue>401 (Unauthorized)</returnvalue> is
                     returned if authentication fails. All operations against the load balancing
                     service must include the <code>X-Auth-Token</code> header. </para>
-            </section>
-            <section>
-                <title>Sample Response</title>
+            
+            <example>
+                <title>Authentication Response</title>
                 <para>
                     <literallayout class="monospaced">
 HTTP/1.1 204 No Content
@@ -305,24 +322,24 @@ Content-Length: 0
 Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </para>
-            <para>
-                Authentication tokens are typically valid for 24 hours. Applications should be designed to re-authenticate after receiving a 401 Unauthorized response from a service endpoint.
-            </para>
+            </example>
+            <para> Authentication tokens are typically valid for 24 hours. Applications should be
+                    designed to re-authenticate after receiving a 4<returnvalue>401
+                        (Unauthorized)</returnvalue> response from a service endpoint. </para>
             <note>
-                <para> Currently, service endpoints are not published in the response of the
-                        authentication service.  However, the response does contain your cloud
-                        account number, which is required a required element of the service
-                        endpoints (below). </para>
+                <para> Currently, service endpoints are not published in the response of the account
+                        number, which is a required element of the service endpoints. </para>
             </note>
+            </simplesect>
             </section>
-        </section>
         <section>
             <title>Service Access / Endpoints</title>
             <para> The load balancing service is a regionalized service, which allows for the caller
                 to select a region into which a load balancer is to be provisioned. </para>
             <para>To determine which region to operate against, select an endpoint from below.
                 Replace the sample account ID number, 1234, with your actual account number returned
-                as part of the authentication service response (see above).<informaltable>
+                as part of the authentication service response. <table rules="all">
+                    <caption>Regionalized Service Endpoints</caption>
                     <thead>
                         <tr align="center">
                             <td>Region</td>
@@ -332,14 +349,15 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td>Chicago (ORD)</td>
-                            <td>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234/</td>
+                            <td><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/</td>
                         </tr>
                         <tr align="left">
                             <td>Dallas/Ft. Worth (DFW) </td>
-                            <td>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/1234/</td>
+                            <td><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/
+                            </td>
                         </tr>
                     </tbody>
-                </informaltable></para>
+                </table></para>
             <para>
                 <emphasis>If load balancing Cloud Servers</emphasis>, you can determine the
                 appropriate region to select by viewing your Cloud Servers list and creating a load
