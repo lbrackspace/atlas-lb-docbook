@@ -49,8 +49,8 @@ format="SVG" scale="60"/>
             <year>2011</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
-        <releaseinfo>API v1.0</releaseinfo>
-        <productname>Cloud Sites™ LBaaS</productname>
+        <releaseinfo>API v1.0 (BETA)</releaseinfo>
+        <productname>Cloud Load Balancers™</productname>
         <pubdate>02/17/11</pubdate>
         <legalnotice role="rs-api">
             <annotation>
@@ -59,8 +59,8 @@ format="SVG" scale="60"/>
         </legalnotice>
         <abstract>
             <para> This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Sites Application Programming Interface
-                    (<abbrev>API</abbrev>) for Load Balancing as a Service (<abbrev>LBaaS</abbrev>). </para>
+                applications using the Rackspace Cloud Load Balancers (<abbrev>API</abbrev>) for
+                Load Balancing as a Service. </para>
         </abstract>
         <cover>
             <para>this is a placeholder for the front cover</para>
@@ -73,22 +73,22 @@ format="SVG" scale="60"/>
         <title>Overview</title>
         <section>
         <title>Intended Audience</title>
-        <para>
-            This guide is intended for software developers who want to develop applications using the Load balancing Service API. It assumes the reader has a general understanding of the Load Balancing service and is familiar with:
-        </para>
+        <para> This guide is intended for software developers who want to create applications using
+                the Cloud Load Balancers API. It assumes the reader has a general understanding of
+                load balancing concepts and is familiar with: </para>
         <para>
             <itemizedlist spacing="compact">
                 <listitem>
-                    <para>ReSTful Web Services</para>
+                    <para>RESTful Web Services</para>
                 </listitem>
                 <listitem>
                     <para>HTTP/1.1 Conventions</para>
                 </listitem>
                 <listitem>
-                    <para>JSON and/or Serialization Formats</para>
+                    <para>JSON and/or XML Serialization Formats</para>
                 </listitem>
                 <listitem>
-                    <para>Atom Syndication Format</para>
+                    <para>ATOM Syndication Format</para>
                 </listitem>
             </itemizedlist>
         </para>
@@ -96,9 +96,8 @@ format="SVG" scale="60"/>
         <?hard-pagebreak?>
         <section>
             <title>Document Change History</title>
-            <para>This version of the Developer Guide replaces and obsoletes
-                all previous versions.  The most recent changes are described in
-                the table below:</para>
+            <para>This version of the Developer Guide replaces and supercedes all previous versions.
+                The most recent changes are described in the table below:</para>
             <informaltable rules='all'>
                 <thead>
                     <tr>
@@ -112,7 +111,7 @@ format="SVG" scale="60"/>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Initial release.</para>
+                                    <para>Initial release for public beta</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -125,11 +124,11 @@ format="SVG" scale="60"/>
             <para> You can download the most current version this and other API-related documents,
                 including this document, from <link xlink:href="http://docs.rackspacecloud.com/api/"
                     > http://docs.rackspacecloud.com/api/</link>. </para>
-            <para> For more details about the Cloud Sites service, refer to <link
-                xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/sites/"
-                >http://www.rackspace.com/cloud/cloud_hosting_products/sites/</link>. 
-                This site also offers links to Rackspace's official support channels,
-                including knowledge base articles, forums, phone, chat, and email.</para>
+            <para> For more details about the Cloud Load Balancers service, refer to <link
+                    xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/sites/"
+                    >http://www.rackspace.com/cloud</link>. This site also offers links to
+                Rackspace's official support channels, including knowledge base articles, forums,
+                phone, chat, and email.</para>
             <para> You can also follow updates and announcements via twitter at <link
                 xlink:href="http://www.twitter.com/rackcloud"
                 >http://www.twitter.com/rackcloud</link>
@@ -138,24 +137,23 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>Concepts</title>
-        <para>
-            The load balancing API specification has several key concepts that are important to understand.
-        </para>
+        <para> The Cloud Load Balancers API specification has several key concepts that are
+            important to understand. </para>
         <section>
-            <title>Load balancer</title>
+            <title>Load Balancer</title>
             <para> A load balancer is a logical device which belongs to a cloud account. It is used
                 to distribute workloads between multiple back-end systems or services, based on the
                 criteria defined as part of its configuration. </para>
         </section>
         <section>
             <title>Virtual IP</title>
-            <para>
-                A virtual IP is an address configured on the load balancer for use by clients connecting to a service that is load balanced. Incoming connections are distributed to back-end nodes based on the configuration of the load balancer.
-            </para>
+            <para> A virtual IP is an IP address configured on the load balancer for use by clients
+                connecting to a service that is load balanced. Incoming connections are distributed
+                to back-end nodes based on the configuration of the load balancer. </para>
         </section>
         <section>
             <title>Node</title>
-            <para> A node is a back-end device providing a service on a given IP and port. </para>
+            <para> A node is a back-end device providing a service on a specified IP and port. </para>
         </section>
         <section>
             <title>Health Monitor</title>
@@ -195,7 +193,7 @@ format="SVG" scale="60"/>
                         Unavailable)</returnvalue> response for HTTP traffic or the connection will
                     be dropped. </para>
             <note>
-                <para> If a given node fails a passive health monitor check for three consecutive
+                <para>If a given node fails a passive health monitor check for three consecutive
                         times, then the service assumes the node has failed and will place it in the
                             <code>OFFLINE</code> status. The service will not attempt to send any
                         new requests to the node for at least 60 seconds, after which the service
@@ -247,14 +245,13 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>General API Information</title>
-        <para> The Load Balancing Service API is implemented using a ReSTful web service interface.
+        <para> The Cloud Load Balancers API is implemented using a ReSTful web service interface.
             Like other products in the Rackspace Cloud suite, the Load Balancing Service shares a
             common token-based authentication system that allows seamless access between products
             and services. </para>
             <note>
-                <para>
-                All requests to authenticate and operate the service are performed using SSL over HTTP (HTTPS) on TCP port 443.
-                </para>
+                <para> All requests to authenticate and operate the service are performed using
+                HTTPS on TCP port 443. </para>
             </note>
         <section>
             <title>Authentication</title>
@@ -300,7 +297,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
 HTTP/1.1 204 No Content
 Date: Mon, 12 Nov 2007 15:32:21 GMT
 Server: Apache
-X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/35428
+X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/1234
 X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
 X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
@@ -312,18 +309,37 @@ Content-Type: text/plain; charset=UTF-8
                 Authentication tokens are typically valid for 24 hours. Applications should be designed to re-authenticate after receiving a 401 Unauthorized response from a service endpoint.
             </para>
             <note>
-                <para>
-                LBaaS will depend on Cloud Auth 1.1, which will include the endpoints in the response payload - To be updated once contract is solidified with auth developers.
-                </para>
+                <para> Currently, service endpoints are not published in the response of the
+                        authentication service.  However, the response does contain your cloud
+                        account number, which is required a required element of the service
+                        endpoints (below). </para>
             </note>
             </section>
         </section>
         <section>
-            <title>Service Access</title>
+            <title>Service Access / Endpoints</title>
             <para> The load balancing service is a regionalized service, which allows for the caller
-                to select a region into which a load balancer is to be provisioned. In the response
-                payload provided by the authentication service, the caller can choose the
-                appropriate region-based endpoint. </para>
+                to select a region into which a load balancer is to be provisioned. </para>
+            <para>To determine which region to operate against, select an endpoint from below.
+                Replace the sample account ID number, 1234, with your actual account number returned
+                as part of the authentication service response (see above).<informaltable>
+                    <thead>
+                        <tr align="center">
+                            <td>Region</td>
+                            <td> Endpoint</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>Chicago (ORD)</td>
+                            <td>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234/</td>
+                        </tr>
+                        <tr align="left">
+                            <td>Dallas/Ft. Worth (DFW) </td>
+                            <td>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/1234/</td>
+                        </tr>
+                    </tbody>
+                </informaltable></para>
             <para>
                 <emphasis>If load balancing Cloud Servers</emphasis>, you can determine the
                 appropriate region to select by viewing your Cloud Servers list and creating a load
@@ -337,18 +353,17 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Request/Response Types</title>
-            <para>The load balancing API supports both the JSON and XML data serialization formats.
-                The request format is specified using the <code>Content-Type</code> header and is
-                required for operations that have a request body. The response format can be
+            <para>The Cloud Load Balancers API supports both the JSON and XML data serialization
+                formats. The request format is specified using the <code>Content-Type</code> header
+                and is required for operations that have a request body. The response format can be
                 specified in requests using either the <code>Accept</code> header or adding an
                     <code>.xml</code> or <code>.json</code> extension to the request URI. Note that
                 it is possible for a response to be serialized using a format different from the
                 request. If no response format is specified, JSON is the default. If conflicting
                 formats are specified using both an <code>Accept</code> header and a query
                 extension, the query extension takes precedence. </para>
-            <para>
-                Some operations support an Atom representation that can be used to efficiently determine when the state of services has changed.
-            </para>
+            <para> Some operations support an ATOM representation that can be used to efficiently
+                determine when the state of services has changed. </para>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -372,7 +387,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td>No</td>
                     </tr>
                     <tr align="left">
-                        <td>Atom</td>
+                        <td>ATOM</td>
                         <td>application/atom+xml</td>
                         <td>.atom</td>
                         <td>No</td>
@@ -423,11 +438,12 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Paginated Collections</title>
-            <para>
-                To reduce load on the service, list operations will return a maximum of 100 items at a time. 
-                To navigate the collection, the <code>limit</code> and <code>offset</code> parameters (for example, <code>?limit=0&amp;offset=0</code>)can be set in the URI. 
-                If an offset is given beyond the end of a list an empty list will be returned. Note that list operations never return <returnvalue>404 (itemNotFound)</returnvalue> faults.
-            </para>
+            <para> To reduce load on the service, list operations will return a maximum of 100 items
+                at a time. To navigate the collection, the <code>limit</code> and
+                    <code>marker</code> parameters (for example,
+                <code>?limit=50&amp;marker=1</code>)can be set in the URI. If a marker is given
+                beyond the end of a list an empty list will be returned. Note that list operations
+                never return <returnvalue>404 (itemNotFound)</returnvalue> faults.</para>
         </section>
         <section>
             <title>Efficient Polling with the <code>Changes-Since</code> Parameter</title>
@@ -443,6 +459,160 @@ Content-Type: text/plain; charset=UTF-8
                 example, performing a &GET; against
                     <code>https://URL/v1.0/1234/loadbalancers?changes-since=1244012982</code> would
                 list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC. </para>
+        </section>
+        <section>
+               <title>Limits</title>
+            <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to 
+                manage capacity and prevent abuse of the system. The system recognizes two kinds of 
+                limits: rate limits and absolute limits. Rate limits are thresholds that are reset 
+                after a certain amount of time passes. Absolute limits are fixed.
+            </para>
+            <note>
+                <para>
+                    If the default limits are too low for your particular application, please contact 
+                    Rackspace Cloud support to request an increase. All requests require reasonable 
+                    justification.
+                </para>
+            </note>
+            <section>
+                <title>Rate Limits</title>
+                <para>We specify rate limits in terms of both a human-readable wild-card URI and a
+                    machine- processable regular expression. The regular expression boundary matcher
+                    '^' takes effect after the root URI path. For example, the regular expression
+                    ^/loadbalancers would match the bolded portion of the following URI:
+                    https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234//<emphasis role="bold"
+                        >loadbalancers</emphasis>.</para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>RegEx</td>
+                            <td>Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><emphasis role="bold">GET</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>100/minute</td>
+                        </tr>
+                        <tr>
+                            <td><emphasis role="bold">GET</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>6000/hour</td>
+                        </tr>
+                        <tr align="left">
+                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>10/minute</td>
+                        </tr>
+                        <tr>
+                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>600/hour</td>
+                        </tr>
+                        <tr>
+                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>100/day</td>
+                        </tr>
+                        <tr align="left">
+                            <td><emphasis role="bold">PUT</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>50/minute</td>
+                        </tr>
+                        <tr>
+                            <td><emphasis role="bold">PUT</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>3000/hour</td>
+                        </tr>
+                        <tr align="left">
+                            <td><emphasis role="bold">DELETE</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>50/minute</td>
+                        </tr>
+                        <tr>
+                            <td><emphasis role="bold">DELETE</emphasis></td>
+                            <td>/loadbalancers/*</td>
+                            <td>^/loadbalancers/.*</td>
+                            <td>3000/hour</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>Rate limits are applied in order relative to the verb, going from least to most
+                    specific. For example, although the threshold for POST to */loadbalancers is 100 per day, 
+                    one cannot POST to */loadbalancers more than 10 times within a single minute because the 
+                    rate limits for any POST is 10/min.
+                    In the event you exceed the thresholds established for your account, a 413 
+                    (Rate Control) HTTP response will be returned with a Reply-After header to notify the 
+                    client when they can attempt to try again.</para>
+            </section>
+            <section>
+                <title>Absolute Limits</title>
+                <para>"Maximum number of load balancers" limits the total number of load balancers that may be 
+                    associated with a given account.
+                </para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Limit</td>
+                            <td>Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maximum number of load balancers</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+            </section>
+            <section>
+                <title>Determining Limits Programmatically</title>
+                <para>
+                    Applications can programmatically determine current account limits using the /limits URI as follows:
+                </para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>GET</td>
+                            <td>/limits</td>
+                            <td>Returns the current limits for your account.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <simpara>
+                    Normal Response Code(s): 
+                    <returnvalue>200</returnvalue>
+                </simpara>
+                <simpara>                     
+                    Error Response Code(s):                     
+                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
+                    serviceUnavailable (<errorcode>503</errorcode>),                     
+                    unauthorized (<errorcode>401</errorcode>),                     
+                    badRequest (<errorcode>400</errorcode>),                     
+                    overLimit (<errorcode>413</errorcode>)                 
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>    
+            </section>
         </section>
     </chapter>
     <chapter>
@@ -463,7 +633,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>&GET;</td>
                             <td>/loadbalancers</td>
                             <td>List all load balancers configured for the account (IDs, names and status only)</td>
-                            <td>XML, JSON</td>
+                            <td>XML, JSON, ATOM</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -482,9 +652,10 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
                     </para>
-                    <para>
-                        Load balancers which have been deleted are shown in this list until all usage has been processed and invoiced. A deleted load balancer is immutable and irrecoverable. Only a limited set of attributes will be returned in the response object (id, name, status, created, and updated).
-                    </para>
+                    <para> Load balancer which have been deleted will be shown in this list for at
+                least 90 days after deletion. A deleted load balancer is immutable and
+                irrecoverable. Only a limited set of attributes will be returned in the response
+                object (id, name, status, created, and updated). </para>
                     <para>
                         This operation does not require a request body.
                     </para>             
@@ -799,12 +970,12 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
                 </example>
-                <para> To conserve IPv4 address space, Rackspace highly recommends sharing Virtual
-                IPs between your load balancers. If you have at least one load balancer, you may
-                create subsequent load balancers that share a single virtual IP by issuing a &POST;
-                and supplying a virtualIp ID instead of a type. Additionally, this feature is highly
-                desirable if you wish to load balance both an unsecured and secure protocol using
-                one IP / DNS name (for example, HTTP and HTTPS). </para>
+                <para> In order to conserve IPv4 address space, Rackspace highly recommends sharing
+                Virtual IPs between your load balancers. If you have at least one load balancer, you
+                may create subsequent load balancers that share a single virtual IP by issuing a
+                &POST; and supplying a virtualIp ID instead of a type. Additionally, this feature is
+                highly desirable if you wish to load balance both an unsecured and secure protocol
+                using one IP / DNS name (for example, HTTP and HTTPS). </para>
                 <note>
                     <para>
                         Load balancers sharing a virtual IP <emphasis>must</emphasis> utilize a unique port.
@@ -876,7 +1047,7 @@ Content-Type: text/plain; charset=UTF-8
                 status="ONLINE"
                 weight="1" />
     </nodes>
-    <cluster name="ztm-n03.staging1.lbaas.rackspace.net" />
+    <cluster name="Cluster 1" />
     <created time="2011-02-08T21:19:55Z" />
     <updated time="2011-02-08T21:19:55Z" />
     <connectionLogging enabled="false" />
@@ -980,17 +1151,17 @@ Content-Type: text/plain; charset=UTF-8
                 balancer employs a basic health check that ensures the node is listening on its
                 defined port. The node is checked at the time of addition and at regular intervals
                 as defined by the load balancer health check configuration. If a back-end node is
-                not listening on its port or does not meet the conditions of the defined health
-                check for the load balancer, then the load balancer will not forward connections and
-                its status will be listed as <code>OFFLINE</code>. Only nodes that are in an
-                    <code>ONLINE</code> status will receive and be able to service traffic from the
-                load balancer. </para>
+                not listening on its port or does not meet the conditions of the defined active
+                health check for the load balancer, then the load balancer will not forward
+                connections and its status will be listed as <code>OFFLINE</code>. Only nodes that
+                are in an <code>ONLINE</code> status will receive and be able to service traffic
+                from the load balancer. </para>
                     <para> All nodes have an associated status that indicates whether the node is
                 online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
                 will receive and be able to service traffic from the load balancer. The
                     <code>OFFLINE</code> status represents a node that cannot accept or service
                 traffic. A node in <code>DRAINING</code> status represents a node that stops the
-                traffic manager from sending any more new connections to the node, but honors
+                traffic manager from sending any additional new connections to the node, but honors
                 established sessions. If the traffic manager receives a request and session
                 persistence requires that the node is used, the traffic manager will use it. The
                 status is determined by the passive or active health monitors. </para>
@@ -1008,9 +1179,9 @@ Content-Type: text/plain; charset=UTF-8
                         This operation does not require a request body.
                     </para>          
                 <example>
-                    <title>List Nodes Response: XML</title>
+                    <title>List Specific Node Response: XML</title>
                     <literallayout class="monospaced">
-<![CDATA[<node
+<![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
         id="410"
         address="10.1.1.1"
         port="80"
@@ -1069,9 +1240,10 @@ Content-Type: text/plain; charset=UTF-8
                     </literallayout>
                 </example>
                 <note>
-                    <para>
-                        The node's IP and Port are immutable attributes and cannot be modified by the caller for a &PUT; request. Supplying an unsupported attribute will result in a badRequest (400) fault.
-                    </para>
+                    <para> The node's IP and Port are immutable attributes and cannot be modified by
+                    the caller for a &PUT; request. Supplying an unsupported attribute will result
+                    in a badRequest (400) fault.   Additionally, a load balancer supports a maximum
+                    of 25 nodes.</para>
                 </note>
                 <example>
                     <title>Update Node Attributes Request: XML</title>
@@ -1287,11 +1459,6 @@ Content-Type: text/plain; charset=UTF-8
                             <td>/loadbalancers/loadBalancerId/usage/current</td>
                             <td>List current usage</td>
                         </tr>
-                        <tr align="left">
-                            <td>&GET;</td>
-                            <td>/loadbalancers/loadBalancerId/historical</td>
-                            <td>List historical usage</td>
-                        </tr>
                     </tbody>
                 </informaltable>
                 <simpara>
@@ -1306,17 +1473,17 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        The service usage provides current and a historical view of tier profiles and transfer associated with the load balancing service. 
-                        Current usage represents any usage that been incurred since the <code>endDate</code> of the most recent historical usage object. 
-                        Current usage is processed into historical usage objects every 24 hours or whenever an event occurs that changes a billing-related attribute 
-                        For example, changing the tier profiles of a load balancer changes a billing-related attribute, so such an event would prompt current usage data to be processed into historical usage objects.. 
-                        Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes transferred.
-                    </para>
+                    <para> The load balancer usage reports provide a view of all transfer, average
+                number of connections and number of virtual IPs associated with the load balancing
+                service. Current usage represents all usage recorded within the last 24 hours.
+                Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes
+                        transferred. The optional <code>startDate</code> and <code>endDate</code> parameters can be used to filter all
+                usage. If the <code>startDate</code> parameter is supplied, but the <code>endDate</code> parameter is not then
+                        all usage beginning with the startDate will be provided. Likewise, if the <code>endDate</code>
+                        parameter is supplied but the <code>startDate</code> parameter is not then all usage will be
+                        returned up to the <code>endDate</code> specified. </para>
                     <note>
-                    <para>
-                        Historical usage is available for up to 90 days of service activity.
-                    </para>
+                    <para> Usage is available for up to 90 days of service activity. </para>
                     </note>
                     <para>
                         This operation does not require a request body.
@@ -1448,12 +1615,20 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        The access list management feature allows for fine-grained network access controls to be applied to the load balancer's virtual IP address. A single IP address, multiple IP addresses, or entire network subnets can be added as a networkItem. Items that are configured with the <code>DENY</code> type will always take precedence over items with the <code>ALLOW</code> type. To reject traffic from all items, except for those with the <code>ALLOW</code> type, a networkItem with an address of "0.0.0.0/0" should be added with a <code>DENY</code> type.
-                    </para>
-                    <para>
-                        When issuing a &POST; to add to an access list, one or more network items are required. If a populated access list already exists for the load balancer, it will be replaced with subsequent &POST; requests.  To append to the access list, a &PUT; request should be issued. Like the &POST; operation the &PUT; operation requires one or more network items. A single address or subnet definition is considered unique and cannot be duplicated between items in an access list. There are two &DELETE; operations for the access list. One allows for deletion of the entire access list and the other for deletion of a specific network item in the access list.
-                    </para>   
+                    <para> The access list management feature allows for fine-grained network access
+                controls to be applied to the load balancer's virtual IP address. A single IP
+                address, multiple IP addresses, or entire network subnets can be added as a
+                networkItem. Items that are configured with the <code>ALLOW</code> type will always
+                take precedence over items with the <code>DENY</code> type. To reject traffic from
+                all items, except for those with the <code>ALLOW</code> type, a networkItem with an
+                address of "0.0.0.0/0" should be added with a <code>DENY</code> type. </para>
+                    <para> When issuing a &POST; to add to an access list, one or more network items
+                are required. If a populated access list already exists for the load balancer, it
+                will be appended with subsequent &POST; requests.  A single address or subnet
+                definition is considered unique and cannot be duplicated between items in an access
+                list. There are two &DELETE; operations for the access list. One allows for deletion
+                of the entire access list and the other for deletion of a specific network item in
+                the access list. </para>   
                     <para>
                         This operation does not require a request body.
                     </para>
@@ -1595,15 +1770,13 @@ Content-Type: text/plain; charset=UTF-8
                 badRequest (<errorcode>400</errorcode>),                     
                 overLimit (<errorcode>413</errorcode>)                 
             </simpara>
-                <para> 
-                    The load balancing service includes a health monitoring operation which
+                <para> The load balancing service includes a health monitoring operation which
                 periodically checks your back-end nodes to ensure they are responding correctly. If
-                a node is not responding, it is removed from rotation until the health check
+                a node is not responding, it is removed from rotation until the health monitor
                 determines that the node is functional. In addition to being performed periodically,
                 the health check also is performed against every node that is added to ensure that
                 the node is operating properly before allowing it to service traffic. Only one
-                health monitor is allowed to be enabled on a load balancer at a time.  
-                </para>
+                health monitor is allowed to be enabled on a load balancer at a time. </para>
                 <para>
                     Every health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
                 </para>
@@ -1625,7 +1798,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Health monitor is a HTTP monitor</td>
                         </tr>
                         <tr align="left">
-                            <td>&GET;</td>
+                            <td>HTTPS</td>
                             <td>Health monitor is a HTTPS monitor</td>
                         </tr>
                     </tbody>
@@ -1891,9 +2064,8 @@ Content-Type: text/plain; charset=UTF-8
                     badRequest (<errorcode>400</errorcode>),                     
                     overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
-                    <para>
-                        This operation allows the user to enable/disable connection logging.
-                    </para>
+                    <para> This operation allows the user to enable/disable connection
+                logging.</para>
                     <para>
                         This operation does not require a request body.
                     </para>
@@ -2353,10 +2525,9 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title><code>badRequest</code></title>
-            <para>
-                The operation was not a valid request. This fault indicates that the data in the request object is invalid; for example, a string was used in a parameter that was expecting an integer. 
-                The fault will wrap validation errors.
-            </para>
+            <para> This fault indicates that the data in the request object is invalid; for example,
+                a string was used in a parameter that was expecting an integer. The fault will wrap
+                validation errors. </para>
             <literallayout class="monospaced">
 <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
     <message>Validation fault</message>
