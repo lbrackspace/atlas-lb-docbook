@@ -381,9 +381,10 @@ Content-Type: text/plain; charset=UTF-8
                 request. If no response format is specified, JSON is the default. If conflicting
                 formats are specified using both an <code>Accept</code> header and a query
                 extension, the query extension takes precedence. </para>
-            <para> Some operations support an ATOM representation that can be used to efficiently
+            <para> Some operations support an Atom representation that can be used to efficiently
                 determine when the state of services has changed. </para>
-            <informaltable rules="all">
+            <table rules="all">
+                <caption>JSON and XML Response Formats</caption>
                 <thead>
                     <tr align="center">
                         <td>Format</td>
@@ -406,20 +407,21 @@ Content-Type: text/plain; charset=UTF-8
                         <td>No</td>
                     </tr>
                     <tr align="left">
-                        <td>ATOM</td>
+                        <td>Atom</td>
                         <td>application/atom+xml</td>
                         <td>.atom</td>
                         <td>No</td>
                     </tr>
                 </tbody>
-            </informaltable>
+            </table>
         </section>
         <section>
             <title>Content Compression</title>
             <para>
                 Request and response body data may be encoded with gzip compression in order to accelerate interactive performance of API calls and responses. This is controlled using the <code>Accept-Encoding</code> header on the request from the client and indicated by the <code>Content-Encoding</code> header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
-            <informaltable rules="all">
+            <table rules="all">
+                <caption>Encoding Headers</caption>
                 <thead>
                     <tr align="center">
                         <td>Header Type</td>
@@ -439,7 +441,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td><code>gzip</code></td>
                     </tr>
                 </tbody>
-            </informaltable>
+            </table>
         </section>
         <section>
             <title>Persistent Connections</title>
@@ -455,13 +457,14 @@ Content-Type: text/plain; charset=UTF-8
             </para>
             </note>
         </section>
+        <?hard-pagebreak?>
         <section>
             <title>Paginated Collections</title>
             <para> To reduce load on the service, list operations will return a maximum of 100 items
                 at a time. To navigate the collection, the <code>limit</code> and
                     <code>marker</code> parameters (for example,
-                <code>?limit=50&amp;marker=1</code>)can be set in the URI. If a marker is given
-                beyond the end of a list an empty list will be returned. Note that list operations
+                <code>?limit=50&amp;marker=1</code>) can be set in the URI. If a marker 
+                beyond the end of a list is given, an empty list is returned. Note that list operations
                 never return <returnvalue>404 (itemNotFound)</returnvalue> faults.</para>
         </section>
         <section>
@@ -470,11 +473,11 @@ Content-Type: text/plain; charset=UTF-8
                 a &GET; on various URIs. Rather than re-downloading and re-parsing the full status
                 at each polling interval, your ReST client may use the <code>Changes-Since</code>
                 parameter to check for changes since a previous request. The
-                    c<code>Changes-Since</code> time is specified as Unix time (the number of
-                seconds since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing
-                has changed since the changes-since time, a <returnvalue>304 (Not
-                    Modified)</returnvalue> response will be returned. If data has changed, only the
-                items changed since the specified time will be returned in the response. For
+                    <code>Changes-Since</code> time is specified as Unix time (the number of seconds
+                since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing has
+                changed since the <code>changes-since</code>code> time, a <returnvalue>304 (Not
+                    Modified)</returnvalue> response is returned. If data has changed, only the
+                items changed since the specified time is returned. For
                 example, performing a &GET; against
                     <code>https://URL/v1.0/1234/loadbalancers?changes-since=1244012982</code> would
                 list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC. </para>
@@ -498,10 +501,12 @@ Content-Type: text/plain; charset=UTF-8
                 <para>We specify rate limits in terms of both a human-readable wild-card URI and a
                     machine- processable regular expression. The regular expression boundary matcher
                     '^' takes effect after the root URI path. For example, the regular expression
-                    ^/loadbalancers would match the bolded portion of the following URI:
-                    https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234//<emphasis role="bold"
-                        >loadbalancers</emphasis>.</para>
-                <informaltable rules="all">
+                    <code>^/loadbalancers</code> would match the bolded portion of the following URI:
+                        https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234//
+                            <emphasis role="bold">loadbalancers</emphasis>.</para>
+                <?hard-pagebreak?>
+                <table rules="all">
+                    <caption>Default Rate Limits</caption>
                     <thead>
                         <tr align="center">
                             <td>Verb</td>
@@ -512,61 +517,61 @@ Content-Type: text/plain; charset=UTF-8
                     </thead>
                     <tbody>
                         <tr>
-                            <td><emphasis role="bold">GET</emphasis></td>
+                            <td>&GET;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>100/minute</td>
                         </tr>
                         <tr>
-                            <td><emphasis role="bold">GET</emphasis></td>
+                            <td>&GET;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>6000/hour</td>
                         </tr>
                         <tr align="left">
-                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>&POST;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>10/minute</td>
                         </tr>
                         <tr>
-                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>&POST;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>600/hour</td>
                         </tr>
                         <tr>
-                            <td><emphasis role="bold">POST</emphasis></td>
+                            <td>&POST;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>100/day</td>
                         </tr>
                         <tr align="left">
-                            <td><emphasis role="bold">PUT</emphasis></td>
+                            <td>&PUT;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>50/minute</td>
                         </tr>
-                        <tr>
-                            <td><emphasis role="bold">PUT</emphasis></td>
+                        <tr align="left">
+                            <td>&PUT;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>3000/hour</td>
                         </tr>
                         <tr align="left">
-                            <td><emphasis role="bold">DELETE</emphasis></td>
+                            <td>&DELETE;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>50/minute</td>
                         </tr>
                         <tr>
-                            <td><emphasis role="bold">DELETE</emphasis></td>
+                            <td>&DELETE;</td>
                             <td>/loadbalancers/*</td>
                             <td>^/loadbalancers/.*</td>
                             <td>3000/hour</td>
                         </tr>
                     </tbody>
-                </informaltable>
+                </table>
                 <para>Rate limits are applied in order relative to the verb, going from least to most
                     specific. For example, although the threshold for POST to */loadbalancers is 100 per day, 
                     one cannot POST to */loadbalancers more than 10 times within a single minute because the 
@@ -577,7 +582,7 @@ Content-Type: text/plain; charset=UTF-8
             </section>
             <section>
                 <title>Absolute Limits</title>
-                <para>"Maximum number of load balancers" limits the total number of load balancers that may be 
+                <para><code>Maximum number of load balancers</code> limits the total number of load balancers that may be 
                     associated with a given account.
                 </para>
                 <informaltable rules="all">
@@ -598,21 +603,21 @@ Content-Type: text/plain; charset=UTF-8
             <section>
                 <title>Determining Limits Programmatically</title>
                 <para>
-                    Applications can programmatically determine current account limits using the /limits URI as follows:
+                    Applications can programmatically determine current account limits using the <code>/limits</code> URI as follows:
                 </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
+                            <td colspan="1">Verb</td>
+                            <td colspan="1">URI</td>
+                            <td colspan="3">Description</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td>GET</td>
-                            <td>/limits</td>
-                            <td>Returns the current limits for your account.</td>
+                            <td colspan="1">&GET;</td>
+                            <td colspan="1">/limits</td>
+                            <td colspan="3">Returns the current limits for the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -622,11 +627,7 @@ Content-Type: text/plain; charset=UTF-8
                 </simpara>
                 <simpara>                     
                     Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
+                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (<errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (<errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>)                 
                 </simpara>
                 <para>
                     This operation does not require a request body.
