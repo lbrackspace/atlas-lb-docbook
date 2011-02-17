@@ -93,7 +93,7 @@ format="SVG" scale="60"/>
             </itemizedlist>
         </para>
         </section>
-        <?hard-pagebreak?>
+<?hard-pagebreak?>
         <section>
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and supersedes all previous versions.
@@ -457,7 +457,7 @@ Content-Type: text/plain; charset=UTF-8
             </para>
             </note>
         </section>
-        <?hard-pagebreak?>
+<?hard-pagebreak?>
         <section>
             <title>Paginated Collections</title>
             <para> To reduce load on the service, list operations will return a maximum of 100 items
@@ -504,7 +504,7 @@ Content-Type: text/plain; charset=UTF-8
                     <code>^/loadbalancers</code> would match the bolded portion of the following URI:
                         https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234//
                             <emphasis role="bold">loadbalancers</emphasis>.</para>
-                <?hard-pagebreak?>
+<?hard-pagebreak?>
                 <table rules="all">
                     <caption>Default Rate Limits</caption>
                     <thead>
@@ -1402,32 +1402,12 @@ Content-Type: text/plain; charset=UTF-8
 }]]>
                     </literallayout>
                 </example>
-                <example>
-                    <title>Report Account Billing Response: XML</title>
-                    <literallayout>
-<![CDATA[<accountBilling xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="1106">
-  <accountUsage>
-    <accountUsageRecord numLoadBalancers="2" numPublicVips="1" numServicenetVips="0" startTime="2010-12-01T14:09:14-06:00"/>
-  </accountUsage>
-  <loadBalancerUsage loadBalancerId="66" loadBalancerName="My first loadbalancer">
-    <loadBalancerUsageRecord id="394" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="1"
-        numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
-    <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2"
-        numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-    <loadBalancerUsageRecord id="474" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2"
-        numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-    <loadBalancerUsageRecord id="475" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2"
-        numPolls="5" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
-</loadBalancerUsage>
-  <loadBalancerUsage loadBalancerId="77" loadBalancerName="My second loadbalancer">
-    <loadBalancerUsageRecord id="394" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="1"
-       numPolls="32" startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T16:23:54-06:00"/>
-   <loadBalancerUsageRecord id="473" averageNumConnections="0.0" incomingTransfer="0" outgoingTransfer="0" numVips="2" numPolls="5"
-       startTime="2010-12-21T12:32:07-06:00" endTime="2010-12-21T12:36:30-06:00"/>
- <loadBalancerUsage/>
-</accountBilling>]]>
-                    </literallayout>
-                </example>
+<example>                
+<title>Report Account Billing Response: XML</title>                
+<programlisting language="xml"><?db-font-size 90% ?>
+<xi:include href="samples/lb-report-billing-response.xml" parse="text"/>
+</programlisting>       
+</example>     
             </section>
             <section>
                 <title>Access List Management</title>
@@ -2398,10 +2378,9 @@ Content-Type: text/plain; charset=UTF-8
 </badRequest>]]>
             </literallayout>
         </section>
+<?hard-pagebreak?>
         <section>
             <title><code>itemNotFound</code></title>
-            <para>
-            </para>
             <literallayout class="monospaced">
 <![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Object not Found</message>
