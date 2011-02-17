@@ -657,18 +657,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
+                <para>
                     Normal Response Code(s): 
                     <returnvalue>200</returnvalue>
-                </simpara>
-                <simpara>                     
+                </para>
+                <para>                     
                     Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (<errorcode>503</errorcode>),  unauthorized (<errorcode>401</errorcode>),  badRequest (<errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>)                 
+                </para>
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
                     </para>
@@ -680,85 +676,19 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                     <para>
                         This operation does not require a request body.
-                    </para>             
-                <example>
-                    <title>List Load Balancers Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<?xml version="1.0" ?>
-<loadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-	<loadBalancer id="71" name="lb-site1" status="ACTIVE"
-		protocol="HTTP" port="80" algorithm="RANDOM">
-		<virtualIps>
-			<virtualIp id="403" address="206.55.130.1" ipVersion="IPV4"
-				type="PUBLIC" />
-		</virtualIps>
-		<created time="2010-12-13T15:38:27-06:00" />
-		<updated time="2010-12-13T15:38:38-06:00" />
-	</loadBalancer>
-	<loadBalancer id="166" name="lb-site2" status="ACTIVE"
-		protocol="HTTP" port="80" algorithm="RANDOM">
-		<virtualIps>
-			<virtualIp id="401" address="206.55.130.2" ipVersion="IPV4"
-				type="PUBLIC" />
-		</virtualIps>
-		<created time="2010-12-13T15:38:27-06:00" />
-		<updated time="2010-12-13T15:38:38-06:00" />
-	</loadBalancer>
-</loadBalancers>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Load Balancers Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{"loadBalancers":[
-      {
-         "name":"lb-site1",
-         "id":"71",
-         "protocol":"HTTP",
-         "port":"80",
-         "algorithm":"RANDOM",
-         "status":"ACTIVE",
-         "virtualIps":[
-            {
-               "id":"403",
-               "address":"206.55.130.1",
-               "type":"PUBLIC",
-               "ipVersion":"IPV4"
-            }
-         ],
-         "created":{
-            "time":"2010-11-30T03:23:42.000+0000"
-         },
-         "updated":{
-            "time":"2010-11-30T03:23:44.000+0000"
-         }
-      },
-      {
-         "name":"lb-site2",
-         "id":"166",
-         "protocol":"HTTP",
-         "port":"80",
-         "algorithm":"RANDOM",
-         "status":"ACTIVE",
-         "virtualIps":[
-            {
-               "id":"401",
-               "address":"206.55.130.2",
-               "type":"PUBLIC",
-               "ipVersion":"IPV4"
-            }
-         ],
-         "created":{
-            "time":"2010-11-30T03:23:42.000+0000"
-         },
-         "updated":{
-            "time":"2010-11-30T03:23:44.000+0000"
-         }
-      }
-   ]
-}]]>
-                    </literallayout>
-                </example>
+                    </para>               
+<example>                
+<title>List Load Balancers Response: XML</title>                 
+<programlisting language="xml"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>List Load Balancers Response: JSON</title>                 
+<programlisting language="javascript"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-response.json" parse="text"/>
+</programlisting>       
+</example>               
             </section>
             <section>
                 <title>List Load Balancer Details</title>
@@ -797,111 +727,19 @@ Content-Type: text/plain; charset=UTF-8
                 returning details for a load balancer which has been deleted. </para>
                     <para>
                         This operation does not require a request body.
-                    </para>             
-                <example>
-                    <title>List Load Balancer Details Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   id="2000"
-   name="sample-loadbalancer"
-   protocol="HTTP"
-   port="80"
-   algorithm="RANDOM"
-   status="ACTIVE">
-   <connectionLogging enabled="false" />
-  <virtualIps>
-      <virtualIp
-         id="1000"
-         address="206.10.10.210"
-         type="PUBLIC"
-         ipVersion="IPV4" />
-   </virtualIps>
-   <nodes>
-      <node
-         nodeId="1041"
-         address="10.1.1.1"
-         port="80"
-         condition="ENABLED"
-         status="ONLINE" />
-      <node
-         nodeId="1411"
-         address="10.1.1.2"
-         port="80"
-         condition="ENABLED"
-         status="ONLINE" />
-   </nodes>
-   <sessionPersistence persistenceType="HTTP_COOKIE"/>
-   <connectionThrottle
-      minConnections="10"
-      maxConnections="100"
-      maxConnectionRate="50"
-      rateInterval="60" />
-   <cluster name="c1.dfw1" />
-   <created time="2010-11-30T03:23:42Z" />
-   <updated time="2010-11-30T03:23:44Z" />
-</loadBalancer>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Load Balancers Details Response: JSON</title>
-                    <literallayout>
-<![CDATA[{
-   "loadBalancer":{
-      "id":"2000",
-      "name":"sample-loadbalancer",
-      "protocol":"HTTP",
-      "port":"80",
-      "algorithm":"RANDOM",
-      "status":"ACTIVE",
-      "connectionLogging":{
-         "enabled":"true"
-      },
-      "virtualIps":[
-         {
-            "id":"1000",
-            "address":"206.10.10.210",
-            "type":"PUBLIC",
-            "ipVersion":"IPV4"
-         }
-      ],
-      "nodes":[
-         {
-            "id":"1041",
-            "address":"10.1.1.1",
-            "port":"80",
-            "condition":"ENABLED",
-            "status":"ONLINE"
-         },
-         {
-            "id":"1411",
-            "address":"10.1.1.2",
-            "port":"80",
-            "condition":"ENABLED",
-            "status":"ONLINE"
-         }
-      ],
-      "sessionPersistence":{
-         "persistenceType":"HTTP_COOKIE"
-      },
-      "connectionThrottle":{
-         "minConnections":"10",
-         "maxConnections":"100",
-         "maxConnectionRate":"50",
-         "rateInterval":"60"
-      },
-      "cluster":{
-         "name":"c1.dfw1"
-      },
-      "created":{
-         "time":"2010-11-30T03:23:42.000+0000"
-      },
-      "updated":{
-         "time":"2010-11-30T03:23:44.000+0000"
-      }
-   }
-}]]>
-                    </literallayout>
-                </example>
+                    </para>
+<example>                
+<title>List Load Balancer Details Request: XML</title>                 
+<programlisting language="xml"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-details-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>List Load Balancers Details Response: JSON</title>                 
+<programlisting language="javascript"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-response.json" parse="text"/>
+</programlisting>       
+</example>
             </section>
             <section>
                 <title>Create Load Balancer</title>
