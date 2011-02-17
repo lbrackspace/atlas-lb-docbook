@@ -278,12 +278,9 @@ format="SVG" scale="60"/>
                             </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                Obtain your API access
-                                key from the Rackspace Cloud Control Panel in the Your Account |
-                                API Access section. Place it in the <code>X-Auth-User</code>
-                                x-header.
-                            </para>
+                            <para> Obtain your API access key from the Rackspace Cloud Control Panel
+                                in the Your Account | API Access section. Place it in the
+                                    <code>X-Auth-Key</code> x-header. </para>
                         </listitem>
                     </itemizedlist>
                 </para>
