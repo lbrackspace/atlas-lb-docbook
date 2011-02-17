@@ -762,7 +762,8 @@ Content-Type: text/plain; charset=UTF-8
                 <simpara>
                     Normal Response Code(s): 
                     <returnvalue>202</returnvalue>
-                </simpara>                <simpara>                     
+                </simpara>
+                <simpara> 
                     Error Response Code(s):                     
                     loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
                     serviceUnavailable (<errorcode>503</errorcode>),                     
@@ -1337,11 +1338,11 @@ Content-Type: text/plain; charset=UTF-8
                 number of connections and number of virtual IPs associated with the load balancing
                 service. Current usage represents all usage recorded within the last 24 hours.
                 Values for both <code>incomingTransfer</code> and <code>outgoingTransfer</code> are expressed in bytes
-                        transferred. The optional <code>startDate</code> and <code>endDate</code> parameters can be used to filter all
-                usage. If the <code>startDate</code> parameter is supplied, but the <code>endDate</code> parameter is not then
-                        all usage beginning with the startDate will be provided. Likewise, if the <code>endDate</code>
-                        parameter is supplied but the <code>startDate</code> parameter is not then all usage will be
-                        returned up to the <code>endDate</code> specified. </para>
+                        transferred. The optional <code>startTime</code> and <code>endTime</code> parameters can be used to filter all
+                usage. If the <code>startTime</code> parameter is supplied, but the <code>endTime</code> parameter is not then
+                        all usage beginning with the <code>startTime</code> will be provided. Likewise, if the <code>endTime</code>
+                        parameter is supplied but the <code>startTime</code> parameter is not then all usage will be
+                        returned up to the <code>endTime</code> specified.</para>
                     <note>
                     <para> Usage is available for up to 90 days of service activity. </para>
                     </note>

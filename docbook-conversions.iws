@@ -15,8 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="901500db-4578-4b10-8a77-38904ceb765f" name="Default" comment="" />
-    <ignored path="$USER_HOME_GRAILS$/" />
     <ignored path="$USER_HOME_GRIFFON$/" />
+    <ignored path="$USER_HOME_GRAILS$/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,29 +73,67 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="912" column="4" selection-start="38079" selection-end="38079" vertical-scroll-proportion="0.50564337">
+            <state line="1817" column="36" selection-start="74576" selection-end="74576" vertical-scroll-proportion="-335.19232">
               <folding>
                 <element signature="tag#info#0;tag#book#0" expanded="false" />
-                <element signature="tag#section#0;tag#chapter#0;tag#book#0" expanded="false" />
                 <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
                 <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
                 <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#section#4;tag#chapter#0;tag#book#0" expanded="false" />
+                <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+                <element signature="tag#section#0;tag#chapter#1;tag#book#0" expanded="false" />
+                <element signature="tag#section#0;tag#chapter#2;tag#book#0" expanded="false" />
+                <element signature="tag#section#3;tag#chapter#2;tag#book#0" expanded="false" />
+                <element signature="tag#section#5;tag#chapter#2;tag#book#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2032" column="16" selection-start="94334" selection-end="94361" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="tag#chapter#1;tag#book#0" expanded="false" />
-                <element signature="tag#chapter#2;tag#book#0" expanded="false" />
-              </folding>
+            <state line="1319" column="61" selection-start="65437" selection-end="65437" vertical-scroll-proportion="-9.727483">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb-list-details-response.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="5" selection-start="262" selection-end="1034" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb-create-required-request.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb-create-required-request.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb-create-required-sharedip-request.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,6 +152,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json" />
         <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
       </list>
@@ -163,9 +202,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -202,6 +241,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docbook-conversions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loadbalancing-docbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="samples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -220,6 +281,23 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="ValidateXdebugSetup" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="ValidateXdebugSetup" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -229,6 +307,14 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -269,6 +355,15 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="FtpUpload" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="ValidateXdebugSetup" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -355,7 +450,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3002451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3002451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -434,26 +529,63 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2032" column="16" selection-start="94334" selection-end="94361" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="tag#chapter#1;tag#book#0" expanded="false" />
-            <element signature="tag#chapter#2;tag#book#0" expanded="false" />
-          </folding>
+        <state line="53" column="5" selection-start="262" selection-end="1034" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="912" column="4" selection-start="38079" selection-end="38079" vertical-scroll-proportion="0.50564337">
+        <state line="1817" column="36" selection-start="74576" selection-end="74576" vertical-scroll-proportion="-335.19232">
           <folding>
             <element signature="tag#info#0;tag#book#0" expanded="false" />
-            <element signature="tag#section#0;tag#chapter#0;tag#book#0" expanded="false" />
             <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
             <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
             <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#section#4;tag#chapter#0;tag#book#0" expanded="false" />
+            <element signature="tag#chapter#1;tag#book#0" expanded="false" />
+            <element signature="tag#section#0;tag#chapter#1;tag#book#0" expanded="false" />
+            <element signature="tag#section#0;tag#chapter#2;tag#book#0" expanded="false" />
+            <element signature="tag#section#3;tag#chapter#2;tag#book#0" expanded="false" />
+            <element signature="tag#section#5;tag#chapter#2;tag#book#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1319" column="61" selection-start="65437" selection-end="65437" vertical-scroll-proportion="-9.727483">
+          <folding />
         </state>
       </provider>
     </entry>

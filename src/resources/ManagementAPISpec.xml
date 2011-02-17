@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -336,6 +362,16 @@
                                 managementSoapInterface
                             </para>
                         </listitem>
+                        <listitem>
+                            <para>
+                                trafficManagerName
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                soapEndpointActive
+                            </para>
+                        </listitem>
                     </itemizedlist>
                     <para>
                         Additionally, the system will attempt to validate that it can properly access the host based on the managementSoapInterface, managementSoapUsername, and managementSoapPassword. The system should automatically apply a BURN_IN status to all newly added host machines.
@@ -378,6 +414,11 @@
                         <listitem>
                             <para>
                                 managementSoapInterface
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                soapEndpointActive
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -564,12 +605,6 @@
                     </tr>
                     <tr align="left">
                         <td>POST</td>
-                        <td>/clusters/clusterId/virtualips</td>
-                        <td>Assign one-or-more additional virtual IPs to a cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>POST</td>
                         <td>/clusters/clusterId/virtualipblocks</td>
                         <td>Assign a set of IP blocks to the cluster</td>
                         <td>Service Admin</td>
@@ -636,19 +671,6 @@
         ]
     }
 }]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML POST Request (/clusters/clusterId/virtualips)</title>
-                <literallayout class="monospaced">
-<![CDATA[<virtualips>
-   <virtualip
-      address="98.128.33.4"
-      type="PUBLIC" />
-   <virtualip
-      address="98.128.33.5"
-      type="PUBLIC" />
-</virtualips>]]>
                 </literallayout>
             </section>
             <section>
@@ -742,9 +764,9 @@
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/ratelimit)</title>
                 <literallayout class="monospaced">
 <![CDATA[<rateLimit
-   ticketId="44410"
-   expirationTime="2010-10-17T00:00:00-05:00"
-   maxRequestsPerSecond="150" />]]>
+       ticketId="44410"
+       expirationTime="2010-10-17T00:00:00-05:00"
+       maxRequestsPerSecond="150" />]]>
                 </literallayout>
             </section>
             <section>
@@ -762,9 +784,9 @@
                 <title>Sample XML Request (POST) (/loadbalancers/loadBalancerId/ratelimit)</title>
                 <literallayout class="monospaced">
 <![CDATA[<rateLimit xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-   ticketId="44410"
-   expirationTime="2010-10-17T00:00:00"
-   maxRequestsPerSecond="150" />
+        ticketId="44410"
+        expirationTime="2010-10-17T00:00:00"
+        maxRequestsPerSecond="150" />
 ]]>
                 </literallayout>
             </section>
@@ -783,9 +805,9 @@
                 <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/ratelimit)</title>
                 <literallayout class="monospaced">
 <![CDATA[<rateLimit xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-   ticketId="44411"
-   expirationTime="2010-10-18 00:00:00"
-   maxRequestsPerSecond="150" />]]>
+        ticketId="44411"
+        expirationTime="2010-10-18 00:00:00"
+        maxRequestsPerSecond="150" />]]>
                 </literallayout>
             </section>
             <section>
@@ -857,7 +879,7 @@
                 </para>
             </section>
             <section>
-                <title>Sample XML Request (GET) (/loadbalancers/loadBalancerId/host)</title>
+                <title>Sample XML Response (/loadbalancers/loadBalancerId/host)</title>
                 <literallayout class="monospaced">
 <![CDATA[<host xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0"
         id="1"
@@ -871,7 +893,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample JSON Request (GET) (/loadbalancers/loadBalancerId/host)</title>
+                <title>Sample JSON Response (/loadbalancers/loadBalancerId/host)</title>
                 <literallayout class="monospaced">
 <![CDATA[{"host": [
         {
@@ -889,7 +911,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample XML Request (PUT) (/loadbalancers/reassignhosts)</title>
+                <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/reassignhosts)</title>
                 <literallayout class="monospaced">
 <![CDATA[<loadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
    <loadBalancer id="49" >
@@ -899,7 +921,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample JSON Request (PUT) (/loadbalancers/reassignhosts)</title>
+                <title>Sample JSON Request (PUT) (/loadbalancers/loadBalancerId/reassignhosts)</title>
                 <literallayout class="monospaced">
 <![CDATA[{"loadBalancers": {
         {"loadbalancer": {
@@ -914,15 +936,16 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample XML Response (/loadbalancers/reassignhosts)</title>
+                <title>Sample XML Response (/loadbalancers/loadBalancerId/reassignhosts)</title>
                 <literallayout class="monospaced">
 <![CDATA[<loadBalancers xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
-   <loadBalancer id="1" />
+    <loadBalancer id="1" />
+    <loadBalancer id="2" />
 </loadBalancers>]]>
                 </literallayout>
             </section>
             <section>
-                <title>Sample JSON Response (/loadbalancers/reassignhosts)</title>
+                <title>Sample JSON Response (/loadbalancers/loadBalancerId/reassignhosts)</title>
                 <literallayout class="monospaced">
 <![CDATA[{"loadbalancers": {
         "loadbalancer": [
@@ -1142,7 +1165,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample XML Response (GET) (/hosts/hostId/subnetmappings)</title>
+                <title>Sample XML Response (/hosts/hostId/subnetmappings)</title>
                 <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" ?>
 <ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
@@ -1227,18 +1250,18 @@
                 <title>Sample XML Request ByName (/hosts/customers) (/clusters/customers)</title>
                 <literallayout class="monospaced">
 <![CDATA[<byIdOrName
-            xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-            xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
-            name="newhost" />]]>
+        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
+        name="newhost" />]]>
                 </literallayout>
             </section>
             <section>
                 <title>Sample XML Request ById (/hosts/customers) (/clusters/customers)</title>
                 <literallayout class="monospaced">
 <![CDATA[<byIdOrName
-            xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-            xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
-            id="2" />]]>
+        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
+        id="2" />]]>
                 </literallayout>
             </section>
             <section>
@@ -1350,14 +1373,14 @@
                 <literallayout class="monospaced">
 <![CDATA[<hostcapacityreports>
     <hostcapacityreport
-                hostId="1"
-                hostName="The Best Host Ever"
-                totalConcurrentConnectionCapacity="150000"
-                availableConcurrentConnections="100000"
-                allocatedConcurrentConnections="50000"
-                allocatedConcurrentConnectionsToday="14000"
-                allocatedConcurrentConnectionsInPastSevenDays="25000"
-                remainingDaysOfCapacity="9.55" />
+            hostId="1"
+            hostName="The Best Host Ever"
+            totalConcurrentConnectionCapacity="150000"
+            availableConcurrentConnections="100000"
+            allocatedConcurrentConnections="50000"
+            allocatedConcurrentConnectionsToday="14000"
+            allocatedConcurrentConnectionsInPastSevenDays="25000"
+            remainingDaysOfCapacity="9.55" />
 </hostcapacityreports>]]>
                 </literallayout>
             </section>
@@ -1415,21 +1438,21 @@
                 <title>Sample XML Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
                 <literallayout>
 <![CDATA[<virtualipavailabilityreports>
-   <virtualipavailabilityreport
-              clusterId="1"
-              clusterName="My Little Cluster"
-              totalPublicIpAddresses="254"
-              totalServiceNetAddresses="254"
-              freeAndClearPublicIpAddresses="128"
-              freeAndClearServiceNetIpAddresses="128"
-              publicIpAddressesInHolding="14"
-              serviceNetIpAddressesInHolding="21"
-              publicIpAddressesAllocatedToday="15"
-              serviceNetIpAddressesAllocatedToday="4"
-              allocatedPublicIpAddressesInLastSevenDays="45"
-              allocatedServiceNetIpAddressesInLastSevenDays="15"
-              remainingDaysOfPublicIpAddresses="50.11"
-              remainingDaysOfServiceNetIpAddresses="14.41" />
+    <virtualipavailabilityreport
+            clusterId="1"
+            clusterName="My Little Cluster"
+            totalPublicIpAddresses="254"
+            totalServiceNetAddresses="254"
+            freeAndClearPublicIpAddresses="128"
+            freeAndClearServiceNetIpAddresses="128"
+            publicIpAddressesInHolding="14"
+            serviceNetIpAddressesInHolding="21"
+            publicIpAddressesAllocatedToday="15"
+            serviceNetIpAddressesAllocatedToday="4"
+            allocatedPublicIpAddressesInLastSevenDays="45"
+            allocatedServiceNetIpAddressesInLastSevenDays="15"
+            remainingDaysOfPublicIpAddresses="50.11"
+            remainingDaysOfServiceNetIpAddresses="14.41" />
 </virtualipavailabilityreports>]]>
                 </literallayout>
             </section>
@@ -1527,7 +1550,10 @@
             <section>
                 <title>Description</title>
                 <para>
-                    This feature allows for a caller to synchronize the specified load balancer with a particular authoritative resource. At the time of this writing the authoritative source is the database in which all load balancer configurations are stored. We may plan on adding Zeus as an authoritative source later. If a caller chooses to synchronize from the database then Zeus will be updated to match the load balancer's configuration in the database. The caller only needs to send a POST request without a body to the specified URI. This feature should only be used in the event that Zeus contains mismatching configuration information (which should hopefully never even happen).
+                    This feature allows for a caller to synchronize the specified load balancer with a particular authoritative resource and is intended to be used when a load-balancer is 'stuck' in a non-active status. At the time of this writing the authoritative source is the database in which all load balancer configurations are stored. We may plan on adding Zeus as an authoritative source later. If a caller chooses to synchronize from the database then Zeus will be updated to match the load balancer's configuration in the database. The caller only needs to send a PUT request without a body to the specified URI.
+                </para>
+                <para>
+                    When syncing a load balancer in 'PENDING_DELETE' or 'DELETED' status the operation will attempt to remove the load-balancer in Zeus and set the status to 'DELETED'. For all other statuses the sync operation will first delete the load-balancer in Zeus and then re-create it. If successful, the load-balancer will be put in the 'ACTIVE' status. If for some reason the load-balancer could not be created in Zeus then the status will be set to 'ERROR'.
                 </para>
             </section>
         </section>
@@ -1579,10 +1605,10 @@
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/suspension)</title>
                 <literallayout class="monospaced">
 <![CDATA[<suspension
-   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.00"
-   reason="User suspected of fraud"
-   ticketId="1054"
-   user="jdoe" />]]>
+        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.00"
+        reason="User suspected of fraud"
+        ticketId="1054"
+        user="jdoe" />]]>
                 </literallayout>
             </section>
             <section>
@@ -1597,7 +1623,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample XML POST Request (/loadbalancers/loadBalancerId/suspension)</title>
+                <title>Sample XML Request (POST) (/loadbalancers/loadBalancerId/suspension)</title>
                 <literallayout class="monospaced">
 <![CDATA[<suspension
    xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
@@ -1607,7 +1633,7 @@
                 </literallayout>
             </section>
             <section>
-                <title>Sample JSON Response (/loadbalancers/loadBalancerId/suspension)</title>
+                <title>Sample JSON Request (POST) (/loadbalancers/loadBalancerId/suspension)</title>
                 <literallayout class="monospaced">
 <![CDATA[{"suspension": {
         "reason": "Non-payment",
@@ -1651,51 +1677,51 @@
                 <title>Sample XML Response (/loadbalancers/loadBalancerId/extendedview)</title>
                 <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
-   id="2000"
-   name="sample-loadbalancer"
-   protocol="HTTP"
-   port="80"
-   algorithm="RANDOM"
-   status="ACTIVE"
-   totalActiveConnections="340">
-   <host id="1" type="ACTIVE" />
-   <currentUsage
-      incomingTransfer="1.40"
-      outgoingTransfer="20.14" />
-   <virtualIps>
-      <virtualIp
-         id="1000"
-         address="206.10.10.210"
-         type="PUBLIC" />
-   </virtualIps>
-   <nodes>
-      <node
-         nodeId="1041"
-         ip="10.1.1.1"
-         port="80"
-         condition="ENABLED"
-         status="ONLINE" />
-      <node
-         nodeId="1411"
-         ip="10.1.1.2"
-         port="80"
-         condition="ENABLED"
-         status="ONLINE" />
-   </nodes>
-   <sessionPersistence persistenceType="HTTP_COOKIE"/>
-   <connectionLimits
-      minConnections="10"
-      maxConnectionsFromIp="100"
-      maxConnectionRateFromIp="50"
-      maxConnectionRateTimer="60" />
-   <connectionLogging enabled="false" />
-   <cluster name="c1.dfw1" />
-      <ratelimit
-          ticketId="4100"
-          expirationTime="2010-10-17 00:00:00"
-          maxRequestsPerSecond="100" />
-   <created time="2010-06-01T12:00:00Z" />
-   <updated time="2010-06-01T12:00:00Z" />
+        id="2000"
+        name="sample-loadbalancer"
+        protocol="HTTP"
+        port="80"
+        algorithm="RANDOM"
+        status="ACTIVE"
+        totalActiveConnections="340">
+    <host id="1" type="ACTIVE" />
+    <currentUsage
+            incomingTransfer="1.40"
+            outgoingTransfer="20.14" />
+    <virtualIps>
+        <virtualIp
+                id="1000"
+                address="206.10.10.210"
+                type="PUBLIC" />
+    </virtualIps>
+    <nodes>
+        <node
+                nodeId="1041"
+                ip="10.1.1.1"
+                port="80"
+                condition="ENABLED"
+                status="ONLINE" />
+        <node
+                nodeId="1411"
+                ip="10.1.1.2"
+                port="80"
+                condition="ENABLED"
+                status="ONLINE" />
+    </nodes>
+    <sessionPersistence persistenceType="HTTP_COOKIE"/>
+    <connectionLimits
+            minConnections="10"
+            maxConnectionsFromIp="100"
+            maxConnectionRateFromIp="50"
+            maxConnectionRateTimer="60" />
+    <connectionLogging enabled="false" />
+    <cluster name="c1.dfw1" />
+    <ratelimit
+            ticketId="4100"
+            expirationTime="2010-10-17 00:00:00"
+            maxRequestsPerSecond="100" />
+    <created time="2010-06-01T12:00:00Z" />
+    <updated time="2010-06-01T12:00:00Z" />
 </loadBalancer>
 ]]>
                 </literallayout>
@@ -1790,13 +1816,13 @@
                 <tbody>
                     <tr align="left">
                         <td>GET</td>
-                        <td>/accounts/accountId/loadbalancers</td>
+                        <td><code>/accounts/accountId/loadbalancers</code></td>
                         <td>Retrieves a list of load balancers on this account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>GET</td>
-                        <td>/accounts/billing/date</td>
+                        <td><code>/accounts/billing?startTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss<code>&amp;endTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss</td>
                         <td>Retrieve usage for all accounts for a single day</td>
                         <td>Support, Service Admin, Billing</td>
                     </tr>
@@ -1819,12 +1845,34 @@
                 <literallayout class="monospaced">
 <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:accountLoadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0" accountId="1106">
-    <ns2:accountLoadBalancer loadBalancerId="61" loadBalancerName="test1" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="DELETED"/>
-    <ns2:accountLoadBalancer loadBalancerId="62" loadBalancerName="test2" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="DELETED"/>
-    <ns2:accountLoadBalancer loadBalancerId="66" loadBalancerName="My first loadbalancer" clusterId="1" clusterName="Cluster Delta" protocol="HTTP" status="ACTIVE"/>
-    <ns2:accountLoadBalancer loadBalancerId="75" loadBalancerName="test3" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="DELETED"/>
-    <ns2:accountLoadBalancer loadBalancerId="76" loadBalancerName="test4" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="PENDING_UPDATE"/>
-    <ns2:accountLoadBalancer loadBalancerId="77" loadBalancerName="My second loadbalancer" clusterId="1" clusterName="Cluster Delta" protocol="HTTPS" status="ACTIVE"/>
+    <ns2:accountLoadBalancer
+            loadBalancerId="61"
+            loadBalancerName="test1"
+            clusterId="1"
+            lusterName="Cluster Delta"
+            protocol="HTTP"
+            status="DELETED"/>
+    <ns2:accountLoadBalancer
+            loadBalancerId="62"
+            loadBalancerName="test2"
+            clusterId="1"
+            clusterName="Cluster Delta"
+            protocol="HTTPS"
+            status="DELETED"/>
+    <ns2:accountLoadBalancer
+            loadBalancerId="66"
+            loadBalancerName="My first loadbalancer"
+            clusterId="1"
+            clusterName="Cluster Delta"
+            protocol="HTTP"
+            status="ACTIVE"/>
+    <ns2:accountLoadBalancer
+            loadBalancerId="75"
+            loadBalancerName="test3"
+            clusterId="1"
+            clusterName="Cluster Delta"
+            protocol="HTTPS"
+            status="DELETED"/>
 </ns2:accountLoadBalancers>]]>
                 </literallayout>
             </section>
@@ -1867,14 +1915,8 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                 <tbody>
                     <tr align="left">
                         <td>GET</td>
-                        <td>/alert</td>
+                        <td>/alerts</td>
                         <td>Retrieve all alerts, if any</td>
-                        <td>Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>GET</td>
-                        <td>/alerts/unacknowledged</td>
-                        <td>Retrieve unacknowledged alerts, if any</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1885,7 +1927,7 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     </tr>
                     <tr align="left">
                         <td>GET</td>
-                        <td>/loadbalancers/loadBalancerId/alerts</td>
+                        <td>/loadbalancers/alerts/loadbalancer?id=1</td>
                         <td>Retrieve all alerts for the specified load balancer, if any</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1893,6 +1935,12 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                         <td>PUT</td>
                         <td>/alerts/alertId/acknowledged</td>
                         <td>Acknowledge alert.  Changes the status of alert to ACKNOWLEDGED</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/alerts/unacknowledged</td>
+                        <td>Retrieve unacknowledged alerts, if any</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1905,30 +1953,66 @@ loadbalancers/68/setstatus/PENDING_UPDATE
 </alerts>]]>
                 </literallayout>
             </section>
-            <section>
-                <title>Adding group rate limiting</title>
-                <para>
-                    This operation allows user to add a group that will be used for API rate limiting. The definitions of the group are maintained in the rate limiting configuration file. The name of the group added has to match the name of the group in the configuration file
-                </para>
-                <informaltable rules="all">
-                    <thead>
-                        <tr>
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
-                            <td>Access Level</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td>POST</td>
-                            <td>/groups?name=xxx&amp;default=Y</td>
-                            <td>Add group name and default</td>
-                            <td>Support, Service Admin</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-            </section>
+        </section>
+        <section>
+            <title>API Rate Limiting</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>POST</td>
+                        <td>/groups?name=xxx&amp;default=Y</td>
+                        <td>Add group name and default</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/groups</td>
+                        <td>View all groups for API rate limiting</td>
+                    </tr>
+
+                    Verb
+	URI
+	Description
+	Access Level
+POST
+	/management/groups?name=xxx&default=Y
+	Add group name and default.
+	Support, Service Admin
+GET
+	/management/groups
+	View all groups for API rate limiting
+	Support, Service Admin
+PUT
+	/management/groups/id/setdefault?default=Y
+	Updates the default for a given group
+	Support, Service Admin
+DELETE
+	/management/groups/id
+	Deletes a group
+	Support, Service Admin
+POST
+	/management/groups/id/accounts/id
+	Add the account to the group
+	Support, Service, Admin
+GET
+	/management/accounts/id/groups
+	View all groups for the account
+	Support, Service Admin
+DELETE
+	/management/accounts/id/groups
+	Deletes all groups for the account
+	Support, Service Admin 
+
+                </tbody>
+            </informaltable>
         </section>
         <section>
             <title>Viewing Events</title>
