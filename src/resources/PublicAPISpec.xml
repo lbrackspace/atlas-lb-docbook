@@ -680,12 +680,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-response.xml" parse="text"/>
 </programlisting>       
 </example>
-<example>                
-<title>List Load Balancers Response: JSON</title>                 
+<example>
+<title>List Load Balancers Response: JSON</title>
 <programlisting language="javascript"><?db-font-size 90% ?>
 <xi:include href="samples/lb-list-response.json" parse="text"/>
-</programlisting>       
-</example>               
+</programlisting>
+</example>
             </section>
             <section>
                 <title>List Load Balancer Details</title>

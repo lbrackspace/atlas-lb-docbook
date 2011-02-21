@@ -73,66 +73,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1817" column="36" selection-start="74576" selection-end="74576" vertical-scroll-proportion="-335.19232">
-              <folding>
-                <element signature="tag#info#0;tag#book#0" expanded="false" />
-                <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
-                <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
-                <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
-                <element signature="tag#section#4;tag#chapter#0;tag#book#0" expanded="false" />
-                <element signature="tag#chapter#1;tag#book#0" expanded="false" />
-                <element signature="tag#section#0;tag#chapter#1;tag#book#0" expanded="false" />
-                <element signature="tag#section#0;tag#chapter#2;tag#book#0" expanded="false" />
-                <element signature="tag#section#3;tag#chapter#2;tag#book#0" expanded="false" />
-                <element signature="tag#section#5;tag#chapter#2;tag#book#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1319" column="61" selection-start="65437" selection-end="65437" vertical-scroll-proportion="-9.727483">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-list-details-response.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="5" selection-start="262" selection-end="1034" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-create-required-request.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-create-required-request.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-create-required-sharedip-request.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="682" column="0" selection-start="35418" selection-end="35630" vertical-scroll-proportion="0.18623024">
               <folding />
             </state>
           </provider>
@@ -152,9 +96,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json" />
-        <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
+        <option value="$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json" />
+        <option value="$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json" />
+        <option value="$PROJECT_DIR$/src/resources/samples/lb-list-response.json" />
+        <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
       </list>
     </option>
   </component>
@@ -202,9 +148,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -265,6 +210,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,13 +218,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PhpRunConfigurationType" factoryName="PHP">
@@ -310,7 +256,7 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit">
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" adl_options="" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" class_name="" debugger_sdk="Module SDK" html_or_swf_file_path="" main_class_name="" method_name="" module_name="" output_log_level="" package_name="" port="0" run_mode="HtmlOrSwfFile" scope="Class" socket_policy_port="0" url_to_launch="http://">
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -436,7 +382,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
+    <frame x="-1" y="22" width="1680" height="1024" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -450,7 +396,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3002451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30392158" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -529,62 +475,92 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json">
+    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="5" selection-start="262" selection-end="1034" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2011" column="30" selection-start="82391" selection-end="82391" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="17" selection-start="77" selection-end="77" vertical-scroll-proportion="0.05226481">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-response.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="28" selection-start="487" selection-end="487" vertical-scroll-proportion="0.323496">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-request.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="24" column="30" selection-start="644" selection-end="644" vertical-scroll-proportion="0.40862656">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1817" column="36" selection-start="74576" selection-end="74576" vertical-scroll-proportion="-335.19232">
-          <folding>
-            <element signature="tag#info#0;tag#book#0" expanded="false" />
-            <element signature="tag#section#1;tag#chapter#0;tag#book#0" expanded="false" />
-            <element signature="tag#section#2;tag#chapter#0;tag#book#0" expanded="false" />
-            <element signature="tag#section#3;tag#chapter#0;tag#book#0" expanded="false" />
-            <element signature="tag#section#4;tag#chapter#0;tag#book#0" expanded="false" />
-            <element signature="tag#chapter#1;tag#book#0" expanded="false" />
-            <element signature="tag#section#0;tag#chapter#1;tag#book#0" expanded="false" />
-            <element signature="tag#section#0;tag#chapter#2;tag#book#0" expanded="false" />
-            <element signature="tag#section#3;tag#chapter#2;tag#book#0" expanded="false" />
-            <element signature="tag#section#5;tag#chapter#2;tag#book#0" expanded="false" />
-          </folding>
+        <state line="26" column="14" selection-start="674" selection-end="674" vertical-scroll-proportion="0.43927357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-details-response.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="21" selection-start="666" selection-end="666" vertical-scroll-proportion="0.4162042">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-nodes-response.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="21" selection-start="101" selection-end="101" vertical-scroll-proportion="0.083240844">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-response.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="8" selection-start="645" selection-end="645" vertical-scroll-proportion="0.39955604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-response.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="16" selection-start="885" selection-end="885" vertical-scroll-proportion="0.33296338">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-report-billing-response.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1319" column="61" selection-start="65437" selection-end="65437" vertical-scroll-proportion="-9.727483">
+        <state line="682" column="0" selection-start="35418" selection-end="35630" vertical-scroll-proportion="0.18623024">
           <folding />
         </state>
       </provider>
