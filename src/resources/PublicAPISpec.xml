@@ -655,13 +655,17 @@ Content-Type: text/plain; charset=UTF-8
                     </tbody>
                 </informaltable>
                 <para>
-                    Normal Response Code(s): 
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
                 </para>
-                <para>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (<errorcode>503</errorcode>),  unauthorized (<errorcode>401</errorcode>),  badRequest (<errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>)                 
-                </para>
+                <simpara>
+                    Error Response Code(s):
+                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
                     </para>
