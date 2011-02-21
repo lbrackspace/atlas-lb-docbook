@@ -790,7 +790,7 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                     </note>
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Request: XML</title>\
+                    <title>Create Load Balancer (Required Attributes) Request: XML</title>
 <programlisting language="xml">
 <xi:include href="samples/lb-create-required-request.xml" parse="text"/>
 </programlisting>
