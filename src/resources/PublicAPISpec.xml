@@ -788,9 +788,12 @@ Content-Type: text/plain; charset=UTF-8
                         Users may configure all documented features of the load balancer at creation time by simply providing the additional elements / attributes in the request. 
                         Refer to the subsequent sections of this specification for an overview of all features the load balancing service supports.
                     </para>
-                    </note>                            
+                    </note>
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Request: XML</title>
+                    <title>Create Load Balancer (Required Attributes) Request: XML</title>\
+<programlisting language="xml">
+<xi:include href="samples/lb-create-required-request.xml" parse="text"/>
+</programlisting>
                     <literallayout class="monospaced">
 <![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
               name="a-new-loadbalancer"

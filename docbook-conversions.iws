@@ -76,7 +76,16 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="682" column="0" selection-start="35418" selection-end="35630" vertical-scroll-proportion="0.18623024">
+            <state line="794" column="56" selection-start="41539" selection-end="41539" vertical-scroll-proportion="0.2200903">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lb-create-required-request.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -485,11 +494,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-sharedip-request.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="17" selection-start="77" selection-end="77" vertical-scroll-proportion="0.05226481">
@@ -558,9 +562,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-create-required-request.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="682" column="0" selection-start="35418" selection-end="35630" vertical-scroll-proportion="0.18623024">
+        <state line="794" column="56" selection-start="41539" selection-end="41539" vertical-scroll-proportion="0.2200903">
           <folding />
         </state>
       </provider>
