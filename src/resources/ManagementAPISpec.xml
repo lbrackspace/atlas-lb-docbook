@@ -855,7 +855,7 @@ format="SVG" scale="60"/>
                     <tr align="left">
                         <td>PUT</td>
                         <td>/loadbalancers/loadBalancerId/hosts</td>
-                        <td>Update the host assignment(s) for a specified load balancer</td>
+                        <td>Update the host assignment(s) for a specified load balancer(Use 'reassignhosts' for multiple concurrent operations)</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -908,6 +908,22 @@ format="SVG" scale="60"/>
         }
     ]
 }]]>
+                </literallayout>
+            </section>
+            <section>
+                <title>Sample XML Request (PUT) (/loadbalancers/loadBalancerId/hosts)</title>
+                <literallayout class="monospaced">
+<![CDATA[<host xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+     id="2"/>]]>
+                </literallayout>
+            </section>
+            <section>
+                <title>Sample JSON Request (PUT) (/loadbalancers/loadBalancerId/hosts)</title>
+                <literallayout class="monospaced">
+<![CDATA[
+         {
+          "id": 2
+        }]]>
                 </literallayout>
             </section>
             <section>
