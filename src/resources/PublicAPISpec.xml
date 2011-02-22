@@ -793,48 +793,18 @@ Content-Type: text/plain; charset=UTF-8
                         Refer to the subsequent sections of this specification for an overview of all features the load balancing service supports.
                     </para>
                     </note>
-                <example>
-                    <title>Create Load Balancer (Required Attributes) Request: XML</title>
+<example>
+<title>Create Load Balancer (Required Attributes) Request: XML</title>
 <programlisting language="xml">
 <xi:include href="samples/lb-create-required-request.xml" parse="text"/>
 </programlisting>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-              name="a-new-loadbalancer"
-              port="80"
-              protocol="HTTP">
-    <virtualIps>
-        <virtualIp type="PUBLIC"/>
-    </virtualIps>
-    <nodes>
-        <node address="10.1.1.1" port="80" condition="ENABLED"/>
-    </nodes>
-</loadBalancer>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Create Load Balancer (Required Attributes) Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{"loadBalancer": {
-        "name": "a-new-loadbalancer",
-        "port": "80",
-        "protocol": "HTTP",
-        "virtualIps": {
-            "virtualIp": {
-                "type": "PUBLIC"
-            }
-        },
-        "nodes": {
-            "node": {
-                "address": "10.1.1.1",
-                "port": "80",
-                "condition": "ENABLED"
-            }
-        }
-    }
-}]]>
-                    </literallayout>
-                </example>
+</example>
+<example>
+<title>Create Load Balancer (Required Attributes) Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-create-required-request.json" parse="text"/>
+</programlisting>
+</example>
                 <para> In order to conserve IPv4 address space, Rackspace highly recommends sharing
                 Virtual IPs between your load balancers. If you have at least one load balancer, you
                 may create subsequent load balancers that share a single virtual IP by issuing a
@@ -846,22 +816,12 @@ Content-Type: text/plain; charset=UTF-8
                         Load balancers sharing a virtual IP <emphasis>must</emphasis> utilize a unique port.
                     </para>
                 </note>                
-                <example>
-                    <title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   name="a-new-loadbalancer"
-   port="80"
-   protocol="HTTP">
-   <virtualIps>
-      <virtualIp id="2341"/>
-   </virtualIps>
-   <nodes>
-      <node address="10.1.1.1" port="80" condition="ENABLED" />
-   </nodes>
-</loadBalancer>]]>
-                    </literallayout>
-                </example>
+<example>
+<title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-required-sharedip-request.xml"/>
+</programlisting>
+</example>
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
                     <literallayout>
