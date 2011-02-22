@@ -629,7 +629,7 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not require a request body.
                 </para>
-                <section>
+                <example>
                     <title>List Limits Response: XML</title>
                     <literallayout class="monospaced">
 <![CDATA[<limits xmlns="http://docs.openstack.org/common/api/v1.0">
@@ -646,8 +646,8 @@ Content-Type: text/plain; charset=UTF-8
 </limits>
 ]]>
                     </literallayout>
-                </section>
-                <section>
+                </example>
+                <example>
                     <title>List Limits Response: JSON</title>
                     <literallayout class="monospaced">
 <![CDATA[{
@@ -670,7 +670,7 @@ Content-Type: text/plain; charset=UTF-8
     }
 }]]>
                     </literallayout>
-                </section>
+                </example>
             </section>
         </section>
     </chapter>
