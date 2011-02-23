@@ -252,7 +252,7 @@ format="SVG" scale="60"/>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
             <informaltable rules="all">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <td>Verb</td>
                         <td>URI</td>
                         <td>Description</td>
@@ -1974,7 +1974,7 @@ loadbalancers/68/setstatus/PENDING_UPDATE
             <title>API Rate Limiting</title>
             <informaltable rules="all">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <td>Verb</td>
                         <td>URI</td>
                         <td>Description</td>
@@ -1984,51 +1984,257 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                 <tbody>
                     <tr align="left">
                         <td>POST</td>
-                        <td>/groups?name=xxx&amp;default=Y</td>
+                        <td>/management/groups?name=xxx&amp;default=Y</td>
                         <td>Add group name and default</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>GET</td>
-                        <td>/groups</td>
+                        <td>/management/groups</td>
                         <td>View all groups for API rate limiting</td>
                     </tr>
-
-                   <!-- Verb
-	URI
-	Description
-	Access Level
-POST
-	/management/groups?name=xxx&default=Y
-	Add group name and default.
-	Support, Service Admin
-GET
-	/management/groups
-	View all groups for API rate limiting
-	Support, Service Admin
-PUT
-	/management/groups/id/setdefault?default=Y
-	Updates the default for a given group
-	Support, Service Admin
-DELETE
-	/management/groups/id
-	Deletes a group
-	Support, Service Admin
-POST
-	/management/groups/id/accounts/id
-	Add the account to the group
-	Support, Service, Admin
-GET
-	/management/accounts/id/groups
-	View all groups for the account
-	Support, Service Admin
-DELETE
-	/management/accounts/id/groups
-	Deletes all groups for the account
-	Support, Service Admin -->
-
+                    <tr align="left">
+                        <td>PUT</td>
+                        <td>/management/groups/id/setdefault?default=Y</td>
+                        <td>Updates the default for a given group</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/management</td>
+                        <td>Deletes a group</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>POST</td>
+                        <td>/management/groups/id/accounts/id</td>
+                        <td>View all groups for the account</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/accounts/id/groups</td>
+                        <td>View all groups for the account</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/management/accounts/id/groups</td>
+                        <td>Deletes all groups for the account</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
                 </tbody>
             </informaltable>
+            <example>
+                <title>Sample JSON Response</title>
+                <literallayout class="monospaced">
+<![CDATA[{
+    "name": "customer_group",
+    "default": "true",
+    "id" : "1"
+}]]>
+                </literallayout>
+            </example>
+        </section>
+        <section>
+            <title>Load Balancer Limits (Absolute Limits)</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/loadbalancerlimitgroups</td>
+                        <td>List all load balancer limit groups</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>POST</td>
+                        <td>/management/loadbalancerlimitgroups</td>
+                        <td>Adds a load balancer limit group</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/management/loadbalancerlimitgroups/Id</td>
+                        <td>Deletes the specific load balancer group</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/loadbalancerlimitgroups/Id</td>
+                        <td>Display load balancer limit group details</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>PUT</td>
+                        <td>/management/loadbalancerlimitgroups/Id/setdefault</td>
+                        <td>Sets the load balancer limit group as the default</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <section>
+                <title>Description</title>
+                <para>
+                    Load balancer limits refers to the number of load balancers an account can have (formerly known as absolute limits). These imposed limits are defined in the form of groups with each group having a corresponding limit. There can only be one default limit at a time. Thus, if you create a new group and set it to default it will now become the default limit group.
+                </para>
+                <para>
+                    When deleting a load balancer limit group there may be accounts associated with that limit. If an account is associated with the limit that is being deleted it will assume the default limit. If the deleted limit was marked as the default limit then an existing group limit with the highest rate will become the default. If all limits are removed then users will be able to create as many load balancers as they can. However, there should be some error logs noting that no limits exist.
+                </para>
+            </section>
+            <example>
+                <title>Sample Request (POST) (XML)</title>
+                <literallayout class="monospaced">
+<![CDATA[<loadBalancerLimitGroup xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        name="high-limit"
+        limit="1000"
+        isDefault="true"/>
+]]>
+                </literallayout>
+            </example>
+            <example>
+                <title>Sample Response: XML</title>
+                <literallayout class="monospaced">
+<![CDATA[<loadBalancerLimitGroups xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0">
+    <loadBalancerLimitGroup
+            id="1"
+            name="low-limit"
+            limit="10"
+            isDefault="false"/>
+    <loadBalancerLimitGroup
+            id="2"
+            name="medium-limit"
+            limit="100"
+            isDefault="true"/>
+    <loadBalancerLimitGroup
+            id="3"
+            name="high-limit"
+            limit="1000"
+            isDefault="false"/>
+<loadBalancerLimitGroups/>]]>
+                </literallayout>
+            </example>
+        </section>
+        <section>
+            <title>Operations for Applying Load Balancer Limits</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/accounts/accountId/loadbalancerlimitgroup</td>
+                        <td>Lists the load balancer limit group associated with the account</td>
+                        <td>Support, Service Admin </td>
+                    </tr>
+                    <tr align="left">
+                        <td>POST</td>
+                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
+                        <td>Adds an account to a load balancer limit group (removes from previous group if applicable)</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
+                        <td>Deletes the specified account from the specified load balancer limit group</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <section>
+                <title>Description</title>
+                <para>
+                    Accounts can belong to only one load balancer limit group. If an account is currently part of a load balancer limit group then adding the account to a new group removes it from the original group. Deleting a load balancer from a group causes the account to use the default group. Load balancer limits are enforced immediately when trying to create load balancers. However, if an account has a designated load balancer limit and is then added to a group with a lower limit, it is possible for the account to have more load balancers than the new limit. Any further calls to create a load balancer will not be allowed since the account is above the limit.
+                </para>
+            </section>
+            <example>
+                <title>Sample XML Response</title>
+                <literallayout class="monospaced">
+<![CDATA[<loadBalancerLimitGroups xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0">
+    <loadBalancerLimitGroup
+            id="1"
+            name="low-limit"
+            limit="10"
+            isDefault="false"/>
+<loadBalancerLimitGroups/>]]>
+                </literallayout>
+            </example>
+        </section>
+        <section>
+            <title>Zeus Usage</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr>
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/hosts/usage</td>
+                        <td>View usage of Zeus hosts</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <section>
+                <title>Sample Response: XML</title>
+                <literallayout class="monospaced">
+<![CDATA[<hostUsageList xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+    <hostUsageRecord hostId="1">
+        <hostUsage
+                bandwidthin="0"
+                bandwidthout="0"
+                day="2011-02-01Z"/>
+    </hostUsageRecord>
+    <hostUsageRecord hostId="2">
+        <hostUsage
+                bandwidthin="0"
+                bandwidthout="0"
+                day="2011-02-01Z"/>
+    </hostUsageRecord>
+</hostUsageList>]]>
+                </literallayout>
+            </section>
+            <section>
+                <title>Sample Response: JSON</title>
+                <literallayout class="monospaced">
+<![CDATA[{
+    "hostUsageRecords": [
+        {
+            "hostUsages": [
+                {
+                    "day": "2011-02-14T00:00:00-0600",
+                    "bandwidthin": 0,
+                    "bandwidthout": 0
+                }
+            ],
+            "hostId": 1
+        },
+        {
+            "hostUsages": [
+            ],
+            "hostId": 2
+        }
+    ]
+}]]>
+                </literallayout>
+            </section>
         </section>
         <section>
             <title>Viewing Events</title>
@@ -2068,6 +2274,58 @@ The date parameters are optional. The results will list will be all load balance
     </loadBalancerServiceEvents>
 </accountLoadBalancerServiceEvents>]]>
                 </literallayout>
+            </section>
+        </section>
+        <section>
+            <title>Deleting a Load Balancer in Error/Suspended Status</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerId/error</td>
+                        <td>Deletes a load balancer in error status</td>
+                        <td>Operations</td>
+                    </tr>
+                    <tr align="left">
+                        <td>DELETE</td>
+                        <td>/loadbalancers/loadBalancerId/suspended</td>
+                        <td>Deletes a load balancer in suspended status</td>
+                        <td>Operations, Support</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <simpara>
+                Normal Response Code(s): <returnvalue>200</returnvalue>
+            </simpara>
+            <simpara> 
+                Error Response Code(s): 
+                loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (<errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (<errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
+            </simpara>
+            <section>
+                <title>Description</title>
+                <para>
+                    The remove load balancer function removes the specified load balancer and its associated configuration..  The load balancer must be in error or suspended status to be removed. Any and all configuration data is immediately purged and is not recoverable. A limited amount of information is available for deleted load balancers (including usage information and deletion time) by performing a GET on loadbalancers/id.
+                </para>
+            </section>
+            <section>
+                <title>Request</title>
+                <para>
+                    This operation does not require a request body.
+                </para>
+            </section>
+            <section>
+                <title>Response</title>
+                <para>
+                    This operation does not return a response body.
+                </para>
             </section>
         </section>
     </chapter>
