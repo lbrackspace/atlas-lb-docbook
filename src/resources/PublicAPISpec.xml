@@ -625,14 +625,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (<errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (<errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                 <para>
                     This operation does not require a request body.
                 </para>
@@ -725,19 +725,15 @@ Content-Type: text/plain; charset=UTF-8
                             <td>JSON, XML, ATOM</td>
                         </tr>
                     </tbody>
-                </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                </informaltable>   
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>                
                     <para> This operation provides detailed output for a specific load balancer
                 configured and associated with your account. This operation is not capable of
                 returning details for a load balancer which has been deleted. </para>
@@ -774,19 +770,15 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Create a new load balancer with the configuration defined by the request.</td>
                         </tr>
                     </tbody>
-                </informaltable>                
-                <simpara>
-                    Normal Response Code(s): 
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara> 
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> This operation asynchronously provisions a new load balancer based on the
                 configuration defined in the request object. Once the request is validated and
                 progress has started on the provisioning process, a response object will be
@@ -868,18 +860,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para>
                         The remove load balancer function removes the specified load balancer and its associated configuration from the account. Any and all configuration data is immediately purged and is not recoverable.
                     </para>               
@@ -928,19 +916,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> The nodes defined by the load balancer are responsible for servicing the
                 requests received through the load balancer's virtual IP. By default, the load
                 balancer employs a basic health check that ensures the node is listening on its
@@ -1040,17 +1023,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>202</returnvalue>
-                </simpara>                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>                
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>             
                     <para>
                         This operation asynchronously updates the attributes of the specified load balancer. 
                         Upon successful validation of the request, the service will return a <returnvalue>202 (Accepted)</returnvalue> response code. 
@@ -1118,19 +1098,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> A virtual IP (VIP) makes a load balancer accessible by clients. The load
                 balancing service supports either a public VIP, routable on the public Internet, or
                 a ServiceNet address, routable only within the region in which the load balancer
@@ -1198,18 +1173,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> The load balancer usage reports provide a view of all transfer, average
                 number of connections and number of virtual IPs associated with the load balancing
                 service. Current usage represents all usage recorded within the last 24 hours.
@@ -1277,19 +1248,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> The access list management feature allows for fine-grained network access
                 controls to be applied to the load balancer's virtual IP address. A single IP
                 address, multiple IP addresses, or entire network subnets can be added as a
@@ -1360,19 +1326,14 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </informaltable>
-            <simpara>
-                Normal Response Code(s): 
-                <returnvalue>200</returnvalue>
-                <returnvalue>202</returnvalue>
-            </simpara>
-            <simpara>                     
-                Error Response Code(s):                     
-                loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                serviceUnavailable (<errorcode>503</errorcode>),                     
-                unauthorized (<errorcode>401</errorcode>),                     
-                badRequest (<errorcode>400</errorcode>),                     
-                overLimit (<errorcode>413</errorcode>)                 
-            </simpara>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+            </para>
+            <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>) </simpara>
                 <para> The load balancing service includes a health monitoring operation which
                 periodically checks your back-end nodes to ensure they are responding correctly. If
                 a node is not responding, it is removed from rotation until the health monitor
@@ -1531,19 +1492,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> Session persistence is a feature of the load balancing service which
                 forces subsequent requests from clients to be directed to the same node. This is
                 common with many web applications that do not inherently share application state
@@ -1613,19 +1569,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> This operation allows the user to enable/disable connection
                 logging.</para>
                     <para>
@@ -1684,19 +1635,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
-                    <returnvalue>200</returnvalue>
-                    <returnvalue>202</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>, <returnvalue>202</returnvalue>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para>
                         The connection throttling feature imposes limits on the number of connections per IP address to help mitigate malicious or abusive traffic to your applications.  The following properties can be configured based on the traffic patterns for your sites.
                     </para>
@@ -1761,17 +1707,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
-                </simpara>                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> All load balancers must define the protocol of the service which is being
                 load balanced. The protocol selection should be based on the protocol of the
                 back-end nodes. When configuring a load balancer, the port selected will be the
@@ -1810,18 +1753,14 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s): 
+                <para>
+                    Normal Response Code(s):
                     <returnvalue>200</returnvalue>
-                </simpara>
-                <simpara>                     
-                    Error Response Code(s):                     
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),                     
-                    serviceUnavailable (<errorcode>503</errorcode>),                     
-                    unauthorized (<errorcode>401</errorcode>),                     
-                    badRequest (<errorcode>400</errorcode>),                     
-                    overLimit (<errorcode>413</errorcode>)                 
-                </simpara>
+                </para>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>) </simpara>
                     <para> All load balancers utilize an algorithm that defines how traffic should
                 be directed between back-end nodes. The default algorithm for newly created load
                 balancers is <code>RANDOM</code>, which can be overridden at creation time or
