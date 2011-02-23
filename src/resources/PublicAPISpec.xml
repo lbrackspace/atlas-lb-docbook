@@ -51,7 +51,7 @@ format="SVG" scale="60"/>
         </copyright>
         <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Cloud Load Balancers™</productname>
-        <pubdate>02/17/11</pubdate>
+        <pubdate>02/23/11</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -59,8 +59,9 @@ format="SVG" scale="60"/>
         </legalnotice>
         <abstract>
             <para> This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Load Balancers™ Application Program Interface (<abbrev>API</abbrev>) for
-                Load Balancing as a Service (<abbrev>LBaaS</abbrev>). </para>
+                applications using the Rackspace Cloud Load Balancers™ Application Program Interface
+                    (<abbrev>API</abbrev>) for Load Balancing as a Service (<abbrev>LBaaS</abbrev>).
+            </para>
         </abstract>
         <cover>
             <para>this is a placeholder for the front cover</para>
@@ -107,7 +108,7 @@ format="SVG" scale="60"/>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="1" align="center">Feb. 17, 2011</td>
+                        <td colspan="1" align="center">Feb. 23, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
@@ -121,12 +122,12 @@ format="SVG" scale="60"/>
         </section>
         <section>
             <title>Additional Resources</title>
-            <para> You can download the most current version pf this and other API-related
+            <para> You can download the most current version of this and other API-related
                 documents, including this document, from <link
                     xlink:href="http://docs.rackspacecloud.com/api/">
                     http://docs.rackspacecloud.com/api/</link>. </para>
-            <para> For more details about the Cloud Load Balancers service, refer to <link
-                    xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/sites/"
+            <para> For more details about Rackspace Cloud products, refer to <link
+                    xlink:href="http://www.rackspace.com/cloud/"
                     >http://www.rackspace.com/cloud</link>. This site also offers links to
                 Rackspace's official support channels, including knowledge base articles, forums,
                 phone, chat, and email.</para>
@@ -629,48 +630,18 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not require a request body.
                 </para>
-                <section>
-                    <title>List Limits Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<limits xmlns="http://docs.openstack.org/common/api/v1.0">
-    <rates>
-        <rate uri="/" regex=".*/([0-9]+)/loadbalancers.*">
-            <limit
-                    verb="GET"
-                    value="600000"
-                    remaining="426852"
-                    unit="HOUR"
-                    next-available="2011-02-22T19:32:43.835Z"/>
-        </rate>
-    </rates>
-</limits>
-]]>
-                    </literallayout>
-                </section>
-                <section>
+                <example>                
+                    <title>List Limits Response: XML</title>                 
+                    <programlisting language="xml">
+                        <xi:include href="samples/lb-limits-response.xml" parse="text"/>
+                    </programlisting>       
+                </example>
+                <example>
                     <title>List Limits Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "limits" : {
-        "rate" : [
-            {
-                "uri" : "/v1.0/*",
-                "regex" : ".*/([0-9]+)/loadbalancers.*",
-                "limit" : [
-                    {
-                        "verb" : "GET",
-                        "value" : 600000,
-                        "remaining" : 426852,
-                        "unit" : "HOUR",
-                        "next-available" : "2011-02-22T19:32:43.835Z"
-                    }
-                ]
-            }
-        ]
-    }
-}]]>
-                    </literallayout>
-                </section>
+                    <programlisting language="javascript">
+                        <xi:include href="samples/lb-limits-response.json" parse="text"/>
+                    </programlisting>
+                </example>
             </section>
         </section>
     </chapter>
@@ -864,63 +835,18 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-create-required-sharedip-request.xml"/>
 </programlisting>
 </example>
-                <example>
-                    <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
-                    <literallayout>
-<![CDATA[{
-   "loadBalancer":{
-      "name":"a-new-loadbalancer",
-      "port":"80",
-      "protocol":"HTTP",
-      "virtualIps":[
-         {
-            "id":"2341"
-         }
-      ],
-      "nodes":[
-         {
-            "address":"10.1.1.1",
-            "port":"80",
-            "condition":"ENABLED"
-         }
-      ]
-   }
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Create Load Balancer (Required Attributes with Shared IP) Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-        id="144"
-        name="a-new-loadbalancer"
-        algorithm="RANDOM"
-        protocol="HTTP"
-        port="83"
-        status="BUILD">
-    <virtualIps>
-        <virtualIp
-                id="39"
-                address="206.10.10.210"
-                ipVersion="IPV4"
-                type="PUBLIC" />
-    </virtualIps>
-    <nodes>
-        <node
-                id="653"
-                address="10.1.1.1"
-                port="80"
-                condition="ENABLED"
-                status="ONLINE"
-                weight="1" />
-    </nodes>
-    <cluster name="Cluster 1" />
-    <created time="2011-02-08T21:19:55Z" />
-    <updated time="2011-02-08T21:19:55Z" />
-    <connectionLogging enabled="false" />
-</loadBalancer>]]>
-                    </literallayout>
-                </example>
+<example>
+<title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
+</programlisting>
+</example>
+<example>
+<title>Create Load Balancer (Required Attributes with Shared IP) Response: XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-required-sharedip-response.xml" parse="text"/>
+</programlisting>
+</example>                
             </section>
             <section>
                 <title>Remove Load Balancer</title>
@@ -1044,91 +970,55 @@ Content-Type: text/plain; charset=UTF-8
                 Internet. </para>
                     <para>
                         This operation does not require a request body.
-                    </para>          
-                <example>
-                    <title>List Specific Node Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-        id="410"
-        address="10.1.1.1"
-        port="80"
-        condition="ENABLED"
-        status="ONLINE"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Add Node Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <node
-            address="10.1.1.1"
-            port="80"
-            condition="ENABLED"/>
-</nodes>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Add Node Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <node
-            address="10.1.1.1"
-            port="80"
-            condition="ENABLED"
-            status="ONLINE" />
-</nodes>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Add Node Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{"nodes": [
-        {
-            "port": 80,
-            "condition": "ENABLED",
-            "address": "10.1.1.1"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Add Node Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{"nodes": [
-        {
-            "address": "10.1.1.1",
-            "port": "80",
-            "condition": "ENABLED"
-            "status": "PENDING_UPDATE"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+                    </para>    
+<example>                
+<title>List Node Response: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-list-node-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>Add Node Request: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-add-node-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>Add Node Response: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-add-node-response.xml" parse="text"/>
+</programlisting>       
+</example>                
+<example>
+<title>Add Node Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-add-node-request.json" parse="text"/>
+</programlisting>
+</example>
+<example>
+<title>Add Node Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-add-node-response.json" parse="text"/>
+</programlisting>
+</example>
                 <note>
                     <para> The node's IP and Port are immutable attributes and cannot be modified by
                     the caller for a &PUT; request. Supplying an unsupported attribute will result
-                    in a badRequest (400) fault.   Additionally, a load balancer supports a maximum
+                    in a <returnvalue>400 (badRequest)</returnvalue> fault.   Additionally, a load balancer supports a maximum
                     of 25 nodes.</para>
                 </note>
-                <example>
-                    <title>Update Node Attributes Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-      condition="DISABLED"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Node Attributes Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-   "node":{
-      "condition":"DISABLED"
-   }
-}]]>
-                    </literallayout>
-                </example>
+<example>
+<title>Update Node Attributes Request: XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-update-node-attributes-request.xml" parse="text"/>
+</programlisting>
+</example>
+<example>
+<title>Update Node Attributes Request: JSON</title>
+<programlisting language="JSON">
+<xi:include href="samples/lb-update-node-attributes-request.json" parse="text"/>
+</programlisting>
+</example>
             </section>
             <section>
                 <title>Update Load Balancer Attributes</title>
@@ -1190,28 +1080,18 @@ Content-Type: text/plain; charset=UTF-8
                         The load balancer's ID and status are immutable attributes and cannot be modified by the caller. Supplying an unsupported attribute will result in a <returnvalue>400 (badRequest)</returnvalue> fault.
                     </para>
                     </note>
-                <example>
-                    <title>Update Load Balancer Attributes Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-        name="sample-loadbalancer"
-        algorithm="RANDOM"
-        protocol="HTTP"
-        port="80" />]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Load Balancer Attributes Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "name": "sample-loadbalancer",
-    "algorithm": "RANDOM",
-    "protocol": "HTTP",
-    "port": "80",
-    "connectionLogging": "true"
-}]]>
-                    </literallayout>
-                </example>
+<example>                
+<title>Update Load Balancer Attributes Request: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
+</programlisting>
+</example>
+<example>
+<title>Update Load Balancer Attributes Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
+</programlisting>
+</example>
             </section>
             <section>
                 <title>Virtual IP Management</title>
@@ -1259,7 +1139,7 @@ Content-Type: text/plain; charset=UTF-8
                     <note>
                         <para> All load balancers must have at least one virtual IP associated with
                     them at all times. Attempting to delete the last virtual IP will result in a
-                    badRequest (400) fault. </para>
+                    <returnvalue>400 (badRequest)</returnvalue> fault. </para>
                     </note>
                     <table rules="all">
                         <caption>Virtual IP Types</caption>
@@ -1279,31 +1159,19 @@ Content-Type: text/plain; charset=UTF-8
                                 <td>An address that is routable only on ServiceNet</td>
                             </tr>
                         </tbody>
-                    </table>   
-                    <example>
-                        <title>List Virtual IPs Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<virtualIps xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <virtualIp
-            id="1000"
-            address="206.10.10.210"
-            type="PUBLIC"/>
-</virtualIps>]]>
-                    </literallayout>
-                    </example>            
-                <example>
-                    <title>List Virtual IPs Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{"virtualIps": [
-        {
-            "id": "1000",
-            "address": "206.10.10.210",
-            "type": "PUBLIC"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+                    </table>
+<example>                
+<title>List Virtual IPs Response: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>List Virtual IPs Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-vips-response.json" parse="text"/>
+</programlisting>
+</example>
             </section>
             <section>
                 <title>Usage Reporting</title>
@@ -1354,61 +1222,19 @@ Content-Type: text/plain; charset=UTF-8
                     </note>
                     <para>
                         This operation does not require a request body.
-                    </para>           
-                <example>
-                    <title>Report Load Balancer Usage Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-  <loadBalancerUsageRecord
-        id="394"
-        averageNumConnections="0.0"
-        incomingTransfer="0"
-        outgoingTransfer="0"
-        numVips="1"
-        numPolls="32"
-        startTime="2010-12-21T12:32:07-06:00"
-        endTime="2010-12-21T16:23:54-06:00" />
-  <loadBalancerUsageRecord
-        id="473"
-        averageNumConnections="0.0"
-        incomingTransfer="0"
-        outgoingTransfer="0"
-        numVips="2"
-        numPolls="5"
-        startTime="2010-12-21T12:32:07-06:00"
-        endTime="2010-12-21T12:36:30-06:00" />
-</loadBalancerUsage>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Report Load Balancer Usage Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "loadBalancerUsageRecords": [
-        {
-            "id": "394",
-            "averageNumConnections": "0.0",
-            "incomingTransfer": "0",
-            "outgoingTransfer": "0",
-            "numVips": "1",
-            "numPolls" "32",
-            "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T16:23:54-06:00"
-        },
-        {
-            "id": "473",
-            "averageNumConnections": "0.0",
-            "incomingTransfer": "0",
-            "outgoingTransfer": "0",
-            "numVips": "2",
-            "numPolls": "5",
-            "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T12:36:30-06:00"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+                    </para>
+<example>                
+<title>Report Load Balancer Usage Response: XML</title>                 
+<programlisting language="xml">
+<xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
+</programlisting>       
+</example>   
+<example>
+<title>Report Load Balancer Usage Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-report-usage-response.json" parse="text"/>
+</programlisting>
+</example>                
 <example>                
 <title>Report Account Billing Response: XML</title>                
 <programlisting language="xml"><?db-font-size 90% ?>
@@ -1479,102 +1305,30 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         This operation does not require a request body.
                     </para>
-                <example>
-                    <title>Retrieve Access List Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-   <networkItem
-          id="1000"
-          address="206.160.165.40"
-          type="ALLOW" />
-   <networkItem
-          id="1001"
-          address="206.160.165.0/24"
-          type="DENY" />
-</accessList>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Retrieve Access List Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "networkItems": [
-        {
-            "address": "206.160.163.21",
-            "id": 23,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.165.11",
-            "id": 24,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.163.21",
-            "id": 25,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.165.11",
-            "id": 26,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.123.11",
-            "id": 27,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.122.21",
-            "id": 28,
-            "type": "DENY"
-        },
-        {
-            "address": "206.140.123.11",
-            "id": 29,
-            "type": "DENY"
-        },
-        {
-            "address": "206.140.122.21",
-            "id": 30,
-            "type": "DENY"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Access List Attributes Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-   <networkItem
-      address="206.160.165.1"
-      type="ALLOW" />
-   <networkItem
-      address="206.160.165.2"
-      type="DENY" />
-</accessList>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Access List Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "networkItems": [
-        {
-            "address": "206.160.163.21",
-            "id": 23,
-            "type": "DENY"
-        },
-        {
-            "address": "206.160.165.11",
-            "id": 24,
-            "type": "DENY"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+<example>                
+<title>Retrieve Access List Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>Retrieve Access List Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
+</programlisting>
+</example>
+<example>                
+<title>Update Access List Attributes Request: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-update-accesslist-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>Update Access List Attributes Request: XML</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
+</programlisting>       
+</example>
             </section>
         <section>
             <title>Active Health Monitoring</title>
@@ -1649,81 +1403,48 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Health monitor is a HTTPS monitor</td>
                         </tr>
                     </tbody>
-                </table>   
-            <example>
-                <title>Monitor Connections Response: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   type="CONNECT"
-   delay="10"
-   timeout="10"
-   attemptsBeforeDeactivation="3" />]]>
-                    </literallayout>
-            </example>
-            <example>
-                <title>Monitor Connections Response: JSON</title>
-                <literallayout class="monospaced">
-<![CDATA[{
-    "type": "CONNECT",
-    "delay": "10",
-    "timeout": "10",
-    "attemptsBeforeDeactivation": "3"
-}]]>
-                    </literallayout>
-            </example>
-            <example>
-                <title>Monitor HTTP Response: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   type="HTTP"
-   delay="10"
-   timeout="10"
-   attemptsBeforeDeactivation="3"
-   path="/"
-   statusRegex="^[234][0-9][0-9]$"
-   bodyRegex="" />]]>
-                    </literallayout>
-            </example>
-            <example>
-                <title>Monitor HTTPS Response: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   type="HTTPS"
-   delay="10"
-   timeout="10"
-   attemptsBeforeDeactivation="3"
-   path="/"
-   statusRegex="^[234][0-9][0-9]$"
-   bodyRegex="" />
-]]>
-                    </literallayout>
-            </example>
+                </table>    
+<example>                
+<title>Monitor Connections Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
+</programlisting>       
+</example>             
+<example>
+<title>Monitor Connections Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
+</programlisting>
+</example>
+<example>                
+<title>Monitor HTTP Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>Monitor HTTPs Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+</programlisting>       
+</example>            
             <note>
                 <para>
                     Attributes that are required for a &POST; request are displayed in the samples, unless otherwise specified.
                 </para>
             </note>
-            <example>
-                <title>Monitor Connections Request: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   type="CONNECT"
-   delay="10"
-   timeout="10"
-   attemptsBeforeDeactivation="3" />]]>
-                    </literallayout>
-            </example>
-            <example>
-                <title>Monitor Connections Request: JSON</title>
-                <literallayout class="monospaced">
-<![CDATA[{
-    "type": "CONNECT",
-    "delay": "10",
-    "timeout": "10",
-    "attemptsBeforeDeactivation": "3"
-}]]>
-                    </literallayout>
-            </example>
+<example>                
+<title>Monitor Connections Request: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>Monitor Connections Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
+</programlisting>
+</example>
                 <section>
                     <title>Connection Monitor</title>
                     <para> The monitor connects to each node on its defined port to ensure that the
@@ -1841,39 +1562,31 @@ Content-Type: text/plain; charset=UTF-8
                             for HTTP load balancing only.</td>
                             </tr>
                         </tbody>
-                    </table>
-                <example>
-                    <title>List Session Persistence Configuration Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Session Persistence Configuration Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-   "sessionPersistence":{
-      "persistenceType":"HTTP_COOKIE"
-   }
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Set Session Persistence Type Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<sessionPersistence xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" persistenceType="HTTP_COOKIE"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Set Session Persistence Type Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-   "sessionPersistence":{
-      "persistenceType":"HTTP_COOKIE"
-   }
-}]]>
-                    </literallayout>
-                </example>
+                    </table>  
+<example>                
+<title>List Session Persistence Configuration Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-persistence-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>List Session Persistence Configuration Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
+</programlisting>
+</example>
+<example>
+<title>Set Session Persistence Type Request: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-set-persistence-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>Set Session Persistence Type Request: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
+</programlisting>
+</example>               
             </section>
             <section>
                 <title>Connection Logging</title>
@@ -1916,38 +1629,30 @@ Content-Type: text/plain; charset=UTF-8
                     <para>
                         This operation does not require a request body.
                     </para>
-                <example>
-                    <title>List Connection Logging Configuration Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Connection Logging Configuration Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-   "connectionLogging": {
-      "enabled": "true"
-   }
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Enable Connection Logging Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<connectionLogging xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true"/>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Enable Connection Logging Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-   "connectionLogging":{
-      "enabled":"true"
-   }
-}]]>
-                    </literallayout>
-                </example>
+<example>
+<title>List Connection Logging Configuration Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-logging-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>List Connection Logging Configuration Response: JSON</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-logging-response.json" parse="text"/>
+</programlisting>       
+</example>    
+<example>
+<title>Enable Connection Logging Request: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-enable-logging-request.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>
+<title>Enable Connection Logging Request: JSON</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-enable-logging-request.json" parse="text"/>
+</programlisting>       
+</example>                 
             </section>
             <section>
                 <title>Connection Throttling</title>
@@ -2011,48 +1716,30 @@ Content-Type: text/plain; charset=UTF-8
                         </listitem>
                     </itemizedlist>             
                     <para>This operation does not require a request body.</para>
-                <example>
-                    <title>List Connection Throttling Configuration Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-   minConnections="10"
-   maxConnections="100"
-   maxConnectionRate="50"
-   rateInterval="60" />]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Connection Throttling Configuration Response: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "maxConnections": 100,
-    "minConnections": 10,
-    "maxConnectionRate": 50,
-    "rateInterval": 60
-}]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Connection Throttling Configuration Request: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
-    minConnections="10"
-    maxConnections="100"
-    maxConnectionRate="50"
-    rateInterval="60" />]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>Update Connection Throttling Configuration Request: JSON</title>
-                    <literallayout class="monospaced">
-<![CDATA[{
-    "maxConnections": 10,
-    "minConnections": 100,
-    "maxConnectionRate": 50,
-    "rateInterval": 60
-}]]>
-                    </literallayout>
-                </example>
+<example>                
+<title>List Connection Throttling Configuration Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-throttling-response.xml" parse="text"/>
+</programlisting>       
+</example> 
+<example>                
+<title>List Connection Throttling Configuration Response: JSON</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-throttling-response.json" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>Update Connection Throttling Configuration Request: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-update-throttling-request.xml" parse="text"/>
+</programlisting>       
+</example> 
+<example>                
+<title>Update Connection Throttling Configuration Request: JSON</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
+</programlisting>       
+</example>
             </section>
             <section>
                 <title>Load Balancing Protocols</title>
@@ -2089,72 +1776,19 @@ Content-Type: text/plain; charset=UTF-8
                 default port for the given protocol unless otherwise specified. </para>                
                     <para>
                         This operation does not require a request body.
-                    </para>
-                <example>
-                    <title>List Load Balancing Protocols Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<protocols xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <protocol name="FTP" port="21" />
-    <protocol name="HTTP" port="80" />
-    <protocol name="IMAPv4" port="143" />
-    <protocol name="POP3" port="110" />
-    <protocol name="LDAP" port="389" />
-    <protocol name="LDAPS" port="636" />
-    <protocol name="HTTPS" port="443" />
-    <protocol name="IMAPS" port="993" />
-    <protocol name="POP3S" port="995" />
-    <protocol name="SMTP" port="25" />
-</protocols>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Load Balancing Protocols Response: JSON</title>
-                    <literallayout>
-<![CDATA[{"protocols": [
-        {
-            "name": "HTTP",
-            "port": "80"
-        },
-        {
-            "name": "FTP",
-            "port": "21"
-        },
-        {
-            "name": "IMAPv4",
-            "port": "143"
-        },
-        {
-            "name": "POP3",
-            "port": "110"
-        },
-        {
-            "name": "SMTP",
-            "port": "25"
-        },
-        {
-            "name": "LDAP",
-            "port": "389"
-        },
-        {
-            "name": "HTTPS",
-            "port": "443"
-        },
-        {
-            "name": "IMAPS",
-            "port": "993"
-        },
-        {
-            "name": "POP3S",
-            "port": "995"
-        },
-        {
-            "name": "LDAPS",
-            "port": "636"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+                    </para>             
+<example>                
+<title>List Load Balancing Protocols Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-protocols-response.xml" parse="text"/>
+</programlisting>       
+</example>
+<example>                
+<title>List Load Balancing Protocols Response: JSON</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
+</programlisting>       
+</example>                 
             </section>
             <section>
                 <title>Load Balancing Algorithms</title>
@@ -2229,42 +1863,19 @@ Content-Type: text/plain; charset=UTF-8
                             the load balancer's node configuration.</td>
                         </tr>
                     </tbody>
-                </table>                
-                <example>
-                    <title>List Load Balancing Algorithms Response: XML</title>
-                    <literallayout class="monospaced">
-<![CDATA[<algorithms xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-   <algorithm name="LEAST_CONNECTIONS" />
-   <algorithm name="RANDOM" />
-   <algorithm name="ROUND_ROBIN" />
-   <algorithm name="WEIGHTED_LEAST_CONNECTIONS" />
-   <algorithm name="WEIGHTED_ROUND_ROBIN" />
-</algorithms>]]>
-                    </literallayout>
-                </example>
-                <example>
-                    <title>List Load Balancing Algorithms Response: JSON</title>
-                    <literallayout>
-<![CDATA[{"algorithms": [
-        {
-            "name": "LEAST_CONNECTIONS"
-        },
-        {
-            "name": "RANDOM"
-        },
-        {
-            "name": "ROUND_ROBIN"
-        },
-        {
-            "name": "WEIGHTED_LEAST_CONNECTIONS"
-        },
-        {
-            "name": "WEIGHTED_ROUND_ROBIN"
-        }
-    ]
-}]]>
-                    </literallayout>
-                </example>
+                </table>
+<example>                
+<title>List Load Balancing Algorithms Response: XML</title>                
+<programlisting language="xml">
+<xi:include href="samples/lb-list-algorithms-response.xml" parse="text"/>
+</programlisting>       
+</example> 
+<example>                
+<title>List Load Balancing Algorithms Response: JSON</title>                
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
+</programlisting>       
+</example>            
             </section>
             <section>
                 <title>Load Balancer Status</title>

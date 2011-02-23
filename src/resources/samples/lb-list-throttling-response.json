@@ -1,0 +1,6 @@
+{
+    "maxConnections": 100,
+    "minConnections": 10,
+    "maxConnectionRate": 50,
+    "rateInterval": 60
+}

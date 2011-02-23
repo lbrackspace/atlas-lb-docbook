@@ -1,0 +1,2 @@
+<node xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+    condition="DISABLED"/>
