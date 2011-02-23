@@ -571,11 +571,11 @@ Content-Type: text/plain; charset=UTF-8
                     </tbody>
                 </table>
                 <para>Rate limits are applied in order relative to the verb, going from least to most
-                    specific. For example, although the threshold for POST to */loadbalancers is 100 per day, 
-                    one cannot POST to */loadbalancers more than 10 times within a single minute because the 
-                    rate limits for any POST is 10/min.
-                    In the event you exceed the thresholds established for your account, a 413 
-                    (Rate Control) HTTP response will be returned with a Reply-After header to notify the 
+                    specific. For example, although the threshold for &POST; to /v1.0/* is 25 per minute, 
+                    one cannot &POST; to /v1.0/* more than 2 times per second  because the 
+                    rate limits for any &POST; is 2/second.
+                    In the event you exceed the thresholds established for your account, a <errorcode>413</errorcode> 
+                    (Rate Control) HTTP response will be returned with a <code>Reply-After</code> header to notify the 
                     client when they can attempt to try again.</para>
             </section>
             <section>
