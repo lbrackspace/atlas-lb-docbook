@@ -522,57 +522,51 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr>
                             <td>&GET;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>100/minute</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>5/second</td>
                         </tr>
                         <tr>
                             <td>&GET;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>6000/hour</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>100/minute</td>
                         </tr>
                         <tr align="left">
                             <td>&POST;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>10/minute</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>2/second</td>
                         </tr>
                         <tr>
                             <td>&POST;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>600/hour</td>
-                        </tr>
-                        <tr>
-                            <td>&POST;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>100/day</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>25/minute</td>
                         </tr>
                         <tr align="left">
                             <td>&PUT;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>50/minute</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>5/second</td>
                         </tr>
                         <tr align="left">
                             <td>&PUT;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>3000/hour</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>50/minute</td>
                         </tr>
                         <tr align="left">
                             <td>&DELETE;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>50/minute</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>2/second</td>
                         </tr>
                         <tr>
                             <td>&DELETE;</td>
-                            <td>/loadbalancers/*</td>
-                            <td>^/loadbalancers/.*</td>
-                            <td>3000/hour</td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>50/minute</td>
                         </tr>
                     </tbody>
                 </table>
