@@ -1217,6 +1217,7 @@ Content-Type: text/plain; charset=UTF-8
 </programlisting>       
 </example>     
             </section>
+<?hard-pagebreak?>
             <section>
                 <title>Access List Management</title>
                 <informaltable rules="all">
@@ -1820,6 +1821,7 @@ Content-Type: text/plain; charset=UTF-8
 </programlisting>       
 </example>            
             </section>
+<?hard-pagebreak?>
             <section>
                 <title>Load Balancer Status</title>
                 <para> All load balancers have a status attribute to signify the current
@@ -1869,6 +1871,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tbody>
                     </table>
             </section>
+<?hard-pagebreak?>
             <section>
                 <title>Node Condition</title>
                 <para> Every node in the load balancer has an associated condition which determines
