@@ -677,14 +677,10 @@ Content-Type: text/plain; charset=UTF-8
                     Normal Response Code(s):
                     <returnvalue>200</returnvalue>
                 </para>
-                <simpara>
-                    Error Response Code(s):
-                    loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),
-                    serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>),
-                    badRequest (<errorcode>400</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
+                <simpara> Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>) </simpara>
                     <para>
                         This operation provides a list of all load balancers configured and associated with your account.
                     </para>
@@ -838,7 +834,7 @@ Content-Type: text/plain; charset=UTF-8
 <example>
 <title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
 <programlisting language="xml">
-<xi:include href="samples/lb-create-required-sharedip-request.xml"/>
+<xi:include href="samples/lb-create-required-sharedip-request.xml" parse="text"/>
 </programlisting>
 </example>
 <example>
