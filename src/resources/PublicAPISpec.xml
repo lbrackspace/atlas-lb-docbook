@@ -60,7 +60,7 @@ format="SVG" scale="60"/>
         <abstract>
             <para> This document is intended for software developers interested in developing
                 applications using the Rackspace Cloud Load Balancers™ Application Program Interface
-                    (<abbrev>API</abbrev>) for Load Balancing as a Service (<abbrev>LBaaS</abbrev>).
+                    (<abbrev>API</abbrev>).
             </para>
         </abstract>
         <cover>
