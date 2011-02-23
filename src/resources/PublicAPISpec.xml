@@ -842,6 +842,7 @@ Content-Type: text/plain; charset=UTF-8
 </programlisting>
 </example>                
             </section>
+<?hard-pagebreak?>
             <section>
                 <title>Remove Load Balancer</title>
                 <informaltable rules="all">
@@ -1005,6 +1006,7 @@ Content-Type: text/plain; charset=UTF-8
 </programlisting>
 </example>
             </section>
+<?hard-pagebreak?>
             <section>
                 <title>Update Load Balancer Attributes</title>
                 <informaltable rules="all">
