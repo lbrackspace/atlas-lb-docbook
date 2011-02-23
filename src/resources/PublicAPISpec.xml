@@ -495,13 +495,19 @@ Content-Type: text/plain; charset=UTF-8
             </note>
             <section>
                 <title>Rate Limits</title>
-                <para>We specify rate limits in terms of both a human-readable wild-card URI and a
-                    machine- processable regular expression. The regular expression boundary matcher
-                    '^' takes effect after the root URI path. For example, the regular expression
-                    <code>^/loadbalancers</code> would match the bolded portion of the following URI:
-                        https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234//
-                            <emphasis role="bold">loadbalancers</emphasis>.</para>
-<?hard-pagebreak?>
+                <para>
+                    We specify rate limits in terms of both a
+                    human-readable wild-card URI and a
+                    machine-processable regular expression. The
+                    regular expression boundary matcher '^' takes
+                    effect after the root URI path. For example, the
+                    regular expression
+                    <code>^/v1.0/1234/loadbalancers</code> would match
+                    the bolded portion of the following URI:
+                    https://ord.loadbalancers.api.rackspacecloud.com<emphasis
+                    role="bold">/v1.0/1234/loadbalancers</emphasis>.
+                </para>
+                    <?hard-pagebreak?>
                 <table rules="all">
                     <caption>Default Rate Limits</caption>
                     <thead>
