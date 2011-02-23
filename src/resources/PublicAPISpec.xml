@@ -1951,7 +1951,7 @@ Content-Type: text/plain; charset=UTF-8
                 This fault is returned when the user has exceeded a currently allocated limit.
             </para>
             <literallayout class="monospaced">
-<![CDATA[<overLimit code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Your account is currently over the limit so your request could not be processed.</message>
 </overLimit>]]>
             </literallayout>
