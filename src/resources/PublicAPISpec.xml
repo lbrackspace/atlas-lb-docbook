@@ -32,8 +32,8 @@ format="SVG" scale="60"/>
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
-    <title>Cloud Load Balancers™ Developer Guide</title>
-    <titleabbrev>Cloud LBaaS Dev Guide</titleabbrev>
+    <title>Rackspace Cloud Load Balancers Developer Guide</title>
+    <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -50,7 +50,7 @@ format="SVG" scale="60"/>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0 BETA</releaseinfo>
-        <productname>Cloud Load Balancers™</productname>
+        <productname>Rackspace Cloud Load Balancers</productname>
         <pubdate>02/23/11</pubdate>
         <legalnotice role="rs-api">
             <annotation>
@@ -59,7 +59,7 @@ format="SVG" scale="60"/>
         </legalnotice>
         <abstract>
             <para> This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Load Balancers™ Application Program Interface
+                applications using the Rackspace Cloud Load Balancers Application Program Interface
                     (<abbrev>API</abbrev>).
             </para>
         </abstract>
@@ -75,7 +75,7 @@ format="SVG" scale="60"/>
         <section>
         <title>Intended Audience</title>
         <para> This guide is intended for software developers who want to create applications using
-            the Cloud Load Balancers™ API. It assumes the reader has a general understanding of
+            the Rackspace Cloud Load Balancers API. It assumes the reader has a general understanding of
                 load balancing concepts and is familiar with: </para>
         <para>
             <itemizedlist spacing="compact">
@@ -139,7 +139,7 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>Concepts</title>
-        <para> To use the Cloud Load Balancers API effectively, you should understand several key
+        <para> To use the Rackspace Cloud Load Balancers API effectively, you should understand several key
             concepts:</para>
         <section>
             <title>Load Balancer</title>
@@ -247,7 +247,7 @@ format="SVG" scale="60"/>
     </chapter>
     <chapter>
         <title>General API Information</title>
-        <para> The Cloud Load Balancers API is implemented using a ReSTful web service interface.
+        <para> The Rackspace Cloud Load Balancers API is implemented using a ReSTful web service interface.
             Like other products in the Rackspace Cloud suite, the load balancing service shares a
             common token-based authentication system that allows seamless access between products
             and services. </para>
@@ -370,7 +370,7 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Request/Response Types</title>
-            <para>The Cloud Load Balancers API supports both the JSON and XML data serialization
+            <para>The Rackspace Cloud Load Balancers API supports both the JSON and XML data serialization
                 formats. The request format is specified using the <code>Content-Type</code> header
                 and is required for operations that have a request body. The response format can be
                 specified in requests using either the <code>Accept</code> header or adding an
