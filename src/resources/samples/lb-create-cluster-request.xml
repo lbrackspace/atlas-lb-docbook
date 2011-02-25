@@ -1,0 +1,7 @@
+<cluster
+       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+       name="Cluster Gamma"
+       description="The third best cluster, ever."
+       dataCenter="DFW"
+       username="my username"
+       password="my password" />

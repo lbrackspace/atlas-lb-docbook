@@ -33,11 +33,12 @@ format="SVG" scale="60"/>
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
     <title>Load Balancing Service Management API Specification</title>
+    <titleabbrev>(Insert meaningful Abbreviation here)</titleabbrev>
     <info>
         <author>
             <personname>
-                          <firstname/>
-                   <surname/>
+                <firstname/>
+                <surname/>
             </personname>
             <affiliation>
                 <orgname>Rackspace Cloud</orgname>
@@ -45,15 +46,30 @@ format="SVG" scale="60"/>
         </author>
         <copyright>
             <year>2010</year>
-            <holder>Rackspace Hosting, Inc.</holder>
+            <year>2011</year>
+            <holder>Rackspace US, Inc.</holder>
         </copyright>
-        <releaseinfo/>
-
+        <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Cloud Sites: LBaaS</productname>
         <pubdate>11/11/10</pubdate>
+        <legalnotice role="rs-api">
+            <annotation>
+                <remark>Copyright details are filled in by the template.</remark>
+            </annotation>
+        </legalnotice>
         <abstract>
-            <para/>
+            <para>
+                This document is intended for software developers interested in developing
+                applications using the Rackspace Cloud Load Balancers Application Program Interface
+                (<abbrev>API</abbrev>).
+            </para>
         </abstract>
+        <cover>
+            <para>this is a placeholder for the front cover</para>
+        </cover>
+        <cover>
+            <para>this is a placeholder for the back cover</para>
+        </cover>
     </info>
     <chapter>
         <title>Management API Operations</title>
@@ -116,137 +132,54 @@ format="SVG" scale="60"/>
                     The GET response contains numerous attributes (numberOfLoadBalancingConfigurations, numberOfUniqueCustomers, numberOfHostMachines, and utilization) that are generated and immutable.  These attributes are calculated based on configurations associated with this cluster.
                 </para>
             </section>
-            <section>
-                <title>Sample XML Response (/clusters)</title>
-                <literallayout class="monospaced">
-<![CDATA[<clusters xmlns="http://docs.openstack.org/loadbalancers/api/mgmt/v1.0">
-   <cluster
-      id="1"
-      name="Cluster Alpha"
-      description="The best cluster, ever."
-      datacenter="DFW"
-      numberOfLoadBalancingConfigurations="410"
-      numberOfUniqueCustomers="348"
-      numberOfHostMachines="8"
-      utilization="59%" />
-   <cluster
-      id="2"
-      name="Cluster Beta"
-      description="The second best cluster, ever."
-      datacenter="ORD"
-      numberOfLoadBalancingConfigurations="580"
-      numberOfUniqueCustomers="490"
-      numberOfHostMachines="8"
-      utilization="76%" />
-</clusters>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/clusters)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"clusters": {
-        "cluster": [
-            {
-                "id": "1",
-                "name": "Cluster Alpha",
-                "description": "The best cluster, ever.",
-                "dataCenter": "DFW",
-                "numberOfLoadBalancingConfigurations": "410",
-                "numberOfUniqueCustomers": "348",
-                "numberOfHostMachines": "8",
-                "utilization": "59%"
-            },
-            {
-                "id": "1",
-                "name": "Cluster Beta",
-                "description": "The second best cluster, ever.",
-                "dataCenter": "DFW",
-                "numberOfLoadBalancingConfigurations": "580",
-                "numberOfUniqueCustomers": "490",
-                "numberOfHostMachines": "8",
-                "utilization": "76%"
-            }
-        ]
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Response (/clusters/clusterId)</title>
-                <literallayout class="monospaced">
-<![CDATA[<cluster
-      id="1"
-      name="Cluster Alpha"
-      description="The best cluster, ever."
-      datacenter="DFW"
-      numberOfLoadBalancingConfigurations="410"
-      numberOfUniqueCustomers="348"
-      numberOfHostMachines="8"
-      utilization="59%" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/clusters/clusterId)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"cluster": {
-        "id": "1",
-        "name": "Cluster Alpha",
-        "description": "The best cluster, ever.",
-        "dataCenter": "DFW",
-        "numberOfLoadBalancingConfigurations": "410",
-        "numberOfUniqueCustomers": "348",
-        "numberOfHostMachines": "8",
-        "utilization": "59%"
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Request (POST) (/clusters)</title>
-                <literallayout class="monospaced">
-<![CDATA[<cluster
-       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-       name="Cluster Gamma"
-       description="The third best cluster, ever."
-       dataCenter="DFW"
-       username="my username"
-       password="my password"/>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON POST Request (/clusters)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"cluster": {
-        "name": "Cluster Gamma",
-        "description": "The third best cluster, ever.",
-        "datacenter": "DFW",
-        "username" : "my username",
-        "password" : "my password"
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML PUT Request (/clusters/clusterid)</title>
-                <literallayout class="monospaced">
-<![CDATA[<cluster
-       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-       name="Cluster Delta"
-       description="The fourth best cluster, ever."
-       username="aaa"/>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON PUT Request (/clusters/clusterid)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"cluster": {
-        "name": "Cluster Delta",
-        "description": "The fourth best cluster, ever.",
-        "username": "aaa"
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/clusters): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-clusters-response.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/clusters): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-clusters-response.json" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/clusters/clusterId): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/clusters/clusterId): JSON</title>
+<programlisting language="json">
+<xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample POST Request (/clusters): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-cluster-request.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample POST Request (/clusters): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-create-cluster-request.json" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample PUT Request (cluster/clusterId): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-update-cluster-clusterid-request.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample PUT Request (cluster/clusterId): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-cluster-clusterid-request.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
@@ -427,41 +360,12 @@ format="SVG" scale="60"/>
                     </para>
                 </section>
             </section>
-            <section>
-                <title>Sample XML Response (/hosts) (/clusters/clusterId/hosts)</title>
-                <literallayout class="monospaced">
-<![CDATA[<hosts xmlns="http://docs.openstack.org/loadbalancers/api/mgmt/v1.0">
-    <host
-            id="1"
-            name="host1"
-            clusterId="1"
-            coreDeviceId="14410"
-            zone="A"
-            status="ACTIVE_TARGET"
-            maxConcurrentConnections="150000"
-            managementIpAddress="10.1.1.1"
-            managementSoapInterface="http://10.1.1.1:9090/soap"
-            utilization="60%"
-            numberOfLoadBalancingConfigurations="414"
-            numberOfUniqueCustomers="141"
-            soapEndpointActive="true"/>
-    <host
-            id="2"
-            name="host2"
-            clusterId="1"
-            coreDeviceId="15510"
-            zone="B"
-            status="ACTIVE_TARGET"
-            maxConcurrentConnections="150000"
-            managementIpAddress="10.1.1.2"
-            managementSoapInterface="http://10.1.1.2:9090/soap"
-            utilization="59%"
-            numberOfLoadBalancingConfigurations="520"
-            numberOfUniqueCustomers="515"
-            soapEndpointActive="true/>
-</hosts>]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/hosts) (/clusters/clusterId/hosts): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text" />
+</programlisting>
+</example>
             <section>
                 <title>Sample JSON Response (/hosts) (/clusters/clusterId/hosts)</title>
                 <literallayout class="monospaced">
