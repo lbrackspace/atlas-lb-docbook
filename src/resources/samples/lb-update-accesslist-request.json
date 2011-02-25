@@ -1,13 +1,11 @@
 {
-    "networkItems": [
+    "accessList": [
         {
             "address": "206.160.163.21",
-            "id": 23,
             "type": "DENY"
         },
         {
             "address": "206.160.165.11",
-            "id": 24,
             "type": "DENY"
         }
     ]

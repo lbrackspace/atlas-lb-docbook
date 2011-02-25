@@ -1289,7 +1289,7 @@ Content-Type: text/plain; charset=UTF-8
 </programlisting>       
 </example>
 <example>
-<title>Update Access List Attributes Request: XML</title>                
+<title>Update Access List Attributes Request: JSON</title>                
 <programlisting language="javascript">
 <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
 </programlisting>       
@@ -1478,7 +1478,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>List session persistence configuration</td>
                         </tr>
                         <tr align="left">
-                            <td>&POST;</td>
+                            <td>&PUT;</td>
                             <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
                             <td>Enable session persistence</td>
                         </tr>
@@ -1556,12 +1556,12 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td>&GET;</td>
-                            <td>/loadbalancers/loadBalancerId/connectionLogging</td>
+                            <td>/loadbalancers/loadBalancerId/connectionlogging</td>
                             <td>View current configuration of connection logging</td>
                         </tr>
                         <tr align="left">
                             <td>&PUT;</td>
-                            <td>/loadbalancers/loadBalancerId/connectionLogging</td>
+                            <td>/loadbalancers/loadBalancerId/connectionlogging</td>
                             <td>Enable or disable connection logging</td>
                         </tr>
                     </tbody>
