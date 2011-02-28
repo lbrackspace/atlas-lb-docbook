@@ -1,0 +1,4 @@
+<rateLimit xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+        ticketId="44410"
+        expirationTime="2010-10-17T00:00:00"
+        maxRequestsPerSecond="150" />

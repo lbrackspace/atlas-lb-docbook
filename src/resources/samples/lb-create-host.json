@@ -1,0 +1,14 @@
+{"host": {
+        "status": "BURN_IN",
+        "name": "someName",
+        "zone": "B",
+        "type": "FAILOVER",
+        "managementIp": "12.34.56.78",
+        "trafficManagerName": "zues01.blah.blah",
+        "clusterId": 1,
+        "maxConcurrentConnections": 5,
+        "coreDeviceId": "SomeCoreDevice",
+        "managementSoapInterface": "https://SomeSoapNode.com:9090",
+        "soapEndpointActive": "true"
+    }
+}

@@ -1,0 +1,13 @@
+{"loadbalancers": {
+        "loadbalancer": [
+            {
+                "id": "1"
+            }
+          ],
+           "host": [
+           {
+             "id": "2"
+           }
+        ]
+    }
+}
