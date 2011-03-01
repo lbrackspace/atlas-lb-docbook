@@ -1,8 +1,7 @@
-{"cluster": {
-        "name": "Cluster Gamma",
-        "description": "The third best cluster, ever.",
-        "datacenter": "DFW",
-        "username" : "my username",
-        "password" : "my password"
-    }
+{
+    "name": "Cluster Gamma",
+    "description": "The third best cluster, ever.",
+    "dataCenter": "DFW",
+    "username" : "my username",
+    "password" : "my password"
 }
