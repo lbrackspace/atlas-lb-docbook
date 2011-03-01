@@ -1,0 +1,17 @@
+<loadBalancerLimitGroups xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0">
+    <loadBalancerLimitGroup
+            id="1"
+            name="low-limit"
+            limit="10"
+            isDefault="false"/>
+    <loadBalancerLimitGroup
+            id="2"
+            name="medium-limit"
+            limit="100"
+            isDefault="true"/>
+    <loadBalancerLimitGroup
+            id="3"
+            name="high-limit"
+            limit="1000"
+            isDefault="false"/>
+</loadBalancerLimitGroups>

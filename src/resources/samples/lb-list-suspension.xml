@@ -1,0 +1,5 @@
+<suspension
+        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.00"
+        reason="User suspected of fraud"
+        ticketId="1054"
+        user="jdoe" />

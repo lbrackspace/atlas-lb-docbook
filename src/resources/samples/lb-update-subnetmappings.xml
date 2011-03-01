@@ -1,0 +1,7 @@
+<ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
+       <ns2:hostsubnet name="n01.zeus.something">
+           <ns2:netInterface name="eth1">
+	            <ns2:cidr block="192.168.0.0/16"/>
+           </ns2:netInterface>
+       </ns2:hostsubnet>
+</ns2:hostssubnet>

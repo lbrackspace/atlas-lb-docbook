@@ -26,12 +26,12 @@ format="SVG" scale="60"/>
 </inlinemediaobject>'>
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:xi="http://www.w3.org/2001/XInclude"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns:m="http://www.w3.org/1998/Math/MathML"
-      xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:db="http://docbook.org/ns/docbook">
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:m="http://www.w3.org/1998/Math/MathML"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:db="http://docbook.org/ns/docbook">
     <title>Load Balancing Service Management API Specification</title>
     <titleabbrev>(Insert meaningful Abbreviation here)</titleabbrev>
     <info>
@@ -800,96 +800,36 @@ format="SVG" scale="60"/>
 <xi:include href="samples/lb-list-backups.json" parse="text" />
 </programlisting>
 </example>
-            <section>
-                <title>Sample XML Response (hosts/hostId/backups)</title>
-                <literallayout class="monospaced">
-<![CDATA[<backups>
-   <backup
-      id="1"
-      name="great backup"
-      backupTime="2010-10-17 00:00:00" />
-</backups>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (hosts/hostId/backups)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"backups": {
-        "backup": {
-            "id": "1",
-            "name": "NightlyBackUp",
-            "backupTime": "2010-10-17 00:00:00"
-        }
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Request (&POST;) (/hosts/hostId/backups)</title>
-                <literallayout class="monospaced">
-<![CDATA[<backup
-   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-   name="NightlyBackUp" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Request (&POST;) (/hosts/hostId/backups)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"backup": {
-        "name": "NightlyBackup"
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Response (/hosts/hostId/subnetmappings)</title>
-                <literallayout class="monospaced">
-<![CDATA[<?xml version="1.0" ?>
-<ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
-    <ns2:hostsubnet name="api-zxtm-n01.stage.dfw1.stabletransit.com">
-        <ns2:netInterface name="eth0">
-            <ns2:cidr block="10.69.1.0/24"/>
-            <ns2:cidr block="10.69.0.0/24"/>
-        </ns2:netInterface>
-    </ns2:hostsubnet>
-</ns2:hostssubnet>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Request (&PUT;) (/hosts/hostId/subnetmappings)</title>
-                <literallayout class="monospaced">
-<![CDATA[<?xml version="1.0" ?>
-<ns2:hostssubnet xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0" xmlns:ns2="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
-       <ns2:hostsubnet name="n01.zeus.something">
-           <ns2:netInterface name="eth1">
-	            <ns2:cidr block="192.168.0.0/16"/>
-           </ns2:netInterface>
-       </ns2:hostsubnet>
-</ns2:hostssubnet>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Request (&PUT;) (/hosts/hostId/subnetmappings)</title>
-                <literallayout class="monospaced">
-<![CDATA[{
-    "hostsubnets": [
-        {
-            "netInterfaces": [
-                {
-                    "cidrs": [
-                        {
-                          "block": "192.168.0.0/16"
-                        }
-                    ],
-                    "name": "eth1"
-                }
-            ],
-            "name": "n01.zeus.something"
-        }
-    ]
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Request (/hosts/hostid/backups): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-update-backups.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Request (/hosts/hostid/backups): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-backups.json" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/hosts/hostid/subnetmappings): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-subnetmappings.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Request (/hosts/hostid/subnetmappings): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-update-subnetmappings.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Request (/hosts/hostid/subnetmappings): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-update-subnetmappings.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Customer List by Host/Cluster</title>
@@ -923,92 +863,30 @@ format="SVG" scale="60"/>
                     The generated customer list allows external services, which contain customer contact information, to query the load balancing service to determine the breakdown of customers at either the cluster or host level.
                 </para>
             </section>
-            <section>
-                <title>Sample XML Request ByName (/hosts/customers) (/clusters/customers)</title>
-                <literallayout class="monospaced">
-<![CDATA[<byIdOrName
-        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-        xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
-        name="newhost" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Request ById (/hosts/customers) (/clusters/customers)</title>
-                <literallayout class="monospaced">
-<![CDATA[<byIdOrName
-        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-        xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0"
-        id="2" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Response (/hosts/customers) (/clusters/customers)</title>
-                <literallayout class="monospaced">
-<![CDATA[<?xml version="1.0" ?>
-<customerList xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/v1.0">
-	<customer accountId="666">
-		<loadBalancer id="52" name="LB.4707"/>
-		<loadBalancer id="53" name="LB.3133"/>
-		<loadBalancer id="54" name="LB.6882"/>
-		<loadBalancer id="55" name="LB.5095"/>
-		<loadBalancer id="56" name="LB.3135"/>
-		<loadBalancer id="57" name="LB.3399"/>
-		<loadBalancer id="58" name="LB.1341"/>
-		<loadBalancer id="59" name="LB.2750"/>
-		<loadBalancer id="60" name="LB.1980"/>
-		<loadBalancer id="61" name="LB.1237"/>
-	</customer>
-	<customer accountId="999">
-		<loadBalancer id="47" name="LB.7090"/>
-		<loadBalancer id="48" name="LB.3226"/>
-		<loadBalancer id="49" name="LB.912"/>
-		<loadBalancer id="50" name="LB.6697"/>
-		<loadBalancer id="51" name="LB.6897"/>
-	</customer>
-	<customer accountId="354934">
-		<loadBalancer id="45" name="LB.5001">
-			<ns2:nodes>
-				<ns2:node id="202" ip="21.248.193.163"/>
-				<ns2:node id="204" ip="142.120.171.164"/>
-				<ns2:node id="203" ip="231.162.141.253"/>
-				<ns2:node id="205" ip="15.162.23.37"/>
-				<ns2:node id="201" ip="182.254.203.171"/>
-			</ns2:nodes>
-		</loadBalancer>
-		<loadBalancer id="46" name="LB.9540">
-			<ns2:nodes>
-				<ns2:node id="209" ip="200.47.43.240"/>
-				<ns2:node id="207" ip="168.80.57.76"/>
-				<ns2:node id="206" ip="229.220.95.81"/>
-				<ns2:node id="208" ip="114.48.233.151"/>
-				<ns2:node id="210" ip="228.221.170.235"/>
-			</ns2:nodes>
-		</loadBalancer>
-	</customer>
-</customerList>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/hosts/hostId/customers) (/clusters/clusterId/customers)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"customerlist": {
-        "customer": {
-            "id": "327957",
-            "loadbalancer": [
-                {
-                    "id": "1",
-                    "name": "lb-1"
-                },
-                {
-                    "id": "2",
-                    "name": "lb-2"
-                }
-            ]
-        }
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Request ByName (/hosts/customers) (/clusters/customers): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-customers-byname.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Request ById (/hosts/customers) (/clusters/customers): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-customers-byid.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/hosts/customers) (/clusters/customers): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-customers.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/hosts/hostid/customers) (/clusters/clustserid/customers)</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-customers.json" parse="text" />
+</programlisting>
+</example>
         </section>
     </chapter>
     <chapter>
@@ -1045,39 +923,18 @@ format="SVG" scale="60"/>
                     The load balancing host capacity reports provide insight into the available capacity of a given host machine.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).
                 </para>
             </section>
-            <section>
-                <title>Sample XML Response (/hosts/capacityreport) (/hosts/hostId/capacityreport)</title>
-                <literallayout class="monospaced">
-<![CDATA[<hostcapacityreports>
-    <hostcapacityreport
-            hostId="1"
-            hostName="The Best Host Ever"
-            totalConcurrentConnectionCapacity="150000"
-            availableConcurrentConnections="100000"
-            allocatedConcurrentConnections="50000"
-            allocatedConcurrentConnectionsToday="14000"
-            allocatedConcurrentConnectionsInPastSevenDays="25000"
-            remainingDaysOfCapacity="9.55" />
-</hostcapacityreports>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/hosts/capacityreport) (/hosts/hostId/capacityreport)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"hostcapacityreports": {
-        "hostcapacityreport": {
-            "hostId": "1",
-            "hostName": "The Best Host Ever",
-            "totalConcurrentConnectionCapacity": "150000",
-            "availableConcurrentConnections": "100000",
-            "allocatedConcurrentConnections": "50000",
-            "allocatedConcurrentConnectionsToday": "14000",
-            "remainingDaysOfCapacity": "9.55"
-        }
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-capacityreport.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-capacityreport.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Load Balancing Cluster Virtual IP Availability Report</title>
@@ -1111,50 +968,18 @@ format="SVG" scale="60"/>
                     The virtual IP availability report provides insight into the availability of both public and ServiceNet IP addresses that are provisioned to a cluster.  It also supplies an estimated runway of available capacity based on historical provisioning activity (activity taking place over a period of one week).
                 </para>
             </section>
-            <section>
-                <title>Sample XML Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
-                <literallayout>
-<![CDATA[<virtualipavailabilityreports>
-    <virtualipavailabilityreport
-            clusterId="1"
-            clusterName="My Little Cluster"
-            totalPublicIpAddresses="254"
-            totalServiceNetAddresses="254"
-            freeAndClearPublicIpAddresses="128"
-            freeAndClearServiceNetIpAddresses="128"
-            publicIpAddressesInHolding="14"
-            serviceNetIpAddressesInHolding="21"
-            publicIpAddressesAllocatedToday="15"
-            serviceNetIpAddressesAllocatedToday="4"
-            allocatedPublicIpAddressesInLastSevenDays="45"
-            allocatedServiceNetIpAddressesInLastSevenDays="15"
-            remainingDaysOfPublicIpAddresses="50.11"
-            remainingDaysOfServiceNetIpAddresses="14.41" />
-</virtualipavailabilityreports>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/virtualips/availabilityreport) (/cluster/clusterId/availabilityreport)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"virtualipavailabilityreport": {
-        "clusterId": "1",
-        "clusterName": "My Little Cluster",
-        "totalPublicIpAddresses": "254",
-        "totalServiceNetAddresses": "254",
-        "freeAndClearPublicIpAddresses": "128",
-        "freeAndClearServiceNetIpAddresses": "128",
-        "publicIpAddressesInHolding": "14",
-        "serviceNetIpAddressesInHolding": "21",
-        "publicIpAddressesAllocatedToday": "15",
-        "serviceNetIpAddressesAllocatedToday": "4",
-        "allocatedPublicIpAddressesInLastSevenDays": "45",
-        "allocatedServiceNetIpAddressesInLastSevenDays": "15",
-        "remainingDaysOfPublicIpAddresses": "50.11",
-        "remainingDaysOfServiceNetIpAddresses": "14.41"
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/virtualips/availabilityreport) (/cluster/clusterid/availabilityreport): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-availabilityreport.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/virtualips/availabilityreport) (/cluster/cluserid/availabilityreport): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-availabilityreport.json" parse="text" />
+</programlisting>
+</example>
         </section>
     </chapter>
     <chapter>
@@ -1188,21 +1013,18 @@ format="SVG" scale="60"/>
                     To retrieve the assigned virtual IP, the caller must perform a subsequent &GET; on the /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
             </section>
-            <section>
-                <title>Sample XML &POST; Request (/loadbalancers/loadBalancerId/virtualips)</title>
-                <literallayout class="monospaced">
-<![CDATA[<virtualIp xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0 type="PUBLIC" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON &POST; Request (/loadbalancers/loadBalancerId/virtualips)</title>
-                <literallayout class="monospaced">
-<![CDATA[]{"virtualip": {
-        "type": "PUBLIC"
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-virtualips.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-create-virtualips.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Synchronizing a Load Balancer</title>
@@ -1278,48 +1100,30 @@ format="SVG" scale="60"/>
                     While customers are not permitted to delete suspended load balancers, a user with elevated permissions may do so by issuing a &DELETE; request against the /loadbalancers/loadBalancerId URI.
                 </note>
             </section>
-            <section>
-                <title>Sample XML Response (/loadbalancers/loadBalancerId/suspension)</title>
-                <literallayout class="monospaced">
-<![CDATA[<suspension
-        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.00"
-        reason="User suspected of fraud"
-        ticketId="1054"
-        user="jdoe" />]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/loadbalancers/loadBalancerId/suspension)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"suspension": {
-        "reason": "User suspected of fraud",
-        "ticketId": "1054",
-        "user": "jdoe"
-    }
-}]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample XML Request (&POST;) (/loadbalancers/loadBalancerId/suspension)</title>
-                <literallayout class="monospaced">
-<![CDATA[<suspension
-   xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-   reason="Non-payment"
-   ticketId="4141"
-   user="bob"/>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Request (&POST;) (/loadbalancers/loadBalancerId/suspension)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"suspension": {
-        "reason": "Non-payment",
-        "ticketId": "4141",
-        "user": "bob"
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-suspension.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-suspension.json" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-suspension.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-suspension.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Viewing Extended Details of a Load Balancer</title>
@@ -1350,134 +1154,18 @@ format="SVG" scale="60"/>
                     An extended detail view is not available for a list of load balancers.
                 </note>
             </section>
-            <section>
-                <title>Sample XML Response (/loadbalancers/loadBalancerId/extendedview)</title>
-                <literallayout class="monospaced">
-<![CDATA[<loadBalancer xmlns="http://docs.rackspacecloud.com/loadbalancers/api/v1.0"
-        id="2000"
-        name="sample-loadbalancer"
-        protocol="HTTP"
-        port="80"
-        algorithm="RANDOM"
-        status="ACTIVE"
-        totalActiveConnections="340">
-    <host id="1" type="ACTIVE" />
-    <currentUsage
-            incomingTransfer="1.40"
-            outgoingTransfer="20.14" />
-    <virtualIps>
-        <virtualIp
-                id="1000"
-                address="206.10.10.210"
-                type="PUBLIC" />
-    </virtualIps>
-    <nodes>
-        <node
-                nodeId="1041"
-                ip="10.1.1.1"
-                port="80"
-                condition="ENABLED"
-                status="ONLINE" />
-        <node
-                nodeId="1411"
-                ip="10.1.1.2"
-                port="80"
-                condition="ENABLED"
-                status="ONLINE" />
-    </nodes>
-    <sessionPersistence persistenceType="HTTP_COOKIE"/>
-    <connectionLimits
-            minConnections="10"
-            maxConnectionsFromIp="100"
-            maxConnectionRateFromIp="50"
-            maxConnectionRateTimer="60" />
-    <connectionLogging enabled="false" />
-    <cluster name="c1.dfw1" />
-    <ratelimit
-            ticketId="4100"
-            expirationTime="2010-10-17 00:00:00"
-            maxRequestsPerSecond="100" />
-    <created time="2010-06-01T12:00:00Z" />
-    <updated time="2010-06-01T12:00:00Z" />
-</loadBalancer>
-]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample JSON Response (/loadbalancers/loadBalancerId/extendedview)</title>
-                <literallayout class="monospaced">
-<![CDATA[{"loadbalancer": {
-        "id": "2000",
-        "name": "sample-loadbalancer",
-        "protocol": "HTTP",
-        "port": "80",
-        "algorithm": "RANDOM",
-        "status": "ACTIVE",
-        "totalActiveConnections": "340",
-        "currentUsage": {
-            "incomingTransfer": "1.40",
-            "outgoingTransfer": "20.14"
-        },
-        "host": {
-               "id": "1",
-               "type": "ACTIVE"
-         },
-        "virtualIps": {
-            "virtualIp": {
-                "id": "1000",
-                "address": "206.10.10.2010",
-                "type": "PUBLIC"
-            }
-        },
-        "nodes": {
-            "node": [
-                {
-                    "nodeId": "1041",
-                    "ip": "10.1.1.1",
-                    "port": "9090",
-                    "condition": "ENABLED",
-                    "status": "ONLINE"
-                },
-                {
-                    "nodeId": "1042",
-                    "ip": "10.1.1.2",
-                    "port": "80",
-                    "condition": "ENABLED",
-                    "status": "ONLINE"
-                }
-            ]
-        },
-        "connectionLogging": {
-            "enabled": "true"
-        },
-        "rateLimit": {
-            "ticketId": "1123",
-            "expirationTime": "1283277190574",
-            "maxRequestsPerSecond": "37"
-        },
-        "sessionPersistence": {
-            "persistenceType": "HTTP_COOKIE"
-        },
-        "connectionLimits": {
-            "minConnections": "10",
-            "maxConnectionsFromIp": "100",
-            "maxConnectionsRateFromIp": "50",
-            "maxConnectionsRateTimer": "60"
-        },
-        "cluster": {
-            "name": "c1.dfw1",
-            "description": "Cluster Description"
-        },
-        "created": {
-            "time": "2010-06-01 00: 00: 00"
-        },
-        "updated": {
-            "time": "2010-06-01 00: 00: 00"
-        }
-    }
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response (/loadbalancers/loadbalancerid/extendedview): JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Account Loadbalancers and Usage (Billing)</title>
@@ -1517,42 +1205,12 @@ format="SVG" scale="60"/>
                     A user can list all loadbalancers and their usage for the given account using these methods. The date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a maximum of 90 days.
                 </para>
             </section>
-            <section>
-                <title>Sample XML Response (/accounts/accountId/loadbalancers)</title>
-                <literallayout class="monospaced">
-<![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:accountLoadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0" accountId="1106">
-    <ns2:accountLoadBalancer
-            loadBalancerId="61"
-            loadBalancerName="test1"
-            clusterId="1"
-            lusterName="Cluster Delta"
-            protocol="HTTP"
-            status="DELETED"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="62"
-            loadBalancerName="test2"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTPS"
-            status="DELETED"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="66"
-            loadBalancerName="My first loadbalancer"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTP"
-            status="ACTIVE"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="75"
-            loadBalancerName="test3"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTPS"
-            status="DELETED"/>
-</ns2:accountLoadBalancers>]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/accounts/accountid/loadbalancers): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Load Balancer Status URL Management</title>
@@ -1622,14 +1280,12 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Sample XML Response (/alerts)</title>
-                <literallayout class="monospaced">
-<![CDATA[<alerts>
-   <alert id="1" accountId="38" loadbalancerid="1000" messageName="Error updating node" status=UNACKNOWLEDGED" created="2010-11-23"/>
-</alerts>]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/alerts): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-alerts.xml" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>API Rate Limiting</title>
@@ -1686,16 +1342,12 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     </tr>
                 </tbody>
             </informaltable>
-            <example>
-                <title>Sample JSON Response</title>
-                <literallayout class="monospaced">
-<![CDATA[{
-    "name": "customer_group",
-    "default": "true",
-    "id" : "1"
-}]]>
-                </literallayout>
-            </example>
+<example>
+<title>Sample Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-groups.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Load Balancer Limits (Absolute Limits)</title>
@@ -1749,38 +1401,18 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     When deleting a load balancer limit group there may be accounts associated with that limit. If an account is associated with the limit that is being deleted it will assume the default limit. If the deleted limit was marked as the default limit then an existing group limit with the highest rate will become the default. If all limits are removed then users will be able to create as many load balancers as they can. However, there should be some error logs noting that no limits exist.
                 </para>
             </section>
-            <example>
-                <title>Sample Request (&POST;) (XML)</title>
-                <literallayout class="monospaced">
-<![CDATA[<loadBalancerLimitGroup xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-        name="high-limit"
-        limit="1000"
-        isDefault="true"/>
-]]>
-                </literallayout>
-            </example>
-            <example>
-                <title>Sample Response: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<loadBalancerLimitGroups xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0">
-    <loadBalancerLimitGroup
-            id="1"
-            name="low-limit"
-            limit="10"
-            isDefault="false"/>
-    <loadBalancerLimitGroup
-            id="2"
-            name="medium-limit"
-            limit="100"
-            isDefault="true"/>
-    <loadBalancerLimitGroup
-            id="3"
-            name="high-limit"
-            limit="1000"
-            isDefault="false"/>
-<loadBalancerLimitGroups/>]]>
-                </literallayout>
-            </example>
+<example>
+<title>Sample Request: XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-create-group-limits.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response: XML</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-group-limits.xml" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Operations for Applying Load Balancer Limits</title>
@@ -1820,18 +1452,12 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     Accounts can belong to only one load balancer limit group. If an account is currently part of a load balancer limit group then adding the account to a new group removes it from the original group. Deleting a load balancer from a group causes the account to use the default group. Load balancer limits are enforced immediately when trying to create load balancers. However, if an account has a designated load balancer limit and is then added to a group with a lower limit, it is possible for the account to have more load balancers than the new limit. Any further calls to create a load balancer will not be allowed since the account is above the limit.
                 </para>
             </section>
-            <example>
-                <title>Sample XML Response</title>
-                <literallayout class="monospaced">
-<![CDATA[<loadBalancerLimitGroups xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0">
-    <loadBalancerLimitGroup
-            id="1"
-            name="low-limit"
-            limit="10"
-            isDefault="false"/>
-<loadBalancerLimitGroups/>]]>
-                </literallayout>
-            </example>
+<example>
+<title>Sample XML Response</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-limit-groups.xml" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Zeus Usage</title>
@@ -1853,49 +1479,18 @@ loadbalancers/68/setstatus/PENDING_UPDATE
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Sample Response: XML</title>
-                <literallayout class="monospaced">
-<![CDATA[<hostUsageList xmlns="http://docs.rackspacecloud.com/loadbalancers/api/management/v1.0">
-    <hostUsageRecord hostId="1">
-        <hostUsage
-                bandwidthin="0"
-                bandwidthout="0"
-                day="2011-02-01Z"/>
-    </hostUsageRecord>
-    <hostUsageRecord hostId="2">
-        <hostUsage
-                bandwidthin="0"
-                bandwidthout="0"
-                day="2011-02-01Z"/>
-    </hostUsageRecord>
-</hostUsageList>]]>
-                </literallayout>
-            </section>
-            <section>
-                <title>Sample Response: JSON</title>
-                <literallayout class="monospaced">
-<![CDATA[{
-    "hostUsageRecords": [
-        {
-            "hostUsages": [
-                {
-                    "day": "2011-02-14T00:00:00-0600",
-                    "bandwidthin": 0,
-                    "bandwidthout": 0
-                }
-            ],
-            "hostId": 1
-        },
-        {
-            "hostUsages": [
-            ],
-            "hostId": 2
-        }
-    ]
-}]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response: XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-host-usage-records.xml" parse="text" />
+</programlisting>
+</example>
+<example>
+<title>Sample Response: JSON</title>
+<programlisting language="javascript">
+<xi:include href="samples/lb-list-host-usage-records.json" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Viewing Events</title>
@@ -1926,16 +1521,12 @@ loadbalancers/68/setstatus/PENDING_UPDATE
 The date parameters are optional. The results will list will be all load balancer service events that occurred between the start and end dates. by default the start date will be 60 days from the time of the request and the end date will be the date of the request. The result list will be inclusive for both dates.
                 </para>
             </section>
-            <section>
-                <title>Sample XML Response (/alerts)</title>
-                <literallayout class="monospaced">
-<![CDATA[<accountLoadBalancerServiceEvents xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" accountId="546428">
-    <loadBalancerServiceEvents loadbalancerId="8">
-        <loadBalancerServiceEvent author="abc" description="LoadBalancer successfully created" category="CREATE" severity="INFO" created="01/06/2011 10:37"/>
-    </loadBalancerServiceEvents>
-</accountLoadBalancerServiceEvents>]]>
-                </literallayout>
-            </section>
+<example>
+<title>Sample Response (/alerts): XML</title>
+<programlisting language="xml">
+<xi:include href="samples/lb-list-service-events.xml" parse="text" />
+</programlisting>
+</example>
         </section>
         <section>
             <title>Deleting a Load Balancer in Error/Suspended Status</title>

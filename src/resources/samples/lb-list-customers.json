@@ -1,0 +1,16 @@
+{"customerlist": {
+        "customer": {
+            "id": "327957",
+            "loadbalancer": [
+                {
+                    "id": "1",
+                    "name": "lb-1"
+                },
+                {
+                    "id": "2",
+                    "name": "lb-2"
+                }
+            ]
+        }
+    }
+}
