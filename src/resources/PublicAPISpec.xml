@@ -210,20 +210,16 @@
                 <para>If these tests fail, then the service will attempt to locate another configured
                     node that is capable of supporting the request until every node is exhausted. If
                     this occurs, the requestor will receive a
-                    <returnvalue>503 (Service
-                        Unavailable)
-                    </returnvalue>
-                    response for HTTP traffic or the connection will
-                    be dropped.
+                    <returnvalue>503</returnvalue>
+                    (Service Unavailable) response for HTTP traffic or the connection will be dropped.
                 </para>
                 <note>
                     <para>If a given node fails a passive health monitor check three consecutive times,
                         then the service assumes the node has failed and will place it in
                         <code>OFFLINE</code>
-                        status. The service will not attempt to send any
-                        new requests to the node for at least 60 seconds, after which the service
-                        will speculatively begin sending requests to occasionally probe it to
-                        determine whether or not it has recovered.
+                        status. The service will not attempt to send any new requests to the node for at least
+                        60 seconds, after which the service will speculatively begin sending requests to
+                        occasionally probe it to determine whether or not it has recovered.
                     </para>
                 </note>
             </section>
@@ -255,15 +251,13 @@
                             </para>
                         </listitem>
                     </itemizedlist>
-                    These probes are executed at configured intervals; in the event of a
-                    failure, the node status changes to
+                    These probes are executed at configured intervals; in the event of a failure, the node
+                    status changes to
                     <code>OFFLINE</code>
-                    and the node will not
-                    receive traffic. If, after running a subsequent test, the probe detects that the
-                    node has recovered, then the node's status is changed to
+                    and the node will not receive traffic. If, after running a subsequent test, the probe
+                    detects that the node has recovered, then the node's status is changed to
                     <code>ONLINE</code>
-                    and
-                    it is capable of servicing requests.
+                    and it is capable of servicing requests.
                 </para>
             </section>
         </section>
@@ -299,8 +293,7 @@
             <para>Every ReST request against the load balancing service requires the inclusion of a
                 specific authorization token, supplied by the
                 <code>X-Auth-Token</code>
-                HTTP header.
-                Customers obtain this token by first using the Rackspace Cloud Authentication
+                HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication
                 Service and supplying a valid username and API access key.
             </para>
 
@@ -344,18 +337,14 @@
             <simplesect>
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status
-                    <returnvalue>204 (No
-                        Content)
-                    </returnvalue>
-                    is returned with an
+                    <returnvalue>204</returnvalue>
+                    (No Content) is returned with an
                     <code>X-Auth-Token</code>
-                    (along
-                    with other Cloud Service headers that are not applicable to the load balancing
-                    service). An HTTP status of
+                    (along with other Cloud Service headers that are not applicable to the load balancing service).
+                    An HTTP status of
                     <returnvalue>401 (Unauthorized)</returnvalue>
-                    is
-                    returned if authentication fails. All operations against the load balancing
-                    service must include the
+                    is returned if authentication fails. All operations against the load balancing service must
+                    include the
                     <code>X-Auth-Token</code>
                     header.
                 </para>
@@ -378,10 +367,8 @@
                 </example>
                 <para>Authentication tokens are typically valid for 24 hours. Applications should be
                     designed to re-authenticate after receiving a 4
-                    <returnvalue>401
-                        (Unauthorized)
-                    </returnvalue>
-                    response from a service endpoint.
+                    <returnvalue>401</returnvalue>
+                    (Unauthorized) response from a service endpoint.
                 </para>
                 <note>
                     <para>Currently, service endpoints are not published in the response of the account
@@ -421,7 +408,7 @@
                 </table>
             </para>
             <para>
-                <emphasis>If load balancing Cloud Servers</emphasis>, you can determine the
+                <emphasis role="bold">If load balancing Cloud Servers</emphasis>, you can determine the
                 appropriate region to select by viewing your Cloud Servers list and creating a load
                 balancer within the same region as the data center in which your Cloud Server
                 resides. When your resources reside in the same region as your load balancer, it
@@ -429,9 +416,9 @@
                 advantage of ServiceNet connectivity for free data transfer between services.
             </para>
             <para>
-                <emphasis>If load balancing external servers</emphasis>, you can determine the appropriate
-                region to select by choosing the region that is geographically as close to your external
-                servers as possible.
+                <emphasis role="bold">If load balancing external servers</emphasis>, you can determine the
+                appropriate region to select by choosing the region that is geographically as close to your
+                external servers as possible.
             </para>
         </section>
         <section>
@@ -439,24 +426,21 @@
             <para>The Rackspace Cloud Load Balancers API supports both the JSON and XML data serialization
                 formats. The request format is specified using the
                 <code>Content-Type</code>
-                header
-                and is required for operations that have a request body. The response format can be
+                header and is required for operations that have a request body. The response format can be
                 specified in requests using either the
                 <code>Accept</code>
                 header or adding an
                 <code>.xml</code>
                 or
                 <code>.json</code>
-                extension to the request URI. Note that
-                it is possible for a response to be serialized using a format different from the
-                request. If no response format is specified, JSON is the default. If conflicting
-                formats are specified using both an
+                extension to the request URI. Note that it is possible for a response to be serialized using
+                a format different from the request. If no response format is specified, JSON is the default.
+                If conflicting formats are specified using both an
                 <code>Accept</code>
-                header and a query
-                extension, the query extension takes precedence.
+                header and a query extension, the query extension takes precedence.
             </para>
-            <para>Some operations support an Atom representation that can be used to efficiently
-                determine when the state of services has changed.
+            <para>Some operations support an Atom representation that can be used to efficiently determine when
+                the state of services has changed.
             </para>
             <table rules="all">
                 <caption>JSON and XML Response Formats</caption>
@@ -534,8 +518,8 @@
         <section>
             <title>Persistent Connections</title>
             <para>
-                By default, the API supports persistent connections via HTTP/1.1 keepalives. All connections
-                will be kept alive unless the connection header is set to close.
+                By default, the API supports persistent connections via <code>HTTP/1.1</code> keepalives.
+                All connections will be kept alive unless the connection header is set to close.
             </para>
             <para>
                 To prevent abuse, HTTP sessions have a timeout of 20 seconds before being closed.
@@ -555,11 +539,11 @@
                 and
                 <code>marker</code>
                 parameters (for example,
-                <code>?limit=50&amp;marker=1</code>) can be set in the URI. If a marker
-                beyond the end of a list is given, an empty list is returned. Note that list operations
-                never return
-                <returnvalue>404 (itemNotFound)</returnvalue>
-                faults.
+                <code>?limit=50&amp;marker=1</code>
+                ) can be set in the URI. If a marker beyond the end of a list is given, an empty list is
+                returned. Note that list operations never return
+                <returnvalue>404</returnvalue>
+                (itemNotFound) faults.
             </para>
         </section>
         <section>
@@ -573,15 +557,13 @@
                 <code>Changes-Since</code>
                 parameter to check for changes since a previous request. The
                 <code>Changes-Since</code>
-                time is specified as Unix time (the number of seconds
-                since January 1, 1970, 00:00:00 UTC, not counting leap seconds). If nothing has
-                changed since the<code>changes-since</code> time, a
-                <returnvalue>304 (Not
-                    Modified)
-                </returnvalue>
-                response is returned. If data has changed, only the
-                items changed since the specified time is returned. For
-                example, performing a &GET; against
+                time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC,
+                not counting leap seconds). If nothing has changed since the
+                <code>changes-since</code>
+                time, a
+                <returnvalue>304</returnvalue>
+                (Not Modified) response is returned. If data has changed, only the items changed since the specified
+                time is returned. For example, performing a &GET; against
                 <code>https://URL/v1.0/1234/loadbalancers?changes-since=1244012982</code>
                 would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
             </para>
@@ -610,10 +592,11 @@
                     effect after the root URI path. For example, the
                     regular expression
                     <code>^/v1.0/1234/loadbalancers</code>
-                    would match
-                    the bolded portion of the following URI:
-                    https://ord.loadbalancers.api.rackspacecloud.com<emphasis
-                        role="bold">/v1.0/1234/loadbalancers</emphasis>.
+                    would match the bolded portion of the following URI:
+                    <code>
+                        https://ord.loadbalancers.api.rackspacecloud.com
+                        <emphasis role="bold">/v1.0/1234/loadbalancers</emphasis>.
+                    </code>
                 </para>
                 <?hard-pagebreak?>
                 <table rules="all">
@@ -687,14 +670,12 @@
                 </table>
                 <para>Rate limits are applied in order relative to the verb, going from least to most
                     specific. For example, although the threshold for &POST; to /v1.0/* is 25 per minute,
-                    one cannot &POST; to /v1.0/* more than 2 times per second because the
-                    rate limits for any &POST; is 2/second.
-                    In the event you exceed the thresholds established for your account, a
+                    one cannot &POST; to /v1.0/* more than 2 times per second because the rate limits for any
+                    &POST; is 2/second. In the event you exceed the thresholds established for your account, a
                     <errorcode>413</errorcode>
                     (Rate Control) HTTP response will be returned with a
                     <code>Reply-After</code>
-                    header to notify the
-                    client when they can attempt to try again.
+                    header to notify the client when they can attempt to try again.
                 </para>
             </section>
             <section>
@@ -806,10 +787,9 @@
                 This operation provides a list of all load balancers configured and associated with your account.
             </para>
             <para>
-                Load balancers which have been deleted will be shown in this list for at
-                least 90 days after deletion. A deleted load balancer is immutable and
-                irrecoverable. Only a limited set of attributes (<code>id</code>,<code>name</code>,<code>status</code>,
-                <code>created</code>, and
+                Load balancers which have been deleted will be shown in this list for at least 90 days after
+                deletion. A deleted load balancer is immutable and irrecoverable. Only a limited set of
+                attributes (<code>id</code>,<code>name</code>,<code>status</code>, <code>created</code>, and
                 <code>updated</code>) will be returned in the response object.
             </para>
             <para>
@@ -911,8 +891,8 @@
                 progress has started on the provisioning process, a response object will be
                 returned. The object will contain a unique identifier and status of the request.
                 Using the identifier, the caller can check on the progress of the operation by
-                performing a &GET; on<code>loadbalancers/id</code>. If the corresponding request cannot be
-                fulfilled due to insufficient or invalid data, an HTTP
+                performing a &GET; on <code>loadbalancers/id</code>. If the corresponding request cannot be
+                fulfilled due to insufficient or invalid data, an <code>HTTP</code>
                 <returnvalue>400 (Bad Request)</returnvalue>
                 error response will be returned with information regarding the nature of the failure in
                 the body of the response. Failures in the validation process are non-recoverable and
@@ -946,9 +926,9 @@
             <para>In order to conserve IPv4 address space, Rackspace highly recommends sharing
                 Virtual IPs between your load balancers. If you have at least one load balancer, you
                 may create subsequent load balancers that share a single virtual IP by issuing a
-                &POST; and supplying a virtualIp ID instead of a type. Additionally, this feature is
+                &POST; and supplying a virtual Ip ID instead of a type. Additionally, this feature is
                 highly desirable if you wish to load balance both an unsecured and secure protocol
-                using one IP / DNS name (for example, HTTP and HTTPS).
+                using one IP / DNS name (for example, <code>HTTP</code> and <code>HTTPS</code>).
             </para>
             <note>
                 <para>
