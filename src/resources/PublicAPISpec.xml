@@ -110,11 +110,21 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">Mar. 2, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Revised code samples and formatting to address initial beta feedback.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1" align="center">Feb. 23, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Initial release for public beta</para>
+                                    <para>Initial release for public beta.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -2044,14 +2054,13 @@
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>All load balancers utilize an algorithm that defines how traffic should
-                be directed between back-end nodes. The default algorithm for newly created load
-                balancers is<code>RANDOM</code>, which can be overridden at creation time or
+            <para>All load balancers utilize an algorithm that defines how traffic should be
+                directed between back-end nodes. The default algorithm for newly created load
+                balancers is <code>RANDOM</code>, which can be overridden at creation time or
                 changed after the load balancer has been initially provisioned. The algorithm name
                 is to be constant within a major revision of the load balancing API, though new
                 algorithms may be created with a unique algorithm name within a given major revision
-                of the service API.
-            </para>
+                of the service API. </para>
             <para>
                 This operation does not require a request body.
             </para>
