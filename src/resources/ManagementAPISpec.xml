@@ -482,7 +482,7 @@
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/clusters/clusterId/virtualips/virtualIpId</td>
+                        <td>/virtualips/virtualIpId</td>
                         <td>Remove the specified virtual IP from the cluster</td>
                         <td>Service Admin</td>
                     </tr>
@@ -579,7 +579,7 @@
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit/removeoldlimits</td>
+                        <td>/loadbalancers/loadBalancerId/removeoldlimits</td>
                         <td>Immediately remove expired limits</td>
                         <td>Service Admin</td>
                     </tr>
@@ -1724,14 +1724,14 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/error</td>
+                        <td>/management/loadbalancers/loadBalancerId/error</td>
                         <td>Deletes a load balancer in error status</td>
                         <td>Operations</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspended</td>
+                        <td>/management/loadbalancers/loadBalancerId/suspended</td>
                         <td>Deletes a load balancer in suspended status</td>
                         <td>Operations, Support</td>
                     </tr>
