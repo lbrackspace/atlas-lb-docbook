@@ -74,7 +74,7 @@
     <chapter>
         <title>Management API Operations</title>
         <section>
-            <title>Listing, Creating, Updating, and Deleting Load Balancing Clusters</title>
+            <title>Clusters</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -198,7 +198,7 @@
             </example> 
             </section>
         <section>
-            <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
+            <title>Host Machines</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -342,7 +342,7 @@
                     </note>
                 </section>
                 <section>
-                    <title>Mutable Attributes</title>
+                    <title>Changing Mutable Attributes</title>
                     <para>
                         The following list of attributes are mutable via the &PUT; HTTP operation:
                     </para>
@@ -428,7 +428,7 @@
             </example>           
         </section>
         <section>
-            <title>Virtual IP Management</title>
+            <title>Virtual IPs</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -533,7 +533,7 @@
             </example>
         </section>
         <section>
-            <title>Rate Limiting a Load Balancer</title>
+            <title>Rate Limits</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -630,7 +630,7 @@
             </example>
         </section>
         <section>
-            <title>Moving Load Balancers Between Host Machines / Adjusting Stickiness of Load Balancer Hosts</title>
+            <title>Associations Between Load Balancers and Host Machines</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -733,7 +733,7 @@
             </example>
         </section>
         <section>
-            <title>Host Machine Configuration Backup and Restoration</title>
+            <title>Configuration Backups</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -823,7 +823,7 @@
                     caller to view, create new backups, purge backups, and restore any available configuration.
                 </para>
             <section>
-                <title>Immutable Parameters:</title>
+                <title>Examining Immutable Parameters</title>
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -904,7 +904,7 @@
             </example>
         </section>
         <section>
-            <title>Customer List by Host/Cluster</title>
+            <title>Customer Lists</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
