@@ -989,7 +989,7 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/hosts/hostId/capacityreport</td>
+                        <td>/hosts/<parameter>hostId</parameter>/capacityreport</td>
                         <td>Generate a capacity planning report for a specified load balancing host</td>
                         <td>Service Admin</td>
                     </tr>
@@ -1029,14 +1029,16 @@
                         <td>&GET;
                         </td>
                         <td>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated to any cluster.</td>
+                        <td>Generate an availability report for all virtual IPs associated with any
+                            cluster.</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated to the specific cluster</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
+                        <td>Generate an availability report for all virtual IPs associated with the
+                            specific cluster</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
@@ -1078,7 +1080,7 @@
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
                         <td>Provision an additional virtual IP to a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1122,8 +1124,8 @@
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/sync</td>
-                        <td>Synchronizes the load balancer with the authoritative source</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
+                        <td>Synchronize the load balancer with the authoritative source</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1160,22 +1162,23 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Retrieve the current suspension information for the load balancer, if any</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Retrieve the current suspension information, if any, for the load
+                            balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Issues an immediate service suspension for a load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Issue an immediate service suspension for a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Removes the suspension for a load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Remove the suspension for a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1236,7 +1239,7 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/extendedview</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
                         <td>View extended details of a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1282,9 +1285,9 @@
                         <td>&GET;
                         </td>
                         <td>
-                            <code>/accounts/accountId/loadbalancers</code>
+                            <code>/accounts/<parameter>accountId</parameter>/loadbalancers</code>
                         </td>
-                        <td>Retrieves a list of load balancers on this account</td>
+                        <td>Retrieve a list of load balancers on this account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1378,22 +1381,22 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/alers/alertId</td>
+                        <td>/alerts/<parameter>alertId</parameter></td>
                         <td>Retrieve details for the alert</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/alerts/loadbalancer?id=1</td>
-                        <td>Retrieve all alerts for the specified load balancer, if any</td>
+                        <td>/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td>Retrieve all alerts, if any, for the specified load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/alerts/alertId/acknowledged</td>
-                        <td>Acknowledge alert. Changes the status of alert to ACKNOWLEDGED</td>
+                        <td>/alerts/<parameter>alertId</parameter>/acknowledged</td>
+                        <td>Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1427,7 +1430,7 @@
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/management/groups?name=xxx&amp;default=Y</td>
+                        <td>/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
                         <td>Add group name and default</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1436,40 +1439,41 @@
                         </td>
                         <td>/management/groups</td>
                         <td>View all groups for API rate limiting</td>
+                        <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/management/groups/id/setdefault?default=Y</td>
-                        <td>Updates the default for a given group</td>
+                        <td>/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
+                        <td>Update the default for a given group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
                         <td>/management</td>
-                        <td>Deletes a group</td>
+                        <td>Delete a group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/management/groups/id/accounts/id</td>
+                        <td>/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
                         <td>View all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/management/accounts/id/groups</td>
+                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
                         <td>View all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/accounts/id/groups</td>
-                        <td>Deletes all groups for the account</td>
+                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td>Delete all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1504,28 +1508,29 @@
                         <td>&POST;
                         </td>
                         <td>/management/loadbalancerlimitgroups</td>
-                        <td>Adds a load balancer limit group</td>
+                        <td>Add a load balancer limit group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id</td>
-                        <td>Deletes the specific load balancer group</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td>Delete the specific load balancer group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
                         <td>Display load balancer limit group details</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id/setdefault</td>
-                        <td>Sets the load balancer limit group as the default</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
+                        <td>Set the load balancer limit group as the default</td>
+                        <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1659,22 +1664,18 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1</td>
-                        <td>List recent load balancer service events on this account</td>
+                        <td>/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
+                        <td>List recent load balancer service events for this account within a date range</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>&GET; /management/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1
-                </title>
                 <para>
-                    The date parameters are optional. The results will list will be all load balancer service events
+                    The date parameters are optional. The results will list all load balancer service events
                     that occurred between the start and end dates. by default the start date will be 60 days from the
-                    time of the request and the end date will be the date of the request. The result list will be
+                    time of the request and the end date will be the date of the request. The results list will be
                     inclusive for both dates.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/alerts): XML</title>
                 <programlisting language="xml">
@@ -1697,15 +1698,15 @@
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/loadbalancers/loadBalancerId/error</td>
-                        <td>Deletes a load balancer in error status</td>
+                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
+                        <td>Delete a load balancer in error status</td>
                         <td>Operations</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/loadbalancers/loadBalancerId/suspended</td>
-                        <td>Deletes a load balancer in suspended status</td>
+                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
+                        <td>Delete a load balancer in suspended status</td>
                         <td>Operations, Support</td>
                     </tr>
                 </tbody>
