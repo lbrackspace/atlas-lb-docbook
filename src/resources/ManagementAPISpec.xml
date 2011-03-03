@@ -733,7 +733,7 @@
             </example>
         </section>
         <section>
-            <title>Host machine Configuration Backup &amp; Restoration</title>
+            <title>Host Machine Configuration Backup and Restoration</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -823,7 +823,7 @@
                     caller to view, create new backups, purge backups, and restore any available configuration.
                 </para>
             <section>
-                <title>Non mutable Parameters:</title>
+                <title>Immutable Parameters:</title>
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -931,14 +931,11 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The generated customer list allows external services, which contain customer contact information,
                     to query the load balancing service to determine the breakdown of customers at either the cluster
                     or host level.
                 </para>
-            </section>
             <example>
                 <title>Sample Request ByName (/hosts/customers) (/clusters/customers): XML</title>
                 <programlisting language="xml">
