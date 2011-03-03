@@ -123,18 +123,16 @@
                 </tbody>
             </informaltable>
             <para>
-                <emphasis role="bold">Normal Response Code(s):</emphasis>
+                Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
             <simpara>
-                <emphasis role="bold">Error Response Code(s):</emphasis>
+                Error Response Code(s):
                 loadBalancerManagementFault (<errorcode>400</errorcode>,
                 <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
                 <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
                 <errorcode>413</errorcode>)
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     The cluster operations allow for listing and manipulating clusters. In order to remove a cluster,
                     it may not have any host machines or virtual IP's associated with it. To create a new cluster,
@@ -147,7 +145,6 @@
                     <code>utilization</code>) that are generated and immutable. These attributes are calculated based
                     on configurations associated with this cluster.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/clusters): XML</title>
                 <programlisting language="xml">
@@ -194,13 +191,12 @@
                 </programlisting>
             </example>
             <example>
-                <title>Sample &PUT; Request (cluster/clusterId): JSON
-                </title>
+                <title>Sample &PUT; Request (cluster/clusterId): JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-cluster-clusterid-request.json" parse="text"/>
                 </programlisting>
-            </example>
-        </section>
+            </example> 
+            </section>
         <section>
             <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
             <informaltable rules="all">
@@ -278,12 +274,10 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The host operations allow for retrieval of host configuration data and statistics as well as
                     the ability to add, manipulate or delete load balancing hosts.
-                </para>
+                </para>             
                 <section>
                     <title>Creating a New Host</title>
                     <para>
@@ -342,7 +336,9 @@
                         system should automatically apply a BURN_IN status to all newly added host machines.
                     </para>
                     <note>
+                        <para>
                         For an example of how a new host is created, see the "Sample XML Post Request" below.
+                        </para>
                     </note>
                 </section>
                 <section>
@@ -387,14 +383,13 @@
                             </para>
                         </listitem>
                     </itemizedlist>
-                    <para align="left">
+                    <para>
                         The &GET; response contains numerous attributes (utilization,
                         numberOfLoadBalancingConfigurations, and numberOfUniqueCustomers) that are generated based
                         on state data and are immutable. These attributes are calculated based on configurations
                         associated with this host.
                     </para>
                 </section>
-            </section>
             <example>
                 <title>Sample Response (/hosts) (/clusters/clusterId/hosts): XML</title>
                 <programlisting language="xml">
@@ -430,7 +425,7 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
-            </example>
+            </example>           
         </section>
         <section>
             <title>Virtual IP Management</title>
@@ -488,8 +483,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The virtual IP operations allow the caller to view, create, and remove virtual IPs from an
                     environment. Virtual IPs are automatically assigned to every newly created load balancer and
@@ -503,14 +496,17 @@
                     request can be found below.
                 </para>
                 <note>
+                    <para>
                     In the event a virtual IP must be removed from the cluster, the &DELETE; operation can be used;
                     however, to delete a virtual IP it must not have a load balancer associated to it.
+                    </para>
                 </note>
                 <note>
-                    To add a single or multiple specific virtual ip's simply specify the first and lastIp fields
-                    identically(not a range).
+                    <para>
+                    To add single or multiple specific virtual IPs, simply specify the first and lastIp fields
+                    identically (not as a range).
+                    </para>
                 </note>
-            </section>
             <example>
                 <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
                 <programlisting language="xml">
@@ -585,8 +581,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Rate limiting allows a service administrator to artificially limit the number of requests that
                     are permitted to transit a given load balancer. This action can be taken when a particular load
@@ -598,29 +592,28 @@
                     Additionally, rate limit information is returned as part of the "extended details of a load
                     balancer", which is documented below.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -686,8 +679,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Service administrators may re-assign a load balancer to a different host machine within the same
                     cluster. This action can be taken if capacity warrants it or if a particular configuration needs
@@ -704,7 +695,6 @@
                     feature that should be used cautiously as it can potentially amplify DDoS and other types of
                     malicious traffic.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/host): XML</title>
                 <programlisting language="xml">
@@ -827,14 +817,11 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The host backup and restoration tools allow for service administrators to take periodic backups
                     of the current state of the configuration on any given host machine. These functions allow the
                     caller to view, create new backups, purge backups, and restore any available configuration.
                 </para>
-            </section>
             <section>
                 <title>Non mutable Parameters:</title>
                 <para>
@@ -976,7 +963,7 @@
 <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
-        </section>
+            </section>
     </chapter>
     <chapter>
         <title>Capacity and Availability Reports</title>
@@ -1008,14 +995,11 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The load balancing host capacity reports provide insight into the available capacity of a given
                     host machine. It also supplies an estimated runway of available capacity based on historical
                     provisioning activity (activity taking place over a period of one week).
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
                 <programlisting language="xml">
@@ -1027,7 +1011,7 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
-            </example>
+            </example>         
         </section>
         <section>
             <title>Load Balancing Cluster Virtual IP Availability Report</title>
@@ -1057,15 +1041,12 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The virtual IP availability report provides insight into the availability of both public and
                     ServiceNet IP addresses that are provisioned to a cluster. It also supplies an estimated runway
                     of available capacity based on historical provisioning activity (activity taking place over a
                     period of one week).
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/virtualips/availabilityreport) (/cluster/clusterid/availabilityreport): XML</title>
                 <programlisting language="xml">
@@ -1077,8 +1058,8 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
-            </example>
-        </section>
+            </example>    
+        </section> 
     </chapter>
     <chapter>
         <title>Extended Customer API Operations</title>
@@ -1103,8 +1084,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows a user to provision a new PUBLIC or SERVICENET address to the specified load
                     balancer. This feature is restricted because a user must justify the need for additional IP
@@ -1115,7 +1094,6 @@
                     To retrieve the assigned virtual IP, the caller must perform a subsequent &GET; on the
                     /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
-            </section>
             <example>
                 <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
                 <programlisting language="xml">
@@ -1150,8 +1128,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows for a caller to synchronize the specified load balancer with a particular
                     authoritative resource and is intended to be used when a load-balancer is 'stuck' in a non-active
@@ -1168,7 +1144,6 @@
                     the load-balancer will be put in the 'ACTIVE' status. If for some reason the load-balancer could
                     not be created in Zeus then the status will be set to 'ERROR'.
                 </para>
-            </section>
         </section>
         <section>
             <title>Suspending a Load Balancer</title>
@@ -1205,8 +1180,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows for a caller to suspend and or unsuspend the specified load balancer. In
                     order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a
@@ -1218,10 +1191,11 @@
                     element <![CDATA[(<suspension />)]]> will be returned.
                 </para>
                 <note>
+                    <para>
                     While customers are not permitted to delete suspended load balancers, a user with elevated
                     permissions may do so by issuing a &DELETE; request against the /loadbalancers/loadBalancerId URI.
+                    </para>
                 </note>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
                 <programlisting language="xml">
@@ -1268,8 +1242,6 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This operation provides the detailed output for a specific load balancer configured and
                     associated with the designated account. It differs from the customer view because it provides
@@ -1277,9 +1249,10 @@
                     of the loadbalancer element.
                 </para>
                 <note>
+                    <para>
                     An extended detail view is not available for a list of load balancers.
+                    </para>
                 </note>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
                 <programlisting language="xml">
@@ -1326,24 +1299,21 @@
                 </tbody>
             </informaltable>
             <para>
-                <emphasis role="bold">Normal Response Code(s):</emphasis>
+                Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
             <simpara>
-                <emphasis role="bold">Error Response Code(s):</emphasis>
+                Error Response Code(s):
                 loadBalancerManagementFault (<errorcode>400</errorcode>,
                 <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
                 <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
                 <errorcode>413</errorcode>)
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     A user can list all loadbalancers and their usage for the given account using these methods. The
                     date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a
                     maximum of 90 days.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/accounts/accountid/loadbalancers): XML</title>
                 <programlisting language="xml">
@@ -1550,8 +1520,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Load balancer limits refers to the number of load balancers an account can have (formerly known as
                     absolute limits). These imposed limits are defined in the form of groups with each group having a
@@ -1578,7 +1546,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
 <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
-        </section>
         <section>
             <title>Operations for Applying Load Balancer Limits</title>
             <informaltable rules="all">
@@ -1615,8 +1582,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Accounts can belong to only one load balancer limit group. If an account is currently part of
                     a load balancer limit group then adding the account to a new group removes it from the original
@@ -1626,7 +1591,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     is possible for the account to have more load balancers than the new limit. Any further calls to
                     create a load balancer will not be allowed since the account is above the limit.
                 </para>
-            </section>
             <example>
                 <title>Sample XML Response</title>
                 <programlisting language="xml">
@@ -1737,38 +1701,29 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     </tr>
                 </tbody>
             </informaltable>
-            <simpara>
+            <para>
                 Normal Response Code(s):
                 <returnvalue>200</returnvalue>
-            </simpara>
+            </para>
             <simpara> 
                 Error Response Code(s): 
                 loadBalancerFault (<errorcode>400</errorcode>,<errorcode>500</errorcode>),  serviceUnavailable (
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     The remove load balancer function removes the specified load balancer and its associated
                     configuration.. The load balancer must be in error or suspended status to be removed. Any and all
                     configuration data is immediately purged and is not recoverable. A limited amount of information is
                     available for deleted load balancers (including usage information and deletion time) by performing
                     a &GET; on loadbalancers/id.
-                </para>
-            </section>
-            <section>
-                <title>Request</title>
+                </para> 
                 <para>
                     This operation does not require a request body.
                 </para>
-            </section>
-            <section>
-                <title>Response</title>
                 <para>
                     This operation does not return a response body.
                 </para>
-            </section>
         </section>
     </chapter>
 </book>
