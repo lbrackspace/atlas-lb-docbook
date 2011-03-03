@@ -32,8 +32,8 @@
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
-    <title>Load Balancing Service Management API Specification</title>
-    <titleabbrev>(Insert meaningful Abbreviation here)</titleabbrev>
+    <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
+    <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -51,7 +51,7 @@
         </copyright>
         <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>02/23/11</pubdate>
+        <pubdate>03/03/11</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,7 +60,7 @@
         <abstract>
             <para>
                 This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Load Balancers Application Program Interface
+                service management applications using the Rackspace Cloud Load Balancers Application Program Interface
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
@@ -71,6 +71,56 @@
             <para>this is a placeholder for the back cover</para>
         </cover>
     </info>
+    <chapter>
+        <title>Overview</title>
+        <section>
+            <title>Intended Audience</title>
+            <para>This guide is intended for software developers who want to create applications using
+                the management API for Rackspace Cloud Load Balancers.
+            </para>
+        </section>
+        <section>
+            <title>Document Change History</title>
+            <para>This version of the Developer Guide replaces and supersedes all previous versions.
+                The most recent changes are described in the table below:
+            </para>
+            <informaltable rules='all'>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Revision Date</td>
+                        <td colspan="4">Summary of Changes</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1" align="center">Mar. 3, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Initial release for public beta.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </section>
+        <section>
+            <title>Additional Resources</title>
+            <para>Two APIs provide access to Rackspace Cloud Load Balancers: 
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>the management API, available only to developers within Rackspace, is the subject of this document;</para></listitem>
+                    <listitem>
+                        <para>the public API, available to developers within Rackspace and Rackspace customers, is the subject of a companion document, The Rackspace Cloud Load Balancers API Developer Guide.</para>
+                    </listitem>
+                </itemizedlist>
+                You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide from <link
+                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
+                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
+            </para>
+        </section>
+    </chapter>
     <chapter>
         <title>Management API Operations</title>
         <section>
@@ -99,27 +149,6 @@
                         <td>Retrieve a cluster by id</td>
                         <td>Support, Service Admin</td>
                     </tr>
-                    <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters</td>
-                        <td>Create a new cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Update the name, description, username, or password of a cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Remove a cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
                 </tbody>
             </informaltable>
             <para>
@@ -134,15 +163,12 @@
                 <errorcode>413</errorcode>)
             </simpara>
                 <para>
-                    The cluster operations allow for listing and manipulating clusters. In order to remove a cluster,
-                    it may not have any host machines or virtual IP's associated with it. To create a new cluster,
-                    the caller must supply their username, password, cluster name, cluster description and datacenter
-                    attributes within the request.
+                    The cluster operations are used for retrieving descriptive information about load balancing clusters. 
                 </para>
                 <para>
-                    The &GET; response contains numerous attributes (<code>numberOfLoadBalancingConfigurations</code>,
+                    The &GET; response contains attributes that are generated and immutable: <code>numberOfLoadBalancingConfigurations</code>,
                     <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>, and
-                    <code>utilization</code>) that are generated and immutable. These attributes are calculated based
+                    <code>utilization</code>. A cluster's attributes are calculated based
                     on configurations associated with this cluster.
                 </para>
             <example>
@@ -169,33 +195,6 @@
 <xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>Sample &POST; Request (/clusters): XML
-                </title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-cluster-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &POST; Request (/clusters): JSON
-                </title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-create-cluster-request.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &PUT; Request (cluster/clusterId): XML
-                </title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-cluster-clusterid-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &PUT; Request (cluster/clusterId): JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-cluster-clusterid-request.json" parse="text"/>
-                </programlisting>
-            </example> 
             </section>
         <section>
             <title>Host Machines</title>
