@@ -337,10 +337,10 @@
                 <example>
                     <title>Authentication Request</title>
                     <literallayout class="monospaced">
-                        GET /v1.0 HTTP/1.1
-                        Host: auth.api.rackspacecloud.com
-                        X-Auth-User: jdoe
-                        X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+GET /v1.0 HTTP/1.1
+Host: auth.api.rackspacecloud.com
+X-Auth-User: jdoe
+X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
                 </example>
             </simplesect>
@@ -363,15 +363,15 @@
                     <title>Authentication Response</title>
                     <para>
                         <literallayout class="monospaced">
-                            HTTP/1.1 204 No Content
-                            Date: Mon, 12 Nov 2007 15:32:21 GMT
-                            Server: Apache
-                            X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/1234
-                            X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
-                            X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
-                            X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-                            Content-Length: 0
-                            Content-Type: text/plain; charset=UTF-8
+HTTP/1.1 204 No Content
+Date: Mon, 12 Nov 2007 15:32:21 GMT
+Server: Apache
+X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/1234
+X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
                         </literallayout>
                     </para>
                 </example>
