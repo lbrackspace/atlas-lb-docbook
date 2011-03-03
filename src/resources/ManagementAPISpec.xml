@@ -1258,14 +1258,14 @@
                 </note>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
+                <programlisting language="xml"><?db-font-size 90% ?>
+                <xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
+                <programlisting language="javascript"><?db-font-size 70% ?>
+                <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
