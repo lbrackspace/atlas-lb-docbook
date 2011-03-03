@@ -74,7 +74,7 @@
     <chapter>
         <title>Management API Operations</title>
         <section>
-            <title>Listing, Creating, Updating, and Deleting Load Balancing Clusters</title>
+            <title>Clusters</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -95,7 +95,7 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId</td>
+                        <td>/clusters/<parameter>clusterId</parameter></td>
                         <td>Retrieve a cluster by id</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -109,32 +109,30 @@
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/clusters/clusterId</td>
-                        <td>Upate the name, description, username, or password of a cluster</td>
+                        <td>/clusters/<parameter>clusterId</parameter></td>
+                        <td>Update the name, description, username, or password of a cluster</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/clusters/clusterId</td>
+                        <td>/clusters/<parameter>clusterId</parameter></td>
                         <td>Remove a cluster</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
             <para>
-                <emphasis role="bold">Normal Response Code(s):</emphasis>
+                Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
             <simpara>
-                <emphasis role="bold">Error Response Code(s):</emphasis>
+                Error Response Code(s):
                 loadBalancerManagementFault (<errorcode>400</errorcode>,
                 <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
                 <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
                 <errorcode>413</errorcode>)
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     The cluster operations allow for listing and manipulating clusters. In order to remove a cluster,
                     it may not have any host machines or virtual IP's associated with it. To create a new cluster,
@@ -147,7 +145,6 @@
                     <code>utilization</code>) that are generated and immutable. These attributes are calculated based
                     on configurations associated with this cluster.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/clusters): XML</title>
                 <programlisting language="xml">
@@ -194,15 +191,14 @@
                 </programlisting>
             </example>
             <example>
-                <title>Sample &PUT; Request (cluster/clusterId): JSON
-                </title>
+                <title>Sample &PUT; Request (cluster/clusterId): JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-cluster-clusterid-request.json" parse="text"/>
                 </programlisting>
-            </example>
-        </section>
+            </example> 
+            </section>
         <section>
-            <title>Listing, Creating, Updating, and Deleting Load Balancing Host Machines</title>
+            <title>Host Machines</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -223,7 +219,7 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId/hosts</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/hosts</td>
                         <td>Retrieve a list of all hosts belonging to a cluster</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -237,53 +233,51 @@
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId</td>
+                        <td>/hosts/<parameter>hostId</parameter></td>
                         <td>Update the mutable attributes of a load balancing host</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/hosts/hostId</td>
+                        <td>/hosts/<parameter>hostId</parameter></td>
                         <td>Remove a load balancing host</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId/endpoint</td>
-                        <td>Retrieves the host that is currently the active SOAP endpoint</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/endpoint</td>
+                        <td>Retrieve the host that is currently the active SOAP endpoint</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/endpoint/enable</td>
-                        <td>Enable this host's SOAP endpoint (Warning: can be overwritten by pollendpoints call)</td>
+                        <td>/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
+                        <td>Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/endpoint/disable</td>
-                        <td>Disable this host's SOAP endpoint (Warning: can be overwritten by pollendpoints call)</td>
+                        <td>/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
+                        <td>Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/clusters/pollendpoints</td>
-                        <td>tests all endpoints and sets soap_endpoint_active if endpoint works</td>
+                        <td>Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The host operations allow for retrieval of host configuration data and statistics as well as
                     the ability to add, manipulate or delete load balancing hosts.
-                </para>
+                </para>             
                 <section>
                     <title>Creating a New Host</title>
                     <para>
@@ -342,11 +336,13 @@
                         system should automatically apply a BURN_IN status to all newly added host machines.
                     </para>
                     <note>
+                        <para>
                         For an example of how a new host is created, see the "Sample XML Post Request" below.
+                        </para>
                     </note>
                 </section>
                 <section>
-                    <title>Mutable Attributes</title>
+                    <title>Changing Mutable Attributes</title>
                     <para>
                         The following list of attributes are mutable via the &PUT; HTTP operation:
                     </para>
@@ -387,14 +383,13 @@
                             </para>
                         </listitem>
                     </itemizedlist>
-                    <para align="left">
+                    <para>
                         The &GET; response contains numerous attributes (utilization,
                         numberOfLoadBalancingConfigurations, and numberOfUniqueCustomers) that are generated based
                         on state data and are immutable. These attributes are calculated based on configurations
                         associated with this host.
                     </para>
                 </section>
-            </section>
             <example>
                 <title>Sample Response (/hosts) (/clusters/clusterId/hosts): XML</title>
                 <programlisting language="xml">
@@ -430,10 +425,10 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
-            </example>
+            </example>           
         </section>
         <section>
-            <title>Virtual IP Management</title>
+            <title>Virtual IPs</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -448,48 +443,46 @@
                         <td>&GET;
                         </td>
                         <td>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated to the region</td>
+                        <td>Retrieve a list of all virtual IPs associated with the region</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId/virtualips</td>
-                        <td>Retrieve a list of all virutal IPs associate to a cluster</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/virtualips</td>
+                        <td>Retrieve a list of all virtual IPs associated with a cluster</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/virtualips/virtualIpId/loadbalancers</td>
+                        <td>/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
                         <td>Retrieve a list of load balancers associated with this virtual IP</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
                         <td>Retrieve a list of all virtual IPs associated with a load balancer</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/clusters/clusterId/virtualipblocks</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/virtualipblocks</td>
                         <td>Assign a set of IP blocks to the cluster</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/clusters/clusterId/virtualips/virtualIpId</td>
+                        <td>/virtualips/<parameter>virtualIpId</parameter></td>
                         <td>Remove the specified virtual IP from the cluster</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The virtual IP operations allow the caller to view, create, and remove virtual IPs from an
                     environment. Virtual IPs are automatically assigned to every newly created load balancer and
@@ -503,14 +496,17 @@
                     request can be found below.
                 </para>
                 <note>
+                    <para>
                     In the event a virtual IP must be removed from the cluster, the &DELETE; operation can be used;
                     however, to delete a virtual IP it must not have a load balancer associated to it.
+                    </para>
                 </note>
                 <note>
-                    To add a single or multiple specific virtual ip's simply specify the first and lastIp fields
-                    identically(not a range).
+                    <para>
+                    To add single or multiple specific virtual IPs, simply specify the first and lastIp fields
+                    identically (not as a range).
+                    </para>
                 </note>
-            </section>
             <example>
                 <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
                 <programlisting language="xml">
@@ -537,7 +533,7 @@
             </example>
         </section>
         <section>
-            <title>Rate Limiting a Load Balancer</title>
+            <title>Rate Limits</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -551,42 +547,40 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td>Retrieve the rate limit information for a specified load balancer</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td>Impose a new rate limit on the specified load balancer</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td>Modify the expiration time and/or ticket associated with the rate limit</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td>Immediately remove the defined rate limit</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/ratelimit/removeoldlimits</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
                         <td>Immediately remove expired limits</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Rate limiting allows a service administrator to artificially limit the number of requests that
                     are permitted to transit a given load balancer. This action can be taken when a particular load
@@ -598,29 +592,28 @@
                     Additionally, rate limit information is returned as part of the "extended details of a load
                     balancer", which is documented below.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -637,7 +630,7 @@
             </example>
         </section>
         <section>
-            <title>Moving Load Balancers Between Host Machines / Adjusting Stickiness of Load Balancer Hosts</title>
+            <title>Associations Between Load Balancers and Host Machines</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -651,43 +644,41 @@
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/sticky</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
                         <td>Make the specified load balancer sticky</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerid/sticky</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
                         <td>Turn off the "sticky" flag on the specified load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>loadbalancers/loadBalancerId/hosts</td>
+                        <td>loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
                         <td>Get the host assignment(s) for a specified load balancer</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/hosts</td>
-                        <td>Update the host assignment(s) for a specified load balancer(Use 'reassignhosts' for
-                            multiple concurrent operations)</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
+                        <td>Update the host assignment(s) for a specified load balancer (Use
+                            <code>reassignhosts</code> for multiple concurrent operations)</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/reassignhosts</td>
-                        <td>update the host assignment(s) for a list of load balancers</td>
+                        <td>Update the host assignment(s) for a list of load balancers</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Service administrators may re-assign a load balancer to a different host machine within the same
                     cluster. This action can be taken if capacity warrants it or if a particular configuration needs
@@ -704,7 +695,6 @@
                     feature that should be used cautiously as it can potentially amplify DDoS and other types of
                     malicious traffic.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/host): XML</title>
                 <programlisting language="xml">
@@ -743,7 +733,7 @@
             </example>
         </section>
         <section>
-            <title>Host machine Configuration Backup &amp; Restoration</title>
+            <title>Configuration Backups</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -764,79 +754,76 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/hosts/hostId/backups</td>
+                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
                         <td>View a list of available backups for a specified host machine</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/hosts/hostId/subnetmappings</td>
+                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
                         <td>View the list of subnet mappings for this host</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/subnetmappings</td>
+                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
                         <td>Add subnet mappings on this host</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/host/hostId/subnetmappings/delete</td>
-                        <td>&DELETE; the specified subnet mappings on this host
+                        <td>/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
+                        <td>Delete the specified subnet mappings on this host
                         </td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/activate</td>
-                        <td>Activate Host Machine</td>
+                        <td>/hosts/<parameter>hostId</parameter>/activate</td>
+                        <td>Activate host machine</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/inactive</td>
-                        <td>Deactivate Host Machine</td>
+                        <td>/hosts/<parameter>hostId</parameter>/inactive</td>
+                        <td>Deactivate host machine</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/backups</td>
+                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
                         <td>Create a new backup of the host configuration</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/hosts/hostId/backups/backupId</td>
+                        <td>/hosts/<parameter>hostId</parameter>/backups/backupId</td>
                         <td>Purge a backup with the specified backup ID</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/hosts/hostId/backups/backupId/restore</td>
+                        <td>/hosts/<parameter>hostId</parameter>/backups/<parameter>backupId</parameter>/restore</td>
                         <td>Restore the specified backup to the host machine</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The host backup and restoration tools allow for service administrators to take periodic backups
                     of the current state of the configuration on any given host machine. These functions allow the
                     caller to view, create new backups, purge backups, and restore any available configuration.
                 </para>
-            </section>
             <section>
-                <title>Non mutable Parameters:</title>
+                <title>Examining Immutable Parameters</title>
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -917,7 +904,7 @@
             </example>
         </section>
         <section>
-            <title>Customer List by Host/Cluster</title>
+            <title>Customer Lists</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -944,14 +931,11 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The generated customer list allows external services, which contain customer contact information,
                     to query the load balancing service to determine the breakdown of customers at either the cluster
                     or host level.
                 </para>
-            </section>
             <example>
                 <title>Sample Request ByName (/hosts/customers) (/clusters/customers): XML</title>
                 <programlisting language="xml">
@@ -976,7 +960,7 @@
 <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
-        </section>
+            </section>
     </chapter>
     <chapter>
         <title>Capacity and Availability Reports</title>
@@ -1002,20 +986,17 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/hosts/hostId/capacityreport</td>
+                        <td>/hosts/<parameter>hostId</parameter>/capacityreport</td>
                         <td>Generate a capacity planning report for a specified load balancing host</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The load balancing host capacity reports provide insight into the available capacity of a given
                     host machine. It also supplies an estimated runway of available capacity based on historical
                     provisioning activity (activity taking place over a period of one week).
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
                 <programlisting language="xml">
@@ -1027,7 +1008,7 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
-            </example>
+            </example>         
         </section>
         <section>
             <title>Load Balancing Cluster Virtual IP Availability Report</title>
@@ -1045,27 +1026,26 @@
                         <td>&GET;
                         </td>
                         <td>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated to any cluster.</td>
+                        <td>Generate an availability report for all virtual IPs associated with any
+                            cluster.</td>
                         <td>Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/clusters/clusterId/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated to the specific cluster</td>
+                        <td>/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
+                        <td>Generate an availability report for all virtual IPs associated with the
+                            specific cluster</td>
                         <td>Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     The virtual IP availability report provides insight into the availability of both public and
                     ServiceNet IP addresses that are provisioned to a cluster. It also supplies an estimated runway
                     of available capacity based on historical provisioning activity (activity taking place over a
                     period of one week).
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/virtualips/availabilityreport) (/cluster/clusterid/availabilityreport): XML</title>
                 <programlisting language="xml">
@@ -1077,8 +1057,8 @@
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
-            </example>
-        </section>
+            </example>    
+        </section> 
     </chapter>
     <chapter>
         <title>Extended Customer API Operations</title>
@@ -1097,14 +1077,12 @@
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
                         <td>Provision an additional virtual IP to a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows a user to provision a new PUBLIC or SERVICENET address to the specified load
                     balancer. This feature is restricted because a user must justify the need for additional IP
@@ -1115,7 +1093,6 @@
                     To retrieve the assigned virtual IP, the caller must perform a subsequent &GET; on the
                     /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
-            </section>
             <example>
                 <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
                 <programlisting language="xml">
@@ -1144,14 +1121,12 @@
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/sync</td>
-                        <td>Synchronizes the load balancer with the authoritative source</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
+                        <td>Synchronize the load balancer with the authoritative source</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows for a caller to synchronize the specified load balancer with a particular
                     authoritative resource and is intended to be used when a load-balancer is 'stuck' in a non-active
@@ -1168,7 +1143,6 @@
                     the load-balancer will be put in the 'ACTIVE' status. If for some reason the load-balancer could
                     not be created in Zeus then the status will be set to 'ERROR'.
                 </para>
-            </section>
         </section>
         <section>
             <title>Suspending a Load Balancer</title>
@@ -1185,28 +1159,27 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Retrieve the current suspension information for the load balancer, if any</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Retrieve the current suspension information, if any, for the load
+                            balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Issues an immediate service suspension for a load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Issue an immediate service suspension for a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspension</td>
-                        <td>Removes the suspension for a load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td>Remove the suspension for a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This feature allows for a caller to suspend and or unsuspend the specified load balancer. In
                     order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a
@@ -1218,10 +1191,11 @@
                     element <![CDATA[(<suspension />)]]> will be returned.
                 </para>
                 <note>
+                    <para>
                     While customers are not permitted to delete suspended load balancers, a user with elevated
                     permissions may do so by issuing a &DELETE; request against the /loadbalancers/loadBalancerId URI.
+                    </para>
                 </note>
-            </section>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
                 <programlisting language="xml">
@@ -1262,14 +1236,12 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/extendedview</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
                         <td>View extended details of a load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     This operation provides the detailed output for a specific load balancer configured and
                     associated with the designated account. It differs from the customer view because it provides
@@ -1277,19 +1249,20 @@
                     of the loadbalancer element.
                 </para>
                 <note>
+                    <para>
                     An extended detail view is not available for a list of load balancers.
+                    </para>
                 </note>
-            </section>
             <example>
-                <title>Sample Response<!-- (/loadbalancers/loadbalancerid/extendedview)-->: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
+                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
+                <programlisting language="xml"><?db-font-size 90% ?>
+                <xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
+                <programlisting language="javascript"><?db-font-size 70% ?>
+                <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1309,9 +1282,9 @@
                         <td>&GET;
                         </td>
                         <td>
-                            <code>/accounts/accountId/loadbalancers</code>
+                            <code>/accounts/<parameter>accountId</parameter>/loadbalancers</code>
                         </td>
-                        <td>Retrieves a list of load balancers on this account</td>
+                        <td>Retrieve a list of load balancers on this account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1326,24 +1299,21 @@
                 </tbody>
             </informaltable>
             <para>
-                <emphasis role="bold">Normal Response Code(s):</emphasis>
+                Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
             <simpara>
-                <emphasis role="bold">Error Response Code(s):</emphasis>
+                Error Response Code(s):
                 loadBalancerManagementFault (<errorcode>400</errorcode>,
                 <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
                 <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
                 <errorcode>413</errorcode>)
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     A user can list all loadbalancers and their usage for the given account using these methods. The
                     date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a
                     maximum of 90 days.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/accounts/accountid/loadbalancers): XML</title>
                 <programlisting language="xml">
@@ -1354,23 +1324,32 @@
         <section>
             <title>Load Balancer Status URL Management</title>
             <para>
-                More often then not a LoadBalancer gets stuck in pending update due to a broken transaction that
+                If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken transaction that
                 should have rolled back in the database but didn't.
             </para>
             <para>
-                In this case an ops personal can use the following URL's to correct the issues.
+                In this case, operations personnel can use URLs such as the following to correct the issues:
             </para>
-            <section>
-                <title>Examples</title>
-                <literallayout class="monospaced">
-<![CDATA[loadbalancers/68/setstatus/ACTIVE
-loadbalancers/68/setstatus/BUILD
-loadbalancers/68/setstatus/DELETED
-loadbalancers/68/setstatus/ERROR
-loadbalancers/68/setstatus/PENDING_DELETE
-loadbalancers/68/setstatus/PENDING_UPDATE]]>
-                </literallayout>
-            </section>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/ACTIVE</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/BUILD</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/DELETED</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/ERROR</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/PENDING_DELETE</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/PENDING_UPDATE</para>
+                </listitem>
+            </itemizedlist>   
         </section>
         <section>
             <title>Listing and Acknowledging Alerts</title>
@@ -1399,22 +1378,22 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/alers/alertId</td>
+                        <td>/alerts/<parameter>alertId</parameter></td>
                         <td>Retrieve details for the alert</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/alerts/loadbalancer?id=1</td>
-                        <td>Retrieve all alerts for the specified load balancer, if any</td>
+                        <td>/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td>Retrieve all alerts, if any, for the specified load balancer</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/alerts/alertId/acknowledged</td>
-                        <td>Acknowledge alert. Changes the status of alert to ACKNOWLEDGED</td>
+                        <td>/alerts/<parameter>alertId</parameter>/acknowledged</td>
+                        <td>Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1448,7 +1427,7 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/management/groups?name=xxx&amp;default=Y</td>
+                        <td>/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
                         <td>Add group name and default</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1457,40 +1436,41 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                         </td>
                         <td>/management/groups</td>
                         <td>View all groups for API rate limiting</td>
+                        <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/management/groups/id/setdefault?default=Y</td>
-                        <td>Updates the default for a given group</td>
+                        <td>/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
+                        <td>Update the default for a given group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
                         <td>/management</td>
-                        <td>Deletes a group</td>
+                        <td>Delete a group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/management/groups/id/accounts/id</td>
+                        <td>/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
                         <td>View all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/management/accounts/id/groups</td>
+                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
                         <td>View all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/accounts/id/groups</td>
-                        <td>Deletes all groups for the account</td>
+                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td>Delete all groups for the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1525,33 +1505,32 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                         <td>&POST;
                         </td>
                         <td>/management/loadbalancerlimitgroups</td>
-                        <td>Adds a load balancer limit group</td>
+                        <td>Add a load balancer limit group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id</td>
-                        <td>Deletes the specific load balancer group</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td>Delete the specific load balancer group</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
                         <td>Display load balancer limit group details</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/Id/setdefault</td>
-                        <td>Sets the load balancer limit group as the default</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
+                        <td>Set the load balancer limit group as the default</td>
+                        <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Load balancer limits refers to the number of load balancers an account can have (formerly known as
                     absolute limits). These imposed limits are defined in the form of groups with each group having a
@@ -1578,7 +1557,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
 <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
-        </section>
         <section>
             <title>Operations for Applying Load Balancer Limits</title>
             <informaltable rules="all">
@@ -1615,8 +1593,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>Description</title>
                 <para>
                     Accounts can belong to only one load balancer limit group. If an account is currently part of
                     a load balancer limit group then adding the account to a new group removes it from the original
@@ -1626,7 +1602,6 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     is possible for the account to have more load balancers than the new limit. Any further calls to
                     create a load balancer will not be allowed since the account is above the limit.
                 </para>
-            </section>
             <example>
                 <title>Sample XML Response</title>
                 <programlisting language="xml">
@@ -1686,22 +1661,18 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1</td>
-                        <td>List recent load balancer service events on this account</td>
+                        <td>/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
+                        <td>List recent load balancer service events for this account within a date range</td>
                         <td>Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <section>
-                <title>&GET; /management/event/account/accountId/loadbalancer?startDate=2010-1-1&amp;endDate=2010-1-1
-                </title>
                 <para>
-                    The date parameters are optional. The results will list will be all load balancer service events
+                    The date parameters are optional. The results will list all load balancer service events
                     that occurred between the start and end dates. by default the start date will be 60 days from the
-                    time of the request and the end date will be the date of the request. The result list will be
+                    time of the request and the end date will be the date of the request. The results list will be
                     inclusive for both dates.
                 </para>
-            </section>
             <example>
                 <title>Sample Response (/alerts): XML</title>
                 <programlisting language="xml">
@@ -1724,51 +1695,42 @@ loadbalancers/68/setstatus/PENDING_UPDATE]]>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/error</td>
-                        <td>Deletes a load balancer in error status</td>
+                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
+                        <td>Delete a load balancer in error status</td>
                         <td>Operations</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/suspended</td>
-                        <td>Deletes a load balancer in suspended status</td>
+                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
+                        <td>Delete a load balancer in suspended status</td>
                         <td>Operations, Support</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <simpara>
+            <para>
                 Normal Response Code(s):
                 <returnvalue>200</returnvalue>
-            </simpara>
+            </para>
             <simpara> 
                 Error Response Code(s): 
                 loadBalancerFault (<errorcode>400</errorcode>,<errorcode>500</errorcode>),  serviceUnavailable (
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-            <section>
-                <title>Description</title>
                 <para>
                     The remove load balancer function removes the specified load balancer and its associated
                     configuration.. The load balancer must be in error or suspended status to be removed. Any and all
                     configuration data is immediately purged and is not recoverable. A limited amount of information is
                     available for deleted load balancers (including usage information and deletion time) by performing
                     a &GET; on loadbalancers/id.
-                </para>
-            </section>
-            <section>
-                <title>Request</title>
+                </para> 
                 <para>
                     This operation does not require a request body.
                 </para>
-            </section>
-            <section>
-                <title>Response</title>
                 <para>
                     This operation does not return a response body.
                 </para>
-            </section>
         </section>
     </chapter>
 </book>

@@ -85,7 +85,7 @@
       <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1291" column="60" selection-start="59550" selection-end="59550" vertical-scroll-proportion="0.01664817">
+            <state line="30" column="17" selection-start="1247" selection-end="1247" vertical-scroll-proportion="-12.29684">
               <folding />
             </state>
           </provider>
@@ -107,8 +107,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/resources/samples/lb-update-accesslist-request.json" />
         <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
-        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/samples/lb-list-loadbalancer-extendedview.json" />
+        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
       </list>
     </option>
   </component>
@@ -465,7 +465,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1291" column="60" selection-start="59550" selection-end="59550" vertical-scroll-proportion="0.01664817">
+        <state line="30" column="17" selection-start="1247" selection-end="1247" vertical-scroll-proportion="-12.29684">
           <folding />
         </state>
       </provider>
