@@ -1281,7 +1281,7 @@
                 </note>
             </section>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
+                <title>Sample Response<!-- (/loadbalancers/loadbalancerid/extendedview)-->: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
                 </programlisting>
