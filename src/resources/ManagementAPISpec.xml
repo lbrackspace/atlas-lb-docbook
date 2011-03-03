@@ -1324,23 +1324,32 @@
         <section>
             <title>Load Balancer Status URL Management</title>
             <para>
-                More often then not a LoadBalancer gets stuck in pending update due to a broken transaction that
+                If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken transaction that
                 should have rolled back in the database but didn't.
             </para>
             <para>
-                In this case an ops personal can use the following URL's to correct the issues.
+                In this case, operations personnel can use URLs such as the following to correct the issues:
             </para>
-            <section>
-                <title>Examples</title>
-                <literallayout class="monospaced">
-<![CDATA[loadbalancers/68/setstatus/ACTIVE
-loadbalancers/68/setstatus/BUILD
-loadbalancers/68/setstatus/DELETED
-loadbalancers/68/setstatus/ERROR
-loadbalancers/68/setstatus/PENDING_DELETE
-loadbalancers/68/setstatus/PENDING_UPDATE]]>
-                </literallayout>
-            </section>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/ACTIVE</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/BUILD</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/DELETED</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/ERROR</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/PENDING_DELETE</para>
+                </listitem>
+                <listitem>
+                    <para>loadbalancers/<parameter>id</parameter>/setstatus/PENDING_UPDATE</para>
+                </listitem>
+            </itemizedlist>   
         </section>
         <section>
             <title>Listing and Acknowledging Alerts</title>
