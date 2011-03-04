@@ -4,7 +4,7 @@
             loadBalancerId="61"
             loadBalancerName="test1"
             clusterId="1"
-            lusterName="Cluster Delta"
+            clusterName="Cluster Delta"
             protocol="HTTP"
             status="DELETED"/>
     <ns2:accountLoadBalancer

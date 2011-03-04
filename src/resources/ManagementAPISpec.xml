@@ -414,13 +414,13 @@
                 </programlisting>
             </example>
             <example>
-                <title>Create Host Request: XML</title>
+                <title>Update Host Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Create Host Request: JSON</title>
+                <title>Update Host Request: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
@@ -1093,15 +1093,15 @@
                     /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+                <title>Assign VIP Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-virtualips.xml" parse="text"/>
+                <xi:include href="samples/lb-create-virtualips.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+                <title>Assign VIP Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-virtualips.json" parse="text"/>
+                <xi:include href="samples/lb-create-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1196,27 +1196,27 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>List Suspension Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-suspension.xml" parse="text"/>
+                <xi:include href="samples/lb-list-suspension.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>List Suspension Response: JSON</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-suspension.json" parse="text"/>
+                <xi:include href="samples/lb-list-suspension.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>Add Suspension Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.xml" parse="text"/>
+                <xi:include href="samples/lb-create-suspension.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>Add Suspension Response: JSON</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.json" parse="text"/>
+                <xi:include href="samples/lb-create-suspension.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1253,13 +1253,13 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
+                <title>List Extended Load Balancer Details Response: XML</title>
                 <programlisting language="xml"><?db-font-size 90% ?>
                 <xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): JSON</title>
+                <title>List Extended Load Balancer Details Response: XML</title>
                 <programlisting language="javascript"><?db-font-size 70% ?>
                 <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
@@ -1314,9 +1314,9 @@
                     maximum of 90 days.
                 </para>
             <example>
-                <title>Sample Response (/accounts/accountid/loadbalancers): XML</title>
+                <title>List Account Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
+                <xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1405,9 +1405,9 @@
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response (/alerts): XML</title>
+                <title>List Alerts Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-alerts.xml" parse="text"/>
+                <xi:include href="samples/lb-list-alerts.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1475,9 +1475,9 @@
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response: JSON</title>
+                <title>List Limits Groups Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-groups.json" parse="text"/>
+                <xi:include href="samples/lb-list-groups.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1545,15 +1545,15 @@
                 </para>
             </section>
             <example>
-                <title>Sample Request: XML</title>
+                <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-group-limits.xml" parse="text"/>
+                <xi:include href="samples/lb-create-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response: XML</title>
+                <title>List Limits Response: XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
+                <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
         <section>
@@ -1571,22 +1571,22 @@
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/management/accounts/accountId/loadbalancerlimitgroup</td>
+                        <td>/management/accounts/<parameter>accountId</parameter>/loadbalancerlimitgroup</td>
                         <td>Lists the load balancer limit group associated with the account</td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
-                        <td>Adds an account to a load balancer limit group (removes from previous group if applicable)
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td>Adds the specified account to the specified load balancer limit group (removes from previous group if applicable)
                         </td>
                         <td>Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
+                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
                         <td>Deletes the specified account from the specified load balancer limit group</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -1602,9 +1602,9 @@
                     create a load balancer will not be allowed since the account is above the limit.
                 </para>
             <example>
-                <title>Sample XML Response</title>
+                <title>List Specified Limits Group Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-limit-groups.xml" parse="text"/>
+                <xi:include href="samples/lb-list-limit-groups.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1630,15 +1630,15 @@
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response: XML</title>
+                <title>List Zeus Usage Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-host-usage-records.xml" parse="text"/>
+                <xi:include href="samples/lb-list-host-usage-records.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response: JSON</title>
+                <title>List Zeus Usage Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
+                <xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1673,9 +1673,9 @@
                     inclusive for both dates.
                 </para>
             <example>
-                <title>Sample Response (/alerts): XML</title>
+                <title>List Events Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-service-events.xml" parse="text"/>
+                <xi:include href="samples/lb-list-service-events.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
