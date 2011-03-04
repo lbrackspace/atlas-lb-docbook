@@ -1063,19 +1063,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td>Provision an additional virtual IP to a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td colspan="3">Provision an additional virtual IP to a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1107,19 +1106,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
-                        <td>Synchronize the load balancer with the authoritative source</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
+                        <td colspan="3">Synchronize the load balancer with the authoritative source</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1145,43 +1143,38 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Retrieve the current suspension information, if any, for the load
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Retrieve the current suspension information, if any, for the load
                             balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Issue an immediate service suspension for a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Issue an immediate service suspension for a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Remove the suspension for a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Remove the suspension for a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    This feature allows for a caller to suspend and or unsuspend the specified load balancer. In
-                    order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a
-                    ticket identifier, which can be viewed by other users with support and service admin access
-                    levels.
-                </para>
+                <para> This feature allows for a caller to suspend and or unsuspend the specified
+                load balancer. In order to suspend a load balancer, the caller must supply a reason,
+                the ticket issuer (user) and a ticket identifier, which can be viewed by other users
+                with support and service admin access levels. </para>
                 <para>
                     If a caller requests suspension details for an unsuspended load balancer, an empty suspension
                     element <![CDATA[(<suspension />)]]> will be returned.
@@ -1222,19 +1215,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
-                        <td>View extended details of a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
+                        <td colspan="3">View extended details of a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1267,30 +1259,28 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">
+                            /accounts/<parameter>accountId</parameter>/loadbalancers
                         </td>
-                        <td>
-                            <code>/accounts/<parameter>accountId</parameter>/loadbalancers</code>
-                        </td>
-                        <td>Retrieve a list of load balancers on this account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="4">Retrieve a list of load balancers on this account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/accounts/billing?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
+                            &amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
                         </td>
-                        <td><code>/accounts/billing?startTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss
-                            <code>&amp;endTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss
-                        </td>
-                        <td>Retrieve usage for all accounts for a single day</td>
-                        <td>Support, Service Admin, Billing</td>
+                        <td colspan="4">Retrieve usage for all accounts for a single day</td>
+                        <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1357,47 +1347,42 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts</td>
-                        <td>Retrieve all alerts, if any</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts</td>
+                        <td colspan="4">Retrieve all alerts, if any</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts/<parameter>alertId</parameter></td>
-                        <td>Retrieve details for the alert</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/<parameter>alertId</parameter></td>
+                        <td colspan="4">Retrieve details for the alert</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
-                        <td>Retrieve all alerts, if any, for the specified load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">Retrieve all alerts, if any, for the specified load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/alerts/<parameter>alertId</parameter>/acknowledged</td>
-                        <td>Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/alerts/<parameter>alertId</parameter>/acknowledged</td>
+                        <td colspan="4">Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts/unacknowledged</td>
-                        <td>Retrieve unacknowledged alerts, if any</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/unacknowledged</td>
+                        <td colspan="4">Retrieve unacknowledged alerts, if any</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1413,61 +1398,54 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
-                        <td>Add group name and default</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
+                        <td colspan="4">Add group name and default</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/groups</td>
-                        <td>View all groups for API rate limiting</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/groups</td>
+                        <td colspan="4">View all groups for API rate limiting</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
-                        <td>Update the default for a given group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
+                        <td colspan="4">Update the default for a given group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management</td>
-                        <td>Delete a group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management</td>
+                        <td colspan="4">Delete a group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
-                        <td>View all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
+                        <td colspan="4">View all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
-                        <td>View all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td colspan="4">View all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
-                        <td>Delete all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td colspan="4">Delete all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1483,47 +1461,42 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups</td>
-                        <td>List all load balancer limit groups</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups</td>
+                        <td colspan="4">List all load balancer limit groups</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups</td>
-                        <td>Add a load balancer limit group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups</td>
+                        <td colspan="4">Add a load balancer limit group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td>Delete the specific load balancer group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td colspan="4">Delete the specific load balancer group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td>Display load balancer limit group details</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td colspan="4">Display load balancer limit group details</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
-                        <td>Set the load balancer limit group as the default</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
+                        <td colspan="4">Set the load balancer limit group as the default</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1558,34 +1531,31 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/accounts/<parameter>accountId</parameter>/loadbalancerlimitgroup</td>
-                        <td>Lists the load balancer limit group associated with the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/accounts/<parameter>accountId</parameter>/loadbalancerlimitgroup</td>
+                        <td colspan="4">Lists the load balancer limit group associated with the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td colspan="4">Adds the specified account to the specified load balancer limit group (removes from previous group if applicable)
                         </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
-                        <td>Adds the specified account to the specified load balancer limit group (removes from previous group if applicable)
-                        </td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
-                        <td>Deletes the specified account from the specified load balancer limit group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td colspan="4">Deletes the specified account from the specified load balancer limit group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1610,19 +1580,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/hosts/usage</td>
-                        <td>View usage of Zeus hosts</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/hosts/usage</td>
+                        <td colspan="4">View usage of Zeus hosts</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1647,19 +1616,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
-                        <td>List recent load balancer service events for this account within a date range</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
+                        <td colspan="4">List recent load balancer service events for this account within a date range</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1681,26 +1649,24 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
-                        <td>Delete a load balancer in error status</td>
-                        <td>Operations</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
+                        <td colspan="4">Delete a load balancer in error status</td>
+                        <td colspan="2">Operations</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
-                        <td>Delete a load balancer in suspended status</td>
-                        <td>Operations, Support</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
+                        <td colspan="4">Delete a load balancer in suspended status</td>
+                        <td colspan="2">Operations, Support</td>
                     </tr>
                 </tbody>
             </informaltable>
