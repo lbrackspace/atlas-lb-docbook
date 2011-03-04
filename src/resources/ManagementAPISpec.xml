@@ -962,39 +962,38 @@
             </section>
     </chapter>
     <chapter>
-        <title>Capacity and Availability Reports</title>
+        <title>Reports</title>
         <section>
-            <title>Load Balancing Host Capacity Planning Board</title>
+            <title>Host Capacity</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/capacityreport</td>
-                        <td>Generate a capacity planning report for all load balancing hosts</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for all load balancing hosts</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/capacityreport</td>
-                        <td>Generate a capacity planning report for a specified load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/<parameter>hostId</parameter>/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for a specified load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
                 <para>
-                    The load balancing host capacity reports provide insight into the available capacity of a given
-                    host machine. It also supplies an estimated runway of available capacity based on historical
-                    provisioning activity (activity taking place over a period of one week).
+                The load balancing host capacity report provides insight into the available
+                capacity of a given host machine. It also supplies an estimated runway of available
+                capacity based on historical provisioning activity. The historical period consists
+                of one week, reported as <code>allocatedConcurrentConnectionsInPastSevenDays</code>.
                 </para>
             <example>
                 <title>Report Host Capacity Response: XML</title>
@@ -1010,41 +1009,39 @@
             </example>         
         </section>
         <section>
-            <title>Load Balancing Cluster Virtual IP Availability Report</title>
+            <title>Virtual IP Availability</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated with any
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with any
                             cluster.</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated with the
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with the
                             specific cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    The virtual IP availability report provides insight into the availability of both public and
-                    ServiceNet IP addresses that are provisioned to a cluster. It also supplies an estimated runway
-                    of available capacity based on historical provisioning activity (activity taking place over a
-                    period of one week).
-                </para>
+                <para> The virtual IP availability report provides insight into the availability of
+                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
+                supplies an estimated runway of available capacity based on historical provisioning
+                activity. The historical period consists of one week, reported as
+                    <code>allocatedPublicIpAddressesInLastSevenDays</code> and
+                    <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
             <example>
                 <title>Report VIP Availability Response: XML</title>
                 <programlisting language="xml">
