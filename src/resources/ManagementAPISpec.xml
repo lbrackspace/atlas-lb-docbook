@@ -172,25 +172,25 @@
                     on configurations associated with this cluster.
                 </para>
             <example>
-                <title>Sample Response (/clusters): XML</title>
+                <title>List All Clusters Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-clusters-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters): JSON</title>
+                <title>List All Clusters Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters/clusterId): XML</title>
+                <title>List Specified Cluster Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters/clusterId): JSON</title>
+                <title>List Specified Cluster Response: JSON</title>
                 <programlisting language="json">
 <xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
                 </programlisting>
@@ -390,37 +390,37 @@
                     </para>
                 </section>
             <example>
-                <title>Sample Response (/hosts) (/clusters/clusterId/hosts): XML</title>
+                <title>List All Hosts Within Cluster Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts) (/clusters/clusterId/hosts): JSON</title>
+                <title>List All Hosts Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): XML</title>
+                <title>Create Host Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Create Host Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Create Host Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Create Host Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
@@ -507,25 +507,25 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>List All VIPs Within Cluster Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>List All VIPs Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>Assign IP Blocks Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>Assign IP Blocks Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
                 </programlisting>
@@ -592,39 +592,39 @@
                     balancer", which is documented below.
                 </para>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>List Rate Limit Response: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>List Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Set Rate Limit Response: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Set Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Update Rate Limit Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-update-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Update Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-update-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -695,39 +695,39 @@
                     malicious traffic.
                 </para>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/host): XML</title>
+                <title>Update Host Assignment for Specified Load Balancer Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancer-host.xml" parse="text"/>
+                <xi:include href="samples/lb-list-loadbalancer-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/host): JSON</title>
+                <title>Update Host Assignment for Specified Load Balancer Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
+                <xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/reassignhosts): XML</title>
+                <title>Update Host Assignment for Multiple Load Balancers Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/reassignhosts): JSON</title>
+                <title>Update Host Assignment for Multiple Load Balancers Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/host): XML</title>
+                <title>Update Host Assignment for Specified Load Balancer Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/host): JSON</title>
+                <title>Update Host Assignment for Specified Load Balancer Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -860,45 +860,45 @@
                 </para>
             </section>
             <example>
-                <title>Sample Response (/hosts/backups): XML</title>
+                <title>List Available Backups for All Hosts Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-backups.xml" parse="text"/>
+                <xi:include href="samples/lb-list-backups.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/backups): JSON</title>
+                <title>List Available Backups for All Hosts Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-backups.json" parse="text"/>
+                <xi:include href="samples/lb-list-backups.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/backups): XML</title>
+                <title>List Available Backups for Specified Host Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-backups.xml" parse="text"/>
+                <xi:include href="samples/lb-update-backups.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/backups): JSON</title>
+                <title>List Available Backups for Specified Host Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-backups.json" parse="text"/>
+                <xi:include href="samples/lb-update-backups.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/hostid/subnetmappings): XML</title>
+                <title>Add Subnet Mappings Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-subnetmappings.xml" parse="text"/>
+                <xi:include href="samples/lb-list-subnetmappings.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/subnetmappings): XML</title>
+                <title>Add Subnet Mappings Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-subnetmappings.xml" parse="text"/>
+                <xi:include href="samples/lb-update-subnetmappings.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/subnetmappings): JSON</title>
+                <title>Add Subnet Mappings Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
+                <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -936,27 +936,27 @@
                     or host level.
                 </para>
             <example>
-                <title>Sample Request ByName (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers by Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
+                <xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request ById (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers by Cluster Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
+                <xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-customers.xml" parse="text"/>
+                <xi:include href="samples/lb-list-customers.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/hostid/customers) (/clusters/clustserid/customers)</title>
+                <title>List Customers Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-customers.json" parse="text"/>
+                <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
             </section>
