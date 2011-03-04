@@ -128,26 +128,24 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters</td>
-                        <td>Retrieve a list of all clusters</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters</td>
+                        <td colspan="3">Retrieve a list of all clusters</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Retrieve a cluster by id</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
+                        <td colspan="3">Retrieve a cluster by id</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -201,75 +199,66 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts</td>
-                        <td>Retrieve a list of all hosts within the region</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts</td>
+                        <td colspan="3">Retrieve a list of all hosts within the region</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/hosts</td>
-                        <td>Retrieve a list of all hosts belonging to a cluster</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/hosts</td>
+                        <td colspan="3">Retrieve a list of all hosts belonging to a cluster</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/hosts</td>
-                        <td>Create a new load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/hosts</td>
+                        <td colspan="3">Create a new load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter></td>
-                        <td>Update the mutable attributes of a load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter></td>
+                        <td colspan="3">Update the mutable attributes of a load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter></td>
-                        <td>Remove a load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter></td>
+                        <td colspan="3">Remove a load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/endpoint</td>
-                        <td>Retrieve the host that is currently the active SOAP endpoint</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/endpoint</td>
+                        <td colspan="3">Retrieve the host that is currently the active SOAP endpoint</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
-                        <td>Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
+                        <td colspan="3">Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
-                        <td>Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
+                        <td colspan="3">Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/clusters/pollendpoints</td>
-                        <td>Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/clusters/pollendpoints</td>
+                        <td colspan="3">Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -431,54 +420,48 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with the region</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with the region</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with a cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with a cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
-                        <td>Retrieve a list of load balancers associated with this virtual IP</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
+                        <td colspan="3">Retrieve a list of load balancers associated with this virtual IP</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with a load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with a load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualipblocks</td>
-                        <td>Assign a set of IP blocks to the cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/virtualipblocks</td>
+                        <td colspan="3">Assign a set of IP blocks to the cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/virtualips/<parameter>virtualIpId</parameter></td>
-                        <td>Remove the specified virtual IP from the cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/virtualips/<parameter>virtualIpId</parameter></td>
+                        <td colspan="3">Remove the specified virtual IP from the cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -536,47 +519,42 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Retrieve the rate limit information for a specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Retrieve the rate limit information for a specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Impose a new rate limit on the specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Impose a new rate limit on the specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Modify the expiration time and/or ticket associated with the rate limit</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Modify the expiration time and/or ticket associated with the rate limit</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Immediately remove the defined rate limit</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Immediately remove the defined rate limit</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
-                        <td>Immediately remove expired limits</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
+                        <td colspan="3">Immediately remove expired limits</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -633,48 +611,43 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
-                        <td>Make the specified load balancer sticky</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
+                        <td colspan="3">Make the specified load balancer sticky</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
-                        <td>Turn off the "sticky" flag on the specified load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
+                        <td colspan="3">Turn off the "sticky" flag on the specified load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
-                        <td>Get the host assignment(s) for a specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
+                        <td colspan="3">Get the host assignment(s) for a specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
-                        <td>Update the host assignment(s) for a specified load balancer (Use
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
+                        <td colspan="3">Update the host assignment(s) for a specified load balancer (Use
                             <code>reassignhosts</code> for multiple concurrent operations)</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/reassignhosts</td>
-                        <td>Update the host assignment(s) for a list of load balancers</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/reassignhosts</td>
+                        <td colspan="3">Update the host assignment(s) for a list of load balancers</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -736,83 +709,73 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Levels</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/backups</td>
-                        <td>View a list of available backups for all host machines</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/backups</td>
+                        <td colspan="3">View a list of available backups for all host machines</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
-                        <td>View a list of available backups for a specified host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
+                        <td colspan="3">View a list of available backups for a specified host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
-                        <td>View the list of subnet mappings for this host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings</td>
+                        <td colspan="3">View the list of subnet mappings for this host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
-                        <td>Add subnet mappings on this host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings</td>
+                        <td colspan="3">Add subnet mappings on this host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
+                        <td colspan="3">Delete the specified subnet mappings on this host
                         </td>
-                        <td>/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
-                        <td>Delete the specified subnet mappings on this host
-                        </td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/activate</td>
-                        <td>Activate host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/activate</td>
+                        <td colspan="3">Activate host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/inactive</td>
-                        <td>Deactivate host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/inactive</td>
+                        <td colspan="3">Deactivate host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
-                        <td>Create a new backup of the host configuration</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
+                        <td colspan="3">Create a new backup of the host configuration</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups/backupId</td>
-                        <td>Purge a backup with the specified backup ID</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups/backupId</td>
+                        <td colspan="3">Purge a backup with the specified backup ID</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups/<parameter>backupId</parameter>/restore</td>
-                        <td>Restore the specified backup to the host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups/<parameter>backupId</parameter>/restore</td>
+                        <td colspan="3">Restore the specified backup to the host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -907,26 +870,24 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/hosts/customers</td>
-                        <td>Generate a customer list by host</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/hosts/customers</td>
+                        <td colspan="3">Generate a customer list by host</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters/customers</td>
-                        <td>Generate a customer list by cluster</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/clusters/customers</td>
+                        <td colspan="3">Generate a customer list by cluster</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
