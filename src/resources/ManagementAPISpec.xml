@@ -174,25 +174,25 @@
             <example>
                 <title>List All Clusters Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-clusters-response.xml" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List All Clusters Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List Specified Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List Specified Cluster Response: JSON</title>
                 <programlisting language="json">
-<xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
                 </programlisting>
             </example>
             </section>
@@ -392,37 +392,37 @@
             <example>
                 <title>List All Hosts Within Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
+                <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List All Hosts Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
+                <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Create Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-host.xml" parse="text"/>
+                <xi:include href="samples/lb-create-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Create Host Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-host.json" parse="text"/>
+                <xi:include href="samples/lb-create-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Create Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
+                <xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Create Host Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
+                <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
             </example>           
         </section>
@@ -509,25 +509,25 @@
             <example>
                 <title>List All VIPs Within Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.xml" parse="text"/>
+                <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List All VIPs Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
+                <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Assign IP Blocks Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.xml" parse="text"/>
+                <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Assign IP Blocks Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
+                <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -997,15 +997,15 @@
                     provisioning activity (activity taking place over a period of one week).
                 </para>
             <example>
-                <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+                <title>Report Host Capacity Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
+                <xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+                <title>Report Host Capacity Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
+                <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
             </example>         
         </section>
@@ -1046,15 +1046,15 @@
                     period of one week).
                 </para>
             <example>
-                <title>Sample Response (/virtualips/availabilityreport) (/cluster/clusterid/availabilityreport): XML</title>
+                <title>Report VIP Availability Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
+                <xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips/availabilityreport) (/cluster/cluserid/availabilityreport): JSON</title>
+                <title>Report VIP Availability Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
+                <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
             </example>    
         </section> 
