@@ -274,54 +274,54 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>
-                                name
+                                <code>name</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                clusterid
+                                <code>clusterid</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                coreDeviceId
+                                <code>coreDeviceId</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                zone
+                                <code>zone</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                maxConcurrentConnections
+                                <code>maxConcurrentConnections</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                managementIpAddress
+                                <code>managementIpAddress</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                managementSoapInterface
+                                <code>managementSoapInterface</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                trafficManagerName
+                                <code>trafficManagerName</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                soapEndpointActive
+                                <code>soapEndpointActive</code>
                             </para>
                         </listitem>
                     </itemizedlist>
                     <para>
                         Additionally, the system will attempt to validate that it can properly access the host based
-                        on the managementSoapInterface, managementSoapUsername, and managementSoapPassword. The
-                        system should automatically apply a BURN_IN status to all newly added host machines.
+                        on the <code>managementSoapInterface</code>, <code>managementSoapUsername</code>, and <code>managementSoapPassword</code>. The
+                        system should automatically apply a <code>BURN_IN</code> status to all newly-added host machines.
                     </para>
                     <note>
                         <para>
@@ -332,51 +332,52 @@
                 <section>
                     <title>Changing Mutable Attributes</title>
                     <para>
-                        The following list of attributes are mutable via the &PUT; HTTP operation:
+                        The &GET; response contains several attributes (<code>utilization</code>,
+                        <code>numberOfLoadBalancingConfigurations</code>, and <code>numberOfUniqueCustomers</code>) that are generated based
+                        on state data and are immutable. Immutable attributes are calculated based on configurations
+                        associated with this host.
                     </para>
+                    <para> The following attributes are mutable via the &PUT; HTTP operation: </para>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>
-                                name
+                                <code>name</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                coreDeviceId
+                                <code>coreDeviceId</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                status (Active, Active Target, Maintenance, Failover
+                                <code>status</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                maxConcurrentConnections
+                                <code>maxConcurrentConnections</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                managementIpAddress
+                                <code>managementIpAddress</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                managementSoapInterface
+                                <code>managementSoapInterface</code>
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                soapEndpointActive
+                                <code>soapEndpointActive</code>
                             </para>
                         </listitem>
                     </itemizedlist>
-                    <para>
-                        The &GET; response contains numerous attributes (utilization,
-                        numberOfLoadBalancingConfigurations, and numberOfUniqueCustomers) that are generated based
-                        on state data and are immutable. These attributes are calculated based on configurations
-                        associated with this host.
-                    </para>
+                    <para> Valid values for <code>status</code> are <code>ACTIVE</code>,
+                        <code>ACTIVE TARGET</code>, <code>MAINTENANCE</code>, and
+                        <code>FAILOVER</code>.</para>
                 </section>
             <example>
                 <title>List All Hosts Within Cluster Response: XML</title>
@@ -1077,19 +1078,19 @@
             </informaltable>
                 <para>
                     This feature allows for a caller to synchronize the specified load balancer with a particular
-                    authoritative resource and is intended to be used when a load-balancer is 'stuck' in a non-active
+                    authoritative resource and is intended to be used when a load-balancer is stuck in a non-active
                     status. At the time of this writing the authoritative source is the database in which all load
                     balancer configurations are stored. We may plan on adding Zeus as an authoritative source later.
-                    If a caller chooses to synchronize from the database then Zeus will be updated to match the load
+                    If a caller chooses to synchronize from the database, then Zeus will be updated to match the load
                     balancer's configuration in the database. The caller only needs to send a &PUT; request without a
                     body to the specified URI.
                 </para>
                 <para>
-                    When syncing a load balancer in 'PENDING_DELETE' or 'DELETED' status the operation will attempt
-                    to remove the load-balancer in Zeus and set the status to 'DELETED'. For all other statuses the
+                    When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the operation will attempt
+                    to remove the load-balancer in Zeus and set the status to <code>DELETED</code>. For all other statuses the
                     sync operation will first delete the load-balancer in Zeus and then re-create it. If successful,
-                    the load-balancer will be put in the 'ACTIVE' status. If for some reason the load-balancer could
-                    not be created in Zeus then the status will be set to 'ERROR'.
+                    the load-balancer will be put in the <code>ACTIVE</code> status. If for some reason the load-balancer could
+                    not be created in Zeus, then the status will be set to <code>ERROR</code>.
                 </para>
         </section>
         <section>
@@ -1250,7 +1251,7 @@
                 <errorcode>413</errorcode>)
             </simpara>
                 <para>
-                    A user can list all loadbalancers and their usage for the given account using these methods. The
+                    A user can list all load balancers and their usage for the given account using these methods. The
                     date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a
                     maximum of 90 days.
                 </para>
@@ -1295,7 +1296,7 @@
             <title>Listing and Acknowledging Alerts</title>
             <para>
                 This operations allows user to list all the alerts in the system. Additional information about the
-                alert can be retrieved by alert id. The status of the alert can be changed to ACKNOWLEDGED using the
+                alert can be retrieved by alert id. The status of the alert can be changed to <code>ACKNOWLEDGED</code> using the
                 &PUT; method
             </para>
             <informaltable rules="all">
@@ -1613,13 +1614,13 @@
                     <tr align="left">
                         <td colspan="1">&DELETE;</td>
                         <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
-                        <td colspan="4">Delete a load balancer in error status</td>
+                        <td colspan="4">Delete a load balancer in <code>ERROR</code> status</td>
                         <td colspan="2">Operations</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&DELETE;</td>
                         <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
-                        <td colspan="4">Delete a load balancer in suspended status</td>
+                        <td colspan="4">Delete a load balancer in <code>SUSPENDED</code> status</td>
                         <td colspan="2">Operations, Support</td>
                     </tr>
                 </tbody>
@@ -1636,10 +1637,10 @@
             </simpara>
                 <para>
                     The remove load balancer function removes the specified load balancer and its associated
-                    configuration.. The load balancer must be in error or suspended status to be removed. Any and all
-                    configuration data is immediately purged and is not recoverable. A limited amount of information is
-                    available for deleted load balancers (including usage information and deletion time) by performing
-                    a &GET; on loadbalancers/id.
+                    configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status to be removed. Any and all
+                    configuration data is immediately purged and is not recoverable. A limited amount of information, including usage information and deletion time, is
+                    available for deleted load balancers  by performing
+                    a &GET; on <code>loadbalancers/</code><parameter>id</parameter>.
                 </para> 
                 <para>
                     This operation does not require a request body.
