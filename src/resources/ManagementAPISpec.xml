@@ -32,8 +32,8 @@
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
-    <title>Load Balancing Service Management API Specification</title>
-    <titleabbrev>(Insert meaningful Abbreviation here)</titleabbrev>
+    <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
+    <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -51,7 +51,7 @@
         </copyright>
         <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>02/23/11</pubdate>
+        <pubdate>03/03/11</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,7 +60,7 @@
         <abstract>
             <para>
                 This document is intended for software developers interested in developing
-                applications using the Rackspace Cloud Load Balancers Application Program Interface
+                service management applications using the Rackspace Cloud Load Balancers Application Program Interface
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
@@ -72,53 +72,80 @@
         </cover>
     </info>
     <chapter>
+        <title>Overview</title>
+        <section>
+            <title>Intended Audience</title>
+            <para>This guide is intended for software developers who want to create applications using
+                the management API for Rackspace Cloud Load Balancers.
+            </para>
+        </section>
+        <section>
+            <title>Document Change History</title>
+            <para>This version of the Developer Guide replaces and supersedes all previous versions.
+                The most recent changes are described in the table below:
+            </para>
+            <informaltable rules='all'>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Revision Date</td>
+                        <td colspan="4">Summary of Changes</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1" align="center">Mar. 3, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Initial release for public beta.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </section>
+        <section>
+            <title>Additional Resources</title>
+            <para>Two APIs provide access to Rackspace Cloud Load Balancers: 
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>the management API, available only to developers within Rackspace, is the subject of this document;</para></listitem>
+                    <listitem>
+                        <para>the public API, available to developers within Rackspace and Rackspace customers, is the subject of a companion document, The Rackspace Cloud Load Balancers API Developer Guide.</para>
+                    </listitem>
+                </itemizedlist>
+                You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide from <link
+                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
+                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
+            </para>
+        </section>
+    </chapter>
+    <chapter>
         <title>Management API Operations</title>
         <section>
             <title>Clusters</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters</td>
-                        <td>Retrieve a list of all clusters</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters</td>
+                        <td colspan="3">Retrieve a list of all clusters</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Retrieve a cluster by id</td>
-                        <td>Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters</td>
-                        <td>Create a new cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Update the name, description, username, or password of a cluster</td>
-                        <td>Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter></td>
-                        <td>Remove a cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
+                        <td colspan="3">Retrieve a cluster by id</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -134,143 +161,104 @@
                 <errorcode>413</errorcode>)
             </simpara>
                 <para>
-                    The cluster operations allow for listing and manipulating clusters. In order to remove a cluster,
-                    it may not have any host machines or virtual IP's associated with it. To create a new cluster,
-                    the caller must supply their username, password, cluster name, cluster description and datacenter
-                    attributes within the request.
+                    The cluster operations are used for retrieving descriptive information about load balancing clusters. 
                 </para>
                 <para>
-                    The &GET; response contains numerous attributes (<code>numberOfLoadBalancingConfigurations</code>,
+                    The &GET; response contains attributes that are generated and immutable: <code>numberOfLoadBalancingConfigurations</code>,
                     <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>, and
-                    <code>utilization</code>) that are generated and immutable. These attributes are calculated based
+                    <code>utilization</code>. A cluster's attributes are calculated based
                     on configurations associated with this cluster.
                 </para>
             <example>
-                <title>Sample Response (/clusters): XML</title>
+                <title>List All Clusters Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-clusters-response.xml" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters): JSON</title>
+                <title>List All Clusters Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters/clusterId): XML</title>
+                <title>List Specified Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-clusterid-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/clusters/clusterId): JSON</title>
+                <title>List Specified Cluster Response: JSON</title>
                 <programlisting language="json">
-<xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
+                <xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>Sample &POST; Request (/clusters): XML
-                </title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-cluster-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &POST; Request (/clusters): JSON
-                </title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-create-cluster-request.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &PUT; Request (cluster/clusterId): XML
-                </title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-cluster-clusterid-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Sample &PUT; Request (cluster/clusterId): JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-cluster-clusterid-request.json" parse="text"/>
-                </programlisting>
-            </example> 
             </section>
         <section>
             <title>Host Machines</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts</td>
-                        <td>Retrieve a list of all hosts within the region</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts</td>
+                        <td colspan="3">Retrieve a list of all hosts within the region</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/hosts</td>
-                        <td>Retrieve a list of all hosts belonging to a cluster</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/hosts</td>
+                        <td colspan="3">Retrieve a list of all hosts belonging to a cluster</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/hosts</td>
-                        <td>Create a new load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/hosts</td>
+                        <td colspan="3">Create a new load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter></td>
-                        <td>Update the mutable attributes of a load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter></td>
+                        <td colspan="3">Update the mutable attributes of a load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter></td>
-                        <td>Remove a load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter></td>
+                        <td colspan="3">Remove a load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/endpoint</td>
-                        <td>Retrieve the host that is currently the active SOAP endpoint</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/endpoint</td>
+                        <td colspan="3">Retrieve the host that is currently the active SOAP endpoint</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
-                        <td>Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
+                        <td colspan="3">Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
-                        <td>Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
+                        <td colspan="3">Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/clusters/pollendpoints</td>
-                        <td>Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/clusters/pollendpoints</td>
+                        <td colspan="3">Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -391,39 +379,39 @@
                     </para>
                 </section>
             <example>
-                <title>Sample Response (/hosts) (/clusters/clusterId/hosts): XML</title>
+                <title>List All Hosts Within Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
+                <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts) (/clusters/clusterId/hosts): JSON</title>
+                <title>List All Hosts Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
+                <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): XML</title>
+                <title>Create Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-host.xml" parse="text"/>
+                <xi:include href="samples/lb-create-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Create Host Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-host.json" parse="text"/>
+                <xi:include href="samples/lb-create-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Update Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
+                <xi:include href="samples/lb-update-host-hostid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts): JSON</title>
+                <title>Update Host Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
+                <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
             </example>           
         </section>
@@ -432,54 +420,48 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with the region</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with the region</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with a cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with a cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
-                        <td>Retrieve a list of load balancers associated with this virtual IP</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
+                        <td colspan="3">Retrieve a list of load balancers associated with this virtual IP</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td>Retrieve a list of all virtual IPs associated with a load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td colspan="3">Retrieve a list of all virtual IPs associated with a load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualipblocks</td>
-                        <td>Assign a set of IP blocks to the cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/virtualipblocks</td>
+                        <td colspan="3">Assign a set of IP blocks to the cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/virtualips/<parameter>virtualIpId</parameter></td>
-                        <td>Remove the specified virtual IP from the cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/virtualips/<parameter>virtualIpId</parameter></td>
+                        <td colspan="3">Remove the specified virtual IP from the cluster</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -508,27 +490,27 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>List All VIPs Within Cluster Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.xml" parse="text"/>
+                <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>List All VIPs Within Cluster Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
+                <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>Assign IP Blocks Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.xml" parse="text"/>
+                <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips) (/clusters/clusterid/virtualips): XML</title>
+                <title>Assign IP Blocks Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
+                <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -537,47 +519,42 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Retrieve the rate limit information for a specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Retrieve the rate limit information for a specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Impose a new rate limit on the specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Impose a new rate limit on the specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Modify the expiration time and/or ticket associated with the rate limit</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Modify the expiration time and/or ticket associated with the rate limit</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td>Immediately remove the defined rate limit</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
+                        <td colspan="3">Immediately remove the defined rate limit</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
-                        <td>Immediately remove expired limits</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
+                        <td colspan="3">Immediately remove expired limits</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -593,39 +570,39 @@
                     balancer", which is documented below.
                 </para>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>List Rate Limit Response: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>List Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Set Rate Limit Response: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Set Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Update Rate Limit Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-ratelimit.xml" parse="text"/>
+                <xi:include href="samples/lb-update-ratelimit.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/ratelimit): XML</title>
+                <title>Update Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-ratelimit.json" parse="text"/>
+                <xi:include href="samples/lb-update-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -634,48 +611,43 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
-                        <td>Make the specified load balancer sticky</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
+                        <td colspan="3">Make the specified load balancer sticky</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
-                        <td>Turn off the "sticky" flag on the specified load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/sticky</td>
+                        <td colspan="3">Turn off the "sticky" flag on the specified load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
-                        <td>Get the host assignment(s) for a specified load balancer</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
+                        <td colspan="3">Get the host assignment(s) for a specified load balancer</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
-                        <td>Update the host assignment(s) for a specified load balancer (Use
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
+                        <td colspan="3">Update the host assignment(s) for a specified load balancer (Use
                             <code>reassignhosts</code> for multiple concurrent operations)</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/reassignhosts</td>
-                        <td>Update the host assignment(s) for a list of load balancers</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/reassignhosts</td>
+                        <td colspan="3">Update the host assignment(s) for a list of load balancers</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -696,39 +668,39 @@
                     malicious traffic.
                 </para>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/host): XML</title>
+                <title>Update Host Assignment for Specified Load Balancer Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancer-host.xml" parse="text"/>
+                <xi:include href="samples/lb-list-loadbalancer-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/host): JSON</title>
+                <title>Update Host Assignment for Specified Load Balancer Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
+                <xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/reassignhosts): XML</title>
+                <title>Update Host Assignment for Multiple Load Balancers Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/reassignhosts): JSON</title>
+                <title>Update Host Assignment for Multiple Load Balancers Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/host): XML</title>
+                <title>Update Host Assignment for Specified Load Balancer Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/host): JSON</title>
+                <title>Update Host Assignment for Specified Load Balancer Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
+                <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -737,83 +709,73 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Levels</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/backups</td>
-                        <td>View a list of available backups for all host machines</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/backups</td>
+                        <td colspan="3">View a list of available backups for all host machines</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
-                        <td>View a list of available backups for a specified host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
+                        <td colspan="3">View a list of available backups for a specified host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
-                        <td>View the list of subnet mappings for this host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings</td>
+                        <td colspan="3">View the list of subnet mappings for this host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/subnetmappings</td>
-                        <td>Add subnet mappings on this host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings</td>
+                        <td colspan="3">Add subnet mappings on this host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
+                        <td colspan="3">Delete the specified subnet mappings on this host
                         </td>
-                        <td>/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
-                        <td>Delete the specified subnet mappings on this host
-                        </td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/activate</td>
-                        <td>Activate host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/activate</td>
+                        <td colspan="3">Activate host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/inactive</td>
-                        <td>Deactivate host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/inactive</td>
+                        <td colspan="3">Deactivate host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups</td>
-                        <td>Create a new backup of the host configuration</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
+                        <td colspan="3">Create a new backup of the host configuration</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups/backupId</td>
-                        <td>Purge a backup with the specified backup ID</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups/backupId</td>
+                        <td colspan="3">Purge a backup with the specified backup ID</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/backups/<parameter>backupId</parameter>/restore</td>
-                        <td>Restore the specified backup to the host machine</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/backups/<parameter>backupId</parameter>/restore</td>
+                        <td colspan="3">Restore the specified backup to the host machine</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -861,45 +823,45 @@
                 </para>
             </section>
             <example>
-                <title>Sample Response (/hosts/backups): XML</title>
+                <title>List Available Backups for All Hosts Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-backups.xml" parse="text"/>
+                <xi:include href="samples/lb-list-backups.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/backups): JSON</title>
+                <title>List Available Backups for All Hosts Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-backups.json" parse="text"/>
+                <xi:include href="samples/lb-list-backups.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/backups): XML</title>
+                <title>List Available Backups for Specified Host Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-backups.xml" parse="text"/>
+                <xi:include href="samples/lb-update-backups.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/backups): JSON</title>
+                <title>List Available Backups for Specified Host Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-backups.json" parse="text"/>
+                <xi:include href="samples/lb-update-backups.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/hostid/subnetmappings): XML</title>
+                <title>Add Subnet Mappings Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-subnetmappings.xml" parse="text"/>
+                <xi:include href="samples/lb-list-subnetmappings.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/subnetmappings): XML</title>
+                <title>Add Subnet Mappings Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-subnetmappings.xml" parse="text"/>
+                <xi:include href="samples/lb-update-subnetmappings.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/hosts/hostid/subnetmappings): JSON</title>
+                <title>Add Subnet Mappings Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
+                <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -908,26 +870,24 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/hosts/customers</td>
-                        <td>Generate a customer list by host</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/hosts/customers</td>
+                        <td colspan="3">Generate a customer list by host</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/clusters/customers</td>
-                        <td>Generate a customer list by cluster</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/clusters/customers</td>
+                        <td colspan="3">Generate a customer list by cluster</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -937,125 +897,122 @@
                     or host level.
                 </para>
             <example>
-                <title>Sample Request ByName (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers by Host Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
+                <xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request ById (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers by Cluster Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
+                <xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/customers) (/clusters/customers): XML</title>
+                <title>List Customers Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-customers.xml" parse="text"/>
+                <xi:include href="samples/lb-list-customers.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/hostid/customers) (/clusters/clustserid/customers)</title>
+                <title>List Customers Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-customers.json" parse="text"/>
+                <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
             </section>
     </chapter>
     <chapter>
-        <title>Capacity and Availability Reports</title>
+        <title>Reports</title>
         <section>
-            <title>Load Balancing Host Capacity Planning Board</title>
+            <title>Host Capacity</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/capacityreport</td>
-                        <td>Generate a capacity planning report for all load balancing hosts</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for all load balancing hosts</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/hosts/<parameter>hostId</parameter>/capacityreport</td>
-                        <td>Generate a capacity planning report for a specified load balancing host</td>
-                        <td>Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/<parameter>hostId</parameter>/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for a specified load balancing host</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
                 <para>
-                    The load balancing host capacity reports provide insight into the available capacity of a given
-                    host machine. It also supplies an estimated runway of available capacity based on historical
-                    provisioning activity (activity taking place over a period of one week).
+                The load balancing host capacity report provides insight into the available
+                capacity of a given host machine. It also supplies an estimated runway of available
+                capacity based on historical provisioning activity. The historical period consists
+                of one week, reported as <code>allocatedConcurrentConnectionsInPastSevenDays</code>.
                 </para>
             <example>
-                <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+                <title>Report Host Capacity Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
+                <xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/hosts/capacityreport) (/hosts/hostid/capacityreport)</title>
+                <title>Report Host Capacity Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
+                <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
             </example>         
         </section>
         <section>
-            <title>Load Balancing Cluster Virtual IP Availability Report</title>
+            <title>Virtual IP Availability</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated with any
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with any
                             cluster.</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
-                        <td>Generate an availability report for all virtual IPs associated with the
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with the
                             specific cluster</td>
-                        <td>Service Admin</td>
+                        <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    The virtual IP availability report provides insight into the availability of both public and
-                    ServiceNet IP addresses that are provisioned to a cluster. It also supplies an estimated runway
-                    of available capacity based on historical provisioning activity (activity taking place over a
-                    period of one week).
-                </para>
+                <para> The virtual IP availability report provides insight into the availability of
+                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
+                supplies an estimated runway of available capacity based on historical provisioning
+                activity. The historical period consists of one week, reported as
+                    <code>allocatedPublicIpAddressesInLastSevenDays</code> and
+                    <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
             <example>
-                <title>Sample Response (/virtualips/availabilityreport) (/cluster/clusterid/availabilityreport): XML</title>
+                <title>Report VIP Availability Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
+                <xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/virtualips/availabilityreport) (/cluster/cluserid/availabilityreport): JSON</title>
+                <title>Report VIP Availability Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
+                <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
             </example>    
         </section> 
@@ -1067,19 +1024,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td>Provision an additional virtual IP to a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td colspan="3">Provision an additional virtual IP to a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1094,15 +1050,15 @@
                     /loadbalancers/loadBalancerId/virtualips URI.
                 </para>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+                <title>Assign VIP Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-virtualips.xml" parse="text"/>
+                <xi:include href="samples/lb-create-virtualips.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Request (/loadbalancers/loadbalancerid/virtualips)</title>
+                <title>Assign VIP Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-virtualips.json" parse="text"/>
+                <xi:include href="samples/lb-create-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1111,19 +1067,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
-                        <td>Synchronize the load balancer with the authoritative source</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
+                        <td colspan="3">Synchronize the load balancer with the authoritative source</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1149,43 +1104,38 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Retrieve the current suspension information, if any, for the load
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Retrieve the current suspension information, if any, for the load
                             balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Issue an immediate service suspension for a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Issue an immediate service suspension for a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
-                        <td>Remove the suspension for a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/suspension</td>
+                        <td colspan="3">Remove the suspension for a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    This feature allows for a caller to suspend and or unsuspend the specified load balancer. In
-                    order to suspend a load balancer, the caller must supply a reason, the ticket issuer(user) and a
-                    ticket identifier, which can be viewed by other users with support and service admin access
-                    levels.
-                </para>
+                <para> This feature allows for a caller to suspend and or unsuspend the specified
+                load balancer. In order to suspend a load balancer, the caller must supply a reason,
+                the ticket issuer (user) and a ticket identifier, which can be viewed by other users
+                with support and service admin access levels. </para>
                 <para>
                     If a caller requests suspension details for an unsuspended load balancer, an empty suspension
                     element <![CDATA[(<suspension />)]]> will be returned.
@@ -1197,27 +1147,27 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>List Suspension Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-suspension.xml" parse="text"/>
+                <xi:include href="samples/lb-list-suspension.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>List Suspension Response: JSON</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-suspension.json" parse="text"/>
+                <xi:include href="samples/lb-list-suspension.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>Add Suspension Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.xml" parse="text"/>
+                <xi:include href="samples/lb-create-suspension.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/suspension)</title>
+                <title>Add Suspension Response: JSON</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.json" parse="text"/>
+                <xi:include href="samples/lb-create-suspension.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1226,19 +1176,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
-                        <td>View extended details of a load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/extendedview</td>
+                        <td colspan="3">View extended details of a load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1254,13 +1203,13 @@
                     </para>
                 </note>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): XML</title>
+                <title>List Extended Load Balancer Details Response: XML</title>
                 <programlisting language="xml"><?db-font-size 90% ?>
                 <xi:include href="samples/lb-list-loadbalancer-extendedview.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response (/loadbalancers/loadbalancerid/extendedview): JSON</title>
+                <title>List Extended Load Balancer Details Response: XML</title>
                 <programlisting language="javascript"><?db-font-size 70% ?>
                 <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
@@ -1271,30 +1220,28 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">
+                            /accounts/<parameter>accountId</parameter>/loadbalancers
                         </td>
-                        <td>
-                            <code>/accounts/<parameter>accountId</parameter>/loadbalancers</code>
-                        </td>
-                        <td>Retrieve a list of load balancers on this account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="4">Retrieve a list of load balancers on this account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/accounts/billing?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
+                            &amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
                         </td>
-                        <td><code>/accounts/billing?startTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss
-                            <code>&amp;endTime=</code>YYYY-MM-DD<code>T</code>HH:mm:ss
-                        </td>
-                        <td>Retrieve usage for all accounts for a single day</td>
-                        <td>Support, Service Admin, Billing</td>
+                        <td colspan="4">Retrieve usage for all accounts for a single day</td>
+                        <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1315,9 +1262,9 @@
                     maximum of 90 days.
                 </para>
             <example>
-                <title>Sample Response (/accounts/accountid/loadbalancers): XML</title>
+                <title>List Account Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
+                <xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1361,54 +1308,49 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts</td>
-                        <td>Retrieve all alerts, if any</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts</td>
+                        <td colspan="4">Retrieve all alerts, if any</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts/<parameter>alertId</parameter></td>
-                        <td>Retrieve details for the alert</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/<parameter>alertId</parameter></td>
+                        <td colspan="4">Retrieve details for the alert</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
-                        <td>Retrieve all alerts, if any, for the specified load balancer</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">Retrieve all alerts, if any, for the specified load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/alerts/<parameter>alertId</parameter>/acknowledged</td>
-                        <td>Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/alerts/<parameter>alertId</parameter>/acknowledged</td>
+                        <td colspan="4">Acknowledge alert and changes its status to <code>ACKNOWLEDGED</code></td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/alerts/unacknowledged</td>
-                        <td>Retrieve unacknowledged alerts, if any</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/unacknowledged</td>
+                        <td colspan="4">Retrieve unacknowledged alerts, if any</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response (/alerts): XML</title>
+                <title>List Alerts Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-alerts.xml" parse="text"/>
+                <xi:include href="samples/lb-list-alerts.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1417,68 +1359,61 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
-                        <td>Add group name and default</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/groups?name=<parameter>xxx</parameter>&amp;default=Y</td>
+                        <td colspan="4">Add group name and default</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/groups</td>
-                        <td>View all groups for API rate limiting</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/groups</td>
+                        <td colspan="4">View all groups for API rate limiting</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
-                        <td>Update the default for a given group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/management/groups/<parameter>id</parameter>/setdefault?default=Y</td>
+                        <td colspan="4">Update the default for a given group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management</td>
-                        <td>Delete a group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management</td>
+                        <td colspan="4">Delete a group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
-                        <td>View all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
+                        <td colspan="4">View all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
-                        <td>View all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td colspan="4">View all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/accounts/<parameter>id</parameter>/groups</td>
-                        <td>Delete all groups for the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/accounts/<parameter>id</parameter>/groups</td>
+                        <td colspan="4">Delete all groups for the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response: JSON</title>
+                <title>List Limits Groups Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-groups.json" parse="text"/>
+                <xi:include href="samples/lb-list-groups.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1487,47 +1422,42 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups</td>
-                        <td>List all load balancer limit groups</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups</td>
+                        <td colspan="4">List all load balancer limit groups</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups</td>
-                        <td>Add a load balancer limit group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups</td>
+                        <td colspan="4">Add a load balancer limit group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td>Delete the specific load balancer group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td colspan="4">Delete the specific load balancer group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td>Display load balancer limit group details</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
+                        <td colspan="4">Display load balancer limit group details</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
-                        <td>Set the load balancer limit group as the default</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
+                        <td colspan="4">Set the load balancer limit group as the default</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1546,15 +1476,15 @@
                 </para>
             </section>
             <example>
-                <title>Sample Request: XML</title>
+                <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-group-limits.xml" parse="text"/>
+                <xi:include href="samples/lb-create-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response: XML</title>
+                <title>List Limits Response: XML</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
+                <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
         <section>
@@ -1562,34 +1492,31 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/accounts/accountId/loadbalancerlimitgroup</td>
-                        <td>Lists the load balancer limit group associated with the account</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/accounts/<parameter>accountId</parameter>/loadbalancerlimitgroup</td>
+                        <td colspan="4">Lists the load balancer limit group associated with the account</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td colspan="4">Adds the specified account to the specified load balancer limit group (removes from previous group if applicable)
                         </td>
-                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
-                        <td>Adds an account to a load balancer limit group (removes from previous group if applicable)
-                        </td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancerlimitgroups/id/accounts/accountId</td>
-                        <td>Deletes the specified account from the specified load balancer limit group</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td colspan="4">Deletes the specified account from the specified load balancer limit group</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1603,9 +1530,9 @@
                     create a load balancer will not be allowed since the account is above the limit.
                 </para>
             <example>
-                <title>Sample XML Response</title>
+                <title>List Specified Limits Group Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-limit-groups.xml" parse="text"/>
+                <xi:include href="samples/lb-list-limit-groups.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1614,32 +1541,31 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/management/hosts/usage</td>
-                        <td>View usage of Zeus hosts</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/hosts/usage</td>
+                        <td colspan="4">View usage of Zeus hosts</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
             <example>
-                <title>Sample Response: XML</title>
+                <title>List Zeus Usage Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-host-usage-records.xml" parse="text"/>
+                <xi:include href="samples/lb-list-host-usage-records.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Sample Response: JSON</title>
+                <title>List Zeus Usage Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
+                <xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1651,19 +1577,18 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
-                        <td>List recent load balancer service events for this account within a date range</td>
-                        <td>Support, Service Admin</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
+                        <td colspan="4">List recent load balancer service events for this account within a date range</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1674,9 +1599,9 @@
                     inclusive for both dates.
                 </para>
             <example>
-                <title>Sample Response (/alerts): XML</title>
+                <title>List Events Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-service-events.xml" parse="text"/>
+                <xi:include href="samples/lb-list-service-events.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1685,26 +1610,24 @@
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
-                        <td>Delete a load balancer in error status</td>
-                        <td>Operations</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/error</td>
+                        <td colspan="4">Delete a load balancer in error status</td>
+                        <td colspan="2">Operations</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
-                        <td>Delete a load balancer in suspended status</td>
-                        <td>Operations, Support</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/loadbalancers/<parameter>loadBalancerId</parameter>/suspended</td>
+                        <td colspan="4">Delete a load balancer in suspended status</td>
+                        <td colspan="2">Operations, Support</td>
                     </tr>
                 </tbody>
             </informaltable>
