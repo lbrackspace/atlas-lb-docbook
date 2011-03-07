@@ -638,13 +638,6 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/hosts</td>
-                        <td colspan="3">Update the host assignment(s) for a specified load balancer (Use
-                            <code>reassignhosts</code> for multiple concurrent operations)</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&PUT;</td>
                         <td colspan="5">/loadbalancers/reassignhosts</td>
                         <td colspan="3">Update the host assignment(s) for a list of load balancers</td>
                         <td colspan="2">Service Admin</td>

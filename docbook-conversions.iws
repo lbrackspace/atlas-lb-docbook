@@ -76,34 +76,16 @@
       <file leaf-file-name="PublicAPISpec.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="57" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0">
+            <state line="1101" column="85" selection-start="53060" selection-end="53060" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ManagementAPISpec.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="998" column="28" selection-start="49785" selection-end="49785" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-list-availabilityreport.json" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-availabilityreport.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lb-list-availabilityreport.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-availabilityreport.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="678" column="33" selection-start="33961" selection-end="33961" vertical-scroll-proportion="0.3690745">
               <folding />
             </state>
           </provider>
@@ -126,8 +108,8 @@
         <option value="$PROJECT_DIR$/src/resources/samples/lb-update-accesslist-request.json" />
         <option value="$PROJECT_DIR$/src/resources/PublicAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/samples/lb-list-loadbalancer-extendedview.json" />
-        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
         <option value="$PROJECT_DIR$/src/resources/samples/lb-list-capacityreport.json" />
+        <option value="$PROJECT_DIR$/src/resources/ManagementAPISpec.xml" />
       </list>
     </option>
   </component>
@@ -211,28 +193,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="docbook-conversions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loadbalancing-docbook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -475,11 +435,6 @@
         <state line="50" column="10" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7158713" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="57" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-capacityreport.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="69" selection-start="430" selection-end="430" vertical-scroll-proportion="0.13318536">
@@ -501,16 +456,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-availabilityreport.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="998" column="28" selection-start="49785" selection-end="49785" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/samples/lb-list-availabilityreport.json">
+    <entry file="file://$PROJECT_DIR$/src/resources/PublicAPISpec.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="1101" column="85" selection-start="53060" selection-end="53060" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/ManagementAPISpec.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="678" column="33" selection-start="33961" selection-end="33961" vertical-scroll-proportion="0.3690745">
           <folding />
         </state>
       </provider>
