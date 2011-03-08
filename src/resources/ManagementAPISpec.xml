@@ -318,16 +318,6 @@
                             </para>
                         </listitem>
                     </itemizedlist>
-                    <para>
-                        Additionally, the system will attempt to validate that it can properly access the host based
-                        on the <code>managementSoapInterface</code>, <code>managementSoapUsername</code>, and <code>managementSoapPassword</code>. The
-                        system should automatically apply a <code>BURN_IN</code> status to all newly-added host machines.
-                    </para>
-                    <note>
-                        <para>
-                        For an example of how a new host is created, see the "Sample XML Post Request" below.
-                        </para>
-                    </note>
                 </section>
                 <section>
                     <title>Changing Mutable Attributes</title>

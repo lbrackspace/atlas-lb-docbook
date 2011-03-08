@@ -18,24 +18,4 @@
 		<loadBalancer id="50" name="LB.6697"/>
 		<loadBalancer id="51" name="LB.6897"/>
 	</customer>
-	<customer accountId="354934">
-		<loadBalancer id="45" name="LB.5001">
-			<ns2:nodes>
-				<ns2:node id="202" ip="21.248.193.163"/>
-				<ns2:node id="204" ip="142.120.171.164"/>
-				<ns2:node id="203" ip="231.162.141.253"/>
-				<ns2:node id="205" ip="15.162.23.37"/>
-				<ns2:node id="201" ip="182.254.203.171"/>
-			</ns2:nodes>
-		</loadBalancer>
-		<loadBalancer id="46" name="LB.9540">
-			<ns2:nodes>
-				<ns2:node id="209" ip="200.47.43.240"/>
-				<ns2:node id="207" ip="168.80.57.76"/>
-				<ns2:node id="206" ip="229.220.95.81"/>
-				<ns2:node id="208" ip="114.48.233.151"/>
-				<ns2:node id="210" ip="228.221.170.235"/>
-			</ns2:nodes>
-		</loadBalancer>
-	</customer>
 </customerList>
