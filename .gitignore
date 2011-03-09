@@ -1,2 +1,10 @@
 .DS_Store
 target/
+!.gitignore
+*.iml
+*.iws
+*.ipr
+.maven
+.settings
+.project
+.classpath
