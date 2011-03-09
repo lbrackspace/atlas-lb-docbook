@@ -1,6 +1,4 @@
-{"suspension": {
-        "reason": "User suspected of fraud",
-        "ticketId": "1054",
-        "user": "jdoe"
-    }
+{
+    "reason": "User suspected of fraud",
+    "user": "jdoe"
 }

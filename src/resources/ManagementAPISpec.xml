@@ -26,12 +26,12 @@
         </inlinemediaobject>'>
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:xi="http://www.w3.org/2001/XInclude"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns:m="http://www.w3.org/1998/Math/MathML"
-      xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:db="http://docbook.org/ns/docbook">
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:m="http://www.w3.org/1998/Math/MathML"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:db="http://docbook.org/ns/docbook">
     <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
     <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
     <info>
@@ -110,14 +110,17 @@
             <para>Two APIs provide access to Rackspace Cloud Load Balancers: 
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>the management API, available only to developers within Rackspace, is the subject of this document;</para></listitem>
+                        <para>the management API, available only to developers within Rackspace, is the subject of
+                            this document;</para></listitem>
                     <listitem>
-                        <para>the public API, available to developers within Rackspace and Rackspace customers, is the subject of a companion document, The Rackspace Cloud Load Balancers API Developer Guide.</para>
+                        <para>the public API, available to developers within Rackspace and Rackspace customers, is
+                            the subject of a companion document, The Rackspace Cloud Load Balancers API
+                            DeveloperGuide.</para>
                     </listitem>
                 </itemizedlist>
-                You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide from <link
-                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
-                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
+                You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide
+                from <link xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
+                http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
             </para>
         </section>
     </chapter>
@@ -161,10 +164,12 @@
                 <errorcode>413</errorcode>)
             </simpara>
                 <para>
-                    The cluster operations are used for retrieving descriptive information about load balancing clusters. 
+                    The cluster operations are used for retrieving descriptive information about load balancing
+                    clusters.
                 </para>
                 <para>
-                    The &GET; response contains attributes that are generated and immutable: <code>numberOfLoadBalancingConfigurations</code>,
+                    The &GET; response contains attributes that are generated and immutable:
+                    <code>numberOfLoadBalancingConfigurations</code>,
                     <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>, and
                     <code>utilization</code>. A cluster's attributes are calculated based
                     on configurations associated with this cluster.
@@ -245,19 +250,22 @@
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
                         <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/enable</td>
-                        <td colspan="3">Enable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="3">Enable this host's SOAP endpoint (Warning: can be overwritten by
+                            <code>pollendpoints</code> call)</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
                         <td colspan="5">/hosts/<parameter>hostId</parameter>/endpoint/disable</td>
-                        <td colspan="3">Disable this host's SOAP endpoint (Warning: can be overwritten by <code>pollendpoints</code> call)</td>
+                        <td colspan="3">Disable this host's SOAP endpoint (Warning: can be overwritten by
+                            <code>pollendpoints</code> call)</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
                         <td colspan="5">/clusters/pollendpoints</td>
-                        <td colspan="3">Test all endpoints and set <code>soap_endpoint_active</code> if endpoint works</td>
+                        <td colspan="3">Test all endpoints and set <code>soap_endpoint_active</code> if endpoint
+                            works</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
@@ -323,9 +331,9 @@
                     <title>Changing Mutable Attributes</title>
                     <para>
                         The &GET; response contains several attributes (<code>utilization</code>,
-                        <code>numberOfLoadBalancingConfigurations</code>, and <code>numberOfUniqueCustomers</code>) that are generated based
-                        on state data and are immutable. Immutable attributes are calculated based on configurations
-                        associated with this host.
+                        <code>numberOfLoadBalancingConfigurations</code>, and <code>numberOfUniqueCustomers</code>)
+                        that are generated based on state data and are immutable. Immutable attributes are
+                        calculated based on configurations associated with this host.
                     </para>
                     <para> The following attributes are mutable via the &PUT; HTTP operation: </para>
                     <itemizedlist spacing="compact">
@@ -1076,11 +1084,12 @@
                     body to the specified URI.
                 </para>
                 <para>
-                    When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the operation will attempt
-                    to remove the load-balancer in Zeus and set the status to <code>DELETED</code>. For all other statuses the
-                    sync operation will first delete the load-balancer in Zeus and then re-create it. If successful,
-                    the load-balancer will be put in the <code>ACTIVE</code> status. If for some reason the load-balancer could
-                    not be created in Zeus, then the status will be set to <code>ERROR</code>.
+                    When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the
+                    operation will attempt to remove the load-balancer in Zeus and set the status to
+                    <code>DELETED</code>. For all other statuses the sync operation will first delete the
+                    load-balancer in Zeus and then re-create it. If successful, the load-balancer will be put in
+                    the <code>ACTIVE</code> status. If for some reason the load-balancer could not be created in
+                    Zeus, then the status will be set to <code>ERROR</code>.
                 </para>
         </section>
         <section>
@@ -1221,8 +1230,20 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/accounts/billing?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
-                            &amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T<parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
+                        <td colspan="4">/accounts/billing?startTime=
+                            <parameter>YYYY</parameter>-
+                            <parameter>MM</parameter>-
+                            <parameter>DD</parameter>T
+                            <parameter>HH</parameter>:
+                            <parameter>mm</parameter>:
+                            <parameter>ss</parameter>
+                            &amp;endTime=
+                            <parameter>YYYY</parameter>-
+                            <parameter>MM</parameter>-
+                            <parameter>DD</parameter>T
+                            <parameter>HH</parameter>:
+                            <parameter>mm</parameter>:
+                            <parameter>ss</parameter>
                         </td>
                         <td colspan="4">Retrieve usage for all accounts for a single day</td>
                         <td colspan="2">Support, Service Admin, Billing</td>
@@ -1255,8 +1276,8 @@
         <section>
             <title>Load Balancer Status URL Management</title>
             <para>
-                If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken transaction that
-                should have rolled back in the database but didn't.
+                If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken
+                transaction that should have rolled back in the database but didn't.
             </para>
             <para>
                 In this case, operations personnel can use URLs such as the following to correct the issues:
@@ -1286,8 +1307,8 @@
             <title>Listing and Acknowledging Alerts</title>
             <para>
                 This operations allows user to list all the alerts in the system. Additional information about the
-                alert can be retrieved by alert id. The status of the alert can be changed to <code>ACKNOWLEDGED</code> using the
-                &PUT; method
+                alert can be retrieved by alert id. The status of the alert can be changed to <code>ACKNOWLEDGED</code>
+                using the &PUT; method
             </para>
             <informaltable rules="all">
                 <thead>
@@ -1491,14 +1512,19 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&POST;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
-                        <td colspan="4">Adds the specified account to the specified load balancer limit group (removes from previous group if applicable)
+                        <td colspan="4">/management/loadbalancerlimitgroups/
+                            <parameter>id</parameter>/accounts/
+                            <parameter>accountId</parameter></td>
+                        <td colspan="4">Adds the specified account to the specified load balancer limit group
+                            (removes from previous group if applicable)
                         </td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&DELETE;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/accounts/<parameter>accountId</parameter></td>
+                        <td colspan="4">/management/loadbalancerlimitgroups/
+                            <parameter>id</parameter>/accounts/
+                            <parameter>accountId</parameter></td>
                         <td colspan="4">Deletes the specified account from the specified load balancer limit group</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
@@ -1570,7 +1596,10 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
+                        <td colspan="4">/event/account/
+                            <parameter>accountId</parameter>/loadbalancer?startDate=
+                            <parameter>yyyy-mm-dd</parameter>&amp;endDate=
+                            <parameter>yyyy-mm-dd</parameter></td>
                         <td colspan="4">List recent load balancer service events for this account within a date range</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
@@ -1627,10 +1656,10 @@
             </simpara>
                 <para>
                     The remove load balancer function removes the specified load balancer and its associated
-                    configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status to be removed. Any and all
-                    configuration data is immediately purged and is not recoverable. A limited amount of information, including usage information and deletion time, is
-                    available for deleted load balancers  by performing
-                    a &GET; on <code>loadbalancers/</code><parameter>id</parameter>.
+                    configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status
+                    to be removed. Any and all configuration data is immediately purged and is not recoverable. A
+                    limited amount of information, including usage information and deletion time, is  a &GET; on
+                    <code>loadbalancers/</code><parameter>id</parameter>.
                 </para> 
                 <para>
                     This operation does not require a request body.

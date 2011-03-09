@@ -1,5 +1,5 @@
-<suspension
-        xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
+<suspension xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
         reason="Non-payment"
-        ticketId="4141"
-        user="bob"/>
+        user="bob">
+    <ticket ticketId="1234" comment="Late payment" />
+</suspension>

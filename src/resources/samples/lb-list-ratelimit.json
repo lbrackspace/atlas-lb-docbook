@@ -1,6 +1,4 @@
-{"rateLimit": {
-        "ticketId": "44410",
-        "expirationTime": "2010-10-17 00:00:00",
-        "maxRequestPerSecond": "150"
-    }
+{
+    "expirationTime": "2010-10-17 00:00:00",
+    "maxRequestPerSecond": "150"
 }
