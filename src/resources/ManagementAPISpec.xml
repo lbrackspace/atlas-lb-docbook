@@ -1548,6 +1548,74 @@
             </example>
         </section>
         <section>
+            <title>Load Balancer Tickets</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                        <td>Optional Query Parameters</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>GET</td>
+                        <td>/management/loadbalancers/loadBalancerId/tickets</td>
+                        <td>Lists all tickets for the load balancer</td>
+                        <td>Support, Service Admin</td>
+                        <td>offset, limit</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/management/loadbalancers/loadBalancerId/tickets</td>
+                        <td>Adds a ticket to the load balancer</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+                <section>
+                    <title>Description</title>
+                    <para>
+                        Support tickets can be associated with load balancers so that support can keep track of
+                        tickets over the lifetime of a load balancer. While a ticket can be added there is no
+                        verification that the ticket actually exists in support's system.
+                    </para>
+                    <note>
+                        <para>
+                            Note: Tickets can also be added through calls to suspend a load balancer, add a
+                            new virtual ip, and impose a rate limit as a ticket is required for these
+                            operations.
+                        </para>
+                    </note>
+                </section>
+                <example>
+                    <title>List Tickets for Load Balancer: XML</title>
+                    <programlisting language="xml">
+                    <xi:include href="samples/lb-list-ticket-response.xml" parse="text" />
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Tickets for Load Balancer: JSON</title>
+                    <programlisting language="javascript">
+                    <xi:include href="samples/lb-list-ticket-response.json" parse="text" />
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Create Ticket for Load Balancer: XML</title>
+                    <programlisting language="xml">
+                    <xi:include href="samples/lb-create-ticket-request.xml" parse="text" />
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Create Ticket for Load Balancer: JSON</title>
+                    <programlisting language="javascript">
+                    <xi:include href="samples/lb-create-ticket-request.json" parse="text" />
+                    </programlisting>
+                </example>
+            </informaltable>
+        </section>
+        <section>
             <title>Zeus Usage</title>
             <informaltable rules="all">
                 <thead>
