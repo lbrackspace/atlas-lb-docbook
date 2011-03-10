@@ -127,6 +127,83 @@
     <chapter>
         <title>Management API Operations</title>
         <section>
+            <title>Listing Load Balancers(Management query param options)</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;</td>
+                        <td>/management/loadbalancers?vipid=id</td>
+                        <td>Retrieve a list of all load balancers using a virtual ip id</td>
+                        <td>Support, Service Admin </td>
+                    </tr>
+                    <tr>
+                        <td>&GET;</td>
+                        <td>/management/loadbalancers?vipaddress=vipAddress</td>
+                        <td>Retrieve a list of all load balancers using a virtual ip address</td>
+                        <td>Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s): <returnvalue>200</returnvalue>
+            </para>
+            <simpara>
+                Error Response Code(s): loadBalancerManagementFault(<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized
+                (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit
+                (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                A badRequest will display a 'Ip address is invalid' when the passed in vip address is invalid
+                according to IpV4 or IpV6
+            </para>
+            <para>
+                Must not supply both ?vipid and ?vipaddress params in a single call. A badRequest will be thrown
+                with message 'Cannot set both ip address and vip id'
+            </para>
+            <section>
+                <title>Description</title>
+                <para>
+                    Use query params to retrieve load balancers bases on virtual ip id and address. The address is validated and will return a bad request with 'Ip address is invalid' message stating that the address we received does not pass the IpV4 or Ipv6 syntax.
+                </para>
+                <para>
+                    The response will contain the basic information for all load balancers that are associated with the virtual ip requested.
+                </para>
+            </section>
+            <example>
+                <title>List All Load Balancers by vipId Response: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List All Load Balancers by vipId Response: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List All Load Balancers by vipId Response: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List All Load Balancers by vipId Response: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <section>
             <title>Clusters</title>
             <informaltable rules="all">
                 <thead>
@@ -1337,6 +1414,12 @@
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
                         <td colspan="4">Retrieve all alerts, if any, for the specified load balancer</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/alerts/account?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">Retrieve all alerts for and account if any.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">

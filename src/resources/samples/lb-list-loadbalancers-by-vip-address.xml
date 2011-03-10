@@ -1,0 +1,26 @@
+<ns2:loadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0">
+    <ns2:loadBalancer id="4" protocol="HTTP" status="PENDING_UPDATE" isSticky="false">
+        <created time="2011-02-15T08:13:47-06:00"/>
+        <updated time="2011-03-04T12:21:38-06:00"/>
+        <connectionLogging enabled="true"/>
+        <ns2:tickets/>
+    </ns2:loadBalancer>
+    <ns2:loadBalancer id="42" protocol="HTTP" status="ACTIVE" isSticky="false">
+        <created time="2011-03-04T13:29:51-06:00"/>
+        <updated time="2011-03-04T13:29:56-06:00"/>
+        <connectionLogging enabled="false"/>
+        <ns2:tickets/>
+    </ns2:loadBalancer>
+    <ns2:loadBalancer id="43" protocol="HTTP" status="ACTIVE" isSticky="false">
+        <created time="2011-03-04T13:30:01-06:00"/>
+        <updated time="2011-03-04T13:30:05-06:00"/>
+        <connectionLogging enabled="false"/>
+        <ns2:tickets/>
+    </ns2:loadBalancer>
+    <ns2:loadBalancer id="44" protocol="HTTP" status="ACTIVE" isSticky="false">
+        <created time="2011-03-04T13:30:08-06:00"/>
+        <updated time="2011-03-04T13:30:12-06:00"/>
+        <connectionLogging enabled="false"/>
+        <ns2:tickets/>
+    </ns2:loadBalancer>
+</ns2:loadBalancers>

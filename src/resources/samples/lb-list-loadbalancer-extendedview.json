@@ -1,67 +1,72 @@
 {"loadbalancer": {
-        "id": 2000,
+        "id": "2000",
+        "accountId" : "3434",
+        "sticky" : true,
         "name": "sample-loadbalancer",
         "protocol": "HTTP",
-        "port": 80,
+        "port": "80",
         "algorithm": "RANDOM",
         "status": "ACTIVE",
-        "totalActiveConnections": 340,
-        "host": {
-            "id": 1,
-            "type": "ACTIVE"
-        },
+        "totalActiveConnections": "340",
         "currentUsage": {
-            "incomingTransfer": 1.40,
-            "outgoingTransfer": 20.14
+            "incomingTransfer": "1.40",
+            "outgoingTransfer": "20.14"
         },
-        "virtualIps": [
-            {
-                "id": 1000,
-                "address": "206.10.10.210",
+        "host": {
+               "id": "1",
+               "type": "ACTIVE"
+         },
+        "virtualIps": {
+            "virtualIp": {
+                "id": "1000",
+                "address": "206.10.10.2010",
                 "type": "PUBLIC"
             }
-        ],
-        "nodes": [
-            {
-                "nodeId": 1000,
-                "ip": "10.1.1.1",
-                "port": 80,
-                "condition": "ENABLED",
-                "status": "ONLINE"
-            },
-            {
-                "nodeId": 1411,
-                "ip": "10.1.1.2",
-                "port": 80,
-                "condition": "ENABLED",
-                "status": "ONLINE"
-            }
-        ],
+        },
+        "nodes": {
+            "node": [
+                {
+                    "nodeId": "1041",
+                    "ip": "10.1.1.1",
+                    "port": "9090",
+                    "condition": "ENABLED",
+                    "status": "ONLINE"
+                },
+                {
+                    "nodeId": "1042",
+                    "ip": "10.1.1.2",
+                    "port": "80",
+                    "condition": "ENABLED",
+                    "status": "ONLINE"
+                }
+            ]
+        },
+        "connectionLogging": {
+            "enabled": "true"
+        },
+        "rateLimit": {
+            "ticketId": "1123",
+            "expirationTime": "1283277190574",
+            "maxRequestsPerSecond": "37"
+        },
         "sessionPersistence": {
             "persistenceType": "HTTP_COOKIE"
         },
         "connectionLimits": {
-            "minConnections": 10,
-            "maxConnectionsFromIp": 100,
-            "maxConnectionRateFromIp": 50,
-            "maxConnectionRateTimer": 60
-        },
-        "connectionLogging": {
-            "enabled": "false"
+            "minConnections": "10",
+            "maxConnectionsFromIp": "100",
+            "maxConnectionsRateFromIp": "50",
+            "maxConnectionsRateTimer": "60"
         },
         "cluster": {
-            "name": "c1.dfw1"
-        },
-        "ratelimit": {
-            "ticketId": 4100,
-            "expirationTime": "2010-10-17 00:00:00",
-            "maxRequestsPerSecond": 100
+            "name": "c1.dfw1",
+            "description": "Cluster Description"
         },
         "created": {
-            "time": "2010-06-01T12:00:00Z"
+            "time": "2010-06-01 00: 00: 00"
         },
         "updated": {
-            "time": "2010-06-01T12:00:00Z"
+            "time": "2010-06-01 00: 00: 00"
         }
     }
 }
