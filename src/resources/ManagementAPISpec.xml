@@ -975,25 +975,25 @@
                     or host level.
                 </para>
             <example>
-                <title>List Customers by Host Request: XML</title>
+                <title>Create Customers by Host by Name Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Host Request: XML</title>
+                <title>List Customers by Host by Name Request: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-customers-byname.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Cluster Request: XML</title>
+                <title>List Customers by Cluster by Id Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Cluster Request: XML</title>
+                <title>List Customers by Cluster by Id Request: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-customers-byid.json" parse="text"/>
                 </programlisting>
