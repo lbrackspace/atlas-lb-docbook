@@ -172,10 +172,13 @@
             <section>
                 <title>Description</title>
                 <para>
-                    Use query params to retrieve load balancers bases on virtual ip id and address. The address is validated and will return a bad request with 'Ip address is invalid' message stating that the address we received does not pass the IpV4 or Ipv6 syntax.
+                    Use query params to retrieve load balancers bases on virtual ip id and address. The address
+                    is validated and will return a bad request with 'Ip address is invalid' message stating that
+                    the address we received does not pass the IpV4 or Ipv6 syntax.
                 </para>
                 <para>
-                    The response will contain the basic information for all load balancers that are associated with the virtual ip requested.
+                    The response will contain the basic information for all load balancers that are associated
+                    with the virtual ip requested.
                 </para>
             </section>
             <example>
@@ -305,6 +308,12 @@
                         <td colspan="5">/hosts</td>
                         <td colspan="3">Create a new load balancing host</td>
                         <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/management/hosts/hostId</td>
+                        <td colspan="3">Retrieve a detailed list of this host's configuration</td>
+                        <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
@@ -972,9 +981,21 @@
                 </programlisting>
             </example>
             <example>
+                <title>List Customers by Host Request: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-create-customers-byname.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
                 <title>List Customers by Cluster Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customers by Cluster Request: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-create-customers-byid.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
