@@ -1,13 +1,9 @@
-{"loadbalancers": {
-        "loadbalancer": [
-            {
-                "id": "1"
-            }
-          ],
-           "host": [
-           {
-             "id": "2"
-           }
-        ]
-    }
+{"loadBalancers": [
+        {
+            "host": {
+                "id": 2
+            },
+            "id": 1
+        }
+    ]
 }

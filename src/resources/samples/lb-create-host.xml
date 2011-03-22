@@ -5,7 +5,6 @@
         managementSoapInterface="https://SomeSoapNode.com:9090"
         maxConcurrentConnections="5"
         name="someName"
-        status="BURN_IN"
         trafficManagerName="zues01.blah.blah"
         type="FAILOVER"
         zone="B"

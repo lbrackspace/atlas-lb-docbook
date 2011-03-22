@@ -1,11 +1,6 @@
-{"loadbalancers": {
-        "loadbalancer": [
-            {
-                "id": "1"
-            },
-            {
-                "id": "2"
-            }
-        ]
-    }
+{"loadBalancers": [
+        {
+            "id": 1
+        }
+    ]
 }

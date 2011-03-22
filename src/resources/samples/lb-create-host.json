@@ -1,5 +1,4 @@
 {"host": {
-        "status": "BURN_IN",
         "name": "someName",
         "zone": "B",
         "type": "FAILOVER",
