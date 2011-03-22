@@ -1485,13 +1485,13 @@ Content-Type: text/plain; charset=UTF-8
                 <code>DENY</code>
                 type.
             </para>
-            <para>When issuing a &POST; to add to an access list, one or more network items
-                are required. If a populated access list already exists for the load balancer, it
-                will be appended with subsequent &POST; requests. A single address or subnet
-                definition is considered unique and cannot be duplicated between items in an access
-                list. There are two &DELETE; operations for the access list. One allows for deletion
-                of the entire access list and the other for deletion of a specific network item in
-                the access list.
+            <para>When issuing a &POST; to add to an access list, one or more network items are
+                required. If a populated access list already exists for the load balancer, it will
+                be appended with subsequent &POST; requests. One access list may have up to 100
+                network items A single address or subnet definition is considered unique and cannot
+                be duplicated between items in an access list. There are two &DELETE; operations
+                for the access list. One allows for deletion of the entire access list and the
+                other for deletion of a specific network item in the access list.
             </para>
             <para>
                 This operation does not require a request body.
