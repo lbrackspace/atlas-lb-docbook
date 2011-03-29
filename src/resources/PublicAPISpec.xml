@@ -2195,6 +2195,10 @@ Content-Type: text/plain; charset=UTF-8
                         <td>The system encountered an error when attempting to configure the laod balancer;
                             contact support</td>
                     </tr>
+                    <tr align="left">
+                        <td><code>DELETED</code></td>
+                        <td>Load balancers in deleted status can be displayed for at least 90 days after deletion.</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -2208,29 +2212,29 @@ Content-Type: text/plain; charset=UTF-8
                 <caption>Load Balancer Node Conditions</caption>
                 <thead>
                     <tr align="center">
-                        <td>Name</td>
-                        <td>Description</td>
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>
+                        <td colspan="1">
                             <code>ENABLED</code>
                         </td>
-                        <td>Node is permitted to accept new connections</td>
+                        <td colspan="3">Node is permitted to accept new connections</td>
                     </tr>
                     <tr align="left">
-                        <td>
+                        <td colspan="1">
                             <code>DISABLED</code>
                         </td>
-                        <td>Node is not permitted to accept any new connections regardless of session
+                        <td colspan="3">Node is not permitted to accept any new connections regardless of session
                             persistence configuration. Existing connections are forcibly terminated</td>
                     </tr>
                     <tr align="left">
-                        <td>
+                        <td colspan="1">
                             <code>DRAINING</code>
                         </td>
-                        <td>Node is allowed to service existing established connections and connections that
+                        <td colspan="3">Node is allowed to service existing established connections and connections that
                             are being directed to it as a result of the session persistence configuration</td>
                     </tr>
                 </tbody>
