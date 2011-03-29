@@ -1879,19 +1879,94 @@
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-                <para>
-                    The remove load balancer function removes the specified load balancer and its associated
-                    configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status
-                    to be removed. Any and all configuration data is immediately purged and is not recoverable. A
-                    limited amount of information, including usage information and deletion time, is  a &GET; on
-                    <code>loadbalancers/</code><parameter>id</parameter>.
-                </para> 
-                <para>
-                    This operation does not require a request body.
-                </para>
-                <para>
-                    This operation does not return a response body.
-                </para>
+            <para>
+                The remove load balancer function removes the specified load balancer and its associated
+                configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status
+                to be removed. Any and all configuration data is immediately purged and is not recoverable. A
+                limited amount of information, including usage information and deletion time, is  a &GET; on
+                <code>loadbalancers/</code><parameter>id</parameter>.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <para>
+                This operation does not return a response body.
+            </para>
+        </section>
+        <section>
+            <title>Blacklist Node and Access List Management</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/blacklist</td>
+                        <td colspan="4">Retrieves a list of blacklisted items.</td>
+                        <td colspan="2">Operations only</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/blacklist</td>
+                        <td colspan="4">Creates a new blacklist item</td>
+                        <td colspan="2">Operations only</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">blacklist/id</td>
+                        <td colspan="4">Delets a specific blacklist item</td>
+                        <td colspan="2">Operations, Support</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara> 
+                Error Response Code(s): 
+                loadBalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),  serviceUnavailable (
+                <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
+                <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
+            </simpara>
+            <section>
+                <title>Description</title>
+                <para>The blacklist contains a list of IP address that have been considered unusable in our system.
+                    The system can blacklist an item for Nodes, Accesslist or both. The type parameter can be set
+                    (<code>NODE</code>, <code>ACCESSLIST</code>) to specify which type the blacklisted item should
+                    be attached to. If neither type is submitted it becomes global and is used against all
+                    operations that check its values against the blacklist.</para>
+            </section>
+            <example>
+                <title>List Blacklist Response: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-blacklist.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Blacklist Response: Json</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-blacklist.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Blacklist Request: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-create-blacklist.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Blacklist Request: JSON</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-create-blacklist.json" parse="text"/>
+                </programlisting>
+            </example>
         </section>
     </chapter>
 </book>

@@ -1068,34 +1068,23 @@ Content-Type: text/plain; charset=UTF-8
                 not listening on its port or does not meet the conditions of the defined active
                 health check for the load balancer, then the load balancer will not forward
                 connections and its status will be listed as<code>OFFLINE</code>. Only nodes that
-                are in an
-                <code>ONLINE</code>
-                status will receive and be able to service traffic
+                are in an <code>ONLINE</code> status will receive and be able to service traffic
                 from the load balancer.
             </para>
             <para>All nodes have an associated status that indicates whether the node is
-                online, offline, or draining. Only nodes that are in an
-                <code>ONLINE</code>
-                status
-                will receive and be able to service traffic from the load balancer. The
-                <code>OFFLINE</code>
-                status represents a node that cannot accept or service
-                traffic. A node in
-                <code>DRAINING</code>
-                status represents a node that stops the
+                online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
+                will receive and be able to service traffic from the load balancer. The <code>OFFLINE</code>
+                status represents a node that cannot accept or service traffic. A node in
+                <code>DRAINING</code> status represents a node that stops the
                 traffic manager from sending any additional new connections to the node, but honors
                 established sessions. If the traffic manager receives a request and session
                 persistence requires that the node is used, the traffic manager will use it. The
                 status is determined by the passive or active health monitors.
             </para>
-            <para>If the
-                <code>WEIGHTED_ROUND_ROBIN</code>
-                load balancer algorithm mode is
+            <para>If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is
                 selected, then the caller should assign the relevant weights to the node as part of
                 the weight attribute of the node element. When the algorithm of the load balancer is
-                changed to
-                <code>WEIGHTED_ROUND_ROBIN</code>
-                and the nodes do not already have an
+                changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
             <para>When a node is added, it is assigned a unique identifier that can be used
@@ -1138,12 +1127,10 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <note>
-                <para>The node's IP and Port are immutable attributes and cannot be modified by
-                    the caller for a &PUT; request. Supplying an unsupported attribute will result
-                    in a
-                    <returnvalue>400 (badRequest)</returnvalue>
-                    fault. Additionally, a load balancer supports a maximum
-                    of 25 nodes.
+                <para>The node's IP and Port are immutable attributes and cannot be modified with
+                    a &PUT; request. Supplying an unsupported attribute will result in a <returnvalue>400
+                    (badRequest)</returnvalue> fault. Additionally, a load balancer supports a maximum
+                    of 25 nodes, and the maximum weight of a node is 100.
                 </para>
             </note>
             <example>
@@ -1571,9 +1558,7 @@ Content-Type: text/plain; charset=UTF-8
                 health monitor is allowed to be enabled on a load balancer at a time.
             </para>
             <para>
-                Every health monitor has a
-                <code>type</code>
-                attribute to signify what kind of monitor it is.
+                Every health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
             </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
@@ -1652,19 +1637,19 @@ Content-Type: text/plain; charset=UTF-8
                         <listitem>
                             <para>
                                 <code>delay</code>: The minimum number of seconds to wait before executing the
-                                health monitor.
+                                health monitor. (Must be a number between 1 and 3600)
                             </para>
                         </listitem>
                         <listitem>
                             <para>
                                 <code>timeout</code>: Maximum number of seconds to wait for a connection to be
-                                established before timing out.
+                                established before timing out. (Must be a number between 1 and 300)
                             </para>
                         </listitem>
                         <listitem>
                             <para>
                                 <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures
-                                before removing a node from rotation.
+                                before removing a node from rotation. (Must be a number between 1 and 10)
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -1683,19 +1668,19 @@ Content-Type: text/plain; charset=UTF-8
                         <listitem>
                             <para>
                                 <code>delay</code>: The minimum number of seconds to wait before executing the
-                                health monitor.
+                                health monitor. (Must be a number between 1 and 3600)
                             </para>
                         </listitem>
                         <listitem>
                             <para>
                                 <code>timeout</code>: Maximum number of seconds to wait for a connection to be
-                                established before timing out.
+                                established before timing out. (Must be a number between 1 and 300)
                             </para>
                         </listitem>
                         <listitem>
                             <para>
                                 <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures
-                                before removing a node from rotation.
+                                before removing a node from rotation. (Must be a number between 1 and 10)
                             </para>
                         </listitem>
                         <listitem>
@@ -1923,31 +1908,29 @@ Content-Type: text/plain; charset=UTF-8
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
-                        <code>minConnection</code>: Allow at least this number of connections per IP address
-                        before applying throttling restrictions.
+                        <code>minConnections</code>: Allow at least this number of connections per IP address
+                        before applying throttling restrictions. Setting a value of 0 will allow unlimited
+                        simultaneous connections, otherwise set a value between 1 and 1000.
                     </para>
                 </listitem>
                 <listitem>
-                    <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP address.
+                    <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP
+                        address.  Setting a value of 0 will allow unlimited simultaneous connections, otherwise
+                        set a value between 1 and 100000.
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        <code>macConnectionRate</code>: Maximum number of connections allowed from a single IP
-                        address in the defined
-                        <code>rateInterval</code>.
+                        <code>maxConnectionRate</code>: Maximum number of connections allowed from a single IP
+                        address in the defined <code>rateInterval</code>.  Setting a value of 0 will allow an
+                        unlimited connection rate, otherwise set a value between 1 and 100000.
                     </para>
                 </listitem>
                 <listitem>
                     <para><code>rateInterval</code>: Frequency (in seconds) at which the
-                        <code>maxConnectionRate</code>
-                        is
-                        assessed. For example, a
-                        <code>maxConnectionRate</code>
-                        of 30 with a
-                        <code>rateInterval</code>
-                        of 60 would allow a maximum of 30 connections per minute for a
-                        single IP address.
+                        <code>maxConnectionRate</code> is assessed. For example, a <code>maxConnectionRate</code>
+                        of 30 with a <code>rateInterval</code> of 60 would allow a maximum of 30 connections per
+                        minute for a single IP address.  Must specify a value between 1 and 3600.
                     </para>
                 </listitem>
             </itemizedlist>

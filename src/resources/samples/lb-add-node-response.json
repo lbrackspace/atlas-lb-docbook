@@ -3,7 +3,8 @@
         "address": "10.1.1.1",
         "port": "80",
         "condition": "ENABLED",
-        "status": "PENDING_UPDATE"
+        "status": "PENDING_UPDATE",
+        "weight": 63
     }
   ]
 }

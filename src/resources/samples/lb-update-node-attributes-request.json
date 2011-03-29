@@ -1,5 +1,6 @@
 {
     "node":{
-    "condition":"DISABLED"
+        "condition":"DISABLED",
+        "weight": 4
     }
 }

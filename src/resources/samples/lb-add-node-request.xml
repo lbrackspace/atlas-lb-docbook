@@ -2,5 +2,11 @@
     <node
         address="10.1.1.1"
         port="80"
-        condition="ENABLED"/>
+        condition="ENABLED"
+        weight="12" />
+    <node
+        address="10.1.1.2"
+        port="80"
+        condition="ENABLED"
+        weight="12" />
 </nodes>

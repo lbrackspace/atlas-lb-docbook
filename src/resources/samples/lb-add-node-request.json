@@ -2,7 +2,8 @@
     {
         "port": 80,
         "condition": "ENABLED",
-        "address": "10.1.1.1"
+        "address": "10.1.1.1",
+        "weight": 59
     }
   ]
 }
