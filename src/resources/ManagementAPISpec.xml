@@ -112,6 +112,16 @@
                             </itemizedlist>
                         </td>
                     </tr>
+                    <tr align="left">
+                        <td colspan="1" align="center">Apr. 1, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added CusterCount Examples and information</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
                 </tbody>
             </informaltable>
         </section>
