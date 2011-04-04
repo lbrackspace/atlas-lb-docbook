@@ -32,6 +32,7 @@
         xmlns:m="http://www.w3.org/1998/Math/MathML"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns:db="http://docbook.org/ns/docbook">
+    <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
     <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
     <info>
@@ -93,21 +94,21 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Mar. 3, 2011</td>
+                        <td colspan="1" align="center">Mar. 24, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Initial release for public beta.</para>
+                                    <para>Added examples of cluster POST/PUT.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1" align="center">Mar. 24, 2011</td>
+                        <td colspan="1" align="center">Mar. 3, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added Cluster POST/PUT Examples</para>
+                                    <para>Initial release for public beta.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
