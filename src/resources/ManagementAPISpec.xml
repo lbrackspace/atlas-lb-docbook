@@ -82,9 +82,8 @@
         </section>
         <section>
             <title>Document Change History</title>
-            <para>This version of the Developer Guide replaces and supersedes all previous versions.
-                The most recent changes are described in the table below:
-            </para>
+            <para>This version of the Developer Guide replaces and obsoletes all previous versions.
+                The most recent changes are described in the table below: </para>
             <informaltable rules='all'>
                 <thead>
                     <tr align="center">
@@ -131,12 +130,12 @@
             <para>Two APIs provide access to Rackspace Cloud Load Balancers: 
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>the management API, available only to developers within Rackspace, is the subject of
-                            this document;</para></listitem>
+                        <para>The management API, available only to developers within Rackspace, is
+                            the subject of this document.</para></listitem>
                     <listitem>
-                        <para>the public API, available to developers within Rackspace and Rackspace customers, is
-                            the subject of a companion document, The Rackspace Cloud Load Balancers API
-                            DeveloperGuide.</para>
+                        <para>The public API, available to developers within Rackspace and Rackspace
+                            customers, is the subject of a companion document, The Rackspace Cloud
+                            Load Balancers API DeveloperGuide.</para>
                     </listitem>
                 </itemizedlist>
                 You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide
@@ -147,8 +146,15 @@
     </chapter>
     <chapter>
         <title>Management API Operations</title>
+        <para>
+            These API operations relate to administration of the environment that enables and supports the load balancing service for all customers.
+            The scope of these operations is wide, relating to the overall operating environment rather than to a single customer.
+            Rackers might perform these operations to examine or alter the overall operational environment.
+        </para>
         <section>
-            <title>Listing Load Balancers(Management query param options)</title>
+            <title>Load Balancers</title>
+        <section>
+            <title>List Load Balancers</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -161,13 +167,13 @@
                 <tbody>
                     <tr align="left">
                         <td>&GET;</td>
-                        <td>/management/loadbalancers?vipid=id</td>
-                        <td>Retrieve a list of all load balancers using a virtual ip id</td>
+                        <td>/management/loadbalancers?vipid=<parameter>id</parameter></td>
+                        <td>Retrieve a list of all load balancers using a virtual IP id</td>
                         <td>Support, Service Admin </td>
                     </tr>
                     <tr>
                         <td>&GET;</td>
-                        <td>/management/loadbalancers?vipaddress=vipAddress</td>
+                        <td>/management/loadbalancers?vipaddress=<parameter>vipAddress</parameter></td>
                         <td>Retrieve a list of all load balancers using a virtual ip address</td>
                         <td>Support, Service Admin</td>
                     </tr>
@@ -183,49 +189,44 @@
                 (<errorcode>413</errorcode>)
             </simpara>
             <para>
-                A badRequest will display a 'Ip address is invalid' when the passed in vip address is invalid
-                according to IpV4 or IpV6
+                Use query parameters to retrieve a list of load balancers based on virtual IP id or 
+                address. The response will contain basic information for all load balancers that are associated
+                with the requested virtual IP.
             </para>
             <para>
-                Must not supply both ?vipid and ?vipaddress params in a single call. A badRequest will be thrown
-                with message 'Cannot set both ip address and vip id'
+                A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both. 
+                If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
             </para>
-            <section>
-                <title>Description</title>
-                <para>
-                    Use query params to retrieve load balancers bases on virtual ip id and address. The address
-                    is validated and will return a bad request with 'Ip address is invalid' message stating that
-                    the address we received does not pass the IpV4 or Ipv6 syntax.
+                <para> 
+                    The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
+                    or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
+                    is invalid.'
                 </para>
-                <para>
-                    The response will contain the basic information for all load balancers that are associated
-                    with the virtual ip requested.
-                </para>
-            </section>
             <example>
-                <title>List All Load Balancers by vipId Response: XML</title>
+                <title>List Load Balancers by Virtual IP Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List All Load Balancers by vipId Response: XML</title>
+                <title>List Load Balancers by Virtual IP Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List All Load Balancers by vipId Response: XML</title>
+                <title>List Load Balancers by Virtual IP Address Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List All Load Balancers by vipId Response: XML</title>
+                <title>List Load Balancers by Virtual IP Address Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
                 </programlisting>
             </example>
+        </section>
         </section>
         <section>
             <title>Clusters</title>
@@ -1232,6 +1233,12 @@
     </chapter>
     <chapter>
         <title>Extended Customer API Operations</title>
+        <para>
+            These API operations relate to support of load balancing service activities on behalf of a specific customer.
+            The scope of these operations is narrow, relating to the needs of a single customer.
+            A customer might directly request these operations but only Rackers are authorized to perform them.
+            Rackers might also perform these operations to limit or terminate a specific customer's activities when that customer appears to be disrupting the overall operational environment.
+        </para>
         <section>
             <title>Assigning New Virtual IPs to a Load Balancer</title>
             <informaltable rules="all">

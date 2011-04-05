@@ -99,9 +99,8 @@
         <?hard-pagebreak?>
         <section>
             <title>Document Change History</title>
-            <para>This version of the Developer Guide replaces and supersedes all previous versions.
-                The most recent changes are described in the table below:
-            </para>
+            <para>This version of the Developer Guide replaces and obsoletes all previous versions.
+                The most recent changes are described in the table below: </para>
             <informaltable rules='all'>
                 <thead>
                     <tr align="center">
@@ -377,10 +376,8 @@ Content-Type: text/plain; charset=UTF-8
                     </para>
                 </example>
                 <para>Authentication tokens are typically valid for 24 hours. Applications should be
-                    designed to re-authenticate after receiving a 4
-                    <returnvalue>401</returnvalue>
-                    (Unauthorized) response from a service endpoint.
-                </para>
+                    designed to re-authenticate after receiving a <returnvalue>401</returnvalue>
+                    (Unauthorized) response from a service endpoint. </para>
                 <note>
                     <para>Currently, service endpoints are not published in the response of the account
                         number, which is a required element of the service endpoints.
@@ -389,7 +386,7 @@ Content-Type: text/plain; charset=UTF-8
             </simplesect>
         </section>
         <section>
-            <title>Service Access / Endpoints</title>
+            <title>Service Access/Endpoints</title>
             <para>The load balancing service is a regionalized service, which allows for the caller
                 to select a region into which a load balancer is to be provisioned.
             </para>
