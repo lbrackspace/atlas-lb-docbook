@@ -1020,6 +1020,18 @@
                         <td colspan="3">Generate a customer list by cluster</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/clusterId/customercount</td>
+                        <td colspan="3">Generate a customer list by cluster id</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/hosts/hostid/customercount</td>
+                        <td colspan="3">Generate a customer list by host id</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
                 </tbody>
             </informaltable>
                 <para>
@@ -1028,27 +1040,75 @@
                     or host level.
                 </para>
             <example>
-                <title>Create Customers by Host by Name Request: XML</title>
+                <title>Create Customers by Host Name Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Host by Name Request: JSON</title>
+                <title>List Customers by Host Name Request: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-customers-byname.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Cluster by Id Request: XML</title>
+                <title>Create Customers by Cluster Id Request: XML</title>
                 <programlisting language="xml">
                 <xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Cluster by Id Request: JSON</title>
+                <title>Create Customers by Cluster Id Request: JSON</title>
                 <programlisting language="javascript">
                 <xi:include href="samples/lb-create-customers-byid.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Request: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-customer-count-by-clusterid-call.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Request: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-customer-count-by-clusterid-call.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Request: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-customer-count-by-hostid-call.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Request: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-customer-count-by-hostid-call.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Response: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-customer-count-by-clusterid.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Response: JSON</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-customer-count-by-clusterid.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Host Id Response: XML</title>
+                <programlisting language="xml">
+                <xi:include href="samples/lb-list-customer-count-by-hostid.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Host Id Response: XML</title>
+                <programlisting language="javascript">
+                <xi:include href="samples/lb-list-customer-count-by-hostid.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
