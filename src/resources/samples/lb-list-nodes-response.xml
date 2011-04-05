@@ -1,6 +1,21 @@
-<node
-    id="410"
-    address="10.1.1.1"
-    port="80"
-    condition="ENABLED"
-    status="ONLINE"/>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <node
+            id="650"
+            address="10.1.1.1"
+            port="80"
+            condition="ENABLED"
+            status="ONLINE"/>
+    <node
+            id="183"
+            address="10.2.2.1"
+            port="80"
+            condition="ENABLED"
+            status="ONLINE"/>
+    <node
+            id="184"
+            address="10.2.2.2"
+            port="88"
+            condition="ENABLED"
+            status="ONLINE"/>
+</nodes>

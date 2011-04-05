@@ -777,8 +777,7 @@ Content-Type: text/plain; charset=UTF-8
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
+                        <td>&GET;</td>
                         <td>/loadbalancers</td>
                         <td>List all load balancers configured for the account (IDs, names and status only)</td>
                         <td>XML, JSON, ATOM</td>
@@ -865,7 +864,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Load Balancers Details Response: JSON</title>
                 <programlisting language="javascript"><?db-font-size 90% ?>
-<xi:include href="samples/lb-list-response.json" parse="text"/>
+<xi:include href="samples/lb-list-details-response.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1032,6 +1031,12 @@ Content-Type: text/plain; charset=UTF-8
                         <td>Add a new node to the load balancer</td>
                     </tr>
                     <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                        <td>List details for a specific node</td>
+                    </tr>
+                    <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
@@ -1042,12 +1047,6 @@ Content-Type: text/plain; charset=UTF-8
                         </td>
                         <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
                         <td>Removes a node from the load balancer</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
-                        <td>List details for a specific node</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1104,27 +1103,57 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>Add Node Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-node-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Node Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-node-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Node Request: JSON</title>
+                <title>List Node Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-node-request.json" parse="text"/>
+<xi:include href="samples/lb-list-node-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Add Node Response: JSON</title>
+                <title>List Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Nodes Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-node-response.json" parse="text"/>
+<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Modify Node Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Modify Node Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-node-request.json" parse="text"/>
                 </programlisting>
             </example>
             <note>
