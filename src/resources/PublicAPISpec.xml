@@ -1141,18 +1141,6 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>Modify Node Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Modify Node Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-node-request.json" parse="text"/>
-                </programlisting>
-            </example>
             <note>
                 <para>The node's IP and Port are immutable attributes and cannot be modified with
                     a &PUT; request. Supplying an unsupported attribute will result in a <returnvalue>400
@@ -1163,13 +1151,13 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Update Node Attributes Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-node-attributes-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Update Node Attributes Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-node-attributes-request.json" parse="text"/>
+<xi:include href="samples/lb-update-node-request.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
