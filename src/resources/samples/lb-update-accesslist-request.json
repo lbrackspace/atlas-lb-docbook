@@ -1,5 +1,5 @@
 {
-    "networkItems": [
+    "accessList": [
         {
             "address": "206.160.163.21",
             "type": "DENY"
