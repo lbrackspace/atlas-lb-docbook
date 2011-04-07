@@ -1683,20 +1683,19 @@
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    Load balancer limits refers to the number of load balancers an account can have (formerly known as
-                    absolute limits). These imposed limits are defined in the form of groups with each group having a
-                    corresponding limit. There can only be one default limit at a time. Thus, if you create a new
-                    group and set it to default it will now become the default limit group.
-                </para>
-                <para>
-                    When deleting a load balancer limit group there may be accounts associated with that limit. If an
-                    account is associated with the limit that is being deleted it will assume the default limit. If
-                    the deleted limit was marked as the default limit then an existing group limit with the highest
-                    rate will become the default. If all limits are removed then users will be able to create as many
-                    load balancers as they can. However, there should be some error logs noting that no limits exist.
-                </para>
-            </section>
+            <para>
+                Load balancer limits refers to the number of load balancers an account can have (formerly known as
+                absolute limits). These imposed limits are defined in the form of groups with each group having a
+                corresponding limit. There can only be one default limit at a time. Thus, if you create a new
+                group and set it to default it will now become the default limit group.
+            </para>
+            <para>
+                When deleting a load balancer limit group there may be accounts associated with that limit. If an
+                account is associated with the limit that is being deleted it will assume the default limit. If
+                the deleted limit was marked as the default limit then an existing group limit with the highest
+                rate will become the default. If all limits are removed then users will be able to create as many
+                load balancers as they can. However, there should be some error logs noting that no limits exist.
+            </para>
             <example>
                 <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
@@ -1704,11 +1703,24 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Limits Response: XML</title>
+                <title>Add Limits Request: JSON</title>
                 <programlisting language="javascript">
+<xi:include href="samples/lb-create-group-limits.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Limits Response: XML</title>
+                <programlisting language="xml">
 <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List Limits Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-group-limits.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
         <section>
             <title>Operations for Applying Load Balancer Limits</title>
             <informaltable rules="all">
