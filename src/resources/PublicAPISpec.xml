@@ -794,10 +794,10 @@ Content-Type: text/plain; charset=UTF-8
                 This operation provides a list of all load balancers configured and associated with your account.
             </para>
             <para>
-                Load balancers which have been deleted will be shown in this list for at least 90 days after
-                deletion. A deleted load balancer is immutable and irrecoverable. Only a limited set of
-                attributes (<code>id</code>,<code>name</code>,<code>status</code>, <code>created</code>, and
-                <code>updated</code>) will be returned in the response object.
+                To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
+                balancer is immutable and irrecoverable. Only a limited set of attributes (<code>id</code>,
+                <code>name</code>,<code>status</code>, <code>created</code>, and <code>updated</code>) will be
+                returned in the response object.
             </para>
             <para>
                 This operation does not require a request body.
@@ -1416,12 +1416,6 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>Report Account Billing Response: XML</title>
-                <programlisting language="xml"><?db-font-size 90% ?>
-<xi:include href="samples/lb-report-billing-response.xml" parse="text"/>
-                </programlisting>
-            </example>
         </section>
         <?hard-pagebreak?>
         <section>
@@ -1717,7 +1711,6 @@ Content-Type: text/plain; charset=UTF-8
                     </itemizedlist>
                 </para>
             </section>
-
         </section>
         <section>
             <title>Session Persistence</title>

@@ -153,80 +153,80 @@
         </para>
         <section>
             <title>Load Balancers</title>
-        <section>
-            <title>List Load Balancers</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&GET;</td>
-                        <td>/management/loadbalancers?vipid=<parameter>id</parameter></td>
-                        <td>Retrieve a list of all load balancers using a virtual IP id</td>
-                        <td>Support, Service Admin </td>
-                    </tr>
-                    <tr>
-                        <td>&GET;</td>
-                        <td>/management/loadbalancers?vipaddress=<parameter>vipAddress</parameter></td>
-                        <td>Retrieve a list of all load balancers using a virtual ip address</td>
-                        <td>Support, Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s): <returnvalue>200</returnvalue>
-            </para>
-            <simpara>
-                Error Response Code(s): loadBalancerManagementFault(<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized
-                (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit
-                (<errorcode>413</errorcode>)
-            </simpara>
-            <para>
-                Use query parameters to retrieve a list of load balancers based on virtual IP id or 
-                address. The response will contain basic information for all load balancers that are associated
-                with the requested virtual IP.
-            </para>
-            <para>
-                A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both. 
-                If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
-            </para>
-                <para> 
-                    The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
-                    or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
-                    is invalid.'
+            <section>
+                <title>List Load Balancers</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                            <td>Access Level</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&GET;</td>
+                            <td>/management/loadbalancers?vipid=<parameter>id</parameter></td>
+                            <td>Retrieve a list of all load balancers using a virtual IP id</td>
+                            <td>Support, Service Admin </td>
+                        </tr>
+                        <tr>
+                            <td>&GET;</td>
+                            <td>/management/loadbalancers?vipaddress=<parameter>vipAddress</parameter></td>
+                            <td>Retrieve a list of all load balancers using a virtual ip address</td>
+                            <td>Support, Service Admin</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s): <returnvalue>200</returnvalue>
                 </para>
-            <example>
-                <title>List Load Balancers by Virtual IP Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Address Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Address Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
+                <simpara>
+                    Error Response Code(s): loadBalancerManagementFault(<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    Use query parameters to retrieve a list of load balancers based on virtual IP id or
+                    address. The response will contain basic information for all load balancers that are associated
+                    with the requested virtual IP.
+                </para>
+                <para>
+                    A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both.
+                    If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
+                </para>
+                    <para>
+                        The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
+                        or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
+                        is invalid.'
+                    </para>
+                <example>
+                    <title>List Load Balancers by Virtual IP Response: XML</title>
+                    <programlisting language="xml">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Response: JSON</title>
+                    <programlisting language="javascript">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Address Response: XML</title>
+                    <programlisting language="xml">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Address Response: JSON</title>
+                    <programlisting language="javascript">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
         </section>
         <section>
             <title>Clusters</title>
@@ -253,19 +253,19 @@
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">POST</td>
+                        <td colspan="1">&POST;</td>
                         <td colspan="5">/clusters</td>
                         <td colspan="3">Create a new cluster</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">PUT</td>
+                        <td colspan="1">&PUT;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
                         <td colspan="3">Update the name, description, username, or password of a cluster</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">DELETE</td>
+                        <td colspan="1">&DELETE;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
                         <td colspan="3">Remove a cluster</td>
                         <td colspan="2">Service Admin</td>
@@ -342,7 +342,7 @@
 <xi:include href="samples/lb-update-cluster.xml" parse="text" />
                 </programlisting>
             </example>
-            </section>
+        </section>
         <section>
             <title>Host Machines</title>
             <informaltable rules="all">
@@ -1496,9 +1496,15 @@
                     maximum of 90 days.
                 </para>
             <example>
-                <title>List Account Response: XML</title>
+                <title>List Account Load Balancers Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List </title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-report-billing-response.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
