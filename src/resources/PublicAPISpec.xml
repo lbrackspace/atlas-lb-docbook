@@ -1058,17 +1058,16 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>The nodes defined by the load balancer are responsible for servicing the
-                requests received through the load balancer's virtual IP. By default, the load
-                balancer employs a basic health check that ensures the node is listening on its
-                defined port. The node is checked at the time of addition and at regular intervals
-                as defined by the load balancer health check configuration. If a back-end node is
-                not listening on its port or does not meet the conditions of the defined active
-                health check for the load balancer, then the load balancer will not forward
-                connections and its status will be listed as<code>OFFLINE</code>. Only nodes that
-                are in an <code>ONLINE</code> status will receive and be able to service traffic
-                from the load balancer.
-            </para>
+            <para>The nodes defined by the load balancer are responsible for servicing the requests
+                received through the load balancer's virtual IP. By default, the load balancer
+                employs a basic health check that ensures the node is listening on its defined port.
+                The node is checked at the time of addition and at regular intervals as defined by
+                the load balancer health check configuration. If a back-end node is not listening on
+                its port or does not meet the conditions of the defined active health check for the
+                load balancer, then the load balancer will not forward connections and its status
+                will be listed as <code>OFFLINE</code>. Only nodes that are in an
+                    <code>ONLINE</code> status will receive and be able to service traffic from the
+                load balancer. </para>
             <para>All nodes have an associated status that indicates whether the node is
                 online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
                 will receive and be able to service traffic from the load balancer. The <code>OFFLINE</code>

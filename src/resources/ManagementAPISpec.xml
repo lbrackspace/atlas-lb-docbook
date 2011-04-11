@@ -35,6 +35,7 @@
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
     <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
+    <?rax status.bar.text="RAX INTERNAL"?>
     <info>
         <author>
             <personname>
