@@ -1,12 +1,16 @@
 <nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <node
-        address="10.1.1.1"
+        address="10.2.2.3"
+        id="185"
         port="80"
         condition="ENABLED"
-        weight="12" />
+        status="ONLINE"
+        weight="1" />
     <node
-        address="10.1.1.2"
+        address="10.2.2.4"
+        id="186"
         port="80"
         condition="ENABLED"
-        weight="12" />
+        status="ONLINE"
+        weight="1" />
 </nodes>

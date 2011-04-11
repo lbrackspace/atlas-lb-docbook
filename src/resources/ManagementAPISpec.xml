@@ -113,6 +113,16 @@
                             </itemizedlist>
                         </td>
                     </tr>
+                    <tr align="left">
+                        <td colspan="1" align="center">Apr. 1, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added CusterCount Examples and information</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
                 </tbody>
             </informaltable>
         </section>
@@ -144,80 +154,80 @@
         </para>
         <section>
             <title>Load Balancers</title>
-        <section>
-            <title>List Load Balancers</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&GET;</td>
-                        <td>/management/loadbalancers?vipid=<parameter>id</parameter></td>
-                        <td>Retrieve a list of all load balancers using a virtual IP id</td>
-                        <td>Support, Service Admin </td>
-                    </tr>
-                    <tr>
-                        <td>&GET;</td>
-                        <td>/management/loadbalancers?vipaddress=<parameter>vipAddress</parameter></td>
-                        <td>Retrieve a list of all load balancers using a virtual ip address</td>
-                        <td>Support, Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s): <returnvalue>200</returnvalue>
-            </para>
-            <simpara>
-                Error Response Code(s): loadBalancerManagementFault(<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized
-                (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit
-                (<errorcode>413</errorcode>)
-            </simpara>
-            <para>
-                Use query parameters to retrieve a list of load balancers based on virtual IP id or 
-                address. The response will contain basic information for all load balancers that are associated
-                with the requested virtual IP.
-            </para>
-            <para>
-                A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both. 
-                If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
-            </para>
-                <para> 
-                    The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
-                    or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
-                    is invalid.'
+            <section>
+                <title>List Load Balancers</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                            <td>Access Level</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&GET;</td>
+                            <td>/management/loadbalancers?vipid=<parameter>id</parameter></td>
+                            <td>Retrieve a list of all load balancers using a virtual IP id</td>
+                            <td>Support, Service Admin </td>
+                        </tr>
+                        <tr>
+                            <td>&GET;</td>
+                            <td>/management/loadbalancers?vipaddress=<parameter>vipAddress</parameter></td>
+                            <td>Retrieve a list of all load balancers using a virtual ip address</td>
+                            <td>Support, Service Admin</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s): <returnvalue>200</returnvalue>
                 </para>
-            <example>
-                <title>List Load Balancers by Virtual IP Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Address Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers by Virtual IP Address Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
+                <simpara>
+                    Error Response Code(s): loadBalancerManagementFault(<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    Use query parameters to retrieve a list of load balancers based on virtual IP id or
+                    address. The response will contain basic information for all load balancers that are associated
+                    with the requested virtual IP.
+                </para>
+                <para>
+                    A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both.
+                    If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
+                </para>
+                    <para>
+                        The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
+                        or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
+                        is invalid.'
+                    </para>
+                <example>
+                    <title>List Load Balancers by Virtual IP Response: XML</title>
+                    <programlisting language="xml">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-id.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Response: JSON</title>
+                    <programlisting language="javascript">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Address Response: XML</title>
+                    <programlisting language="xml">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-address.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Load Balancers by Virtual IP Address Response: JSON</title>
+                    <programlisting language="javascript">
+    <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
         </section>
         <section>
             <title>Clusters</title>
@@ -244,19 +254,19 @@
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">POST</td>
+                        <td colspan="1">&POST;</td>
                         <td colspan="5">/clusters</td>
                         <td colspan="3">Create a new cluster</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">PUT</td>
+                        <td colspan="1">&PUT;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
                         <td colspan="3">Update the name, description, username, or password of a cluster</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">DELETE</td>
+                        <td colspan="1">&DELETE;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
                         <td colspan="3">Remove a cluster</td>
                         <td colspan="2">Service Admin</td>
@@ -333,7 +343,7 @@
 <xi:include href="samples/lb-update-cluster.xml" parse="text" />
                 </programlisting>
             </example>
-            </section>
+        </section>
         <section>
             <title>Host Machines</title>
             <informaltable rules="all">
@@ -1042,75 +1052,27 @@
                     or host level.
                 </para>
             <example>
-                <title>Create Customers by Host Name Request: XML</title>
+                <title>List Customers by Host or Cluster Name Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byname.xml" parse="text"/>
+<xi:include href="samples/lb-list-customers-by-name.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Customers by Host Name Request: JSON</title>
+                <title>List Customers by Host or Cluster Name Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-customers-byname.json" parse="text"/>
+<xi:include href="samples/lb-list-customers-by-name.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Create Customers by Cluster Id Request: XML</title>
+                <title>List Customers by Cluster Id Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-customers-byid.xml" parse="text"/>
+<xi:include href="samples/lb-list-customers-by-id.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Create Customers by Cluster Id Request: JSON</title>
+                <title>List Customers by Cluster Id Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-customers-byid.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-customer-count-by-clusterid-call.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Request: XML</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-customer-count-by-clusterid-call.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-customer-count-by-hostid-call.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Request: XML</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-customer-count-by-hostid-call.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-customer-count-by-clusterid.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Cluster Id Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-customer-count-by-clusterid.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Host Id Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-customer-count-by-hostid.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Customer Count by Host Id Response: XML</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-customer-count-by-hostid.json" parse="text"/>
+<xi:include href="samples/lb-list-customers-by-id.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -1125,7 +1087,31 @@
 <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
-            </section>
+            <example>
+                <title>List Customer Count by Host Id Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-customer-count-by-host-id.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Host Id Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-customer-count-by-host-id.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-customer-count-by-cluster-id.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Customer Count by Cluster Id Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-customer-count-by-cluster-id.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
     </chapter>
     <chapter>
         <title>Reports</title>
@@ -1487,9 +1473,15 @@
                     maximum of 90 days.
                 </para>
             <example>
-                <title>List Account Response: XML</title>
+                <title>List Account Load Balancers Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List </title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-report-billing-response.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
@@ -1692,20 +1684,19 @@
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    Load balancer limits refers to the number of load balancers an account can have (formerly known as
-                    absolute limits). These imposed limits are defined in the form of groups with each group having a
-                    corresponding limit. There can only be one default limit at a time. Thus, if you create a new
-                    group and set it to default it will now become the default limit group.
-                </para>
-                <para>
-                    When deleting a load balancer limit group there may be accounts associated with that limit. If an
-                    account is associated with the limit that is being deleted it will assume the default limit. If
-                    the deleted limit was marked as the default limit then an existing group limit with the highest
-                    rate will become the default. If all limits are removed then users will be able to create as many
-                    load balancers as they can. However, there should be some error logs noting that no limits exist.
-                </para>
-            </section>
+            <para>
+                Load balancer limits refers to the number of load balancers an account can have (formerly known as
+                absolute limits). These imposed limits are defined in the form of groups with each group having a
+                corresponding limit. There can only be one default limit at a time. Thus, if you create a new
+                group and set it to default it will now become the default limit group.
+            </para>
+            <para>
+                When deleting a load balancer limit group there may be accounts associated with that limit. If an
+                account is associated with the limit that is being deleted it will assume the default limit. If
+                the deleted limit was marked as the default limit then an existing group limit with the highest
+                rate will become the default. If all limits are removed then users will be able to create as many
+                load balancers as they can. However, there should be some error logs noting that no limits exist.
+            </para>
             <example>
                 <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
@@ -1713,11 +1704,24 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Limits Response: XML</title>
+                <title>Add Limits Request: JSON</title>
                 <programlisting language="javascript">
+<xi:include href="samples/lb-create-group-limits.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Limits Response: XML</title>
+                <programlisting language="xml">
 <xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List Limits Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-group-limits.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
         <section>
             <title>Operations for Applying Load Balancer Limits</title>
             <informaltable rules="all">

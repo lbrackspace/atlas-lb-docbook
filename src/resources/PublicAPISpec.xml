@@ -555,28 +555,6 @@ Content-Type: text/plain; charset=UTF-8
             </para>
         </section>
         <section>
-            <title>Efficient Polling with the
-                <code>Changes-Since</code>
-                Parameter
-            </title>
-            <para>The ReST API allows you to poll for the status of certain operations by performing
-                a &GET; on various URIs. Rather than re-downloading and re-parsing the full status
-                at each polling interval, your ReST client may use the
-                <code>Changes-Since</code>
-                parameter to check for changes since a previous request. The
-                <code>Changes-Since</code>
-                time is specified as Unix time (the number of seconds since January 1, 1970, 00:00:00 UTC,
-                not counting leap seconds). If nothing has changed since the
-                <code>changes-since</code>
-                time, a
-                <returnvalue>304</returnvalue>
-                (Not Modified) response is returned. If data has changed, only the items changed since the specified
-                time is returned. For example, performing a &GET; against
-                <code>https://URL/v1.0/1234/loadbalancers?changes-since=1244012982</code>
-                would list all load balancers that have changed since Wed, 03 Jun 2009 07:09:42 UTC.
-            </para>
-        </section>
-        <section>
             <title>Limits</title>
             <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to
                 manage capacity and prevent abuse of the system. The system recognizes two kinds of
@@ -774,8 +752,7 @@ Content-Type: text/plain; charset=UTF-8
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
+                        <td>&GET;</td>
                         <td>/loadbalancers</td>
                         <td>List all load balancers configured for the account (IDs, names and status only)</td>
                         <td>XML, JSON, ATOM</td>
@@ -795,10 +772,10 @@ Content-Type: text/plain; charset=UTF-8
                 This operation provides a list of all load balancers configured and associated with your account.
             </para>
             <para>
-                Load balancers which have been deleted will be shown in this list for at least 90 days after
-                deletion. A deleted load balancer is immutable and irrecoverable. Only a limited set of
-                attributes (<code>id</code>,<code>name</code>,<code>status</code>, <code>created</code>, and
-                <code>updated</code>) will be returned in the response object.
+                To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
+                balancer is immutable and irrecoverable. Only a limited set of attributes (<code>id</code>,
+                <code>name</code>,<code>status</code>, <code>created</code>, and <code>updated</code>) will be
+                returned in the response object.
             </para>
             <para>
                 This operation does not require a request body.
@@ -813,6 +790,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>List Load Balancers Response: JSON</title>
                 <programlisting language="javascript"><?db-font-size 90% ?>
 <xi:include href="samples/lb-list-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Load Balancers Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
@@ -862,7 +845,13 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Load Balancers Details Response: JSON</title>
                 <programlisting language="javascript"><?db-font-size 90% ?>
-<xi:include href="samples/lb-list-response.json" parse="text"/>
+<xi:include href="samples/lb-list-details-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Load Balancer Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
@@ -1029,6 +1018,12 @@ Content-Type: text/plain; charset=UTF-8
                         <td>Add a new node to the load balancer</td>
                     </tr>
                     <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                        <td>List details for a specific node</td>
+                    </tr>
+                    <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
@@ -1039,12 +1034,6 @@ Content-Type: text/plain; charset=UTF-8
                         </td>
                         <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
                         <td>Removes a node from the load balancer</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
-                        <td>List details for a specific node</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1100,27 +1089,57 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>Add Node Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-node-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Node Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-node-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Node Request: JSON</title>
+                <title>List Node Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-node-request.json" parse="text"/>
+<xi:include href="samples/lb-list-node-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Add Node Response: JSON</title>
+                <title>List Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Nodes Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-node-response.json" parse="text"/>
+<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Node Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
                 </programlisting>
             </example>
             <note>
@@ -1133,13 +1152,13 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Update Node Attributes Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-node-attributes-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Update Node Attributes Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-node-attributes-request.json" parse="text"/>
+<xi:include href="samples/lb-update-node-request.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1176,11 +1195,9 @@ Content-Type: text/plain; charset=UTF-8
                 This operation asynchronously updates the attributes of the specified load balancer.
                 Upon successful validation of the request, the service will return a
                 <returnvalue>202 (Accepted)</returnvalue>
-                response code. A caller can subscribe to event notifications through the notification service
-                or poll the load balancer with its ID to wait for the changes to be applied and the load balancer
-                to return to an
-                <code>ACTIVE</code>
-                status.
+                response code. A caller  poll the load balancer with its ID to wait for the changes
+                to be applied and the load balancer to return to an
+                <code>ACTIVE</code> status.”
             </para>
             <para>
                 This operation allows the caller to change one or more of the following attributes:
@@ -1316,6 +1333,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-vips-response.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Virtual IPs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Usage Reporting</title>
@@ -1396,12 +1419,6 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Report Load Balancer Usage Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Report Account Billing Response: XML</title>
-                <programlisting language="xml"><?db-font-size 90% ?>
-<xi:include href="samples/lb-report-billing-response.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1504,6 +1521,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Access List Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Active Health Monitoring</title>
@@ -1604,6 +1627,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Health Monitor Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
+                </programlisting>
+            </example>
             <note>
                 <para>
                     Attributes that are required for a &POST; request are displayed in the samples, unless
@@ -1699,7 +1728,6 @@ Content-Type: text/plain; charset=UTF-8
                     </itemizedlist>
                 </para>
             </section>
-
         </section>
         <section>
             <title>Session Persistence</title>
@@ -1787,6 +1815,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Set Session Persistence Type Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Session Persistence Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
@@ -1954,6 +1988,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Update Connection Throttling Configuration Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Connection Throttling Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
