@@ -1172,11 +1172,9 @@ Content-Type: text/plain; charset=UTF-8
                 This operation asynchronously updates the attributes of the specified load balancer.
                 Upon successful validation of the request, the service will return a
                 <returnvalue>202 (Accepted)</returnvalue>
-                response code. A caller can subscribe to event notifications through the notification service
-                or poll the load balancer with its ID to wait for the changes to be applied and the load balancer
-                to return to an
-                <code>ACTIVE</code>
-                status.
+                response code. A caller  poll the load balancer with its ID to wait for the changes
+                to be applied and the load balancer to return to an
+                <code>ACTIVE</code> status.”
             </para>
             <para>
                 This operation allows the caller to change one or more of the following attributes:
