@@ -15,17 +15,4 @@
         <category term="UPDATE"/>
         <updated>2011-03-29T18:46:57.000Z</updated>
     </entry>
-    <entry>
-        <title type="text">Connection Throttle Successfully Updated</title>
-        <summary
-                type="text">Connection throttle successfully updated with minConnections: '10', maxConnections: '100', maxConnectionRate: '50', rateInterval: '60'
-        </summary>
-        <author>
-            <name>tvardema</name>
-        </author>
-        <link href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/connectionthrottle/"/>
-        <id>548939-loadbalancers-141-connectionthrottle-201142033120</id>
-        <category term="UPDATE"/>
-        <updated>2011-02-11T00:33:12.000Z</updated>
-    </entry>
 </feed>

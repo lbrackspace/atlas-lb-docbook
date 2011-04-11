@@ -792,6 +792,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-response.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Load Balancers Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>List Load Balancer Details</title>
@@ -840,6 +846,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>List Load Balancers Details Response: JSON</title>
                 <programlisting language="javascript"><?db-font-size 90% ?>
 <xi:include href="samples/lb-list-details-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Load Balancer Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text" />
                 </programlisting>
             </example>
         </section>
@@ -1119,6 +1131,18 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Node Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
+                </programlisting>
+            </example>
             <note>
                 <para>The node's IP and Port are immutable attributes and cannot be modified with
                     a &PUT; request. Supplying an unsupported attribute will result in a <returnvalue>400
@@ -1310,6 +1334,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-vips-response.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Virtual IPs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Usage Reporting</title>
@@ -1492,6 +1522,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Access List Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Active Health Monitoring</title>
@@ -1590,6 +1626,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Monitor HTTPs Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Health Monitor Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
                 </programlisting>
             </example>
             <note>
@@ -1776,6 +1818,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List ATOM Session Persistence Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Connection Logging</title>
@@ -1941,6 +1989,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Update Connection Throttling Configuration Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Connection Throttling Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text" />
                 </programlisting>
             </example>
         </section>

@@ -18,17 +18,4 @@
         <category term="UPDATE"/>
         <updated>2011-04-05T21:07:49.000Z</updated>
     </entry>
-    <entry>
-        <title type="text">Node Successfully Created</title>
-        <summary
-                type="text">Node successfully created with address: '10.2.2.1', port: '80', condition: 'ENABLED', weight: '1'
-        </summary>
-        <author>
-            <name>tvardema</name>
-        </author>
-        <link href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/nodes/18536"/>
-        <id>548939-loadbalancers-141-nodes-18536-201195217220</id>
-        <category term="CREATE"/>
-        <updated>2011-04-05T21:07:22.000Z</updated>
-    </entry>
 </feed>

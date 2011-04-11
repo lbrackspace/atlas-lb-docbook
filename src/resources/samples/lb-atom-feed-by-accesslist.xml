@@ -33,30 +33,4 @@
         <category term="UPDATE"/>
         <updated>2011-04-07T16:58:31.000Z</updated>
     </entry>
-    <entry>
-        <title type="text">Access List Updated</title>
-        <summary
-                type="text">Access list successfully updated with the following network item: id: '86', address: '206.160.165.1', type: 'ALLOW'
-        </summary>
-        <author>
-            <name>tvardema</name>
-        </author>
-        <link href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/accesslist/"/>
-        <id>548939-loadbalancers-141-accesslist-2011412357200</id>
-        <category term="UPDATE"/>
-        <updated>2011-02-10T23:57:20.000Z</updated>
-    </entry>
-    <entry>
-        <title type="text">Access List Updated</title>
-        <summary
-                type="text">Access list successfully updated with the following network item: id: '87', address: '206.160.165.2', type: 'DENY'
-        </summary>
-        <author>
-            <name>tvardema</name>
-        </author>
-        <link href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/accesslist/"/>
-        <id>548939-loadbalancers-141-accesslist-2011412357200</id>
-        <category term="UPDATE"/>
-        <updated>2011-02-10T23:57:20.000Z</updated>
-    </entry>
 </feed>
