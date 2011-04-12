@@ -885,7 +885,7 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&POST;</td>
-                        <td colspan="5">/host/<parameter>hostId</parameter>/subnetmappings/delete</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings/delete</td>
                         <td colspan="3">Delete the specified subnet mappings on this host
                         </td>
                         <td colspan="2">Service Admin</td>
@@ -1005,6 +1005,18 @@
                 <title>Add Subnet Mappings Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Delete Subnet Mappings Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-delete-subnetmappings.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Delete Subnet Mappings Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-delete-subnetmappings.json" parse="text" />
                 </programlisting>
             </example>
         </section>

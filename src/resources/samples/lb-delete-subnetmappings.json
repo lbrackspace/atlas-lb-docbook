@@ -1,13 +1,14 @@
-{"hostsubnets": [
+{
+    "hostsubnets": [
         {
             "netInterfaces": [
                 {
+                    "name": "eth-pub",
                     "cidrs": [
                         {
-                          "block": "192.168.0.0/16"
+                            "block": "123.78.1.1/27"
                         }
-                    ],
-                    "name": "eth1"
+                    ]
                 }
             ]
         }
