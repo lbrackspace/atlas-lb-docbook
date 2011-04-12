@@ -903,7 +903,7 @@
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">&PUT;</td>
+                        <td colspan="1">&POST;</td>
                         <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
                         <td colspan="3">Create a new backup of the host configuration</td>
                         <td colspan="2">Service Admin</td>
