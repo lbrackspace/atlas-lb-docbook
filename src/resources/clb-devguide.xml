@@ -1,0 +1,2437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+    <!-- Some useful entities borrowed from HTML -->
+    <!ENTITY ndash  "&#x2013;">
+    <!ENTITY mdash  "&#x2014;">
+    <!ENTITY hellip "&#x2026;">
+
+    <!-- Useful for describing APIs -->
+    <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+    <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+    <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+    <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+    <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+        <imageobject>
+        <imagedata fileref="img/Check_mark_23x20_02.svg"
+        format="SVG" scale="60"/>
+        </imageobject>
+        </inlinemediaobject>'>
+
+    <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+        <imageobject>
+        <imagedata fileref="img/Arrow_east.svg"
+        format="SVG" scale="60"/>
+        </imageobject>
+        </inlinemediaobject>'>
+]>
+<book version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:m="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+    <?rax title.font.size="35px" subtitle.font.size="20px"?>
+    <title>Rackspace Cloud Load Balancers Developer Guide</title>
+    <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
+    <info>
+        <author>
+            <personname>
+                <firstname/>
+                <surname/>
+            </personname>
+            <affiliation>
+                <orgname>Rackspace Cloud</orgname>
+            </affiliation>
+        </author>
+        <copyright>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>Rackspace US, Inc.</holder>
+        </copyright>
+        <releaseinfo>API v1.0 BETA</releaseinfo>
+        <productname>Rackspace Cloud Load Balancers</productname>
+        <pubdate>2011-03-24</pubdate>
+        <legalnotice role="rs-api">
+            <annotation>
+                <remark>Copyright details are filled in by the template.</remark>
+            </annotation>
+        </legalnotice>
+        <abstract>
+            <para>This document is intended for software developers interested in developing
+                applications using the Rackspace Cloud Load Balancers Application Program Interface
+                (<abbrev>API</abbrev>).
+            </para>
+        </abstract>
+        <cover>
+            <para>this is a placeholder for the front cover</para>
+        </cover>
+        <cover>
+            <para>this is a placeholder for the back cover</para>
+        </cover>
+    </info>
+    <chapter>
+        <title>Overview</title>
+        <section>
+            <title>Intended Audience</title>
+            <para>This guide is intended for software developers who want to create applications using
+                the Rackspace Cloud Load Balancers API. It assumes the reader has a general understanding of
+                load balancing concepts and is familiar with:
+            </para>
+            <para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>RESTful web services</para>
+                    </listitem>
+                    <listitem>
+                        <para>HTTP/1.1 conventions</para>
+                    </listitem>
+                    <listitem>
+                        <para>JSON and/or XML serialization formats</para>
+                    </listitem>
+                    <listitem>
+                        <para>Atom syndication format</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Document Change History</title>
+            <para>This version of the Developer Guide replaces and obsoletes all previous versions.
+                The most recent changes are described in the table below: </para>
+            <informaltable rules='all'>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Revision Date</td>
+                        <td colspan="4">Summary of Changes</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1" align="center">Mar. 2, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Revised code samples and formatting to address initial beta feedback.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1" align="center">Feb. 23, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Initial release for public beta.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+        </section>
+        <section>
+            <title>Additional Resources</title>
+            <para>You can download the most current version of this and other API-related
+                documents, including this document, from<link
+                        xlink:href="http://docs.rackspacecloud.com/api/">
+                    http://docs.rackspacecloud.com/api/</link>.
+            </para>
+            <para>For more details about Rackspace Cloud products, refer to<link
+                    xlink:href="http://www.rackspace.com/cloud/"
+                    >http://www.rackspace.com/cloud</link>. This site also offers links to
+                Rackspace's official support channels, including knowledge base articles, forums,
+                phone, chat, and email.
+            </para>
+            <para>You can also follow updates and announcements via twitter at
+                <link
+                        xlink:href="http://www.twitter.com/rackcloud"
+                        >http://www.twitter.com/rackcloud
+                </link>
+            </para>
+        </section>
+    </chapter>
+    <chapter>
+        <title>Concepts</title>
+        <para>To use the Rackspace Cloud Load Balancers API effectively, you should understand several key
+            concepts:
+        </para>
+        <section>
+            <title>Load Balancer</title>
+            <para>A load balancer is a logical device which belongs to a cloud account. It is used
+                to distribute workloads between multiple back-end systems or services, based on the
+                criteria defined as part of its configuration.
+            </para>
+        </section>
+        <section>
+            <title>Virtual IP</title>
+            <para>A virtual IP is an IP address configured on the load balancer for use by clients
+                connecting to a service that is load balanced. Incoming connections are distributed
+                to back-end nodes based on the configuration of the load balancer.
+            </para>
+        </section>
+        <section>
+            <title>Node</title>
+            <para>A node is a back-end device providing a service on a specified IP and port.</para>
+        </section>
+        <section>
+            <title>Health Monitor</title>
+            <para>A health monitor is a feature of the load balancer that is used to determine
+                whether or not a back-end node is usable for processing a request. The service
+                supports two types of health monitors: passive and active.
+            </para>
+            <section>
+                <title>Passive Health Monitor</title>
+                <para>By default, all load balancing configurations utilize a passive health monitor,
+                    which is a technique that analyzes the response of the back-end server to
+                    determine whether or not it is capable of processing a request. Passive health
+                    monitoring verifies the condition of a node using the following criteria:
+                </para>
+                <para>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>The connection is refused by the back-end server or the connection
+                                takes longer than 4 seconds to be established.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>The connection is closed prematurely or the beginning of the response
+                                is not received within 30 seconds.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>HTTP: An invalid HTTP response is received or a
+                                <returnvalue>503
+                                    (Service Unavailable)
+                                </returnvalue>
+                                response code is
+                                received.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>SSL Passthrough: The SSL handshake to the back-end server
+                                fails.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>If these tests fail, then the service will attempt to locate another configured
+                    node that is capable of supporting the request until every node is exhausted. If
+                    this occurs, the requestor will receive a
+                    <returnvalue>503</returnvalue>
+                    (Service Unavailable) response for HTTP traffic or the connection will be dropped.
+                </para>
+                <note>
+                    <para>If a given node fails a passive health monitor check three consecutive times,
+                        then the service assumes the node has failed and will place it in
+                        <code>OFFLINE</code>
+                        status. The service will not attempt to send any new requests to the node for at least
+                        60 seconds, after which the service will speculatively begin sending requests to
+                        occasionally probe it to determine whether or not it has recovered.
+                    </para>
+                </note>
+            </section>
+            <section>
+                <title>Active Health Monitor</title>
+                <para>Active health monitoring is a technique that uses synthetic transactions that are
+                    executed at periodic intervals to determine the condition of a node. One of the
+                    advantages of active health monitoring is that it does not require active
+                    transactions to be processed by the load balancer to determine whether or not a
+                    node is suitable for handling traffic. When both active and passive monitoring
+                    are enabled, the decisions made by the active monitor override inferences made
+                    by the passive monitoring system.
+                </para>
+                <para>The active health monitor can use one of three types of probes:
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                <code>connect</code>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>HTTP</code>
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>HTTPS</code>
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                    These probes are executed at configured intervals; in the event of a failure, the node
+                    status changes to
+                    <code>OFFLINE</code>
+                    and the node will not receive traffic. If, after running a subsequent test, the probe
+                    detects that the node has recovered, then the node's status is changed to
+                    <code>ONLINE</code>
+                    and it is capable of servicing requests.
+                </para>
+            </section>
+        </section>
+        <section>
+            <title>Session Persistence</title>
+            <para>Session persistence is a feature of the load balancing service that attempts to
+                force subsequent connections to a service to be redirected to the same node as long
+                as it is online.
+            </para>
+        </section>
+        <section>
+            <title>Connection Logging</title>
+            <para>The connection logging feature allows for Apache-style access logs (for
+                HTTP-based protocol traffic) or connection and transfer logging (for all other
+                traffic) to a Cloud Files account. Logs are delivered to the account every hour.
+            </para>
+        </section>
+    </chapter>
+    <chapter>
+        <title>General API Information</title>
+        <para>The Rackspace Cloud Load Balancers API is implemented using a ReSTful web service interface.
+            Like other products in the Rackspace Cloud suite, the load balancing service shares a
+            common token-based authentication system that allows seamless access between products
+            and services.
+        </para>
+        <note>
+            <para>All requests to authenticate and operate the service are performed using
+                HTTPS on TCP port 443.
+            </para>
+        </note>
+        <section>
+            <title>Authentication</title>
+            <para>Every ReST request against the load balancing service requires the inclusion of a
+                specific authorization token, supplied by the
+                <code>X-Auth-Token</code>
+                HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication
+                Service and supplying a valid username and API access key.
+            </para>
+
+            <simplesect>
+                <title>Request</title>
+                <para>The Rackspace Cloud Authentication Service serves as the entry point to all
+                    Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
+                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
+                            >https://auth.api.rackspacecloud.com/v1.0</link>. To authenticate, you must
+                    supply your username and API access key in x-headers:
+                </para>
+                <para>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                Use your Rackspace Cloud
+                                username as the username for the API. Place it in the
+                                <code>X-Auth-User</code>
+                                x-header.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>Obtain your API access key from the Rackspace Cloud Control Panel
+                                in the Your Account | API Access section. Place it in the
+                                <code>X-Auth-Key</code>
+                                x-header.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <example>
+                    <title>Authentication Request</title>
+                    <literallayout class="monospaced">
+GET /v1.0 HTTP/1.1
+Host: auth.api.rackspacecloud.com
+X-Auth-User: jdoe
+X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+                    </literallayout>
+                </example>
+            </simplesect>
+            <simplesect>
+                <title>Response</title>
+                <para>If authentication is successful, an HTTP status
+                    <returnvalue>204</returnvalue>
+                    (No Content) is returned with an
+                    <code>X-Auth-Token</code>
+                    (along with other Cloud Service headers that are not applicable to the load balancing service).
+                    An HTTP status of
+                    <returnvalue>401 (Unauthorized)</returnvalue>
+                    is returned if authentication fails. All operations against the load balancing service must
+                    include the
+                    <code>X-Auth-Token</code>
+                    header.
+                </para>
+
+                <example>
+                    <title>Authentication Response</title>
+                    <para>
+                        <literallayout class="monospaced">
+HTTP/1.1 204 No Content
+Date: Mon, 12 Nov 2007 15:32:21 GMT
+Server: Apache
+X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/1234
+X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+Content-Length: 0
+Content-Type: text/plain; charset=UTF-8
+                        </literallayout>
+                    </para>
+                </example>
+                <para>Authentication tokens are typically valid for 24 hours. Applications should be
+                    designed to re-authenticate after receiving a <returnvalue>401</returnvalue>
+                    (Unauthorized) response from a service endpoint. </para>
+                <note>
+                    <para>Currently, service endpoints are not published in the response of the account
+                        number, which is a required element of the service endpoints.
+                    </para>
+                </note>
+            </simplesect>
+        </section>
+        <section>
+            <title>Service Access/Endpoints</title>
+            <para>The load balancing service is a regionalized service, which allows for the caller
+                to select a region into which a load balancer is to be provisioned.
+            </para>
+            <para>To determine which region to operate against, select an endpoint from below.
+                Replace the sample account ID number, 1234, with your actual account number returned
+                as part of the authentication service response.
+                <table rules="all">
+                    <caption>Regionalized Service Endpoints</caption>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Region</td>
+                            <td colspan="4">Endpoint</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">Chicago (ORD)</td>
+                            <td colspan="4"><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">Dallas/Ft. Worth (DFW)</td>
+                            <td colspan="4"><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </para>
+            <para>
+                <emphasis role="bold">If load balancing Cloud Servers</emphasis>, you can determine the
+                appropriate region to select by viewing your Cloud Servers list and creating a load
+                balancer within the same region as the data center in which your Cloud Server
+                resides. When your resources reside in the same region as your load balancer, it
+                ensures your devices are in close proximity to each other and allows you to take
+                advantage of ServiceNet connectivity for free data transfer between services.
+            </para>
+            <para>
+                <emphasis role="bold">If load balancing external servers</emphasis>, you can determine the
+                appropriate region to select by choosing the region that is geographically as close to your
+                external servers as possible.
+            </para>
+        </section>
+        <section>
+            <title>Request/Response Types</title>
+            <para>The Rackspace Cloud Load Balancers API supports both the JSON and XML data serialization
+                formats. The request format is specified using the
+                <code>Content-Type</code>
+                header and is required for operations that have a request body. The response format can be
+                specified in requests using either the
+                <code>Accept</code>
+                header or adding an
+                <code>.xml</code>
+                or
+                <code>.json</code>
+                extension to the request URI. Note that it is possible for a response to be serialized using
+                a format different from the request. If no response format is specified, JSON is the default.
+                If conflicting formats are specified using both an
+                <code>Accept</code>
+                header and a query extension, the query extension takes precedence.
+            </para>
+            <para>Some operations support an Atom representation that can be used to efficiently determine when
+                the state of services has changed.
+            </para>
+            <table rules="all">
+                <caption>JSON and XML Response Formats</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Format</td>
+                        <td>Accept Header</td>
+                        <td>Query Extension</td>
+                        <td>Default</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>JSON</td>
+                        <td>application/json</td>
+                        <td>.json</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr align="left">
+                        <td>XML</td>
+                        <td>application/xml</td>
+                        <td>.xml</td>
+                        <td>No</td>
+                    </tr>
+                    <tr align="left">
+                        <td>Atom</td>
+                        <td>application/atom+xml</td>
+                        <td>.atom</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <title>Content Compression</title>
+            <para>
+                Request and response body data may be encoded with gzip compression in order to accelerate
+                interactive performance of API calls and responses. This is controlled using the
+                <code>Accept-Encoding</code>
+                header on the request from the client and indicated by the
+                <code>Content-Encoding</code>
+                header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
+            </para>
+            <table rules="all">
+                <caption>Encoding Headers</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Header Type</td>
+                        <td>Name</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>HTTP/1.1 Request</td>
+                        <td>
+                            <code>Accept-Encoding</code>
+                        </td>
+                        <td>
+                            <code>gzip</code>
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td>HTTP/1.1 Response</td>
+                        <td>
+                            <code>Content-Encoding</code>
+                        </td>
+                        <td>
+                            <code>gzip</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <title>Persistent Connections</title>
+            <para>
+                By default, the API supports persistent connections via <code>HTTP/1.1</code> keepalives.
+                All connections will be kept alive unless the connection header is set to close.
+            </para>
+            <para>
+                To prevent abuse, HTTP sessions have a timeout of 20 seconds before being closed.
+            </para>
+            <note>
+                <para>
+                    The server may close the connection at any time and clients should not rely on this behavior.
+                </para>
+            </note>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Paginated Collections</title>
+            <para>To reduce load on the service, list operations will return a maximum of 100 items
+                at a time. To navigate the collection, the
+                <code>limit</code>
+                and
+                <code>marker</code>
+                parameters (for example,
+                <code>?limit=50&amp;marker=1</code>
+                ) can be set in the URI. If a marker beyond the end of a list is given, an empty list is
+                returned. Note that list operations never return
+                <returnvalue>404</returnvalue>
+                (itemNotFound) faults.
+            </para>
+        </section>
+        <section>
+            <title>Limits</title>
+            <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to
+                manage capacity and prevent abuse of the system. The system recognizes two kinds of
+                limits: rate limits and absolute limits. Rate limits are thresholds that are reset
+                after a certain amount of time passes. Absolute limits are fixed.
+            </para>
+            <note>
+                <para>
+                    If the default limits are too low for your particular application, please contact
+                    Rackspace Cloud support to request an increase. All requests require reasonable
+                    justification.
+                </para>
+            </note>
+            <section>
+                <title>Rate Limits</title>
+                <para>
+                    We specify rate limits in terms of both a
+                    human-readable wild-card URI and a
+                    machine-processable regular expression. The
+                    regular expression boundary matcher '^' takes
+                    effect after the root URI path. For example, the
+                    regular expression
+                    <code>^/v1.0/1234/loadbalancers</code>
+                    would match the bolded portion of the following URI:
+                    <code>
+                        https://ord.loadbalancers.api.rackspacecloud.com
+                        <emphasis role="bold">/v1.0/1234/loadbalancers</emphasis>.
+                    </code>
+                </para>
+                <?hard-pagebreak?>
+                <table rules="all">
+                    <caption>Default Rate Limits</caption>
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>RegEx</td>
+                            <td>Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&GET;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>5/second</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&GET;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>100/minute</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&POST;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>2/second</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&POST;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>25/minute</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&PUT;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>5/second</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&PUT;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>50/minute</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&DELETE;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>2/second</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&DELETE;
+                            </td>
+                            <td>/v1.0/*</td>
+                            <td>^/1.0/.*</td>
+                            <td>50/minute</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <para>Rate limits are applied in order relative to the verb, going from least to most
+                    specific. For example, although the threshold for &POST; to /v1.0/* is 25 per minute,
+                    one cannot &POST; to /v1.0/* more than 2 times per second because the rate limits for any
+                    &POST; is 2/second. In the event you exceed the thresholds established for your account, a
+                    <errorcode>413</errorcode>
+                    (Rate Control) HTTP response will be returned with a
+                    <code>Reply-After</code>
+                    header to notify the client when they can attempt to try again.
+                </para>
+            </section>
+            <section>
+                <title>Absolute Limits</title>
+                <para>
+                    <code>Maximum number of load balancers</code>
+                    limits the total number of load balancers that may be
+                    associated with a given account.
+                </para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Limit</td>
+                            <td>Default</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>Maximum number of load balancers</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+            </section>
+            <section>
+                <title>Determining Limits Programmatically</title>
+                <para>
+                    Applications can programmatically determine current account limits using the
+                    <code>/limits</code>
+                    URI as follows:
+                </para>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="1">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="1">/limits</td>
+                            <td colspan="3">Returns the current limits for the account.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <example>
+                    <title>List Limits Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-limits-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Limits Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-limits-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+        </section>
+    </chapter>
+    <chapter>
+        <title>API Operations</title>
+        <section>
+            <title>List Load Balancers</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Representation</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;</td>
+                        <td>/loadbalancers</td>
+                        <td>List all load balancers configured for the account (IDs, names and status only)</td>
+                        <td>XML, JSON, ATOM</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                This operation provides a list of all load balancers configured and associated with your account.
+            </para>
+            <para>
+                To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
+                balancer is immutable and irrecoverable. Only a limited set of attributes (<code>id</code>,
+                <code>name</code>,<code>status</code>, <code>created</code>, and <code>updated</code>) will be
+                returned in the response object.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>List Load Balancers Response: XML</title>
+                <programlisting language="xml"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers Response: JSON</title>
+                <programlisting language="javascript"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Load Balancers Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>List Load Balancer Details</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                        <td>Representations</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId</td>
+                        <td>List details of the specified load balancer</td>
+                        <td>JSON, XML, ATOM</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>This operation provides detailed output for a specific load balancer
+                configured and associated with your account. This operation is not capable of
+                returning details for a load balancer which has been deleted.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>List Load Balancer Details Request: XML</title>
+                <programlisting language="xml"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-details-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers Details Response: JSON</title>
+                <programlisting language="javascript"><?db-font-size 90% ?>
+<xi:include href="samples/lb-list-details-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Load Balancer Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Create Load Balancer</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&POST;
+                        </td>
+                        <td>/loadbalancers</td>
+                        <td>Create a new load balancer with the configuration defined by the request.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>This operation asynchronously provisions a new load balancer based on the
+                configuration defined in the request object. Once the request is validated and
+                progress has started on the provisioning process, a response object will be
+                returned. The object will contain a unique identifier and status of the request.
+                Using the identifier, the caller can check on the progress of the operation by
+                performing a &GET; on <code>loadbalancers/id</code>. If the corresponding request cannot be
+                fulfilled due to insufficient or invalid data, an <code>HTTP</code>
+                <returnvalue>400 (Bad Request)</returnvalue>
+                error response will be returned with information regarding the nature of the failure in
+                the body of the response. Failures in the validation process are non-recoverable and
+                require the caller to correct the cause of the failure and &POST; the request again.
+            </para>
+            <note>
+                <para>
+                    A load balancer's name must be less than or equal to 128 characters.
+                </para>
+            </note>
+            <note>
+                <para>
+                    Users may configure all documented features of the load balancer at creation time by simply
+                    providing the additional elements / attributes in the request. Refer to the subsequent
+                    sections of this specification for an overview of all features the load balancing service
+                    supports.
+                </para>
+            </note>
+            <example>
+                <title>Create Load Balancer (Required Attributes) Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-required-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes) Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-create-required-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <para>In order to conserve IPv4 address space, Rackspace highly recommends sharing
+                Virtual IPs between your load balancers. If you have at least one load balancer, you
+                may create subsequent load balancers that share a single virtual IP by issuing a
+                &POST; and supplying a virtual Ip ID instead of a type. Additionally, this feature is
+                highly desirable if you wish to load balance both an unsecured and secure protocol
+                using one IP / DNS name (for example, <code>HTTP</code> and <code>HTTPS</code>).
+            </para>
+            <note>
+                <para>
+                    Load balancers sharing a virtual IP
+                    <emphasis>must</emphasis>
+                    utilize a unique port.
+                </para>
+            </note>
+            <example>
+                <title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-required-sharedip-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes with Shared IP) Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-required-sharedip-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes with Shared IP) Response :JSON</title>
+                <programlisting>
+<xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Remove Load Balancer</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId</td>
+                        <td>Removes a load balancer from your account</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                The remove load balancer function removes the specified load balancer and its associated
+                configuration from the account. Any and all configuration data is immediately purged and
+                is not recoverable.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <para>
+                This operation does not return a response body.
+            </para>
+        </section>
+        <section>
+            <title>List, Add, Modify, and Remove Nodes</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes</td>
+                        <td>List node(s) configured for the load balancer</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&POST;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes</td>
+                        <td>Add a new node to the load balancer</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                        <td>List details for a specific node</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                        <td>Modifies the configuration of a node on the load balancer</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
+                        <td>Removes a node from the load balancer</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>The nodes defined by the load balancer are responsible for servicing the requests
+                received through the load balancer's virtual IP. By default, the load balancer
+                employs a basic health check that ensures the node is listening on its defined port.
+                The node is checked at the time of addition and at regular intervals as defined by
+                the load balancer health check configuration. If a back-end node is not listening on
+                its port or does not meet the conditions of the defined active health check for the
+                load balancer, then the load balancer will not forward connections and its status
+                will be listed as <code>OFFLINE</code>. Only nodes that are in an
+                    <code>ONLINE</code> status will receive and be able to service traffic from the
+                load balancer. </para>
+            <para>All nodes have an associated status that indicates whether the node is
+                online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
+                will receive and be able to service traffic from the load balancer. The <code>OFFLINE</code>
+                status represents a node that cannot accept or service traffic. A node in
+                <code>DRAINING</code> status represents a node that stops the
+                traffic manager from sending any additional new connections to the node, but honors
+                established sessions. If the traffic manager receives a request and session
+                persistence requires that the node is used, the traffic manager will use it. The
+                status is determined by the passive or active health monitors.
+            </para>
+            <para>If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is
+                selected, then the caller should assign the relevant weights to the node as part of
+                the weight attribute of the node element. When the algorithm of the load balancer is
+                changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
+                assigned weight, the service will automatically set the weight to "1" for all nodes.
+            </para>
+            <para>When a node is added, it is assigned a unique identifier that can be used
+                for mutating operations such as changing the port and condition or removing it.
+                Every load balancer is dual-homed on both the public Internet and ServiceNet; as a
+                result, nodes can either be internal ServiceNet addresses or addresses on the public
+                Internet.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>List Node Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-node-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Node Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-node-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Nodes Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Nodes Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Nodes Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Node Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
+                </programlisting>
+            </example>
+            <note>
+                <para>The node's IP and Port are immutable attributes and cannot be modified with
+                    a &PUT; request. Supplying an unsupported attribute will result in a <returnvalue>400
+                    (badRequest)</returnvalue> fault. Additionally, a load balancer supports a maximum
+                    of 25 nodes, and the maximum weight of a node is 100.
+                </para>
+            </note>
+            <example>
+                <title>Update Node Attributes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Node Attributes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-node-request.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Update Load Balancer Attributes</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId</td>
+                        <td>Update the properties of a load balancer</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                This operation asynchronously updates the attributes of the specified load balancer.
+                Upon successful validation of the request, the service will return a
+                <returnvalue>202 (Accepted)</returnvalue>
+                response code. A caller  poll the load balancer with its ID to wait for the changes
+                to be applied and the load balancer to return to an
+                <code>ACTIVE</code> status.”
+            </para>
+            <para>
+                This operation allows the caller to change one or more of the following attributes:
+            </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        <code>name</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>algorithm</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>protocol</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>port</code>
+                    </para>
+                </listitem>
+            </itemizedlist>
+            <para>
+                This operation does not return a response body.
+            </para>
+            <note>
+                <para>
+                    The load balancer's ID and status are immutable attributes and cannot be modified by the
+                    caller. Supplying an unsupported attribute will result in a
+                    <returnvalue>400 (badRequest)</returnvalue>
+                    fault.
+                </para>
+            </note>
+            <example>
+                <title>Update Load Balancer Attributes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Load Balancer Attributes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Virtual IP Management</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/virtualips</td>
+                        <td>List all associated virtual IPs</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/virtualIpId</td>
+                        <td>Remove the Virtual IP</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>A virtual IP (VIP) makes a load balancer accessible by clients. The load
+                balancing service supports either a public VIP, routable on the public Internet, or
+                a ServiceNet address, routable only within the region in which the load balancer
+                resides.
+            </para>
+            <para>
+                This request does not require a request body.
+            </para>
+            <note>
+                <para>All load balancers must have at least one virtual IP associated with
+                    them at all times. Attempting to delete the last virtual IP will result in a
+                    <returnvalue>400 (badRequest)</returnvalue>
+                    fault.
+                </para>
+            </note>
+            <table rules="all">
+                <caption>Virtual IP Types</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>
+                            <code>PUBLIC</code>
+                        </td>
+                        <td>An address that is routable on the public Internet</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>SERVICENET</code>
+                        </td>
+                        <td>An address that is routable only on ServiceNet</td>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>List Virtual IPs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Virtual IPs Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-vips-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Virtual IPs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Usage Reporting</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/usage</td>
+                        <td>List current and historical usage</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/usage/current</td>
+                        <td>List current usage</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>The load balancer usage reports provide a view of all transfer, average
+                number of connections and number of virtual IPs associated with the load balancing
+                service. Current usage represents all usage recorded within the last 24 hours.
+                Values for both
+                <code>incomingTransfer</code>
+                and
+                <code>outgoingTransfer</code>
+                are expressed in bytes
+                transferred. The optional
+                <code>startTime</code>
+                and
+                <code>endTime</code>
+                parameters can be used to filter all
+                usage. If the
+                <code>startTime</code>
+                parameter is supplied, but the
+                <code>endTime</code>
+                parameter is not then
+                all usage beginning with the
+                <code>startTime</code>
+                will be provided. Likewise, if the
+                <code>endTime</code>
+                parameter is supplied but the
+                <code>startTime</code>
+                parameter is not then all usage will be
+                returned up to the
+                <code>endTime</code>
+                specified.
+            </para>
+            <note>
+                <para>Usage is available for up to 90 days of service activity.</para>
+            </note>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>Report Load Balancer Usage Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Report Load Balancer Usage Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-report-usage-response.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Access List Management</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/accesslist</td>
+                        <td>List the access list</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&POST;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/accesslist</td>
+                        <td>Create a new access list or append to an existing access list</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/accesslist/networkItemId</td>
+                        <td>Remove a network item from the access list</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/accesslist</td>
+                        <td>Remove the entire access list</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>The access list management feature allows for fine-grained network access
+                controls to be applied to the load balancer's virtual IP address. A single IP
+                address, multiple IP addresses, or entire network subnets can be added as a
+                networkItem. Items that are configured with the
+                <code>ALLOW</code>
+                type will always
+                take precedence over items with the
+                <code>DENY</code>
+                type. To reject traffic from
+                all items, except for those with the
+                <code>ALLOW</code>
+                type, a networkItem with an
+                address of "0.0.0.0/0" should be added with a
+                <code>DENY</code>
+                type.
+            </para>
+            <para>When issuing a &POST; to add to an access list, one or more network items are
+                required. If a populated access list already exists for the load balancer, it will
+                be appended with subsequent &POST; requests. One access list may have up to 100
+                network items A single address or subnet definition is considered unique and cannot
+                be duplicated between items in an access list. There are two &DELETE; operations
+                for the access list. One allows for deletion of the entire access list and the
+                other for deletion of a specific network item in the access list.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>Retrieve Access List Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Retrieve Access List Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Access List Attributes Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-accesslist-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Access List Attributes Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Access List Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Active Health Monitoring</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                        <td>Retrieves the health monitor configuration, if one exists</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                        <td>Updates the settings for a health monitor</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
+                        <td>Removes the health monitor</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>The load balancing service includes a health monitoring operation which
+                periodically checks your back-end nodes to ensure they are responding correctly. If
+                a node is not responding, it is removed from rotation until the health monitor
+                determines that the node is functional. In addition to being performed periodically,
+                the health check also is performed against every node that is added to ensure that
+                the node is operating properly before allowing it to service traffic. Only one
+                health monitor is allowed to be enabled on a load balancer at a time.
+            </para>
+            <para>
+                Every health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
+            </para>
+            <table rules="all">
+                <caption>Health Monitor Types</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>CONNECT</td>
+                        <td>Health monitor is a connect monitor</td>
+                    </tr>
+                    <tr align="left">
+                        <td>HTTP</td>
+                        <td>Health monitor is a HTTP monitor</td>
+                    </tr>
+                    <tr align="left">
+                        <td>HTTPS</td>
+                        <td>Health monitor is a HTTPS monitor</td>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>Monitor Connections Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor Connections Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor HTTP Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor HTTPs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Health Monitor Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
+                </programlisting>
+            </example>
+            <note>
+                <para>
+                    Attributes that are required for a &POST; request are displayed in the samples, unless
+                    otherwise specified.
+                </para>
+            </note>
+            <example>
+                <title>Monitor Connections Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor Connections Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <section>
+                <title>Connection Monitor</title>
+                <para>The monitor connects to each node on its defined port to ensure that the
+                    service is listening properly. The connect monitor is the most basic type of
+                    health check and does no post-processing or protocol specific health checks. It
+                    includes several configurable properties:
+                </para>
+                <para>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                <code>delay</code>: The minimum number of seconds to wait before executing the
+                                health monitor. (Must be a number between 1 and 3600)
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>timeout</code>: Maximum number of seconds to wait for a connection to be
+                                established before timing out. (Must be a number between 1 and 300)
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures
+                                before removing a node from rotation. (Must be a number between 1 and 10)
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </section>
+            <section>
+                <title>HTTP/HTTPS Monitor</title>
+                <para>
+                    The HTTP &amp; HTTPS monitor is a more intelligent monitor that is capable of processing a
+                    HTTP or HTTPS response to determine the condition of a node. It supports the same basic
+                    properties as the connect monitor and includes three additional attributes that are used
+                    to evaluate the HTTP response.
+                </para>
+                <para>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>
+                                <code>delay</code>: The minimum number of seconds to wait before executing the
+                                health monitor. (Must be a number between 1 and 3600)
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>timeout</code>: Maximum number of seconds to wait for a connection to be
+                                established before timing out. (Must be a number between 1 and 300)
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures
+                                before removing a node from rotation. (Must be a number between 1 and 10)
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para><code>path</code>: The HTTP path that will be used in the sample request
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>statusRegex</code>: A regular expression that will be used to evaluate the
+                                HTTP status code returned in the response.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>bodyRegex</code>: A regular expression that will be used to evaluate the
+                                contents of the body of the response.
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </section>
+        </section>
+        <section>
+            <title>Session Persistence</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                        <td>List session persistence configuration</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                        <td>Enable session persistence</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                        <td>Disable session persistence</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>Session persistence is a feature of the load balancing service which
+                forces subsequent requests from clients to be directed to the same node. This is
+                common with many web applications that do not inherently share application state
+                between back-end servers.
+            </para>
+            <table rules="all">
+                <caption>Session Persistence Modes</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>HTTP_COOKIE</td>
+                        <td>A session persistence mechanism that inserts an HTTP cookie and
+                            is used to determine the destination back-end node. This is supported
+                            for HTTP load balancing only.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>List Session Persistence Configuration Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-persistence-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Session Persistence Configuration Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Set Session Persistence Type Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-set-persistence-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Set Session Persistence Type Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Session Persistence Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Connection Logging</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/connectionlogging</td>
+                        <td>View current configuration of connection logging</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/connectionlogging</td>
+                        <td>Enable or disable connection logging</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>This operation allows the user to enable/disable connection
+                logging.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>List Connection Logging Configuration Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-logging-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Connection Logging Configuration Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-logging-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Enable Connection Logging Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-enable-logging-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Enable Connection Logging Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-enable-logging-request.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Connection Throttling</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                        <td>List connection throttling configuration</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&PUT;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                        <td>Update throttling configuration</td>
+                    </tr>
+                    <tr align="left">
+                        <td>&DELETE;
+                        </td>
+                        <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                        <td>Remove connection throttling configurations</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                The connection throttling feature imposes limits on the number of connections per IP address to
+                help mitigate malicious or abusive traffic to your applications. The following properties can be
+                configured based on the traffic patterns for your sites.
+            </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        <code>minConnections</code>: Allow at least this number of connections per IP address
+                        before applying throttling restrictions. Setting a value of 0 will allow unlimited
+                        simultaneous connections, otherwise set a value between 1 and 1000.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP
+                        address.  Setting a value of 0 will allow unlimited simultaneous connections, otherwise
+                        set a value between 1 and 100000.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>maxConnectionRate</code>: Maximum number of connections allowed from a single IP
+                        address in the defined <code>rateInterval</code>.  Setting a value of 0 will allow an
+                        unlimited connection rate, otherwise set a value between 1 and 100000.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para><code>rateInterval</code>: Frequency (in seconds) at which the
+                        <code>maxConnectionRate</code> is assessed. For example, a <code>maxConnectionRate</code>
+                        of 30 with a <code>rateInterval</code> of 60 would allow a maximum of 30 connections per
+                        minute for a single IP address.  Must specify a value between 1 and 3600.
+                    </para>
+                </listitem>
+            </itemizedlist>
+            <para>This operation does not require a request body.</para>
+            <example>
+                <title>List Connection Throttling Configuration Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-throttling-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Connection Throttling Configuration Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-throttling-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Connection Throttling Configuration Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-throttling-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Connection Throttling Configuration Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List ATOM Connection Throttling Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text" />
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Load Balancing Protocols</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/protocols</td>
+                        <td>List all supported load balancing protocols</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>All load balancers must define the protocol of the service which is being
+                load balanced. The protocol selection should be based on the protocol of the
+                back-end nodes. When configuring a load balancer, the port selected will be the
+                default port for the given protocol unless otherwise specified.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>List Load Balancing Protocols Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-protocols-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancing Protocols Response: JSON</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Load Balancing Algorithms</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td>Verb</td>
+                        <td>URI</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>&GET;
+                        </td>
+                        <td>/loadbalancers/algorithms</td>
+                        <td>List all supported load balancing algorithms</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>All load balancers utilize an algorithm that defines how traffic should be
+                directed between back-end nodes. The default algorithm for newly created load
+                balancers is <code>RANDOM</code>, which can be overridden at creation time or
+                changed after the load balancer has been initially provisioned. The algorithm name
+                is to be constant within a major revision of the load balancing API, though new
+                algorithms may be created with a unique algorithm name within a given major revision
+                of the service API. </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <table rules="all">
+                <caption>Load Balancing Algorithms</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>
+                            <code>LEAST_CONNECTIONS</code>
+                        </td>
+                        <td>The node with the lowest number of connections will receive
+                            requests
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>RANDOM</code>
+                        </td>
+                        <td>Back-end servers are selected at random</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>ROUND_ROBIN</code>
+                        </td>
+                        <td>Connections are routed to each of the back-end servers in turn</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>WEIGHTED_LEAST_CONNECTIONS</code>
+                        </td>
+                        <td>Each request will be assigned to a node based on the number of concurrent connections
+                            to the node and its weight</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>WEIGHTED_ROUND_ROBIN</code>
+                        </td>
+                        <td>A round robin algorithm, but with different proportions of traffic
+                            being directed to the back-end nodes. Weights must be defined as part of
+                            the load balancer's node configuration.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <example>
+                <title>List Load Balancing Algorithms Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-algorithms-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancing Algorithms Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Load Balancer Status</title>
+            <para>All load balancers have a status attribute to signify the current
+                configuration status of the device. This status is immutable by the caller and is
+                updated automatically based on state changes within the service. When a load
+                balancer is first created, it will be placed into a build status where the
+                configuration is being generated and applied based on the request. Once the
+                configuration is applied and finalized, it will be in an
+                <code>ACTIVE</code>
+                status.
+                In the event of a configuration change or update, the status of the load balancer
+                will change to
+                <code>PENDING_UPDATE</code>
+                to signify configuration changes are in
+                progress but have not yet been finalized. Load balancers in a
+                <code>SUSPENDED</code>
+                status are configured to reject traffic and will not forward requests to back-end
+                nodes.
+            </para>
+            <table rules="all">
+                <caption>Load Balancer Statuses</caption>
+                <thead>
+                    <tr align="center">
+                        <td>Name</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>
+                            <code>ACTIVE</code>
+                        </td>
+                        <td>Load balancer is configured properly and ready to serve traffic to incoming requests
+                            via the configured virtual IPs.</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>BUILD</code>
+                        </td>
+                        <td>Load balancer is being provisioned for the first time and configuration is being
+                            applied to bring the service online. The service will not yet be ready to serve
+                            incoming requests.</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>PENDING_UPDATE</code>
+                        </td>
+                        <td>Load balancer is online, but configuration changes are being applied to update the
+                            service based on a previous request.</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>PENDING_DELETE</code>
+                        </td>
+                        <td>Load balancer is online, but configuration changes are being applied to begin deletion
+                            of the service based on a previous request.</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>SUSPENDED</code>
+                        </td>
+                        <td>Load balancer has been taken offline and disabled; contact support.</td>
+                    </tr>
+                    <tr align="left">
+                        <td>
+                            <code>ERROR</code>
+                        </td>
+                        <td>The system encountered an error when attempting to configure the laod balancer;
+                            contact support</td>
+                    </tr>
+                    <tr align="left">
+                        <td><code>DELETED</code></td>
+                        <td>Load balancers in deleted status can be displayed for at least 90 days after deletion.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>Node Condition</title>
+            <para>Every node in the load balancer has an associated condition which determines
+                its role within the load balancer.
+            </para>
+            <table rules="all">
+                <caption>Load Balancer Node Conditions</caption>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>ENABLED</code>
+                        </td>
+                        <td colspan="3">Node is permitted to accept new connections</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>DISABLED</code>
+                        </td>
+                        <td colspan="3">Node is not permitted to accept any new connections regardless of session
+                            persistence configuration. Existing connections are forcibly terminated</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>DRAINING</code>
+                        </td>
+                        <td colspan="3">Node is allowed to service existing established connections and connections that
+                            are being directed to it as a result of the session persistence configuration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </chapter>
+    <chapter>
+        <title>API Faults</title>
+        <para>
+            API calls that return an error will return one of the following fault objects. All fault objects will
+            extend from the base fault,
+            <code>serviceFault</code>, for easier exception handling for languages that support it.
+        </para>
+        <section>
+            <title>
+                <code>serviceFault</code>
+            </title>
+            <para>
+                The
+                <code>serviceFault</code>
+                and by extension all other faults include
+                <code>message</code>
+                and
+                <code>detail</code>
+                elements which contain strings describing the nature of the fault
+                as well as a
+                <code>code</code>
+                attribute representing the HTTP response code for convenience.
+                The
+                <code>code</code>
+                attribute of the fault is for the convenience of the caller so that they may retrieve the response
+                code from the HTTP response headers
+                or directly from the fault object if they choose.
+                The caller should not expect the
+                <code>serviceFault</code>
+                to be returned directly but should instead expect only one of the child faults to be returned.
+            </para>
+        </section>
+        <section>
+            <title>
+                <code>loadBalancerFault</code>
+            </title>
+            <para>
+                The
+                <code>loadBalancerFault</code>
+                fault shall be returned in the event that an error occurred during a loadbalancer operation.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Invalid authentication token. Please renew</message>
+</loadBalancerFault>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>badRequest</code>
+            </title>
+            <para>This fault indicates that the data in the request object is invalid; for example,
+                a string was used in a parameter that was expecting an integer. The fault will wrap
+                validation errors.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
+    <message>Validation fault</message>
+    <details>The object is not valid</details>
+        <validationErrors>
+            <message>Node ip is invalid. Please specify a valid ip.</message>
+        </validationErrors>
+</badRequest>]]>
+            </literallayout>
+        </section>
+        <?hard-pagebreak?>
+        <section>
+            <title>
+                <code>itemNotFound</code>
+            </title>
+            <literallayout class="monospaced">
+<![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Object not Found</message>
+</itemNotFound>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>overLimit</code>
+            </title>
+            <para>
+                This fault is returned when the user has exceeded a currently allocated limit.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Your account is currently over the limit so your request could not be processed.</message>
+</overLimit>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>unauthorized</code>
+            </title>
+            <para>
+                This fault is returned when the user is not authorized to perform an attempted operation.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>You are not authorized to execute this operation.</message>
+</unauthorized>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>outOfVirtualIps</code>
+            </title>
+            <para>This fault indicates that there are no virtual IPs left to assign to a new
+                loadbalancer. In practice, this fault should not occur, as virtual IPs will be
+                ordered as capacity is required. If you do experience this fault, contact support so
+                that we may make more IPs available.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>
+        Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
+    </message>
+</outOfVirtualips>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>immutableEntity</code>
+            </title>
+            <para>
+                This fault is returned when a user attempts to modify an item that is not currently in a state
+                that allows modification. For example, load balancers in a status of
+                <code>PENDING_UPDATE</code>,<code>BUILD</code>, or
+                <code>DELETED</code>
+                may not be modified.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The object at the specified URI is immutable and can not be overwritten.</message>
+</immutableEntity>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>unprocessableEntity</code>
+            </title>
+            <para>
+                This fault is returned when an operation is requested on an item that does not support the
+                operation, but the request is properly formed.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The Object at the specified URI is unprocessable.</message>
+</unprocessableEntity>]]>
+            </literallayout>
+        </section>
+        <section>
+            <title>
+                <code>serviceUnavailable</code>
+            </title>
+            <para>
+                This fault is returned when the service is unavailable, such as when the service is undergoing
+                maintenance. Note that this does not necessarily mean that the currently configured loadbalancers
+                are unable to process traffic; it simply means that the API is currently unable to service
+                requests.
+            </para>
+            <literallayout class="monospaced">
+<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The Load balancing service is currently not available</message>
+</serviceUnavailable>]]>
+            </literallayout>
+        </section>
+    </chapter>
+</book>
