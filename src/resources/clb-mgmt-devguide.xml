@@ -932,14 +932,15 @@
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    The host backup and restoration tools allow for service administrators to take periodic backups
-                    of the current state of the configuration on any given host machine. These functions allow the
-                    caller to view, create new backups, purge backups, and restore any available configuration.
-                </para>
+                <para> The host backup and restoration tools allow for service administrators to
+                take periodic backups of the current state of the configuration on any given host
+                machine. These functions allow the caller to view a list of available backup
+                configurations, create new backups, purge backups, and restore any available
+                configuration. </para>
             <section>
                 <title>Examining Immutable Parameters</title>
                 <para>
+                    Descriptive information about backup configurations can be listed but cannot be changed.
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>
@@ -961,6 +962,30 @@
                 <para>
                     Callers are not required to supply request bodies for the &PUT; (Restore Backup) operations.
                 </para>
+                <example>
+                    <title>List Available Backups for All Hosts Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-backups.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Available Backups for All Hosts Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-backups.json" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Available Backups for Specified Host Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-update-backups.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Available Backups for Specified Host Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-update-backups.json" parse="text"/>
+                </programlisting>
+                </example>                             
             </section>
             <section>
                 <title>Creating a New Backup</title>
@@ -970,35 +995,16 @@
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>name</para>
+                            <para>
+                                <parameter>name</parameter>
+                            </para>
                         </listitem>
                     </itemizedlist>
                 </para>
             </section>
-            <example>
-                <title>List Available Backups for All Hosts Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-backups.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Available Backups for All Hosts Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-backups.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Available Backups for Specified Host Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-backups.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Available Backups for Specified Host Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-backups.json" parse="text"/>
-                </programlisting>
-            </example>
+            <section>
+                <title>Changing Subnet Mappings</title>
+                <para> For each host, subnet mappings can be added or deleted. </para>
             <example>
                 <title>Add Subnet Mappings Response: XML</title>
                 <programlisting language="xml">
@@ -1029,6 +1035,7 @@
 <xi:include href="samples/lb-delete-subnetmappings.json" parse="text" />
                 </programlisting>
             </example>
+                </section>
         </section>
         <section>
             <title>Customer Lists</title>
@@ -1056,23 +1063,23 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="5">/clusters/clusterId/customercount</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/customercount</td>
                         <td colspan="3">Generate a customer list by cluster id</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="5">/hosts/hostid/customercount</td>
+                        <td colspan="5">/hosts/<parameter>hostid</parameter>/customercount</td>
                         <td colspan="3">Generate a customer list by host id</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-                <para>
-                    The generated customer list allows external services, which contain customer contact information,
-                    to query the load balancing service to determine the breakdown of customers at either the cluster
-                    or host level.
-                </para>
+                <para> The generated customer list allows external services to query the load
+                balancing service to determine which customers are associated with either a cluster
+                or a host. If the external service has access to customer contact information, this
+                can make it possible to automate the process of identifying and contacting customers
+                affected by an environmental change.</para>
             <example>
                 <title>List Customers by Host or Cluster Name Request: XML</title>
                 <programlisting language="xml">
