@@ -1135,101 +1135,7 @@
             </example>
         </section>
     </chapter>
-    <chapter>
-        <title>Reports</title>
-        <section>
-            <title>Host Capacity</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
-                        <td colspan="2">Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/hosts/capacityreport</td>
-                        <td colspan="4">Generate a capacity planning report for all load balancing hosts</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/hosts/<parameter>hostId</parameter>/capacityreport</td>
-                        <td colspan="4">Generate a capacity planning report for a specified load balancing host</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-                <para>
-                The load balancing host capacity report provides insight into the available
-                capacity of a given host machine. It also supplies an estimated runway of available
-                capacity based on historical provisioning activity. The historical period consists
-                of one week, reported as <code>allocatedConcurrentConnectionsInPastSevenDays</code>.
-                </para>
-            <example>
-                <title>Report Host Capacity Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Report Host Capacity Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
-                </programlisting>
-            </example>         
-        </section>
-        <section>
-            <title>Virtual IP Availability</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
-                        <td colspan="2">Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/virtualips/availabilityreport</td>
-                        <td colspan="4">Generate an availability report for all virtual IPs associated with any
-                            cluster.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
-                        <td colspan="4">Generate an availability report for all virtual IPs associated with the
-                            specific cluster</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-                <para> The virtual IP availability report provides insight into the availability of
-                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
-                supplies an estimated runway of available capacity based on historical provisioning
-                activity. The historical period consists of one week, reported as
-                    <code>allocatedPublicIpAddressesInLastSevenDays</code> and
-                    <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
-            <example>
-                <title>Report VIP Availability Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Report VIP Availability Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
-                </programlisting>
-            </example>    
-        </section> 
-    </chapter>
+
     <chapter>
         <title>Extended Customer API Operations</title>
         <para>
@@ -2063,5 +1969,103 @@
                 </programlisting>
             </example>
         </section>
+    </chapter>
+    <chapter>
+        <title>Reports</title>
+        <para>
+            Two kinds of reports are available, focused on load balancing hosts or virtual IPs.
+        </para>
+        <section>
+            <title>Host Capacity</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for all load balancing hosts</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/hosts/<parameter>hostId</parameter>/capacityreport</td>
+                        <td colspan="4">Generate a capacity planning report for a specified load balancing host</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                The load balancing host capacity report provides insight into the available
+                capacity of a given host machine. It also supplies an estimated runway of available
+                capacity based on historical provisioning activity. The historical period consists
+                of one week, reported as <code>allocatedConcurrentConnectionsInPastSevenDays</code>.
+            </para>
+            <example>
+                <title>Report Host Capacity Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-capacityreport.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Report Host Capacity Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
+                </programlisting>
+            </example>         
+        </section>
+        <section>
+            <title>Virtual IP Availability</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with any
+                            cluster.</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/clusters/<parameter>clusterId</parameter>/virtualips/availabilityreport</td>
+                        <td colspan="4">Generate an availability report for all virtual IPs associated with the
+                            specific cluster</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para> The virtual IP availability report provides insight into the availability of
+                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
+                supplies an estimated runway of available capacity based on historical provisioning
+                activity. The historical period consists of one week, reported as
+                <code>allocatedPublicIpAddressesInLastSevenDays</code> and
+                <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
+            <example>
+                <title>Report VIP Availability Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-availabilityreport.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Report VIP Availability Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
+                </programlisting>
+            </example>    
+        </section> 
     </chapter>
 </book>

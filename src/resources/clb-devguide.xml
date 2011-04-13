@@ -82,7 +82,7 @@
             <para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>RESTful web services</para>
+                        <para>ReSTful web services</para>
                     </listitem>
                     <listitem>
                         <para>HTTP/1.1 conventions</para>
@@ -307,7 +307,7 @@
                 Service and supplying a valid username and API access key.
             </para>
 
-            <simplesect>
+            <section>
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all
                     Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
@@ -343,8 +343,8 @@ X-Auth-User: jdoe
 X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
                 </example>
-            </simplesect>
-            <simplesect>
+            </section>
+            <section>
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status
                     <returnvalue>204</returnvalue>
@@ -383,7 +383,7 @@ Content-Type: text/plain; charset=UTF-8
                         number, which is a required element of the service endpoints.
                     </para>
                 </note>
-            </simplesect>
+            </section>
         </section>
         <section>
             <title>Service Access/Endpoints</title>
