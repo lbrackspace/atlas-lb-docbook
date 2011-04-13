@@ -6,7 +6,7 @@
             "availableConcurrentConnections": "100000",
             "allocatedConcurrentConnections": "50000",
             "allocatedConcurrentConnectionsToday": "14000",
-            "allocatedConcurrentConnectionsInPastSevenDays": "25000",
+            "allocatedConcurrentConnectionsInLastSevenDays": "25000",
             "remainingDaysOfCapacity": "9.55"
         }
     }

@@ -52,7 +52,7 @@
         </copyright>
         <releaseinfo>API v1.0 BETA</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-03-24</pubdate>
+        <pubdate>2011-04-19</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -109,6 +109,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr align="left">
+                        <td colspan="1" align="center">Apr. 19, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added details to support general availability.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
                     <tr align="left">
                         <td colspan="1" align="center">Mar. 2, 2011</td>
                         <td colspan="4" align="left">
@@ -306,7 +316,6 @@
                 HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication
                 Service and supplying a valid username and API access key.
             </para>
-
             <section>
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all
@@ -358,7 +367,6 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     <code>X-Auth-Token</code>
                     header.
                 </para>
-
                 <example>
                     <title>Authentication Response</title>
                     <para>
@@ -704,7 +712,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="1">/limits</td>
-                            <td colspan="3">Returns the current limits for the account.</td>
+                            <td colspan="3">Return the current limits for the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -752,7 +760,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;</td>
                         <td>/loadbalancers</td>
-                        <td>List all load balancers configured for the account (IDs, names and status only)</td>
+                        <td>List all load balancers configured for the account (IDs, names and
+                            status only).</td>
                         <td>XML, JSON, ATOM</td>
                     </tr>
                 </tbody>
@@ -813,7 +822,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId</td>
-                        <td>List details of the specified load balancer</td>
+                        <td>List details of the specified load balancer.</td>
                         <td>JSON, XML, ATOM</td>
                     </tr>
                 </tbody>
@@ -972,8 +981,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId</td>
-                        <td>Removes a load balancer from your account</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
+                        <td>Remove a load balancer from the account.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1012,32 +1021,32 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/nodes</td>
-                        <td>List node(s) configured for the load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
+                        <td>List node(s) configured for the load balancer.</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/nodes</td>
-                        <td>Add a new node to the load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
+                        <td>Add a new node to the load balancer.</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
-                        <td>List details for a specific node</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
+                        <td>List details of a specific node.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
-                        <td>Modifies the configuration of a node on the load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
+                        <td>Modify the configuration of a node on the load balancer.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/nodes/nodeId</td>
-                        <td>Removes a node from the load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
+                        <td>Remove a node from the load balancer.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1181,8 +1190,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId</td>
-                        <td>Update the properties of a load balancer</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
+                        <td>Update the properties of a load balancer.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1266,14 +1275,14 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/virtualips</td>
-                        <td>List all associated virtual IPs</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td>List all virtual IPs associated with a load balancer.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/virtualIpId</td>
-                        <td>Remove the Virtual IP</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/<parameter>virtualIpId</parameter></td>
+                        <td>Remove a virtual IP.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1315,13 +1324,13 @@ Content-Type: text/plain; charset=UTF-8
                         <td>
                             <code>PUBLIC</code>
                         </td>
-                        <td>An address that is routable on the public Internet</td>
+                        <td>An address that is routable on the public Internet.</td>
                     </tr>
                     <tr align="left">
                         <td>
                             <code>SERVICENET</code>
                         </td>
-                        <td>An address that is routable only on ServiceNet</td>
+                        <td>An address that is routable only on ServiceNet.</td>
                     </tr>
                 </tbody>
             </table>
@@ -1359,13 +1368,13 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId/usage</td>
-                        <td>List current and historical usage</td>
+                        <td>List current and historical usage.</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId/usage/current</td>
-                        <td>List current usage</td>
+                        <td>List current usage.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1441,26 +1450,26 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/accesslist</td>
-                        <td>List the access list</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td>List the access list.</td>
                     </tr>
                     <tr align="left">
                         <td>&POST;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/accesslist</td>
-                        <td>Create a new access list or append to an existing access list</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td>Create a new access list or append to an existing access list.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/accesslist/networkItemId</td>
-                        <td>Remove a network item from the access list</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/networkItemId</td>
+                        <td>Remove a network item from the access list.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/accesslist</td>
-                        <td>Remove the entire access list</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td>Remove the entire access list.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1546,20 +1555,20 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
-                        <td>Retrieves the health monitor configuration, if one exists</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td>Retrieve the health monitor configuration, if one exists.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
-                        <td>Updates the settings for a health monitor</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td>Update the settings for a health monitor.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/healthmonitor</td>
-                        <td>Removes the health monitor</td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td>Remove the health monitor.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1595,15 +1604,15 @@ Content-Type: text/plain; charset=UTF-8
                 <tbody>
                     <tr align="left">
                         <td>CONNECT</td>
-                        <td>Health monitor is a connect monitor</td>
+                        <td>Health monitor is a connect monitor.</td>
                     </tr>
                     <tr align="left">
                         <td>HTTP</td>
-                        <td>Health monitor is a HTTP monitor</td>
+                        <td>Health monitor is an HTTP monitor.</td>
                     </tr>
                     <tr align="left">
                         <td>HTTPS</td>
-                        <td>Health monitor is a HTTPS monitor</td>
+                        <td>Health monitor is an HTTPS monitor.</td>
                     </tr>
                 </tbody>
             </table>
@@ -1748,19 +1757,19 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                        <td>List session persistence configuration</td>
+                        <td>List session persistence configuration.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                        <td>Enable session persistence</td>
+                        <td>Enable session persistence.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
                         <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                        <td>Disable session persistence</td>
+                        <td>Disable session persistence.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1843,13 +1852,13 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId/connectionlogging</td>
-                        <td>View current configuration of connection logging</td>
+                        <td>View current configuration of connection logging.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/loadBalancerId/connectionlogging</td>
-                        <td>Enable or disable connection logging</td>
+                        <td>Enable or disable connection logging.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1909,19 +1918,19 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
-                        <td>List connection throttling configuration</td>
+                        <td>List connection throttling configuration.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT;
                         </td>
                         <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
-                        <td>Update throttling configuration</td>
+                        <td>Update throttling configuration.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE;
                         </td>
                         <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
-                        <td>Remove connection throttling configurations</td>
+                        <td>Remove connection throttling configurations.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2016,7 +2025,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/protocols</td>
-                        <td>List all supported load balancing protocols</td>
+                        <td>List all supported load balancing protocols.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2065,7 +2074,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td>&GET;
                         </td>
                         <td>/loadbalancers/algorithms</td>
-                        <td>List all supported load balancing algorithms</td>
+                        <td>List all supported load balancing algorithms.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2102,27 +2111,26 @@ Content-Type: text/plain; charset=UTF-8
                             <code>LEAST_CONNECTIONS</code>
                         </td>
                         <td>The node with the lowest number of connections will receive
-                            requests
-                        </td>
+                            requests.</td>
                     </tr>
                     <tr align="left">
                         <td>
                             <code>RANDOM</code>
                         </td>
-                        <td>Back-end servers are selected at random</td>
+                        <td>Back-end servers are selected at random.</td>
                     </tr>
                     <tr align="left">
                         <td>
                             <code>ROUND_ROBIN</code>
                         </td>
-                        <td>Connections are routed to each of the back-end servers in turn</td>
+                        <td>Connections are routed to each of the back-end servers in turn.</td>
                     </tr>
                     <tr align="left">
                         <td>
                             <code>WEIGHTED_LEAST_CONNECTIONS</code>
                         </td>
-                        <td>Each request will be assigned to a node based on the number of concurrent connections
-                            to the node and its weight</td>
+                        <td>Each request will be assigned to a node based on the number of
+                            concurrent connections to the node and its weight.</td>
                     </tr>
                     <tr align="left">
                         <td>
@@ -2210,14 +2218,14 @@ Content-Type: text/plain; charset=UTF-8
                         <td>
                             <code>SUSPENDED</code>
                         </td>
-                        <td>Load balancer has been taken offline and disabled; contact support.</td>
+                        <td>Load balancer has been taken offline and disabled; contact Support.</td>
                     </tr>
                     <tr align="left">
                         <td>
                             <code>ERROR</code>
                         </td>
-                        <td>The system encountered an error when attempting to configure the laod balancer;
-                            contact support</td>
+                        <td>The system encountered an error when attempting to configure the load
+                            balancer; contact Support.</td>
                     </tr>
                     <tr align="left">
                         <td><code>DELETED</code></td>
@@ -2245,21 +2253,23 @@ Content-Type: text/plain; charset=UTF-8
                         <td colspan="1">
                             <code>ENABLED</code>
                         </td>
-                        <td colspan="3">Node is permitted to accept new connections</td>
+                        <td colspan="3">Node is permitted to accept new connections.</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">
                             <code>DISABLED</code>
                         </td>
-                        <td colspan="3">Node is not permitted to accept any new connections regardless of session
-                            persistence configuration. Existing connections are forcibly terminated</td>
+                        <td colspan="3">Node is not permitted to accept any new connections
+                            regardless of session persistence configuration. Existing connections
+                            are forcibly terminated.</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">
                             <code>DRAINING</code>
                         </td>
-                        <td colspan="3">Node is allowed to service existing established connections and connections that
-                            are being directed to it as a result of the session persistence configuration</td>
+                        <td colspan="3">Node is allowed to service existing established connections
+                            and connections that are being directed to it as a result of the session
+                            persistence configuration.</td>
                     </tr>
                 </tbody>
             </table>
