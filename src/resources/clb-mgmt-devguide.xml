@@ -434,7 +434,19 @@
                 <para>
                     The host operations allow for retrieval of host configuration data and statistics as well as
                     the ability to add, manipulate or delete load balancing hosts.
-                </para>             
+                </para>
+            <example>
+                <title>List All Hosts Within Cluster Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List All Hosts Within Cluster Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
+                </programlisting>
+            </example>
                 <section>
                     <title>Creating a New Host</title>
                     <para>
@@ -487,6 +499,18 @@
                             </para>
                         </listitem>
                     </itemizedlist>
+                    <example>
+                        <title>Create Host Request: XML</title>
+                        <programlisting language="xml">
+<xi:include href="samples/lb-create-host.xml" parse="text"/>
+                </programlisting>
+                    </example>
+                    <example>
+                        <title>Create Host Request: JSON</title>
+                        <programlisting language="javascript">
+<xi:include href="samples/lb-create-host.json" parse="text"/>
+                </programlisting>
+                    </example>
                 </section>
                 <section>
                     <title>Changing Mutable Attributes</title>
@@ -537,31 +561,6 @@
                     <para> Valid values for <code>status</code> are <code>ACTIVE</code>,
                         <code>ACTIVE TARGET</code>, <code>MAINTENANCE</code>, and
                         <code>FAILOVER</code>.</para>
-                </section>
-            <example>
-                <title>List All Hosts Within Cluster Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List All Hosts Within Cluster Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Create Host Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-host.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Create Host Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-create-host.json" parse="text"/>
-                </programlisting>
-            </example>
             <example>
                 <title>Update Host Request: XML</title>
                 <programlisting language="xml">
@@ -574,7 +573,8 @@
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                 </programlisting>
             </example>           
-        </section>
+                </section>
+            </section>
         <section>
             <title>Virtual IPs</title>
             <informaltable rules="all">
