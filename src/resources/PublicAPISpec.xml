@@ -952,6 +952,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-create-required-sharedip-response.xml" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes with Shared IP) Response :JSON</title>
+                <programlisting>
+<xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
+                </programlisting>
+            </example>
         </section>
         <?hard-pagebreak?>
         <section>
