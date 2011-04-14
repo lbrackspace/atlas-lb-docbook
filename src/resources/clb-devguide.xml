@@ -50,7 +50,7 @@
             <year>2011</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
-        <releaseinfo>API v1.0 BETA</releaseinfo>
+        <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
         <pubdate>2011-04-19</pubdate>
         <legalnotice role="rs-api">
@@ -114,7 +114,7 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added details to support general availability.</para>
+                                    <para>Added details to support initial GA release.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
