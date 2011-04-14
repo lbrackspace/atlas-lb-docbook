@@ -1485,6 +1485,13 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/byloadbalancerids?id=<parameter>loadBalancerId</parameter>
+                            &id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">Retrieve all alerts, if any, for any specified load balancers.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
                         <td colspan="4">/management/alerts/account?id=<parameter>loadBalancerId</parameter></td>
                         <td colspan="4">Retrieve all alerts, if any, for an account.</td>
                         <td colspan="2">Support, Service Admin</td>
