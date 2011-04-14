@@ -369,6 +369,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 </para>
                 <example>
                     <title>Authentication Response</title>
+                    <?dbfo keep-together="always"?>
                     <para>
                         <literallayout class="monospaced">
 HTTP/1.1 204 No Content
@@ -590,9 +591,9 @@ Content-Type: text/plain; charset=UTF-8
                     <code>https://ord.loadbalancers.api.rackspacecloud.com</code>
                     <emphasis role="bold"><code>/v1.0/1234/loadbalancers</code></emphasis>.
                 </para>
-                <?hard-pagebreak?>
                 <table rules="all">
                     <caption>Default Rate Limits</caption>
+                    <?dbfo keep-together="always"?>
                     <thead>
                         <tr align="center">
                             <td>Verb</td>
@@ -780,22 +781,43 @@ Content-Type: text/plain; charset=UTF-8
             </para>
             <para>
                 To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
-                balancer is immutable and irrecoverable. Only a limited set of attributes (<code>id</code>,
-                <code>name</code>,<code>status</code>, <code>created</code>, and <code>updated</code>) will be
-                returned in the response object.
+                balancer is immutable and irrecoverable. Only a limited set of attributes will be
+                returned in the response object:
             </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        <code>id</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>name</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>created</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>updated</code>
+                    </para>
+                </listitem>
+            </itemizedlist>
             <para>
                 This operation does not require a request body.
             </para>
             <example>
                 <title>List Load Balancers Response: XML</title>
-                <programlisting language="xml"><?db-font-size 90% ?>
+                <programlisting language="xml">
 <xi:include href="samples/lb-list-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List Load Balancers Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90% ?>
+                <programlisting language="javascript">
 <xi:include href="samples/lb-list-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -845,13 +867,13 @@ Content-Type: text/plain; charset=UTF-8
             </para>
             <example>
                 <title>List Load Balancer Details Request: XML</title>
-                <programlisting language="xml"><?db-font-size 90% ?>
+                <programlisting language="xml">
 <xi:include href="samples/lb-list-details-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>List Load Balancers Details Response: JSON</title>
-                <programlisting language="javascript"><?db-font-size 90% ?>
+                <programlisting language="javascript">
 <xi:include href="samples/lb-list-details-response.json" parse="text"/>
                 </programlisting>
             </example>
