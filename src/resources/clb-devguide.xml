@@ -704,7 +704,7 @@ Content-Type: text/plain; charset=UTF-8
                         <tr align="center">
                             <td colspan="1">Verb</td>
                             <td colspan="1">URI</td>
-                            <td colspan="3">Description</td>
+                            <td colspan="3">Description </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -762,7 +762,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td>/loadbalancers</td>
                         <td>List all load balancers configured for the account (IDs, names and
                             status only).</td>
-                        <td>XML, JSON, ATOM</td>
+                        <td>XML, JSON, Atom</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -800,7 +800,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Load Balancers Response: XML</title>
+                <title>List Atom Load Balancers Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text" />
                 </programlisting>
@@ -823,7 +823,7 @@ Content-Type: text/plain; charset=UTF-8
                         </td>
                         <td>/loadbalancers/loadBalancerId</td>
                         <td>List details of the specified load balancer.</td>
-                        <td>JSON, XML, ATOM</td>
+                        <td>JSON, XML, Atom</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -856,7 +856,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Load Balancer Response: XML</title>
+                <title>List Atom Load Balancer Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text" />
                 </programlisting>
@@ -1144,13 +1144,13 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Nodes Response: XML</title>
+                <title>List Atom Nodes Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Node Response: XML</title>
+                <title>List Atom Node Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
                 </programlisting>
@@ -1347,7 +1347,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Virtual IPs Response: XML</title>
+                <title>List Atom Virtual IPs Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
                 </programlisting>
@@ -1535,7 +1535,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Access List Response: XML</title>
+                <title>List Atom Access List Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
                 </programlisting>
@@ -1641,7 +1641,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Health Monitor Response: XML</title>
+                <title>List Atom Health Monitor Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
                 </programlisting>
@@ -1831,7 +1831,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Session Persistence Response: XML</title>
+                <title>List Atom Session Persistence Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
                 </programlisting>
@@ -2004,7 +2004,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
-                <title>List ATOM Connection Throttling Response: XML</title>
+                <title>List Atom Connection Throttling Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text" />
                 </programlisting>
