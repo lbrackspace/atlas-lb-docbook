@@ -1261,15 +1261,14 @@ Content-Type: text/plain; charset=UTF-8
                     <code>ONLINE</code> status will receive and be able to service traffic from the
                 load balancer. </para>
             <para>All nodes have an associated status that indicates whether the node is
-                online, offline, or draining. Only nodes that are in an <code>ONLINE</code> status
-                will receive and be able to service traffic from the load balancer. The <code>OFFLINE</code>
-                status represents a node that cannot accept or service traffic. A node in
-                <code>DRAINING</code> status represents a node that stops the
-                traffic manager from sending any additional new connections to the node, but honors
-                established sessions. If the traffic manager receives a request and session
-                persistence requires that the node is used, the traffic manager will use it. The
-                status is determined by the passive or active health monitors.
-            </para>
+                    <code>ONLINE</code>, <code>OFFLINE</code>, or <code>DRAINING</code>. Only nodes
+                that are in <code>ONLINE</code> status will receive and be able to service traffic
+                from the load balancer. The <code>OFFLINE</code> status represents a node that
+                cannot accept or service traffic. A node in <code>DRAINING</code> status represents
+                a node that stops the traffic manager from sending any additional new connections to
+                the node, but honors established sessions. If the traffic manager receives a request
+                and session persistence requires that the node is used, the traffic manager will use
+                it. The status is determined by the passive or active health monitors. </para>
             <para>If the <code>WEIGHTED_ROUND_ROBIN</code> load balancer algorithm mode is
                 selected, then the caller should assign the relevant weights to the node as part of
                 the weight attribute of the node element. When the algorithm of the load balancer is
@@ -1346,20 +1345,55 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <note>
-                <para>The node's IP and Port are immutable attributes and cannot be modified with
-                    a &PUT; request. Supplying an unsupported attribute will result in a <returnvalue>400
-                    (badRequest)</returnvalue> fault. Additionally, a load balancer supports a maximum
-                    of 25 nodes, and the maximum weight of a node is 100.
-                </para>
+                <para>The node's IP and port are immutable attributes and cannot be modified with a
+                    &PUT; request. Supplying an unsupported attribute will result in a
+                        <returnvalue>400 (badRequest)</returnvalue> fault. A load balancer supports
+                    a maximum of 25 nodes; the maximum weight of a node is 100. </para>
             </note>
+            <para>Every node in the load balancer has an associated condition which determines
+                its role within the load balancer.
+            </para>
+            <table rules="all">
+                <caption>Load Balancer Node Conditions</caption>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>ENABLED</code>
+                        </td>
+                        <td colspan="3">Node is permitted to accept new connections.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>DISABLED</code>
+                        </td>
+                        <td colspan="3">Node is not permitted to accept any new connections
+                            regardless of session persistence configuration. Existing connections
+                            are forcibly terminated.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">
+                            <code>DRAINING</code>
+                        </td>
+                        <td colspan="3">Node is allowed to service existing established connections
+                            and connections that are being directed to it as a result of the session
+                            persistence configuration.</td>
+                    </tr>
+                </tbody>
+            </table>
             <example>
-                <title>Update Node Attributes Request: XML</title>
+                <title>Update Node Condition Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Node Attributes Request: JSON</title>
+                <title>Update Node Condition Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-node-request.json" parse="text"/>
                 </programlisting>
@@ -2420,46 +2454,6 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
                 </programlisting>
             </example>
-        </section>
-
-        <section>
-            <title>Node Condition</title>
-            <para>Every node in the load balancer has an associated condition which determines
-                its role within the load balancer.
-            </para>
-            <table rules="all">
-                <caption>Load Balancer Node Conditions</caption>
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Name</td>
-                        <td colspan="3">Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>ENABLED</code>
-                        </td>
-                        <td colspan="3">Node is permitted to accept new connections.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>DISABLED</code>
-                        </td>
-                        <td colspan="3">Node is not permitted to accept any new connections
-                            regardless of session persistence configuration. Existing connections
-                            are forcibly terminated.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>DRAINING</code>
-                        </td>
-                        <td colspan="3">Node is allowed to service existing established connections
-                            and connections that are being directed to it as a result of the session
-                            persistence configuration.</td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
     </chapter>
 </book>
