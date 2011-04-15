@@ -721,6 +721,197 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
             </section>
         </section>
+        <section>
+            <title>Faults</title>
+            <para> API calls that return an error return one of the following fault objects. All
+                fault objects extend from the base fault, <code>serviceFault</code>, for easier
+                exception handling for languages that support it. </para>
+            <section>
+                <title>
+                    serviceFault
+                </title>
+                <para>
+                    The
+                    <code>serviceFault</code>
+                    and by extension all other faults include
+                    <code>message</code>
+                    and
+                    <code>detail</code>
+                    elements which contain strings describing the nature of the fault
+                    as well as a
+                    <code>code</code>
+                    attribute representing the HTTP response code for convenience.
+                    The
+                    <code>code</code>
+                    attribute of the fault is for the convenience of the caller so that they may retrieve the response
+                    code from the HTTP response headers
+                    or directly from the fault object if they choose.
+                    The caller should not expect the
+                    <code>serviceFault</code>
+                    to be returned directly but should instead expect only one of the child faults to be returned.
+                </para>
+            </section>
+            <section>
+                <title>
+                    badRequest
+                </title>
+                <para>This fault indicates that the data in the request object is invalid; for example,
+                    a string was used in a parameter that was expecting an integer. The fault will wrap
+                    validation errors.
+                </para>
+                <example>
+                    <title>Fault Response, badRequest</title>
+                <literallayout class="monospaced">
+<![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
+    <message>Validation fault</message>
+    <details>The object is not valid</details>
+        <validationErrors>
+            <message>Node ip is invalid. Please specify a valid ip.</message>
+        </validationErrors>
+</badRequest>]]>
+                </literallayout>
+                    </example>
+            </section>
+            <section>
+                <title>
+                    immutableEntity
+                </title>
+                <para>
+                    This fault is returned when a user attempts to modify an item that is not currently in a state
+                    that allows modification. For example, load balancers in a status of
+                    <code>PENDING_UPDATE</code>,<code>BUILD</code>, or
+                    <code>DELETED</code>
+                    may not be modified.
+                </para>
+                <example>
+                    <title>Fault Response, immutableEntity</title>
+                    <literallayout class="monospaced">
+<![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The object at the specified URI is immutable and can not be overwritten.</message>
+</immutableEntity>]]>
+                </literallayout>
+                </example>
+            </section>
+            <section>
+                <title>
+                    itemNotFound
+                </title>
+                <example>
+                    <title>Fault Response, itemNotFound</title>
+                <literallayout class="monospaced">
+<![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Object not Found</message>
+</itemNotFound>]]>
+                </literallayout>
+                    </example>
+            </section>
+            <section>
+                <title>
+                    loadBalancerFault
+                </title>
+                <para>
+                    The
+                    <code>loadBalancerFault</code>
+                    fault shall be returned in the event that an error occurred during a loadbalancer operation.
+                </para>
+                <example>
+                    <title>Fault Response, loadBalancerFault</title>
+                    <literallayout class="monospaced">
+<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Invalid authentication token. Please renew</message>
+</loadBalancerFault>]]>
+                </literallayout>
+                </example>
+            </section>
+            <section>
+                <title>
+                    outOfVirtualIps
+                </title>
+                <para>This fault indicates that there are no virtual IPs left to assign to a new
+                    load balancer. In practice, this fault should not occur, as virtual IPs will be
+                    ordered as capacity is required. If you do experience this fault, contact support so
+                    that we may make more IPs available.
+                </para>
+                <example>
+                    <title>Fault Response, outOfVirtualIps</title>
+                <literallayout class="monospaced">
+<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>
+        Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
+    </message>
+</outOfVirtualips>]]>
+                </literallayout>
+                    </example>
+            </section>
+            <section>
+                <title>
+                    overLimit
+                </title>
+                <para>
+                    This fault is returned when the user has exceeded a currently allocated limit.
+                </para>
+                <example>
+                    <title>Fault Response, overLimit</title>
+                    <literallayout class="monospaced">
+<![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>Your account is currently over the limit so your request could not be processed.</message>
+</overLimit>]]>
+                </literallayout>
+                </example>
+            </section>
+            <section>
+                <title>
+                    serviceUnavailable
+                </title>
+                <para>
+                    This fault is returned when the service is unavailable, such as when the service is undergoing
+                    maintenance. Note that this does not necessarily mean that the currently configured loadbalancers
+                    are unable to process traffic; it simply means that the API is currently unable to service
+                    requests.
+                </para>
+                <example>
+                    <title>Fault Response, serviceUnavailable</title>
+                <literallayout class="monospaced">
+<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The Load balancing service is currently not available</message>
+</serviceUnavailable>]]>
+                </literallayout>
+                    </example>
+            </section>
+            <section>
+                <title>
+                    unauthorized
+                </title>
+                <para>
+                    This fault is returned when the user is not authorized to perform an attempted operation.
+                </para>
+                <example>
+                    <title>Fault Response, unauthorized</title>
+                    <literallayout class="monospaced">
+<![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>You are not authorized to execute this operation.</message>
+</unauthorized>]]>
+                </literallayout>
+                </example>
+            </section>
+            <section>
+                <title>
+                    unprocessableEntity
+                </title>
+                <para>
+                    This fault is returned when an operation is requested on an item that does not support the
+                    operation, but the request is properly formed.
+                </para>
+                <example>
+                    <title>Fault Response, unprocessableEntity</title>
+                    <literallayout class="monospaced">
+<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    <message>The Object at the specified URI is unprocessable.</message>
+</unprocessableEntity>]]>
+                </literallayout>
+                </example>
+            </section>
+        </section>
     </chapter>
     <chapter>
         <title>API Operations</title>
@@ -2268,172 +2459,6 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
-        </section>
-    </chapter>
-    <chapter>
-        <title>API Faults</title>
-        <para>
-            API calls that return an error will return one of the following fault objects. All fault objects will
-            extend from the base fault,
-            <code>serviceFault</code>, for easier exception handling for languages that support it.
-        </para>
-        <section>
-            <title>
-                <code>serviceFault</code>
-            </title>
-            <para>
-                The
-                <code>serviceFault</code>
-                and by extension all other faults include
-                <code>message</code>
-                and
-                <code>detail</code>
-                elements which contain strings describing the nature of the fault
-                as well as a
-                <code>code</code>
-                attribute representing the HTTP response code for convenience.
-                The
-                <code>code</code>
-                attribute of the fault is for the convenience of the caller so that they may retrieve the response
-                code from the HTTP response headers
-                or directly from the fault object if they choose.
-                The caller should not expect the
-                <code>serviceFault</code>
-                to be returned directly but should instead expect only one of the child faults to be returned.
-            </para>
-        </section>
-        <section>
-            <title>
-                <code>loadBalancerFault</code>
-            </title>
-            <para>
-                The
-                <code>loadBalancerFault</code>
-                fault shall be returned in the event that an error occurred during a loadbalancer operation.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>Invalid authentication token. Please renew</message>
-</loadBalancerFault>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>badRequest</code>
-            </title>
-            <para>This fault indicates that the data in the request object is invalid; for example,
-                a string was used in a parameter that was expecting an integer. The fault will wrap
-                validation errors.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
-    <message>Validation fault</message>
-    <details>The object is not valid</details>
-        <validationErrors>
-            <message>Node ip is invalid. Please specify a valid ip.</message>
-        </validationErrors>
-</badRequest>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>itemNotFound</code>
-            </title>
-            <literallayout class="monospaced">
-<![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>Object not Found</message>
-</itemNotFound>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>overLimit</code>
-            </title>
-            <para>
-                This fault is returned when the user has exceeded a currently allocated limit.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>Your account is currently over the limit so your request could not be processed.</message>
-</overLimit>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>unauthorized</code>
-            </title>
-            <para>
-                This fault is returned when the user is not authorized to perform an attempted operation.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>You are not authorized to execute this operation.</message>
-</unauthorized>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>outOfVirtualIps</code>
-            </title>
-            <para>This fault indicates that there are no virtual IPs left to assign to a new
-                loadbalancer. In practice, this fault should not occur, as virtual IPs will be
-                ordered as capacity is required. If you do experience this fault, contact support so
-                that we may make more IPs available.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>
-        Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
-    </message>
-</outOfVirtualips>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>immutableEntity</code>
-            </title>
-            <para>
-                This fault is returned when a user attempts to modify an item that is not currently in a state
-                that allows modification. For example, load balancers in a status of
-                <code>PENDING_UPDATE</code>,<code>BUILD</code>, or
-                <code>DELETED</code>
-                may not be modified.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>The object at the specified URI is immutable and can not be overwritten.</message>
-</immutableEntity>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>unprocessableEntity</code>
-            </title>
-            <para>
-                This fault is returned when an operation is requested on an item that does not support the
-                operation, but the request is properly formed.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>The Object at the specified URI is unprocessable.</message>
-</unprocessableEntity>]]>
-            </literallayout>
-        </section>
-        <section>
-            <title>
-                <code>serviceUnavailable</code>
-            </title>
-            <para>
-                This fault is returned when the service is unavailable, such as when the service is undergoing
-                maintenance. Note that this does not necessarily mean that the currently configured loadbalancers
-                are unable to process traffic; it simply means that the API is currently unable to service
-                requests.
-            </para>
-            <literallayout class="monospaced">
-<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    <message>The Load balancing service is currently not available</message>
-</serviceUnavailable>]]>
-            </literallayout>
         </section>
     </chapter>
 </book>
