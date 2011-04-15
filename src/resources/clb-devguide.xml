@@ -645,7 +645,7 @@ Content-Type: text/plain; charset=UTF-8
                     &POST; is 2 per second. In the event you exceed the thresholds established for your account, a
                     <errorcode>413</errorcode>
                     (Rate Control) HTTP response will be returned with a
-                    <code>Reply-After</code>
+                    <code>Retry-After</code>
                     header to notify the client when they can attempt to try again.
                 </para>
             </section>
