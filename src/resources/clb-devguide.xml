@@ -375,13 +375,12 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Service Access/Endpoints</title>
-            <para>The load balancing service is a regionalized service, which allows for the caller
+            <para>The load balancing service is a regionalized service. It allows the caller
                 to select a region into which a load balancer is to be provisioned.
             </para>
-            <para>To determine which region to operate against, select an endpoint from below.
-                Replace the sample account ID number, 1234, with your actual account number returned
-                as part of the authentication service response.
-                <table rules="all">
+            <para>To determine which region to operate against, select an endpoint from the table
+                below. Replace the sample account ID number, <parameter>1234</parameter>, with your actual account number
+                returned as part of the authentication service response. <table rules="all">
                     <caption>Regionalized Service Endpoints</caption>
                     <thead>
                         <tr align="center">
@@ -392,12 +391,14 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td colspan="1">Chicago (ORD)</td>
-                            <td colspan="4"><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/
+                            <td colspan="4"
+                                ><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">Dallas/Ft. Worth (DFW)</td>
-                            <td colspan="4"><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code>1234/
+                            <td colspan="4"
+                                ><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
                     </tbody>
@@ -407,8 +408,7 @@ Content-Type: text/plain; charset=UTF-8
                 <emphasis role="bold">If load balancing Cloud Servers</emphasis>, you can determine the
                 appropriate region to select by viewing your Cloud Servers list and creating a load
                 balancer within the same region as the data center in which your Cloud Server
-                resides. When your resources reside in the same region as your load balancer, it
-                ensures your devices are in close proximity to each other and allows you to take
+                resides. When your resources reside in the same region as your load balancer, devices are in close proximity to each other and can take
                 advantage of ServiceNet connectivity for free data transfer between services.
             </para>
             <para>
@@ -473,10 +473,10 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>Content Compression</title>
             <para>
-                Request and response body data may be encoded with gzip compression in order to accelerate
+                Request and response body data may be encoded with gzip compression to accelerate
                 interactive performance of API calls and responses. This is controlled using the
                 <code>Accept-Encoding</code>
-                header on the request from the client and indicated by the
+                header in the request from the client and indicated by the
                 <code>Content-Encoding</code>
                 header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
@@ -577,7 +577,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td>Verb</td>
                             <td>URI</td>
                             <td>RegEx</td>
-                            <td>Default</td>
+                            <td>Default Limit</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -641,8 +641,8 @@ Content-Type: text/plain; charset=UTF-8
                 </table>
                 <para>Rate limits are applied in order relative to the verb, going from least to most
                     specific. For example, although the threshold for &POST; to /v1.0/* is 25 per minute,
-                    one cannot &POST; to /v1.0/* more than 2 times per second because the rate limits for any
-                    &POST; is 2/second. In the event you exceed the thresholds established for your account, a
+                    one cannot &POST; to /v1.0/* more than 2 times per second because the rate limit for any
+                    &POST; is 2 per second. In the event you exceed the thresholds established for your account, a
                     <errorcode>413</errorcode>
                     (Rate Control) HTTP response will be returned with a
                     <code>Reply-After</code>
@@ -659,8 +659,8 @@ Content-Type: text/plain; charset=UTF-8
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
-                            <td>Limit</td>
-                            <td>Default</td>
+                            <td>Description</td>
+                            <td>Default Limit</td>
                         </tr>
                     </thead>
                     <tbody>
