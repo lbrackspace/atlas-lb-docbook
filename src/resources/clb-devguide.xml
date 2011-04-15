@@ -1366,59 +1366,6 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Nodes</title>
-        <section>
-            <title>List, Add, Modify, and Remove Nodes</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
-                        <td>List node(s) configured for the load balancer.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&POST;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
-                        <td>Add a new node to the load balancer.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
-                        <td>List details of a specific node.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
-                        <td>Modify the configuration of a node on the load balancer.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/nodeId</td>
-                        <td>Remove a node from the load balancer.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>,
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
             <para>The nodes defined by the load balancer are responsible for servicing the requests
                 received through the load balancer's virtual IP. By default, the load balancer
                 employs a basic health check that ensures the node is listening on its defined port.
@@ -1427,10 +1374,10 @@ Content-Type: text/plain; charset=UTF-8
                 its port or does not meet the conditions of the defined active health check for the
                 load balancer, then the load balancer will not forward connections and its status
                 will be listed as <code>OFFLINE</code>. Only nodes that are in an
-                    <code>ONLINE</code> status will receive and be able to service traffic from the
+                <code>ONLINE</code> status will receive and be able to service traffic from the
                 load balancer. </para>
             <para>All nodes have an associated status that indicates whether the node is
-                    <code>ONLINE</code>, <code>OFFLINE</code>, or <code>DRAINING</code>. Only nodes
+                <code>ONLINE</code>, <code>OFFLINE</code>, or <code>DRAINING</code>. Only nodes
                 that are in <code>ONLINE</code> status will receive and be able to service traffic
                 from the load balancer. The <code>OFFLINE</code> status represents a node that
                 cannot accept or service traffic. A node in <code>DRAINING</code> status represents
@@ -1444,130 +1391,270 @@ Content-Type: text/plain; charset=UTF-8
                 changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
-            <para>When a node is added, it is assigned a unique identifier that can be used
-                for mutating operations such as changing the condition or removing it.
-                Every load balancer is dual-homed on both the public Internet and ServiceNet; as a
-                result, nodes can either be internal ServiceNet addresses or addresses on the public
-                Internet.
-            </para>
-            <para>
-                This operation does not require a request body.
-            </para>
-            <example>
-                <title>List Node Response: XML</title>
-                <programlisting language="xml">
+            <section>
+                <title>List Nodes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
+                            <td colspan="3">List node(s) configured for the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter></td>
+                            <td colspan="3">List details of a specific node.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <example>
+                    <title>List Node Response: XML</title>
+                    <programlisting language="xml">
 <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>List Node Response: JSON</title>
-                <programlisting language="javascript">
+                </example>
+                <example>
+                    <title>List Node Response: JSON</title>
+                    <programlisting language="javascript">
 <xi:include href="samples/lb-list-node-response.json" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>List Nodes Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Nodes Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Nodes Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Nodes Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Nodes Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Nodes Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Atom Nodes Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
+                </example>
+                <example>
                 <title>List Atom Node Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
                 </programlisting>
-            </example>
-            <note>
-                <para>The node's IP and port are immutable attributes and cannot be modified with a
-                    &PUT; request. Supplying an unsupported attribute will result in a
+                </example>
+                <example>
+                    <title>List Nodes Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Nodes Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Atom Nodes Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
+                </programlisting>
+                </example>
+            </section>
+            <section>
+                <title>Add Nodes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &POST;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes</td>
+                            <td colspan="3">Add a new node to the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para>When a node is added, it is assigned a unique identifier that can be used
+                    for mutating operations such as changing the condition or removing it.
+                    Every load balancer is dual-homed on both the public Internet and ServiceNet; as a
+                    result, nodes can either be internal ServiceNet addresses or addresses on the public
+                    Internet.
+                </para>
+                <example>
+                    <title>Add Nodes Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
+                </programlisting>
+                </example>
+                <example>
+                    <title>Add Nodes Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
+                </programlisting>
+                </example>
+                <example>
+                    <title>Add Nodes Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>Add Nodes Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
+                </programlisting>
+                </example>
+            </section>
+            <section>
+                <title>Modify Nodes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &PUT;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter></td>
+                            <td colspan="3">Modify the configuration of a node on the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <note>
+                    <para>The node's IP and port are immutable attributes and cannot be modified with a
+                        &PUT; request. Supplying an unsupported attribute will result in a
                         <returnvalue>400 (badRequest)</returnvalue> fault. A load balancer supports
-                    a maximum of 25 nodes; the maximum weight of a node is 100. </para>
-            </note>
-            <para>Every node in the load balancer has an associated condition which determines
-                its role within the load balancer.
-            </para>
-            <table rules="all">
-                <caption>Load Balancer Node Conditions</caption>
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Name</td>
-                        <td colspan="3">Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>ENABLED</code>
-                        </td>
-                        <td colspan="3">Node is permitted to accept new connections.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>DISABLED</code>
-                        </td>
-                        <td colspan="3">Node is not permitted to accept any new connections
-                            regardless of session persistence configuration. Existing connections
-                            are forcibly terminated.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">
-                            <code>DRAINING</code>
-                        </td>
-                        <td colspan="3">Node is allowed to service existing established connections
-                            and connections that are being directed to it as a result of the session
-                            persistence configuration.</td>
-                    </tr>
-                </tbody>
-            </table>
-            <example>
-                <title>Update Node Condition Request: XML</title>
-                <programlisting language="xml">
+                        a maximum of 25 nodes; the maximum weight of a node is 100. </para>
+                </note>
+                <para>Every node in the load balancer has an associated condition which determines
+                    its role within the load balancer.
+                </para>
+                <table rules="all">
+                    <caption>Load Balancer Node Conditions</caption>
+                    <?dbfo keep-together="always"?>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>ENABLED</code>
+                            </td>
+                            <td colspan="3">Node is permitted to accept new connections.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>DISABLED</code>
+                            </td>
+                            <td colspan="3">Node is not permitted to accept any new connections
+                                regardless of session persistence configuration. Existing connections
+                                are forcibly terminated.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>DRAINING</code>
+                            </td>
+                            <td colspan="3">Node is allowed to service existing established connections
+                                and connections that are being directed to it as a result of the session
+                                persistence configuration.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <example>
+                    <title>Update Node Condition Request: XML</title>
+                    <programlisting language="xml">
 <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>Update Node Condition Request: JSON</title>
-                <programlisting language="javascript">
+                </example>
+                <example>
+                    <title>Update Node Condition Request: JSON</title>
+                    <programlisting language="javascript">
 <xi:include href="samples/lb-update-node-request.json" parse="text"/>
                 </programlisting>
-            </example>
-        </section>
+                </example>
+            </section>
+            <section>
+                <title>Remove Nodes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &DELETE;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter></td>
+                            <td colspan="3">Remove a node from the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+            </section>
         </section>
         <section>
             <title>Virtual IPs</title>
@@ -1623,24 +1710,25 @@ Content-Type: text/plain; charset=UTF-8
             </note>
             <table rules="all">
                 <caption>Virtual IP Types</caption>
+                <?dbfo keep-together="always"?>
                 <thead>
                     <tr align="center">
-                        <td>Name</td>
-                        <td>Description</td>
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>
+                        <td colspan="1">
                             <code>PUBLIC</code>
                         </td>
-                        <td>An address that is routable on the public Internet.</td>
+                        <td colspan="3">An address that is routable on the public Internet.</td>
                     </tr>
                     <tr align="left">
-                        <td>
+                        <td colspan="1">
                             <code>SERVICENET</code>
                         </td>
-                        <td>An address that is routable only on ServiceNet.</td>
+                        <td colspan="3">An address that is routable only on ServiceNet.</td>
                     </tr>
                 </tbody>
             </table>
