@@ -277,6 +277,7 @@
     </chapter>
     <chapter>
         <title>General API Information</title>
+        <para>Ideas explained here are relevant to all operations of the API. For details of specific API operations, see the "API Operations" chapter.</para>
         <para>The Rackspace Cloud Load Balancers API is implemented using a ReSTful web service interface.
             Like other products in the Rackspace Cloud suite, the load balancing service shares a
             common token-based authentication system that allows seamless access between products
@@ -915,6 +916,9 @@ Content-Type: text/plain; charset=UTF-8
     </chapter>
     <chapter>
         <title>API Operations</title>
+        <para>This chapter explains specific API operations. For ideas relevant to all API operations, see the "General API Information" chapter.</para>
+        <section>
+            <title>Load Balancers</title>
         <section>
             <title>List Load Balancers</title>
             <informaltable rules="all">
@@ -1198,6 +1202,171 @@ Content-Type: text/plain; charset=UTF-8
             </para>
         </section>
         <section>
+                <title>Update Load Balancer Attributes</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&PUT;
+                            </td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
+                            <td>Update the properties of a load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para> This operation asynchronously updates the attributes of the specified load
+                    balancer. Upon successful validation of the request, the service will return a
+                    <returnvalue>202 (Accepted)</returnvalue> response code. A caller can poll the
+                    load balancer with its ID to wait for the changes to be applied and the load
+                    balancer to return to an <code>ACTIVE</code> status.” </para>
+                <para>
+                    This operation allows the caller to change one or more of the following attributes:
+                </para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            <code>name</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>algorithm</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>protocol</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>port</code>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                <para>
+                    This operation does not return a response body.
+                </para>
+                <note>
+                    <para>
+                        The load balancer's ID and status are immutable attributes and cannot be modified by the
+                        caller. Supplying an unsupported attribute will result in a
+                        <returnvalue>400 (badRequest)</returnvalue>
+                        fault.
+                    </para>
+                </note>
+                <example>
+                    <title>Update Load Balancer Attributes Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>Update Load Balancer Attributes Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
+                </programlisting>
+                </example>
+                <para>All load balancers also have a status attribute to signify the current
+                    configuration status of the device. This status is immutable by the caller and is
+                    updated automatically based on state changes within the service. When a load
+                    balancer is first created, it will be placed into a <code>BUILD</code> status while
+                    the configuration is being generated and applied based on the request. Once the
+                    configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.
+                    In the event of a configuration change or update, the status of the load balancer
+                    will change to <code>PENDING_UPDATE</code> to signify configuration changes are in
+                    progress but have not yet been finalized. Load balancers in a <code>SUSPENDED</code>
+                    status are configured to reject traffic and will not forward requests to back-end
+                    nodes. </para>
+                <table rules="all">
+                    <caption>Load Balancer Statuses</caption>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>ACTIVE</code>
+                            </td>
+                            <td colspan="3">
+                                Load balancer is configured properly and ready to serve traffic to incoming requests
+                                via the configured virtual IPs.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>BUILD</code>
+                            </td>
+                            <td colspan="3">
+                                Load balancer is being provisioned for the first time and configuration is being
+                                applied to bring the service online. The service will not yet be ready to serve
+                                incoming requests.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>PENDING_UPDATE</code>
+                            </td>
+                            <td colspan="3"> Load balancer is online but configuration changes are
+                                being applied to update the service based on a previous request. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>PENDING_DELETE</code>
+                            </td>
+                            <td colspan="3"> Load balancer is online but configuration changes are
+                                being applied to begin deletion of the service based on a previous
+                                request. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1" >
+                                <code>SUSPENDED</code>
+                            </td>
+                            <td colspan="3">
+                                Load balancer has been taken offline and disabled; contact Support.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>ERROR</code>
+                            </td>
+                            <td colspan="3">
+                                The system encountered an error when attempting to configure the load
+                                balancer; contact Support.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                <code>DELETED</code>
+                            </td>
+                            <td colspan="3"> Load balancers in <code>DELETED</code> status can be
+                                displayed for at least 90 days after deletion. </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        <section>
+            <title>Nodes</title>
+        <section>
             <title>List, Add, Modify, and Remove Nodes</title>
             <informaltable rules="all">
                 <thead>
@@ -1399,168 +1568,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
-            <title>Update Load Balancer Attributes</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
-                        <td>Update the properties of a load balancer.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para> This operation asynchronously updates the attributes of the specified load
-                balancer. Upon successful validation of the request, the service will return a
-                    <returnvalue>202 (Accepted)</returnvalue> response code. A caller can poll the
-                load balancer with its ID to wait for the changes to be applied and the load
-                balancer to return to an <code>ACTIVE</code> status.” </para>
-            <para>
-                This operation allows the caller to change one or more of the following attributes:
-            </para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        <code>name</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>algorithm</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>protocol</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>port</code>
-                    </para>
-                </listitem>
-            </itemizedlist>
-            <para>
-                This operation does not return a response body.
-            </para>
-            <note>
-                <para>
-                    The load balancer's ID and status are immutable attributes and cannot be modified by the
-                    caller. Supplying an unsupported attribute will result in a
-                    <returnvalue>400 (badRequest)</returnvalue>
-                    fault.
-                </para>
-            </note>
-            <example>
-                <title>Update Load Balancer Attributes Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Load Balancer Attributes Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
-                </programlisting>
-            </example>
-                <para>All load balancers also have a status attribute to signify the current
-                configuration status of the device. This status is immutable by the caller and is
-                updated automatically based on state changes within the service. When a load
-                balancer is first created, it will be placed into a <code>BUILD</code> status while
-                the configuration is being generated and applied based on the request. Once the
-                configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.
-                In the event of a configuration change or update, the status of the load balancer
-                will change to <code>PENDING_UPDATE</code> to signify configuration changes are in
-                progress but have not yet been finalized. Load balancers in a <code>SUSPENDED</code>
-                status are configured to reject traffic and will not forward requests to back-end
-                nodes. </para>
-                <table rules="all">
-                    <caption>Load Balancer Statuses</caption>
-                    <thead>
-                        <tr align="center">
-                            <td colspan="1">Name</td>
-                            <td colspan="3">Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>ACTIVE</code>
-                            </td>
-                            <td colspan="3">
-                                Load balancer is configured properly and ready to serve traffic to incoming requests
-                                via the configured virtual IPs.
-                            </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>BUILD</code>
-                            </td>
-                            <td colspan="3">
-                                Load balancer is being provisioned for the first time and configuration is being
-                                applied to bring the service online. The service will not yet be ready to serve
-                                incoming requests.
-                            </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>PENDING_UPDATE</code>
-                            </td>
-                            <td colspan="3"> Load balancer is online but configuration changes are
-                            being applied to update the service based on a previous request. </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>PENDING_DELETE</code>
-                            </td>
-                            <td colspan="3"> Load balancer is online but configuration changes are
-                            being applied to begin deletion of the service based on a previous
-                            request. </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1" >
-                                <code>SUSPENDED</code>
-                            </td>
-                            <td colspan="3">
-                                Load balancer has been taken offline and disabled; contact Support.
-                            </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>ERROR</code>
-                            </td>
-                            <td colspan="3">
-                                The system encountered an error when attempting to configure the load
-                                balancer; contact Support.
-                            </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">
-                                <code>DELETED</code>
-                            </td>
-                            <td colspan="3"> Load balancers in <code>DELETED</code> status can be
-                            displayed for at least 90 days after deletion. </td>
-                        </tr>
-                    </tbody>
-                </table>
         </section>
+        <section>
+            <title>Virtual IPs</title>
         <section>
             <title>Virtual IP Management</title>
             <informaltable rules="all">
@@ -1653,6 +1663,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Usage Reports</title>
         <section>
             <title>Usage Reporting</title>
             <informaltable rules="all">
@@ -1735,6 +1748,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Access Lists</title>
         <section>
             <title>Access List Management</title>
             <informaltable rules="all">
@@ -1840,6 +1856,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Health Monitors</title>
         <section>
             <title>Active Health Monitoring</title>
             <informaltable rules="all">
@@ -2041,6 +2060,9 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
+        </section>
+        <section>
+            <title>Sessions</title>
         <section>
             <title>Session Persistence</title>
             <informaltable rules="all">
@@ -2136,6 +2158,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Connections</title>
         <section>
             <title>Connection Logging</title>
             <informaltable rules="all">
@@ -2309,6 +2334,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Protocols</title>
         <section>
             <title>Load Balancing Protocols</title>
             <informaltable rules="all">
@@ -2358,6 +2386,9 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        </section>
+        <section>
+            <title>Algorithms</title>
         <section>
             <title>Load Balancing Algorithms</title>
             <informaltable rules="all">
@@ -2454,6 +2485,7 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
                 </programlisting>
             </example>
+        </section>
         </section>
     </chapter>
 </book>
