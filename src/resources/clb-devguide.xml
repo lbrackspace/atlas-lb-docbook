@@ -924,19 +924,19 @@ Content-Type: text/plain; charset=UTF-8
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Representation</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Representation</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;</td>
-                        <td>/loadbalancers</td>
-                        <td>List all load balancers configured for the account (IDs, names and
+                        <td colspan="1">&GET;</td>
+                        <td colspan="3">/loadbalancers</td>
+                        <td colspan="3">List all load balancers configured for the account (IDs, names and
                             status only).</td>
-                        <td>XML, JSON, Atom</td>
+                        <td colspan="2">XML, JSON, Atom</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1006,19 +1006,19 @@ Content-Type: text/plain; charset=UTF-8
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                        <td>Representations</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Representations</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId</td>
-                        <td>List details of the specified load balancer.</td>
-                        <td>JSON, XML, Atom</td>
+                        <td colspan="3">/loadbalancers/loadBalancerId</td>
+                        <td colspan="3">List details of the specified load balancer.</td>
+                        <td colspan="2">JSON, XML, Atom</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1062,17 +1062,17 @@ Content-Type: text/plain; charset=UTF-8
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;
                         </td>
-                        <td>/loadbalancers</td>
-                        <td>Create a new load balancer with the configuration defined by the request.</td>
+                        <td colspan="3">/loadbalancers</td>
+                        <td colspan="3">Create a new load balancer with the configuration defined by the request.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1166,17 +1166,17 @@ Content-Type: text/plain; charset=UTF-8
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td>&PUT;
+                            <td colspan="1">&PUT;
                             </td>
-                            <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
-                            <td>Update the properties of a load balancer.</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter></td>
+                            <td colspan="3">Update the properties of a load balancer.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1328,17 +1328,17 @@ Content-Type: text/plain; charset=UTF-8
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td>&DELETE;
+                            <td colspan="1">&DELETE;
                             </td>
-                            <td>/loadbalancers/<parameter>loadBalancerId</parameter></td>
-                            <td>Remove a load balancer from the account.</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter></td>
+                            <td colspan="3">Remove a load balancer from the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1658,56 +1658,12 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Virtual IPs</title>
-        <section>
-            <title>Virtual IP Management</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td>List all virtual IPs associated with a load balancer.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/<parameter>virtualIpId</parameter></td>
-                        <td>Remove a virtual IP.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
             <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>,
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para>A virtual IP (VIP) makes a load balancer accessible by clients. The load
+                A virtual IP (VIP) makes a load balancer accessible by clients. The load
                 balancing service supports either a public VIP, routable on the public Internet, or
                 a ServiceNet address, routable only within the region in which the load balancer
                 resides.
             </para>
-            <para>
-                This request does not require a request body.
-            </para>
-            <note>
-                <para>All load balancers must have at least one virtual IP associated with
-                    them at all times. Attempting to delete the last virtual IP will result in a
-                    <returnvalue>400 (badRequest)</returnvalue>
-                    fault.
-                </para>
-            </note>
             <table rules="all">
                 <caption>Virtual IP Types</caption>
                 <?dbfo keep-together="always"?>
@@ -1732,6 +1688,38 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
+        <section>
+            <title>List Virtual IPs</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
+                        <td colspan="3">List all virtual IPs associated with a load balancer.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                This request does not require a request body.
+            </para>
             <example>
                 <title>List Virtual IPs Response: XML</title>
                 <programlisting language="xml">
@@ -1751,11 +1739,51 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
+        <section>
+            <title>Remove Virtual IP</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&DELETE;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/<parameter>virtualIpId</parameter></td>
+                        <td colspan="3">Remove a virtual IP.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>
+                This request does not require a request body.
+            </para>
+            <note>
+                <para>All load balancers must have at least one virtual IP associated with
+                    them at all times. Attempting to delete the last virtual IP will result in a
+                    <returnvalue>400 (badRequest)</returnvalue>
+                    fault.
+                </para>
+            </note>
+        </section>
         </section>
         <section>
             <title>Usage Reports</title>
         <section>
-            <title>Usage Reporting</title>
+            <title>List Usage</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -1788,41 +1816,25 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>The load balancer usage reports provide a view of all transfer, average
-                number of connections and number of virtual IPs associated with the load balancing
-                service. Current usage represents all usage recorded within the last 24 hours.
-                Values for both
-                <code>incomingTransfer</code>
-                and
-                <code>outgoingTransfer</code>
-                are expressed in bytes
-                transferred. The optional
-                <code>startTime</code>
-                and
-                <code>endTime</code>
-                parameters can be used to filter all
-                usage. If the
-                <code>startTime</code>
-                parameter is supplied, but the
-                <code>endTime</code>
-                parameter is not then
-                all usage beginning with the
-                <code>startTime</code>
-                will be provided. Likewise, if the
-                <code>endTime</code>
-                parameter is supplied but the
-                <code>startTime</code>
-                parameter is not then all usage will be
-                returned up to the
-                <code>endTime</code>
-                specified.
-            </para>
-            <note>
-                <para>Usage is available for up to 90 days of service activity.</para>
-            </note>
             <para>
                 This operation does not require a request body.
             </para>
+            <para>The load balancer usage reports provide a view of all transfer activity, average
+                    number of connections, and number of virtual IPs associated with the load
+                    balancing service. Current usage represents all usage recorded within the
+                    preceding 24 hours. Values for both <code>incomingTransfer</code> and
+                        <code>outgoingTransfer</code> are expressed in bytes transferred. The
+                    optional <code>startTime</code> and <code>endTime</code> parameters can be used
+                    to filter all usage. If the <code>startTime</code> parameter is supplied but the
+                        <code>endTime</code> parameter is not, then all usage beginning with the
+                        <code>startTime</code> will be provided. Likewise, if the
+                        <code>endTime</code> parameter is supplied but the <code>startTime</code>
+                    parameter is not, then all usage will be returned up to the <code>endTime</code>
+                    specified. </para>
+            <note>
+                <para>Historical usage data is available for up to 90 days of service
+                        activity.</para>
+            </note>
             <example>
                 <title>Report Load Balancer Usage Response: XML</title>
                 <programlisting language="xml">
@@ -1839,40 +1851,48 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Access Lists</title>
+            <para>The access list management feature allows fine-grained network access controls to
+                be applied to the load balancer's virtual IP address. A single IP address, multiple
+                IP addresses, or entire network subnets can be added as a <code>networkItem</code>.
+                Items that are configured with the <code>ALLOW</code> type will always take
+                precedence over items with the <code>DENY</code> type. To reject traffic from all
+                items except for those with the <code>ALLOW</code> type, add a
+                    <code>networkItem</code> with an address of "0.0.0.0/0" and a <code>DENY</code>
+                type. </para>
         <section>
-            <title>Access List Management</title>
+            <title>Manage Access Lists</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Name</td>
-                        <td>URI</td>
-                        <td>Description</td>
+                        <td colspan="1">Name</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;
                         </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
-                        <td>List the access list.</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td colspan="3">List the access list.</td>
                     </tr>
                     <tr align="left">
-                        <td>&POST;
+                        <td colspan="1">&POST;
                         </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
-                        <td>Create a new access list or append to an existing access list.</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td colspan="3">Create a new access list or append to an existing access list.</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
+                        <td colspan="1">&DELETE;
                         </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/networkItemId</td>
-                        <td>Remove a network item from the access list.</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/<parameter>networkItemId</parameter></td>
+                        <td colspan="3">Remove a network item from the access list.</td>
                     </tr>
                     <tr align="left">
-                        <td>&DELETE;
+                        <td colspan="1">&DELETE;
                         </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
-                        <td>Remove the entire access list.</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
+                        <td colspan="3">Remove the entire access list.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -1886,43 +1906,31 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>The access list management feature allows for fine-grained network access
-                controls to be applied to the load balancer's virtual IP address. A single IP
-                address, multiple IP addresses, or entire network subnets can be added as a
-                networkItem. Items that are configured with the
-                <code>ALLOW</code>
-                type will always
-                take precedence over items with the
-                <code>DENY</code>
-                type. To reject traffic from
-                all items, except for those with the
-                <code>ALLOW</code>
-                type, a networkItem with an
-                address of "0.0.0.0/0" should be added with a
-                <code>DENY</code>
-                type.
-            </para>
+            <para>This operation does not require a request body.</para>
             <para>When issuing a &POST; to add to an access list, one or more network items are
-                required. If a populated access list already exists for the load balancer, it will
-                be appended with subsequent &POST; requests. One access list may have up to 100
-                network items A single address or subnet definition is considered unique and cannot
-                be duplicated between items in an access list. There are two &DELETE; operations
-                for the access list. One allows for deletion of the entire access list and the
-                other for deletion of a specific network item in the access list.
-            </para>
-            <para>
-                This operation does not require a request body.
-            </para>
+                    required. If a populated access list already exists for the load balancer, it
+                    will be appended to with subsequent &POST; requests. One access list may include
+                    up to 100 network items A single address or subnet definition is considered
+                    unique and cannot be duplicated between items in an access list. There are two
+                    &DELETE; operations for the access list. One allows for deletion of the entire
+                    access list and the other for deletion of a specific network item in the access
+                    list. </para>
             <example>
-                <title>Retrieve Access List Response: XML</title>
+                <title>List Access List Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Retrieve Access List Response: JSON</title>
+                <title>List Access List Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Atom Access List Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
@@ -1937,57 +1945,10 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>List Atom Access List Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
-                </programlisting>
-            </example>
         </section>
         </section>
         <section>
-            <title>Health Monitors</title>
-        <section>
-            <title>Active Health Monitoring</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
-                        <td>Retrieve the health monitor configuration, if one exists.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&PUT;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
-                        <td>Update the settings for a health monitor.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>&DELETE;
-                        </td>
-                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
-                        <td>Remove the health monitor.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>,
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
+            <title>Monitors</title>
             <para>The load balancing service includes a health monitoring operation which
                 periodically checks your back-end nodes to ensure they are responding correctly. If
                 a node is not responding, it is removed from rotation until the health monitor
@@ -2001,77 +1962,71 @@ Content-Type: text/plain; charset=UTF-8
             </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
+                <?dbfo keep-together="always"?>
                 <thead>
                     <tr align="center">
-                        <td>Name</td>
-                        <td>Description</td>
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>CONNECT</td>
-                        <td>Health monitor is a connect monitor.</td>
+                        <td colspan="1">CONNECT</td>
+                        <td colspan="3">Health monitor is a connect monitor.</td>
                     </tr>
                     <tr align="left">
-                        <td>HTTP</td>
-                        <td>Health monitor is an HTTP monitor.</td>
+                        <td colspan="1">HTTP</td>
+                        <td colspan="3">Health monitor is an HTTP monitor.</td>
                     </tr>
                     <tr align="left">
-                        <td>HTTPS</td>
-                        <td>Health monitor is an HTTPS monitor.</td>
+                        <td colspan="1">HTTPS</td>
+                        <td colspan="3">Health monitor is an HTTPS monitor.</td>
                     </tr>
                 </tbody>
             </table>
-            <example>
-                <title>Monitor Connections Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Monitor Connections Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Monitor HTTP Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Monitor HTTPs Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Atom Health Monitor Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
-                </programlisting>
-            </example>
-            <note>
-                <para>
-                    Attributes that are required for a &POST; request are displayed in the samples, unless
-                    otherwise specified.
-                </para>
-            </note>
-            <example>
-                <title>Monitor Connections Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Monitor Connections Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
-                </programlisting>
-            </example>
+        <section>
+            <title>Monitor Health</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td colspan="3">Retrieve the health monitor configuration, if one exists.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&PUT;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td colspan="3">Update the settings for a health monitor.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&DELETE;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor</td>
+                        <td colspan="3">Remove the health monitor.</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
             <section>
-                <title>Connection Monitor</title>
+                <title>Monitor Connections</title>
                 <para>The monitor connects to each node on its defined port to ensure that the
                     service is listening properly. The connect monitor is the most basic type of
                     health check and does no post-processing or protocol specific health checks. It
@@ -2099,15 +2054,44 @@ Content-Type: text/plain; charset=UTF-8
                         </listitem>
                     </itemizedlist>
                 </para>
+                <example>
+                    <title>Monitor Connections Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>Monitor Connections Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
+                </programlisting>
+                </example>
+            <example>
+                <title>Monitor Connections Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor Connections Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
+                </programlisting>
+            </example>
+                <example>
+                    <title>List Atom Health Monitor Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
+                </programlisting>
+                </example>
             </section>
             <section>
-                <title>HTTP/HTTPS Monitor</title>
-                <para>
-                    The HTTP &amp; HTTPS monitor is a more intelligent monitor that is capable of processing a
-                    HTTP or HTTPS response to determine the condition of a node. It supports the same basic
-                    properties as the connect monitor and includes three additional attributes that are used
-                    to evaluate the HTTP response.
-                </para>
+                <title>Monitor HTTP and HTTPS</title>
+                <para> The HTTP and HTTPS monitor is more intelligent than the connect monitor. It
+                        is capable of processing an HTTP or HTTPS response to determine the
+                        condition of a node. It supports the same basic properties as the connect
+                        monitor and includes additional attributes that are used to evaluate the
+                        HTTP response. Available attributes are: </para>
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -2118,13 +2102,13 @@ Content-Type: text/plain; charset=UTF-8
                         </listitem>
                         <listitem>
                             <para>
-                                <code>timeout</code>: Maximum number of seconds to wait for a connection to be
+                                <code>timeout</code>: The maximum number of seconds to wait for a connection to be
                                 established before timing out. (Must be a number between 1 and 300)
                             </para>
                         </listitem>
                         <listitem>
                             <para>
-                                <code>attemptsBeforeDeactivation</code>: Number of permissible monitor failures
+                                <code>attemptsBeforeDeactivation</code>: The number of permissible monitor failures
                                 before removing a node from rotation. (Must be a number between 1 and 10)
                             </para>
                         </listitem>
@@ -2146,13 +2130,49 @@ Content-Type: text/plain; charset=UTF-8
                         </listitem>
                     </itemizedlist>
                 </para>
+            <example>
+                <title>Monitor HTTP Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor HTTPS Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+                </programlisting>
+            </example>
             </section>
         </section>
         </section>
         <section>
             <title>Sessions</title>
         <section>
-            <title>Session Persistence</title>
+            <title>Manage Session Persistence</title>
+            <para>Session persistence is a feature of the load balancing service which
+                forces multiple requests from clients to be directed to the same node. This is
+                common with many web applications that do not inherently share application state
+                between back-end servers.
+            </para>
+            <table rules="all">
+                <caption>Session Persistence Modes</caption>
+                <?dbfo keep-together="always"?>
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Name</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">HTTP_COOKIE</td>
+                        <td colspan="3">A session persistence mechanism that inserts an HTTP cookie and
+                            is used to determine the destination back-end node. This is supported
+                            for HTTP load balancing only.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -2192,29 +2212,6 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>Session persistence is a feature of the load balancing service which
-                forces subsequent requests from clients to be directed to the same node. This is
-                common with many web applications that do not inherently share application state
-                between back-end servers.
-            </para>
-            <table rules="all">
-                <caption>Session Persistence Modes</caption>
-                <thead>
-                    <tr align="center">
-                        <td>Name</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>HTTP_COOKIE</td>
-                        <td>A session persistence mechanism that inserts an HTTP cookie and
-                            is used to determine the destination back-end node. This is supported
-                            for HTTP load balancing only.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
             <example>
                 <title>List Session Persistence Configuration Response: XML</title>
                 <programlisting language="xml">
@@ -2225,6 +2222,12 @@ Content-Type: text/plain; charset=UTF-8
                 <title>List Session Persistence Configuration Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Atom Session Persistence Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
@@ -2239,38 +2242,32 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>List Atom Session Persistence Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
-                </programlisting>
-            </example>
         </section>
         </section>
         <section>
             <title>Connections</title>
         <section>
-            <title>Connection Logging</title>
+            <title>Log Connections</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="1">&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/connectionlogging</td>
-                        <td>View current configuration of connection logging.</td>
+                        <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
+                        <td colspan="3">View current configuration of connection logging.</td>
                     </tr>
                     <tr align="left">
-                        <td>&PUT;
+                        <td colspan="1">&PUT;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/connectionlogging</td>
-                        <td>Enable or disable connection logging.</td>
+                        <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
+                        <td colspan="3">Enable or disable connection logging.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2284,9 +2281,8 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>This operation allows the user to enable/disable connection
-                logging.
-            </para>
+            <para>This operation allows the user to view the current connection logging
+                    configuration, enable connection logging, or disable connection logging. </para>
             <para>
                 This operation does not require a request body.
             </para>
@@ -2316,7 +2312,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         <section>
-            <title>Connection Throttling</title>
+            <title>Throttle Connections</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -2356,6 +2352,7 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
+            <para>This operation does not require a request body.</para>
             <para>
                 The connection throttling feature imposes limits on the number of connections per IP address to
                 help mitigate malicious or abusive traffic to your applications. The following properties can be
@@ -2364,10 +2361,10 @@ Content-Type: text/plain; charset=UTF-8
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
-                        <code>minConnections</code>: Allow at least this number of connections per IP address
-                        before applying throttling restrictions. Setting a value of 0 will allow unlimited
-                        simultaneous connections, otherwise set a value between 1 and 1000.
-                    </para>
+                            <code>minConnections</code>: Allow at least this number of connections
+                            per IP address before applying throttling restrictions. Setting a value
+                            of 0 allows unlimited simultaneous connections; otherwise, set a value
+                            between 1 and 1000. </para>
                 </listitem>
                 <listitem>
                     <para><code>maxConnections</code>: Maximum number of connection to allow for a single IP
@@ -2377,20 +2374,20 @@ Content-Type: text/plain; charset=UTF-8
                 </listitem>
                 <listitem>
                     <para>
-                        <code>maxConnectionRate</code>: Maximum number of connections allowed from a single IP
-                        address in the defined <code>rateInterval</code>.  Setting a value of 0 will allow an
-                        unlimited connection rate, otherwise set a value between 1 and 100000.
-                    </para>
+                            <code>maxConnectionRate</code>: Maximum number of connections allowed
+                            from a single IP address in the defined <code>rateInterval</code>.
+                            Setting a value of 0 allows an unlimited connection rate; otherwise, set
+                            a value between 1 and 100000. </para>
                 </listitem>
                 <listitem>
                     <para><code>rateInterval</code>: Frequency (in seconds) at which the
-                        <code>maxConnectionRate</code> is assessed. For example, a <code>maxConnectionRate</code>
-                        of 30 with a <code>rateInterval</code> of 60 would allow a maximum of 30 connections per
-                        minute for a single IP address.  Must specify a value between 1 and 3600.
-                    </para>
+                                <code>maxConnectionRate</code> is assessed. For example, a
+                                <code>maxConnectionRate</code> of 30 with a
+                                <code>rateInterval</code> of 60 would allow a maximum of 30
+                            connections per minute for a single IP address. This value must be
+                            specified between 1 and 3600. </para>
                 </listitem>
             </itemizedlist>
-            <para>This operation does not require a request body.</para>
             <example>
                 <title>List Connection Throttling Configuration Response: XML</title>
                 <programlisting language="xml">
@@ -2426,7 +2423,7 @@ Content-Type: text/plain; charset=UTF-8
         <section>
             <title>Protocols</title>
         <section>
-            <title>Load Balancing Protocols</title>
+            <title>List Load Balancing Protocols</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -2453,14 +2450,13 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>All load balancers must define the protocol of the service which is being
-                load balanced. The protocol selection should be based on the protocol of the
-                back-end nodes. When configuring a load balancer, the port selected will be the
-                default port for the given protocol unless otherwise specified.
-            </para>
             <para>
                 This operation does not require a request body.
             </para>
+            <para>All load balancers must define the protocol of the service which is being load
+                    balanced. The protocol selection should be based on the protocol of the back-end
+                    nodes. When configuring a load balancer, the default port for the given protocol
+                    will be selected unless otherwise specified. </para>
             <example>
                 <title>List Load Balancing Protocols Response: XML</title>
                 <programlisting language="xml">
@@ -2477,22 +2473,75 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Algorithms</title>
-        <section>
-            <title>Load Balancing Algorithms</title>
-            <informaltable rules="all">
+            <para>All load balancers utilize an algorithm that defines how traffic should be
+                directed between back-end nodes. The default algorithm for newly created load
+                balancers is <code>RANDOM</code>, which can be overridden at creation time or
+                changed after the load balancer has been initially provisioned. The algorithm name
+                is to be constant within a major revision of the load balancing API, though new
+                algorithms may be created with a unique algorithm name within a given major revision
+                of the service API. </para>
+            <table rules="all">
+                <caption>Load Balancing Algorithms</caption>
                 <thead>
                     <tr align="center">
-                        <td>Verb</td>
-                        <td>URI</td>
-                        <td>Description</td>
+                        <td colspan="2">Name</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
+                        <td colspan="2">
+                            <code>LEAST_CONNECTIONS</code>
                         </td>
-                        <td>/loadbalancers/algorithms</td>
-                        <td>List all supported load balancing algorithms.</td>
+                        <td colspan="3">The node with the lowest number of connections will receive
+                            requests.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">
+                            <code>RANDOM</code>
+                        </td>
+                        <td colspan="3">Back-end servers are selected at random.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">
+                            <code>ROUND_ROBIN</code>
+                        </td>
+                        <td colspan="3">Connections are routed to each of the back-end servers in turn.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">
+                            <code>WEIGHTED_LEAST_CONNECTIONS</code>
+                        </td>
+                        <td colspan="3">Each request will be assigned to a node based on the number of
+                            concurrent connections to the node and its weight.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">
+                            <code>WEIGHTED_ROUND_ROBIN</code>
+                        </td>
+                        <td colspan="3">A round robin algorithm, but with different proportions of traffic
+                            being directed to the back-end nodes. Weights must be defined as part of
+                            the load balancer's node configuration.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        <section>
+            <title>List Load Balancing Algorithms</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;
+                        </td>
+                        <td colspan="3">/loadbalancers/algorithms</td>
+                        <td colspan="3">List all supported load balancing algorithms.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2505,62 +2554,9 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>All load balancers utilize an algorithm that defines how traffic should be
-                directed between back-end nodes. The default algorithm for newly created load
-                balancers is <code>RANDOM</code>, which can be overridden at creation time or
-                changed after the load balancer has been initially provisioned. The algorithm name
-                is to be constant within a major revision of the load balancing API, though new
-                algorithms may be created with a unique algorithm name within a given major revision
-                of the service API. </para>
             <para>
                 This operation does not require a request body.
             </para>
-            <table rules="all">
-                <caption>Load Balancing Algorithms</caption>
-                <thead>
-                    <tr align="center">
-                        <td>Name</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td>
-                            <code>LEAST_CONNECTIONS</code>
-                        </td>
-                        <td>The node with the lowest number of connections will receive
-                            requests.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>
-                            <code>RANDOM</code>
-                        </td>
-                        <td>Back-end servers are selected at random.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>
-                            <code>ROUND_ROBIN</code>
-                        </td>
-                        <td>Connections are routed to each of the back-end servers in turn.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>
-                            <code>WEIGHTED_LEAST_CONNECTIONS</code>
-                        </td>
-                        <td>Each request will be assigned to a node based on the number of
-                            concurrent connections to the node and its weight.</td>
-                    </tr>
-                    <tr align="left">
-                        <td>
-                            <code>WEIGHTED_ROUND_ROBIN</code>
-                        </td>
-                        <td>A round robin algorithm, but with different proportions of traffic
-                            being directed to the back-end nodes. Weights must be defined as part of
-                            the load balancer's node configuration.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
             <example>
                 <title>List Load Balancing Algorithms Response: XML</title>
                 <programlisting language="xml">
