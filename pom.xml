@@ -9,21 +9,13 @@
 
     <name>Loadbalancing Public API Spec</name>
     <packaging>jar</packaging>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>repos.research.rackspace.cloud.releases</id>
-
-            <name>Rackspace Cloud Research Releases</name>
-            <url>http://maven.research.rackspacecloud.com/content/repositories/releases</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
+       <pluginRepositories>
+           <pluginRepository>
+               <id>rackspace-research</id>
+               <name>Rackspace Research Repository</name>
+       <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+           </pluginRepository>
+       </pluginRepositories>
 
     <build>
         <plugins>
