@@ -1,5 +1,0 @@
-<cluster
-       xmlns="http://docs.openstack.org/loadbalancers/api/management/v1.0"
-       name="Cluster Delta"
-       description="The fourth best cluster, ever."
-       username="aaa" />

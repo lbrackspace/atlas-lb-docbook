@@ -29,9 +29,7 @@
     </nodes>
     <sessionPersistence persistenceType="HTTP_COOKIE"/>
     <connectionThrottle
-        minConnections="10"
-        maxConnections="100"
-        maxConnectionRate="50"
+        maxRequestRate="50"
         rateInterval="60" />
     <cluster name="c1.dfw1" />
     <created time="2010-11-30T03:23:42Z" />
