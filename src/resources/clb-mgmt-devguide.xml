@@ -264,25 +264,6 @@
                         <td colspan="3">Retrieve a cluster by id.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
-                    <tr align="left">
-                        <td colspan="1">&POST;</td>
-                        <td colspan="5">/clusters</td>
-                        <td colspan="3">Create a new cluster.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&PUT;</td>
-                        <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
-                        <td colspan="3">Update the name, description, username, or password of a
-                            cluster.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;</td>
-                        <td colspan="5">/clusters/<parameter>clusterId</parameter></td>
-                        <td colspan="3">Remove a cluster.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
                 </tbody>
             </informaltable>
             <para>
@@ -329,30 +310,6 @@
                 <title>List Specified Cluster Response: JSON</title>
                 <programlisting language="json">
 <xi:include href="samples/lb-list-clusters-clusterid-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Create Cluster Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-cluster.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Create Cluster Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-create-cluster.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Cluster Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-cluster.xml" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Cluster Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-update-cluster.json" parse="text" />
                 </programlisting>
             </example>
         </section>
