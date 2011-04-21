@@ -352,7 +352,7 @@
             <example>
                 <title>Update Cluster Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-cluster.xml" parse="text" />
+<xi:include href="samples/lb-update-cluster.json" parse="text" />
                 </programlisting>
             </example>
         </section>
