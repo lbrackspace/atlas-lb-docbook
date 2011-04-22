@@ -7,7 +7,7 @@
         "algorithm": "RANDOM",
         "status": "BUILD",
         "cluster": {
-            "name": "ztm-n01.staging1.lbaas.rackspace.net"
+            "name": "ztm-n01.staging1.lbaas.demo.net"
         },
         "nodes": [
             {
