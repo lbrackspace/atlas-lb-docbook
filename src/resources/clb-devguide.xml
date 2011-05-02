@@ -221,7 +221,8 @@
         <para>Ideas explained here are relevant to all operations of the OpenStack API.</para>
         <section>
             <title>Authentication</title>
-            <para>Common to OpenStack API</para>
+            <para>Load Balancing will use the standard defined by OpenStack for authentication</para>
+            <para>Refer to link http://wiki.openstack.org/openstack-authn for detailed information</para>
         </section>
         <section>
             <title>Service Access/Endpoints</title>
@@ -271,35 +272,281 @@
                 </tbody>
             </table>
         </section>
-        <section>
+
+            <section>
             <title>Content Compression</title>
-            <para>Common to all of OpenStackAPI.</para>
-        </section>
-        <section>
-            <title>Persistent Connections</title>
-             <para>Common to all of OpenStackAPI.</para>
-        </section>
-        <section>
-            <title>Paginated Collections</title>
-            <para>Common to all of OpenStackAPI.</para>
-        </section>
+            <para>
+                       Request and response body data may be encoded with gzip compression to accelerate
+                       interactive performance of API calls and responses. This is controlled using the
+                       <code>Accept-Encoding</code>
+                       header in the request from the client and indicated by the
+                       <code>Content-Encoding</code>
+                       header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
+                   </para>
+                   <table rules="all">
+                       <caption>Encoding Headers</caption>
+                       <thead>
+                           <tr align="center">
+                               <td>Header Type</td>
+                               <td>Name</td>
+                               <td>Value</td>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr align="left">
+                               <td>HTTP/1.1 Request</td>
+                               <td>
+                                   <code>Accept-Encoding</code>
+                               </td>
+                               <td>
+                                   <code>gzip</code>
+                               </td>
+                           </tr>
+                           <tr align="left">
+                               <td>HTTP/1.1 Response</td>
+                               <td>
+                                   <code>Content-Encoding</code>
+                               </td>
+                               <td>
+                                   <code>gzip</code>
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </section>
+               <section>
+                   <title>Persistent Connections</title>
+                   <para>
+                       By default, the API supports persistent connections via <code>HTTP/1.1</code> keepalives.
+                       All connections will be kept alive unless the connection header is set to close.
+                   </para>
+                   <para>
+                       To prevent abuse, HTTP sessions have a timeout of 20 seconds before being closed.
+                   </para>
+                   <note>
+                       <para>
+                           The server may close the connection at any time and clients should not rely on this behavior.
+                       </para>
+                   </note>
+               </section>
+               <section>
+                   <title>Paginated Collections</title>
+                   <para>To reduce load on the service, list operations will return a maximum of 100 items
+                       at a time. To navigate the collection, the
+                       <code>limit</code>
+                       and
+                       <code>marker</code>
+                       parameters (for example,
+                       <code>?limit=50&amp;marker=1</code>
+                       ) can be set in the URI. If a marker beyond the end of a list is given, an empty list is
+                       returned. Note that list operations never return
+                       <returnvalue>404</returnvalue>
+                       (itemNotFound) faults.
+                   </para>
+               </section>
+
         <section>
             <title>Limits</title>
-            <para>Limits that are queriable beforehand on things like max name length, max VIPs per
-                load balancer, max health monitors per load balancer, etc </para>
+            <para>Limits are queriable beforehand on things like max name length of loadbalancer, max VIPs per
+                load balancer, max health monitors per load balancer, max nodes per loadbalancer </para>
             <section>
                 <title>Determining Limits Programmatically</title>
                 <para>
-                    Applications can programmatically determine current application limits - this needs to be
-                    further defined</para>
+                    Applications can programmatically determine current application limits
+                </para>
                  </section>
         </section>
         <section>
             <title>Faults</title>
             <para> API calls that return an error return one of the following fault objects. All
-                fault objects extend from the base fault, <code>serviceFault</code>, for easier
-                exception handling for languages that support it. Again these are probably
-                common to all OpenStack APIs</para>
+                           fault objects extend from the base fault, <code>serviceFault</code>, for easier
+                           exception handling for languages that support it. </para>
+                       <section>
+                           <title>
+                               serviceFault
+                           </title>
+                           <para>
+                               The
+                               <code>serviceFault</code>
+                               and by extension all other faults include
+                               <code>message</code>
+                               and
+                               <code>detail</code>
+                               elements which contain strings describing the nature of the fault
+                               as well as a
+                               <code>code</code>
+                               attribute representing the HTTP response code for convenience.
+                               The
+                               <code>code</code>
+                               attribute of the fault is for the convenience of the caller so that they may retrieve the response
+                               code from the HTTP response headers
+                               or directly from the fault object if they choose.
+                               The caller should not expect the
+                               <code>serviceFault</code>
+                               to be returned directly but should instead expect only one of the child faults to be returned.
+                           </para>
+                       </section>
+                       <section>
+                           <title>
+                               badRequest
+                           </title>
+                           <para>This fault indicates that the data in the request object is invalid; for example,
+                               a string was used in a parameter that was expecting an integer. The fault will wrap
+                               validation errors.
+                           </para>
+                           <example>
+                               <title>Fault Response, badRequest</title>
+                           <literallayout class="monospaced">
+           <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
+               <message>Validation fault</message>
+               <details>The object is not valid</details>
+                   <validationErrors>
+                       <message>Node ip is invalid. Please specify a valid ip.</message>
+                   </validationErrors>
+           </badRequest>]]>
+                           </literallayout>
+                               </example>
+                       </section>
+                       <section>
+                           <title>
+                               immutableEntity
+                           </title>
+                           <para>
+                               This fault is returned when a user attempts to modify an item that is not currently in a state
+                               that allows modification. For example, load balancers in a status of
+                               <code>PENDING_UPDATE</code>,<code>BUILD</code>, or
+                               <code>DELETED</code>
+                               may not be modified.
+                           </para>
+                           <example>
+                               <title>Fault Response, immutableEntity</title>
+                               <literallayout class="monospaced">
+           <![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>The object at the specified URI is immutable and can not be overwritten.</message>
+           </immutableEntity>]]>
+                           </literallayout>
+                           </example>
+                       </section>
+                       <section>
+                           <title>
+                               itemNotFound
+                           </title>
+                           <example>
+                               <title>Fault Response, itemNotFound</title>
+                           <literallayout class="monospaced">
+           <![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>Object not Found</message>
+           </itemNotFound>]]>
+                           </literallayout>
+                               </example>
+                       </section>
+                       <section>
+                           <title>
+                               loadBalancerFault
+                           </title>
+                           <para>
+                               The
+                               <code>loadBalancerFault</code>
+                               fault shall be returned in the event that an error occurred during a loadbalancer operation.
+                           </para>
+                           <example>
+                               <title>Fault Response, loadBalancerFault</title>
+                               <literallayout class="monospaced">
+           <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>Invalid authentication token. Please renew</message>
+           </loadBalancerFault>]]>
+                           </literallayout>
+                           </example>
+                       </section>
+                       <section>
+                           <title>
+                               outOfVirtualIps
+                           </title>
+                           <para>This fault indicates that there are no virtual IPs left to assign to a new
+                               load balancer. In practice, this fault should not occur, as virtual IPs will be
+                               ordered as capacity is required. If you do experience this fault, contact support so
+                               that we may make more IPs available.
+                           </para>
+                           <example>
+                               <title>Fault Response, outOfVirtualIps</title>
+                           <literallayout class="monospaced">
+           <![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>
+                   Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
+               </message>
+           </outOfVirtualips>]]>
+                           </literallayout>
+                               </example>
+                       </section>
+                       <section>
+                           <title>
+                               overLimit
+                           </title>
+                           <para>
+                               This fault is returned when the user has exceeded a currently allocated limit.
+                           </para>
+                           <example>
+                               <title>Fault Response, overLimit</title>
+                               <literallayout class="monospaced">
+           <![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>Your account is currently over the limit so your request could not be processed.</message>
+           </overLimit>]]>
+                           </literallayout>
+                           </example>
+                       </section>
+                       <section>
+                           <title>
+                               serviceUnavailable
+                           </title>
+                           <para>
+                               This fault is returned when the service is unavailable, such as when the service is undergoing
+                               maintenance. Note that this does not necessarily mean that the currently configured loadbalancers
+                               are unable to process traffic; it simply means that the API is currently unable to service
+                               requests.
+                           </para>
+                           <example>
+                               <title>Fault Response, serviceUnavailable</title>
+                           <literallayout class="monospaced">
+           <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>The Load balancing service is currently not available</message>
+           </serviceUnavailable>]]>
+                           </literallayout>
+                               </example>
+                       </section>
+                       <section>
+                           <title>
+                               unauthorized
+                           </title>
+                           <para>
+                               This fault is returned when the user is not authorized to perform an attempted operation.
+                           </para>
+                           <example>
+                               <title>Fault Response, unauthorized</title>
+                               <literallayout class="monospaced">
+           <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>You are not authorized to execute this operation.</message>
+           </unauthorized>]]>
+                           </literallayout>
+                           </example>
+                       </section>
+                       <section>
+                           <title>
+                               unprocessableEntity
+                           </title>
+                           <para>
+                               This fault is returned when an operation is requested on an item that does not support the
+                               operation, but the request is properly formed.
+                           </para>
+                           <example>
+                               <title>Fault Response, unprocessableEntity</title>
+                               <literallayout class="monospaced">
+           <![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+               <message>The Object at the specified URI is unprocessable.</message>
+           </unprocessableEntity>]]>
+                           </literallayout>
+                           </example>
+                       </section>
+
         </section>
     </chapter>
     <chapter>
@@ -591,10 +838,8 @@
                 </para>
                 <note>
                     <para>
-                        The load balancer's ID and status are immutable attributes
-                        (do we need to add port and and protocol here as well?) Leaving
-                        them in for now and cannot be modified by the
-                        caller. Supplying an unsupported attribute will result in a
+                        The load balancer's ID, status, port and protocol  are immutable attributes
+                        and cannot be modified by the caller. Supplying an unsupported attribute will result in a
                         <returnvalue>400 (badRequest)</returnvalue>
                         fault.
                     </para>
@@ -749,9 +994,9 @@
                 <code>ONLINE</code>, <code>OFFLINE</code>. Only nodes
                 that are in <code>ONLINE</code> status will receive and be able to service traffic
                 from the load balancer. The <code>OFFLINE</code> status represents a node that
-                cannot accept or service traffic. The "draining node" can be added as an extension.
-                If the traffic manager receives a requestand session persistence requires that the node is used,
-                the traffic manager will use it. The status is determined by the passive or active health
+                cannot accept or service traffic. If the traffic manager receives a requestand session
+                persistence requires that the node is used, the traffic manager will use it.
+                The status is determined by the passive or active health
                 monitors. </para>
             <para>The caller can assign weights to the nodes as part of the weight attribute of the node
                   element. When the nodes do not already have an assigned weight, the service will automatically
@@ -860,7 +1105,7 @@
                 </para>
                 <para>When a node is added, it is assigned a unique identifier that can be used
                     for mutating operations such as changing the condition or removing it.
-                    Every load balancer is dual-homed on both the public Internet and private; as a
+                    Every load balancer is dual-homed on both the public Internet and internal; as a
                     result, nodes can either be internal private addresses or addresses on the public
                     Internet.
                 </para>
@@ -1252,7 +1497,8 @@
                         <listitem>
                             <para>
                                 <code>delay</code>: The minimum number of seconds to wait before checking the health
-                                      of a node after it is put into OFFLINE status.
+                                      of a node after it is put into OFFLINE status. This is the minimum time between
+                                      calls to a monitor.
                             </para>
                         </listitem>
                         <listitem>
@@ -1323,10 +1569,7 @@
                         </listitem>
                         <listitem>
                             <para><code>path</code>: The HTTP path that will be used in the sample request.
-                                The most basic proposal could be to support “path” only and assume that method is
-                                always “GET”
-                                and that status code is expected to be always 200 to declare probe success.
-                                This will be widely supported but  is not very powerful. Needs researching
+                                This must be a string beginning with a / (forward slash).
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -1651,13 +1894,12 @@
             <title>Algorithms</title>
             <para>All load balancers utilize an algorithm that defines how traffic should be
                 directed between back-end nodes. The default algorithm for newly created load
-                balancers is <code>RANDOM</code>, which can be overridden at creation time or
+                balancers is <code>ROUND-ROBIN</code>, which can be overridden at creation time or
                 changed after the load balancer has been initially provisioned. The algorithm name
                 is to be constant within a major revision of the load balancing API, though new
                 algorithms may be created with a unique algorithm name within a given major revision
-                of the service API. It was decided that ROUND-ROBING
-                would be the default protocol. If an implementation doesn’t support a protocol,
-                it should return “Invalid value”</para>
+                of the service API. If an implementation doesn’t support a algorithm,
+                it should return “Not Implemented”</para>
             <table rules="all">
                 <caption>Load Balancing Algorithms</caption>
                 <thead>
@@ -1759,7 +2001,9 @@
             this core specification (using the base API) should work against extended
             implementation as specified in this document. Therefore, applications should not
             receive values not specified in this specification or obtain a different behavior than
-            expected when they are not using (or aware of the availability of) extended APIs.
+            expected when they are not using (or aware of the availability of) extended APIs. For detailed
+            specification refer to openStack documentation at
+            http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html
         </para>
         <section>
             <title>Discovering extentions</title>
@@ -1775,16 +2019,14 @@
                 extension URI.
             </para>
             <para>
-                &POST;
-                <code>/loadbalancers/ext/<![CDATA[<ext-name>]]>   </code>
-            </para>
-            <para>
                 The sames load-balancer cand be retrieved using either:
                 &GET;
                 <code>/loadbalancers/loadBalancerId</code>
                 in which case, only the deatures and attributes
-                in this document are returned OR GET/loadbalancer/ex/ext-name/loadBalancerId which returns
-                the extended version of the loadbalancer (with extra attributes).
+                in this document are returned OR
+                 &GET;
+                <code>/loadbalancer/ex/ext-name/loadBalancerId </code>
+                which returns the extended version of the loadbalancer (with extra attributes).
             </para>
             <para>
                 Clients can always use the core APIs for resources created or updated with extension APIs.
