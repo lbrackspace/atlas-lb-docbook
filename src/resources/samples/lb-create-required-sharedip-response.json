@@ -4,7 +4,7 @@
         "id": 144,
         "protocol": "HTTP",
         "port": 83,
-        "algorithm": "RANDOM",
+        "algorithm": "ROUND_ROBIN",
         "status": "BUILD",
         "cluster": {
             "name": "ztm-n01.staging1.lbaas.demo.net"
@@ -15,8 +15,7 @@
                 "id": 653,
                 "port": 80,
                 "status": "ONLINE",
-                "condition": "ENABLED",
-                "weight": 1
+                "condition": "ENABLED"
             }
         ],
         "virtualIps": [

@@ -4,7 +4,7 @@
         "name":"sample-loadbalancer",
         "protocol":"HTTP",
         "port": 80,
-        "algorithm":"RANDOM",
+        "algorithm":"ROUND_ROBIN",
         "status":"ACTIVE",
         "connectionLogging":{
             "enabled":"true"

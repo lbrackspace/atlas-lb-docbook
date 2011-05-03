@@ -1,5 +1,4 @@
 {"node":{
-        "condition": "ENABLED",
-        "weight": 59
+        "condition": "ENABLED"
     }
 }

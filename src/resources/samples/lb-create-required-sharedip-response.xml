@@ -1,7 +1,7 @@
 <loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     id="144"
     name="a-new-loadbalancer"
-    algorithm="RANDOM"
+    algorithm="ROUND_ROBIN"
     protocol="HTTP"
     port="83"
     status="BUILD">
@@ -18,8 +18,7 @@
             address="10.1.1.1"
             port="80"
             condition="ENABLED"
-            status="ONLINE"
-            weight="1" />
+            status="ONLINE" />
     </nodes>
     <cluster name="ztm-n03.staging1.lbaas.demo.net" />
     <created time="2011-02-08T21:19:55Z" />

@@ -3,5 +3,4 @@
     address="10.1.1.1"
     port="80"
     condition="ENABLED"
-    status="ONLINE"
-    weight="12" />
+    status="ONLINE" />

@@ -991,17 +991,12 @@
                 <code>ONLINE</code> status will receive and be able to service traffic from the
                 load balancer. </para>
             <para>All nodes have an associated status that indicates whether the node is
-                <code>ONLINE</code>, <code>OFFLINE</code>. Only nodes
+                <code>ONLINE</code> or <code>OFFLINE</code>. Only nodes
                 that are in <code>ONLINE</code> status will receive and be able to service traffic
                 from the load balancer. The <code>OFFLINE</code> status represents a node that
-                cannot accept or service traffic. If the traffic manager receives a requestand session
+                cannot accept or service traffic. If the traffic manager receives a request and session
                 persistence requires that the node is used, the traffic manager will use it.
-                The status is determined by the passive or active health
-                monitors. </para>
-            <para>The caller can assign weights to the nodes as part of the weight attribute of the node
-                  element. When the nodes do not already have an assigned weight, the service will automatically
-                  set the weight to "1" for all nodes.
-            </para>
+                The status is determined by the passive or active health monitors. </para>
             <para>When a node is added, it is assigned a unique identifier that can be used for mutating
                   operations such as changing the condition and removing it.
             </para>
@@ -1171,8 +1166,7 @@
                     <para>The node's IP and port are immutable attributes and cannot be modified with a
                         &PUT; request. Supplying an unsupported attribute will result in a
                         <returnvalue>400 (badRequest)</returnvalue> fault. A load balancer supports
-                        a maximum number of nodes. The number of nodes is a configurable property;
-                        the maximum weight of a node is 100. </para>
+                        a maximum number of nodes. The number of nodes is a configurable property. </para>
                 </note>
                 <para>Every node in the load balancer has an associated condition which determines
                     its role within the load balancer.
@@ -1545,28 +1539,10 @@
                 <para> The HTTP and HTTPS monitor is more intelligent than the connect monitor. It
                         is capable of processing an HTTP or HTTPS response to determine the
                         condition of a node. It supports the same basic properties as the connect
-                        monitor and includes additional attributes that are used to evaluate the
-                        HTTP response. Available attributes are: </para>
+                        monitor and includes additional attributes of path that is used to evaluate the
+                        HTTP response. </para>
                 <para>
                     <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>
-                                <code>delay</code>: The minimum number of seconds to wait before executing the
-                                health monitor. (Must be a number between 1 and 3600)
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                <code>timeout</code>: The maximum number of seconds to wait for a connection to be
-                                established before timing out. (Must be a number between 1 and 300)
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                <code>attemptsBeforeDeactivation</code>: The number of permissible monitor failures
-                                before removing a node from rotation. (Must be a number between 1 and 10)
-                            </para>
-                        </listitem>
                         <listitem>
                             <para><code>path</code>: The HTTP path that will be used in the sample request.
                                 This must be a string beginning with a / (forward slash).
@@ -1929,22 +1905,6 @@
                         <td colspan="3">Connections are routed to each of the back-end servers in turn. This should
                                         be the default proctocol</td>
                     </tr>
-                    <tr align="left">
-                        <td colspan="2">
-                            <code>WEIGHTED_LEAST_CONNECTIONS</code>
-                        </td>
-                        <td colspan="3">Each request will be assigned to a node based on the number of
-                            concurrent connections to the node and its weight.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="2">
-                            <code>WEIGHTED_ROUND_ROBIN</code>
-                        </td>
-                        <td colspan="3">A round robin algorithm, but with different proportions of traffic
-                            being directed to the back-end nodes. Weights must be defined as part of
-                            the load balancer's node configuration.
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         <section>
@@ -1997,16 +1957,16 @@
         <title>API Extensions</title>
         <para>Implementations of the API specifications are free to augment with
             extensions as they see appropriate to extend Load Balancing features (e.g. support
-            for new LB algorithms) in this API or offer new ones.All client applications written to
+            for new LB algorithms) in this API or offer new ones. All client applications written to
             this core specification (using the base API) should work against extended
             implementation as specified in this document. Therefore, applications should not
             receive values not specified in this specification or obtain a different behavior than
             expected when they are not using (or aware of the availability of) extended APIs. For detailed
             specification refer to openStack documentation at
-            http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html
+            <para>http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html </para>
         </para>
         <section>
-            <title>Discovering extentions</title>
+            <title>Discovering extensions</title>
             <para>
                 Implementations should allow users to discover if the LB service supports extensions.
                 together with details about the extensions(document pointers, etc.).
@@ -2019,10 +1979,10 @@
                 extension URI.
             </para>
             <para>
-                The sames load-balancer cand be retrieved using either:
+                The sames load balancer can be retrieved using either:
                 &GET;
                 <code>/loadbalancers/loadBalancerId</code>
-                in which case, only the deatures and attributes
+                in which case, only the features and attributes
                 in this document are returned OR
                  &GET;
                 <code>/loadbalancer/ex/ext-name/loadBalancerId </code>
@@ -2031,7 +1991,7 @@
             <para>
                 Clients can always use the core APIs for resources created or updated with extension APIs.
                 Extension resources are always defined as pure supersets of core resources. New types of resources can
-                be added in the extension API that have no counterpart in the core API. These resouces can be used
+                be added in the extension API that have no counterpart in the core API. These resources can be used
                 only from the extension API.
             </para>
         </section>
