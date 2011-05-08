@@ -790,37 +790,37 @@
                     malicious traffic.
                 </para>
             <example>
-                <title>Update Host Assignment for Specified Load Balancer Response: XML</title>
+                <title>Update Host Assignment Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-loadbalancer-host.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Specified Load Balancer Response: JSON</title>
+                <title>Update Host Assignment Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers Response: XML</title>
+                <title>Update Host Assignment for Multiple Load Balancers with specified Host Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers Request: JSON</title>
+                <title>Update Host Assignment for Multiple Load Balancers with specified host Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Specified Load Balancer Request: XML</title>
+                <title>Update Host Assignment for Multiple Load Balancers with Host chosen by algorithm Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Specified Load Balancer Request: JSON</title>
+                <title>Update Host Assignment for Multiple Load Balancers with Host chosen by algorithm Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
