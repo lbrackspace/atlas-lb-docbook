@@ -33,8 +33,8 @@
       xmlns:html="http://www.w3.org/1999/xhtml"
       xmlns:db="http://docbook.org/ns/docbook">
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
-    <title>Cloud Load Balancers Developer Guide</title>
-    <titleabbrev>Cloud LB Dev Guide</titleabbrev>
+    <title>OpenStack Load Balancers Developer Guide</title>
+    <titleabbrev>OpenStack LB Dev Guide</titleabbrev>
     <info>
         <author>
             <personname>
@@ -55,7 +55,7 @@
         </legalnotice>
         <abstract>
             <para>This document is intended for software developers interested in developing
-                applications using the Cloud Load Balancers Application Program Interface
+                applications using the OpenStack Load Balancers Application Program Interface
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
@@ -71,7 +71,7 @@
         <section>
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
-                the Cloud Load Balancers API. It assumes the reader has a general understanding of
+                the OpenStack Load Balancers API. It assumes the reader has a general understanding of
                 load balancing concepts and is familiar with:
             </para>
             <para>
@@ -136,21 +136,20 @@
     </chapter>
     <chapter>
         <title>Concepts</title>
-        <para>To use Cloud Load Balancers API effectively, you should understand several key
+        <para>To use OpenStack Load Balancers API effectively, you should understand several key
             concepts:
         </para>
         <section>
             <title>Load Balancer</title>
-            <para>A load balancer is a logical device which belongs to a cloud account. It is used
-                to distribute workloads between multiple back-end systems or services, based on the
-                criteria defined as part of its configuration.
+            <para>A load balancer is a logical device. It is used to distribute workloads between
+                multiple back-end systems or services, based on the criteria defined as part of its configuration.
             </para>
         </section>
         <section>
             <title>Virtual IP</title>
             <para>A virtual IP is an Internet Protocol (IP) address configured on the load balancer
                 for use by clients connecting to a service that is load balanced. Incoming
-                connections are distributed to back-end nodes based on the configuration of the load
+                connections and reqeusts are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
         <section>
@@ -180,7 +179,7 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>
-                                connect
+                                CONNECT
                             </para>
                         </listitem>
                         <listitem>
@@ -226,7 +225,7 @@
         </section>
         <section>
             <title>Service Access/Endpoints</title>
-            <para>Common to OpenStack API</para>
+            <para>http://openstackloadbalancing/path</para>
         </section>
         <section>
             <title>Request/Response Types</title>
@@ -346,16 +345,171 @@
                </section>
 
         <section>
-            <title>Limits</title>
-            <para>Limits are queriable beforehand on things like max name length of loadbalancer, max VIPs per
-                load balancer, max health monitors per load balancer, max nodes per loadbalancer </para>
-            <section>
-                <title>Determining Limits Programmatically</title>
-                <para>
-                    Applications can programmatically determine current application limits
-                </para>
-                 </section>
-        </section>
+                    <title>Limits</title>
+                    <para>Accounts may be preconfigured set of thresholds (or limits) to
+                        manage capacity and prevent abuse of the system. The system recognizes two kinds of
+                        limits: rate limits and absolute limits. Rate limits are thresholds that are reset
+                        after a certain amount of time passes. Absolute limits are fixed.
+                    </para>
+                    <section>
+                        <title>Rate Limits</title>
+                        <para>
+                            We specify rate limits in terms of both a
+                            human-readable wild-card URI and a
+                            machine-processable regular expression. The
+                            regular expression boundary matcher '^' takes
+                            effect after the root URI path. For example, the
+                            regular expression
+                            <code>^/v1.1/1234/loadbalancers</code>
+                            would match the bolded portion of the following URI:
+                            <code>https://loadbalancers.api.openstack.org</code>
+                            <emphasis role="bold"><code>/v1.1/1234/loadbalancers</code></emphasis>.
+                        </para>
+                        <table rules="all">
+                            <caption>Default Rate Limits</caption>
+                            <?dbfo keep-together="always"?>
+                            <thead>
+                                <tr align="center">
+                                    <td>Verb</td>
+                                    <td>URI</td>
+                                    <td>RegEx</td>
+                                    <td>Default Limit</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr align="left">
+                                    <td>&GET;
+                                    </td>
+                                    <td>/v1.1/*</td>
+                                    <td>^/1.1/.*</td>
+                                    <td>5/second</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>&POST;
+                                    </td>
+                                    <td>/v1.1/*</td>
+                                    <td>^/1.1/.*</td>
+                                    <td>2/second</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>&POST;
+                                    </td>
+                                    <td>/v1.1/*</td>
+                                    <td>^/1.1/.*</td>
+                                    <td>25/minute</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>&PUT;
+                                    </td>
+                                    <td>/v1.1/*</td>
+                                    <td>^/1.1/.*</td>
+                                    <td>5/second</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>&DELETE;
+                                    </td>
+                                    <td>/v1.1/*</td>
+                                    <td>^/1.1/.*</td>
+                                    <td>2/second</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <para>Rate limits are applied in order relative to the verb, going from least to most
+                            specific. For example, although the threshold for &POST; to /v1.1/* is 25 per minute,
+                            one cannot &POST; to /v1.1/* more than 2 times per second because the rate limit for any
+                            &POST; is 2 per second. In the event you exceed the thresholds established for your account, a
+                            <errorcode>413</errorcode>
+                            (Rate Control) HTTP response will be returned with a
+                            <code>Retry-After</code>
+                            header to notify the client when they can attempt to try again.
+                        </para>
+                    </section>
+                    <section>
+                        <title>Absolute Limits</title>
+                        <para>
+                            Absolute limits are specified as name/value pairs. Then name of the
+                            absolute limit uniquely identifies the limit within a deployment. For example
+                            <code>maxNodesPerLoadbalancer</code>
+                            identifies the total number of nodes that may be associated with a given load balancer.
+                        </para>
+                        <informaltable rules="all">
+                            <thead>
+                                <tr align="center">
+                                    <td>Name</td>
+                                    <td>Value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr align="left">
+                                    <td>maxNodesPerLoadBalancer</td>
+                                    <td>5</td>
+                                    <td>Maximum nodes allowed per load balancer</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>maxVIPsperLoadBalancer</td>
+                                    <td>2</td>
+                                    <td>Maximum VIPs  allowed per load balancer</td>
+                                </tr>
+                                <tr align="left">
+                                    <td>maxHealthMonitorsPerLoadBalancer</td>
+                                    <td>1</td>
+                                    <td>Maximum health monitors allowed per load balancer</td>
+                                </tr>
+                            </tbody>
+                        </informaltable>
+                    </section>
+                    <section>
+                        <title>Determining Limits Programmatically</title>
+                        <para>
+                            Applications can programmatically determine current account limits using the
+                            <code>/limits</code>
+                            URI as follows:
+                        </para>
+                        <informaltable rules="all">
+                            <thead>
+                                <tr align="center">
+                                    <td colspan="1">Verb</td>
+                                    <td colspan="1">URI</td>
+                                    <td colspan="3">Description </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr align="left">
+                                    <td colspan="1">&GET;
+                                    </td>
+                                    <td colspan="1">/limits</td>
+                                    <td colspan="3">Return the current limits for the account.</td>
+                                </tr>
+                            </tbody>
+                        </informaltable>
+                        <para>
+                            Normal Response Code(s):
+                            <returnvalue>200</returnvalue>
+                        </para>
+                        <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                            <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                            unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                            overLimit (<errorcode>413</errorcode>)
+                        </simpara>
+                        <para>
+                            This operation does not require a request body.
+                        </para>
+                        <example>
+                            <title>List Limits Response: XML</title>
+                            <programlisting language="xml">
+        <xi:include href="samples/lb-limits-response.xml" parse="text"/>
+                            </programlisting>
+                        </example>
+                        <example>
+                            <title>List Limits Response: JSON</title>
+                            <programlisting language="javascript">
+        <xi:include href="samples/lb-limits-response.json" parse="text"/>
+                            </programlisting>
+                        </example>
+                    </section>
+                </section>
+
         <section>
             <title>Faults</title>
             <para> API calls that return an error return one of the following fault objects. All
@@ -397,7 +551,7 @@
                            <example>
                                <title>Fault Response, badRequest</title>
                            <literallayout class="monospaced">
-           <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
+           <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.1" code="400">
                <message>Validation fault</message>
                <details>The object is not valid</details>
                    <validationErrors>
@@ -421,7 +575,7 @@
                            <example>
                                <title>Fault Response, immutableEntity</title>
                                <literallayout class="monospaced">
-           <![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>The object at the specified URI is immutable and can not be overwritten.</message>
            </immutableEntity>]]>
                            </literallayout>
@@ -434,7 +588,7 @@
                            <example>
                                <title>Fault Response, itemNotFound</title>
                            <literallayout class="monospaced">
-           <![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>Object not Found</message>
            </itemNotFound>]]>
                            </literallayout>
@@ -452,7 +606,7 @@
                            <example>
                                <title>Fault Response, loadBalancerFault</title>
                                <literallayout class="monospaced">
-           <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>Invalid authentication token. Please renew</message>
            </loadBalancerFault>]]>
                            </literallayout>
@@ -470,7 +624,7 @@
                            <example>
                                <title>Fault Response, outOfVirtualIps</title>
                            <literallayout class="monospaced">
-           <![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>
                    Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
                </message>
@@ -488,7 +642,7 @@
                            <example>
                                <title>Fault Response, overLimit</title>
                                <literallayout class="monospaced">
-           <![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>Your account is currently over the limit so your request could not be processed.</message>
            </overLimit>]]>
                            </literallayout>
@@ -507,7 +661,7 @@
                            <example>
                                <title>Fault Response, serviceUnavailable</title>
                            <literallayout class="monospaced">
-           <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>The Load balancing service is currently not available</message>
            </serviceUnavailable>]]>
                            </literallayout>
@@ -523,7 +677,7 @@
                            <example>
                                <title>Fault Response, unauthorized</title>
                                <literallayout class="monospaced">
-           <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>You are not authorized to execute this operation.</message>
            </unauthorized>]]>
                            </literallayout>
@@ -535,12 +689,12 @@
                            </title>
                            <para>
                                This fault is returned when an operation is requested on an item that does not support the
-                               operation, but the request is properly formed.
+                               operation - reword.
                            </para>
                            <example>
                                <title>Fault Response, unprocessableEntity</title>
                                <literallayout class="monospaced">
-           <![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+           <![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>The Object at the specified URI is unprocessable.</message>
            </unprocessableEntity>]]>
                            </literallayout>
@@ -703,7 +857,7 @@
                 Normal Response Code(s):
                 <returnvalue>202</returnvalue>
             </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+            <simpara>Error Response Code(s): loadbalancerFault (
                 <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
@@ -721,9 +875,12 @@
                 require the caller to correct the cause of the failure and &POST; the request again.
             </para>
             <note>
+            <para> The user can request the type of VIP by specifying the version. The versions
+                   are IPV4 and IPV6</para>
+            </note>
+            <note>
                 <para>
-                    A load balancer's name has a length that is configurable and can be queried when
-                    querying limits.
+                    A load balancer's name has a max length that can be queried when querying limits.
                 </para>
             </note>
             <note>
@@ -859,13 +1016,13 @@
                 <para>All load balancers also have a status attribute to signify the current
                     configuration status of the device. This status is immutable by the caller and is
                     updated automatically based on state changes within the service. When a load
-                    balancer is first created, it will be placed into a <code>BUILD</code> status while
+                    balancer is first created, it may be placed into a <code>BUILD</code> status while
                     the configuration is being generated and applied based on the request. Once the
                     configuration is applied and finalized, it will be in an <code>ACTIVE</code> status.
                     In the event of a configuration change or update, the status of the load balancer
-                    will change to <code>PENDING_UPDATE</code> to signify configuration changes are in
+                    may change to <code>PENDING_UPDATE</code> to signify configuration changes are in
                     progress but have not yet been finalized. Load balancers in a <code>SUSPENDED</code>
-                    status are configured to reject traffic and will not forward requests to back-end
+                    status reject traffic and will not forward requests to back-end
                     nodes. </para>
                 <table rules="all">
                     <caption>Load Balancer Statuses</caption>
@@ -915,7 +1072,7 @@
                                 <code>SUSPENDED</code>
                             </td>
                             <td colspan="3">
-                                Load balancer has been taken offline and disabled; contact Support.
+                                Load balancer has been taken offline and disabled.
                             </td>
                         </tr>
                         <tr align="left">
@@ -924,7 +1081,7 @@
                             </td>
                             <td colspan="3">
                                 The system encountered an error when attempting to configure the load
-                                balancer; contact Support.
+                                balancer.
                             </td>
                         </tr>
                         <tr align="left">
@@ -932,7 +1089,7 @@
                                 <code>DELETED</code>
                             </td>
                             <td colspan="3"> Load balancers in <code>DELETED</code> status can be
-                                displayed for a certain number of days after deletion.The number of days is configuraable </td>
+                                displayed for a certain number of days after deletion. The number of days is queryable.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -994,11 +1151,13 @@
                 <code>ONLINE</code> or <code>OFFLINE</code>. Only nodes
                 that are in <code>ONLINE</code> status will receive and be able to service traffic
                 from the load balancer. The <code>OFFLINE</code> status represents a node that
-                cannot accept or service traffic. If the traffic manager receives a request and session
-                persistence requires that the node is used, the traffic manager will use it.
+                cannot accept or service traffic.
                 The status is determined by the passive or active health monitors. </para>
-            <para>When a node is added, it is assigned a unique identifier that can be used for mutating
-                  operations such as changing the condition and removing it.
+             <para>If the <code>ROUND_ROBIN</code> load balancer algorithm mode is
+                selected, then the caller can assign the relevant weights to the node as part of
+                the weight attribute of the node element. When the algorithm of the load balancer is
+                changed to <code>ROUND_ROBIN</code> and the nodes do not already have an
+                assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
             <section>
                 <title>List Nodes</title>
@@ -1029,8 +1188,7 @@
                 </informaltable>
                 <para>
                     Normal Response Code(s):
-                    <returnvalue>200</returnvalue>,
-                    <returnvalue>202</returnvalue>
+                    <returnvalue>200</returnvalue>
                 </para>
                 <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
                     <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
@@ -1087,7 +1245,6 @@
                 </informaltable>
                 <para>
                     Normal Response Code(s):
-                    <returnvalue>200</returnvalue>,
                     <returnvalue>202</returnvalue>
                 </para>
                 <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
@@ -1151,7 +1308,6 @@
                 </informaltable>
                 <para>
                     Normal Response Code(s):
-                    <returnvalue>200</returnvalue>,
                     <returnvalue>202</returnvalue>
                 </para>
                 <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
@@ -1277,91 +1433,53 @@
                     </tr>
                 </tbody>
             </table>
-        <section>
-            <title>List Virtual IPs</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="3">URI</td>
-                        <td colspan="3">Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;
-                        </td>
-                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
-                        <td colspan="3">List all virtual IPs associated with a load balancer.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>,
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para>
-                This request does not require a request body.
-            </para>
-            <example>
-                <title>List Virtual IPs Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Virtual IPs Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-vips-response.json" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
-        <section>
-            <title>Remove Virtual IP</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="3">URI</td>
-                        <td colspan="3">Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;
-                        </td>
-                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/<parameter>virtualIpId</parameter></td>
-                        <td colspan="3">Remove a virtual IP.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>,
-                <returnvalue>202</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para>
-                This request does not require a request body.
-            </para>
-            <note>
-                <para>All load balancers must have at least one virtual IP associated with
-                    them at all times. Attempting to delete the last virtual IP will result in a
-                    <returnvalue>400 (badRequest)</returnvalue>
-                    fault.
+
+            <section>
+                <title>List Virtual IPs</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips
+                            </td>
+                            <td colspan="3">List all virtual IPs associated with a load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
                 </para>
-            </note>
-        </section>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This request does not require a request body.
+                </para>
+                <example>
+                    <title>List Virtual IPs Response: XML</title>
+                    <programlisting language="xml">
+                        <xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Virtual IPs Response: JSON</title>
+                    <programlisting language="javascript">
+                        <xi:include href="samples/lb-list-vips-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
         </section>
         <section>
             <title>Usage Reports</title>
@@ -1397,8 +1515,21 @@
                 This operation does not require a request body.
             </para>
             <para>The load balancer usage reports provide a minimumum set of usage counters.
-                  This list will definded such that it is supported by differen load balancing
-                 technologies. Values to be considered are incoming/outgoing transfer of bytes.</para>
+                             This list will be defined such that it is supported by different load balancing
+                            technologies. Values will be trafserbytesin and transferbytesout.</para>
+
+            <example>
+                <title>Report Load Balancer Usage Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Report Load Balancer Usage Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-report-usage-response.json" parse="text"/>
+                </programlisting>
+            </example>
         </section>
         </section>
          <section>
@@ -1490,9 +1621,7 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>
-                                <code>delay</code>: The minimum number of seconds to wait before checking the health
-                                      of a node after it is put into OFFLINE status. This is the minimum time between
-                                      calls to a monitor.
+                                <code>delay</code>: This is the minimum time between calls to a monitor.
                             </para>
                         </listitem>
                         <listitem>
@@ -1545,7 +1674,8 @@
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para><code>path</code>: The HTTP path that will be used in the sample request.
-                                This must be a string beginning with a / (forward slash).
+                                This must be a string beginning with a / (forward slash). The monitor will support
+                                a GET HTTP method. The monitor will expect a 200 in RESPONSE.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -1700,6 +1830,7 @@
             <para>
                 This operation does not require a request body.
             </para>
+            <para>The retrieval of log files will be implementation specific.</para>
             <example>
                 <title>List Connection Logging Configuration Response: XML</title>
                 <programlisting language="xml">
@@ -1772,17 +1903,24 @@
                 help mitigate malicious or abusive traffic to your applications. The following properties can be
                 configured based on the traffic patterns for your sites.
             </para>
+            <note>
+                       <para>
+                           Whent the rate is exceeded, most loadbalancing technologies will either return
+                           serviceUnavailable (<errorcode>503</errorcode>), reset the connection or dump
+                           the connection. The exact behavior will be provider specific.
+                       </para>
+                   </note>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
                             <code>maxRequestRate</code>: Maximum number of requests allowed
                             from a single IP address in the defined <code>rateInterval</code>.
-                            Setting a value of 0 allows an unlimited connection rate; otherwise, set
-                            a value between 1 and 100000. </para>
+                            Setting a value of 0 allows an unlimited connection rate.
+                           </para>
                 </listitem>
                 <listitem>
                     <para><code>rateInterval</code>: Frequency (in seconds) at which the
-                                <code>maxReqestRate</code> is assessed. For example, a
+                                <code>maxRequestRate</code> is assessed. For example, a
                                 <code>maxRequestRate</code> of 30 with a
                                 <code>rateInterval</code> of 60 would allow a maximum of 30
                             connections per minute for a single IP address. This value must be
@@ -1874,8 +2012,7 @@
                 changed after the load balancer has been initially provisioned. The algorithm name
                 is to be constant within a major revision of the load balancing API, though new
                 algorithms may be created with a unique algorithm name within a given major revision
-                of the service API. If an implementation doesn’t support a algorithm,
-                it should return “Not Implemented”</para>
+                of the service API. </para>
             <table rules="all">
                 <caption>Load Balancing Algorithms</caption>
                 <thead>
@@ -1894,16 +2031,11 @@
                     </tr>
                     <tr align="left">
                         <td colspan="2">
-                            <code>RANDOM</code>
-                        </td>
-                        <td colspan="3">Back-end servers are selected at random.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="2">
                             <code>ROUND_ROBIN</code>
                         </td>
-                        <td colspan="3">Connections are routed to each of the back-end servers in turn. This should
-                                        be the default proctocol</td>
+                        <td colspan="3">Connections are routed to each of the back-end servers in turn.
+                                        This is the default algorithm. Weights can be defined as part of the
+                                        node configuration.</td>
                     </tr>
                 </tbody>
             </table>
@@ -1955,45 +2087,16 @@
     </chapter>
     <chapter>
         <title>API Extensions</title>
-        <para>Implementations of the API specifications are free to augment with
-            extensions as they see appropriate to extend Load Balancing features (e.g. support
-            for new LB algorithms) in this API or offer new ones. All client applications written to
-            this core specification (using the base API) should work against extended
-            implementation as specified in this document. Therefore, applications should not
-            receive values not specified in this specification or obtain a different behavior than
-            expected when they are not using (or aware of the availability of) extended APIs. For detailed
-            specification refer to openStack documentation at
-            <para>http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html </para>
+        <para>Implementations of the API specifications are free to augment with extensions as they
+            see appropriate to extend Load Balancing features (e.g. support for new LB algorithms)
+            in this API or offer new ones. All client applications written to this core
+            specification (using the base API) should work against extended implementation as
+            specified in this document. Therefore, applications should not receive values not
+            specified in this specification or obtain a different behavior than expected when they
+            are not using (or aware of the availability of) extended APIs.
         </para>
-        <section>
-            <title>Discovering extensions</title>
-            <para>
-                Implementations should allow users to discover if the LB service supports extensions.
-                together with details about the extensions(document pointers, etc.).
-            </para>
-        </section>
-        <section>
-            <title>Using extended APIs</title>
-            <para>
-                Clients should operate on resources using extension URIs in order to make use of the
-                extension URI.
-            </para>
-            <para>
-                The sames load balancer can be retrieved using either:
-                &GET;
-                <code>/loadbalancers/loadBalancerId</code>
-                in which case, only the features and attributes
-                in this document are returned OR
-                 &GET;
-                <code>/loadbalancer/ex/ext-name/loadBalancerId </code>
-                which returns the extended version of the loadbalancer (with extra attributes).
-            </para>
-            <para>
-                Clients can always use the core APIs for resources created or updated with extension APIs.
-                Extension resources are always defined as pure supersets of core resources. New types of resources can
-                be added in the extension API that have no counterpart in the core API. These resources can be used
-                only from the extension API.
-            </para>
-        </section>
+        <para>For detailed specification refer to openStack documentation at
+            <link xlink:href=" http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html"
+            /></para>
     </chapter>
 </book>

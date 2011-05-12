@@ -1,9 +1,9 @@
-<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
     name="a-new-loadbalancer"
     port="80"
     protocol="HTTP">
     <virtualIps>
-        <virtualIp id="2341"/>
+        <virtualIp id="39"/>
     </virtualIps>
     <nodes>
         <node address="10.1.1.1" port="80" condition="ENABLED" />

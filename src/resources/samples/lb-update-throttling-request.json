@@ -1,4 +1,5 @@
-{
+{"connectionThrottle":{
     "maxRequestRate": 50,
     "rateInterval": 60
+ }
 }

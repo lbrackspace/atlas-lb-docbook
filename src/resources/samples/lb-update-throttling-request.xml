@@ -1,3 +1,3 @@
-<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+<connectionThrottle xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
     maxRequestRate="50"
     rateInterval="60" />

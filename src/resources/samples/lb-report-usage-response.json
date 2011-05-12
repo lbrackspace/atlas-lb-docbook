@@ -1,0 +1,14 @@
+{
+    "loadBalancerUsageRecords": [
+        {
+            "id": "394",
+            "transferBytesIn": "0",
+            "transferBytesOut": "0"
+        },
+        {
+            "id": "473",
+            "transferBytesIn": "0",
+            "transferBytesOut": "0"
+        }
+    ]
+}

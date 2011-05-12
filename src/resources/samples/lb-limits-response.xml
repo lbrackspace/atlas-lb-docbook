@@ -1,0 +1,17 @@
+<limits xmlns="http://docs.openstack.org/common/api/v1.1">
+    <rates>
+        <rate uri="/v1.1/*" regex="^/1.1/.*">
+            <limit
+                verb="GET"
+                value="600000"
+                remaining="426852"
+                unit="HOUR"
+                next-available="2011-02-22T19:32:43.835Z"/>
+        </rate>
+    </rates>
+    <absolute>
+    <limit name="maxNodesPerLoadBalancer" value="5"/>
+    <limit name="maxVIPsperLoadBalancer" value="2"/>
+    <limit name="maxHealthMonitorsPerLoadBalancer" value="2"/>
+  </absolute>
+</limits>

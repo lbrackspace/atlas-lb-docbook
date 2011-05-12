@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<loadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<loadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
     <loadBalancer id="71" name="lb-site1" status="ACTIVE"
         protocol="HTTP" port="80" algorithm="RANDOM">
         <virtualIps>

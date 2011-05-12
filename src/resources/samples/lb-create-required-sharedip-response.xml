@@ -1,4 +1,4 @@
-<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+<loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
     id="144"
     name="a-new-loadbalancer"
     algorithm="ROUND_ROBIN"

@@ -1,0 +1,28 @@
+{
+    "limits" : {
+        "rate" : {
+            "values": [
+                {
+                    "uri" : "/v1.1/*",
+                    "regex" : "^/1.1/.*",
+                    "limit" : [
+                        {
+                            "verb" : "GET",
+                            "value" : 600000,
+                            "remaining" : 426852,
+                            "unit" : "HOUR",
+                            "next-available" : "2011-02-22T19:32:43.835Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        "absolute" : {
+            "values" : {
+                "maxNodesPerLoadBalancer" : 5,
+                "maxVIPsperLoadBalancer" : 2,
+                "maxHealthMonitorsPerLoadBalancer" : 1
+            }
+        }
+    }
+}

@@ -1,6 +1,5 @@
 {"loadBalancer":{
     "name": "sample-loadbalancer",
-    "algorithm": "ROUND_ROBIN",
-    "connectionLogging": "true"
+    "algorithm": "ROUND_ROBIN"
     }
 }

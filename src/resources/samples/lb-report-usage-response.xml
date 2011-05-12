@@ -1,0 +1,10 @@
+<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
+    <loadBalancerUsageRecord
+            id="394"
+            transferBytesIn="0"
+            transferBytesOut="0" />
+    <loadBalancerUsageRecord
+            id="473"
+            transferBytesIn="0"
+            transferBytesOut="0" />
+</loadBalancerUsage>

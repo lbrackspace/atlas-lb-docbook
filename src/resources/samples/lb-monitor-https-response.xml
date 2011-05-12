@@ -1,4 +1,4 @@
-<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+<healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
     type="HTTPS"
     delay="10"
     timeout="10"

@@ -3,9 +3,6 @@
             "name": "LEAST_CONNECTIONS"
         },
         {
-            "name": "RANDOM"
-        },
-        {
             "name": "ROUND_ROBIN"
         }
     ]
