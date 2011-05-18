@@ -2137,9 +2137,21 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
+                <title>Monitor HTTP Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-http-response.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
                 <title>Monitor HTTPS Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Monitor HTTPS Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-monitor-https-response.json" parse="text" />
                 </programlisting>
             </example>
             </section>
