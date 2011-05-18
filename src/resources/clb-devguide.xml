@@ -142,14 +142,15 @@
         <section>
             <title>Load Balancer</title>
             <para>A load balancer is a logical device. It is used to distribute workloads between
-                multiple back-end systems or services, based on the criteria defined as part of its configuration.
+                multiple back-end systems or services called nodes, based on the criteria defined
+                as part of its configuration.
             </para>
         </section>
         <section>
             <title>Virtual IP</title>
             <para>A virtual IP is an Internet Protocol (IP) address configured on the load balancer
                 for use by clients connecting to a service that is load balanced. Incoming
-                connections and reqeusts are distributed to back-end nodes based on the configuration of the load
+                connections and requests are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
         <section>
@@ -170,9 +171,9 @@
             </section>
             <section>
                 <title>Active Health Monitor</title>
-                <para>Active health monitoring is a technique that uses synthetic transactions
-                    executed at periodic intervals to determine the condition of a node. When active
-                    monitoring is enabled, it takes over the monitoring of the nodes, and passive
+                <para>Active health monitoring is a technique that is configured by users. It uses
+                    synthetic transactions executed at periodic intervals to determine the condition of a node.
+                    When active monitoring is configured, it takes over the monitoring of the nodes, and passive
                     monitoring is disabled. Conversely, when active monitoring configuration is removed
                     by the user, passive monitoring is re-enabled for the nodes of the load balancer</para>
                 <para>The active health monitor can use one of three types of probes:
@@ -217,15 +218,19 @@
     </chapter>
     <chapter>
         <title>General API Information</title>
-        <para>Ideas explained here are relevant to all operations of the OpenStack API.</para>
+        <para>Sections in this chapter describe operations and guidelines that are common to all
+              OpenStack APIs, not specific to the Load Balancing API.</para>
         <section>
             <title>Authentication</title>
-            <para>Load Balancing will use the standard defined by OpenStack for authentication</para>
-            <para>Refer to link http://wiki.openstack.org/openstack-authn for detailed information</para>
+            <para>Load Balancing API will use the standard defined by OpenStack for authentication.
+                  Once this is finalized, this section will </para>
+            <para>Refer to current status of OpenStack Authentication at
+                 http://wiki.openstack.org/openstack-authn for detailed information</para>
         </section>
         <section>
             <title>Service Access/Endpoints</title>
-            <para>http://openstackloadbalancing/path</para>
+            <para>Your service provider will publish the endpoints that you can use to connect
+                  to their LB service.</para>
         </section>
         <section>
             <title>Request/Response Types</title>
@@ -318,9 +323,6 @@
                    <para>
                        By default, the API supports persistent connections via <code>HTTP/1.1</code> keepalives.
                        All connections will be kept alive unless the connection header is set to close.
-                   </para>
-                   <para>
-                       To prevent abuse, HTTP sessions have a timeout of 20 seconds before being closed.
                    </para>
                    <note>
                        <para>
@@ -432,6 +434,7 @@
                             <code>maxNodesPerLoadbalancer</code>
                             identifies the total number of nodes that may be associated with a given load balancer.
                         </para>
+                        <para> The following table shows some of these limits and example values:</para>
                         <informaltable rules="all">
                             <thead>
                                 <tr align="center">
@@ -442,6 +445,11 @@
                             </thead>
                             <tbody>
                                 <tr align="left">
+                                    <td>maxLoadBalancers</td>
+                                    <td>20</td>
+                                    <td>Maximum loadbalancers that can be created for this account</td>
+                                </tr>
+                                <tr align="left">
                                     <td>maxNodesPerLoadBalancer</td>
                                     <td>5</td>
                                     <td>Maximum nodes allowed per load balancer</td>
@@ -451,10 +459,15 @@
                                     <td>2</td>
                                     <td>Maximum VIPs  allowed per load balancer</td>
                                 </tr>
+                                 <tr align="left">
+                                    <td>maxDaysForDeletedLoadBalancers</td>
+                                    <td>15</td>
+                                    <td>The number of maximum number of days that deleted loadbalancers can be queried by the user</td>
+                                </tr>
                                 <tr align="left">
-                                    <td>maxHealthMonitorsPerLoadBalancer</td>
-                                    <td>1</td>
-                                    <td>Maximum health monitors allowed per load balancer</td>
+                                    <td>maxLoadBalancerNameLength</td>
+                                    <td>15</td>
+                                    <td>Maximum length of a load balancer name</td>
                                 </tr>
                             </tbody>
                         </informaltable>
@@ -723,8 +736,7 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="3">/loadbalancers</td>
-                        <td colspan="3">List all load balancers configured for the account (IDs, names and
-                            status only).</td>
+                        <td colspan="3">List all load balancers configured for the account. </td>
                         <td colspan="2">XML, JSON</td>
                     </tr>
                 </tbody>
@@ -756,6 +768,21 @@
                     <para>
                         <code>name</code>
                     </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>algorithm</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>protocol</code>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <code>port</code>
+                    </para>                                                                     ƒ
                 </listitem>
                 <listitem>
                     <para>
@@ -842,6 +869,7 @@
                         <td colspan="1">Verb</td>
                         <td colspan="3">URI</td>
                         <td colspan="3">Description</td>
+                         <td colspan="3">Representation</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -850,6 +878,7 @@
                         </td>
                         <td colspan="3">/loadbalancers</td>
                         <td colspan="3">Create a new load balancer with the configuration defined by the request.</td>
+                        <td colspan="2">XML, JSON</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -862,22 +891,53 @@
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>This operation asynchronously provisions a new load balancer based on the
+            <para>This operation provisions a new load balancer based on the
                 configuration defined in the request object. Once the request is validated and
                 progress has started on the provisioning process, a response object will be
                 returned. The object will contain a unique identifier and status of the request.
+            </para>
+            <para> If the status returned is set to "BUILD
                 Using the identifier, the caller can check on the progress of the operation by
-                performing a &GET; on <code>loadbalancers/id</code>. If the corresponding request cannot be
-                fulfilled due to insufficient or invalid data, an <code>HTTP</code>
+                performing a &GET; on <code>loadbalancers/id</code>. When the status of the loadBalancer
+                changes to "ACTIVE", then the loadbalancer has been successfully provisioned and is
+                operational.
+             </para>
+            <para>The caller of this operation must specify at least the following attributes of the loadbalancer:</para>
+             <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            <code>name</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>protocol</code>
+                        </para>
+                    </listitem>
+                     <listitem>
+                        <para>
+                            <code>port</code>
+                        </para>
+                    </listitem>
+                     <listitem>
+                        <para>
+                            <code>At least one VirtualIp</code>
+                        </para>
+                    </listitem>
+                     <listitem>
+                        <para>
+                            <code>At least one node</code>
+                        </para>
+                    </listitem>
+
+                </itemizedlist>
+            <para>
+                If the request cannot be fulfilled due to insufficient or invalid data, an <code>HTTP</code>
                 <returnvalue>400 (Bad Request)</returnvalue>
                 error response will be returned with information regarding the nature of the failure in
                 the body of the response. Failures in the validation process are non-recoverable and
                 require the caller to correct the cause of the failure and &POST; the request again.
             </para>
-            <note>
-            <para> The user can request the type of VIP by specifying the version. The versions
-                   are IPV4 and IPV6</para>
-            </note>
             <note>
                 <para>
                     A load balancer's name has a max length that can be queried when querying limits.
@@ -949,6 +1009,7 @@
                             <td colspan="1">Verb</td>
                             <td colspan="3">URI</td>
                             <td colspan="3">Description</td>
+                            <td colspan="3">Representation</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -957,6 +1018,7 @@
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter></td>
                             <td colspan="3">Update the properties of a load balancer.</td>
+                            <td colspan="2">XML, JSON</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -969,11 +1031,13 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para> This operation asynchronously updates the attributes of the specified load
+                <para> This operation updates the attributes of the specified load
                     balancer. Upon successful validation of the request, the service will return a
-                        <returnvalue>202 (Accepted)</returnvalue> response code. A caller can poll
-                    the load balancer with its ID to wait for the changes to be applied and the load
-                    balancer to return to an <code>ACTIVE</code> status.</para>
+                        <returnvalue>202 (Accepted)</returnvalue> response code. A caller should check
+                    that the load balancer status is ACTIVE to confirm that the update has taken effect.
+                    If the load balancer status is "PENDING_UPDATE" then the caller can poll
+                    the load balancer with its ID (using a GET operation) to wait for the changes to
+                    be applied and the load balancer to return to an <code>ACTIVE</code> status.</para>
                 <para>
                     This operation allows the caller to change one or more of the following attributes:
                 </para>
@@ -1013,7 +1077,7 @@
 <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                 </programlisting>
                 </example>
-                <para>All load balancers also have a status attribute to signify the current
+                <para>Theload balancer's tatus attribute reflects the current
                     configuration status of the device. This status is immutable by the caller and is
                     updated automatically based on state changes within the service. When a load
                     balancer is first created, it may be placed into a <code>BUILD</code> status while
@@ -1147,17 +1211,13 @@
                 will be listed as <code>OFFLINE</code>. Only nodes that are in an
                 <code>ONLINE</code> status will receive and be able to service traffic from the
                 load balancer. </para>
-            <para>All nodes have an associated status that indicates whether the node is
-                <code>ONLINE</code> or <code>OFFLINE</code>. Only nodes
-                that are in <code>ONLINE</code> status will receive and be able to service traffic
-                from the load balancer. The <code>OFFLINE</code> status represents a node that
-                cannot accept or service traffic.
-                The status is determined by the passive or active health monitors. </para>
-             <para>If the <code>ROUND_ROBIN</code> load balancer algorithm mode is
-                selected, then the caller can assign the relevant weights to the node as part of
-                the weight attribute of the node element. When the algorithm of the load balancer is
-                changed to <code>ROUND_ROBIN</code> and the nodes do not already have an
-                assigned weight, the service will automatically set the weight to "1" for all nodes.
+            <para>The status of the node can be determined by passive or active health monitoring. </para>
+             <para>The caller can assign the relevant weights to the node using
+                the weight attribute of the node element. The weight of a node determines the portion of
+                requests it services compared to the other nodes of the load balancer. For exampl, if node
+                A has a weight of 2 and node B has a weight of 1, then the load balancer will forward twice
+                as many requests to node A than to node B. If the weight attribure is not specified, then the
+                node's weight is implicitly set to "1".
             </para>
             <section>
                 <title>List Nodes</title>
@@ -1322,7 +1382,8 @@
                     <para>The node's IP and port are immutable attributes and cannot be modified with a
                         &PUT; request. Supplying an unsupported attribute will result in a
                         <returnvalue>400 (badRequest)</returnvalue> fault. A load balancer supports
-                        a maximum number of nodes. The number of nodes is a configurable property. </para>
+                        a maximum number of nodes. The maximum number of nodes per loadbalancer is a
+                        queryable limit. </para>
                 </note>
                 <para>Every node in the load balancer has an associated condition which determines
                     its role within the load balancer.
@@ -1341,7 +1402,9 @@
                             <td colspan="1">
                                 <code>ENABLED</code>
                             </td>
-                            <td colspan="3">Node is permitted to accept new connections.</td>
+                            <td colspan="3">Node is permitted to accept new connections. Its status
+                                            will eventually become ONLINE to reflect this configuration.
+                            </td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">
@@ -1349,7 +1412,8 @@
                             </td>
                             <td colspan="3">Node is not permitted to accept any new connections
                                 regardless of session persistence configuration. Existing connections
-                                are forcibly terminated.</td>
+                                are forcibly terminated. The node's status will change to OFFLINE once
+                                the configuration has been successfully appplied.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1467,6 +1531,12 @@
                 <para>
                     This request does not require a request body.
                 </para>
+                 <note>
+                     <para>The number of VIPs that can be configured when creating a load balancer is
+                         a queryable limit.
+                    </para>
+                 </note>
+
                 <example>
                     <title>List Virtual IPs Response: XML</title>
                     <programlisting language="xml">
@@ -1514,10 +1584,11 @@
             <para>
                 This operation does not require a request body.
             </para>
-            <para>The load balancer usage reports provide a minimumum set of usage counters.
-                             This list will be defined such that it is supported by different load balancing
-                            technologies. Values will be trafserbytesin and transferbytesout.</para>
-
+            <para>The load balancer usage reports provide a set of usage counters.
+                  This list will contain at least the transferBytesIn and transferBytesOut usage
+                  counters that represent respectively the amount of traffic in bytes received by the load
+                  balancer from clients requests, and the amount fo traffic sent from the load balancer
+                  as responses to clients.</para>
             <example>
                 <title>Report Load Balancer Usage Response: XML</title>
                 <programlisting language="xml">
@@ -1534,16 +1605,15 @@
         </section>
          <section>
             <title>Monitors</title>
-            <para>The load balancing service includes a health monitoring operation which
-                periodically checks your back-end nodes to ensure they are responding correctly. If
-                a node is not responding, it is removed from rotation until the health monitor
-                determines that the node is functional. In addition to being performed periodically,
-                the health check also is performed against every node that is added to ensure that
-                the node is operating properly before allowing it to service traffic. A loadbalancer will
-                have a configurable amount of health monitors at a time.
+            <para>In addition to the default passive monitoring, the load balancing service includes
+                an active health monitoring operation which periodically checks your back-end nodes to
+                ensure they are responding correctly.
             </para>
+             <para>Active health monitoring provides 3 types of health monitors. The caller can configure
+                  one health monitor on the load blancer.</para>
             <para>
-                Every health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
+                The health monitor has a <code>type</code> attribute to signify what kind of monitor it is.
+                This specification supports 3 types of health monitor.
             </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
@@ -1557,7 +1627,7 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">CONNECT</td>
-                        <td colspan="3">Health monitor is a connect monitor.</td>
+                        <td colspan="3">Health monitor is a CONNECT monitor.</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">HTTP</td>
@@ -1611,9 +1681,9 @@
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
             <section>
-                <title>Monitor Connections</title>
+                <title>Monitor CONNECT</title>
                 <para>The monitor connects to each node on its defined port to ensure that the
-                    service is listening properly. The connect monitor is the most basic type of
+                    service is listening properly. The CONNECT monitor is the most basic type of
                     health check and does no post-processing or protocol specific health checks. It
                     includes several configurable properties:
                 </para>
@@ -1627,7 +1697,7 @@
                         <listitem>
                             <para>
                                 <code>timeout</code>: Maximum number of seconds to wait for a connection to be
-                                established before timing out.
+                                established before timing out. The value must be less than the delay value.
                             </para>
                         </listitem>
                         <listitem>
@@ -1667,15 +1737,15 @@
                 <title>Monitor HTTP and HTTPS</title>
                 <para> The HTTP and HTTPS monitor is more intelligent than the connect monitor. It
                         is capable of processing an HTTP or HTTPS response to determine the
-                        condition of a node. It supports the same basic properties as the connect
+                        condition of a node. It supports the same basic properties as the CONNECT
                         monitor and includes additional attributes of path that is used to evaluate the
                         HTTP response. </para>
                 <para>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para><code>path</code>: The HTTP path that will be used in the sample request.
-                                This must be a string beginning with a / (forward slash). The monitor will support
-                                a GET HTTP method. The monitor will expect a 200 in RESPONSE.
+                            <para><code>path</code>: The HTTP path used in the request by the monitor.
+                                This must be a string beginning with a / (forward slash). The monitor expects
+                                a response from teh node with an HTTP status code of 200.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -1830,7 +1900,8 @@
             <para>
                 This operation does not require a request body.
             </para>
-            <para>The retrieval of log files will be implementation specific.</para>
+            <para>The service provider is responsible for providing an out-of-brand method for users
+                  of the service to retrieve the access and connection logs of their load balancers.</para>
             <example>
                 <title>List Connection Logging Configuration Response: XML</title>
                 <programlisting language="xml">
@@ -1905,9 +1976,9 @@
             </para>
             <note>
                        <para>
-                           Whent the rate is exceeded, most loadbalancing technologies will either return
-                           serviceUnavailable (<errorcode>503</errorcode>), reset the connection or dump
-                           the connection. The exact behavior will be provider specific.
+                           Whent the rate is exceeded, the load balancer returns a
+                           serviceUnavailable (<errorcode>503</errorcode>) for HTTP/HTTPS loadbalancers and
+                           refuses connections for TCP loadbalancers.
                        </para>
                    </note>
             <itemizedlist spacing="compact">
@@ -1988,8 +2059,9 @@
             </para>
             <para>All load balancers must define the protocol of the service which is being load
                     balanced. The protocol selection should be based on the protocol of the back-end
-                    nodes. When configuring a load balancer, the default port for the given protocol
-                    will be selected unless otherwise specified.</para>
+                    nodes. When configuring a HTTP or HTTPS load balancer, the default port for
+                    the given protocol will be selected unless otherwise specified. For TCP load
+                    balancers, the prot attribute must be provided.</para>
             <example>
                 <title>List Load Balancing Protocols Response: XML</title>
                 <programlisting language="xml">
@@ -2027,7 +2099,7 @@
                             <code>LEAST_CONNECTIONS</code>
                         </td>
                         <td colspan="3">The node with the lowest number of connections will receive
-                            requests.</td>
+                            requests. Weights can be defined as part of the node configuration.</td>
                     </tr>
                     <tr align="left">
                         <td colspan="2">
@@ -2087,16 +2159,15 @@
     </chapter>
     <chapter>
         <title>API Extensions</title>
-        <para>Implementations of the API specifications are free to augment with extensions as they
-            see appropriate to extend Load Balancing features (e.g. support for new LB algorithms)
-            in this API or offer new ones. All client applications written to this core
-            specification (using the base API) should work against extended implementation as
-            specified in this document. Therefore, applications should not receive values not
-            specified in this specification or obtain a different behavior than expected when they
-            are not using (or aware of the availability of) extended APIs.
+        <para>Implementations of this API specifications are free to augment this core API with
+            extensions as they see appropriate to extend Load Balancing features
+            (e.g. support for new LB algorithms)or offer new ones. All client applications written to this core
+            specification however (using this core API) must be supported by extended implementations as
+            specified in this document. Therefore, these applications should not receive payloads or values not
+            specified in this specification or obtain a different behavior from the service than expected.
         </para>
-        <para>For detailed specification refer to openStack documentation at
-            <link xlink:href=" http://docs.openstack.org/cactus/openstack-compute/developer/openstack-compute-api-1.1/content/ch03s11.html"
-            /></para>
+        <para>For a detailed description of how to use Extension APIs in OpenStack services, refer to
+             OpenStack Compute API1.1 documentation on the OpenStack website.
+        </para>
     </chapter>
 </book>

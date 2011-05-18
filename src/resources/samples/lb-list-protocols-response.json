@@ -8,8 +8,7 @@
             "port": "443"
         },
         {
-            "name": "TCP",
-            "port": "21"
+            "name": "TCP"
         }
     ]
 }

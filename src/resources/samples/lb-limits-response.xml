@@ -10,8 +10,7 @@
         </rate>
     </rates>
     <absolute>
-    <limit name="maxNodesPerLoadBalancer" value="5"/>
-    <limit name="maxVIPsperLoadBalancer" value="2"/>
-    <limit name="maxHealthMonitorsPerLoadBalancer" value="2"/>
+        <limit name="maxNodesPerLoadBalancer" value="5"/>
+        <limit name="maxVIPsperLoadBalancer" value="2"/>
   </absolute>
 </limits>

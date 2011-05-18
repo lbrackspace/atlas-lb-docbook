@@ -1,7 +1,7 @@
 <healthMonitor xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
     type="HTTP"
     delay="10"
-    timeout="10"
-    attemptsBeforeDeactivation="3"
+    timeout="3"
+    attemptsBeforeDeactivation="2"
     path="/"
 />
