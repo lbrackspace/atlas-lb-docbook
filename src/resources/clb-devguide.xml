@@ -1796,8 +1796,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td>&GET;
                         </td>
-                        <td>/loadbalancers/loadBalancerId/usage</td>
-                        <td>List current and historical usage.</td>
+                        <td>/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                        <td>List historical usage.</td>
                     </tr>
                     <tr align="left">
                         <td>&GET;
