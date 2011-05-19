@@ -870,18 +870,6 @@
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">&PUT;</td>
-                        <td colspan="5">/hosts/<parameter>hostId</parameter>/activate</td>
-                        <td colspan="3">Activate host machine.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&PUT;</td>
-                        <td colspan="5">/hosts/<parameter>hostId</parameter>/inactive</td>
-                        <td colspan="3">Deactivate host machine.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="5">/hosts/<parameter>hostId</parameter>/backups</td>
                         <td colspan="3">Create a new backup of the host configuration.</td>
@@ -1170,7 +1158,7 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1">&POST;</td>
+                        <td colspan="1">&PUT;</td>
                         <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
                         <td colspan="3">Synchronize the load balancer with the authoritative
                             source.</td>
