@@ -223,7 +223,10 @@
         <section>
             <title>Authentication</title>
             <para>Load Balancing API will use the standard defined by OpenStack for authentication.
-                  Once this is finalized, this section will </para>
+                  Once this is finalized, this section will describe how users  can authenticate
+                  and obtain a token from the OpenStack Authentication service, and how they can present
+                  this token using the Load Balancing API.
+            </para>
             <para>Refer to current status of OpenStack Authentication at
                  http://wiki.openstack.org/openstack-authn for detailed information</para>
         </section>
@@ -444,27 +447,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr align="left">
+                                <tr align="center">
                                     <td>maxLoadBalancers</td>
                                     <td>20</td>
                                     <td>Maximum loadbalancers that can be created for this account</td>
                                 </tr>
-                                <tr align="left">
+                                <tr align="center">
                                     <td>maxNodesPerLoadBalancer</td>
                                     <td>5</td>
                                     <td>Maximum nodes allowed per load balancer</td>
                                 </tr>
-                                <tr align="left">
+                                <tr align="center">
                                     <td>maxVIPsperLoadBalancer</td>
                                     <td>2</td>
                                     <td>Maximum VIPs  allowed per load balancer</td>
                                 </tr>
-                                 <tr align="left">
+                                 <tr align="center">
                                     <td>maxDaysForDeletedLoadBalancers</td>
                                     <td>15</td>
-                                    <td>The number of maximum number of days that deleted loadbalancers can be queried by the user</td>
+                                    <td>The maximum number of days that deleted loadbalancers can be queried by the user</td>
                                 </tr>
-                                <tr align="left">
+                                <tr align="center">
                                     <td>maxLoadBalancerNameLength</td>
                                     <td>15</td>
                                     <td>Maximum length of a load balancer name</td>
@@ -619,8 +622,8 @@
                            <example>
                                <title>Fault Response, loadBalancerFault</title>
                                <literallayout class="monospaced">
-           <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
-               <message>Invalid authentication token. Please renew</message>
+           <![CDATA[<loadBalancerFault code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
+               <message>Load Balancer has experienced an internal error</message>
            </loadBalancerFault>]]>
                            </literallayout>
                            </example>
@@ -690,7 +693,7 @@
                            <example>
                                <title>Fault Response, unauthorized</title>
                                <literallayout class="monospaced">
-           <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
+           <![CDATA[<unauthorized code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
                <message>You are not authorized to execute this operation.</message>
            </unauthorized>]]>
                            </literallayout>
@@ -782,7 +785,7 @@
                 <listitem>
                     <para>
                         <code>port</code>
-                    </para>                                                                     ƒ
+                    </para>
                 </listitem>
                 <listitem>
                     <para>
@@ -948,6 +951,14 @@
                         time by simply providing the additional elements or attributes in the
                         request. This document provides an overview of all the features the load
                         balancing service supports. </para>
+            </note>
+            <note>
+                <para> Users may request either a IPv4 or IPV6 address by specifying the version
+                       in the create request. To request a IPV6 virtual address the version is specified as
+                       <literallayout class="monospaced">
+           <![CDATA[<virtualIp type="PUBLIC" version="IPV6"/>]]>
+                        </literallayout>
+                </para>
             </note>
             <example>
                 <title>Create Load Balancer (Required Attributes) Request: XML</title>
