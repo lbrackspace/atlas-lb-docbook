@@ -864,8 +864,8 @@
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1">&POST;</td>
-                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings/delete</td>
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="5">/hosts/<parameter>hostId</parameter>/subnetmappings</td>
                         <td colspan="3">Delete the specified subnet mappings on this host.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
