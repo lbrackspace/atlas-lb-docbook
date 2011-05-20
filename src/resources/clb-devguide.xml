@@ -704,8 +704,8 @@
                                unprocessableEntity
                            </title>
                            <para>
-                               This fault is returned when an operation is requested on an item that does not support the
-                               operation - reword.
+                               This fault is returned when an operation is requested on an item that was unbled to
+                               be followed due to semantic errors.
                            </para>
                            <example>
                                <title>Fault Response, unprocessableEntity</title>
@@ -758,8 +758,7 @@
             </para>
             <para>
                 To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
-                balancer is immutable and irrecoverable. Only a limited set of attributes will be
-                returned in the response object:
+                balancer is immutable and irrecoverable.
             </para>
             <itemizedlist spacing="compact">
                 <listitem>
@@ -1088,7 +1087,7 @@
 <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                 </programlisting>
                 </example>
-                <para>Theload balancer's tatus attribute reflects the current
+                <para>Theload balancer's status attribute reflects the current
                     configuration status of the device. This status is immutable by the caller and is
                     updated automatically based on state changes within the service. When a load
                     balancer is first created, it may be placed into a <code>BUILD</code> status while
@@ -1227,7 +1226,7 @@
                 the weight attribute of the node element. The weight of a node determines the portion of
                 requests it services compared to the other nodes of the load balancer. For exampl, if node
                 A has a weight of 2 and node B has a weight of 1, then the load balancer will forward twice
-                as many requests to node A than to node B. If the weight attribure is not specified, then the
+                as many requests to node A than to node B. If the weight attribute is not specified, then the
                 node's weight is implicitly set to "1".
             </para>
             <section>
@@ -1323,9 +1322,6 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>
-                    This operation does not require a request body.
-                </para>
                 <para>When a node is added, it is assigned a unique identifier that can be used
                     for mutating operations such as changing the condition or removing it.
                     Every load balancer is dual-homed on both the public Internet and internal; as a
@@ -1387,7 +1383,7 @@
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
                 <para>
-                    This operation does not require a request body.
+                    This operation does not return a response body.
                 </para>
                 <note>
                     <para>The node's IP and port are immutable attributes and cannot be modified with a
@@ -1471,8 +1467,12 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
+                <note>
+                    <para> A load balancer must have at least one node. Attempting to remove the last
+                          node of a load balancer will result in a badRequest error.</para>
+                </note>
                 <para>
-                    This operation does not require a request body.
+                    This operation does not return a response body.
                 </para>
             </section>
         </section>
@@ -1708,7 +1708,7 @@
                         <listitem>
                             <para>
                                 <code>timeout</code>: Maximum number of seconds to wait for a connection to be
-                                established before timing out. The value must be less than the delay value.
+                                established by the monitor before timing out. The value must be less than the delay value.
                             </para>
                         </listitem>
                         <listitem>
@@ -1756,7 +1756,7 @@
                         <listitem>
                             <para><code>path</code>: The HTTP path used in the request by the monitor.
                                 This must be a string beginning with a / (forward slash). The monitor expects
-                                a response from teh node with an HTTP status code of 200.
+                                a response from the node with an HTTP status code of 200.
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -1908,10 +1908,7 @@
             </simpara>
             <para>This operation allows the user to view the current connection logging
                     configuration, enable connection logging, or disable connection logging. </para>
-            <para>
-                This operation does not require a request body.
-            </para>
-            <para>The service provider is responsible for providing an out-of-brand method for users
+            <para>The service provider is responsible for providing an out-of-band method for users
                   of the service to retrieve the access and connection logs of their load balancers.</para>
             <example>
                 <title>List Connection Logging Configuration Response: XML</title>
@@ -1979,9 +1976,8 @@
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>This operation does not require a request body.</para>
             <para>
-                The connection throttling feature imposes limits on the number of connections per IP address to
+                The connection throttling feature imposes limits on the number of connections per client IP address to
                 help mitigate malicious or abusive traffic to your applications. The following properties can be
                 configured based on the traffic patterns for your sites.
             </para>
@@ -1995,7 +1991,7 @@
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
-                            <code>maxRequestRate</code>: Maximum number of requests allowed
+                            <code>maxRequestRate</code>: Maximum number of HHTP requests (or TCP connections) allowed
                             from a single IP address in the defined <code>rateInterval</code>.
                             Setting a value of 0 allows an unlimited connection rate.
                            </para>
@@ -2072,7 +2068,7 @@
                     balanced. The protocol selection should be based on the protocol of the back-end
                     nodes. When configuring a HTTP or HTTPS load balancer, the default port for
                     the given protocol will be selected unless otherwise specified. For TCP load
-                    balancers, the prot attribute must be provided.</para>
+                    balancers, the port attribute must be provided.</para>
             <example>
                 <title>List Load Balancing Protocols Response: XML</title>
                 <programlisting language="xml">
@@ -2091,7 +2087,7 @@
             <title>Algorithms</title>
             <para>All load balancers utilize an algorithm that defines how traffic should be
                 directed between back-end nodes. The default algorithm for newly created load
-                balancers is <code>ROUND-ROBIN</code>, which can be overridden at creation time or
+                balancers is <code>ROUND_ROBIN</code>, which can be overridden at creation time or
                 changed after the load balancer has been initially provisioned. The algorithm name
                 is to be constant within a major revision of the load balancing API, though new
                 algorithms may be created with a unique algorithm name within a given major revision
@@ -2173,9 +2169,10 @@
         <para>Implementations of this API specifications are free to augment this core API with
             extensions as they see appropriate to extend Load Balancing features
             (e.g. support for new LB algorithms)or offer new ones. All client applications written to this core
-            specification however (using this core API) must be supported by extended implementations as
-            specified in this document. Therefore, these applications should not receive payloads or values not
-            specified in this specification or obtain a different behavior from the service than expected.
+            specification however (using this core API) must be supported by extended implementations.
+            Therefore, these applications should not receive payloads or values not
+            specified in this specification nor should they obtain a different behavior than the one described
+            in this documentation.
         </para>
         <para>For a detailed description of how to use Extension APIs in OpenStack services, refer to
              OpenStack Compute API1.1 documentation on the OpenStack website.
