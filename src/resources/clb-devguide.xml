@@ -1787,23 +1787,26 @@ Content-Type: text/plain; charset=UTF-8
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
-                        <td>Name</td>
-                        <td>URI</td>
-                        <td>Description</td>
+                        <td colspan="1">Name</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
-                        <td>List historical usage.</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="3">/loadbalancers/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                        <td colspan="3">List account level usage.</td>
                     </tr>
                     <tr align="left">
-                        <td>&GET;
-                        </td>
-                        <td>/loadbalancers/loadBalancerId/usage/current</td>
-                        <td>List current usage.</td>
+                        <td colspan="1">&GET;</td>
+                        <td colspan="3">/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                        <td colspan="3">List historical usage.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="3">/loadbalancers/loadBalancerId/usage/current</td>
+                        <td colspan="3">List current usage.</td>
                     </tr>
                 </tbody>
             </informaltable>
