@@ -351,7 +351,7 @@
 
         <section>
                     <title>Limits</title>
-                    <para>Accounts may be preconfigured set of thresholds (or limits) to
+                    <para>Accounts may be preconfigured with a set of thresholds (or limits) to
                         manage capacity and prevent abuse of the system. The system recognizes two kinds of
                         limits: rate limits and absolute limits. Rate limits are thresholds that are reset
                         after a certain amount of time passes. Absolute limits are fixed.
@@ -704,7 +704,7 @@
                                unprocessableEntity
                            </title>
                            <para>
-                               This fault is returned when an operation is requested on an item that was unbled to
+                               This fault is returned when an operation is requested on an item that was unabled to
                                be followed due to semantic errors.
                            </para>
                            <example>
@@ -1087,7 +1087,7 @@
 <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                 </programlisting>
                 </example>
-                <para>Theload balancer's status attribute reflects the current
+                <para>The load balancer's status attribute reflects the current
                     configuration status of the device. This status is immutable by the caller and is
                     updated automatically based on state changes within the service. When a load
                     balancer is first created, it may be placed into a <code>BUILD</code> status while
@@ -1695,7 +1695,7 @@
                 <title>Monitor CONNECT</title>
                 <para>The monitor connects to each node on its defined port to ensure that the
                     service is listening properly. The CONNECT monitor is the most basic type of
-                    health check and does no post-processing or protocol specific health checks. It
+                    health check and does not perform post-processing or protocol specific health checks. It
                     includes several configurable properties:
                 </para>
                 <para>
@@ -2168,7 +2168,7 @@
         <title>API Extensions</title>
         <para>Implementations of this API specifications are free to augment this core API with
             extensions as they see appropriate to extend Load Balancing features
-            (e.g. support for new LB algorithms)or offer new ones. All client applications written to this core
+            (e.g. support for new LB algorithms) or offer new ones. All client applications written to this core
             specification however (using this core API) must be supported by extended implementations.
             Therefore, these applications should not receive payloads or values not
             specified in this specification nor should they obtain a different behavior than the one described
