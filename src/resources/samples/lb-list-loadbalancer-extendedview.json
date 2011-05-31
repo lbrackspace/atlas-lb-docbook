@@ -8,6 +8,9 @@
         "algorithm": "RANDOM",
         "status": "ACTIVE",
         "totalActiveConnections": "340",
+        "ipv4Servicenet": "10.0.0.0",
+        "ipv4Public": "1.2.3.4",
+        "ipv6Public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF",
         "currentUsage": {
             "incomingTransfer": "1.40",
             "outgoingTransfer": "20.14"

@@ -7,7 +7,10 @@
         port="80"
         algorithm="RANDOM"
         status="ACTIVE"
-        totalActiveConnections="340">
+        totalActiveConnections="340"
+        ipv4Servicenet="10.0.0.0"
+        ipv4Public="1.2.3.4"
+        ipv6Public="FFFF:0000:0000:0000:0000:0000:0000:FFFF">
     <host id="1" type="ACTIVE" />
     <currentUsage
             incomingTransfer="1.40"

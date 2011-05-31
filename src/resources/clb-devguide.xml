@@ -1782,75 +1782,75 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section>
             <title>Usage Reports</title>
-        <section>
-            <title>List Usage</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Name</td>
-                        <td colspan="3">URI</td>
-                        <td colspan="3">Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="3">/loadbalancers/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
-                        <td colspan="3">List account level usage.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="3">/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
-                        <td colspan="3">List historical usage.</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="3">/loadbalancers/loadBalancerId/usage/current</td>
-                        <td colspan="3">List current usage.</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>
-            </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para>
-                This operation does not require a request body.
-            </para>
-            <para>The load balancer usage reports provide a view of all transfer activity, average
-                    number of connections, and number of virtual IPs associated with the load
-                    balancing service. Current usage represents all usage recorded within the
-                    preceding 24 hours. Values for both <code>incomingTransfer</code> and
-                        <code>outgoingTransfer</code> are expressed in bytes transferred. The
-                    optional <code>startTime</code> and <code>endTime</code> parameters can be used
-                    to filter all usage. If the <code>startTime</code> parameter is supplied but the
-                        <code>endTime</code> parameter is not, then all usage beginning with the
-                        <code>startTime</code> will be provided. Likewise, if the
-                        <code>endTime</code> parameter is supplied but the <code>startTime</code>
-                    parameter is not, then all usage will be returned up to the <code>endTime</code>
-                    specified. </para>
-            <note>
-                <para>Historical usage data is available for up to 90 days of service
-                        activity.</para>
-            </note>
-            <example>
-                <title>Report Load Balancer Usage Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Report Load Balancer Usage Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-report-usage-response.json" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
+            <section>
+                <title>List Usage</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;</td>
+                            <td colspan="3">/loadbalancers/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                            <td colspan="3">List account level usage.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&GET;</td>
+                            <td colspan="3">/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                            <td colspan="3">List historical usage.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&GET;</td>
+                            <td colspan="3">/loadbalancers/loadBalancerId/usage/current</td>
+                            <td colspan="3">List current usage.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para>The load balancer usage reports provide a view of all transfer activity, average
+                        number of connections, and number of virtual IPs associated with the load
+                        balancing service. Current usage represents all usage recorded within the
+                        preceding 24 hours. Values for both <code>incomingTransfer</code> and
+                            <code>outgoingTransfer</code> are expressed in bytes transferred. The
+                        optional <code>startTime</code> and <code>endTime</code> parameters can be used
+                        to filter all usage. If the <code>startTime</code> parameter is supplied but the
+                            <code>endTime</code> parameter is not, then all usage beginning with the
+                            <code>startTime</code> will be provided. Likewise, if the
+                            <code>endTime</code> parameter is supplied but the <code>startTime</code>
+                        parameter is not, then all usage will be returned up to the <code>endTime</code>
+                        specified. </para>
+                <note>
+                    <para>Historical usage data is available for up to 90 days of service
+                            activity.</para>
+                </note>
+                <example>
+                    <title>Report Load Balancer Usage Response: XML</title>
+                    <programlisting language="xml">
+    <xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Report Load Balancer Usage Response: JSON</title>
+                    <programlisting language="javascript">
+    <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
         </section>
         <section>
             <title>Access Lists</title>
