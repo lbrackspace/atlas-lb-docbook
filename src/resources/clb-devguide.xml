@@ -1103,11 +1103,57 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </note>
             <note>
-                <para> Users may configure all documented features of the load balancer at creation
-                        time by simply providing the additional elements or attributes in the
-                        request. This document provides an overview of all the features the load
-                        balancing service supports. </para>
+                <para>
+                    Users may configure all documented features of the load balancer at creation
+                    time by simply providing the additional elements or attributes in the
+                    request. This document provides an overview of all the features the load
+                    balancing service supports.
+                </para>
             </note>
+            <para>
+                You may specify the type of virtualIp to add along with the creation of a loadbalancer.
+                The following table describes the options.
+            </para>
+            <table rules="all">
+                <title>Virtual IP Types</title>
+                <thead align="center">
+                    <td>Version</td>
+                    <td>Type</td>
+                    <td>Outcome</td>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td>Not Specified</td>
+                        <td>PUBLIC</td>
+                        <td>IPV4 &amp; IPV6</td>
+                    </tr>
+                    <tr align="left">
+                        <td>IPV4</td>
+                        <td>PUBLIC</td>
+                        <td>IPV4</td>
+                    </tr>
+                    <tr align="left">
+                        <td>IPV6</td>
+                        <td>PUBLIC</td>
+                        <td>IPV6</td>
+                    </tr>
+                    <tr align="left">
+                        <td>Not Specified</td>
+                        <td>SERVICENET</td>
+                        <td>IPV4</td>
+                    </tr>
+                    <tr align="left">
+                        <td>IPV4</td>
+                        <td>SERVICENET</td>
+                        <td>IPV4</td>
+                    </tr>
+                    <tr align="left">
+                        <td>IPV6</td>
+                        <td>SERVICENET</td>
+                        <td>Failure Message</td>
+                    </tr>
+                </tbody>
+            </table>
             <example>
                 <title>Create Load Balancer (Required Attributes) Request: XML</title>
                 <programlisting language="xml">
@@ -1738,6 +1784,32 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
                 </programlisting>
             </example>
+        </section>
+        <section>
+            <title>Add Virtual IP Version 6</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&POST;</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/</td>
+                        <td colspan="3">Add virtual ip version 6</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>,
+                <returnvalue>202</returnvalue>
+            </para>
+            <simpara>Error Response code(s): loadbalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),
+             </simpara>
         </section>
         <section>
             <title>Remove Virtual IP</title>
