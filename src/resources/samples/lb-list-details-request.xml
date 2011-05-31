@@ -4,7 +4,8 @@
     protocol="HTTP"
     port="80"
     algorithm="RANDOM"
-    status="ACTIVE" ipv4Servicenet="10.0.0.0"
+    status="ACTIVE"
+    ipv4Servicenet="10.0.0.0"
     ipv4Public="1.2.3.4"
     ipv6Public="FFFF:0000:0000:0000:0000:0000:0000:FFFF">
     <connectionLogging enabled="false" />

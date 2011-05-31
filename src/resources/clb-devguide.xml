@@ -1166,6 +1166,12 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-create-required-request.json" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes) Response: XML</title>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes) Response: JSON</title>
+            </example>
             <para>To conserve IPv4 address space, Rackspace highly recommends sharing Virtual IPs
                     between your load balancers. If you have at least one load balancer, you may
                     create subsequent load balancers that share a single virtual IP by issuing a
@@ -1798,7 +1804,7 @@ Content-Type: text/plain; charset=UTF-8
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&POST;</td>
-                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
                         <td colspan="3">Add virtual ip version 6</td>
                     </tr>
                 </tbody>
@@ -1809,7 +1815,33 @@ Content-Type: text/plain; charset=UTF-8
                 <returnvalue>202</returnvalue>
             </para>
             <simpara>Error Response code(s): loadbalancerFault (<errorcode>400</errorcode>, <errorcode>500</errorcode>),
+                serviceUnavailable (<errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),
+                badRequest (<errorcode>400</errorcode>), overLimit (<errorcode>413</errorcode>)
              </simpara>
+            <example>
+                <title>Add Virtual IP Version 6 Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-vip-v6-request.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Virtual IP Version 6 Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-vip-v6-request.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Virtual IP Version 6 Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-add-vip-v6-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Virtual IP Version 6 Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-add-vip-v6-response.json" parse="text" />
+                </programlisting>
+            </example>
         </section>
         <section>
             <title>Remove Virtual IP</title>
