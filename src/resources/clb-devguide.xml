@@ -1168,6 +1168,15 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>Create Load Balancer (Required Attributes) Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-required-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>Create Load Balancer (Required Attributes) Response: XML</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-create-required-response.json" parse="text" />
+                </programlisting>
             </example>
             <example>
                 <title>Create Load Balancer (Required Attributes) Response: JSON</title>
