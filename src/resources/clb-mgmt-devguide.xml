@@ -1397,7 +1397,11 @@
             <para>
                 This operations allows user to list all the alerts in the system. Additional information about the
                 alert can be retrieved by alert id. The status of the alert can be changed to <code>ACKNOWLEDGED</code>
-                using the &PUT; method
+                using the &PUT; method.
+            </para>
+            <para>
+                When getting alerts based on account ids, you may specify any number of accounts as separate query
+                parameters.  You may also include the stack trace with the final query parameter.
             </para>
             <informaltable rules="all">
                 <thead>
@@ -1431,15 +1435,18 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/alerts/byloadbalancerids?id=<parameter>loadBalancerId</parameter>
-                                &amp;id=<parameter>loadBalancerId</parameter>&amp;startDate=
-                                <parameter>2010-12-21T12:32:07-06:00</parameter>&amp;endDate=
-                                <parameter>2010-12-21T12:36:30-06:00</parameter></td>
+                                &amp;id=<parameter>loadBalancerId</parameter>
+                                &amp;startDate=<parameter>2010-12-21T12:32:07-06:00</parameter>
+                                &amp;endDate=<parameter>2010-12-21T12:36:30-06:00</parameter></td>
                         <td colspan="4">Retrieve all alerts, if any, for any specified load balancers.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/alerts/account?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">/management/alerts/account?account=<parameter>loadBalancerId</parameter>
+                                &amp;account=<parameter>loadBalancerId</parameter>
+                                &amp;startDate=<parameter>Date</parameter>&amp;endDate=<parameter>Date</parameter>
+                                &amp;showStackTrace=<parameter>true</parameter></td>
                         <td colspan="4">Retrieve all alerts, if any, for an account.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
