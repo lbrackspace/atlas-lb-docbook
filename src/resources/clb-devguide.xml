@@ -1866,7 +1866,7 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td colspan="1">&DELETE;
                         </td>
-                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/<parameter>virtualIpId</parameter></td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips<parameter>id</parameter></td>
                         <td colspan="3">Remove a virtual IP.</td>
                     </tr>
                 </tbody>
