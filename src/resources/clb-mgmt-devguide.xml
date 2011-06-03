@@ -1451,6 +1451,14 @@
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/alerts/cluster/<parameter>clusterId</parameter>
+                                &amp;startDate=<parameter>2010-12-21T12:32:07-06:00</parameter>
+                                &amp;endDate=<parameter>2010-12-21T12:36:30-06:00</parameter></td>
+                        <td colspan="4">Retrieve all alerts, if any, for any specified load balancers.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1">&PUT;</td>
                         <td colspan="4">/alerts/<parameter>alertId</parameter>/acknowledged</td>
                         <td colspan="4">Acknowledge alert and changes its status to
