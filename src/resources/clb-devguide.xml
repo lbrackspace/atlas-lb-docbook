@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book [
-    <!-- Some useful entities borrowed from HTML -->
-    <!ENTITY ndash  "&#x2013;">
-    <!ENTITY mdash  "&#x2014;">
-    <!ENTITY hellip "&#x2026;">
-
     <!-- Useful for describing APIs -->
     <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
     <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
     <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
     <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
-    <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Check_mark_23x20_02.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
-
-    <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Arrow_east.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:xi="http://www.w3.org/2001/XInclude"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns:m="http://www.w3.org/1998/Math/MathML"
-      xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:db="http://docbook.org/ns/docbook">
+      xmlns:xi="http://www.w3.org/2001/XInclude">
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide</title>
     <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
@@ -71,9 +48,9 @@
             <para>this is a placeholder for the back cover</para>
         </cover>
     </info>
-    <chapter>
+    <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
-        <section>
+        <section xml:id="Intended_Audience-d1e87">
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
                 the Rackspace Cloud Load Balancers API. It assumes the reader has a general understanding of
@@ -96,7 +73,7 @@
                 </itemizedlist>
             </para>
         </section>
-        <section>
+        <section xml:id="Document_Change_History-d1e126">
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and obsoletes all previous versions.
                 The most recent changes are described in the table below: </para>
@@ -141,7 +118,7 @@
                 </tbody>
             </informaltable>
         </section>
-        <section>
+        <section xml:id="Additional_Resources-d1e207">
             <title>Additional Resources</title>
             <para>You can download the most current version of this document from the Rackspace Cloud website at <link
                 xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
@@ -156,36 +133,36 @@
             </para>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Concepts-d1e233">
       <?dbhtml stop-chunking?>
         <title>Concepts</title>
         <para>To use the Rackspace Cloud Load Balancers API effectively, you should understand several key
             concepts:
         </para>
-        <section>
+        <section xml:id="Load_Balancer-d1e243">
             <title>Load Balancer</title>
             <para>A load balancer is a logical device which belongs to a cloud account. It is used
                 to distribute workloads between multiple back-end systems or services, based on the
                 criteria defined as part of its configuration.
             </para>
         </section>
-        <section>
+        <section xml:id="Virtual_IP-d1e252">
             <title>Virtual IP</title>
             <para>A virtual IP is an Internet Protocol (IP) address configured on the load balancer
                 for use by clients connecting to a service that is load balanced. Incoming
                 connections are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
-        <section>
+        <section xml:id="Node-d1e262">
             <title>Node</title>
             <para>A node is a back-end device providing a service on a specified IP and port.</para>
         </section>
-        <section>
+        <section xml:id="Health_Monitor-d1e271">
             <title>Health Monitor</title>
             <para>A health monitor is a feature of each load balancer. It is used to determine
                 whether or not a back-end node is usable for processing a request. The load
                 balancing service supports two types of health monitors: passive and active. </para>
-            <section>
+            <section xml:id="Passive_Health_Monitor-d1e279">
                 <title>Passive Health Monitor</title>
                 <para>By default, all load balancing configurations utilize a passive health
                     monitor. This technique analyzes the response of the back-end server to
@@ -226,7 +203,7 @@
                         determine whether or not it has recovered. </para>
                 </note>
             </section>
-            <section>
+            <section xml:id="Active_Health_Monitor-d1e336">
                 <title>Active Health Monitor</title>
                 <para>Active health monitoring is a technique that uses synthetic transactions
                     executed at periodic intervals to determine the condition of a node. One of the
@@ -263,20 +240,20 @@
                 </para>
             </section>
         </section>
-        <section>
+        <section xml:id="Session_Persistence-d1e376">
             <title>Session Persistence</title>
             <para>Session persistence is a feature of the load balancing service. It attempts to
                 force subsequent connections to a service to be redirected to the same node as long
                 as it is online. </para>
         </section>
-        <section>
+        <section xml:id="Connection_Logging-d1e385">
             <title>Connection Logging</title>
             <para>The connection logging feature allows logs to be delivered to a Cloud Files
                 account every hour. For HTTP-based protocol traffic, these are Apache-style access
                 logs. For all other traffic, this is  connection and transfer logging.</para>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="General_API_Information-d1e395">
         <title>General API Information</title>
         <para>Ideas explained here are relevant to all operations of the API. For details of specific API operations, see the "API Operations" chapter.</para>
         <para>The Rackspace Cloud Load Balancers API is implemented using a ReSTful web service interface.
@@ -289,7 +266,7 @@
                 HTTPS on TCP port 443.
             </para>
         </note>
-        <section>
+        <section xml:id="Authentication-d1e412">
             <title>Authentication</title>
             <para>Every ReST request against the load balancing service requires the inclusion of a
                 specific authorization token, supplied by the
@@ -297,12 +274,11 @@
                 HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication
                 Service and supplying a valid username and API access key.
             </para>
-            <section>
+            <section xml:id="Request-d1e423">
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all
                     Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
-                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
-                            >https://auth.api.rackspacecloud.com/v1.0</link>. To authenticate, you must
+                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>. To authenticate, you must
                     supply your username and API access key in x-headers:
                 </para>
                 <para>
@@ -334,7 +310,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
                 </example>
             </section>
-            <section>
+            <section xml:id="Response-d1e468">
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status
                     <returnvalue>204</returnvalue>
@@ -375,7 +351,7 @@ Content-Type: text/plain; charset=UTF-8
                 </note>
             </section>
         </section>
-        <section>
+        <section xml:id="Service_Access_Endpoints-d1e517">
             <title>Service Access/Endpoints</title>
             <para>The load balancing service is a regionalized service. It allows the caller
                 to select a region into which a load balancer is to be provisioned.
@@ -419,7 +395,7 @@ Content-Type: text/plain; charset=UTF-8
                 external servers as possible.
             </para>
         </section>
-        <section>
+        <section xml:id="Request_Response_Types-d1e591">
             <title>Request/Response Types</title>
             <para>The Rackspace Cloud Load Balancers API supports both the JSON and XML data serialization
                 formats. The request format is specified using the
@@ -472,7 +448,7 @@ Content-Type: text/plain; charset=UTF-8
                 </tbody>
             </table>
         </section>
-        <section>
+        <section xml:id="Content_Compression-d1e690">
             <title>Content Compression</title>
             <para>
                 Request and response body data may be encoded with gzip compression to accelerate
@@ -513,7 +489,7 @@ Content-Type: text/plain; charset=UTF-8
                 </tbody>
             </table>
         </section>
-        <section>
+        <section xml:id="Persistent_Connections-d1e765">
             <title>Persistent Connections</title>
             <para>
                 By default, the API supports persistent connections via <code>HTTP/1.1</code> keepalives.
@@ -528,7 +504,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </note>
         </section>
-        <section>
+        <section xml:id="Paginated_Collections-d1e786">
             <title>Paginated Collections</title>
             <para>To reduce load on the service, list operations will return a maximum of 100 items
                 at a time. To navigate the collection, the
@@ -543,7 +519,7 @@ Content-Type: text/plain; charset=UTF-8
                 (itemNotFound) faults.
             </para>
         </section>
-        <section>
+        <section xml:id="Limits-d1e807">
             <title>Limits</title>
             <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to
                 manage capacity and prevent abuse of the system. The system recognizes two kinds of
@@ -557,7 +533,7 @@ Content-Type: text/plain; charset=UTF-8
                     justification.
                 </para>
             </note>
-            <section>
+            <section xml:id="Rate_Limits-d1e821">
                 <title>Rate Limits</title>
                 <para>
                     We specify rate limits in terms of both a
@@ -651,7 +627,7 @@ Content-Type: text/plain; charset=UTF-8
                     header to notify the client when they can attempt to try again.
                 </para>
             </section>
-            <section>
+            <section xml:id="Absolute_Limits-d1e999">
                 <title>Absolute Limits</title>
                 <para>
                     <code>Maximum number of load balancers</code>
@@ -673,7 +649,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tbody>
                 </informaltable>
             </section>
-            <section>
+            <section xml:id="Determining_Limits_Programmatically-d1e1039">
                 <title>Determining Limits Programmatically</title>
                 <para>
                     Applications can programmatically determine current account limits using the
@@ -723,12 +699,12 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
             </section>
         </section>
-        <section>
+        <section xml:id="Faults-d1e1140">
             <title>Faults</title>
             <para> API calls that return an error return one of the following fault objects. All
                 fault objects extend from the base fault, <code>serviceFault</code>, for easier
                 exception handling for languages that support it. </para>
-            <section>
+            <section xml:id="serviceFault-d1e1151">
                 <title>
                     serviceFault
                 </title>
@@ -753,7 +729,7 @@ Content-Type: text/plain; charset=UTF-8
                     to be returned directly but should instead expect only one of the child faults to be returned.
                 </para>
             </section>
-            <section>
+            <section xml:id="badRequest-d1e1179">
                 <title>
                     badRequest
                 </title>
@@ -774,7 +750,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                     </example>
             </section>
-            <section>
+            <section xml:id="immutableEntity-d1e1197">
                 <title>
                     immutableEntity
                 </title>
@@ -794,7 +770,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                 </example>
             </section>
-            <section>
+            <section xml:id="itemNotFound-d1e1225">
                 <title>
                     itemNotFound
                 </title>
@@ -807,7 +783,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                     </example>
             </section>
-            <section>
+            <section xml:id="loadBalancerFault-d1e1240">
                 <title>
                     loadBalancerFault
                 </title>
@@ -825,7 +801,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                 </example>
             </section>
-            <section>
+            <section xml:id="outOfVirtualIps-d1e1261">
                 <title>
                     outOfVirtualIps
                 </title>
@@ -845,7 +821,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                     </example>
             </section>
-            <section>
+            <section xml:id="overLimit-d1e1279">
                 <title>
                     overLimit
                 </title>
@@ -861,7 +837,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                 </example>
             </section>
-            <section>
+            <section xml:id="serviceUnavailable-d1e1297">
                 <title>
                     serviceUnavailable
                 </title>
@@ -880,7 +856,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                     </example>
             </section>
-            <section>
+            <section xml:id="unauthorized-d1e1315">
                 <title>
                     unauthorized
                 </title>
@@ -896,7 +872,7 @@ Content-Type: text/plain; charset=UTF-8
                 </literallayout>
                 </example>
             </section>
-            <section>
+            <section xml:id="unprocessableEntity-d1e1334">
                 <title>
                     unprocessableEntity
                 </title>
@@ -915,12 +891,12 @@ Content-Type: text/plain; charset=UTF-8
             </section>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>
         <para>This chapter explains specific API operations. For ideas relevant to all API operations, see the "General API Information" chapter.</para>
-        <section>
+        <section xml:id="Load_Balancers-d1e1362">
             <title>Load Balancers</title>
-        <section>
+        <section xml:id="List_Load_Balancers-d1e1367">
             <title>List Load Balancers</title>
             <informaltable rules="all">
                 <thead>
@@ -1002,7 +978,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="List_Load_Balancer_Details-d1e1522">
             <title>List Load Balancer Details</title>
             <informaltable rules="all">
                 <thead>
@@ -1058,7 +1034,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Create_Load_Balancer-d1e1635">
             <title>Create Load Balancer</title>
             <informaltable rules="all">
                 <thead>
@@ -1162,7 +1138,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Update_Load_Balancer_Attributes-d1e1812">
                 <title>Update Load Balancer Attributes</title>
                 <informaltable rules="all">
                     <thead>
@@ -1324,7 +1300,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tbody>
                 </table>
         </section>
-            <section>
+            <section xml:id="Remove_Load_Balancer-d1e2093">
                 <title>Remove Load Balancer</title>
                 <informaltable rules="all">
                     <thead>
@@ -1365,7 +1341,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
-        <section>
+        <section xml:id="Nodes-d1e2173">
             <title>Nodes</title>
             <para>The nodes defined by the load balancer are responsible for servicing the requests
                 received through the load balancer's virtual IP. By default, the load balancer
@@ -1392,7 +1368,7 @@ Content-Type: text/plain; charset=UTF-8
                 changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
-            <section>
+            <section xml:id="List_Nodes-d1e2218">
                 <title>List Nodes</title>
                 <informaltable rules="all">
                     <thead>
@@ -1469,7 +1445,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Add_Nodes-d1e2379">
                 <title>Add Nodes</title>
                 <informaltable rules="all">
                     <thead>
@@ -1533,7 +1509,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Modify_Nodes-d1e2503">
                 <title>Modify Nodes</title>
                 <informaltable rules="all">
                     <thead>
@@ -1622,7 +1598,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Remove_Nodes-d1e2675">
                 <title>Remove Nodes</title>
                 <informaltable rules="all">
                     <thead>
@@ -1657,7 +1633,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
-        <section>
+        <section xml:id="Virtual_IPs-d1e2754">
             <title>Virtual IPs</title>
             <para>
                 A virtual IP (VIP) makes a load balancer accessible by clients. The load
@@ -1689,7 +1665,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
-        <section>
+        <section xml:id="List_Virtual_IPs-d1e2809">
             <title>List Virtual IPs</title>
             <informaltable rules="all">
                 <thead>
@@ -1740,7 +1716,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Remove_Virtual_IP-d1e2919">
             <title>Remove Virtual IP</title>
             <informaltable rules="all">
                 <thead>
@@ -1781,9 +1757,9 @@ Content-Type: text/plain; charset=UTF-8
             </note>
         </section>
         </section>
-        <section>
+        <section xml:id="Usage_Reports-d1e3009">
             <title>Usage Reports</title>
-        <section>
+        <section xml:id="List_Usage-d1e3014">
             <title>List Usage</title>
             <informaltable rules="all">
                 <thead>
@@ -1850,7 +1826,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         </section>
-        <section>
+        <section xml:id="Access_Lists-d1e3160">
             <title>Access Lists</title>
             <para>The access list management feature allows fine-grained network access controls to
                 be applied to the load balancer's virtual IP address. A single IP address, multiple
@@ -1860,7 +1836,7 @@ Content-Type: text/plain; charset=UTF-8
                 items except for those with the <code>ALLOW</code> type, add a
                     <code>networkItem</code> with an address of "0.0.0.0/0" and a <code>DENY</code>
                 type. </para>
-        <section>
+        <section xml:id="Manage_Access_Lists-d1e3187">
             <title>Manage Access Lists</title>
             <informaltable rules="all">
                 <thead>
@@ -1948,7 +1924,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         </section>
-        <section>
+        <section xml:id="Monitors-d1e3370">
             <title>Monitors</title>
             <para>The load balancing service includes a health monitoring operation which
                 periodically checks your back-end nodes to ensure they are responding correctly. If
@@ -1985,7 +1961,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
-        <section>
+        <section xml:id="Monitor_Health-d1e3434">
             <title>Monitor Health</title>
             <informaltable rules="all">
                 <thead>
@@ -2026,7 +2002,7 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <section>
+            <section xml:id="Monitor_Connections-d1e3536">
                 <title>Monitor Connections</title>
                 <para>The monitor connects to each node on its defined port to ensure that the
                     service is listening properly. The connect monitor is the most basic type of
@@ -2086,7 +2062,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Monitor_HTTP_and_HTTPS-d1e3635">
                 <title>Monitor HTTP and HTTPS</title>
                 <para> The HTTP and HTTPS monitor is more intelligent than the connect monitor. It
                         is capable of processing an HTTP or HTTPS response to determine the
@@ -2146,9 +2122,9 @@ Content-Type: text/plain; charset=UTF-8
             </section>
         </section>
         </section>
-        <section>
+        <section xml:id="Sessions-d1e3728">
             <title>Sessions</title>
-        <section>
+        <section xml:id="Manage_Session_Persistence-d1e3733">
             <title>Manage Session Persistence</title>
             <para>Session persistence is a feature of the load balancing service which
                 forces multiple requests from clients to be directed to the same node. This is
@@ -2245,9 +2221,9 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         </section>
-        <section>
+        <section xml:id="Connections-d1e3919">
             <title>Connections</title>
-        <section>
+        <section xml:id="Log_Connections-d1e3924">
             <title>Log Connections</title>
             <informaltable rules="all">
                 <thead>
@@ -2312,7 +2288,7 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Throttle_Connections-d1e4057">
             <title>Throttle Connections</title>
             <informaltable rules="all">
                 <thead>
@@ -2421,9 +2397,9 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         </section>
-        <section>
+        <section xml:id="Protocols-d1e4264">
             <title>Protocols</title>
-        <section>
+        <section xml:id="List_Load_Balancing_Protocols-d1e4269">
             <title>List Load Balancing Protocols</title>
             <informaltable rules="all">
                 <thead>
@@ -2472,7 +2448,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
         </section>
         </section>
-        <section>
+        <section xml:id="Algorithms-d1e4367">
             <title>Algorithms</title>
             <para>All load balancers utilize an algorithm that defines how traffic should be
                 directed between back-end nodes. The default algorithm for newly created load
@@ -2527,7 +2503,7 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
-        <section>
+        <section xml:id="List_Load_Balancing_Algorithms-d1e4459">
             <title>List Load Balancing Algorithms</title>
             <informaltable rules="all">
                 <thead>
