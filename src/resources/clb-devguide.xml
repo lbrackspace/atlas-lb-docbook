@@ -157,6 +157,7 @@
         </section>
     </chapter>
     <chapter>
+      <?dbhtml stop-chunking?>
         <title>Concepts</title>
         <para>To use the Rackspace Cloud Load Balancers API effectively, you should understand several key
             concepts:

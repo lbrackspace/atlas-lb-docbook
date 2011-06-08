@@ -163,6 +163,7 @@
             Rackers might perform these operations to examine or alter the overall operational environment.
         </para>
         <section>
+	  <?dbhtml stop-chunking?>
             <title>Load Balancers</title>
             <section>
                 <title>List Load Balancers</title>
