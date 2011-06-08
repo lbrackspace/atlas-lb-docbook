@@ -708,27 +708,39 @@
                 </programlisting>
             </example>
             <example>
+                <title>Set Rate Limit Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-ratelimit-request.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Set Rate Limit Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-create-ratelimit-request.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
                 <title>Set Rate Limit Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-ratelimit.xml" parse="text"/>
+<xi:include href="samples/lb-create-ratelimit-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Set Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-ratelimit.json" parse="text"/>
+<xi:include href="samples/lb-create-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Update Rate Limit Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-update-ratelimit.xml" parse="text"/>
+<xi:include href="samples/lb-update-ratelimit-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Update Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-update-ratelimit.json" parse="text"/>
+<xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
