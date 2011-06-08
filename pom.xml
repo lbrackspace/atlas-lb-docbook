@@ -24,12 +24,13 @@
                 <artifactId>clouddocs-maven-plugin</artifactId>
                 <!-- this <version> relates only to the *plugin* used for document formatting -->
                 <!-- the version of the *API* that is the subject of the document is indicated within each document -->
-                <version>1.0.2-SNAPSHOT</version>
+                <version>1.0.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>g1</id>
                         <goals>
                             <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
@@ -44,6 +45,7 @@
                         <id>g2</id>
                         <goals>
                             <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
