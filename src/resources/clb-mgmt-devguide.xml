@@ -94,6 +94,16 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">May. 20, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added load balancer audit reports</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1" align="center">Apr. 19, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -1941,7 +1951,7 @@
     <chapter>
         <title>Reports</title>
         <para>
-            Two kinds of reports are available, focused on load balancing hosts or virtual IPs.
+            Various reports are available, currently focused on load balancing hosts, virtual IPs and audits.
         </para>
         <section>
             <title>Host Capacity</title>
@@ -2034,6 +2044,46 @@
 <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
             </example>    
-        </section> 
+        </section>
+        <section>
+            <title>Load Balancer Audit</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/audit/status?staus={statues}&amp;{changes-since}</td>
+                        <td colspan="4">Generate a load balancer audit report.</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para> The load balancer audit report provides insight into the load balancers that may have issues.
+                These issues are specified for this report as ERROR, BUILD, PENDING_DELETE, PENDING_UPDATE statues.
+                Each status can be specified in the query parameter of this request in a comma delimited list.
+                <code>ex.(/audit/status?status=error,build&amp;2011-5-16)</code>
+                The alerts returned with the load balancers in question can be queried against using the alert id to
+                return a more detailed alert message.
+            </para>
+            <example>
+                <title>Report Load Balancer Audit: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-audit-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Report Load Balancer Audit: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-audit-response.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
     </chapter>
 </book>
