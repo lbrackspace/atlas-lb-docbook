@@ -1,4 +1,3 @@
-{"byIdOrName": {
-        "name": "name-of-host-or-cluster"
-    }
+{
+    "name": "name-of-host-or-cluster"
 }
