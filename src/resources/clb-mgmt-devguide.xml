@@ -658,6 +658,12 @@
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/activeratelimits</td>
+                        <td colspan="3">Retrieve all currently rate limited load balancers</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td colspan="3">Impose a new rate limit on the specified load balancer.</td>
@@ -705,6 +711,18 @@
                 <title>List Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Active Rate Limited LoadBalancers Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-ratelimited-loadbalancers.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Active Rate Limited LoadBalancers Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
