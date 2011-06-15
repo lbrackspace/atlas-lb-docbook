@@ -2104,6 +2104,7 @@
                 <code>ex.(/audit/status?status=error,build&amp;2011-5-16)</code>
                 The alerts returned with the load balancers in question can be queried against using the alert id to
                 return a more detailed alert message.
+                User must provide the status to query against while attempting to use this call.
             </para>
             <example>
                 <title>Report Load Balancer Audit: XML</title>
