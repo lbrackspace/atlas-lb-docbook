@@ -929,6 +929,8 @@ Content-Type: text/plain; charset=UTF-8
             </simpara>
             <para>
                 This operation provides a list of all load balancers configured and associated with your account.
+                A query paramater in the form of "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000" is supported
+                which will return a loadbalancer that has changed since the date provided.
             </para>
             <para>
                 To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
@@ -2009,9 +2011,12 @@ Content-Type: text/plain; charset=UTF-8
                     will be appended to with subsequent &POST; requests. One access list may include
                     up to 100 network items A single address or subnet definition is considered
                     unique and cannot be duplicated between items in an access list. There are two
-                    &DELETE; operations for the access list. One allows for deletion of the entire
-                    access list and the other for deletion of a specific network item in the access
-                    list. </para>
+                    &DELETE; operations for the access list. One allows for deletion of multiple network items
+                    in an access list, or the entire accesslist, and the other for deletion of a specific
+                    network item in the access list. To delete a number of specified network items, use
+                    the following URL and query parameters: "/loadbalancers/
+                    <parameter>loadBalancerId</parameter>/accesslist?id=<parameter>networkItemId</parameter>
+                    &amp;id=<parameter>networkItemId</parameter>"</para>
             <example>
                 <title>List Access List Response: XML</title>
                 <programlisting language="xml">
