@@ -2016,7 +2016,7 @@ Content-Type: text/plain; charset=UTF-8
                     network item in the access list. To delete a number of specified network items, use
                     the following URL and query parameters: "/loadbalancers/
                     <parameter>loadBalancerId</parameter>/accesslist?id=<parameter>networkItemId</parameter>
-                    &amp;id=<parameter>networkItemId</parameter>"</para>
+                    &amp;id=<parameter>networkItemId</parameter>" up to the limit.</para>
             <example>
                 <title>List Access List Response: XML</title>
                 <programlisting language="xml">
