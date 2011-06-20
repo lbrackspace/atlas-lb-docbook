@@ -655,7 +655,6 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Determining Limits Programmatically</title>
                 <para>
                     Applications can programmatically determine current account limits using the
-                    <code>/limits</code>
                     URI as follows:
                 </para>
                 <informaltable rules="all">
@@ -671,7 +670,13 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="1">/limits</td>
-                            <td colspan="3">Return the current limits for the account.</td>
+                            <td colspan="3">Return the current rate limits for the account.</td>
+                        </tr>
+                         <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="1">/absolutelimits</td>
+                            <td colspan="3">Return the current absolute limits for the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -697,6 +702,18 @@ Content-Type: text/plain; charset=UTF-8
                     <title>List Limits Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-limits-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
