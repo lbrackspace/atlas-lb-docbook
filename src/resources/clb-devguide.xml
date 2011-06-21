@@ -5,6 +5,7 @@
     <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
     <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
     <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+    <!ENTITY BATCH_DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -654,7 +655,6 @@ Content-Type: text/plain; charset=UTF-8
                 <title>Determining Limits Programmatically</title>
                 <para>
                     Applications can programmatically determine current account limits using the
-                    <code>/limits</code>
                     URI as follows:
                 </para>
                 <informaltable rules="all">
@@ -670,7 +670,13 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="1">/limits</td>
-                            <td colspan="3">Return the current limits for the account.</td>
+                            <td colspan="3">Return the current rate limits for the account.</td>
+                        </tr>
+                         <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="1">/absolutelimits</td>
+                            <td colspan="3">Return the current absolute limits for the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -696,6 +702,18 @@ Content-Type: text/plain; charset=UTF-8
                     <title>List Limits Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-limits-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -1384,6 +1402,14 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter></td>
                             <td colspan="3">Remove a load balancer from the account.</td>
                         </tr>
+                        <tr align="left">
+                        <td colspan="1">&BATCH_DELETE;
+                        </td>
+                        <td colspan="3">
+                            /loadbalancers?id=<parameter>loadBalancerId</parameter>
+                        </td>
+                        <td colspan="3">Batch delete load balancers given specified id list.</td>
+                    </tr>
                     </tbody>
                 </informaltable>
                 <para>
@@ -1399,6 +1425,12 @@ Content-Type: text/plain; charset=UTF-8
                     The remove load balancer function removes the specified load balancer and its associated
                     configuration from the account. Any and all configuration data is immediately purged and
                     is not recoverable.
+                    To batch delete loadbalancers, provide a query parameter list of load balancer ids. For example:
+                    /loadbalancers?id=<parameter>loadBalancerId</parameter>&amp;id=<parameter>loadBalancerId</parameter>
+                    The current default limit is ten ids per request. Any and all configuration data is immediately purged and
+                    is not recoverable. By chance one of the items in the list cannot be removed due to its current status
+                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential failures for
+                    this request.
                 </para>
                 <para>
                     This operation does not require a request body.
@@ -1992,6 +2024,13 @@ Content-Type: text/plain; charset=UTF-8
                         </td>
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
                         <td colspan="3">Remove the entire access list.</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&BATCH_DELETE;
+                        </td>
+                        <td colspan="3">/loadbalancers/accesslist?id=<parameter>networkItemId</parameter>
+                            &amp;id=<parameter>networkItemId</parameter></td>
+                        <td colspan="3">Batch delete the access list network items given specified id list.</td>
                     </tr>
                 </tbody>
             </informaltable>
