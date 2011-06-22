@@ -2028,7 +2028,7 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td colspan="1">&BATCH_DELETE;
                         </td>
-                        <td colspan="3">/loadbalancers/accesslist?id=<parameter>networkItemId</parameter>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>accesslist?id=<parameter>networkItemId</parameter>
                             &amp;id=<parameter>networkItemId</parameter></td>
                         <td colspan="3">Batch delete the access list network items given specified id list.</td>
                     </tr>
