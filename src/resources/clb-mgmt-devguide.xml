@@ -674,6 +674,12 @@
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/apiratelimit</td>
+                        <td colspan="3">Retrieve all accounts that are api rate limited</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
                         <td colspan="3">Impose a new rate limit on the specified load balancer.</td>
@@ -735,6 +741,20 @@
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
                 </programlisting>
             </example>
+
+            <example>
+                <title>List Non standard API Rate Limited Account Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-apiratelimit-accounts.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Non standard API Rate Limited LoadBalancers Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-apiratelimit-accounts.json" parse="text"/>
+                </programlisting>
+            </example>
+
             <example>
                 <title>Set Rate Limit Request: XML</title>
                 <programlisting language="xml">

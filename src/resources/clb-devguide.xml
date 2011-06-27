@@ -1715,6 +1715,13 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter></td>
                             <td colspan="3">Remove a node from the load balancer.</td>
                         </tr>
+                         <tr align="left">
+                        <td colspan="1">&BATCH_DELETE;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes?id=<parameter>nodeId</parameter>
+                            &amp;id=<parameter>nodeId</parameter></td>
+                        <td colspan="3">Batch delete the nodes given specified id list.</td>
+                    </tr>
                     </tbody>
                 </informaltable>
                 <para>
@@ -1729,6 +1736,12 @@ Content-Type: text/plain; charset=UTF-8
                 </simpara>
                 <para>
                     This operation does not require a request body.
+                    To batch delete nodes, provide a query parameter list of node ids. For example:
+                    /nodes?id=<parameter>nodeId</parameter>&amp;id=<parameter>nodeId</parameter>
+                    The current default limit is ten ids per request. Any and all configuration data is immediately purged and
+                    is not recoverable. By chance one of the items in the list cannot be removed due to its current status
+                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential failures for
+                    this request
                 </para>
             </section>
         </section>
@@ -1884,6 +1897,13 @@ Content-Type: text/plain; charset=UTF-8
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips/<parameter>id</parameter></td>
                         <td colspan="3">Remove a virtual IP.</td>
                     </tr>
+                     <tr align="left">
+                        <td colspan="1">&BATCH_DELETE;
+                        </td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips?id=<parameter>virtualipId</parameter>
+                            &amp;id=<parameter>virtualipId</parameter></td>
+                        <td colspan="3">Batch delete the virtual Ips given specified id list.</td>
+                    </tr>
                 </tbody>
             </informaltable>
             <para>
@@ -1904,6 +1924,12 @@ Content-Type: text/plain; charset=UTF-8
                     them at all times. Attempting to delete the last virtual IP will result in a
                     <returnvalue>400 (badRequest)</returnvalue>
                     fault.
+                    To batch delete virtual ips, provide a query parameter list of virtual ip ids. For example:
+                    /virtualips?id=<parameter>virtualIdId</parameter>&amp;id=<parameter>virtualIpId</parameter>
+                    The current default limit is ten ids per request. Any and all configuration data is immediately purged and
+                    is not recoverable. By chance one of the items in the list cannot be removed due to its current status
+                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential failures for
+                    this request
                 </para>
             </note>
         </section>
