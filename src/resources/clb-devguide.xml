@@ -30,7 +30,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-04-19</pubdate>
+        <pubdate>2011-06-29</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -87,7 +87,17 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Apr. 19, 2011</td>
+                        <td colspan="1" align="center">Jun 29, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added support for IPv6.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1" align="center">Apr 19, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
@@ -97,7 +107,7 @@
                         </td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1" align="center">Mar. 2, 2011</td>
+                        <td colspan="1" align="center">Mar 2, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
@@ -107,7 +117,7 @@
                         </td>
                     </tr>
                     <tr align="left">
-                        <td colspan="1" align="center">Feb. 23, 2011</td>
+                        <td colspan="1" align="center">Feb 23, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
