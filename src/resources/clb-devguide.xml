@@ -14,6 +14,11 @@
     <title>Rackspace Cloud Load Balancers Developer Guide</title>
     <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
     <info>
+        <annotation>
+            <remark> For 2011-06-29 republication to support IPv6, draft changes to support BATCH
+                DELETE remain in this source XML but are excluded from the generated PDF and HTML.
+                Search for "security=writeronly" to identify those changes. </remark>
+        </annotation>
         <author>
             <personname>
                 <firstname/>
@@ -51,11 +56,6 @@
     </info>
     <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
-        <note>
-            <para> For 2011-06-29 republication to support IPv6, draft changes to support BATCH
-                DELETE remain in this source XML but are excluded from the generated PDF and HTML.
-                Search for "security=writeronly" to identify those changes. </para>
-        </note>
         <section xml:id="Intended_Audience-d1e87">
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
@@ -1051,6 +1051,21 @@ Content-Type: text/plain; charset=UTF-8
             <para>
                 This operation does not require a request body.
             </para>
+            <annotation>
+                <remark>
+                        For 2011-06-29 republication to support IPv6, "security=writeronly"
+                        prevented draft changes to this XML from appearing in generated PDF and
+                        HTML. That doesn't work within sample code, so one-line changes were made to
+                        delete reference to "sourceAddress' in included samples:
+                        lb-list-details-request.xml (delete line 42 &lt;sourceAddresses
+                        ipv4Servicenet="178.1.1.1" ipv6Servicenet="::1" ipv4Public="192.1.1.1"
+                        ipv6Public="fd24:f480:ce44:91bc:711b:be4c:0000:007b"/> )
+                        lb-list-details-response.json (delete lines 57-62  "sourceAddresses":{
+                        "ipv6Servicenet":"::1",
+                        "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
+                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" }) 
+                </remark>
+            </annotation>
             <example>
                 <title>List Load Balancer Details Request: XML</title>
                 <programlisting language="xml">
@@ -1169,6 +1184,19 @@ Content-Type: text/plain; charset=UTF-8
                     </tr>
                 </tbody>
             </table>
+            <annotation>
+                <remark> For 2011-06-29 republication to support IPv6, "security=writeronly"
+                        prevented draft changes to this XML from appearing in generated PDF and
+                        HTML. That doesn't work within sample code, so one-line changes were made to
+                        delete reference to "sourceAddress' in included samples:
+                        lb-create-required-response.xml (delete line 15  &lt;sourceAddresses
+                        ipv4Servicenet="178.1.1.1" ipv6Servicenet="::1" ipv4Public="192.1.1.1"
+                        ipv6Public="fd24:f480:ce44:91bc:711b:be4c:0000:007b"/> )
+                        lb-create-required-response.json (delete lines 40-45 "sourceAddresses":{
+                        "ipv6Servicenet":"::1",
+                        "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
+                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" },) </remark>
+            </annotation>
             <example>
                 <title>Create Load Balancer (Required Attributes) Request: XML</title>
                 <programlisting language="xml">
@@ -1184,13 +1212,13 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Create Load Balancer (Required Attributes) Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-create-required-response.xml" parse="text" />
+<xi:include href="samples/lb-create-required-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Create Load Balancer (Required Attributes) Response: XML</title>
+                <title>Create Load Balancer (Required Attributes) Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-create-required-response.json" parse="text" />
+<xi:include href="samples/lb-create-required-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
