@@ -51,6 +51,11 @@
     </info>
     <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
+        <note>
+            <para> For 2011-06-29 republication to support IPv6, draft changes to support BATCH
+                DELETE remain in this source XML but are excluded from the generated PDF and HTML.
+                Search for "security=writeronly" to identify those changes. </para>
+        </note>
         <section xml:id="Intended_Audience-d1e87">
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
