@@ -1584,6 +1584,67 @@
             </example>
         </section>
         <section>
+            <title>Absolute Limits</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/absolutelimits</td>
+                        <td colspan="4">List all absolute limits.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&POST;</td>
+                        <td colspan="4">/management/loadbalancers/absolutelimits</td>
+                        <td colspan="4">Add an absolute limit.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&DELETE;</td>
+                        <td colspan="4">/management/accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
+                        <td colspan="4">Delete the specific absolute limit.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="4">/management/accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
+                        <td colspan="4">Update an absolute limit.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Absolute limits encapsulates other LoadBalancer API limits the system provides into one manageable entity. ...more info here..
+            </para>
+             <para>
+                POST, PUT and DELETE operations do not provide a response bodies.
+            </para>
+            <example>
+                <title>Add Limits Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-absolute-limits.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Limits Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-absolute-limits.xml" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+
+
+
+
+        <section>
             <title>Load Balancer Limits (Absolute Limits)</title>
             <informaltable rules="all">
                 <thead>
