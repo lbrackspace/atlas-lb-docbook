@@ -687,12 +687,6 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="1">/limits</td>
                             <td colspan="3">Return the current rate limits for the account.</td>
                         </tr>
-                         <tr align="left">
-                            <td colspan="1">&GET;
-                            </td>
-                            <td colspan="1">/absolutelimits</td>
-                            <td colspan="3">Return the current absolute limits for the account.</td>
-                        </tr>
                     </tbody>
                 </informaltable>
                 <para>
@@ -717,18 +711,6 @@ Content-Type: text/plain; charset=UTF-8
                     <title>List Limits Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-limits-response.json" parse="text"/>
-                    </programlisting>
-                </example>
-                <example>
-                    <title>List Absolute Limits Response: XML</title>
-                    <programlisting language="xml">
-<xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
-                    </programlisting>
-                </example>
-                <example>
-                    <title>List Absolute Limits Response: JSON</title>
-                    <programlisting language="javascript">
-<xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -1010,7 +992,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Load Balancers Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1081,7 +1063,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Load Balancer Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1567,25 +1549,25 @@ Content-Type: text/plain; charset=UTF-8
                 <example>
                 <title>List Atom Node Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
                     <title>List Nodes Response: XML</title>
                     <programlisting language="xml">
-<xi:include href="samples/lb-list-nodes-response.xml" parse="text" />
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
                     <title>List Nodes Response: JSON</title>
                     <programlisting language="javascript">
-<xi:include href="samples/lb-list-nodes-response.json" parse="text" />
+<xi:include href="samples/lb-list-nodes-response.json" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
                     <title>List Atom Nodes Response: XML</title>
                     <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text"/>
                 </programlisting>
                 </example>
             </section>
@@ -1631,13 +1613,13 @@ Content-Type: text/plain; charset=UTF-8
                 <example>
                     <title>Add Nodes Request: XML</title>
                     <programlisting language="xml">
-<xi:include href="samples/lb-add-nodes-request.xml" parse="text" />
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
                     <title>Add Nodes Request: JSON</title>
                     <programlisting language="javascript">
-<xi:include href="samples/lb-add-nodes-request.json" parse="text" />
+<xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
@@ -1856,7 +1838,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Virtual IPs Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1890,25 +1872,25 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Add Virtual IP Version 6 Request: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-add-vip-v6-request.xml" parse="text" />
+<xi:include href="samples/lb-add-vip-v6-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Add Virtual IP Version 6 Request: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-vip-v6-request.json" parse="text" />
+<xi:include href="samples/lb-add-vip-v6-request.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Add Virtual IP Version 6 Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-add-vip-v6-response.xml" parse="text" />
+<xi:include href="samples/lb-add-vip-v6-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Add Virtual IP Version 6 Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-add-vip-v6-response.json" parse="text" />
+<xi:include href="samples/lb-add-vip-v6-response.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -2120,7 +2102,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Access List Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -2271,7 +2253,7 @@ Content-Type: text/plain; charset=UTF-8
                 <example>
                     <title>List Atom Health Monitor Response: XML</title>
                     <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text"/>
                 </programlisting>
                 </example>
             </section>
@@ -2329,7 +2311,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Monitor HTTP Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-monitor-http-response.json" parse="text" />
+<xi:include href="samples/lb-monitor-http-response.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -2341,7 +2323,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>Monitor HTTPS Response: JSON</title>
                 <programlisting language="javascript">
-<xi:include href="samples/lb-monitor-https-response.json" parse="text" />
+<xi:include href="samples/lb-monitor-https-response.json" parse="text"/>
                 </programlisting>
             </example>
             </section>
@@ -2429,7 +2411,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Session Persistence Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -2617,7 +2599,7 @@ Content-Type: text/plain; charset=UTF-8
             <example>
                 <title>List Atom Connection Throttling Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text" />
+<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
