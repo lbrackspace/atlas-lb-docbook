@@ -1635,7 +1635,7 @@
             </example>
             <example>
                 <title>Add Limits Request: Json</title>
-                <programlisting language="xml">
+                <programlisting language="javascript">
 <xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
