@@ -1634,9 +1634,9 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Limits Response: XML</title>
+                <title>Add Limits Request: Json</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-absolute-limits.xml" parse="text"/>
+<xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
