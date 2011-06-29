@@ -6,9 +6,6 @@
         "port": 80,
         "algorithm":"RANDOM",
         "status":"ACTIVE",
-        "ipv4Servicenet": "10.0.0.0",
-        "ipv4Public": "1.2.3.4",
-        "ipv6Public": "FFFF:0000:0000:0000:0000:0000:0000:FFFF",
         "connectionLogging":{
             "enabled":"true"
         },
@@ -54,11 +51,5 @@
         "updated":{
             "time":"2010-11-30T03:23:44Z"
         },
-        "sourceAddresses":{
-            "ipv6Servicenet":"::1",
-            "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
-            "ipv4Servicenet":"178.1.1.1",
-            "ipv4Public":"192.1.1.1"
-        }
     }
 }
