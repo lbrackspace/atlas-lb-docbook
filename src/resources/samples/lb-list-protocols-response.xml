@@ -9,4 +9,5 @@
     <protocol name="IMAPS" port="993" />
     <protocol name="POP3S" port="995" />
     <protocol name="SMTP" port="25" />
+    <protocol name="TCP" port="0" />
 </protocols>

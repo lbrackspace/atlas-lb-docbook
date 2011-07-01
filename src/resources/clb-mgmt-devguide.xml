@@ -675,6 +675,12 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
+                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/customlimitaccounts</td>
+                        <td colspan="3">Retrieve all currently absolute limits</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter>/apiratelimit</td>
                         <td colspan="3">Retrieve all accounts that are api rate limited</td>
                         <td colspan="2">Service Admin</td>
@@ -739,6 +745,19 @@
                 <title>List Active Rate Limited LoadBalancers Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
+                </programlisting>
+            </example>
+
+            <example>
+                <title>List Non standard Absolute Limit Account Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-absolutelimit-accounts.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Non standard Absolute Limit Accong Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
 
@@ -1660,147 +1679,6 @@
                 </programlisting>
             </example>
         </section>
-
-
-
-
-        <section>
-            <title>Load Balancer Limits (Absolute Limits)</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
-                        <td colspan="2">Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups</td>
-                        <td colspan="4">List all load balancer limit groups.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&POST;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups</td>
-                        <td colspan="4">Add a load balancer limit group.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td colspan="4">Delete the specific load balancer group.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter></td>
-                        <td colspan="4">Display load balancer limit group details.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&PUT;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/<parameter>id</parameter>/setdefault</td>
-                        <td colspan="4">Set the load balancer limit group as the default.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-            <para>
-                Load balancer limits refers to the number of load balancers an account can have (formerly known as
-                absolute limits). These imposed limits are defined in the form of groups with each group having a
-                corresponding limit. There can only be one default limit at a time. Thus, if you create a new
-                group and set it to default it will now become the default limit group.
-            </para>
-            <para>
-                When deleting a load balancer limit group there may be accounts associated with that limit. If an
-                account is associated with the limit that is being deleted it will assume the default limit. If
-                the deleted limit was marked as the default limit then an existing group limit with the highest
-                rate will become the default. If all limits are removed then users will be able to create as many
-                load balancers as they can. However, there should be some error logs noting that no limits exist.
-            </para>
-            <example>
-                <title>Add Limits Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-group-limits.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Limits Request: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-create-group-limits.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Limits Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-group-limits.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Limits Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-group-limits.json" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
-        <section>
-            <title>Operations for Applying Load Balancer Limits</title>
-            <informaltable rules="all">
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
-                        <td colspan="2">Access Level</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/accounts/<parameter>accountId</parameter>/loadbalancerlimitgroup</td>
-                        <td colspan="4">List the load balancer limit group associated with the
-                            account.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&POST;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/
-                            <parameter>id</parameter>/accounts/
-                            <parameter>accountId</parameter></td>
-                        <td colspan="4">Add the specified account to the specified load balancer
-                            limit group; removes it from previous group if applicable. </td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;</td>
-                        <td colspan="4">/management/loadbalancerlimitgroups/
-                            <parameter>id</parameter>/accounts/
-                            <parameter>accountId</parameter></td>
-                        <td colspan="4">Delete the specified account from the specified load
-                            balancer limit group.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                </tbody>
-            </informaltable>
-                <para>
-                    Accounts can belong to only one load balancer limit group. If an account is currently part of
-                    a load balancer limit group then adding the account to a new group removes it from the original
-                    group. Deleting a load balancer from a group causes the account to use the default group. Load
-                    balancer limits are enforced immediately when trying to create load balancers. However, if an
-                    account has a designated load balancer limit and is then added to a group with a lower limit, it
-                    is possible for the account to have more load balancers than the new limit. Any further calls to
-                    create a load balancer will not be allowed since the account is above the limit.
-                </para>
-            <example>
-                <title>List Specified Limits Group Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-limit-groups.xml" parse="text"/>
-                </programlisting>
-            </example>
-        </section>
         <section>
             <title>Load Balancer Tickets</title>
             <informaltable rules="all">
@@ -1881,7 +1759,7 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/hosts/usage</td>
+                        <td colspan="4">/management/hosts/usage?startDate=2011-05-01T00:00:00&amp;endDate=2011-05-31T00:00:00</td>
                         <td colspan="4">View usage of Zeus hosts.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
