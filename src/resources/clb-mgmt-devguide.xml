@@ -2051,7 +2051,7 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/audit/status?staus={statues}&amp;{changes-since}</td>
+                        <td colspan="4">/audit/status?status={statuses}&amp;{changes-since}</td>
                         <td colspan="4">Generate a load balancer audit report.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
