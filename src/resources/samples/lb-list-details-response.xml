@@ -15,13 +15,13 @@
     </virtualIps>
     <nodes>
         <node
-            nodeId="1041"
+            id="1041"
             address="10.1.1.1"
             port="80"
             condition="ENABLED"
             status="ONLINE" />
         <node
-            nodeId="1411"
+            id="1411"
             address="10.1.1.2"
             port="80"
             condition="ENABLED"

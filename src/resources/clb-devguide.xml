@@ -1049,9 +1049,9 @@ Content-Type: text/plain; charset=UTF-8
                 </remark>
             </annotation>
             <example>
-                <title>List Load Balancer Details Request: XML</title>
+                <title>List Load Balancer Details Response: XML</title>
                 <programlisting language="xml">
-<xi:include href="samples/lb-list-details-request.xml" parse="text"/>
+<xi:include href="samples/lb-list-details-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
