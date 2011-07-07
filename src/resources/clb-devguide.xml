@@ -35,7 +35,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-06-29</pubdate>
+        <pubdate>2011-07-07</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -92,6 +92,17 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">Jul 7, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added support for accessing the Authentication Service,
+                                        based on whether your account is US-based or
+                                        UK-based.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr><tr align="left">
                         <td colspan="1" align="center">Jun 29, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -293,39 +304,75 @@
             <section xml:id="Request-d1e423">
                 <title>Request</title>
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all
-                    Rackspace Cloud APIs and is itself a ReSTful web service. It is accessible at
-                    <link xlink:href="https://auth.api.rackspacecloud.com/v1.0"
-                            >https://auth.api.rackspacecloud.com/v1.0</link>. To authenticate, you must
-                    supply your username and API access key in x-headers:
+                    Rackspace Cloud APIs and is itself a ReSTful web service.</para>
+                <para> To access the Authentication Service, you must know whether your account is
+                    US-based or UK-based: 
                 </para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.0">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
+                        </para>
+                    </listitem>
+                </itemizedlist>
                 <para>
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>
-                                Use your Rackspace Cloud
-                                username as the username for the API. Place it in the
-                                <code>X-Auth-User</code>
-                                x-header.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>Obtain your API access key from the Rackspace Cloud Control Panel
-                                in the Your Account | API Access section. Place it in the
-                                <code>X-Auth-Key</code>
-                                x-header.
-                            </para>
-                        </listitem>
-                    </itemizedlist>
+                    Your account may be based in either the US or the UK; this is not determined
+                    by your physical location but by the location of the Rackspace retail site which
+                    was used to create your account: 
                 </para>
-                <example>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            If your account was
+                            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
+                        </para>   
+                    </listitem>
+                    <listitem>
+                        <para>
+                            If your account was
+                            created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                <para>
+                    If you are unsure how your account was created, use the Rackspace contact
+                    information at either site to ask for help.
+                </para>
+                <simplesect>
                     <title>Authentication Request</title>
-                    <literallayout class="monospaced">
+                    <para>
+                        To authenticate, you must supply your username and API access key in x-headers:
+                    </para>
+                    <para>
+                        <itemizedlist spacing="compact">
+                            <listitem>
+                                <para>
+                                    Use your Rackspace Cloud
+                                    username as the username for the API. Place it in the
+                                    <code>X-Auth-User</code> x-header.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para> Obtain your API access key from the Rackspace Cloud Control Panel in the Your
+                                    Account | API Access section. Place it in the <code>X-Auth-Key</code> x-header. </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para><example>
+                        <title>Authentication Request (US-based Account)</title>
+                        <literallayout class="monospaced">
 GET /v1.0 HTTP/1.1
 Host: auth.api.rackspacecloud.com
 X-Auth-User: jdoe
 X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
-                </example>
+                    </example>
+                    </simplesect>
+                
             </section>
             <section xml:id="Response-d1e468">
                 <title>Response</title>
