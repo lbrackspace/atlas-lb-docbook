@@ -443,6 +443,12 @@ Content-Type: text/plain; charset=UTF-8
                                 ><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
+                        <tr align="left">
+                            <td colspan="1">London (LON)</td>
+                            <td colspan="4"
+                                ><code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </para>
