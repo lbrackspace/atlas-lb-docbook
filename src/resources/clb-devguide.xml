@@ -1372,6 +1372,7 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
                 <example>
                     <title>Update Load Balancer Attributes Request: JSON</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                 </programlisting>
