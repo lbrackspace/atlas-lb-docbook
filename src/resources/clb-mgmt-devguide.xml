@@ -1238,7 +1238,7 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>sync</td>
+                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId/</parameter>sync</td>
                         <td colspan="3">Synchronize the load balancer with the authoritative
                             source.</td>
                         <td colspan="2">Support, Service Admin</td>
@@ -1506,7 +1506,7 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/loadbalancers/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="4">/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
                         <td colspan="4">Retrieve all alerts, if any, for the specified load
                             balancer.</td>
                         <td colspan="2">Support, Service Admin</td>
