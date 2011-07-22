@@ -1636,25 +1636,25 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
+                        <td colspan="4">/accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
                         <td colspan="4">List all absolute limits.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&POST;</td>
-                        <td colspan="4">/<parameter>accountId</parameter>loadbalancers/absolutelimits</td>
+                        <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
                         <td colspan="4">Add an absolute limit.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&DELETE;</td>
-                        <td colspan="4">/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
+                        <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
                         <td colspan="4">Delete the specific absolute limit.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
-                        <td colspan="4">/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
+                        <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits/<parameter>id</parameter></td>
                         <td colspan="4">Update an absolute limit.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
@@ -1688,6 +1688,18 @@
                 <title>Add Limits Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
+                </programlisting>
+            </example>
+             <example>
+                <title>Update Limits Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-absolute-limits.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Limits Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
