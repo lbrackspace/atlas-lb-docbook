@@ -36,32 +36,21 @@
     <cluster name="c1.dfw1" />
     <created time="2010-11-30T03:23:42Z" />
     <updated time="2010-11-30T03:23:44Z" />
-    <accountLoadBalancerServiceEvents accountId="406271">
+    <accountLoadBalancerServiceEvents
+            accountId="406271">
         <loadBalancerServiceEvents>
             <loadBalancerServiceEvent
-                    id="73"
-                    loadbalancerId="14"
-                    accountId="406271"
                     author="Rackspace Cloud"
-                    title="Virtual Ip Successfully Added"
                     description="Virtual ip successfully added"
-                    type="CREATE_VIRTUAL_IP"
                     category="CREATE"
                     severity="INFO"
-                    relativeUri="/406271/loadbalancers/14/virtualips/9000012"
                     created="07-21-2011 13:28:29"/>
             <loadBalancerServiceEvent
-                    id="85"
-                    loadbalancerId="14"
-                    accountId="406271"
                     author="Rackspace Cloud"
-                    title="Virtual Ip Successfully Added"
                     description="Virtual ip successfully added"
-                    type="CREATE_VIRTUAL_IP"
                     category="CREATE"
                     severity="INFO"
-                    relativeUri="/406271/loadbalancers/14/virtualips/9000165"
-                    created="07-21-2011 13:38:52"/>
+                    created="07-21-2011 13:28:43"/>
         </loadBalancerServiceEvents>
     </accountLoadBalancerServiceEvents>
 </loadBalancer>

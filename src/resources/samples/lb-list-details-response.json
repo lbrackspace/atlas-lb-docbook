@@ -58,31 +58,21 @@
             {
                 "loadBalancerServiceEvents":[
                     {
-                        "id":73,
-                        "type":"CREATE_VIRTUAL_IP",
                         "description":"Virtual ip successfully added",
                         "category":"CREATE",
-                        "relativeUri":"/406271/loadbalancers/14/virtualips/9000012",
                         "severity":"INFO",
-                        "accountId":406271,
-                        "loadbalancerId":14,
                         "author":"Rackspace Cloud",
-                        "created":"07-21-2011 13:28:29",
-                        "title":"Virtual Ip Successfully Added"
+                        "created":"07-21-2011 13:28:29"
                     },
                     {
-                        "id":74,
-                        "type":"CREATE_VIRTUAL_IP",
                         "description":"Virtual ip successfully added",
                         "category":"CREATE",
-                        "relativeUri":"/406271/loadbalancers/14/virtualips/9000013",
                         "severity":"INFO",
-                        "accountId":406271,
-                        "loadbalancerId":14,
                         "author":"Rackspace Cloud",
-                        "created":"07-21-2011 13:28:43",
-                        "title":"Virtual Ip Successfully Added"
-                    }]
-            }]
+                        "created":"07-21-2011 13:28:43"
+                    }
+                ]
+            }
+        ]
     }
 }
