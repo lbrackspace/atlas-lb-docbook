@@ -5,6 +5,6 @@
         "maxConcurrentConnections": "150000",
         "managementIpAddress": "10.1.1.2",
         "managementSoapInterface": "http://10.1.1.2:9090/soap",
-        "soapEndpointActive": "true"
+        "soapEndpointActive": true
     }
 }

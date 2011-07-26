@@ -2,7 +2,7 @@
             "tickets":[{
                     "id":1,
                     "comment":"DOS Attack",
-                    "ticketId":"1234"
+                    "ticketId":1234
                 }
             ],
             "accountId":548939,

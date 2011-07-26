@@ -7,7 +7,7 @@
         "algorithm":"RANDOM",
         "status":"ACTIVE",
         "connectionLogging":{
-            "enabled":"true"
+            "enabled":true
         },
         "virtualIps":[
             {
@@ -50,6 +50,6 @@
         },
         "updated":{
             "time":"2010-11-30T03:23:44Z"
-        },
+        }
     }
 }
