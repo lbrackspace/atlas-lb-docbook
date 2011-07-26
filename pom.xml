@@ -30,6 +30,7 @@
                         <id>g1</id>
                         <goals>
                             <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
@@ -39,6 +40,8 @@
                             <!-- this is the Rackspace-internal service developer guide formerly known as ManagementAPISpec.xml -->
 			    <security>internal</security>
                             <includes>clb-mgmt-devguide.xml</includes>
+			    <pdfUrl>../../clb-mgmt-devguide-internal.pdf</pdfUrl>
+			    <enableDisqus>0</enableDisqus>
                         </configuration>
                     </execution>
                     <execution>

@@ -36,4 +36,21 @@
     <cluster name="c1.dfw1" />
     <created time="2010-11-30T03:23:42Z" />
     <updated time="2010-11-30T03:23:44Z" />
+    <accountLoadBalancerServiceEvents
+            accountId="406271">
+        <loadBalancerServiceEvents>
+            <loadBalancerServiceEvent
+                    author="Rackspace Cloud"
+                    description="Virtual ip successfully added"
+                    category="CREATE"
+                    severity="INFO"
+                    created="07-21-2011 13:28:29"/>
+            <loadBalancerServiceEvent
+                    author="Rackspace Cloud"
+                    description="Virtual ip successfully added"
+                    category="CREATE"
+                    severity="INFO"
+                    created="07-21-2011 13:28:43"/>
+        </loadBalancerServiceEvents>
+    </accountLoadBalancerServiceEvents>
 </loadBalancer>
