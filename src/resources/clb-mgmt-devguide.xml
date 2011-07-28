@@ -676,7 +676,7 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter>/customlimitaccounts</td>
-                        <td colspan="3">Retrieve all currently absolute limits</td>
+                        <td colspan="3">Retrieve all accounts with custom absolute limits</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -1635,12 +1635,6 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="4">/accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
-                        <td colspan="4">List all absolute limits.</td>
-                        <td colspan="2">Support, Service Admin</td>
-                    </tr>
-                    <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
                         <td colspan="4">Add an absolute limit.</td>
@@ -1663,21 +1657,13 @@
             <para>
                 Absolute limits encapsulates other LoadBalancer API limits the system provides into one manageable entity. ...more info here..
             </para>
-             <para>
-                POST, PUT and DELETE operations do not provide a response bodies.
+            <para>
+                To get the id for a given custom limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts
+                returns a response body with account numbers and an id associated with the non-default limits.
             </para>
-            <example>
-                <title>List Limits Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-absolute-limits.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Limits Response: JSON</title>
-                <programlisting language="javascript">
-<xi:include href="samples/lb-list-absolute-limits.json" parse="text"/>
-                </programlisting>
-            </example>
+             <para>
+                POST, PUT and DELETE operations do not provide response bodies.
+            </para>
             <example>
                 <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
