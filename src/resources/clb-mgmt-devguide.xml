@@ -1658,7 +1658,7 @@
                 Absolute limits encapsulates other LoadBalancer API limits the system provides into one manageable entity. ...more info here..
             </para>
             <para>
-                To get the id for a given custom limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts
+                To get the id for a custom absolute limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts
                 returns a response body with account numbers and an id associated with the non-default limits.
             </para>
              <para>
@@ -1945,6 +1945,67 @@
                 <title>Create Blacklist Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-blacklist.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
+        <section>
+            <title>Scheduled Jobs</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/jobs</td>
+                        <td colspan="4">Retrieve a list of blacklisted items.</td>
+                        <td colspan="2">Operations</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/jobs?state=<parameter>SomeState</parameter></td>
+                        <td colspan="4">Create a new blacklist item.</td>
+                        <td colspan="2">Operations</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/jobs/<parameter>JobId</parameter></td>
+                        <td colspan="4">Delete a specific blacklist item.</td>
+                        <td colspan="2">Operations, Support</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Monitor usage poller to ensure it is working properly; alerts should be produced when it is not
+                working properly.  All scheduled jobs need to be monitored.
+            </para>
+            <example>
+                <title>List Jobs Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-jobs.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Jobs Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-jobs.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Job Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-job.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Job Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-job.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
