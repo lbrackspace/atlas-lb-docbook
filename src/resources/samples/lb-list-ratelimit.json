@@ -1,4 +1,4 @@
 {
     "expirationTime": "2010-10-17 00:00:00",
-    "maxRequestPerSecond": "150"
+    "maxRequestPerSecond": 150
 }

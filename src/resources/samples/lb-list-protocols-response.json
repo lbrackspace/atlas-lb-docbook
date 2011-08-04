@@ -1,47 +1,47 @@
 {"protocols": [
         {
             "name": "HTTP",
-            "port": "80"
+            "port": 80
         },
         {
             "name": "FTP",
-            "port": "21"
+            "port": 21
         },
         {
             "name": "IMAPv4",
-            "port": "143"
+            "port": 143
         },
         {
             "name": "POP3",
-            "port": "110"
+            "port": 110
         },
         {
             "name": "SMTP",
-            "port": "25"
+            "port": 25
         },
         {
             "name": "LDAP",
-            "port": "389"
+            "port": 389
         },
         {
             "name": "HTTPS",
-            "port": "443"
+            "port": 443
         },
         {
             "name": "IMAPS",
-            "port": "993"
+            "port": 993
         },
         {
             "name": "POP3S",
-            "port": "995"
+            "port": 995
         },
         {
             "name": "LDAPS",
-            "port": "636"
-        }
+            "port": 636
+        },
         {
             "name": "TCP",
-            "port": "0"
+            "port": 0
         }
     ]
 }

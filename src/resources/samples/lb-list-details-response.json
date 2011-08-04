@@ -7,7 +7,7 @@
         "algorithm":"RANDOM",
         "status":"ACTIVE",
         "connectionLogging":{
-            "enabled":"true"
+            "enabled":true
         },
         "virtualIps":[
             {

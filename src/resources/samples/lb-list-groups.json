@@ -1,5 +1,6 @@
 {"groups": {
-    "name": "customer_group",
-    "default": "true",
-    "id" : "1"
+        "name": "customer_group",
+        "default": true,
+        "id" : 1
+    }
 }
