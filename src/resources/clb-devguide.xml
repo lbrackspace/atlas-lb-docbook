@@ -92,6 +92,16 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">Aug 5, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added fail over nodes</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1" align="center">Jul 8, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -1558,6 +1568,16 @@ Content-Type: text/plain; charset=UTF-8
                 changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
+            <para>
+                Nodes that are primary have the option of having a fail over node. A fail over node
+                will take traffic from the specified primary node that has gone down or in other error statues.
+                The user can specify multiple fail over nodes when adding a node to a pre-configured
+                load balancer. The first and last node must remain a primary node. If attempting to update or
+                delete the last primary node a BadRequestException is thrown requiring at least one primary node
+                to remain on the loadbalancer at all times. The weightings and conditons for a fail over node can
+                be specified independantly from the primary node allowing for a more robust configuration.
+            </para>
+
             <section xml:id="List_Nodes-d1e2218">
                 <title>List Nodes</title>
                 <informaltable rules="all">

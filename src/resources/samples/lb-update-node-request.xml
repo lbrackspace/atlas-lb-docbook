@@ -1,1 +1,1 @@
-<node condition="ENABLED" weight="12" />
+<node condition="ENABLED" weight="12" type="FAIL_OVER"/>
