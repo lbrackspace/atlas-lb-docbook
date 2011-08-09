@@ -1843,16 +1843,35 @@
                             within a date range.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/event/user/<parameter>username</parameter></td>
+                        <td colspan="4">List recent load balancer service events for this user within a date range</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
                 </tbody>
             </informaltable>
             <para> The date parameters are optional. The results list all load balancer service
-                events that occurred between the start and end dates. By default the start date is
-                60 days from the time of the request and the end date is the date of the request.
-                The results list is inclusive for both dates. </para>
+                events that occurred between the start and end dates for a given account or a user
+                or author. By default the start date is 60 days from the time of the request and
+                the end date is the date of the request. The results list is inclusive for both dates.
+            </para>
             <example>
-                <title>List Events Response: XML</title>
+                <title>List Account Events Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-service-events.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List User Events Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-user-events.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List User Events Response: JSON</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-user-events.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
