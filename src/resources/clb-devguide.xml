@@ -736,9 +736,8 @@ Content-Type: text/plain; charset=UTF-8
             <section xml:id="Absolute_Limits-d1e999">
                 <title>Absolute Limits</title>
                 <para>
-                    <code>Maximum number of load balancers</code>
-                    limits the total number of load balancers that may be
-                    associated with a given account.
+                    <code>Absolute limits signifies the number of limits associated with a given account. Load balancer limit
+                          corresponds to the the maximum number of load balancers an account can have</code>
                 </para>
                 <informaltable rules="all">
                     <thead>
@@ -750,6 +749,14 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td>Maximum number of load balancers</td>
+                            <td>20</td>
+                        </tr>
+                        <tr align="left">
+                            <td>Maximum number of nodes</td>
+                            <td>20</td>
+                        </tr>
+                        <tr align="left">
+                            <td>Maximum number of IPV6 addresses for a given load balancer</td>
                             <td>20</td>
                         </tr>
                     </tbody>
@@ -775,6 +782,12 @@ Content-Type: text/plain; charset=UTF-8
                             </td>
                             <td colspan="1">/limits</td>
                             <td colspan="3">Return the current rate limits for the account.</td>
+                        </tr>
+                         <tr align="left" security="writeronly">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="1">/absolutelimits</td>
+                            <td colspan="3">Return the current absolute limits for the account.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1557,7 +1570,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
-        <section xml:id="Erropage-d1e666">
+        <section xml:id="Erropage-d1e666" security="writeronly">
             <title>Error Page</title>
             <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
             By default every virtual server is provided with the default error file. It is also possible to
