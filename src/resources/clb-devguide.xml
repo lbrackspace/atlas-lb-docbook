@@ -92,6 +92,16 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">Aug 12, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added error page support</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1" align="center">Aug 5, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -199,6 +209,12 @@
                 for use by clients connecting to a service that is load balanced. Incoming
                 connections are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
+        </section>
+        <section xml:id="Erropage-d1e669">
+            <title>Error Page</title>
+            <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
+            By default every virtual server is provided with the default error file. It is also possible to
+            submit a custom error page via the LoadBalancers Api.</para>
         </section>
         <section xml:id="Node-d1e262">
             <title>Node</title>
@@ -1501,7 +1517,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter></td>
                             <td colspan="3">Remove a load balancer from the account.</td>
                         </tr>
-                        <tr align="left" security="writeronly">
+                        <tr align="left">
                         <td colspan="1">&BATCH_DELETE;
                         </td>
                         <td colspan="3">
@@ -1525,7 +1541,7 @@ Content-Type: text/plain; charset=UTF-8
                     configuration from the account. Any and all configuration data is immediately purged and
                     is not recoverable.
                 </para>
-                <para security="writeronly">
+                <para>
                     To batch delete loadbalancers, provide a query parameter list of load balancer ids. For example:
                     /loadbalancers?id=<parameter>loadBalancerId</parameter>&amp;id=<parameter>loadBalancerId</parameter>
                     The current default limit is ten ids per request. Any and all configuration data is immediately purged and
@@ -1539,6 +1555,89 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not return a response body.
                 </para>
+            </section>
+        </section>
+        <section xml:id="Erropage-d1e666">
+            <title>Error Page</title>
+            <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
+            By default every virtual server is provided with the default error file. It is also possible to
+            submit a custom error page via the LoadBalancers Api.</para>
+            <para>Custom error pages will be overwritten on the next request updating the error page. If the error page is removed the default
+            page will be set in its place.</para>
+
+             <section xml:id="List_Errorpage-d1e2218">
+                <title>Error Page Operations</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
+                            <td colspan="3">List error page configured for the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &PUT;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
+                            <td colspan="3">set error page for specified loadbalancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <example>
+                    <title>List Error Page  Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-error-page.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>List Error Page Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-error-page.json" parse="text"/>
+                </programlisting>
+                </example>
+                 <example>
+                    <title>Add Error Page  Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-error-page.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>Add Error Page Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-error-page.json" parse="text"/>
+                </programlisting>
+                </example>
+                 <example>
+                    <title>Add Error Page  Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-error-page.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <example>
+                    <title>Add Error Page Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-error-page.json" parse="text"/>
+                </programlisting>
+                </example>
             </section>
         </section>
         <section xml:id="Nodes-d1e2173">
@@ -2162,7 +2261,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist</td>
                         <td colspan="3">Remove the entire access list.</td>
                     </tr>
-                    <tr align="left" security="writeronly">
+                    <tr align="left">
                         <td colspan="1">&BATCH_DELETE;
                         </td>
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId/</parameter>accesslist?id=<parameter>networkItemId</parameter>

@@ -94,6 +94,16 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">Aug 12, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Added error page support</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1" align="center">May. 20, 2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -1722,7 +1732,8 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+
+       <section>
             <title>Load Balancer Tickets</title>
             <informaltable rules="all">
                 <thead>
