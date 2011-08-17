@@ -12,4 +12,5 @@
     <created time="2011-06-01T08:08:41-05:00"/>
     <updated time="2011-06-01T08:08:41-05:00"/>
     <connectionLogging enabled="false"/>
+    <sourceAddresses ipv4Servicenet="10.0.0.0" ipv4Public="10.12.99.29" ipv6Public="2001:4801:79f1:1::3/64"/>
 </loadBalancer>
