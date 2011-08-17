@@ -39,6 +39,11 @@
         },
         "connectionLogging":{
             "enabled":false
+        },
+        "sourceAddresses":{
+            "ipv6Public":"2001:4801:79f1:1::1/64",
+            "ipv4Servicenet":"10.0.0.0",
+            "ipv4Public":"10.12.99.28"
         }
     }
 }
