@@ -1597,7 +1597,8 @@ Content-Type: text/plain; charset=UTF-8
             By default every virtual server is provided with the default error file. It is also possible to
             submit a custom error page via the LoadBalancers Api.</para>
             <para>Custom error pages will be overwritten on the next request updating the error page. If the error page is removed the default
-            page will be set in its place.</para>
+            page will be set in its place. If the load balancer's protocol is updated to a non-http load balancer, the custom error page will not
+            be saved in the system. The error page will be deleted and the load balancer will then use Zeus's default error page. </para>
 
              <section xml:id="List_Errorpage-d1e2218">
                 <title>Error Page Operations</title>
