@@ -168,21 +168,26 @@
         </section>
         <section xml:id="Additional_Resources-d1e241">
             <title>Additional Resources</title>
-            <para>Two APIs provide access to Rackspace Cloud Load Balancers:
-                <itemizedlist spacing="compact">
+            <para>Two APIs provide access to Rackspace Cloud Load
+                Balancers: <itemizedlist spacing="compact">
                     <listitem>
-                        <para>The management API, available only to developers within Rackspace, is
-                            the subject of this document.</para></listitem>
-                    <listitem>
-                        <para>The public API, available to developers within Rackspace and Rackspace
-                            customers, is the subject of a companion document, The Rackspace Cloud
-                            Load Balancers API DeveloperGuide.</para>
+                        <para>The management API, available only to
+                            developers within Rackspace, is the
+                            subject of this document.</para>
                     </listitem>
-                </itemizedlist>
-                You can download the current version of the Rackspace Cloud Load Balancers API Developer Guide
-                from <link xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
-                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
-            </para>
+                    <listitem>
+                        <para>The public API, available to developers
+                            within Rackspace and Rackspace customers,
+                            is the subject of a companion document,
+                            The Rackspace Cloud Load Balancers
+                            Developer Guide.</para>
+                    </listitem>
+                </itemizedlist> You can download the current version
+                of the Rackspace Cloud Load Balancers Developer Guide
+                from <link
+                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf"
+                    >
+                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>. </para>
         </section>
     </chapter>
     <chapter xml:id="Management_API_Operations-d1e268">
@@ -239,11 +244,13 @@
                     A single call can accept either <parameter>?vipid</parameter> or <parameter>?vipaddress</parameter> but not both.
                     If both parameters are supplied, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Cannot set both ip address and vip id.'
                 </para>
-                <para>
-                    The virtual IP address is validated before use. If the specified <parameter>?vipaddress</parameter> does not conform to IpV4
-                    or Ipv6 syntax, the request will fail with a badRequest (<errorcode>400</errorcode>) and message 'Ip address
-                    is invalid.'
-                </para>
+                <para> The virtual IP address is validated before use.
+                    If the specified
+                        <parameter>?vipaddress</parameter> does not
+                    conform to IPv4 or IPv6 syntax, the request will
+                    fail with a badRequest
+                    (<errorcode>400</errorcode>) and message 'Ip
+                    address is invalid.' </para>
                 <example>
                     <title>List Load Balancers by Virtual IP Response: XML</title>
                     <programlisting language="xml">
@@ -421,10 +428,10 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                The host operations allow for retrieval of host configuration data and statistics as well as
-                the ability to add, manipulate or delete load balancing hosts.
-            </para>
+            <para> The host operations allow for retrieval of host
+                configuration data and statistics as well as the
+                ability to add, manipulate, or delete load balancing
+                hosts. </para>
             <example>
                 <title>List All Hosts Within Cluster Response: XML</title>
                 <programlisting language="xml">
@@ -690,19 +697,22 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter>/activeratelimits</td>
-                        <td colspan="3">Retrieve all currently rate limited load balancers</td>
+                        <td colspan="3">Retrieve all currently rate
+                            limited load balancers.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter>/customlimitaccounts</td>
-                        <td colspan="3">Retrieve all accounts with custom absolute limits</td>
+                        <td colspan="3">Retrieve all accounts with
+                            custom absolute limits.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="5">/clusters/<parameter>clusterId</parameter>/apiratelimit</td>
-                        <td colspan="3">Retrieve all accounts that are api rate limited</td>
+                        <td colspan="3">Retrieve all accounts that are
+                            API rate limited.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                     <tr align="left">
@@ -732,13 +742,14 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                Rate limiting allows a service administrator to artificially limit the number of requests that
-                are permitted to transit a given load balancer. This action can be taken when a particular load
-                balancer is servicing questionable traffic, the victim of a DDoS, etc. To define a rate limit,
-                the caller must supply a ticket id, maximum number of connections per second, and an expiration
-                time.
-            </para>
+            <para> Rate limiting allows a service administrator to
+                artificially limit the number of requests that are
+                permitted to transit a given load balancer. This
+                action can be taken when a particular load balancer is
+                servicing questionable traffic, the victim of a DDoS,
+                and so forth. To define a rate limit, the caller must
+                supply a ticket id, maximum number of connections per
+                second, and an expiration time. </para>
             <para>
                 Additionally, rate limit information is returned as part of the "extended details of a load
                 balancer", which is documented below.
@@ -750,49 +761,58 @@
                 </programlisting>
             </example>
             <example>
+                <?dbfo keep-together="always"?>
                 <title>List Rate Limit Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Active Rate Limited LoadBalancers Response: XML</title>
+                <?dbfo keep-together="always"?>
+                <title>List Active Rate-Limited Load Balancers
+                    Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Active Rate Limited LoadBalancers Response: JSON</title>
+                <title>List Active Rate-Limited Load Balancers
+                    Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard Absolute Limit Account Response: XML</title>
+                <title>List Non-Standard Absolute Limit Account
+                    Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-absolutelimit-accounts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard Absolute Limit Account
+                <?dbfo keep-together="always"?>
+                <title>List Non-Standard Absolute Limit Account
                     Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard API Rate Limited Account Response: XML</title>
+                <title>List Non-Standard API Rate-Limited Account
+                    Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-apiratelimit-accounts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard API Rate Limited LoadBalancers Response: JSON</title>
+                <title>List Non-Standard API Rate-Limited Account
+                    Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-apiratelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
+                <?dbfo keep-together="always"?>
                 <title>Set Rate Limit Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-ratelimit-request.xml" parse="text"/>
@@ -899,25 +919,32 @@
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers with specified Host Request: XML</title>
+                <title>Update Host Assignment for Multiple Load
+                    Balancers with Specified Host Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers with specified host Request: JSON</title>
+                <title>Update Host Assignment for Multiple Load
+                    Balancers with Specified Host Request:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers with Host chosen by algorithm Request: XML</title>
+                <title>Update Host Assignment for Multiple Load
+                    Balancers with Host Chosen by Algorithm Request:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Update Host Assignment for Multiple Load Balancers with Host chosen by algorithm Request: JSON</title>
+                <title>Update Host Assignment for Multiple Load
+                    Balancers with Host Chosen by Algorithm Request:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
@@ -926,6 +953,7 @@
         <section xml:id="Configuration_Backups-d1e1785">
             <title>Configuration Backups</title>
             <informaltable rules="all">
+                <?dbfo keep-together="always"?>
                 <thead>
                     <tr align="center">
                         <td colspan="1">Verb</td>
@@ -1016,6 +1044,7 @@
                     </programlisting>
                 </example>
                 <example>
+                    <?dbfo keep-together="always"?>
                     <title>List Available Backups for All Hosts Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-list-backups.json" parse="text"/>
@@ -1065,6 +1094,7 @@
                     </programlisting>
                 </example>
                 <example>
+                    <?dbfo keep-together="always"?>
                     <title>Add Subnet Mappings Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
@@ -1213,6 +1243,7 @@
                 the local machine where glassfish is running.  Also returns the time it took for each check.
             </para>
             <example>
+                <?dbfo keep-together="always"?>
                 <title>Health Check: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-health-check.xml" parse="text" />
@@ -1308,14 +1339,17 @@
                 balancer's configuration in the database. The caller only needs to send a &PUT; request without a
                 body to the specified URI.
             </para>
-            <para>
-                When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the
-                operation will attempt to remove the load-balancer in Zeus and set the status to
-                <code>DELETED</code>. For all other statuses the sync operation will first delete the
-                load-balancer in Zeus and then re-create it. If successful, the load-balancer will be put in
-                the <code>ACTIVE</code> status. If for some reason the load-balancer could not be created in
-                Zeus, then the status will be set to <code>ERROR</code>.
-            </para>
+            <para> When syncing a load balancer in
+                    <code>PENDING_DELETE</code> or
+                    <code>DELETED</code> status, the operation will
+                attempt to remove the load-balancer in Zeus and set
+                the status to <code>DELETED</code>. For all other
+                statuses the sync operation will first delete the
+                load-balancer in Zeus and then re-create it. If
+                successful, the load-balancer will be put in the
+                    <code>ACTIVE</code> status. If for some reason the
+                load-balancer could not be created in Zeus, then the
+                status will be set to <code>ERROR</code>. </para>
         </section>
         <section xml:id="Suspending_a_Load_Balancer-d1e2567">
             <title>Suspending a Load Balancer</title>
@@ -1414,7 +1448,7 @@
                 This operation provides the detailed output for a specific load balancer configured and
                 associated with the designated account. It differs from the customer view because it provides
                 the total active connections, host machine information, and a rate limit (if applicable) as part
-                of the loadbalancer element.
+                of the <parameter>loadbalancer</parameter> element.
             </para>
             <note>
                 <para>
@@ -1489,7 +1523,8 @@
                 </programlisting>
             </example>
             <example>
-                <title>List </title>
+                <title>List  Account Load Balancers Usage Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-report-billing-response.xml" parse="text" />
                 </programlisting>
@@ -1497,10 +1532,10 @@
         </section>
         <section xml:id="Load_Balancer_Status_URL_Management-d1e2946">
             <title>Load Balancer Status URL Management</title>
-            <para>
-                If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken
-                transaction that should have rolled back in the database but didn't.
-            </para>
+            <para> If a load balancer is stuck in <code>PENDING
+                    UPDATE</code>status, this is probably due to a
+                broken transaction that should have rolled back in the
+                database but did not. </para>
             <para>
                 In this case, operations personnel can use URLs such as the following to correct the issues:
             </para>
@@ -1527,11 +1562,11 @@
         </section>
         <section xml:id="Listing_and_Acknowledging_Alerts-d1e3019">
             <title>Listing and Acknowledging Alerts</title>
-            <para>
-                This operations allows user to list all the alerts in the system. Additional information about the
-                alert can be retrieved by alert id. The status of the alert can be changed to <code>ACKNOWLEDGED</code>
-                using the &PUT; method.
-            </para>
+            <para> These operations allow users to list all the alerts
+                in the system. Additional information about the alert
+                can be retrieved by alert id. The status of the alert
+                can be changed to <code>ACKNOWLEDGED</code> using the
+                &PUT; method. </para>
             <para>
                 When getting alerts based on account ids, you may specify any number of accounts as separate query
                 parameters.  You may also include the stack trace with the final query parameter.
@@ -1540,68 +1575,69 @@
                 <thead>
                     <tr align="center">
                         <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
                         <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts</td>
-                        <td colspan="4">Retrieve all alerts, if any.</td>
+                        <td colspan="5">/alerts</td>
+                        <td colspan="3">Retrieve all alerts, if any.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts/<parameter>alertId</parameter></td>
-                        <td colspan="4">Retrieve details for the alert.</td>
+                        <td colspan="5">/alerts/<parameter>alertId</parameter></td>
+                        <td colspan="3">Retrieve details for the alert.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
-                        <td colspan="4">Retrieve all alerts, if any, for the specified load
+                        <td colspan="5">/alerts/loadbalancer?id=<parameter>loadBalancerId</parameter></td>
+                        <td colspan="3">Retrieve all alerts, if any, for the specified load
                             balancer.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts/byloadbalancerids?id=<parameter>loadBalancerId</parameter>
+                        <td colspan="5">/alerts/byloadbalancerids?id=<parameter>loadBalancerId</parameter>
                             &amp;id=<parameter>loadBalancerId</parameter>
                             &amp;startDate=<parameter>2010-12-21T12:32:07-06:00</parameter>
                             &amp;endDate=<parameter>2010-12-21T12:36:30-06:00</parameter></td>
-                        <td colspan="4">Retrieve all alerts, if any, for any specified load balancers.</td>
+                        <td colspan="3">Retrieve all alerts, if any, for any specified load balancers.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/alerts/account?account=<parameter>accountId</parameter>
+                        <td colspan="5">/management/alerts/account?account=<parameter>accountId</parameter>
                             &amp;account=<parameter>accountId</parameter>
                             &amp;startDate=<parameter>Date</parameter>&amp;endDate=<parameter>Date</parameter>
                             &amp;showStackTrace=<parameter>true</parameter></td>
-                        <td colspan="4">Retrieve all alerts, if any, for an account.</td>
+                        <td colspan="3">Retrieve all alerts, if any, for an account.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts/cluster/<parameter>clusterId</parameter>
+                        <td colspan="5">/alerts/cluster/<parameter>clusterId</parameter>
                             &amp;startDate=<parameter>2010-12-21T12:32:07-06:00</parameter>
                             &amp;endDate=<parameter>2010-12-21T12:36:30-06:00</parameter></td>
-                        <td colspan="4">Retrieve all alerts, if any, for any specified cluster.</td>
+                        <td colspan="3">Retrieve all alerts, if any, for any specified cluster.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&PUT;</td>
-                        <td colspan="4">/alerts/<parameter>alertId</parameter>/acknowledged</td>
-                        <td colspan="4">Acknowledge alert and changes its status to
+                        <td colspan="5">/alerts/<parameter>alertId</parameter>/acknowledged</td>
+                        <td colspan="3">Acknowledge alert and change
+                            its status to
                             <code>ACKNOWLEDGED</code>.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/alerts/unacknowledged</td>
-                        <td colspan="4">Retrieve unacknowledged alerts, if any.</td>
+                        <td colspan="5">/alerts/unacknowledged</td>
+                        <td colspan="3">Retrieve unacknowledged alerts, if any.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -1708,16 +1744,16 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                Absolute limits encapsulates other LoadBalancer API limits the system provides into one manageable entity. ...more info here..
-            </para>
+            <para> Absolute limits encapsulates other LoadBalancer API
+                limits that the system provides into one manageable
+                entity. </para>
+            <para security="writeronly">...See more info here... </para>
             <para>
                 To get the id for a custom absolute limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts
                 returns a response body with account numbers and an id associated with the non-default limits.
             </para>
-            <para>
-                POST, PUT and DELETE operations do not provide response bodies.
-            </para>
+            <para> POST, PUT, and DELETE operations do not provide
+                response bodies. </para>
             <example>
                 <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
@@ -1845,9 +1881,7 @@
         </section>
         <section xml:id="Viewing_Events-d1e3739">
             <title>Viewing Events</title>
-            <para>
-                These operations allow support to view events.
-            </para>
+            <para> These operations allow Support to view events. </para>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -1934,13 +1968,16 @@
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-            <para>
-                The remove load balancer function removes the specified load balancer and its associated
-                configuration. The load balancer must be in <code>ERROR</code> or <code>SUSPENDED</code> status
-                to be removed. Any and all configuration data is immediately purged and is not recoverable. A
-                limited amount of information, including usage information and deletion time, is  a &GET; on
-                <code>loadbalancers/</code><parameter>id</parameter>.
-            </para>
+            <para> The remove load balancer function removes the
+                specified load balancer and its associated
+                configuration. The load balancer must be in
+                    <code>ERROR</code> or <code>SUSPENDED</code>
+                status to be removed. Any and all configuration data
+                is immediately purged and is not recoverable. A
+                limited amount of information, including usage
+                information and deletion time, is provided by a &GET;
+                on
+                    <code>loadbalancers/</code><parameter>id</parameter>. </para>
             <para>
                 This operation does not require a request body.
             </para>
@@ -1990,13 +2027,15 @@
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-            <para>
-                The blacklist contains a list of IP address that have been considered unusable in our system.
-                The system can blacklist an item for Nodes, Accesslist or both. The type parameter can be set to
-                (<code>NODE</code>, <code>ACCESSLIST</code>) to specify which type the blacklisted item should
-                be attached to. If neither type is submitted, it becomes global and is used against all
-                operations that check its values against the blacklist.
-            </para>
+            <para> The blacklist contains a list of IP address that
+                have been considered unusable in our system. The
+                system can blacklist an item for Nodes, Accesslist or
+                both. The type parameter can be set to
+                    (<code>NODE</code>, <code>ACCESSLIST</code>) to
+                specify the type to which the blacklisted item should
+                be attached. If neither type is submitted, it becomes
+                global and is used against all operations that check
+                its values against the blacklist. </para>
             <example>
                 <title>List Blacklist Response: XML</title>
                 <programlisting language="xml">
@@ -2010,6 +2049,7 @@
                 </programlisting>
             </example>
             <example>
+                <?dbfo keep-together="always"?>
                 <title>Create Blacklist Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-blacklist.xml" parse="text"/>
@@ -2201,14 +2241,18 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The load balancer audit report provides insight into the load balancers that may have issues.
-                These issues are specified for this report as ERROR, BUILD, PENDING_DELETE, PENDING_UPDATE statues.
-                Each status can be specified in the query parameter of this request in a comma delimited list.
-                <code>ex.(/audit/status?status=error,build&amp;2011-5-16)</code>
-                The alerts returned with the load balancers in question can be queried against using the alert id to
-                return a more detailed alert message.
-                User must provide the status to query against while attempting to use this call.
-            </para>
+            <para> The load balancer audit report provides insight
+                into the load balancers that may have issues. These
+                issues are specified for this report as ERROR, BUILD,
+                PENDING_DELETE, and PENDING_UPDATE statuses. Each
+                status can be specified in the query parameter of this
+                request in a comma-delimited list. For example:
+                    <code>/audit/status?status=error,build&amp;2011-5-16</code>.
+                The alerts returned with the load balancers in
+                question can be queried against using the alert id to
+                return a more detailed alert message. User must
+                provide the status to query against while attempting
+                to use this call. </para>
             <example>
                 <title>Report Load Balancer Audit: XML</title>
                 <programlisting language="xml">
