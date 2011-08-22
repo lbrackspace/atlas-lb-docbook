@@ -31,7 +31,8 @@
       xmlns:svg="http://www.w3.org/2000/svg"
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:db="http://docbook.org/ns/docbook">
+      xmlns:db="http://docbook.org/ns/docbook"
+    xml:id="clb-mgmt-devguide">
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
     <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
@@ -53,7 +54,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-04-19</pubdate>
+        <pubdate>2011-08-23</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -94,11 +95,18 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Aug 12, 2011</td>
+                        <td colspan="1" align="center">Aug 23,
+                            2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
+                                <listitem security="writeronly">
+                                   <para>Added error page
+                                   support</para>
+                                </listitem>
                                 <listitem>
-                                    <para>Added error page support</para>
+                                   <para>Added API calls for
+                                   modification of absolute
+                                   limits.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -108,7 +116,8 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added load balancer audit reports</para>
+                                    <para>Added load balancer audit
+                                   reports.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -148,7 +157,8 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added CusterCount Examples and information</para>
+                                    <para>Added CusterCount Examples
+                                   and information.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -764,7 +774,8 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard Absolute Limit Accong Response: JSON</title>
+                <title>List Non standard Absolute Limit Account
+                    Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>

@@ -9,7 +9,8 @@
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:xi="http://www.w3.org/2001/XInclude">
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xml:id="clb-devguide">
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide</title>
     <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
@@ -35,7 +36,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-07-08</pubdate>
+        <pubdate>2011-08-23</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -92,11 +93,17 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Aug 12, 2011</td>
+                        <td colspan="1" align="center">Aug 23,
+                            2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
+                                <listitem security="writeronly">
+                                   <para>Added error page
+                                   support.</para>
+                                </listitem>
                                 <listitem>
-                                    <para>Added error page support</para>
+                                   <para>Updated examples to match the
+                                   current API.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -106,7 +113,7 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added fail over nodes</para>
+                                    <para>Added failover nodes.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -210,7 +217,7 @@
                 connections are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
-        <section xml:id="Erropage-d1e669">
+        <section xml:id="Erropage-d1e669" security="writeronly">
             <title>Error Page</title>
             <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
             By default every virtual server is provided with the default error file. It is also possible to
@@ -424,7 +431,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     <code>X-Auth-Token</code>
                     header.
                 </para>
-                <example>
+                <example xml:id="authentication_response">
                     <title>Authentication Response</title>
                     <?dbfo keep-together="always"?>
                     <para>
@@ -456,9 +463,22 @@ Content-Type: text/plain; charset=UTF-8
             <para>The load balancing service is a regionalized service. It allows the caller
                 to select a region into which a load balancer is to be provisioned.
             </para>
-            <para>To determine which region to operate against, select an endpoint from the table
-                below. Replace the sample account ID number, <parameter>1234</parameter>, with your actual account number
-                returned as part of the authentication service response. <table rules="all">
+            <para>To determine which region to operate against, select
+                an endpoint from the table below. Replace the sample
+                account ID number, <parameter>1234</parameter>, with
+                your actual account number returned as part of the
+                authentication service response. You will find the
+                actual account number after the final '/' in the
+                X-Server-Management-Url header returned by the
+                authentication response. In <xref
+                    linkend="authentication_response"/>, the account
+                id is <code>1234</code>, as you can see from the
+                header <code xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:m="http://www.w3.org/1998/Math/MathML"
+                    xmlns:html="http://www.w3.org/1999/xhtml"
+                    >X-Server-Management-Url:
+                    https://servers.api.rackspacecloud.com/v1.0/1234</code>.<table
+                    rules="all">
                     <caption>Regionalized Service Endpoints</caption>
                     <thead>
                         <tr align="center">
@@ -470,19 +490,20 @@ Content-Type: text/plain; charset=UTF-8
                         <tr align="left">
                             <td colspan="1">Chicago (ORD)</td>
                             <td colspan="4"
-                                ><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                                   ><code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
                         <tr align="left">
-                            <td colspan="1">Dallas/Ft. Worth (DFW)</td>
+                            <td colspan="1">Dallas/Ft. Worth
+                                (DFW)</td>
                             <td colspan="4"
-                                ><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                                   ><code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">London (LON)</td>
                             <td colspan="4"
-                                ><code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                                   ><code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
                     </tbody>
@@ -1680,15 +1701,19 @@ Content-Type: text/plain; charset=UTF-8
                 changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
-            <para>
-                Nodes that are primary have the option of having a fail over node. A fail over node
-                will take traffic from the specified primary node that has gone down or in other error statues.
-                The user can specify multiple fail over nodes when adding a node to a pre-configured
-                load balancer. The first and last node must remain a primary node. If attempting to update or
-                delete the last primary node a BadRequestException is thrown requiring at least one primary node
-                to remain on the loadbalancer at all times. The weightings and conditons for a fail over node can
-                be specified independantly from the primary node allowing for a more robust configuration.
-            </para>
+            <para>Nodes that are primary have the option of having a
+                failover node. A failover node will take traffic from
+                the specified primary node that has gone down or is in
+                other error states. The user can specify multiple
+                failover nodes when adding a node to a pre-configured
+                load balancer. The first and last node must remain a
+                primary node. If attempting to update or delete the
+                last primary node, a BadRequestException is thrown,
+                requiring at least one primary node to remain on the
+                load balancer at all times. The weightings and
+                conditions for a failover node can be specified
+                independently from the primary node, allowing for a
+                more robust configuration. </para>
 
             <section xml:id="List_Nodes-d1e2218">
                 <title>List Nodes</title>
@@ -2125,7 +2150,8 @@ Content-Type: text/plain; charset=UTF-8
                         </td>
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips?id=<parameter>virtualipId</parameter>
                             &amp;id=<parameter>virtualipId</parameter></td>
-                        <td colspan="3">Batch delete the virtual Ips given specified id list.</td>
+                        <td colspan="3">Batch delete the virtual IPs
+                                specified in the id list.</td>
                     </tr>
                 </tbody>
             </informaltable>
@@ -2143,17 +2169,24 @@ Content-Type: text/plain; charset=UTF-8
                 This request does not require a request body.
             </para>
             <note>
-                <para>All load balancers must have at least one virtual IP associated with
-                    them at all times. Attempting to delete the last virtual IP will result in a
-                    <returnvalue>400 (badRequest)</returnvalue>
-                    fault.
-                    To batch delete virtual ips, provide a query parameter list of virtual ip ids. For example:
-                    /virtualips?id=<parameter>virtualIdId</parameter>&amp;id=<parameter>virtualIpId</parameter>
-                    The current default limit is ten ids per request. Any and all configuration data is immediately purged and
-                    is not recoverable. By chance one of the items in the list cannot be removed due to its current status
-                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential failures for
-                    this request
-                </para>
+                <para>All load balancers must have at least one
+                        virtual IP associated with them at all times.
+                        Attempting to delete the last virtual IP will
+                        result in a <returnvalue>400
+                            (badRequest)</returnvalue> fault. To batch
+                        delete virtual ips, provide a query parameter
+                        list of virtual ip ids. For example:
+                            /virtualips?id=<parameter>virtualIpId</parameter>&amp;id=<parameter>virtualIpId</parameter>.
+                        The current default limit is ten ids per
+                        request. Any and all configuration data is
+                        immediately purged and is not recoverable. If
+                        one or more of the items in the list cannot be
+                        removed due to its current status, a
+                            <returnvalue>400
+                            (badRequest)</returnvalue> is returned
+                        along with the ids of the ones the system
+                        identified as potential failures for this
+                        request. </para>
             </note>
         </section>
         </section>
