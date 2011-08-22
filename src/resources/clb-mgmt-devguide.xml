@@ -1201,6 +1201,12 @@
                 This call will give you a simple object that will show the health status of Zeus, the database, and
                 the local machine where glassfish is running.  Also returns the time it took for each check.
             </para>
+            <para>
+                If the database is inaccessible, it will be impossible to determine the health of Zeus.  The call to
+                reach Zeus system information through the API requires information stored in the database, so the status
+                of Zeus will read "UKNOWN", and its message will read "Database inactive, unable to determine status
+                of zeus."
+            </para>
             <example>
                 <title>Health Check: XML</title>
                 <programlisting language="xml">
