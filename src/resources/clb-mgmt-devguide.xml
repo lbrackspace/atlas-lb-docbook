@@ -31,7 +31,8 @@
       xmlns:svg="http://www.w3.org/2000/svg"
       xmlns:m="http://www.w3.org/1998/Math/MathML"
       xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:db="http://docbook.org/ns/docbook">
+      xmlns:db="http://docbook.org/ns/docbook"
+    xml:id="clb-mgmt-devguide">
     <?rax title.font.size="35px" subtitle.font.size="20px"?>
     <title>Rackspace Cloud Load Balancers Developer Guide for Service Management</title>
     <titleabbrev>Rackspace Cloud LB Mgmt Guide</titleabbrev>
@@ -53,7 +54,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-04-19</pubdate>
+        <pubdate>2011-08-23</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -73,15 +74,15 @@
             <para>this is a placeholder for the back cover</para>
         </cover>
     </info>
-    <chapter>
+    <chapter xml:id="Overview-d1e85">
         <title>Overview</title>
-        <section>
+        <section xml:id="Intended_Audience-d1e90">
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
                 the management API for Rackspace Cloud Load Balancers.
             </para>
         </section>
-        <section>
+        <section xml:id="Document_Change_History-d1e99">
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and obsoletes all previous versions.
                 The most recent changes are described in the table below: </para>
@@ -94,11 +95,18 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Aug 12, 2011</td>
+                        <td colspan="1" align="center">Aug 23,
+                            2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
+                                <listitem security="writeronly">
+                                   <para>Added error page
+                                   support</para>
+                                </listitem>
                                 <listitem>
-                                    <para>Added error page support</para>
+                                   <para>Added API calls for
+                                   modification of absolute
+                                   limits.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -108,7 +116,8 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added load balancer audit reports</para>
+                                    <para>Added load balancer audit
+                                   reports.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -148,7 +157,8 @@
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
                                 <listitem>
-                                    <para>Added CusterCount Examples and information</para>
+                                    <para>Added CusterCount Examples
+                                   and information.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -156,7 +166,7 @@
                 </tbody>
             </informaltable>
         </section>
-        <section>
+        <section xml:id="Additional_Resources-d1e241">
             <title>Additional Resources</title>
             <para>Two APIs provide access to Rackspace Cloud Load Balancers:
                 <itemizedlist spacing="compact">
@@ -175,16 +185,16 @@
             </para>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Management_API_Operations-d1e268">
         <title>Management API Operations</title>
         <para>
             These API operations relate to administration of the environment that enables and supports the load balancing service for all customers.
             The scope of these operations is wide, relating to the overall operating environment rather than to a single customer.
             Rackers might perform these operations to examine or alter the overall operational environment.
         </para>
-        <section>
+        <section xml:id="Load_Balancers-d1e276">
             <title>Load Balancers</title>
-            <section>
+            <section xml:id="List_Load_Balancers-d1e281">
                 <title>List Load Balancers</title>
                 <informaltable rules="all">
                     <thead>
@@ -260,7 +270,7 @@
                 </example>
             </section>
         </section>
-        <section>
+        <section xml:id="Clusters-d1e443">
             <title>Clusters</title>
             <informaltable rules="all">
                 <thead>
@@ -333,7 +343,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Host_Machines-d1e596">
             <title>Host Machines</title>
             <informaltable rules="all">
                 <thead>
@@ -427,7 +437,7 @@
 <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
-            <section>
+            <section xml:id="Creating_a_New_Host-d1e827">
                 <title>Creating a New Host</title>
                 <para>
                     When creating a new host, the caller must supply the following attributes:
@@ -492,7 +502,7 @@
                     </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Changing_Mutable_Attributes-d1e943">
                 <title>Changing Mutable Attributes</title>
                 <para>
                     The &GET; response contains several attributes (<code>utilization</code>,
@@ -555,7 +565,7 @@
                 </example>
             </section>
         </section>
-        <section>
+        <section xml:id="Virtual_IPs-d1e1074">
             <title>Virtual IPs</title>
             <informaltable rules="all">
                 <thead>
@@ -658,7 +668,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Rate_Limits-d1e1272">
             <title>Rate Limits</title>
             <informaltable rules="all">
                 <thead>
@@ -764,7 +774,8 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Non standard Absolute Limit Accong Response: JSON</title>
+                <title>List Non standard Absolute Limit Account
+                    Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
@@ -818,7 +829,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Associations_Between_Load_Balancers_and_Host_Machines-d1e1610">
             <title>Associations Between Load Balancers and Host Machines</title>
             <informaltable rules="all">
                 <thead>
@@ -912,7 +923,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Configuration_Backups-d1e1785">
             <title>Configuration Backups</title>
             <informaltable rules="all">
                 <thead>
@@ -980,7 +991,7 @@
                 machine. These functions allow the caller to view a list of available backup
                 configurations, create new backups, purge backups, and restore any available
                 configuration. </para>
-            <section>
+            <section xml:id="Examining_Immutable_Parameters-d1e1962">
                 <title>Examining Immutable Parameters</title>
                 <para> Descriptive information about backup configurations can be listed but cannot
                     be changed. This includes: <itemizedlist spacing="compact">
@@ -1023,7 +1034,7 @@
                     </programlisting>
                 </example>
             </section>
-            <section>
+            <section xml:id="Creating_a_New_Backup-d1e2040">
                 <title>Creating a New Backup</title>
                 <para>
                     When creating a new backup, the caller must supply the following attributes:
@@ -1038,7 +1049,7 @@
                     </itemizedlist>
                 </para>
             </section>
-            <section>
+            <section xml:id="Changing_Subnet_Mappings-d1e2065">
                 <title>Changing Subnet Mappings</title>
                 <para> For each host, subnet mappings can be added or deleted. </para>
                 <example>
@@ -1073,7 +1084,7 @@
                 </example>
             </section>
         </section>
-        <section>
+        <section xml:id="Customer_Lists-d1e2131">
             <title>Customer Lists</title>
             <informaltable rules="all">
                 <thead>
@@ -1177,7 +1188,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Health_Check-d1e2342">
             <title>Health Check</title>
             <informaltable rules="all">
                 <thead>
@@ -1221,7 +1232,7 @@
             </example>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Extended_Customer_API_Operations-d1e2413">
         <title>Extended Customer API Operations</title>
         <para>
             These API operations relate to support of load balancing service activities on behalf of a specific customer.
@@ -1229,7 +1240,7 @@
             A customer might directly request these operations but only Rackers are authorized to perform them.
             Rackers might also perform these operations to limit or terminate a specific customer's activities when that customer appears to be disrupting the overall operational environment.
         </para>
-        <section>
+        <section xml:id="Assigning_New_Virtual_IPs_to_a_Load_Balancer-d1e2421">
             <title>Assigning New Virtual IPs to a Load Balancer</title>
             <informaltable rules="all">
                 <thead>
@@ -1273,7 +1284,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Synchronizing_a_Load_Balancer-d1e2498">
             <title>Synchronizing a Load Balancer</title>
             <informaltable rules="all">
                 <thead>
@@ -1312,7 +1323,7 @@
                 Zeus, then the status will be set to <code>ERROR</code>.
             </para>
         </section>
-        <section>
+        <section xml:id="Suspending_a_Load_Balancer-d1e2567">
             <title>Suspending a Load Balancer</title>
             <informaltable rules="all">
                 <thead>
@@ -1385,7 +1396,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Viewing_Extended_Details_of_a_Load_Balancer-d1e2709">
             <title>Viewing Extended Details of a Load Balancer</title>
             <informaltable rules="all">
                 <thead>
@@ -1429,7 +1440,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Account_Loadbalancers_and_Usage_Billing_-d1e2791">
             <title>Account Loadbalancers and Usage (Billing)</title>
             <informaltable rules="all">
                 <thead>
@@ -1490,7 +1501,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Load_Balancer_Status_URL_Management-d1e2946">
             <title>Load Balancer Status URL Management</title>
             <para>
                 If a load balancer is stuck in <code>PENDING UPDATE</code>status, this is probably due to a broken
@@ -1520,7 +1531,7 @@
                 </listitem>
             </itemizedlist>
         </section>
-        <section>
+        <section xml:id="Listing_and_Acknowledging_Alerts-d1e3019">
             <title>Listing and Acknowledging Alerts</title>
             <para>
                 This operations allows user to list all the alerts in the system. Additional information about the
@@ -1608,7 +1619,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="API_Rate_Limiting-d1e3233">
             <title>API Rate Limiting</title>
             <informaltable rules="all">
                 <thead>
@@ -1671,7 +1682,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Absolute_Limits-d1e3397">
             <title>Absolute Limits</title>
             <informaltable rules="all">
                 <thead>
@@ -1739,7 +1750,7 @@
             </example>
         </section>
 
-       <section>
+       <section xml:id="Load_Balancer_Tickets-d1e3543">
             <title>Load Balancer Tickets</title>
             <informaltable rules="all">
                 <thead>
@@ -1805,7 +1816,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Zeus_Usage-d1e3672">
             <title>Zeus Usage</title>
             <informaltable rules="all">
                 <thead>
@@ -1838,7 +1849,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Viewing_Events-d1e3739">
             <title>Viewing Events</title>
             <para>
                 These operations allow support to view events.
@@ -1892,7 +1903,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Deleting_a_Load_Balancer_in_Error_Suspended_Status-d1e3849">
             <title>Deleting a Load Balancer in Error/Suspended Status</title>
             <informaltable rules="all">
                 <thead>
@@ -1943,7 +1954,7 @@
                 This operation does not return a response body.
             </para>
         </section>
-        <section>
+        <section xml:id="Blacklist_Node_and_Access_List_Management-d1e3970">
             <title>Blacklist Node and Access List Management</title>
             <informaltable rules="all">
                 <thead>
@@ -2017,7 +2028,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Scheduled_Jobs-d1e4129">
             <title>Scheduled Jobs</title>
             <informaltable rules="all">
                 <thead>
@@ -2079,12 +2090,12 @@
             </example>
         </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Reports-d1e4257">
         <title>Reports</title>
         <para>
             Various reports are available, currently focused on load balancing hosts, virtual IPs and audits.
         </para>
-        <section>
+        <section xml:id="Host_Capacity-d1e4265">
             <title>Host Capacity</title>
             <informaltable rules="all">
                 <thead>
@@ -2129,7 +2140,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Virtual_IP_Availability-d1e4356">
             <title>Virtual IP Availability</title>
             <informaltable rules="all">
                 <thead>
@@ -2176,7 +2187,7 @@
                 </programlisting>
             </example>
         </section>
-        <section>
+        <section xml:id="Load_Balancer_Audit-d1e4450">
             <title>Load Balancer Audit</title>
             <informaltable rules="all">
                 <thead>
