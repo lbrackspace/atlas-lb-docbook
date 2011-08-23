@@ -1303,6 +1303,14 @@
                             source.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
+                    <!-- When we release this implementation, remove the "security" element from the below tag,
+                                and replace the above information with the below-->
+                    <tr security="writeronly">
+                        <td colspan="1">&PUT;</td>
+                        <td colspan="5">/loadbalancers/sync?id=<parameter>id</parameter>&amp;id=<parameter>id</parameter></td>
+                        <td colspan="3">Synchronize a list of up to 20 loadbalancers with the authorative source.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
                 </tbody>
             </informaltable>
             <para>
@@ -1314,7 +1322,29 @@
                 balancer's configuration in the database. The caller only needs to send a &PUT; request without a
                 body to the specified URI.
             </para>
+            <!-- When we release this implementation, remove the "security" element from the below tag,
+                        and replace the above information with the below-->
+            <para security="writeronly">
+                This feature allows for a caller to synchronize up to 20 load balancers with a particular
+                authoritative resource and is intended to be used when load-balancers are stuck in a non-active
+                status. At the time of this writing the authoritative source is the database in which all load
+                balancer configurations are stored. We may plan on adding Zeus as an authoritative source later.
+                If a caller chooses to synchronize from the database, then Zeus will be updated to match the load
+                balancers' configuration in the database. The caller only needs to send a &PUT; request without a
+                body to the specified URI.  Upon successful return, the ids will be returned to the user.  When
+                unsuccessful, the list of invalid ids is returned.
+            </para>
             <para>
+                When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the
+                operation will attempt to remove the load-balancer in Zeus and set the status to
+                <code>DELETED</code>. For all other statuses the sync operation will first delete the
+                load-balancer in Zeus and then re-create it. If successful, the load-balancer will be put in
+                the <code>ACTIVE</code> status. If for some reason the load-balancer could not be created in
+                Zeus, then the status will be set to <code>ERROR</code>.
+            </para>
+            <!-- When we release this implementation, remove the "security" element from the below tag,
+                        and replace the above information with the below-->
+            <para security="writeronly">
                 When syncing a load balancer in <code>PENDING_DELETE</code> or <code>DELETED</code> status the
                 operation will attempt to remove the load-balancer in Zeus and set the status to
                 <code>DELETED</code>. For all other statuses the sync operation will first delete the
