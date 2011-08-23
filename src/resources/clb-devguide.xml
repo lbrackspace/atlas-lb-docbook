@@ -16,9 +16,11 @@
     <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
     <info>
         <annotation>
-            <remark> For 2011-06-29 republication to support IPv6, draft changes to support BATCH
-                DELETE remain in this source XML but are excluded from the generated PDF and HTML.
-                Search for "security=writeronly" to identify those changes. </remark>
+            <remark> For 2011-06-29 republication to support IPv6,
+                draft changes to support BATCH DELETE remain in this
+                source XML but are excluded from the generated PDF and
+                HTML. Search for "security=writeronly" to identify
+                those changes.</remark>
         </annotation>
         <author>
             <personname>
@@ -478,7 +480,8 @@ Content-Type: text/plain; charset=UTF-8
                     xmlns:html="http://www.w3.org/1999/xhtml"
                     >X-Server-Management-Url:
                     https://servers.api.rackspacecloud.com/v1.0/1234</code>.<table
-                    rules="all">
+                    rules="all" >
+                    <?dbfo keep-together="always"?>
                     <caption>Regionalized Service Endpoints</caption>
                     <thead>
                         <tr align="center">
@@ -586,6 +589,7 @@ Content-Type: text/plain; charset=UTF-8
                 header in the server response. Unless the header is explicitly set, encoding defaults to disabled.
             </para>
             <table rules="all">
+                <?dbfo keep-together="always"?>
                 <caption>Encoding Headers</caption>
                 <thead>
                     <tr align="center">
@@ -2339,6 +2343,7 @@ Content-Type: text/plain; charset=UTF-8
                     network item in the access list. 
             </para>
             <example>
+                    <?dbfo keep-together="always"?>
                 <title>List Access List Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
@@ -2666,12 +2671,14 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
             </example>
             <example>
+                    <?dbfo keep-together="always"?>
                 <title>Set Session Persistence Type Request: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-set-persistence-request.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
+                    <?dbfo keep-together="always"?>
                 <title>Set Session Persistence Type Request: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
