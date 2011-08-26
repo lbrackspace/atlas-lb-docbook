@@ -8,7 +8,8 @@
             "numVips": 1,
             "numPolls": 32,
             "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T16:23:54-06:00"
+            "endTime": "2010-12-21T16:23:54-06:00" ,
+            "vipType": "PUBLIC",
         },
         {
             "id": 473,
@@ -18,7 +19,8 @@
             "numVips": 2,
             "numPolls": 5,
             "startTime": "2010-12-21T12:32:07-06:00",
-            "endTime": "2010-12-21T12:36:30-06:00"
+            "endTime": "2010-12-21T12:36:30-06:00" ,
+            "vipType": "PUBLIC"
         }
     ]
 }
