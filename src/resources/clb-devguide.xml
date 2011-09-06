@@ -1069,11 +1069,12 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>
-                This operation provides a list of all load balancers configured and associated with your account.
-                A query paramater in the form of "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000" is supported
-                which will return all loadbalancers that have changed since the date provided.
-            </para>
+            <para> This operation provides a list of all load
+                    balancers configured and associated with your
+                    account. A query parameter in the form of
+                    "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000"
+                    is supported which will return all loadbalancers
+                    that have changed since the date provided. </para>
             <para>
                 To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
                 balancer is immutable and irrecoverable. Only a limited set of attributes will be
