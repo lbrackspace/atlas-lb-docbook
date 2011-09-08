@@ -774,15 +774,15 @@ Content-Type: text/plain; charset=UTF-8
                     <tbody>
                         <tr align="left">
                             <td>Maximum number of load balancers</td>
-                            <td>20</td>
+                            <td>25</td>
                         </tr>
                         <tr align="left">
                             <td>Maximum number of nodes</td>
-                            <td>20</td>
+                            <td>25</td>
                         </tr>
                         <tr align="left">
                             <td>Maximum number of IPV6 addresses for a given load balancer</td>
-                            <td>20</td>
+                            <td>25</td>
                         </tr>
                     </tbody>
                 </informaltable>
