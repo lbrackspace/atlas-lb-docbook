@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-08-23</pubdate>
+        <pubdate>2011-09-07</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -95,7 +95,7 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1" align="center">Aug 23,
+                        <td colspan="1" align="center">Sept 7,
                             2011</td>
                         <td colspan="4" align="left">
                             <itemizedlist spacing="compact">
@@ -106,16 +106,6 @@
                                 <listitem>
                                    <para>Updated examples to match the
                                    current API.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Aug 5, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added failover nodes.</para>
                                 </listitem>
                             </itemizedlist>
                         </td>
@@ -808,7 +798,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="1">/limits</td>
                             <td colspan="3">Return the current rate limits for the account.</td>
                         </tr>
-                         <tr align="left" security="writeronly">
+                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="1">/absolutelimits</td>
@@ -1069,11 +1059,12 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>
-                This operation provides a list of all load balancers configured and associated with your account.
-                A query paramater in the form of "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000" is supported
-                which will return all loadbalancers that have changed since the date provided.
-            </para>
+            <para> This operation provides a list of all load
+                    balancers configured and associated with your
+                    account. A query parameter in the form of
+                    "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000"
+                    is supported which will return all loadbalancers
+                    that have changed since the date provided. </para>
             <para>
                 To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
                 balancer is immutable and irrecoverable. Only a limited set of attributes will be
@@ -1233,6 +1224,7 @@ Content-Type: text/plain; charset=UTF-8
                 error response will be returned with information regarding the nature of the failure in
                 the body of the response. Failures in the validation process are non-recoverable and
                 require the caller to correct the cause of the failure and &POST; the request again.
+                A HTTP loadbalancer will have the X-Forwarded-For (XFF) HTTP header set by default.
             </para>
             <note>
                 <para>
@@ -1706,7 +1698,7 @@ Content-Type: text/plain; charset=UTF-8
                 changed to <code>WEIGHTED_ROUND_ROBIN</code> and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
-            <para>Nodes that are primary have the option of having a
+            <para security="writeronly">Nodes that are primary have the option of having a
                 failover node. A failover node will take traffic from
                 the specified primary node that has gone down or is in
                 other error states. The user can specify multiple

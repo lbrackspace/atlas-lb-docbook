@@ -600,13 +600,6 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="5">/virtualips/<parameter>virtualIpId</parameter>/loadbalancers</td>
-                        <td colspan="3">Retrieve a list of load balancers associated with this
-                            virtual IP.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
                         <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips</td>
                         <td colspan="3">Retrieve a list of all virtual IPs associated with a load
                             balancer.</td>
@@ -2110,19 +2103,19 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/jobs</td>
-                        <td colspan="4">Retrieve a list of blacklisted items.</td>
+                        <td colspan="4">Retrieve a list of jobss.</td>
                         <td colspan="2">Operations</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/jobs?state=<parameter>SomeState</parameter></td>
-                        <td colspan="4">Create a new blacklist item.</td>
+                        <td colspan="4">Retrieve jobs by state.</td>
                         <td colspan="2">Operations</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/jobs/<parameter>JobId</parameter></td>
-                        <td colspan="4">Delete a specific blacklist item.</td>
+                        <td colspan="4">Delete a specific job.</td>
                         <td colspan="2">Operations, Support</td>
                     </tr>
                 </tbody>
