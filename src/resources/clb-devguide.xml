@@ -104,6 +104,55 @@
                                    support.</para>
                                 </listitem>
                                 <listitem>
+                                   <para>Added basic TCP load
+                                   balancing to allow customers to
+                                   load balance traffic for any
+                                   TCP-based prototcol. See <xref
+                                   linkend="Protocols-d1e4264"
+                                   />.</para>
+                                </listitem>
+                                <listitem>
+                                   <para>An X-Forwarded-For (XFF) HTTP
+                                   header is now automatically
+                                   inserted for all inbound HTTP
+                                   requests. See <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                   />.</para>
+                                </listitem>
+                                <listitem>
+                                   <para>Added programmatic support
+                                   for determining Cloud Load Balancer
+                                   source addresses. See <xref
+                                   linkend="List_Load_Balancer_Details-d1e1522"
+                                   /> and <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                   />.</para>
+                                </listitem>
+                                <listitem>
+                                   <para>Added support for batch
+                                   delete of Load Balancers, Nodes,
+                                   Virtual IPs, and Access List
+                                   Entries. See <xref
+                                   linkend="Remove_Load_Balancer-d1e2093"
+                                   />, <xref
+                                   linkend="Remove_Nodes-d1e2675"/>,
+                                   <xref
+                                   linkend="Remove_Virtual_IP-d1e2919"
+                                   />, and <xref
+                                   linkend="Manage_Access_Lists-d1e3187"
+                                   />, respectively.</para>
+                                </listitem>
+                                <listitem>
+                                   <para>Updated <xref
+                                   linkend="Absolute_Limits-d1e999"
+                                   />and added
+                                   <code>absolutelimits</code> API
+                                   call to <xref
+                                   linkend="Determining_Limits_Programmatically-d1e1039"
+                                   /> to return the current absolute
+                                   limits for the account.</para>
+                                </listitem>
+                                <listitem>
                                    <para>Updated examples to match the
                                    current API.</para>
                                 </listitem>
@@ -750,39 +799,56 @@ Content-Type: text/plain; charset=UTF-8
             </section>
             <section xml:id="Absolute_Limits-d1e999">
                 <title>Absolute Limits</title>
-                <para>
-                    <code>Absolute limits signifies the number of limits associated with a given account. Load balancer limit
-                          corresponds to the the maximum number of load balancers an account can have</code>
-                </para>
+                <para>Absolute limits specify the account limits for
+                    the maximum number of load balancers, nodes, batch
+                    deletes, access lists, and IPV6 addresses for a
+                    given load balancer associated with an account.
+                    The load balancer limit corresponds to the maximum
+                    number of load balancers an account can have. </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
+                            <td>Name</td>
                             <td>Description</td>
                             <td>Default Limit</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
+                            <td>LOADBALANCER_LIMIT</td>
                             <td>Maximum number of load balancers</td>
                             <td>25</td>
                         </tr>
                         <tr align="left">
+                            <td>NODE_LIMIT</td>
                             <td>Maximum number of nodes</td>
                             <td>25</td>
                         </tr>
                         <tr align="left">
+                            <td>IPV6_LIMIT</td>
                             <td>Maximum number of IPV6 addresses for a given load balancer</td>
                             <td>25</td>
+                        </tr>
+                        <tr align="left">
+                            <td>BATCH_DELETE_LIMIT</td>
+                            <td>Maximum number of items that can be
+                                deleted in a batch delete request</td>
+                            <td>10</td>
+                        </tr>
+                        <tr align="left">                           
+                            <td>ACCESS_LIST_LIMIT</td>
+                            <td>Maximum number of network items that
+                                an access list can have</td>
+                            <td>100</td>
                         </tr>
                     </tbody>
                 </informaltable>
             </section>
             <section xml:id="Determining_Limits_Programmatically-d1e1039">
                 <title>Determining Limits Programmatically</title>
-                <para>
-                    Applications can programmatically determine current account limits using the
-                    URI as follows:
-                </para>
+                <para> Applications can programmatically determine
+                    current rate limits and absolute limits for an
+                    account using the following URIs: </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
@@ -815,19 +881,31 @@ Content-Type: text/plain; charset=UTF-8
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>
-                    This operation does not require a request body.
-                </para>
+                <para> These operations do not require a request body. </para>
                 <example>
-                    <title>List Limits Response: XML</title>
+                    <title>List Rate Limits Response: XML</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-limits-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>List Limits Response: JSON</title>
+                    <title>List Rate Limits Response: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-limits-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: XML</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Absolute Limits Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -982,6 +1060,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
                 <example>
                     <title>Fault Response, serviceUnavailable</title>
+                    <?dbfo keep-together="always"?>
                 <literallayout class="monospaced">
 <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The Load balancing service is currently not available</message>
@@ -1151,6 +1230,16 @@ Content-Type: text/plain; charset=UTF-8
             <para>
                 This operation does not require a request body.
             </para>
+                <para>Notice in the following examples that API users
+                    are now able to programmatically derive the source
+                    IP addresses of our load balancers using the
+                        <code>sourceAddresses</code> label included at
+                    the bottom of the list load balancer details
+                    response. This feature is useful for customers who
+                    are automating the deployment of infrastructure
+                    and need to determine the IP addresses of requests
+                    coming from our load balancers for the purpose of
+                    creating more robust firewall rules.</para>
             <annotation>
                 <remark>
                         For 2011-06-29 republication to support IPv6, "security=writeronly"
@@ -1213,19 +1302,31 @@ Content-Type: text/plain; charset=UTF-8
                 unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                 overLimit (<errorcode>413</errorcode>)
             </simpara>
-            <para>This operation asynchronously provisions a new load balancer based on the
-                configuration defined in the request object. Once the request is validated and
-                progress has started on the provisioning process, a response object will be
-                returned. The object will contain a unique identifier and status of the request.
-                Using the identifier, the caller can check on the progress of the operation by
-                performing a &GET; on <code>loadbalancers/id</code>. If the corresponding request cannot be
-                fulfilled due to insufficient or invalid data, an <code>HTTP</code>
-                <returnvalue>400 (Bad Request)</returnvalue>
-                error response will be returned with information regarding the nature of the failure in
-                the body of the response. Failures in the validation process are non-recoverable and
-                require the caller to correct the cause of the failure and &POST; the request again.
-                A HTTP loadbalancer will have the X-Forwarded-For (XFF) HTTP header set by default.
-            </para>
+            <para>This operation asynchronously provisions a new load
+                    balancer based on the configuration defined in the
+                    request object. Once the request is validated and
+                    progress has started on the provisioning process,
+                    a response object will be returned. The object
+                    will contain a unique identifier and status of the
+                    request. Using the identifier, the caller can
+                    check on the progress of the operation by
+                    performing a &GET; on
+                        <code>loadbalancers/id</code>. If the
+                    corresponding request cannot be fulfilled due to
+                    insufficient or invalid data, an <code>HTTP</code>
+                    <returnvalue>400 (Bad Request)</returnvalue> error
+                    response will be returned with information
+                    regarding the nature of the failure in the body of
+                    the response. Failures in the validation process
+                    are non-recoverable and require the caller to
+                    correct the cause of the failure and &POST; the
+                    request again. </para>
+                <para>An HTTP load balancer will have the
+                    X-Forwarded-For (XFF) HTTP header set by default.
+                    This header will contain the actual source address
+                    of the client, which many web applications are
+                    already designed to use when determining the
+                    source address for a request. </para>
             <note>
                 <para>
                     A load balancer's name must be less than or equal to 128 characters.
@@ -1310,8 +1411,20 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-create-required-request.json" parse="text"/>
                 </programlisting>
             </example>
+                <para>Notice in the following examples that API users
+                    are now able to programmatically derive the source
+                    IP addresses of our load balancers using the
+                        <code>sourceAddresses</code> label included at
+                    the bottom of the create load balancer (required
+                    attributes) response. This feature is useful for
+                    customers who are automating the deployment of
+                    infrastructure and need to determine the IP
+                    addresses of requests coming from our load
+                    balancers for the purpose of creating more robust
+                    firewall rules.</para>
             <example>
                 <title>Create Load Balancer (Required Attributes) Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-required-response.xml" parse="text"/>
                 </programlisting>
@@ -1349,6 +1462,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
                 </programlisting>
@@ -1760,6 +1874,7 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
                 <example>
                     <title>List Node Response: JSON</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-list-node-response.json" parse="text"/>
                 </programlisting>
@@ -2068,6 +2183,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>List Atom Virtual IPs Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text"/>
                 </programlisting>
@@ -2114,12 +2230,14 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>Add Virtual IP Version 6 Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-add-vip-v6-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Add Virtual IP Version 6 Response: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-add-vip-v6-response.json" parse="text"/>
                 </programlisting>
@@ -2253,6 +2371,7 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
                 <example>
                     <title>Report Load Balancer Usage Response: JSON</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
     <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
                     </programlisting>
@@ -2494,6 +2613,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>Monitor Connections Response: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
                 </programlisting>
