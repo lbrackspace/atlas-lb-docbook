@@ -3,5 +3,5 @@
     delay="10"
     timeout="3"
     attemptsBeforeDeactivation="2"
-    path="/"
+    path="/healthcheck"
  />
