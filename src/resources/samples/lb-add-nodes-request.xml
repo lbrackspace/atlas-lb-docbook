@@ -1,5 +1,5 @@
 <nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.1">
-    <node address="10.1.1.1" port="80" condition="ENABLED" />
-    <node address="10.2.2.1" port="80" condition="ENABLED" />
-    <node address="10.2.2.2" port="88" condition="ENABLED" />
+    <node address="10.1.1.1" port="80" />
+    <node address="10.2.2.1" port="80" weight="2" />
+    <node address="10.2.2.2" port="88" condition="DISABLED" weight="2"/>
 </nodes>

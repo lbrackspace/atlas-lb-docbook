@@ -1,11 +1,7 @@
 <loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.1"
-    name="a-new-loadbalancer"
-    port="80"
-    protocol="HTTP">
-    <virtualIps>
-        <virtualIp type="PUBLIC"/>
-    </virtualIps>
+    name="a-new-loadbalancer">
     <nodes>
-        <node address="10.1.1.1" port="80" condition="ENABLED"/>
+        <node address="10.1.1.1" port="80" />
+        <node address="10.1.1.2" port="81" />
     </nodes>
 </loadBalancer>

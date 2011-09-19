@@ -100,6 +100,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                     <tr align="left">
+                        <td colspan="1" align="center">May 27, 2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                    <para>Clarified some aspects after received feedback.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr>
                     <tr align="left">
                         <td colspan="1" align="center">Apr. 19, 2011</td>
                         <td colspan="4" align="left">
@@ -912,21 +922,6 @@
                             <code>name</code>
                         </para>
                     </listitem>
-                    <listitem>
-                        <para>
-                            <code>protocol</code>
-                        </para>
-                    </listitem>
-                     <listitem>
-                        <para>
-                            <code>port</code>
-                        </para>
-                    </listitem>
-                     <listitem>
-                        <para>
-                            <code>At least one VirtualIp</code>
-                        </para>
-                    </listitem>
                      <listitem>
                         <para>
                             <code>At least one node</code>
@@ -941,6 +936,12 @@
                 the body of the response. Failures in the validation process are non-recoverable and
                 require the caller to correct the cause of the failure and &POST; the request again.
             </para>
+            <note>
+                <para>
+                    By default the system will create the HTTP loadbalancer on port 80 and assign a public IPV6 and IPV4 address to
+                    the loadbalancer.
+                </para>
+            </note>
             <note>
                 <para>
                     A load balancer's name has a max length that can be queried when querying limits.

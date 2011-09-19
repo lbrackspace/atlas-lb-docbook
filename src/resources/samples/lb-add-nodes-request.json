@@ -1,19 +1,18 @@
 {"nodes": [
         {
             "address": "10.1.1.1",
-            "port": 80,
-            "condition": "ENABLED"
+            "port": 80
         },
         {
             "address": "10.2.2.1",
             "port": 80,
-            "condition": "ENABLED"
+            "weight": 2
         },
         {
             "address": "10.2.2.2",
             "port": 88,
-            "condition": "ENABLED",
-            "weight": 10
+            "condition": "DISABLED",
+            "weight": 2
         }
     ]
 }
