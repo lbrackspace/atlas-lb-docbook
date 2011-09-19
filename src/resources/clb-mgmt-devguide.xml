@@ -1662,7 +1662,7 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="5">/alerts/unacknowledged</td>
+                        <td colspan="5">/alerts?status=UNACKNOWLEDGED</td>
                         <td colspan="3">Retrieve unacknowledged alerts, if any.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
