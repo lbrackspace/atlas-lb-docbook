@@ -95,6 +95,18 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1" align="center">XXX x,
+                            2011</td>
+                        <td colspan="4" align="left">
+                            <itemizedlist spacing="compact">
+                                <listitem>
+                                   <para>Updated <xref
+                                   linkend="Absolute_Limits-d1e999"
+                                   />.</para>
+                                </listitem>
+                            </itemizedlist>
+                        </td>
+                    </tr><tr align="left">
                         <td colspan="1" align="center">Sept 7,
                             2011</td>
                         <td colspan="4" align="left">
@@ -796,50 +808,67 @@ Content-Type: text/plain; charset=UTF-8
                     <code>Retry-After</code>
                     header to notify the client when they can attempt to try again.
                 </para>
+                <para>A request may be submitted to Cloud Support for
+                    an increase in load balancer limits. Each request
+                    must be approved before limits can be modified.
+                    Limits may only be increased up to the maximum
+                    limit (such as 50 nodes per load balancer). </para>
             </section>
             <section xml:id="Absolute_Limits-d1e999">
                 <title>Absolute Limits</title>
-                <para>Absolute limits specify the account limits for
-                    the maximum number of load balancers, nodes, batch
-                    deletes, access lists, and IPV6 addresses for a
-                    given load balancer associated with an account.
-                    The load balancer limit corresponds to the maximum
-                    number of load balancers an account can have. </para>
+                <para>Absolute limits specify the
+                        <emphasis>default</emphasis> number of load
+                    balancers that can exist per Cloud account and the
+                        <emphasis>default</emphasis> number of
+                    resources that can exist per load balancer. The
+                    batch delete limit is the exception, since it is
+                    applied per batch delete request via the
+                    API.</para>
+                <para>A request may be submitted to Cloud Support for
+                    an increase in load balancer limits. Each request
+                    must be approved before limits can be modified.
+                    Limits may only be increased up to the maximum
+                    limit (such as 50 nodes per load balancer). </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>Default Limit</td>
+                            <td colspan="2">Name</td>
+                            <td colspan="3">Description</td>
+                            <td colspan="1">Default Limit</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td>LOADBALANCER_LIMIT</td>
-                            <td>Maximum number of load balancers</td>
-                            <td>25</td>
+                            <td colspan="2">LOADBALANCER_LIMIT</td>
+                            <td colspan="3">Default number of load
+                                balancers per Cloud account.</td>
+                            <td colspan="1">25</td>
                         </tr>
                         <tr align="left">
-                            <td>NODE_LIMIT</td>
-                            <td>Maximum number of nodes</td>
-                            <td>25</td>
+                            <td colspan="2">NODE_LIMIT</td>
+                            <td colspan="3">Default number of nodes
+                                per load balancer.</td>
+                            <td colspan="1">25</td>
                         </tr>
                         <tr align="left">
-                            <td>IPV6_LIMIT</td>
-                            <td>Maximum number of IPV6 addresses for a given load balancer</td>
-                            <td>25</td>
+                            <td colspan="2">IPV6_LIMIT</td>
+                            <td colspan="3">Default number of IPV6
+                                addresses per load balancer.</td>
+                            <td colspan="1">25</td>
                         </tr>
                         <tr align="left">
-                            <td>BATCH_DELETE_LIMIT</td>
-                            <td>Maximum number of items that can be
-                                deleted in a batch delete request</td>
-                            <td>10</td>
+                            <td colspan="2">BATCH_DELETE_LIMIT</td>
+                            <td colspan="3">Default number of items
+                                that can be deleted per batch delete
+                                request.</td>
+                            <td colspan="1">10</td>
                         </tr>
                         <tr align="left">                           
-                            <td>ACCESS_LIST_LIMIT</td>
-                            <td>Maximum number of network items that
-                                an access list can have</td>
-                            <td>100</td>
+                            <td colspan="2">ACCESS_LIST_LIMIT</td>
+                            <td colspan="3">Default number of network
+                                items that an access list can have per
+                                load balancer.</td>
+                            <td colspan="1">100</td>
                         </tr>
                     </tbody>
                 </informaltable>
