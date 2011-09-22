@@ -1178,6 +1178,12 @@ Content-Type: text/plain; charset=UTF-8
                 balancer is immutable and irrecoverable. Only a limited set of attributes will be
                 returned in the response object:
             </para>
+            <para>
+                To find out if any load balancers for an account have a specific node attached to it, use the query
+                parameter "/loadbalancers?nodeaddress=10.1.1.1".  This will search all loadbalancers for the account
+                for a node with the address provided, and return a list of id's and name's of any loadbalancer
+                attached.
+            </para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
@@ -1213,6 +1219,18 @@ Content-Type: text/plain; charset=UTF-8
                 <title>List Load Balancers Response: JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers With Node: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-response-with-node.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers With Node: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-list-response-with-node.json" parse="text" />
                 </programlisting>
             </example>
             <example>

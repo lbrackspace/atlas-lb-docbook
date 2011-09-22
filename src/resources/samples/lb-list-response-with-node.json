@@ -1,0 +1,15 @@
+{"loadBalancers": [
+        {
+            "name": "First Loadbalancer",
+            "id": 1
+        },
+        {
+            "name": "Second Loadbalancer",
+            "id": 2
+        },
+        {
+            "name": "Third Loadbalancer",
+            "id": 8
+        }
+    ]
+}
