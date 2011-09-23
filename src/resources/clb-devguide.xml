@@ -813,65 +813,81 @@ Content-Type: text/plain; charset=UTF-8
                     must be approved before limits can be modified.
                     Limits may only be increased up to the maximum
                     limit (such as 50 nodes per load balancer). </para>
+                <para>Refer to <xref
+                        linkend="Determining_Limits_Programmatically-d1e1039"
+                    /> to find your current account settings for these
+                    limits.</para>
             </section>
             <section xml:id="Absolute_Limits-d1e999">
                 <title>Absolute Limits</title>
-                <para>Absolute limits specify the
-                        <emphasis>default</emphasis> number of load
-                    balancers that can exist per Cloud account and the
-                        <emphasis>default</emphasis> number of
-                    resources that can exist per load balancer. The
-                    batch delete limit is the exception, since it is
-                    applied per batch delete request via the
-                    API.</para>
-                <para>A request may be submitted to Cloud Support for
-                    an increase in load balancer limits. Each request
-                    must be approved before limits can be modified.
-                    Limits may only be increased up to the maximum
-                    limit (such as 50 nodes per load balancer). </para>
+                <para>Absolute limits specify the maximum number of
+                    load balancers that can exist per Cloud account
+                    and the maximum number of resources that can exist
+                    per load balancer. The batch delete limit is the
+                    exception, since it is applied per batch delete
+                    API request.</para>
+                <para>The system applies default values that can be
+                    increased anywhere up to their absolute limits,
+                    excluding the batch delete limit. A request can be
+                    submitted to Cloud Support for an increase in load
+                    balancer account and/or resource limits. Each
+                    request must be approved internally before limits
+                    can be modified. </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
                             <td colspan="2">Name</td>
                             <td colspan="3">Description</td>
                             <td colspan="1">Default Limit</td>
+                            <td colspan="1">Absolute Limit</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr align="left">
                             <td colspan="2">LOADBALANCER_LIMIT</td>
-                            <td colspan="3">Default number of load
-                                balancers per Cloud account.</td>
+                            <td colspan="3">Total number of load
+                                balancers that can be added to a Cloud
+                                account.</td>
                             <td colspan="1">25</td>
+                            <td colspan="1">50</td>
                         </tr>
                         <tr align="left">
                             <td colspan="2">NODE_LIMIT</td>
-                            <td colspan="3">Default number of nodes
-                                per load balancer.</td>
+                            <td colspan="3">Total number of nodes that
+                                can be added to a load balancer.</td>
                             <td colspan="1">25</td>
+                            <td colspan="1">50</td>
                         </tr>
                         <tr align="left">
                             <td colspan="2">IPV6_LIMIT</td>
-                            <td colspan="3">Default number of IPV6
-                                addresses per load balancer.</td>
+                            <td colspan="3">Total number of IPV6
+                                addresses that can be added to a load
+                                balancer.</td>
                             <td colspan="1">25</td>
+                            <td colspan="1">50</td>
                         </tr>
                         <tr align="left">
                             <td colspan="2">BATCH_DELETE_LIMIT</td>
-                            <td colspan="3">Default number of items
-                                that can be deleted per batch delete
+                            <td colspan="3">Total number of resources
+                                that may be listed per batch delete
                                 request.</td>
+                            <td colspan="1">10</td>
                             <td colspan="1">10</td>
                         </tr>
                         <tr align="left">                           
                             <td colspan="2">ACCESS_LIST_LIMIT</td>
-                            <td colspan="3">Default number of network
-                                items that an access list can have per
-                                load balancer.</td>
+                            <td colspan="3">Total number of network
+                                items that can be added to a load
+                                balancer.</td>
                             <td colspan="1">100</td>
+                            <td colspan="1">[TBD]</td>
                         </tr>
                     </tbody>
                 </informaltable>
+                <para>Refer to <xref
+                        linkend="Determining_Limits_Programmatically-d1e1039"
+                    /> to find your current account settings for these
+                    limits.</para>
             </section>
             <section xml:id="Determining_Limits_Programmatically-d1e1039">
                 <title>Determining Limits Programmatically</title>
