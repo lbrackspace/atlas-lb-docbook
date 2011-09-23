@@ -869,7 +869,7 @@ Content-Type: text/plain; charset=UTF-8
                         <tr align="left">
                             <td colspan="2">BATCH_DELETE_LIMIT</td>
                             <td colspan="3">Total number of resources
-                                that may be listed per batch delete
+                                that can be listed per batch delete
                                 request.</td>
                             <td colspan="1">10</td>
                             <td colspan="1">10</td>
