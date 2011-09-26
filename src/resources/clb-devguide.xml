@@ -826,20 +826,19 @@ Content-Type: text/plain; charset=UTF-8
                     per load balancer. The batch delete limit is the
                     exception, since it is applied per batch delete
                     API request.</para>
-                <para>The system applies default values that can be
-                    increased anywhere up to their absolute limits,
-                    excluding the batch delete limit. A request can be
-                    submitted to Cloud Support for an increase in load
-                    balancer account and/or resource limits. Each
-                    request must be approved internally before limits
-                    can be modified. </para>
+                <para>The system applies default values for load
+                    balancer account and/or resource limits that can
+                    be increased anywhere up to their absolute limits
+                    (excluding the batch delete limit) by submitting a
+                    request to Cloud Support. Each request must be
+                    approved internally before limits can be modified. </para>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
                             <td colspan="2">Name</td>
                             <td colspan="3">Description</td>
                             <td colspan="1">Default Limit</td>
-                            <td colspan="1">Absolute Limit</td>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -849,14 +848,14 @@ Content-Type: text/plain; charset=UTF-8
                                 balancers that can be added to a Cloud
                                 account.</td>
                             <td colspan="1">25</td>
-                            <td colspan="1">50</td>
+                            
                         </tr>
                         <tr align="left">
                             <td colspan="2">NODE_LIMIT</td>
                             <td colspan="3">Total number of nodes that
                                 can be added to a load balancer.</td>
                             <td colspan="1">25</td>
-                            <td colspan="1">50</td>
+                            
                         </tr>
                         <tr align="left">
                             <td colspan="2">IPV6_LIMIT</td>
@@ -864,7 +863,7 @@ Content-Type: text/plain; charset=UTF-8
                                 addresses that can be added to a load
                                 balancer.</td>
                             <td colspan="1">25</td>
-                            <td colspan="1">50</td>
+                          
                         </tr>
                         <tr align="left">
                             <td colspan="2">BATCH_DELETE_LIMIT</td>
@@ -872,7 +871,7 @@ Content-Type: text/plain; charset=UTF-8
                                 that can be listed per batch delete
                                 request.</td>
                             <td colspan="1">10</td>
-                            <td colspan="1">10</td>
+                            
                         </tr>
                         <tr align="left">                           
                             <td colspan="2">ACCESS_LIST_LIMIT</td>
@@ -880,7 +879,7 @@ Content-Type: text/plain; charset=UTF-8
                                 items that can be added to a load
                                 balancer.</td>
                             <td colspan="1">100</td>
-                            <td colspan="1">[TBD]</td>
+                            
                         </tr>
                     </tbody>
                 </informaltable>
