@@ -20,7 +20,6 @@
             condition="ENABLED"
             status="ONLINE" />
     </nodes>
-    <cluster name="ztm-n03.staging1.lbaas.demo.net" />
     <created time="2011-02-08T21:19:55Z" />
     <updated time="2011-02-08T21:19:55Z" />
     <connectionLogging enabled="false" />

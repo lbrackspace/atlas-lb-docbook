@@ -6,9 +6,6 @@
         "port": 83,
         "algorithm": "ROUND_ROBIN",
         "status": "BUILD",
-        "cluster": {
-            "name": "ztm-n01.staging1.lbaas.demo.net"
-        },
         "nodes": [
             {
                 "address": "10.1.1.1",

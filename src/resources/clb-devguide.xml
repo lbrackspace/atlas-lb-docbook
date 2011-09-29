@@ -938,8 +938,9 @@
             </para>
             <note>
                 <para>
-                    By default the system will create the HTTP loadbalancer on port 80 and assign a public IPV6 and IPV4 address to
-                    the loadbalancer.
+                    By default the system will create a loadbalancer with protocol set to HTTP, port set to 80 (or 443 if
+                    protocol is HTTPS), and assign both a public  IPV6 address to the loadbalancer.
+                    The default algorithm used is set to ROUND_ROBIN.
                 </para>
             </note>
             <note>
@@ -955,10 +956,12 @@
             </note>
             <note>
                 <para> Users may request either a IPv4 or IPV6 address by specifying the version
-                       in the create request. To request a IPV6 virtual address the version is specified as
+                       in the create request. For example to request a IPV6 virtual address
+                       for the loadbalancer, use the following virtualIp element in the version is specified as
                        <literallayout class="monospaced">
            <![CDATA[<virtualIp type="PUBLIC" version="IPV6"/>]]>
                         </literallayout>
+                       If the version attribute is not specified, then an IPv6 IP address is allocated.
                 </para>
             </note>
             <example>

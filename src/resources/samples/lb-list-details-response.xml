@@ -31,7 +31,6 @@
     <connectionThrottle
         maxRequestRate="50"
         rateInterval="60" />
-    <cluster name="c1.dfw1" />
     <created time="2010-11-30T03:23:42Z" />
     <updated time="2010-11-30T03:23:44Z" />
 </loadBalancer>
