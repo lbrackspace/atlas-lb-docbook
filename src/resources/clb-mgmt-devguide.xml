@@ -1753,7 +1753,7 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
-                        <td colspan="4">Retrieve all absolute limits, ids with custom limits.</td>
+                        <td colspan="4">Retrieve all absolute limits, ids included with custom limits.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
