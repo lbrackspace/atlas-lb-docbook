@@ -1751,6 +1751,12 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
+                        <td colspan="4">Retrieve all absolute limits, ids with custom limits.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="4">accounts/<parameter>accountId</parameter>/loadbalancers/absolutelimits</td>
                         <td colspan="4">Add an absolute limit.</td>
@@ -1780,6 +1786,18 @@
             </para>
             <para> POST, PUT, and DELETE operations do not provide
                 response bodies. </para>
+            <example>
+                <title>Get Limits Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-get-absolute-limits.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Get Limits Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-get-absolute-limits.json" parse="text"/>
+                </programlisting>
+            </example>
             <example>
                 <title>Add Limits Request: XML</title>
                 <programlisting language="xml">
