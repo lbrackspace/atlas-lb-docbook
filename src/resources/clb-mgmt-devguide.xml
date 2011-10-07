@@ -1773,6 +1773,55 @@
             <para> Absolute limits encapsulates other LoadBalancer API
                 limits that the system provides into one manageable
                 entity. </para>
+            <para> The values for the absolute limits are shown below: </para>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="2">Name</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="1">Default Limit</td>
+                        <td colspan="1">Absolute Limit</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="2">LOADBALANCER_LIMIT</td>
+                        <td colspan="3">Total number of load balancers
+                            that can be added to a Cloud account.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">NODE_LIMIT</td>
+                        <td colspan="3">Total number of nodes that can
+                            be added to a load balancer.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">IPV6_LIMIT</td>
+                        <td colspan="3">Total number of IPV6 addresses
+                            that can be added to a load balancer.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">BATCH_DELETE_LIMIT</td>
+                        <td colspan="3">Total number of resources that
+                            can be listed per batch delete
+                            request.</td>
+                        <td colspan="1">10</td>
+                        <td colspan="1">10</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">ACCESS_LIST_LIMIT</td>
+                        <td colspan="3">Total number of network items
+                            that can be added to a load balancer.</td>
+                        <td colspan="1">100</td>
+                        <td colspan="1">To be determined</td>
+                    </tr>
+                </tbody>
+            </informaltable>
             <para security="writeronly">...See more info here... </para>
             <para>
                 To get the id for a custom absolute limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts
