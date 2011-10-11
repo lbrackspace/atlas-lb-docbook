@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <link rel="next"
-          href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/nodes.atom?page=2"/>
+          href="https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234/loadbalancers/141/nodes.atom?page=2"/>
     <title type="text">Nodes Feed</title>
-    <id>548939-loadbalancers-141-nodes</id>
+    <id>1234-loadbalancers-141-nodes</id>
     <author>
         <name>Rackspace Cloud</name>
     </author>
@@ -13,8 +13,8 @@
         <author>
             <name>Rackspace Cloud</name>
         </author>
-        <link href="https://staging.ord.loadbalancers.api.rackspacecloud.com/v1.0/548939/loadbalancers/141/nodes/650"/>
-        <id>548939-loadbalancers-141-nodes-650-2011952125350</id>
+        <link href="https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1234/loadbalancers/141/nodes/650"/>
+        <id>1234-loadbalancers-141-nodes-650-2011952125350</id>
         <category term="UPDATE"/>
         <updated>2011-04-05T21:25:35.000Z</updated>
     </entry>
