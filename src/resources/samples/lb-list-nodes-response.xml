@@ -6,22 +6,19 @@
         port="80"
         condition="ENABLED"
         status="ONLINE"
-        weight="3"
-        type="PRIMARY"/>
+        weight="3"/>
     <node
         id="411"
         address="10.1.1.2"
         port="80"
         condition="ENABLED"
         status="ONLINE"
-        weight="8"
-        type="FAIL_OVER"/>
+        weight="8"/>
     <node
         id="412"
         address="10.1.1.3"
         port="80"
         condition="DISABLED"
         status="ONLINE"
-        weight="12"
-        type="FAIL_OVER"/>
+        weight="12"/>
 </nodes>

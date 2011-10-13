@@ -1,5 +1,5 @@
 <nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <node address="10.1.1.1" port="80" condition="ENABLED" />
     <node address="10.2.2.1" port="80" condition="ENABLED" />
-    <node address="10.2.2.2" port="88" condition="ENABLED" weight="10" type="FAIL_OVER"/>
+    <node address="10.2.2.2" port="88" condition="ENABLED" weight="10"/>
 </nodes>

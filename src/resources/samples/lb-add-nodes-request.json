@@ -13,8 +13,7 @@
             "address": "10.2.2.2",
             "port": 88,
             "condition": "ENABLED",
-            "weight": 10,
-            "type": "FAIL_OVER"
+            "weight": 10
         }
     ]
 }
