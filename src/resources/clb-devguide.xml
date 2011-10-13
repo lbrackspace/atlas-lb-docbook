@@ -1293,7 +1293,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td colspan="1">&GET;
                         </td>
-                        <td colspan="3">/loadbalancers/loadBalancerId</td>
+                        <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter></td>
                         <td colspan="3">List details of the specified load balancer.</td>
                         <td colspan="2">JSON, XML, Atom</td>
                     </tr>
