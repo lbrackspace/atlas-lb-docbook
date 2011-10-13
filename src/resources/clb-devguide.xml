@@ -1951,12 +1951,24 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not require a request body.
                 </para>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Node Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Node Response: JSON</title>
                     <?dbfo keep-together="always"?>
@@ -1970,12 +1982,24 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Nodes Response: JSON</title>
                     <programlisting language="javascript">
@@ -2028,24 +2052,48 @@ Content-Type: text/plain; charset=UTF-8
                     result, nodes can either be internal ServiceNet addresses or addresses on the public
                     Internet.
                 </para>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Response: JSON</title>
                     <programlisting language="javascript">
@@ -2129,12 +2177,24 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </table>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Update Node Condition Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Update Node Condition Request: JSON</title>
                     <programlisting language="javascript">
