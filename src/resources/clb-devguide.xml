@@ -50,12 +50,147 @@
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
-        <cover>
-            <para>this is a placeholder for the front cover</para>
-        </cover>
-        <cover>
-            <para>this is a placeholder for the back cover</para>
-        </cover>
+        <revhistory>
+            <revision>
+                <date>2011-10-13</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated examples as needed
+                                to match the latest API.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-10-11</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated Atom
+                                examples.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-09-26</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated <xref linkend="Absolute_Limits-d1e999"/>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-09-07</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem security="writeronly">
+                            <para>Added error page
+                                support.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added basic TCP load
+                                balancing to allow customers to
+                                load balance traffic for any
+                                TCP-based prototcol. See <xref linkend="Protocols-d1e4264"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>An X-Forwarded-For (XFF) HTTP
+                                header is now automatically
+                                inserted for all inbound HTTP
+                                requests. See <xref linkend="Create_Load_Balancer-d1e1635"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added programmatic support
+                                for determining Cloud Load Balancer
+                                source addresses. See <xref linkend="List_Load_Balancer_Details-d1e1522"/> and <xref linkend="Create_Load_Balancer-d1e1635"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added support for batch
+                                delete of Load Balancers, Nodes,
+                                Virtual IPs, and Access List
+                                Entries. See <xref linkend="Remove_Load_Balancer-d1e2093"/>, <xref linkend="Remove_Nodes-d1e2675"/>,
+                                <xref linkend="Remove_Virtual_IP-d1e2919"/>, and <xref linkend="Manage_Access_Lists-d1e3187"/>, respectively.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated <xref linkend="Absolute_Limits-d1e999"/>and added
+                                <code>absolutelimits</code> API
+                                call to <xref linkend="Determining_Limits_Programmatically-d1e1039"/> to return the current absolute
+                                limits for the account.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples to match the
+                                current API.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-07-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added service endpoint for London (LON) region.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-07-07</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added support for accessing the Authentication Service,
+                                based on whether your account is US-based or
+                                UK-based.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-06-29</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added support for IPv6.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-04-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added details to support initial GA release.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-03-02</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Revised code samples and formatting to address initial beta feedback.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-02-23</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Initial release for public beta.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
     </info>
     <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
@@ -86,178 +221,7 @@
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and obsoletes all previous versions.
                 The most recent changes are described in the table below: </para>
-            <informaltable rules='all'>
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Revision Date</td>
-                        <td colspan="4">Summary of Changes</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1" align="center">Oct 13,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Updated examples as needed
-                                   to match the latest API.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Oct 11,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Updated Atom
-                                   examples.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Sept 26,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                   <para>Updated <xref
-                                   linkend="Absolute_Limits-d1e999"
-                                   />.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr><tr align="left">
-                        <td colspan="1" align="center">Sept 7,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem security="writeronly">
-                                   <para>Added error page
-                                   support.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added basic TCP load
-                                   balancing to allow customers to
-                                   load balance traffic for any
-                                   TCP-based prototcol. See <xref
-                                   linkend="Protocols-d1e4264"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>An X-Forwarded-For (XFF) HTTP
-                                   header is now automatically
-                                   inserted for all inbound HTTP
-                                   requests. See <xref
-                                   linkend="Create_Load_Balancer-d1e1635"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added programmatic support
-                                   for determining Cloud Load Balancer
-                                   source addresses. See <xref
-                                   linkend="List_Load_Balancer_Details-d1e1522"
-                                   /> and <xref
-                                   linkend="Create_Load_Balancer-d1e1635"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added support for batch
-                                   delete of Load Balancers, Nodes,
-                                   Virtual IPs, and Access List
-                                   Entries. See <xref
-                                   linkend="Remove_Load_Balancer-d1e2093"
-                                   />, <xref
-                                   linkend="Remove_Nodes-d1e2675"/>,
-                                   <xref
-                                   linkend="Remove_Virtual_IP-d1e2919"
-                                   />, and <xref
-                                   linkend="Manage_Access_Lists-d1e3187"
-                                   />, respectively.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Updated <xref
-                                   linkend="Absolute_Limits-d1e999"
-                                   />and added
-                                   <code>absolutelimits</code> API
-                                   call to <xref
-                                   linkend="Determining_Limits_Programmatically-d1e1039"
-                                   /> to return the current absolute
-                                   limits for the account.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Updated examples to match the
-                                   current API.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Jul 8, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added service endpoint for London (LON) region.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Jul 7, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added support for accessing the Authentication Service,
-                                        based on whether your account is US-based or
-                                        UK-based.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr><tr align="left">
-                        <td colspan="1" align="center">Jun 29, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added support for IPv6.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Apr 19, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added details to support initial GA release.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Mar 2, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Revised code samples and formatting to address initial beta feedback.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Feb 23, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Initial release for public beta.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                </tbody>
-            </informaltable>
+        <?rax revhistory?>
         </section>
         <section xml:id="Additional_Resources-d1e207">
             <title>Additional Resources</title>
