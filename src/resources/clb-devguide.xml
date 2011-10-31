@@ -87,8 +87,8 @@
                 <date>2011-09-07</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
-                        <listitem security="writeronly">
-                            <para>Added error page
+                        <listitem>
+                            <para>Added custom error page
                                 support.</para>
                         </listitem>
                         <listitem>
@@ -258,7 +258,7 @@
                 connections are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
-        <section xml:id="Erropage-d1e669" security="writeronly">
+        <section xml:id="Erropage-d1e669">
             <title>Error Page</title>
             <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
             By default every virtual server is provided with the default error file. It is also possible to
@@ -1751,7 +1751,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
-        <section xml:id="Erropage-d1e666" security="writeronly">
+        <section xml:id="Erropage-d1e666">
             <title>Error Page</title>
             <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
             By default every virtual server is provided with the default error file. It is also possible to
