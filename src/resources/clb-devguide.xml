@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-10-13</pubdate>
+        <pubdate>2011-11-30</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -51,6 +51,17 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2011-11-30</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated  information for health
+                                monitors.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2011-10-13</date>
                 <revdescription>
@@ -270,59 +281,39 @@
         </section>
         <section xml:id="Health_Monitor-d1e271">
             <title>Health Monitor</title>
-            <para>A health monitor is a feature of each load balancer. It is used to determine
-                whether or not a back-end node is usable for processing a request. The load
-                balancing service supports two types of health monitors: passive and active. </para>
+            <para>A health monitor is a configurable feature of each
+                load balancer. It is used to determine whether or not
+                a back-end node is usable for processing a request.
+                The load balancing service currently supports active
+                health monitoring. </para>
             <section xml:id="Passive_Health_Monitor-d1e279">
-                <title>Passive Health Monitor</title>
-                <para>By default, all load balancing configurations utilize a passive health
-                    monitor. This technique analyzes the response of the back-end server to
-                    determine whether or not it is capable of processing a request. Passive health
-                    monitoring verifies the condition of a node using the following criteria: </para>
-                <para>
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>The connection is refused by the back-end server or the connection
-                                takes longer than 4 seconds to be established.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>The connection is closed prematurely or the beginning of the response
-                                is not received within 30 seconds.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>An invalid HTTP response is received or a <returnvalue>503
-                                    (Service Unavailable) </returnvalue> response code is received. </para>
-                        </listitem>
-                        <listitem>
-                            <para>An SSL handshake to the back-end server (SSL passthrough) fails. </para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
-                <para>If these tests fail, then the service will attempt, until every node is
-                    exhausted, to locate another configured node that is capable of supporting the
-                    request. If no such node is found, the requestor will receive a
-                        <returnvalue>503</returnvalue> (Service Unavailable) response for HTTP
-                    traffic or the connection will be dropped. </para>
+                <title>Passive Health Monitor (No Longer
+                    Available)</title>
+                <para>Originally, by default, all load balancing
+                    configurations utilized a passive health monitor.
+                    This default behavior has now been disabled and
+                    will no longer be available for newly provisioned
+                    load balancers.  Enabled active health monitoring
+                    will continue to be available. </para>
                 <note>
-                    <para>If a given node fails a passive health monitor check three consecutive
-                        times, then the service assumes the node has failed and places it in
-                            <code>OFFLINE</code> status. The service will not attempt to send any
-                        new requests to the node for at least 60 seconds, after which the service
-                        will speculatively begin sending requests to occasionally probe the node to
-                        determine whether or not it has recovered. </para>
+                    <para> Existing load balancers provisioned by
+                        default with passive health monitoring will
+                        not be affected by this change at this
+                        time. Future releases will disable passive
+                        monitoring in a phased manner.  </para>
                 </note>
             </section>
             <section xml:id="Active_Health_Monitor-d1e336">
                 <title>Active Health Monitor</title>
-                <para>Active health monitoring is a technique that uses synthetic transactions
-                    executed at periodic intervals to determine the condition of a node. One of the
-                    advantages of active health monitoring is that it does not require active
-                    transactions to be processed by the load balancer to determine whether or not a
-                    node is suitable for handling traffic. When both active and passive monitoring
-                    are enabled, the decisions made by the active monitor override inferences made
-                    by the passive monitoring system. </para>
+                <para>Active health monitoring is a technique that
+                    uses synthetic transactions executed at periodic
+                    intervals to determine the condition of a node.
+                    One of the advantages of active health monitoring
+                    is that it does not require active transactions to
+                    be processed by the load balancer to determine
+                    whether or not a node is suitable for handling
+                    traffic. Active health monitoring is not applied
+                    by default and must be enabled per load balancer. </para>
                 <para>The active health monitor can use one of three types of probes:
                     <itemizedlist spacing="compact">
                         <listitem>
