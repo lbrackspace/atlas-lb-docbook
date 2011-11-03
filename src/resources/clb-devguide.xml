@@ -291,10 +291,10 @@
                     Available)</title>
                 <para>Originally, by default, all load balancing
                     configurations utilized a passive health monitor.
-                    This default behavior has now been disabled and
-                    will no longer be available for newly provisioned
-                    load balancers. Existing load balancers that were
-                    provisioned by default with passive health
+                    This default behavior has now been disabled for
+                    newly provisioned load balancers and will no
+                    longer be available. Existing load balancers that
+                    were provisioned by default with passive health
                     monitoring will continue to function as they did
                     before the change, however future releases will
                     disable passive health monitoring in a phased
