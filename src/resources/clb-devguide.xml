@@ -293,15 +293,14 @@
                     configurations utilized a passive health monitor.
                     This default behavior has now been disabled and
                     will no longer be available for newly provisioned
-                    load balancers.  Enabled active health monitoring
-                    will continue to be available. </para>
-                <note>
-                    <para> Existing load balancers provisioned by
-                        default with passive health monitoring will
-                        not be affected by this change at this
-                        time. Future releases will disable passive
-                        monitoring in a phased manner.  </para>
-                </note>
+                    load balancers. Existing load balancers that were
+                    provisioned by default with passive health
+                    monitoring will continue to function as they did
+                    before the change, however future releases will
+                    disable passive health monitoring in a phased
+                    manner. Existing load balancers with active health
+                    monitoring enabled will continue to function as
+                    before. </para>
             </section>
             <section xml:id="Active_Health_Monitor-d1e336">
                 <title>Active Health Monitor</title>
