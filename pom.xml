@@ -24,7 +24,7 @@
                 <artifactId>clouddocs-maven-plugin</artifactId>
                 <!-- this <version> relates only to the *plugin* used for document formatting -->
                 <!-- the version of the *API* that is the subject of the document is indicated within each document -->
-                <version>1.0.7-SNAPSHOT</version>
+                <version>1.0.7</version>
                 <executions>
                     <execution>
                         <id>g1</id>
@@ -41,7 +41,7 @@
 			    <security>internal</security>
                             <includes>clb-mgmt-devguide.xml</includes>
 			    <pdfUrl>../../clb-mgmt-devguide-internal.pdf</pdfUrl>
-			    <enableDisqus>0</enableDisqus>
+			    <enableDisqus>intranet</enableDisqus>
 			    <canonicalUrlBase>http://docs-beta.rackspace.com/internal/cdns/api/v1.0/cdns-mgmt-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
@@ -85,12 +85,12 @@
                             <chapterAutolabel>0</chapterAutolabel>
                             <security>internal</security>
                             <canonicalUrlBase>http://docs-beta.rackspace.com/internal/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
-                            <feedbackEmail>mike.asthalter@rackspace.com</feedbackEmail>
                         </configuration>
-                    </execution>
-                   
-                    
+                    </execution>                                       
                 </executions>
+		<configuration>
+		  <feedbackEmail>mike.asthalter@rackspace.com</feedbackEmail>
+		</configuration>
             </plugin>
         </plugins>
     </build>
