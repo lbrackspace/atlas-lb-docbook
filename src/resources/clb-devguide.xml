@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-11-30</pubdate>
+        <pubdate>2011-11-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -52,12 +52,28 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2011-11-30</date>
+                <date>2011-11-17</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Updated  information for health
-                                monitors.</para>
+                            <para>Added <xref
+                                   linkend="Date_Time_Format"/></para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                /> with information for query
+                                parameter
+                                   <emphasis>nodeaddress</emphasis>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="Erropage-d1e666"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for <xref
+                                   linkend="Passive_Health_Monitor-d1e279"
+                                />.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -1123,6 +1139,67 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
             </section>
         </section>
+        <section xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+            xmlns:html="http://www.w3.org/1999/xhtml" xml:id="Date_Time_Format">
+            <title>Date/Time Format</title>
+            <para> The Load Balancer service uses an ISO-8601
+                compliant date format for the display and consumption
+                of date/time values. </para>
+            <example>
+                <title>Load Balancer Service Date/Time Format</title>
+                <programlisting>yyyy-MM-dd'T'HH:mm:ssZ</programlisting>
+                <para>See the table below for a description of the
+                    date/time format codes.</para>
+                <para>May 19th, 2011 at 8:07:08 AM, GMT-5 would have
+                    the following format:</para>
+                <programlisting>2011-05-19T08:07:08-0500</programlisting>
+            </example>
+            <table rules="all">
+                <caption>Explanation of Date/Time Format
+                    Codes</caption>
+                <thead>
+                    <tr>
+                        <td>Code</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>yyyy</td>
+                        <td>Four digit year</td>
+                    </tr>
+                    <tr>
+                        <td>MM</td>
+                        <td>Two digit month</td>
+                    </tr>
+                    <tr>
+                        <td>dd</td>
+                        <td>Two digit day of month</td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                        <td>Separator for date/time</td>
+                    </tr>
+                    <tr>
+                        <td>HH</td>
+                        <td>Two digit hour of day (00-23)</td>
+                    </tr>
+                    <tr>
+                        <td>mm</td>
+                        <td>Two digit minutes of hour</td>
+                    </tr>
+                    <tr>
+                        <td>ss</td>
+                        <td>Two digit seconds of the minute</td>
+                    </tr>
+                    <tr>
+                        <td>Z</td>
+                        <td>RFC-822 timezone (offset from GMT)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>
@@ -1161,74 +1238,94 @@ Content-Type: text/plain; charset=UTF-8
             </simpara>
             <para> This operation provides a list of all load
                     balancers configured and associated with your
-                    account. A query parameter in the form of
-                    "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000"
-                    is supported which will return all loadbalancers
-                    that have changed since the date provided. </para>
-            <para>
-                To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
-                balancer is immutable and irrecoverable. Only a limited set of attributes will be
-                returned in the response object:
-            </para>
-            <para>
-                To find out if any load balancers for an account have a specific node attached to it, use the query
-                parameter "/loadbalancers?nodeaddress=10.1.1.1".  This will search all loadbalancers for the account
-                for a node with the address provided, and return a list of id's and name's of any loadbalancer
-                attached.
-            </para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        <code>id</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>name</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>created</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>updated</code>
-                    </para>
-                </listitem>
-            </itemizedlist>
-            <para>
-                This operation does not require a request body.
-            </para>
-            <example>
-                <title>List Load Balancers Response: XML</title>
-                <programlisting language="xml">
+                    account. </para>
+                <para>A limited set of load balancer attributes
+                    including the following are returned in the
+                    response object: </para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            <code>name</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>id</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>status</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>created</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>updated</code>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                <para> This operation does not require a request body. </para>
+                <para>List load balancer example responses are shown
+                    below:</para>
+                <example>
+                    <title>List Load Balancers Response: XML</title>
+                    <programlisting language="xml">
 <xi:include href="samples/lb-list-response.xml" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers Response: JSON</title>
-                <programlisting language="javascript">
+                </example>
+                <example>
+                    <title>List Load Balancers Response: JSON</title>
+                    <programlisting language="javascript">
 <xi:include href="samples/lb-list-response.json" parse="text"/>
                 </programlisting>
-            </example>
+                </example>
+                <example>
+                    <title>List Atom Load Balancers Response:
+                        XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <para>A <emphasis>changes-since</emphasis> query
+                    parameter is supported that lists all load
+                    balancers that have changed since the specified
+                    date/time. For example, using the URI
+                        <code>/loadbalancers?changes-since=2011-05-19T08:07:08-0500</code>
+                    lists all load balancers that have changed since
+                    May 19th, 2011 at 8:07:08 AM, GMT-5. Refer to
+                        <xref linkend="Date_Time_Format"/> for
+                    information about specifying the date/time.</para>
+            <para> To view deleted load balancers, add the query
+                    parameter <code>?status=DELETED</code> to the end
+                    of the URI. A deleted load balancer is immutable
+                    and irrecoverable. </para>
+            <para> To find out if any load balancer for an account has
+                    a specific node attached to it, use the query
+                    parameter <emphasis>nodeaddress</emphasis> to
+                    specify the IP address for the desired node. For
+                    example, using the URI
+                        <code>/loadbalancers?nodeaddress=10.1.1.1</code>
+                    will search all load balancers for the account for
+                    a node with IP address 10.1.1.1, and return a list
+                    including the names and ids of any load balancer
+                    attached.:</para>
             <example>
-                <title>List Load Balancers With Node: XML</title>
+                <title>List Load Balancers With Node Specified:
+                        XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-response-with-node.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>List Load Balancers With Node: JSON</title>
+                <title>List Load Balancers With Node Specified:
+                        JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-response-with-node.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Atom Load Balancers Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1743,9 +1840,11 @@ Content-Type: text/plain; charset=UTF-8
         </section>
         <section xml:id="Erropage-d1e666">
             <title>Error Page</title>
-            <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
-            By default every virtual server is provided with the default error file. It is also possible to
-            submit a custom error page via the LoadBalancers Api.</para>
+            <para>An error page is the html file that is shown to the
+                end user when an error in the service has been thrown.
+                By default every virtual server is provided with the
+                default error file. It is also possible to submit a
+                custom error page via the Load Balancers API.</para>
             <para>Custom error pages will be overwritten on the next request updating the error page. If the error page is removed the default
             page will be set in its place. If the load balancer's protocol is updated to a non-http load balancer, the custom error page will not
             be saved in the system. The error page will be deleted and the load balancer will then use Zeus's default error page. </para>
@@ -1766,21 +1865,24 @@ Content-Type: text/plain; charset=UTF-8
                                 &GET;
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
-                            <td colspan="3">List error page configured for the load balancer.</td>
+                            <td colspan="3">List error page configured
+                                for the specified load balancer.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">
                                 &PUT;
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
-                            <td colspan="3">set error page for specified loadbalancer.</td>
+                            <td colspan="3">Set error page for the
+                                specified load balancer.</td>
                         </tr>
                          <tr align="left">
                             <td colspan="1">
                                 &DELETE;
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
-                            <td colspan="3">deletes custom error page for specified loadbalancer.</td>
+                            <td colspan="3">Delete custom error page
+                                for the specified load balancer.</td>
                         </tr>
                     </tbody>
                 </informaltable>

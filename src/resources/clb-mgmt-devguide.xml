@@ -69,6 +69,21 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2011-11-17</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem security="writeronly">
+                            <para>Added error page
+                                support</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for absolute
+                                limit ACCESS_LIST_LIMIT.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2011-08-23</date>
                 <revdescription>
                     <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
@@ -1810,7 +1825,7 @@
                         <td colspan="3">Total number of network items
                             that can be added to a load balancer.</td>
                         <td colspan="1">100</td>
-                        <td colspan="1">To be determined</td>
+                        <td colspan="1">contact Operations</td>
                     </tr>
                 </tbody>
             </informaltable>
