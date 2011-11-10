@@ -4,5 +4,4 @@
     port="80"
     condition="ENABLED"
     status="ONLINE"
-    weight="12"
-    type="PRIMARY"/>
+    weight="12"/>

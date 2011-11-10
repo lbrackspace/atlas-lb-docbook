@@ -1,6 +1,5 @@
 {"node":{
         "condition": "ENABLED",
-        "weight": 59,
-        "type": "FAIL_OVER"
+        "weight": 59
     }
 }

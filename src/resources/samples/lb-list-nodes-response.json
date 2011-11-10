@@ -6,8 +6,7 @@
             "port":80,
             "condition":"ENABLED",
             "status":"ONLINE",
-            "weight":3,
-            "type":"PRIMARY"
+            "weight":3
         },
         {
             "id":"411",
@@ -15,8 +14,7 @@
             "port":80,
             "condition":"ENABLED",
             "status":"ONLINE",
-            "weight":8,
-            "type":"FAIL_OVER"
+            "weight":8
         },
         {
             "id":"412",
@@ -24,8 +22,7 @@
             "port":80,
             "condition":"DISABLED",
             "status":"ONLINE",
-            "weight":12,
-            "type":"FAIL_OVER"
+            "weight":12
         }
     ]
 }

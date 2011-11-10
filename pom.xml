@@ -24,7 +24,7 @@
                 <artifactId>clouddocs-maven-plugin</artifactId>
                 <!-- this <version> relates only to the *plugin* used for document formatting -->
                 <!-- the version of the *API* that is the subject of the document is indicated within each document -->
-                <version>1.0.4</version>
+                <version>1.0.7-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <id>g1</id>
@@ -42,6 +42,7 @@
                             <includes>clb-mgmt-devguide.xml</includes>
 			    <pdfUrl>../../clb-mgmt-devguide-internal.pdf</pdfUrl>
 			    <enableDisqus>0</enableDisqus>
+			    <canonicalUrlBase>http://docs-beta.rackspace.com/internal/cdns/api/v1.0/cdns-mgmt-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
                     <execution>
@@ -61,17 +62,10 @@
 			    <enableDisqus>1</enableDisqus>
 			    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
                             <includes>clb-devguide.xml</includes>
+			    <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.docbook</groupId>
-                        <artifactId>docbook-xml</artifactId>
-                        <version>4.4</version>
-                        <scope>runtime</scope>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

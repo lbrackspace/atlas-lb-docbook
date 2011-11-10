@@ -67,12 +67,91 @@
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
-        <cover>
-            <para>this is a placeholder for the front cover</para>
-        </cover>
-        <cover>
-            <para>this is a placeholder for the back cover</para>
-        </cover>
+        <revhistory>
+            <revision>
+                <date>2011-11-17</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem security="writeronly">
+                            <para>Added error page
+                                support</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for absolute
+                                limit ACCESS_LIST_LIMIT.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-08-23</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem security="writeronly">
+                            <para>Added error page
+                                support</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added API calls for
+                                modification of absolute
+                                limits.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-05-20</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem>
+                            <para>Added load balancer audit
+                                reports.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-04-19</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem>
+                            <para>Added details to support general availability.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-03-24</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem>
+                            <para>Added examples of cluster POST/PUT.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-03-03</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem>
+                            <para>Initial release for public beta.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-04-01</date>
+                <revdescription>
+                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
+                        <listitem>
+                            <para>Added CusterCount Examples
+                                and information.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
     </info>
     <chapter xml:id="Overview-d1e85">
         <title>Overview</title>
@@ -86,85 +165,7 @@
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and obsoletes all previous versions.
                 The most recent changes are described in the table below: </para>
-            <informaltable rules='all'>
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Revision Date</td>
-                        <td colspan="4">Summary of Changes</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1" align="center">Aug 23,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem security="writeronly">
-                                   <para>Added error page
-                                   support</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added API calls for
-                                   modification of absolute
-                                   limits.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">May. 20, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added load balancer audit
-                                   reports.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Apr. 19, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added details to support general availability.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Mar. 24, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added examples of cluster POST/PUT.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Mar. 3, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Initial release for public beta.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Apr. 1, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added CusterCount Examples
-                                   and information.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                </tbody>
-            </informaltable>
+            <?rax revhistory?>
         </section>
         <section xml:id="Additional_Resources-d1e241">
             <title>Additional Resources</title>
@@ -1779,6 +1780,55 @@
             <para> Absolute limits encapsulates other LoadBalancer API
                 limits that the system provides into one manageable
                 entity. </para>
+            <para> The values for the absolute limits are shown below: </para>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="2">Name</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="1">Default Limit</td>
+                        <td colspan="1">Absolute Limit</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="2">LOADBALANCER_LIMIT</td>
+                        <td colspan="3">Total number of load balancers
+                            that can be added to a Cloud account.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">NODE_LIMIT</td>
+                        <td colspan="3">Total number of nodes that can
+                            be added to a load balancer.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">IPV6_LIMIT</td>
+                        <td colspan="3">Total number of IPV6 addresses
+                            that can be added to a load balancer.</td>
+                        <td colspan="1">25</td>
+                        <td colspan="1">50</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">BATCH_DELETE_LIMIT</td>
+                        <td colspan="3">Total number of resources that
+                            can be listed per batch delete
+                            request.</td>
+                        <td colspan="1">10</td>
+                        <td colspan="1">10</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="2">ACCESS_LIST_LIMIT</td>
+                        <td colspan="3">Total number of network items
+                            that can be added to a load balancer.</td>
+                        <td colspan="1">100</td>
+                        <td colspan="1">contact Operations</td>
+                    </tr>
+                </tbody>
+            </informaltable>
             <para security="writeronly">...See more info here... </para>
             <para>
                 To get the id for a custom absolute limit, the call with url /management/clusters/<parameter>clusterId</parameter>/customlimitaccounts

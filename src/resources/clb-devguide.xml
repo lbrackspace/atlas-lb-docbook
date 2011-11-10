@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-09-07</pubdate>
+        <pubdate>2011-11-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -50,12 +50,174 @@
                 (<abbrev>API</abbrev>).
             </para>
         </abstract>
-        <cover>
-            <para>this is a placeholder for the front cover</para>
-        </cover>
-        <cover>
-            <para>this is a placeholder for the back cover</para>
-        </cover>
+        <revhistory>
+            <revision>
+                <date>2011-11-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="Date_Time_Format"/></para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                /> with information for query
+                                parameter
+                                   <emphasis>nodeaddress</emphasis>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="Erropage-d1e666"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for <xref
+                                   linkend="Passive_Health_Monitor-d1e279"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-10-13</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated examples as needed
+                                to match the latest API.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-10-11</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated Atom
+                                examples.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-09-26</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated <xref linkend="Absolute_Limits-d1e999"/>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-09-07</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added custom error page
+                                support.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added basic TCP load
+                                balancing to allow customers to
+                                load balance traffic for any
+                                TCP-based prototcol. See <xref linkend="Protocols-d1e4264"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>An X-Forwarded-For (XFF) HTTP
+                                header is now automatically
+                                inserted for all inbound HTTP
+                                requests. See <xref linkend="Create_Load_Balancer-d1e1635"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added programmatic support
+                                for determining Cloud Load Balancer
+                                source addresses. See <xref linkend="List_Load_Balancer_Details-d1e1522"/> and <xref linkend="Create_Load_Balancer-d1e1635"/>.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added support for batch
+                                delete of Load Balancers, Nodes,
+                                Virtual IPs, and Access List
+                                Entries. See <xref linkend="Remove_Load_Balancer-d1e2093"/>, <xref linkend="Remove_Nodes-d1e2675"/>,
+                                <xref linkend="Remove_Virtual_IP-d1e2919"/>, and <xref linkend="Manage_Access_Lists-d1e3187"/>, respectively.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated <xref linkend="Absolute_Limits-d1e999"/>and added
+                                <code>absolutelimits</code> API
+                                call to <xref linkend="Determining_Limits_Programmatically-d1e1039"/> to return the current absolute
+                                limits for the account.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples to match the
+                                current API.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-07-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added service endpoint for London (LON) region.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-07-07</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added support for accessing the Authentication Service,
+                                based on whether your account is US-based or
+                                UK-based.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-06-29</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added support for IPv6.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-04-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added details to support initial GA release.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-03-02</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Revised code samples and formatting to address initial beta feedback.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2011-02-23</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Initial release for public beta.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+        </revhistory>
     </info>
     <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
@@ -86,154 +248,7 @@
             <title>Document Change History</title>
             <para>This version of the Developer Guide replaces and obsoletes all previous versions.
                 The most recent changes are described in the table below: </para>
-            <informaltable rules='all'>
-                <thead>
-                    <tr align="center">
-                        <td colspan="1">Revision Date</td>
-                        <td colspan="4">Summary of Changes</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr align="left">
-                        <td colspan="1" align="center">XXX x,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                   <para>Updated <xref
-                                   linkend="Absolute_Limits-d1e999"
-                                   />.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr><tr align="left">
-                        <td colspan="1" align="center">Sept 7,
-                            2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem security="writeronly">
-                                   <para>Added error page
-                                   support.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added basic TCP load
-                                   balancing to allow customers to
-                                   load balance traffic for any
-                                   TCP-based prototcol. See <xref
-                                   linkend="Protocols-d1e4264"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>An X-Forwarded-For (XFF) HTTP
-                                   header is now automatically
-                                   inserted for all inbound HTTP
-                                   requests. See <xref
-                                   linkend="Create_Load_Balancer-d1e1635"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added programmatic support
-                                   for determining Cloud Load Balancer
-                                   source addresses. See <xref
-                                   linkend="List_Load_Balancer_Details-d1e1522"
-                                   /> and <xref
-                                   linkend="Create_Load_Balancer-d1e1635"
-                                   />.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Added support for batch
-                                   delete of Load Balancers, Nodes,
-                                   Virtual IPs, and Access List
-                                   Entries. See <xref
-                                   linkend="Remove_Load_Balancer-d1e2093"
-                                   />, <xref
-                                   linkend="Remove_Nodes-d1e2675"/>,
-                                   <xref
-                                   linkend="Remove_Virtual_IP-d1e2919"
-                                   />, and <xref
-                                   linkend="Manage_Access_Lists-d1e3187"
-                                   />, respectively.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Updated <xref
-                                   linkend="Absolute_Limits-d1e999"
-                                   />and added
-                                   <code>absolutelimits</code> API
-                                   call to <xref
-                                   linkend="Determining_Limits_Programmatically-d1e1039"
-                                   /> to return the current absolute
-                                   limits for the account.</para>
-                                </listitem>
-                                <listitem>
-                                   <para>Updated examples to match the
-                                   current API.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Jul 8, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added service endpoint for London (LON) region.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Jul 7, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added support for accessing the Authentication Service,
-                                        based on whether your account is US-based or
-                                        UK-based.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr><tr align="left">
-                        <td colspan="1" align="center">Jun 29, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added support for IPv6.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Apr 19, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Added details to support initial GA release.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Mar 2, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Revised code samples and formatting to address initial beta feedback.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1" align="center">Feb 23, 2011</td>
-                        <td colspan="4" align="left">
-                            <itemizedlist spacing="compact">
-                                <listitem>
-                                    <para>Initial release for public beta.</para>
-                                </listitem>
-                            </itemizedlist>
-                        </td>
-                    </tr>
-                </tbody>
-            </informaltable>
+        <?rax revhistory?>
         </section>
         <section xml:id="Additional_Resources-d1e207">
             <title>Additional Resources</title>
@@ -270,7 +285,7 @@
                 connections are distributed to back-end nodes based on the configuration of the load
                 balancer. </para>
         </section>
-        <section xml:id="Erropage-d1e669" security="writeronly">
+        <section xml:id="Erropage-d1e669">
             <title>Error Page</title>
             <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
             By default every virtual server is provided with the default error file. It is also possible to
@@ -282,59 +297,38 @@
         </section>
         <section xml:id="Health_Monitor-d1e271">
             <title>Health Monitor</title>
-            <para>A health monitor is a feature of each load balancer. It is used to determine
-                whether or not a back-end node is usable for processing a request. The load
-                balancing service supports two types of health monitors: passive and active. </para>
+            <para>A health monitor is a configurable feature of each
+                load balancer. It is used to determine whether or not
+                a back-end node is usable for processing a request.
+                The load balancing service currently supports active
+                health monitoring. </para>
             <section xml:id="Passive_Health_Monitor-d1e279">
-                <title>Passive Health Monitor</title>
-                <para>By default, all load balancing configurations utilize a passive health
-                    monitor. This technique analyzes the response of the back-end server to
-                    determine whether or not it is capable of processing a request. Passive health
-                    monitoring verifies the condition of a node using the following criteria: </para>
-                <para>
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>The connection is refused by the back-end server or the connection
-                                takes longer than 4 seconds to be established.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>The connection is closed prematurely or the beginning of the response
-                                is not received within 30 seconds.
-                            </para>
-                        </listitem>
-                        <listitem>
-                            <para>An invalid HTTP response is received or a <returnvalue>503
-                                    (Service Unavailable) </returnvalue> response code is received. </para>
-                        </listitem>
-                        <listitem>
-                            <para>An SSL handshake to the back-end server (SSL passthrough) fails. </para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
-                <para>If these tests fail, then the service will attempt, until every node is
-                    exhausted, to locate another configured node that is capable of supporting the
-                    request. If no such node is found, the requestor will receive a
-                        <returnvalue>503</returnvalue> (Service Unavailable) response for HTTP
-                    traffic or the connection will be dropped. </para>
-                <note>
-                    <para>If a given node fails a passive health monitor check three consecutive
-                        times, then the service assumes the node has failed and places it in
-                            <code>OFFLINE</code> status. The service will not attempt to send any
-                        new requests to the node for at least 60 seconds, after which the service
-                        will speculatively begin sending requests to occasionally probe the node to
-                        determine whether or not it has recovered. </para>
-                </note>
+                <title>Passive Health Monitor (No Longer
+                    Available)</title>
+                <para>Originally, by default, all load balancing
+                    configurations utilized a passive health monitor.
+                    This default behavior has now been disabled for
+                    newly provisioned load balancers and will no
+                    longer be available. Existing load balancers that
+                    were provisioned by default with passive health
+                    monitoring will continue to function as they did
+                    before the change, however future releases will
+                    disable passive health monitoring in a phased
+                    manner. Existing load balancers with active health
+                    monitoring enabled will continue to function as
+                    before. </para>
             </section>
             <section xml:id="Active_Health_Monitor-d1e336">
                 <title>Active Health Monitor</title>
-                <para>Active health monitoring is a technique that uses synthetic transactions
-                    executed at periodic intervals to determine the condition of a node. One of the
-                    advantages of active health monitoring is that it does not require active
-                    transactions to be processed by the load balancer to determine whether or not a
-                    node is suitable for handling traffic. When both active and passive monitoring
-                    are enabled, the decisions made by the active monitor override inferences made
-                    by the passive monitoring system. </para>
+                <para>Active health monitoring is a technique that
+                    uses synthetic transactions executed at periodic
+                    intervals to determine the condition of a node.
+                    One of the advantages of active health monitoring
+                    is that it does not require active transactions to
+                    be processed by the load balancer to determine
+                    whether or not a node is suitable for handling
+                    traffic. Active health monitoring is not applied
+                    by default and must be enabled per load balancer. </para>
                 <para>The active health monitor can use one of three types of probes:
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -1145,6 +1139,67 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
             </section>
         </section>
+        <section xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+            xmlns:html="http://www.w3.org/1999/xhtml" xml:id="Date_Time_Format">
+            <title>Date/Time Format</title>
+            <para> The Load Balancer service uses an ISO-8601
+                compliant date format for the display and consumption
+                of date/time values. </para>
+            <example>
+                <title>Load Balancer Service Date/Time Format</title>
+                <programlisting>yyyy-MM-dd'T'HH:mm:ssZ</programlisting>
+                <para>See the table below for a description of the
+                    date/time format codes.</para>
+                <para>May 19th, 2011 at 8:07:08 AM, GMT-5 would have
+                    the following format:</para>
+                <programlisting>2011-05-19T08:07:08-0500</programlisting>
+            </example>
+            <table rules="all">
+                <caption>Explanation of Date/Time Format
+                    Codes</caption>
+                <thead>
+                    <tr>
+                        <td>Code</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>yyyy</td>
+                        <td>Four digit year</td>
+                    </tr>
+                    <tr>
+                        <td>MM</td>
+                        <td>Two digit month</td>
+                    </tr>
+                    <tr>
+                        <td>dd</td>
+                        <td>Two digit day of month</td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                        <td>Separator for date/time</td>
+                    </tr>
+                    <tr>
+                        <td>HH</td>
+                        <td>Two digit hour of day (00-23)</td>
+                    </tr>
+                    <tr>
+                        <td>mm</td>
+                        <td>Two digit minutes of hour</td>
+                    </tr>
+                    <tr>
+                        <td>ss</td>
+                        <td>Two digit seconds of the minute</td>
+                    </tr>
+                    <tr>
+                        <td>Z</td>
+                        <td>RFC-822 timezone (offset from GMT)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>
@@ -1183,74 +1238,94 @@ Content-Type: text/plain; charset=UTF-8
             </simpara>
             <para> This operation provides a list of all load
                     balancers configured and associated with your
-                    account. A query parameter in the form of
-                    "/loadbalancers?changes-since=YYYY-MM-DDT00:00:00-0000"
-                    is supported which will return all loadbalancers
-                    that have changed since the date provided. </para>
-            <para>
-                To view deleted load balancers, add "?status=DELETED" to the end of the get url. A deleted load
-                balancer is immutable and irrecoverable. Only a limited set of attributes will be
-                returned in the response object:
-            </para>
-            <para>
-                To find out if any load balancers for an account have a specific node attached to it, use the query
-                parameter "/loadbalancers?nodeaddress=10.1.1.1".  This will search all loadbalancers for the account
-                for a node with the address provided, and return a list of id's and name's of any loadbalancer
-                attached.
-            </para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>
-                        <code>id</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>name</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>created</code>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        <code>updated</code>
-                    </para>
-                </listitem>
-            </itemizedlist>
-            <para>
-                This operation does not require a request body.
-            </para>
-            <example>
-                <title>List Load Balancers Response: XML</title>
-                <programlisting language="xml">
+                    account. </para>
+                <para>A limited set of load balancer attributes
+                    including the following are returned in the
+                    response object: </para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>
+                            <code>name</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>id</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>status</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>created</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>updated</code>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+                <para> This operation does not require a request body. </para>
+                <para>List load balancer example responses are shown
+                    below:</para>
+                <example>
+                    <title>List Load Balancers Response: XML</title>
+                    <programlisting language="xml">
 <xi:include href="samples/lb-list-response.xml" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>List Load Balancers Response: JSON</title>
-                <programlisting language="javascript">
+                </example>
+                <example>
+                    <title>List Load Balancers Response: JSON</title>
+                    <programlisting language="javascript">
 <xi:include href="samples/lb-list-response.json" parse="text"/>
                 </programlisting>
-            </example>
+                </example>
+                <example>
+                    <title>List Atom Load Balancers Response:
+                        XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
+                </programlisting>
+                </example>
+                <para>A <emphasis>changes-since</emphasis> query
+                    parameter is supported that lists all load
+                    balancers that have changed since the specified
+                    date/time. For example, using the URI
+                        <code>/loadbalancers?changes-since=2011-05-19T08:07:08-0500</code>
+                    lists all load balancers that have changed since
+                    May 19th, 2011 at 8:07:08 AM, GMT-5. Refer to
+                        <xref linkend="Date_Time_Format"/> for
+                    information about specifying the date/time.</para>
+            <para> To view deleted load balancers, add the query
+                    parameter <code>?status=DELETED</code> to the end
+                    of the URI. A deleted load balancer is immutable
+                    and irrecoverable. </para>
+            <para> To find out if any load balancer for an account has
+                    a specific node attached to it, use the query
+                    parameter <emphasis>nodeaddress</emphasis> to
+                    specify the IP address for the desired node. For
+                    example, using the URI
+                        <code>/loadbalancers?nodeaddress=10.1.1.1</code>
+                    will search all load balancers for the account for
+                    a node with IP address 10.1.1.1, and return a list
+                    including the names and ids of any load balancer
+                    attached.:</para>
             <example>
-                <title>List Load Balancers With Node: XML</title>
+                <title>List Load Balancers With Node Specified:
+                        XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-response-with-node.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>List Load Balancers With Node: JSON</title>
+                <title>List Load Balancers With Node Specified:
+                        JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-response-with-node.json" parse="text" />
-                </programlisting>
-            </example>
-            <example>
-                <title>List Atom Load Balancers Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -1269,7 +1344,8 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td colspan="1">&GET;
                         </td>
-                        <td colspan="3">/loadbalancers/loadBalancerId</td>
+                        <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter></td>
                         <td colspan="3">List details of the specified load balancer.</td>
                         <td colspan="2">JSON, XML, Atom</td>
                     </tr>
@@ -1762,11 +1838,13 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
             </section>
         </section>
-        <section xml:id="Erropage-d1e666" security="writeronly">
+        <section xml:id="Erropage-d1e666">
             <title>Error Page</title>
-            <para>An error page is the html file that is shown to the end user when an error in the service has been thrown.
-            By default every virtual server is provided with the default error file. It is also possible to
-            submit a custom error page via the LoadBalancers Api.</para>
+            <para>An error page is the html file that is shown to the
+                end user when an error in the service has been thrown.
+                By default every virtual server is provided with the
+                default error file. It is also possible to submit a
+                custom error page via the Load Balancers API.</para>
             <para>Custom error pages will be overwritten on the next request updating the error page. If the error page is removed the default
             page will be set in its place. If the load balancer's protocol is updated to a non-http load balancer, the custom error page will not
             be saved in the system. The error page will be deleted and the load balancer will then use Zeus's default error page. </para>
@@ -1787,14 +1865,24 @@ Content-Type: text/plain; charset=UTF-8
                                 &GET;
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
-                            <td colspan="3">List error page configured for the load balancer.</td>
+                            <td colspan="3">List error page configured
+                                for the specified load balancer.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">
                                 &PUT;
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
-                            <td colspan="3">set error page for specified loadbalancer.</td>
+                            <td colspan="3">Set error page for the
+                                specified load balancer.</td>
+                        </tr>
+                         <tr align="left">
+                            <td colspan="1">
+                                &DELETE;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/errorpage</td>
+                            <td colspan="3">Delete custom error page
+                                for the specified load balancer.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1927,12 +2015,24 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not require a request body.
                 </para>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Node Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Node Response: JSON</title>
                     <?dbfo keep-together="always"?>
@@ -1946,12 +2046,24 @@ Content-Type: text/plain; charset=UTF-8
 <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>List Nodes Response: JSON</title>
                     <programlisting language="javascript">
@@ -2004,24 +2116,48 @@ Content-Type: text/plain; charset=UTF-8
                     result, nodes can either be internal ServiceNet addresses or addresses on the public
                     Internet.
                 </para>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Add Nodes Response: JSON</title>
                     <programlisting language="javascript">
@@ -2105,12 +2241,24 @@ Content-Type: text/plain; charset=UTF-8
                         </tr>
                     </tbody>
                 </table>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Update Node Condition Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                 </programlisting>
                 </example>
+                <para security="writeronly">Writer: need to update the
+                    example below from the "Next Release /
+                    future_exs_type_attribute" when the type attribute
+                    (=PRIMARY/FAIL_OVER) is released to production by
+                    copying the code example from there to the samples
+                    directory. </para>
                 <example>
                     <title>Update Node Condition Request: JSON</title>
                     <programlisting language="javascript">

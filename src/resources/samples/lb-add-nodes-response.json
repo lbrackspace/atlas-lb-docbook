@@ -5,8 +5,7 @@
             "port": 80,
             "status": "ONLINE",
             "condition": "ENABLED",
-            "weight": 1,
-            "type": "PRIMARY"
+            "weight": 1
         },
         {
             "address": "10.2.2.4",
@@ -14,8 +13,7 @@
             "port": 80,
             "status": "ONLINE",
             "condition": "ENABLED",
-            "weight": 1,
-            "type": "FAIL_OVER"
+            "weight": 1
         }
     ]
 }
