@@ -59,7 +59,7 @@
                             <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
                             <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
 			    <pdfUrl>../../../clb-devguide-latest.pdf</pdfUrl>
-			    <enableDisqus>1</enableDisqus>
+                            <enableDisqus>intranet</enableDisqus>
 			    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
                             <includes>clb-devguide.xml</includes>
 			    <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
