@@ -92,8 +92,8 @@
 				<para>Some load balancers in ORD experience error status when
 					being created or updated. </para>
 				<note security="internal">
-					<para>ORD Zeus configuration and failover issues
-						cause LBs to go into error status when being
+					<para>ORD Zeus configuration and failover issues cause load
+						balancers to go into error status when being
 						created or updated; waiting on patch from
 						Zeus.</para>
 				</note>
