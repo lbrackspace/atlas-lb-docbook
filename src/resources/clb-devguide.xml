@@ -1038,11 +1038,9 @@ Content-Type: text/plain; charset=UTF-8
                 <title>
                     loadBalancerFault
                 </title>
-                <para>
-                    The
-                    <code>loadBalancerFault</code>
-                    fault shall be returned in the event that an error occurred during a loadbalancer operation.
-                </para>
+                <para> The <code>loadBalancerFault</code> fault shall
+                    be returned in the event that an error occurred
+                    during a load balancer operation. </para>
                 <example>
                     <title>Fault Response, loadBalancerFault</title>
                     <literallayout class="monospaced">
@@ -1825,14 +1823,16 @@ Content-Type: text/plain; charset=UTF-8
                     configuration from the account. Any and all configuration data is immediately purged and
                     is not recoverable.
                 </para>
-                <para>
-                    To batch delete loadbalancers, provide a query parameter list of load balancer ids. For example:
-                    /loadbalancers?id=<parameter>loadBalancerId</parameter>&amp;id=<parameter>loadBalancerId</parameter>
-                    The current default limit is ten ids per request. Any and all configuration data is immediately purged and
-                    is not recoverable. By chance one of the items in the list cannot be removed due to its current status
-                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential failures for
-                    this request.
-                </para>
+                <para> To batch delete load balancers, provide a query
+                    parameter list of load balancer ids. For example:
+                        /loadbalancers?id=<parameter>loadBalancerId</parameter>&amp;id=<parameter>loadBalancerId</parameter>
+                    The current default limit is ten ids per request.
+                    Any and all configuration data is immediately
+                    purged and is not recoverable. By chance one of
+                    the items in the list cannot be removed due to its
+                    current status a 400:BadRequest is returned along
+                    with the ids of the ones the system identified as
+                    potential failures for this request. </para>
                 <para>
                     This operation does not require a request body.
                 </para>
