@@ -45,15 +45,61 @@
 			</revision>
     	</revhistory>
     </info>
-	<chapter xml:id="clbv1.6.14">
-		<title>v1.6.14, October 20, 2011 </title>
+	<chapter xml:id="clbv1.7.0">
+		<title>v1.7.0, November 17, 2011 </title>
 		<itemizedlist>
-			<title>Resolved Issue</title>
+			<title>New Features</title>
 			<listitem>
-				<para> Resolved a bug causing billing issues for newly provisioned
+				<para>Custom Error page for offline load balancer nodes</para>
+			</listitem>
+			<listitem>
+				<para>Node query parameter <emphasis>nodeaddress</emphasis> added
+					for use with the List Load Balancers API call to
+					find out if any load balancer for an account has a
+					specific node attached to it</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Maintenance</title>
+			<listitem>
+				<para>Disabled and discontinued passive health monitoring for new
 					load balancers</para>
 			</listitem>
-			</itemizedlist>
+			<listitem security="internal">
+				<para>Optimized ZXTM Adapter</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Bug Fixes</title>
+			<listitem>
+				<para>Fixed issue with scheduled jobs marker as query parameter
+					not working</para>
+			</listitem>
+			<listitem>
+				<para>Fixed duplicate IPV6 node bug</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Fixed issue causing failure when deleting a load balancer
+					using a shared virtual IP</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Known Issues</title>
+			<listitem>
+				<para>Some load balancers in ORD experience error status when
+					being created or updated. </para>
+				<note security="internal">
+					<para>ORD Zeus configuration and failover issues
+						cause LBs to go into error status when being
+						created or updated; waiting on patch from
+						Zeus.</para>
+				</note>
+			</listitem>
+		</itemizedlist>
+		
 		<itemizedlist>
 			<title>Resources</title>
 			<listitem>
@@ -64,7 +110,75 @@
 					>Product Feedback Forum</link></para>
 			</listitem>
 		</itemizedlist>
-		</chapter>
+		
+		<itemizedlist security="internal">
+			<title>Change Details</title>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A31496"
+					>B-05341</link>: Custom Error page for offline load balance nodes</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A48990"
+					>B-07122</link>: Disable passive health monitoring for new load balancers</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A45242"
+					>D-01588</link>: Scheduled Jobs - marker as query parameter does nothing</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A46926"
+					>D-01615</link>: Duplicate IPV6 node bug</para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A59337"
+						>D-01887</link>: Change object for looking for
+					a node with address on load balancers</para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A60823"
+						>B-08528</link>: Optimize ZXTM Adapter</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A61950"
+					>D-01942</link>: Delete load balancer fails when using shared VIPs</para>
+			</listitem>
+			
+		</itemizedlist>
+		
+	</chapter>
+	
+	<chapter xml:id="clbv1.6.14">
+		<title>v1.6.14, October 20, 2011 </title>
+		<itemizedlist>
+			<title>Resolved Issue</title>
+			<listitem>
+				<para> Resolved a bug causing billing issues for newly provisioned
+					load balancers</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Known Issues</title>
+			<listitem>
+				<para>Some load balancers in ORD experience error status when
+					being created or updated. </para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link xlink:href="http://docs.rackspace.com/api/">Cloud Load Balancers Developer Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+					>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	
 	<chapter xml:id="clbv1.6.13">
 		<title>v1.6.13, September 7, 2011 </title>
 		<itemizedlist>
@@ -108,15 +222,15 @@
 			<title>Known Issues</title>
 			<listitem>
 				<para>When creating or updating a load balancer, if a user
-					attempts to select <guilabel>TCP</guilabel> from
-					the protocol drop-down list in the Control Panel,
-					the action will fail. </para>
+					attempts to select "TCP" from the protocol
+					drop-down list in the Control Panel, the action
+					will fail. </para>
 			</listitem>
 			<listitem>
-				<para>As a workaround for the previous issue,  the user can select
-						<guilabel>Custom</guilabel> from the protocol
-					drop-down list in the Control Panel, and specify a
-					port value between 1-65535. </para>
+				<para>As a workaround for the previous issue, the user can select
+					"Custom" from the protocol drop-down list in the
+					Control Panel, and specify a port value between
+					1-65535. </para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
