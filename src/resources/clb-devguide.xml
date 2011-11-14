@@ -116,10 +116,6 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Added custom error page
-                                support.</para>
-                        </listitem>
-                        <listitem>
                             <para>Added basic TCP load
                                 balancing to allow customers to
                                 load balance traffic for any
@@ -1572,10 +1568,6 @@ Content-Type: text/plain; charset=UTF-8
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-required-response.json" parse="text"/>
                 </programlisting>
-            </example>
-            <example>
-                <title>Create Load Balancer (Required Attributes) Response: JSON</title>
-                <remark>TODO: This example is incomplete.</remark>
             </example>
             <para>To conserve IPv4 address space, Rackspace highly recommends sharing Virtual IPs
                     between your load balancers. If you have at least one load balancer, you may

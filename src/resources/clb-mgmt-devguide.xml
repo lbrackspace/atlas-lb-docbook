@@ -140,17 +140,6 @@
                     </itemizedlist>
                 </revdescription>
             </revision>
-            <revision>
-                <date>2011-04-01</date>
-                <revdescription>
-                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
-                        <listitem>
-                            <para>Added CusterCount Examples
-                                and information.</para>
-                        </listitem>
-                    </itemizedlist>
-                </revdescription>
-            </revision>
         </revhistory>
     </info>
     <chapter xml:id="Overview-d1e85">
