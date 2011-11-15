@@ -56,7 +56,7 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Updated information for <xref
+                            <para>Updated <xref
                                    linkend="Passive_Health_Monitor-d1e279"
                                 />.</para>
                         </listitem>
@@ -288,7 +288,9 @@
                 end user when an error in the service has been thrown.
                 By default every virtual server is provided with the
                 default error file. It is also possible to submit a
-                custom error page via the Load Balancers API.</para>
+                custom error page via the Load Balancers API. Refer to
+                    <xref linkend="List_Errorpage-d1e2218"/> for
+                details.</para>
         </section>
         <section xml:id="Node-d1e262">
             <title>Node</title>
@@ -1313,7 +1315,8 @@ Content-Type: text/plain; charset=UTF-8
                     balancers attached:</para>
             <example>
                 <title>List Load Balancers With Node Specified:
-                        XML</title>
+                XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-response-with-node.xml" parse="text" />
                 </programlisting>
@@ -2130,6 +2133,7 @@ Content-Type: text/plain; charset=UTF-8
                     directory. </para>
                 <example>
                     <title>Add Nodes Request: XML</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                 </programlisting>
@@ -2166,6 +2170,7 @@ Content-Type: text/plain; charset=UTF-8
                     directory. </para>
                 <example>
                     <title>Add Nodes Response: JSON</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
                 </programlisting>
@@ -2810,6 +2815,7 @@ Content-Type: text/plain; charset=UTF-8
                 </para>
                 <example>
                     <title>Monitor Connections Request: XML</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
                 </programlisting>
@@ -2899,6 +2905,7 @@ Content-Type: text/plain; charset=UTF-8
             </example>
             <example>
                 <title>Monitor HTTPS Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
                 </programlisting>
@@ -3159,6 +3166,7 @@ Content-Type: text/plain; charset=UTF-8
             </itemizedlist>
             <example>
                 <title>List Connection Throttling Configuration Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-throttling-response.xml" parse="text"/>
                 </programlisting>
