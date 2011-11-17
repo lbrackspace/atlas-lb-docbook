@@ -59,7 +59,7 @@
                             <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
                             <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
 			    <pdfUrl>../../../clb-devguide-latest.pdf</pdfUrl>
-                            <enableDisqus>intranet</enableDisqus>
+                            <enableDisqus>1</enableDisqus>
 			    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
                             <includes>clb-devguide.xml</includes>
 			    <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
@@ -69,6 +69,33 @@
                     <!-- MA: added this to generate public release notes -->
                     <execution>
                         <id>g3</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                            <goal>generate-pdf</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <xincludeSupported>true</xincludeSupported>
+                            <sourceDirectory>src/resources</sourceDirectory>
+                            <highlightSource>false</highlightSource>
+                            <pdfUrl>../../../clb-releasenotes-latest.pdf</pdfUrl>
+                            <includes>clb-releasenotes.xml</includes>
+                            <enableDisqus>1</enableDisqus>
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <chapterAutolabel>0</chapterAutolabel>
+                            <security>external</security>
+                            <canonicalUrlBase>http://docs-beta.rackspace.com/internal/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
+			    <postProcess>
+			      <move todir="target/docbkx/webhelp/clb-releasenotes-external" failonerror="false">
+				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
+			      </move>
+			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-20111117.pdf" failonerror="false"/>
+			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
+			    </postProcess>
+                        </configuration>
+                    </execution>                                       
+                    <execution>
+                        <id>g4</id>
                         <goals>
                             <goal>generate-pdf</goal>
                             <goal>generate-webhelp</goal>
@@ -85,6 +112,13 @@
                             <chapterAutolabel>0</chapterAutolabel>
                             <security>internal</security>
                             <canonicalUrlBase>http://docs-beta.rackspace.com/internal/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
+			    <postProcess>
+			      <move todir="target/docbkx/webhelp/clb-releasenotes-internal" failonerror="false">
+				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
+			      </move>
+			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-internal-20111117.pdf" failonerror="false"/>
+			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
+			    </postProcess>
                         </configuration>
                     </execution>                                       
                 </executions>
