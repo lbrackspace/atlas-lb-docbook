@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-11-17</pubdate>
+        <pubdate>2011-11-18</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -51,6 +51,19 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2011-11-18</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated <xref
+                                   linkend="List_Nodes-d1e2218"/> with
+                                note about <code>weight</code>
+                                attributes.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2011-11-17</date>
                 <revdescription>
@@ -2024,6 +2037,13 @@ Content-Type: text/plain; charset=UTF-8
                 <para>
                     This operation does not require a request body.
                 </para>
+                <note>
+                    <para>The <code>weight</code> attributes are only
+                        displayed for load balancers that use the
+                            <code>WEIGHTED_LEAST_CONNECTIONS</code> or
+                            <code>WEIGHTED_ROUND_ROBIN</code>
+                        algorithms.</para>
+                </note>
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
