@@ -52,6 +52,17 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2011-11-20</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated doc with Stats method call. <xref
+                                   linkend="List_Load_Balancer_Stats-d1e1524"/></para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2011-11-18</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
@@ -1955,6 +1966,57 @@ Content-Type: text/plain; charset=UTF-8
                 </programlisting>
                 </example>
             </section>
+        </section>
+        <section xml:id="List_Load_Balancer_Stats-d1e1524">
+            <title>List Load Balancer Stats</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Representations</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;
+                        </td>
+                        <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
+                        <td colspan="3">List detailed stats of the specified load balancer.</td>
+                        <td colspan="2">JSON, XML</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                overLimit (<errorcode>413</errorcode>)
+            </simpara>
+            <para>This operation provides detailed stats output for a specific load balancer
+                configured and associated with your account.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+
+            <example>
+                <title>List Load Balancer stats Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-stats.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers Stats Response: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-stats.json" parse="text"/>
+                </programlisting>
+            </example>
         </section>
         <section xml:id="Nodes-d1e2173">
             <title>Nodes</title>
