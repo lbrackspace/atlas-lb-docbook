@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xml:id="clb-releasenotes"
+    version="5.0">
+	<?rax title.font.size="35px" subtitle.font.size="20px"?>
+	<title>Rackspace Cloud Load Balancers Release Notes</title>
+	<titleabbrev>Rackspace Cloud LB Rel Notes</titleabbrev>
+    <info>
+        <author>
+            <personname>
+                <firstname/>
+                <surname/>
+            </personname>
+            <affiliation>
+                <orgname>Rackspace Cloud</orgname>
+            </affiliation>
+        </author>
+        <copyright>
+            <year>2010</year>
+            <year>2011</year>
+            <holder>Rackspace US, Inc.</holder>
+        </copyright>
+        <releaseinfo>API v1.0</releaseinfo>
+    	<productname>Rackspace Cloud Load Balancers</productname>
+	<pubdate>2011-11-17</pubdate>
+        <legalnotice role="rs-api">
+            <annotation>
+                <remark>Copyright details are filled in by the template.</remark>
+            </annotation>
+	</legalnotice>
+        <abstract>
+        	<para>This document is intended for software developers interested in developing
+        		applications using the Rackspace Cloud Load Balancers Application Program Interface
+        		(<abbrev>API</abbrev>).
+        	</para>
+        </abstract>
+    	<revhistory>
+    		<revision>
+				<date>2011-11-17</date>
+				<revdescription>
+					<para>This is the initial release of this document.</para>
+				</revdescription>
+			</revision>
+    	</revhistory>
+    </info>
+	<chapter xml:id="clbv1.7.0">
+		<title>v1.7.17, November 17, 2011 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Custom Error page for offline load balancer nodes</para>
+			</listitem>
+			<listitem>
+				<para>Node query parameter <emphasis>nodeaddress</emphasis> added
+					for use with the List Load Balancers API call to
+					find out if any load balancer for an account has a
+					specific node attached to it</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Maintenance</title>
+			<listitem>
+				<para>Disabled and discontinued passive health monitoring for new
+					load balancers</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Optimized ZXTM Adapter</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Bug Fixes</title>
+			<listitem>
+				<para>Fixed issue with scheduled jobs marker as query parameter
+					not working</para>
+			</listitem>
+			<listitem>
+				<para>Fixed duplicate IPV6 node bug</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Fixed issue causing failure when deleting a load balancer
+					using a shared virtual IP</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Known Issues</title>
+			<listitem>
+				<para>Some load balancers in ORD experience error status when
+					being created or updated. </para>
+				<note security="internal">
+					<para>ORD Zeus configuration and failover issues cause load
+						balancers to go into error status when being
+						created or updated; waiting on patch from
+						Zeus.</para>
+				</note>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link xlink:href="http://docs.rackspace.com/api/">Cloud Load Balancers Developer Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+					>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist security="internal">
+			<title>Change Details</title>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A31496"
+					>B-05341</link>: Custom Error page for offline load balance nodes</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A48990"
+					>B-07122</link>: Disable passive health monitoring for new load balancers</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A45242"
+					>D-01588</link>: Scheduled Jobs - marker as query parameter does nothing</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A46926"
+					>D-01615</link>: Duplicate IPV6 node bug</para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A59337"
+						>D-01887</link>: Change object for looking for
+					a node with address on load balancers</para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story%3A60823"
+						>B-08528</link>: Optimize ZXTM Adapter</para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A61950"
+					>D-01942</link>: Delete load balancer fails when using shared VIPs</para>
+			</listitem>
+			
+		</itemizedlist>
+		
+	</chapter>
+	
+	<chapter xml:id="clbv1.6.14">
+		<title>v1.6.14, October 20, 2011 </title>
+		<itemizedlist>
+			<title>Resolved Issue</title>
+			<listitem>
+				<para> Resolved a bug causing billing issues for newly provisioned
+					load balancers</para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Known Issues</title>
+			<listitem>
+				<para>Some load balancers in ORD experience error status when
+					being created or updated. </para>
+			</listitem>
+		</itemizedlist>
+		
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link xlink:href="http://docs.rackspace.com/api/">Cloud Load Balancers Developer Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+					>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	
+	<chapter xml:id="clbv1.6.13">
+		<title>v1.6.13, September 7, 2011 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>TCP Protocol Support</para>
+			</listitem>
+			<listitem>
+				<para>Source IP address displayed in load balancer
+					details </para>
+			</listitem>
+			<listitem>
+				<para>
+					<code>X-Forwarded-For</code> header added to all
+					HTTP load balancers </para>
+			</listitem>
+			<listitem>
+				<para>Ability to delete multiple access list, virtual IPs, load
+					balancers, and nodes  </para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed bug causing load balancers to remain in a "pending
+					delete" status after being deleted </para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug causing "invalid load balancer" statuses to return
+					a 500 Internal Server </para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug preventing logs from working for UK load balancers </para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug preventing deleted nodes response from returning a
+					consistent 202</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Known Issues</title>
+			<listitem>
+				<para>When creating or updating a load balancer, if a user
+					attempts to select "TCP" from the protocol
+					drop-down list in the Control Panel, the action
+					will fail. </para>
+			</listitem>
+			<listitem>
+				<para>As a workaround for the previous issue, the user can select
+					"Custom" from the protocol drop-down list in the
+					Control Panel, and specify a port value between
+					1-65535. </para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="clbv1.5.9">
+		<title>v1.5.9, July 13, 2011 </title>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para> Fixed bug that required bodyRegex for HTTP/HTTPS health
+					monitors</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+		
+	</chapter>
+	<chapter xml:id="clbv1.5.7">
+      <title>v1.5.7, June 29, 2011 </title>
+      <?dbhtml stop-chunking?>
+		<para>This version is a maintenance release only.</para>
+	  <itemizedlist>
+	    <title>Known Issues</title>
+	    <listitem>
+	      <para> Load balancer goes into error state when rapidly adding
+					additional IPV6 to a load balancer. </para>
+	    </listitem>
+	  </itemizedlist>
+    	<itemizedlist>
+    		<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+    	</itemizedlist>
+	  
+    </chapter>
+	<chapter xml:id="clbv1.5.5">
+		<title>v1.5.5, June 28, 2011 </title>
+		<?dbhtml stop-chunking?>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>IPv6 support </para>
+			</listitem>
+			<listitem>
+				<para>Ability to add extra IPv6 virtual IP addresses
+					to a load balancer</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed issue that allowed HTTPS load balancers to
+					check for HTTPS monitors</para>
+			</listitem>
+			<listitem>
+				<para>Fixed issue that caused two health monitors to
+					be created on the same load balancer</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+
+</book>

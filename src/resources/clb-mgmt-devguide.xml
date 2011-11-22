@@ -54,7 +54,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-08-23</pubdate>
+        <pubdate>2011-11-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -136,17 +136,6 @@
                     <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
                         <listitem>
                             <para>Initial release for public beta.</para>
-                        </listitem>
-                    </itemizedlist>
-                </revdescription>
-            </revision>
-            <revision>
-                <date>2011-04-01</date>
-                <revdescription>
-                    <itemizedlist xmlns:db="http://docbook.org/ns/docbook" spacing="compact">
-                        <listitem>
-                            <para>Added CusterCount Examples
-                                and information.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -567,6 +556,7 @@
                 </example>
                 <example>
                     <title>Update Host Request: JSON</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                     </programlisting>
@@ -652,6 +642,7 @@
             </example>
             <example>
                 <title>List All VIPs Within Cluster Response: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
@@ -1838,6 +1829,7 @@
                 response bodies. </para>
             <example>
                 <title>Get Limits Response: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-get-absolute-limits.xml" parse="text"/>
                 </programlisting>
@@ -1850,12 +1842,14 @@
             </example>
             <example>
                 <title>Add Limits Request: XML</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-absolute-limits.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
                 <title>Add Limits Request: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
                 </programlisting>
@@ -1923,6 +1917,7 @@
             </example>
             <example>
                 <title>List Tickets for Load Balancer: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ticket-response.json" parse="text" />
                 </programlisting>
@@ -2138,6 +2133,7 @@
             </example>
             <example>
                 <title>List Blacklist Response: JSON</title>
+                <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-blacklist.json" parse="text"/>
                 </programlisting>
