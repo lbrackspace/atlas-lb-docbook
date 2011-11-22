@@ -38,7 +38,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-11-18</pubdate>
+        <pubdate>2011-11-22</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -52,12 +52,18 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2011-11-20</date>
+                <date>2011-11-22</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Updated doc with Stats method call. <xref
-                                   linkend="List_Load_Balancer_Stats-d1e1524"/></para>
+                            <para>Updated information in <xref
+                                   linkend="table_virtual_ip_types"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="List_Load_Balancer_Stats-d1e1524"
+                                />.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -1505,7 +1511,7 @@ Content-Type: text/plain; charset=UTF-8
                 You may specify the type of virtualIp to add along with the creation of a loadbalancer.
                 The following table describes the options.
             </para>
-            <table rules="all">
+            <table rules="all" xml:id="table_virtual_ip_types">
                 <caption>Virtual IP Types</caption>
                 <thead align="center">
                     <tr>
@@ -2115,6 +2121,7 @@ Content-Type: text/plain; charset=UTF-8
                     directory. </para>
                 <example>
                     <title>List Node Response: XML</title>
+                    <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                 </programlisting>
