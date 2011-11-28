@@ -2008,14 +2008,13 @@ Content-Type: text/plain; charset=UTF-8
             <para>This operation provides detailed stats output for a specific load balancer
                 configured and associated with the users account.
             </para>
-            <para>
-                    <emphasis> ConectTimeOut:</emphasis> Connections closed by this virtual server because the 'connect_timeout' interval was exceeded, for each of the named Virtualservers.
-                    <emphasis>ConectError: </emphasis>Number of transaction or protocol errors in this virtual server, for each of the named Virtualservers.
-                    <emphasis>ConectFailure: </emphasis>Number of connection failures in this virtual server, for each of the named Virtualservers.
-                    <emphasis> DataTimedOut: </emphasis>Connections closed by this virtual server because the 'timeout' interval was exceeded, for each of the named Virtualservers.
-                    <emphasis>KeepAliveTimedOut: </emphasis>Connections closed by this virtual server because the 'keepalive_timeout' interval was exceeded, for each of the named Virtualservers.
-                    <emphasis>maxConnections: </emphasis>Maximum number of simultaneous TCP connections this virtual server has processed at any one time, for each of the named Virtualservers.
-            </para>
+            <para><emphasis> ConectTimeOut:</emphasis> Connections closed by this virtual server because the 'connect_timeout' interval was exceeded, for each of the named Virtualservers.</para>
+            <para><emphasis>ConectError: </emphasis>Number of transaction or protocol errors in this virtual server, for each of the named Virtualservers.</para>
+            <para><emphasis>ConectFailure: </emphasis>Number of connection failures in this virtual server, for each of the named Virtualservers.</para>
+            <para><emphasis> DataTimedOut: </emphasis>Connections closed by this virtual server because the 'timeout' interval was exceeded, for each of the named Virtualservers.</para>
+            <para><emphasis>KeepAliveTimedOut: </emphasis>Connections closed by this virtual server because the 'keepalive_timeout' interval was exceeded, for each of the named Virtualservers.</para>
+            <para><emphasis>maxConnections: </emphasis>Maximum number of simultaneous TCP connections this virtual server has processed at any one time, for each of the named Virtualservers.</para>
+
             <para>
                 This operation does not require a request body.
             </para>
