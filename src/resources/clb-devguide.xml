@@ -1990,6 +1990,7 @@ Content-Type: text/plain; charset=UTF-8
                         <td colspan="1">&GET;
                         </td>
                         <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
+                        <td colspan="3">provides detailed stats output for a specific load balancer</td>
 
                         <td colspan="2">JSON, XML</td>
                     </tr>
