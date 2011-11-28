@@ -1,6 +1,8 @@
 {
     "connectTimeOut":10,
-    "connectError":49,
-    "connectFailure":2,
-    "keepAliveTimedOut":3600,
-    "maxConn":1000}
+    "connectError":20,
+    "connectFailure":30,
+    "dataTimedOut":40,
+    "keepAliveTimedOut":50,
+    "maxConn":60
+}

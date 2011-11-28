@@ -421,7 +421,7 @@
                 <para>The Rackspace Cloud Authentication Service serves as the entry point to all
                     Rackspace Cloud APIs and is itself a ReSTful web service.</para>
                 <para> To access the Authentication Service, you must know whether your account is
-                    US-based or UK-based: 
+                    US-based or UK-based:
                 </para>
                 <itemizedlist spacing="compact">
                     <listitem>
@@ -438,14 +438,14 @@
                 <para>
                     Your account may be based in either the US or the UK; this is not determined
                     by your physical location but by the location of the Rackspace retail site which
-                    was used to create your account: 
+                    was used to create your account:
                 </para>
                 <itemizedlist spacing="compact">
                     <listitem>
                         <para>
                             If your account was
                             created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                        </para>   
+                        </para>
                     </listitem>
                     <listitem>
                         <para>
@@ -487,7 +487,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
                     </example>
                     </simplesect>
-                
+
             </section>
             <section xml:id="Response-d1e468">
                 <title>Response</title>
@@ -856,7 +856,7 @@ Content-Type: text/plain; charset=UTF-8
                             <td colspan="2">Name</td>
                             <td colspan="3">Description</td>
                             <td colspan="1">Default Limit</td>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -866,14 +866,14 @@ Content-Type: text/plain; charset=UTF-8
                                 balancers that can be added to a Cloud
                                 account.</td>
                             <td colspan="1">25</td>
-                            
+
                         </tr>
                         <tr align="left">
                             <td colspan="2">NODE_LIMIT</td>
                             <td colspan="3">Total number of nodes that
                                 can be added to a load balancer.</td>
                             <td colspan="1">25</td>
-                            
+
                         </tr>
                         <tr align="left">
                             <td colspan="2">IPV6_LIMIT</td>
@@ -881,7 +881,7 @@ Content-Type: text/plain; charset=UTF-8
                                 addresses that can be added to a load
                                 balancer.</td>
                             <td colspan="1">25</td>
-                          
+
                         </tr>
                         <tr align="left">
                             <td colspan="2">BATCH_DELETE_LIMIT</td>
@@ -889,15 +889,15 @@ Content-Type: text/plain; charset=UTF-8
                                 that can be listed per batch delete
                                 request.</td>
                             <td colspan="1">10</td>
-                            
+
                         </tr>
-                        <tr align="left">                           
+                        <tr align="left">
                             <td colspan="2">ACCESS_LIST_LIMIT</td>
                             <td colspan="3">Total number of network
                                 items that can be added to a load
                                 balancer.</td>
                             <td colspan="1">100</td>
-                            
+
                         </tr>
                     </tbody>
                 </informaltable>
@@ -1413,7 +1413,7 @@ Content-Type: text/plain; charset=UTF-8
                         lb-list-details-response.json (delete lines 57-62  "sourceAddresses":{
                         "ipv6Servicenet":"::1",
                         "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
-                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" }) 
+                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" })
                 </remark>
             </annotation>
             <example>
@@ -1982,9 +1982,15 @@ Content-Type: text/plain; charset=UTF-8
                     <tr align="left">
                         <td colspan="1">&GET;
                         </td>
-                        <td colspan="3"
-                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
-                        <td colspan="3">List detailed stats of the specified load balancer.</td>
+                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
+                        <td colspan="3">List detailed stats for the specified load balancer.</td>
+                        <td colspan="3">ConectTimeOut: Connections closed by this virtual server because the 'connect_timeout' interval was exceeded, for each of the named Virtualservers.</td>
+                        <td colspan="3">ConectError: Number of transaction or protocol errors in this virtual server, for each of the named Virtualservers.</td>
+                        <td colspan="3">ConectFailure: Number of connection failures in this virtual server, for each of the named Virtualservers.</td>
+                        <td colspan="3">DataTimedOut: Connections closed by this virtual server because the 'timeout' interval was exceeded, for each of the named Virtualservers.</td>
+                        <td colspan="3">KeepAliveTimedOut: Connections closed by this virtual server because the 'keepalive_timeout' interval was exceeded, for each of the named Virtualservers.</td>
+                        <td colspan="3">maxConnections: Maximum number of simultaneous TCP connections this virtual server has processed at any one time, for each of the named Virtualservers.</td>
+
                         <td colspan="2">JSON, XML</td>
                     </tr>
                 </tbody>
@@ -2753,7 +2759,7 @@ Content-Type: text/plain; charset=UTF-8
                     unique and cannot be duplicated between items in an access list. There are two
                     &DELETE; operations for the access list. One allows for deletion of multiple network items
                     in an access list, or the entire accesslist, and the other for deletion of a specific
-                    network item in the access list. 
+                    network item in the access list.
             </para>
             <example>
                     <?dbfo keep-together="always"?>
