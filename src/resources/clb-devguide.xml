@@ -432,12 +432,12 @@
                 <itemizedlist spacing="compact">
                     <listitem>
                         <para>
-                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>.
+                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.1">https://auth.api.rackspacecloud.com/v1.0</link>.
                         </para>
                     </listitem>
                     <listitem>
                         <para>
-                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.0">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
+                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
                         </para>
                     </listitem>
                 </itemizedlist>
@@ -467,8 +467,48 @@
                 <simplesect>
                     <title>Authentication Request</title>
                     <para>
-                        To authenticate, you must supply your username and API access key in x-headers:
-                    </para>
+The authenticate operation provides clients with an authentication token and a list of regional cloud endpoints.
+</para>
+<example>
+<title>Auth Request: XML</title>
+<programlistingco>
+<areaspec>
+<area xml:id="credentials.xml.user" units="linecolumn" coords="5 32"/>
+<area xml:id="credentials.xml.key" units="linecolumn" coords="6 52"/>
+</areaspec>
+<programlisting language="xml">
+<xi:include href="samples/credentials.xml" parse="text"/>
+</programlisting>
+</programlistingco>
+</example>
+                    <example>
+<title>Auth Request: JSON</title>
+<programlistingco>
+<areaspec>
+<area xml:id="credentials.json.user" units="linecolumn" coords="4 32"/>
+<area xml:id="credentials.json.key" units="linecolumn" coords="5 52"/>
+</areaspec>
+<programlisting language="javascript">
+<xi:include href="samples/credentials.json" parse="text"/>
+</programlisting>
+</programlistingco>
+</example>
+                    <calloutlist>
+<callout arearefs="credentials.xml.user">
+<para>
+The username supplied here is your common Rackspace Cloud username.
+</para>
+</callout>
+<callout arearefs="credentials.xml.key">
+<para>
+The key is your API access key. The key can be obtained from the Rackspace Cloud Control Panel in the
+<guimenu>Your Account</guimenu>
+/
+<guimenuitem>API Access</guimenuitem>
+section.
+</para>
+</callout>
+</calloutlist>
                     <para>
                         <itemizedlist spacing="compact">
                             <listitem>
