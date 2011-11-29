@@ -1975,7 +1975,7 @@ Content-Type: text/plain; charset=UTF-8
             </section>
         </section>
         <section xml:id="List_Load_Balancer_Stats-d1e1524">
-            <title>List Load Balancer Stats</title>
+            <title>Load Balancer Stats</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
