@@ -464,6 +464,45 @@
                     If you are unsure how your account was created, use the Rackspace contact
                     information at either site to ask for help.
                 </para>
+                <informaltable rules="all">
+<thead>
+<tr>
+<td colspan="1">Verb</td>
+<td colspan="1">URI</td>
+<td colspan="4">Description</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="1">
+<command>POST</command>
+</td>
+<td colspan="1">/auth</td>
+<td colspan="4">
+Authenticate to receive a token and a service catalog.
+</td>
+</tr>
+</tbody>
+</informaltable>
+<simpara>
+Normal Response Code(s):
+<returnvalue>200</returnvalue>
+,
+<returnvalue>203</returnvalue>
+</simpara>
+<simpara>
+Error Response Code(s): unauthorized (
+<errorcode>401</errorcode>
+), userDisabled (
+<errorcode>403</errorcode>
+), badRequest (
+<errorcode>400</errorcode>
+), authFault (
+<errorcode>500</errorcode>
+), serviceUnavailable (
+<errorcode>503</errorcode>
+)
+</simpara>
                 <simplesect>
                     <title>Authentication Request</title>
                     <para>
@@ -509,31 +548,10 @@ section.
 </para>
 </callout>
 </calloutlist>
-                    <para>
-                        <itemizedlist spacing="compact">
-                            <listitem>
-                                <para>
-                                    Use your Rackspace Cloud
-                                    username as the username for the API. Place it in the
-                                    <code>X-Auth-User</code> x-header.
-                                </para>
-                            </listitem>
-                            <listitem>
-                                <para> Obtain your API access key from the Rackspace Cloud Control Panel in the Your
-                                    Account | API Access section. Place it in the <code>X-Auth-Key</code> x-header. </para>
-                            </listitem>
-                        </itemizedlist>
-                    </para><example>
-                        <title>Authentication Request (US-based Account)</title>
-                        <literallayout class="monospaced">
-GET /v1.0 HTTP/1.1
-Host: auth.api.rackspacecloud.com
-X-Auth-User: jdoe
-X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
-                    </literallayout>
-                    </example>
-                    </simplesect>
 
+
+
+              </simplesect>
             </section>
             <section xml:id="Response-d1e468">
                 <title>Response</title>
