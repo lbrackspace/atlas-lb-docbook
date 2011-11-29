@@ -62,7 +62,7 @@
                         </listitem>
                         <listitem>
                             <para>Added <xref
-                                   linkend="Load_Balancer_Stats-d1e1524"
+                                   linkend="List_Load_Balancer_Stats-d1e1524"
                                 />.</para>
                         </listitem>
                     </itemizedlist>
@@ -1974,7 +1974,7 @@ Content-Type: text/plain; charset=UTF-8
                 </example>
             </section>
         </section>
-        <section xml:id="Load_Balancer_Stats-d1e1524">
+        <section xml:id="List_Load_Balancer_Stats-d1e1524">
             <title>Load Balancer Stats</title>
             <informaltable rules="all">
                 <thead>
