@@ -432,12 +432,12 @@
                 <itemizedlist spacing="compact">
                     <listitem>
                         <para>
-                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.1">https://auth.api.rackspacecloud.com/v1.0</link>.
+                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.1">https://auth.api.rackspacecloud.com/v1.1</link>.
                         </para>
                     </listitem>
                     <listitem>
                         <para>
-                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
+                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1">https://lon.auth.api.rackspacecloud.com/v1.1</link>.
                         </para>
                     </listitem>
                 </itemizedlist>
