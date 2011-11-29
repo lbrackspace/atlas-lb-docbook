@@ -557,31 +557,89 @@ section.
                 <title>Response</title>
                 <para>If authentication is successful, an HTTP status
                     <returnvalue>204</returnvalue>
-                    (No Content) is returned with an
-                    <code>X-Auth-Token</code>
-                    (along with other Cloud Service headers that are not applicable to the load balancing service).
-                    An HTTP status of
-                    <returnvalue>401 (Unauthorized)</returnvalue>
-                    is returned if authentication fails. All operations against the load balancing service must
-                    include the
-                    <code>X-Auth-Token</code>
-                    header.
+                    (No Content) is returned.
                 </para>
                 <example xml:id="authentication_response">
                     <title>Authentication Response</title>
                     <?dbfo keep-together="always"?>
                     <para>
-                        <literallayout class="monospaced">
-HTTP/1.1 204 No Content
-Date: Mon, 12 Nov 2007 15:32:21 GMT
-Server: Apache
-X-Server-Management-Url: https://servers.api.rackspacecloud.com/v1.0/1234
-X-Storage-Url: https://storage.clouddrive.com/v1/CloudFS_9c83b-5ed4
-X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CloudFS_9c83b-5ed4
-X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-Content-Length: 0
-Content-Type: text/plain; charset=UTF-8
-                        </literallayout>
+                        <example>
+<title>Auth Response: XML</title>
+<programlistingco>
+<areaspec>
+<area xml:id="auth.xml.token.expires" units="linecolumn" coords="6 45"/>
+<area xml:id="auth.xml.sc.s.e.region" units="linecolumn" coords="10 23"/>
+<area xml:id="auth.xml.sc.s.e.v1d" units="linecolumn" coords="11 27"/>
+<area xml:id="auth.xml.sc.s.e.pu" units="linecolumn" coords="12 20"/>
+<area xml:id="auth.xml.sc.s.e.iu" units="linecolumn" coords="13 22"/>
+<area xml:id="auth.xml.sc.s.e.nr" units="linecolumn" coords="29 16"/>
+</areaspec>
+<programlisting language="xml">
+<xi:include href="samples/auth.xml" parse="text"/>
+</programlisting>
+</programlistingco>
+</example>
+<example>
+<title>Auth Response: JSON</title>
+<programlistingco>
+<areaspec>
+<area xml:id="auth.json.token.expires" units="linecolumn" coords="6 52"/>
+<area xml:id="auth.json.sc.s.e.region" units="linecolumn" coords="11 38"/>
+<area xml:id="auth.json.sc.s.e.v1d" units="linecolumn" coords="12 40"/>
+<area xml:id="auth.json.sc.s.e.pu" units="linecolumn" coords="13 32"/>
+<area xml:id="auth.json.sc.s.e.iu" units="linecolumn" coords="14 34"/>
+<area xml:id="auth.json.sc.s.e.nr" units="linecolumn" coords="33 31"/>
+</areaspec>
+<programlisting language="javascript">
+<xi:include href="samples/auth.json" parse="text"/>
+</programlisting>
+</programlistingco>
+</example>
+<calloutlist>
+<callout arearefs="auth.xml.token.expires">
+<para>
+Tokens are valid for a finite duration. The
+<code>expires</code>
+attribute denotes the time after which the token will automatically become invalid. A token may be manually revoked before the time identified by the
+<code>expires</code>
+attribute;
+<code>expires</code>
+predicts a token's maximum possible lifespan but does not guarantee that it will reach that lifespan. Clients are encouraged to cache a token until it expires.
+</para>
+</callout>
+<callout arearefs="auth.xml.sc.s.e.region">
+<para>
+A service may expose endpoints in different regions. Regional endpoints allow clients to provision resources in a manner that provides high availability.
+</para>
+</callout>
+<callout arearefs="auth.xml.sc.s.e.v1d">
+<para>
+The
+<code>v1Default</code>
+attribute denotes that an endpoint is being returned in version 1.0 of the Cloud Authentication Service. The default value of
+<code>v1Default</code>
+is
+<code>false</code>
+; clients should assume the value is
+<code>false</code>
+when the attribute is missing. Auth 1.0 does not offer support for regional endpoints and therefore only returns one endpoint per service. Resources stored in endpoints where
+<code>v1Default</code>
+is
+<code>false</code>
+, will not be seen by Auth 1.0 clients.
+</para>
+</callout>
+<callout arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
+<para>
+An endpoint can be assigned public and internal URLs. A public URL is accessible from anywhere. Access to a public URL usually incurs traffic charges. Internal URLs are only accessible to services within the same region. Access to an internal URL is free of charge.
+</para>
+</callout>
+<callout arearefs="auth.xml.sc.s.e.nr">
+<para>
+Some services are not region-specific. These services supply a single non-regional endpoint and do not provide access to internal URLs.
+</para>
+</callout>
+</calloutlist>
                     </para>
                 </example>
                 <para>Authentication tokens are typically valid for 24 hours. Applications should be
