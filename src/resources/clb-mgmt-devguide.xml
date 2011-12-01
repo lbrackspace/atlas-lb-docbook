@@ -485,6 +485,16 @@
                             <code>soapEndpointActive</code>
                         </para>
                     </listitem>
+                    <listitem>
+                        <para>
+                            <code>ipv4Public</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>ipv4Servicenet</code>
+                        </para>
+                    </listitem>
                 </itemizedlist>
                 <example>
                     <title>Create Host Request: XML</title>

@@ -8,6 +8,8 @@
         "maxConcurrentConnections": 5,
         "coreDeviceId": "SomeCoreDevice",
         "managementSoapInterface": "https://SomeSoapNode.com:9090",
-        "soapEndpointActive": "true"
+        "soapEndpointActive": "true",
+        "ipv4Servicenet": "10.2.2.80",
+        "ipv4Public": "172.11.11.110"
     }
 }

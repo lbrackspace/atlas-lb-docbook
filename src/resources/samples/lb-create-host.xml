@@ -8,4 +8,6 @@
         trafficManagerName="zues01.blah.blah"
         type="FAILOVER"
         zone="B"
-        soapEndpointActive="true" />
+        soapEndpointActive="true"
+        ipv4Servicenet="10.2.2.80"
+        ipv4Public="172.11.11.110" />
