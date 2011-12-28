@@ -1648,8 +1648,7 @@
                     <tr align="left">
                         <td>Not Specified</td>
                         <td>PUBLIC</td>
-                        <!-- Remove the comment tags below when the functionality returns -->
-                        <td>IPV4<!-- &amp; IPV6--></td>
+                        <td>IPV4 &amp; IPV6</td>
                     </tr>
                     <tr align="left">
                         <td>IPV4</td>
