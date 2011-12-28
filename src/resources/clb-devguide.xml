@@ -6,6 +6,8 @@
     <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
     <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
     <!ENTITY BATCH_DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+    <!ENTITY ndash "&#8211;">
+    <!ENTITY mdash "&#8212;">
 ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -52,17 +54,29 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2011-12-13</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added support for Auth 1.1 in <xref
+                                   linkend="Authentication-d1e699"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="List_Load_Balancer_Stats-d1e1524"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2011-11-22</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Updated information in <xref
                                    linkend="table_virtual_ip_types"
-                                />.</para>
-                        </listitem>
-                        <listitem>
-                            <para>Added <xref
-                                   linkend="List_Load_Balancer_Stats-d1e1524"
                                 />.</para>
                         </listitem>
                     </itemizedlist>
@@ -1142,6 +1156,7 @@
                 </para>
                 <example>
                     <title>Fault Response, badRequest</title>
+                    <?dbfo keep-together="always"?>
                 <literallayout class="monospaced">
 <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
     <message>Validation fault</message>
@@ -1267,6 +1282,7 @@
                 </para>
                 <example>
                     <title>Fault Response, unauthorized</title>
+                    <?dbfo keep-together="always"?>
                     <literallayout class="monospaced">
 <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>You are not authorized to execute this operation.</message>
@@ -1648,7 +1664,8 @@
                     <tr align="left">
                         <td>Not Specified</td>
                         <td>PUBLIC</td>
-                        <td>IPV4 &amp; IPV6</td>
+                        <!-- Remove the comment tags below when the functionality returns -->
+                        <td>IPV4<!-- &amp; IPV6--></td>
                     </tr>
                     <tr align="left">
                         <td>IPV4</td>
