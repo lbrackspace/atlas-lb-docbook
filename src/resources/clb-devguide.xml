@@ -36,11 +36,12 @@
         <copyright>
             <year>2010</year>
             <year>2011</year>
+            <year>2012</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2011-12-13</pubdate>
+        <pubdate>2012-01-10</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -54,12 +55,17 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2011-12-13</date>
+                <date>2012-01-10</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Added support for Auth 1.1 in <xref
                                    linkend="Authentication-d1e699"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for <xref
+                                   linkend="Service_Access_Endpoints-d1e517"
                                 />.</para>
                         </listitem>
                         <listitem>
@@ -428,56 +434,66 @@
                 HTTPS on TCP port 443.
             </para>
         </note>
-        <section xml:id="Authentication-d1e412">
+        <section xml:id="Authentication-d1e699"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+            xmlns:html="http://www.w3.org/1999/xhtml">
             <title>Authentication</title>
-            <para>Every ReST request against the load balancing service requires the inclusion of a
-                specific authorization token, supplied by the
-                <code>X-Auth-Token</code>
-                HTTP header. Customers obtain this token by first using the Rackspace Cloud Authentication
-                Service and supplying a valid username and API access key.
-            </para>
-            <section xml:id="Request-d1e423">
-                <title>Request</title>
-                <para>The Rackspace Cloud Authentication Service serves as the entry point to all
-                    Rackspace Cloud APIs and is itself a ReSTful web service.</para>
-                <para> To access the Authentication Service, you must know whether your account is
-                    US-based or UK-based:
-                </para>
+            <?dbhtml stop-chunking?>
+            <para> Every ReST request against the Load Balancers
+                Service requires the inclusion of a specific
+                authorization token, supplied by the
+                    <code>X-Auth-Token</code> HTTP header. Customers
+                obtain this token by first using the Rackspace Cloud
+                Authentication Service and supplying a valid username
+                and API access key. </para>
+            <section xml:id="request">
+                <title>Geographic Endpoints</title>
+                <para> The Rackspace Cloud Authentication Service
+                    serves as the entry point to all Rackspace Cloud
+                    APIs and is itself a ReSTful web service. </para>
+                <para> To access the Authentication Service, you must
+                    know whether your account is US-based or UK-based: </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>
-                            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.1">https://auth.api.rackspacecloud.com/v1.1</link>.
+                        <para> US-based accounts authenticate through
+                                <link
+                                xlink:href="https://auth.api.rackspacecloud.com/v1.1"
+                                >https://auth.api.rackspacecloud.com/v1.1</link>.
                         </para>
                     </listitem>
                     <listitem>
-                        <para>
-                            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1">https://lon.auth.api.rackspacecloud.com/v1.1</link>.
+                        <para> UK-based accounts authenticate through
+                                <link
+                                xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1"
+                                >https://lon.auth.api.rackspacecloud.com/v1.1</link>.
                         </para>
                     </listitem>
                 </itemizedlist>
-                <para>
-                    Your account may be based in either the US or the UK; this is not determined
-                    by your physical location but by the location of the Rackspace retail site which
-                    was used to create your account:
-                </para>
+                <para> Your account may be based in either the US or
+                    the UK; this is not determined by your physical
+                    location but by the location of the Rackspace
+                    retail site which was used to create your account: </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>
-                            If your account was
-                            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-                        </para>
+                        <para> If your account was created via <link
+                                xlink:href="http://www.rackspacecloud.com"
+                                >http://www.rackspacecloud.com</link>,
+                            it is a US-based account. </para>
                     </listitem>
                     <listitem>
-                        <para>
-                            If your account was
-                            created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
-                        </para>
+                        <para> If your account was created via <link
+                                xlink:href="http:/www.rackspace.co.uk"
+                                >http:/www.rackspace.co.uk</link>, it
+                            is a UK-based account. </para>
                     </listitem>
                 </itemizedlist>
-                <para>
-                    If you are unsure how your account was created, use the Rackspace contact
-                    information at either site to ask for help.
-                </para>
+                <para> If you are unsure how your account was created,
+                    use the Rackspace contact information at either
+                    site to ask for help. </para>
+            </section>
+            <section xml:id="Authenticate-d1e171">
+                <title>Retrieving the Authentication Token</title>
                 <informaltable rules="all">
                     <thead>
                         <tr>
@@ -488,189 +504,177 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="1">
-                                <command>POST</command>
-                            </td>
+                            <td colspan="1">&POST; </td>
                             <td colspan="1">/auth</td>
-                            <td colspan="4">
-                                Authenticate to receive a token and a service catalog.
-                            </td>
+                            <td colspan="4"> Authenticate to receive a
+                                token and a service catalog. </td>
                         </tr>
                     </tbody>
                 </informaltable>
-                <simpara>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
-                    ,
-                    <returnvalue>203</returnvalue>
+                <simpara> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>203</returnvalue>
                 </simpara>
-                <simpara>
-                    Error Response Code(s): unauthorized (
-                    <errorcode>401</errorcode>
-                    ), userDisabled (
-                    <errorcode>403</errorcode>
-                    ), badRequest (
-                    <errorcode>400</errorcode>
-                    ), authFault (
-                    <errorcode>500</errorcode>
-                    ), serviceUnavailable (
-                    <errorcode>503</errorcode>
-                    )
-                </simpara>
-                <simplesect>
-                    <title>Authentication Request</title>
-                    <para>
-                        The authenticate operation provides clients with an authentication token and a list of regional
-                        cloud endpoints.
-                    </para>
-                    <example>
-                        <title>Auth Request: XML</title>
-                        <programlistingco>
-                            <areaspec>
-                                <area xml:id="credentials.xml.user" units="linecolumn" coords="5 32"/>
-                                <area xml:id="credentials.xml.key" units="linecolumn" coords="6 52"/>
-                            </areaspec>
-                            <programlisting language="xml">
-                                <xi:include href="samples/credentials.xml" parse="text"/>
-                            </programlisting>
-                        </programlistingco>
-                    </example>
-                    <example>
-                        <title>Auth Request: JSON</title>
-                        <programlistingco>
-                            <areaspec>
-                                <area xml:id="credentials.json.user" units="linecolumn" coords="4 32"/>
-                                <area xml:id="credentials.json.key" units="linecolumn" coords="5 52"/>
-                            </areaspec>
-                            <programlisting language="javascript">
-                                <xi:include href="samples/credentials.json" parse="text"/>
-                            </programlisting>
-                        </programlistingco>
-                    </example>
-                    <calloutlist>
-                        <callout arearefs="credentials.xml.user">
-                            <para>
-                                The username supplied here is your common Rackspace Cloud username.
-                            </para>
-                        </callout>
-                        <callout arearefs="credentials.xml.key">
-                            <para>
-                                The key is your API access key. The key can be obtained from the Rackspace Cloud Control
-                                Panel in the
-                                <guimenu>Your Account</guimenu>
-                                /
-                                <guimenuitem>API Access</guimenuitem>
-                                section.
-                            </para>
-                        </callout>
-                    </calloutlist>
-
-
-                </simplesect>
-            </section>
-            <section xml:id="Response-d1e468">
-                <title>Response</title>
-
-                <example xml:id="authentication_response">
-                    <title>Authentication Response</title>
-                    <?dbfo keep-together="always"?>
-                    <para>
-                        <example>
-                            <title>Auth Response: XML</title>
-                            <programlistingco>
-                                <areaspec>
-                                    <area xml:id="auth.xml.token.expires" units="linecolumn" coords="6 45"/>
-                                    <area xml:id="auth.xml.sc.s.e.region" units="linecolumn" coords="10 23"/>
-                                    <area xml:id="auth.xml.sc.s.e.v1d" units="linecolumn" coords="11 27"/>
-                                    <area xml:id="auth.xml.sc.s.e.pu" units="linecolumn" coords="12 20"/>
-                                    <area xml:id="auth.xml.sc.s.e.iu" units="linecolumn" coords="13 22"/>
-                                    <area xml:id="auth.xml.sc.s.e.nr" units="linecolumn" coords="29 16"/>
-                                </areaspec>
-                                <programlisting language="xml">
-                                    <xi:include href="samples/auth.xml" parse="text"/>
-                                </programlisting>
-                            </programlistingco>
-                        </example>
-                        <example>
-                            <title>Auth Response: JSON</title>
-                            <programlistingco>
-                                <areaspec>
-                                    <area xml:id="auth.json.token.expires" units="linecolumn" coords="6 52"/>
-                                    <area xml:id="auth.json.sc.s.e.region" units="linecolumn" coords="11 38"/>
-                                    <area xml:id="auth.json.sc.s.e.v1d" units="linecolumn" coords="12 40"/>
-                                    <area xml:id="auth.json.sc.s.e.pu" units="linecolumn" coords="13 32"/>
-                                    <area xml:id="auth.json.sc.s.e.iu" units="linecolumn" coords="14 34"/>
-                                    <area xml:id="auth.json.sc.s.e.nr" units="linecolumn" coords="33 31"/>
-                                </areaspec>
-                                <programlisting language="javascript">
-                                    <xi:include href="samples/auth.json" parse="text"/>
-                                </programlisting>
-                            </programlistingco>
-                        </example>
-                        <calloutlist>
-                            <callout arearefs="auth.xml.token.expires">
-                                <para>
-                                    Tokens are valid for a finite duration. The
-                                    <code>expires</code>
-                                    attribute denotes the time after which the token will automatically become invalid.
-                                    A token may be manually revoked before the time identified by the
-                                    <code>expires</code>
-                                    attribute;
-                                    <code>expires</code>
-                                    predicts a token's maximum possible lifespan but does not guarantee that it will
-                                    reach that lifespan. Clients are encouraged to cache a token until it expires.
-                                </para>
-                            </callout>
-                            <callout arearefs="auth.xml.sc.s.e.region">
-                                <para>
-                                    A service may expose endpoints in different regions. Regional endpoints allow
-                                    clients to provision resources in a manner that provides high availability.
-                                </para>
-                            </callout>
-                            <callout arearefs="auth.xml.sc.s.e.v1d">
-                                <para>
-                                    The
-                                    <code>v1Default</code>
-                                    attribute denotes that an endpoint is being returned in version 1.0 of the Cloud
-                                    Authentication Service. The default value of
-                                    <code>v1Default</code>
-                                    is
-                                    <code>false</code>
-                                    ; clients should assume the value is
-                                    <code>false</code>
-                                    when the attribute is missing. Auth 1.0 does not offer support for regional
-                                    endpoints and therefore only returns one endpoint per service. Resources stored in
-                                    endpoints where
-                                    <code>v1Default</code>
-                                    is
-                                    <code>false</code>
-                                    , will not be seen by Auth 1.0 clients.
-                                </para>
-                            </callout>
-                            <callout arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
-                                <para>
-                                    An endpoint can be assigned public and internal URLs. A public URL is accessible
-                                    from anywhere. Access to a public URL usually incurs traffic charges. Internal URLs
-                                    are only accessible to services within the same region. Access to an internal URL is
-                                    free of charge.
-                                </para>
-                            </callout>
-                            <callout arearefs="auth.xml.sc.s.e.nr">
-                                <para>
-                                    Some services are not region-specific. These services supply a single non-regional
-                                    endpoint and do not provide access to internal URLs.
-                                </para>
-                            </callout>
-                        </calloutlist>
-                    </para>
+                <simpara> Error Response Code(s): unauthorized
+                        (<errorcode>401</errorcode>), userDisabled
+                        (<errorcode>403</errorcode>), badRequest
+                        (<errorcode>400</errorcode>), authFault
+                        (<errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>) </simpara>
+                <para> The authenticate operation provides clients
+                    with an authentication token and a list of
+                    regional cloud endpoints. </para>
+                <example>
+                    <title>Auth Request: XML</title>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="credentials.xml.user"
+                                units="linecolumn" coords="5 23"/>
+                            <area xml:id="credentials.xml.key"
+                                units="linecolumn" coords="6 18"/>
+                        </areaspec>
+                        <programlisting language="xml">
+<xi:include href="samples/credentials.xml" parse="text"/>
+                        </programlisting>
+                    </programlistingco>
                 </example>
-                <para>Authentication tokens are typically valid for 24 hours. Applications should be
-                    designed to re-authenticate after receiving a <returnvalue>401</returnvalue>
-                    (Unauthorized) response from a service endpoint. </para>
+                <example>
+                    <title>Auth Request: JSON</title>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="credentials.json.user"
+                                units="linecolumn" coords="4 20"/>
+                            <area xml:id="credentials.json.key"
+                                units="linecolumn" coords="5 15"/>
+                        </areaspec>
+                        <programlisting language="javascript">
+<xi:include href="samples/credentials.json" parse="text"/>
+                        </programlisting>
+                    </programlistingco>
+                </example>
+                <calloutlist>
+                    <callout arearefs="credentials.xml.user">
+                        <para> The username supplied here is your
+                            common Rackspace Cloud username. </para>
+                    </callout>
+                    <callout arearefs="credentials.xml.key">
+                        <para> The key is your API access key. The key
+                            can be obtained from the Rackspace Cloud
+                            Control Panel in the <guimenu>Your
+                                Account</guimenu> / <guimenuitem>API
+                                Access</guimenuitem> section. </para>
+                    </callout>
+                </calloutlist>
+                <example>
+                    <title>Auth Response: XML</title>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="auth.xml.token.expires"
+                                units="linecolumn" coords="6 18"/>
+                            <area xml:id="auth.xml.sc.s.e.region"
+                                units="linecolumn" coords="10 18"/>
+                            <area xml:id="auth.xml.sc.s.e.v1d"
+                                units="linecolumn" coords="11 21"/>
+                            <area xml:id="auth.xml.sc.s.e.pu"
+                                units="linecolumn" coords="12 21"/>
+                            <area xml:id="auth.xml.sc.s.e.iu"
+                                units="linecolumn" coords="13 23"/>
+                            <area xml:id="auth.xml.sc.s.e.nr"
+                                units="linecolumn" coords="31 21"/>
+                        </areaspec>
+                        <programlisting language="xml">
+<xi:include href="samples/auth.xml" parse="text"/>
+                        </programlisting>
+                    </programlistingco>
+                </example>
+                <example xml:id="auth_response_json">
+                    <title>Auth Response: JSON</title>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="auth.json.token.expires"
+                                units="linecolumn" coords="6 23"/>
+                            <area xml:id="auth.json.sc.s.e.region"
+                                units="linecolumn" coords="11 30"/>
+                            <area xml:id="auth.json.sc.s.e.v1d"
+                                units="linecolumn" coords="12 33"/>
+                            <area xml:id="auth.json.sc.s.e.pu"
+                                units="linecolumn" coords="13 33"/>
+                            <area xml:id="auth.json.sc.s.e.iu"
+                                units="linecolumn" coords="14 35"/>
+                            <area xml:id="auth.json.sc.s.e.nr"
+                                units="linecolumn" coords="36 33"/>
+                        </areaspec>
+                        <programlisting language="javascript">
+<xi:include href="samples/auth.json" parse="text"/>
+                        </programlisting>
+                    </programlistingco>
+                </example>
+                <calloutlist>
+                    <callout arearefs="auth.xml.token.expires">
+                        <para> Tokens are valid for a finite duration.
+                            The <code>expires</code> attribute denotes
+                            the time after which the token will
+                            automatically become invalid. A token may
+                            be manually revoked before the time
+                            identified by the <code>expires</code>
+                            attribute; <code>expires</code> predicts a
+                            token's maximum possible lifespan but does
+                            not guarantee that it will reach that
+                            lifespan. Clients are encouraged to cache
+                            a token until it expires. </para>
+                    </callout>
+                    <callout arearefs="auth.xml.sc.s.e.region">
+                        <para> A service may expose endpoints in
+                            different regions. Regional endpoints
+                            allow clients to provision resources in a
+                            manner that provides high availability.
+                        </para>
+                    </callout>
+                    <callout arearefs="auth.xml.sc.s.e.v1d">
+                        <para> The <code>v1Default</code> attribute
+                            denotes that an endpoint is being returned
+                            in version 1.0 of the Cloud Authentication
+                            Service. The default value of
+                                <code>v1Default</code> is
+                                <code>false</code>; clients should
+                            assume the value is <code>false</code>
+                            when the attribute is missing. Auth 1.0
+                            does not offer support for regional
+                            endpoints and therefore only returns one
+                            endpoint per service. Resources stored in
+                            endpoints where <code>v1Default</code> is
+                                <code>false</code> will not be seen by
+                            Auth 1.0 clients. </para>
+                    </callout>
+                    <callout
+                        arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
+                        <para> An endpoint can be assigned public and
+                            internal URLs. A public URL is accessible
+                            from anywhere. Access to a public URL
+                            usually incurs traffic charges. Internal
+                            URLs are only accessible to services
+                            within the same region. Access to an
+                            internal URL is free of charge. </para>
+                    </callout>
+                    <callout arearefs="auth.xml.sc.s.e.nr">
+                        <para> Some services are not region-specific.
+                            These services supply a single
+                            non-regional endpoint and do not provide
+                            access to internal URLs. </para>
+                    </callout>
+                </calloutlist>
+                <para>Authentication tokens are typically valid for 24
+                    hours. Applications should be designed to
+                    re-authenticate after receiving a 401
+                    (Unauthorized) response from a service
+                    endpoint.</para>
                 <note>
-                    <para>Currently, service endpoints are not published in the response of the account
-                        number, which is a required element of the service endpoints.
-                    </para>
+                    <para>Currently, service endpoints are not
+                        published in the Auth response with the
+                        account number, which is a required element of
+                        the service endpoints. Refer to the next
+                        section for details about service
+                        endpoints.</para>
                 </note>
             </section>
         </section>
@@ -685,16 +689,16 @@
                 your actual account number returned as part of the
                 authentication service response. You will find the
                 actual account number after the final '/' in the
-                X-Server-Management-Url header returned by the
+                    <code>publicURL</code> field returned by the
                 authentication response. In <xref
-                    linkend="authentication_response"/>, the account
-                id is <code>1234</code>, as you can see from the
-                header <code xmlns:svg="http://www.w3.org/2000/svg"
+                    linkend="auth_response_json"/>, the account id is
+                    <code>322781</code>, as you can see from the
+                    <code>publicURL</code> field for callout 6: <code
+                    xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:m="http://www.w3.org/1998/Math/MathML"
                     xmlns:html="http://www.w3.org/1999/xhtml"
-                    >X-Server-Management-Url:
-                    https://servers.api.rackspacecloud.com/v1.0/1234</code>.<table
-                    rules="all" >
+                    >"publicURL":"https://servers.api.rackspacecloud.com/v1.0/322781"</code>.<table
+                    rules="all">
                     <?dbfo keep-together="always"?>
                     <caption>Regionalized Service Endpoints</caption>
                     <thead>
@@ -2115,7 +2119,7 @@
             </section>
         </section>
         <section xml:id="List_Load_Balancer_Stats-d1e1524">
-            <title>Load Balancer Stats</title>
+            <title>List Load Balancer Stats</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -2127,38 +2131,75 @@
                 </thead>
                 <tbody>
                     <tr align="left">
-                        <td colspan="1">&GET;
-                        </td>
-                        <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
-                        <td colspan="3">provides detailed stats output for a specific load balancer</td>
-
+                        <td colspan="1">&GET; </td>
+                        <td colspan="3"
+                                >/loadbalancers/<parameter>loadBalancerId</parameter>/stats</td>
+                        <td colspan="3">provides detailed stats output
+                            for a specific load balancer</td>
                         <td colspan="2">JSON, XML</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>
+            <para> Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
             </para>
-            <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                overLimit (<errorcode>413</errorcode>)
-            </simpara>
-            <para>This operation provides detailed stats output for a specific load balancer
-                configured and associated with the users account.
-            </para>
-            <para><emphasis role="bold"> ConectTimeOut:</emphasis> Connections closed by this virtual server because the 'connect_timeout' interval was exceeded, for each of the named Virtualservers.</para>
-            <para><emphasis role="bold">ConectError: </emphasis>Number of transaction or protocol errors in this virtual server, for each of the named Virtualservers.</para>
-            <para><emphasis role="bold">ConectFailure: </emphasis>Number of connection failures in this virtual server, for each of the named Virtualservers.</para>
-            <para><emphasis role="bold"> DataTimedOut: </emphasis>Connections closed by this virtual server because the 'timeout' interval was exceeded, for each of the named Virtualservers.</para>
-            <para><emphasis role="bold">KeepAliveTimedOut: </emphasis>Connections closed by this virtual server because the 'keepalive_timeout' interval was exceeded, for each of the named Virtualservers.</para>
-            <para><emphasis role="bold">maxConnections: </emphasis>Maximum number of simultaneous TCP connections this virtual server has processed at any one time, for each of the named Virtualservers.</para>
-
-            <para>
-                This operation does not require a request body.
-            </para>
-
+            <simpara>Error Response Code(s): loadbalancerFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable
+                    (<errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
+            <para>This operation provides detailed stats output,
+                including the following information, for a specific
+                load balancer configured and associated with the
+                user's account: </para>
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis role="bold">
+                            connectTimeOut</emphasis> &ndash;
+                        Connections closed by this virtual server
+                        because the 'connect_timeout' interval was
+                        exceeded, for each of the named
+                        Virtualservers.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold"
+                            >connectError</emphasis> &ndash; Number of
+                        transaction or protocol errors in this virtual
+                        server, for each of the named
+                        Virtualservers.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold"
+                            >connectFailure</emphasis> &ndash; Number
+                        of connection failures in this virtual server,
+                        for each of the named Virtualservers.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">
+                            dataTimedOut</emphasis> &ndash;
+                        Connections closed by this virtual server
+                        because the 'timeout' interval was exceeded,
+                        for each of the named Virtualservers.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold"
+                            >keepAliveTimedOut</emphasis> &ndash;
+                        Connections closed by this virtual server
+                        because the 'keepalive_timeout' interval was
+                        exceeded, for each of the named
+                        Virtualservers.</para>
+                </listitem>
+                <listitem>
+                    <para><emphasis role="bold">maxConn</emphasis>
+                        &ndash; Maximum number of simultaneous TCP
+                        connections this virtual server has processed
+                        at any one time, for each of the named
+                        Virtualservers.</para>
+                </listitem>
+            </itemizedlist>
+            <para> This operation does not require a request body. </para>
             <example>
                 <title>List Load Balancer stats Response: XML</title>
                 <programlisting language="xml">
@@ -2166,7 +2207,8 @@
                 </programlisting>
             </example>
             <example>
-                <title>List Load Balancers Stats Response: JSON</title>
+                <title>List Load Balancers Stats Response:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-stats.json" parse="text"/>
                 </programlisting>
