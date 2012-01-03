@@ -69,6 +69,15 @@
                                 />.</para>
                         </listitem>
                         <listitem>
+                            <para>A default IPV6 is being provisioned
+                                when creating a load balancer. Refer
+                                to  <xref
+                                   linkend="table_virtual_ip_types"/>.
+                                (This was turned off in Release 1.6.13
+                                as a temporary mitigation
+                                strategy.)</para>
+                        </listitem>
+                        <listitem>
                             <para>Added <xref
                                    linkend="List_Load_Balancer_Stats-d1e1524"
                                 />.</para>
@@ -2158,45 +2167,41 @@
                 <listitem>
                     <para><emphasis role="bold">
                             connectTimeOut</emphasis> &ndash;
-                        Connections closed by this virtual server
+                        Connections closed by this load balancer
                         because the 'connect_timeout' interval was
-                        exceeded, for each of the named
-                        Virtualservers.</para>
+                        exceeded.</para>
                 </listitem>
                 <listitem>
                     <para><emphasis role="bold"
                             >connectError</emphasis> &ndash; Number of
-                        transaction or protocol errors in this virtual
-                        server, for each of the named
-                        Virtualservers.</para>
+                        transaction or protocol errors in this load
+                        balancer.</para>
                 </listitem>
                 <listitem>
                     <para><emphasis role="bold"
                             >connectFailure</emphasis> &ndash; Number
-                        of connection failures in this virtual server,
-                        for each of the named Virtualservers.</para>
+                        of connection failures in this load
+                        balancer.</para>
                 </listitem>
                 <listitem>
                     <para><emphasis role="bold">
                             dataTimedOut</emphasis> &ndash;
-                        Connections closed by this virtual server
-                        because the 'timeout' interval was exceeded,
-                        for each of the named Virtualservers.</para>
+                        Connections closed by this load balancer
+                        because the 'timeout' interval was
+                        exceeded.</para>
                 </listitem>
                 <listitem>
                     <para><emphasis role="bold"
                             >keepAliveTimedOut</emphasis> &ndash;
-                        Connections closed by this virtual server
+                        Connections closed by this load balancer
                         because the 'keepalive_timeout' interval was
-                        exceeded, for each of the named
-                        Virtualservers.</para>
+                        exceeded.</para>
                 </listitem>
                 <listitem>
                     <para><emphasis role="bold">maxConn</emphasis>
                         &ndash; Maximum number of simultaneous TCP
-                        connections this virtual server has processed
-                        at any one time, for each of the named
-                        Virtualservers.</para>
+                        connections this load balancer has processed
+                        at any one time.</para>
                 </listitem>
             </itemizedlist>
             <para> This operation does not require a request body. </para>

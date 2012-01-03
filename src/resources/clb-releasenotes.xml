@@ -63,12 +63,22 @@
 			<listitem>
 				<para>Upgraded to Auth 1.1 for authentication</para>
 			</listitem>
+			<listitem>
+				<para>A default IPV6 is being provisioned when
+					creating a load balancer. (This was turned off in
+					Release 1.6.13 as a temporary mitigation
+					strategy.)</para>
+			</listitem>
 		</itemizedlist>
 		<itemizedlist security="internal">
 			<title>Bug Fixes</title>
 			<listitem>
-				<para>Fixed issue where the management API calls were
-					failing Basic HTTP Authentication </para>
+				<para>Fixed issue where the management API calls were failing
+					Basic HTTP Authentication</para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug where a node condition was not being
+					changed correctly from draining to enable</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
