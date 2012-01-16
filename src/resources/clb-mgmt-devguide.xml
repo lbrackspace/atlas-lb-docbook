@@ -1709,14 +1709,14 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&DELETE;</td>
-                        <td colspan="4">/management</td>
+                        <td colspan="4">/management/groups/<parameter>id</parameter></td>
                         <td colspan="4">Delete a group.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&POST;</td>
                         <td colspan="4">/management/groups/<parameter>id</parameter>/accounts/<parameter>id</parameter></td>
-                        <td colspan="4">View all groups for the account.</td>
+                        <td colspan="4">Add this account to the group.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
