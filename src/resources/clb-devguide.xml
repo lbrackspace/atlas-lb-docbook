@@ -41,7 +41,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-01-04</pubdate>
+        <pubdate>2012-01-16</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -54,6 +54,20 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-01-16</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated information in <xref
+                                   linkend="table_virtual_ip_types"/>
+                                to reflect that a default IPV6 is
+                                being provisioned when creating a load
+                                balancer.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-01-04</date>
                 <revdescription>
