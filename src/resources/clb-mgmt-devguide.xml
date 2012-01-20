@@ -1965,6 +1965,9 @@
                     </tr>
                 </tbody>
             </informaltable>
+            <para> The date parameters are required for this call.  The resulting list displays all usage
+                occurring between the starting and ending dates provided, up to 31 days apart.
+            </para>
             <example>
                 <title>List Zeus Usage Response: XML</title>
                 <programlisting language="xml">
