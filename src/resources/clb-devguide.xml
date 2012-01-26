@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-01-16</pubdate>
+        <pubdate>2012-01-27</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,16 +55,29 @@
             </para>
         </abstract>
         <revhistory>
-            <revision>
-                <date>2012-01-18</date>
+            <revision security="writeronly">
+                <date>2012-01-XX</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Updated ssltermination section in
-                                <xref
-                                        linkend="SSLTermination-d1e2479"/>
-                                reflecting new feature ssl termination.
-                            </para>
+                                   <xref
+                                   linkend="SSLTermination-d1e2479"/>
+                                reflecting new feature ssl
+                                termination. </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2012-01-27</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Deleted section 2.5.1 "Passive
+                                Health Monitor (No Longer Available)"
+                                since the passive health monitor has
+                                been disabled.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -155,16 +168,12 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Updated<xref
-                                    linkend="Passive_Health_Monitor-d1e279"
-                                    />.
-                            </para>
+                            <para>Updated section 2.5.1 "Passive
+                                Health Monitor (No Longer Available)". </para>
                         </listitem>
                         <listitem>
-                            <para>Added<xref
-                                    linkend="Date_Time_Format"
-                                    />.
-                            </para>
+                            <para>Added <xref
+                                   linkend="Date_Time_Format"/>. </para>
                         </listitem>
                         <listitem>
                             <para>Updated
@@ -432,24 +441,6 @@
                 The load balancing service currently supports active
                 health monitoring.
             </para>
-            <section xml:id="Passive_Health_Monitor-d1e279">
-                <title>Passive Health Monitor (No Longer
-                    Available)
-                </title>
-                <para>Originally, by default, all load balancing
-                    configurations utilized a passive health monitor.
-                    This default behavior has now been disabled for
-                    newly provisioned load balancers and will no
-                    longer be available. Existing load balancers that
-                    were provisioned by default with passive health
-                    monitoring will continue to function as they did
-                    before the change, however future releases will
-                    disable passive health monitoring in a phased
-                    manner. Existing load balancers with active health
-                    monitoring enabled will continue to function as
-                    before.
-                </para>
-            </section>
             <section xml:id="Active_Health_Monitor-d1e336">
                 <title>Active Health Monitor</title>
                 <para>Active health monitoring is a technique that
@@ -3992,7 +3983,7 @@
                 </example>
             </section>
         </section>
-        <section xml:id="SSLTermination-d1e2479">
+        <section xml:id="SSLTermination-d1e2479" security="writeronly">
             <title>SSL Termination</title>
             <para>SSL Termination is provided by LBaaS to allow the user to terminate ssl traffic at the load balancer
                 layer.
@@ -4045,12 +4036,14 @@
                         <td>Remove SSL Termination.</td>
                     </tr>
                 </tbody>
-                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
             </informaltable>
+            <simpara>Error Response Code(s): loadbalancerFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable
+                    (<errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
 
             <itemizedlist spacing="compact">
                 <listitem>
@@ -4121,14 +4114,20 @@
             <para>
                 This operation does not require a request body.
             </para>
-            <example>
+            <example security="writeronly">
                 <title>Delete Load Balancing SSL Termination Request:</title>
+                <programlisting/>
+                <remark>Reviewer: need to add code example
+                    here.</remark>
             </example>
             <note>
-            <para>All requests to ssl termination in the json format requires the key/certificates to be in 'proper' json format.
-                    meaning all raw line feed should be wrapped in a newline character, this can be done in java for ex. (string.replaceAll("/n", "//n").
-                    please refer to above sections for working examples.
-            </para>
+            <para>All requests to ssl termination in the json format
+                    requires the key/certificates to be in 'proper'
+                    json format. meaning all raw line feed should be
+                    wrapped in a newline character, this can be done
+                    in java for ex. (string.replaceAll("/n", "//n").
+                    please refer to above sections for working
+                    examples. </para>
         </note>
         </section>
     </chapter>
