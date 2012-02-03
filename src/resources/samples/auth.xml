@@ -24,7 +24,7 @@
           region="ORD"
           publicURL="https://othercdn.clouddrive.com/v1/RackCloudFS_demo" />
     </service>
-    <service name="cloudServers">
+      <service name="cloudServersLegacy">
       <endpoint
           v1Default="true"
           publicURL="https://servers.api.rackspacecloud.com/v1.0/322781" />
