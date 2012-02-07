@@ -4223,7 +4223,7 @@
                     JSON format, meaning that all raw line feed
                     characters should be wrapped in a newline
                     character. This can be done in Java for example using
-                        <code>string.replaceAll("/n", "//n")</code>.
+                        <code>string.replaceAll("\n", "\\n")</code>.
                     Please refer to the  sections above for working, 'pre-formatted',
                     examples. </para>
                 <remark>Reviewer: I'm confused about the last sentence
