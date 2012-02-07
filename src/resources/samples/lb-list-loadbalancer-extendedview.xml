@@ -49,4 +49,5 @@
             maxRequestsPerSecond="100" />
     <created time="2010-06-01T12:00:00Z" />
     <updated time="2010-06-01T12:00:00Z" />
+    <sslTermination xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" enabled="true" securePort="500" secureTrafficOnly="false"/>
 </loadBalancer>

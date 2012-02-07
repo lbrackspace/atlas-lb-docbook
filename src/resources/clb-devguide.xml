@@ -4006,20 +4006,25 @@
                 </thead>
                 <tbody>
                     <tr align="left">
+                        <td>&GET; </td>
+                        <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ssltermination</td>
+                        <td>View the load balancers SSL termination configuration.</td>
+                    </tr>
+                    <tr align="left">
                         <td>&PUT; </td>
                         <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ssltermination</td>
-                        <td>Update/configure SSL Termination.</td>
+                        <td>Update/configure SSL termination.</td>
                     </tr>
                     <tr align="left">
                         <td>&DELETE; </td>
                         <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ssltermination</td>
-                        <td>Remove SSL Termination.</td>
+                        <td>Remove SSL termination.</td>
                     </tr>
                 </tbody>
             </informaltable>
             <para> Normal Response Code(s):
-                    <returnvalue>200</returnvalue>
-                <remark>Reviewer: is 200 the correct normal response
+                    <returnvalue>202</returnvalue>
+                <remark>Reviewer: is 202 the correct normal response
                     code?</remark></para>
             <simpara>Error Response Code(s): loadbalancerFault
                     (<errorcode>400</errorcode>,
@@ -4134,13 +4139,7 @@
                 make an enable request, and the server is up and ready
                 to accept secure traffic. </para>
             <para>The <code>secureTrafficOnly</code> attribute allows
-                the user to disable the non-secure load balancer,
-                allowing only secure traffic to reach the backend.
-                    <remark>Reviewer: can you explain what is meant by
-                    "backend" in the previous sentence. Can we use
-                    other words to describe this? I don't think
-                    "backend" will be a known term for many
-                    users.</remark>
+                the user to disable the non-secure traffic through the load balancer.
                 <code>enabled</code>, <code>secureTrafficOnly</code>,
                 and <code>securePort</code> are configurable fields
                 that update only the SSL termination attributes. If
@@ -4152,12 +4151,12 @@
             <para>If a certificate/key combination is supplied, the
                 entire configuration will be overwritten with exactly
                 what is specified in the combination. For example,
-                suppose the user first supplies a full configuration,
+                suppose the user first supplies a full configuration(all attributes and elements),
                 including intermediate certificates. <remark>Reviewer:
                     can you explain what is meant by a "full
                     configuration"? Does that mean a configuration
                     that spacifies all of the attributes in the table
-                    above?</remark>Later the user decides to update
+                    above?////correct, all attributes and elements means a 'full' configuration</remark>Later the user decides to update
                 SSL termination with only a certificate and key, with
                 no intermediate certificate. In this case, the new
                 configuration will contain only the certificate and
@@ -4171,6 +4170,18 @@
                 termination load balancer object. For example,
                 changing the connection logging element will affect
                 logging for the secure load balancer. </para>
+            <example>
+                    <title>View Load Balancing SSL Termination Configuration Response: XML</title>
+                    <programlisting language="xml">
+                        <xi:include href="samples/lb-ssl-termination-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>View Load Balancing SSL Termination Configuration Response: JSON</title>
+                    <programlisting language="json">
+                        <xi:include href="samples/lb-ssl-termination-response.json" parse="text"/>
+                    </programlisting>
+                </example>
              <example>
                     <title>Update Load Balancing SSL Termination Full Certification Request: XML</title>
                     <programlisting language="xml">
@@ -4195,14 +4206,16 @@
                     <xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
                 </programlisting>
             </example>
-            <para>
-                This operation does not require a request body.
-            </para>
+
             <example security="writeronly">
                 <title>Delete Load Balancing SSL Termination Request:</title>
                 <programlisting/>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para><title> There is no request body for DELETE requests</title></para>
                 <remark>Reviewer: can you please add the code example
-                    for Delete here</remark>
+                    for Delete here//////There is no request body/code sample for delete</remark>
             </example>
             <note>
             <para>All requests to SSL termination in the JSON format
