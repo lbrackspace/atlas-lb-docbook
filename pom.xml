@@ -56,6 +56,7 @@
                             <xincludeSupported>true</xincludeSupported>
                             <sourceDirectory>src/resources</sourceDirectory>
                             <highlightSource>false</highlightSource>
+                            <security>reviewer</security>
                             <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
                             <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
 			    <pdfUrl>../../../clb-devguide-latest.pdf</pdfUrl>
