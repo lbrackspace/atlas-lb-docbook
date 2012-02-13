@@ -55,7 +55,7 @@
             </para>
         </abstract>
         <revhistory>
-            <revision security="reviewer">
+            <revision>
                 <date>2012-02-16</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
@@ -4048,7 +4048,7 @@
                 </example>
             </section>
         </section>
-        <section xml:id="SSLTermination-d1e2479" security="reviewer">
+        <section xml:id="SSLTermination-d1e2479">
             <title>SSL Termination</title>
             <informaltable rules="all">
                 <thead>
@@ -4274,7 +4274,7 @@
                     securePort combination must be provided instead
                     of, or in addition to, the optional/editable
                     attributes. </para>
-                <table rules="all" security="reviewer">
+                <table rules="all">
                     <?dbfo keep-together="always"?>
                     <caption> Optional SSL Attributes</caption>
                     <thead>
