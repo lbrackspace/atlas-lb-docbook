@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-02-XX</pubdate>
+        <pubdate>2012-02-16</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -56,26 +56,26 @@
         </abstract>
         <revhistory>
             <revision security="reviewer">
-                <date>2012-02-XX</date>
+                <date>2012-02-16</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Updated  <xref
+                            <para>Updated examples for <xref
                                    linkend="Authenticate-d1e171"/> to
-                                change the name of the "cloudServers"
-                                service to
-                                "cloudServersLegacy".</para>
+                                show the latest service
+                                catalog.</para>
                         </listitem>
                         <listitem>
                             <para>Updated <xref
                                    linkend="Determining_Limits_Programmatically-d1e1039"
-                                /> to fix linits and absolutelimits
+                                /> to fix limits and absolutelimits
                                 API calls. </para>
                         </listitem>
                         <listitem>
                             <para>Added <xref
                                    linkend="SSLTermination-d1e2479"/>
-                                for new SSL termination feature. </para>
+                                for new SSL termination feature.
+                            </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -678,6 +678,10 @@
                         <areaspec>
                             <area xml:id="auth.xml.token.expires"
                                   units="linecolumn" coords="6 18"/>
+                            <area xml:id="auth.xml.service.catalog"
+                                units="linecolumn" coords="7 18"/>
+                            <area xml:id="auth.xml.service.name"
+                                units="linecolumn" coords="8 19"/>
                             <area xml:id="auth.xml.sc.s.e.region"
                                   units="linecolumn" coords="10 18"/>
                             <area xml:id="auth.xml.sc.s.e.v1d"
@@ -686,8 +690,7 @@
                                   units="linecolumn" coords="12 21"/>
                             <area xml:id="auth.xml.sc.s.e.iu"
                                   units="linecolumn" coords="13 23"/>
-                            <area xml:id="auth.xml.sc.s.e.nr"
-                                  units="linecolumn" coords="31 21"/>
+                            
                         </areaspec>
                         <programlisting language="xml">
                             <xi:include href="samples/auth.xml" parse="text"/>
@@ -700,6 +703,10 @@
                         <areaspec>
                             <area xml:id="auth.json.token.expires"
                                   units="linecolumn" coords="6 23"/>
+                            <area xml:id="auth.json.service.catalog"
+                                units="linecolumn" coords="8 25"/>
+                            <area xml:id="auth.json.service.name"
+                                units="linecolumn" coords="9 25"/>
                             <area xml:id="auth.json.sc.s.e.region"
                                   units="linecolumn" coords="11 30"/>
                             <area xml:id="auth.json.sc.s.e.v1d"
@@ -708,8 +715,7 @@
                                   units="linecolumn" coords="13 33"/>
                             <area xml:id="auth.json.sc.s.e.iu"
                                   units="linecolumn" coords="14 35"/>
-                            <area xml:id="auth.json.sc.s.e.nr"
-                                  units="linecolumn" coords="36 33"/>
+                            
                         </areaspec>
                         <programlisting language="javascript">
                             <xi:include href="samples/auth.json" parse="text"/>
@@ -718,29 +724,49 @@
                 </example>
                 <calloutlist>
                     <callout arearefs="auth.xml.token.expires">
-                        <para>Tokens are valid for a finite duration.
-                            The
-                            <code>expires</code>
-                            attribute denotes
+                        <para>This token can be presented to a service
+                            as evidence of authentication. Tokens are
+                            valid for a finite duration.</para> 
+                        <para>The
+                                <code>expires</code> attribute denotes
                             the time after which the token will
                             automatically become invalid. A token may
                             be manually revoked before the time
-                            identified by the
-                            <code>expires</code>
-                            attribute;
-                            <code>expires</code>
-                            predicts a
+                            identified by the <code>expires</code>
+                            attribute; <code>expires</code> predicts a
                             token's maximum possible lifespan but does
                             not guarantee that it will reach that
                             lifespan. Clients are encouraged to cache
-                            a token until it expires.
-                        </para>
+                            a token until it expires. </para>
                     </callout>
+                        <callout arearefs="auth.xml.service.catalog">
+                            <para>The service catalog lists the services 
+                            this user can access. In this example, the user can 
+                            access two compute services (Cloud Servers OpenStack
+                            and Cloud Servers) and two object storage services 
+                            (Cloud Files Content Distribution Network (CDN), 
+                            and Cloud Files). The catalog listing for each 
+                            service provides at least one endpoint URL for 
+                            that service. Other information, such as regions 
+                            and versions and tenants, is provided if it's 
+                            relevant to this user's access to this service.
+                            </para>
+                        </callout>
+                        <callout arearefs="auth.xml.service.name">
+                            <para>The service name attribute identifies 
+                            each unique service in the catalog. Once a 
+                            service is created, its name does not change.
+                            </para>
+                        </callout>
                     <callout arearefs="auth.xml.sc.s.e.region">
                         <para>A service may expose endpoints in
                             different regions. Regional endpoints
                             allow clients to provision resources in a
-                            manner that provides high availability.
+                            manner that provides high availability.</para>
+                            
+                            <para>Some services are not region-specific. 
+                            These services supply a single non-regional 
+                            endpoint and do not provide access to internal URLs.
                         </para>
                     </callout>
                     <callout arearefs="auth.xml.sc.s.e.v1d">
@@ -760,9 +786,7 @@
                             endpoints and therefore only returns one
                             endpoint per service. Resources stored in
                             endpoints where
-                            <code>v1Default</code>
-                            is
-                            <code>false</code>
+                            <code>v1Default</code> is <code>false</code>
                             will not be seen by
                             Auth 1.0 clients.
                         </para>
@@ -777,14 +801,7 @@
                             within the same region. Access to an
                             internal URL is free of charge.
                         </para>
-                    </callout>
-                    <callout arearefs="auth.xml.sc.s.e.nr">
-                        <para>Some services are not region-specific.
-                            These services supply a single
-                            non-regional endpoint and do not provide
-                            access to internal URLs.
-                        </para>
-                    </callout>
+                    </callout>                 
                 </calloutlist>
                 <para>Authentication tokens are typically valid for 24
                     hours. Applications should be designed to
@@ -792,8 +809,43 @@
                     (Unauthorized) response from a service
                     endpoint.
                 </para>
+                <important>
+                    <para>If you are programmatically parsing an
+                        authentication response, please be aware that
+                        service names are stable for the life of the
+                        particular service and can be used as keys.
+                        You should also be aware that a user's service
+                        catalog can include multiple uniquely-named
+                        services which perform similar functions. For
+                        example, cloudServersOpenStack is the
+                        OpenStack version of compute whereas
+                        cloudServers is the legacy version of compute;
+                        the same user can have access to both
+                        services. In Auth 2.0, the service type
+                        attribute can be used as a key by which to
+                        recognize similar services; see the tip
+                        below.</para>
+                </important>
+                <tip>
+                    <para>Beginning with Auth 2.0, the service catalog
+                        includes a service type attribute to identify
+                        services that perform similar functions but
+                        have different names; for example,
+                            <code>type="compute"</code> identifies
+                        compute services such as cloudServers and
+                        cloudServersOpenStack. Some developers have
+                        found the service type attribute to be useful
+                        in parsing the service catalog. For Auth 2.0
+                        (also known as the Cloud Identity Service),
+                        you can see the service type attribute in the
+                        "Authentication Response with Headers" sample
+                        in the Cloud Identity Client Developer Guide
+                        at <link
+                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html"
+                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html</link>.</para>
+                </tip>
                 <note>
-                    <para>Currently, service endpoints are not
+                    <para>Currently, load balancing service endpoints are not
                         published in the Auth response with the
                         account number, which is a required element of
                         the service endpoints. Refer to the next
@@ -1943,16 +1995,18 @@
                         <xi:include href="samples/lb-create-required-response.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para>To conserve IPv4 address space, Rackspace highly recommends sharing Virtual IPs
-                    between your load balancers. If you have at least one load balancer, you may
-                    create subsequent load balancers that share a single virtual IP by issuing a
-                    &POST; and supplying a virtual IP ID instead of a type. Additionally, this
-                    feature is highly desirable if you wish to load balance both an unsecured and
-                    secure protocol using one IP or DNS name. For example, this method makes it
-                    possible to use the same load balancing configuration to support
-                    <code>HTTP</code>
-                    and<code>HTTPS</code>).
-                </para>
+                <para>To conserve IPv4 address space, Rackspace highly
+                    recommends sharing Virtual IPs between your load
+                    balancers. If you have at least one load balancer,
+                    you may create subsequent load balancers that
+                    share a single virtual IP by issuing a &POST; and
+                    supplying a virtual IP ID instead of a type.
+                    Additionally, this feature is highly desirable if
+                    you wish to load balance both an unsecured and
+                    secure protocol using one IP or DNS name. For
+                    example, this method makes it possible to use the
+                    same load balancing configuration to support
+                        <code>HTTP</code> and<code>HTTPS</code>. </para>
                 <note>
                     <para>
                         Load balancers sharing a virtual IP
