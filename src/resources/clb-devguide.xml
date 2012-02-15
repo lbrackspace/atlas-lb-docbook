@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-02-16</pubdate>
+        <pubdate>2012-02-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -56,7 +56,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-02-16</date>
+                <date>2012-02-17</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -633,7 +633,7 @@
                                   units="linecolumn" coords="6 18"/>
                         </areaspec>
                         <programlisting language="xml">
-                            <xi:include href="samples/credentials.xml" parse="text"/>
+<xi:include href="samples/credentials.xml" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -647,7 +647,7 @@
                                   units="linecolumn" coords="5 15"/>
                         </areaspec>
                         <programlisting language="javascript">
-                            <xi:include href="samples/credentials.json" parse="text"/>
+<xi:include href="samples/credentials.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -693,7 +693,7 @@
                             
                         </areaspec>
                         <programlisting language="xml">
-                            <xi:include href="samples/auth.xml" parse="text"/>
+<xi:include href="samples/auth.xml" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -718,7 +718,7 @@
                             
                         </areaspec>
                         <programlisting language="javascript">
-                            <xi:include href="samples/auth.json" parse="text"/>
+<xi:include href="samples/auth.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -1305,26 +1305,26 @@
                     <title>List Rate Limits Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-limits-response.xml" parse="text"/>
+<xi:include href="samples/lb-limits-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Rate Limits Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-limits-response.json" parse="text"/>
+<xi:include href="samples/lb-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Absolute Limits Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
+<xi:include href="samples/lb-absolute-limits-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Absolute Limits Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
+<xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -1372,7 +1372,7 @@
                     <title>Fault Response, badRequest</title>
                     <?dbfo keep-together="always"?>
                     <literallayout class="monospaced">
-                        <![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
+<![CDATA[<badRequest xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" code="400">
     <message>Validation fault</message>
     <details>The object is not valid</details>
         <validationErrors>
@@ -1396,7 +1396,7 @@
                 <example>
                     <title>Fault Response, immutableEntity</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<immutableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The object at the specified URI is immutable and can not be overwritten.</message>
 </immutableEntity>]]>
                     </literallayout>
@@ -1409,7 +1409,7 @@
                 <example>
                     <title>Fault Response, itemNotFound</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<itemNotFound code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Object not Found</message>
 </itemNotFound>]]>
                     </literallayout>
@@ -1428,7 +1428,7 @@
                 <example>
                     <title>Fault Response, loadBalancerFault</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<loadBalancerFault code="401" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Invalid authentication token. Please renew</message>
 </loadBalancerFault>]]>
                     </literallayout>
@@ -1446,7 +1446,7 @@
                 <example>
                     <title>Fault Response, outOfVirtualIps</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<outOfVirtualIps code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>
         Out of virtual IPs. Please contact support so they can allocate more virtual IPs.
     </message>
@@ -1464,7 +1464,7 @@
                 <example>
                     <title>Fault Response, overLimit</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<overLimit code="413" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>Your account is currently over the limit so your request could not be processed.</message>
 </overLimit>]]>
                     </literallayout>
@@ -1484,7 +1484,7 @@
                     <title>Fault Response, serviceUnavailable</title>
                     <?dbfo keep-together="always"?>
                     <literallayout class="monospaced">
-                        <![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<serviceUnavailable code="500" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The Load balancing service is currently not available</message>
 </serviceUnavailable>]]>
                     </literallayout>
@@ -1501,7 +1501,7 @@
                     <title>Fault Response, unauthorized</title>
                     <?dbfo keep-together="always"?>
                     <literallayout class="monospaced">
-                        <![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<unauthorized code="404" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>You are not authorized to execute this operation.</message>
 </unauthorized>]]>
                     </literallayout>
@@ -1518,7 +1518,7 @@
                 <example>
                     <title>Fault Response, unprocessableEntity</title>
                     <literallayout class="monospaced">
-                        <![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<![CDATA[<unprocessableEntity code="422" xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     <message>The Object at the specified URI is unprocessable.</message>
 </unprocessableEntity>]]>
                     </literallayout>
@@ -1672,13 +1672,13 @@
                 <example>
                     <title>List Load Balancers Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Load Balancers Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-response.json" parse="text"/>
+<xi:include href="samples/lb-list-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
@@ -1686,7 +1686,7 @@
                         XML
                     </title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-loadbalancer.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para>A
@@ -1728,7 +1728,7 @@
                     </title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-response-with-node.xml" parse="text"/>
+<xi:include href="samples/lb-list-response-with-node.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
@@ -1736,7 +1736,7 @@
                         JSON
                     </title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-response-with-node.json" parse="text"/>
+<xi:include href="samples/lb-list-response-with-node.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -1810,19 +1810,19 @@
                 <example>
                     <title>List Load Balancer Details Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-details-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-details-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Load Balancers Details Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-details-response.json" parse="text"/>
+<xi:include href="samples/lb-list-details-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Load Balancer Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-loadbalancer-id.xml" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -1960,13 +1960,13 @@
                 <example>
                     <title>Create Load Balancer (Required Attributes) Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-create-required-request.xml" parse="text"/>
+<xi:include href="samples/lb-create-required-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes) Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-create-required-request.json" parse="text"/>
+<xi:include href="samples/lb-create-required-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <para>Notice in the following examples that API users
@@ -1986,13 +1986,13 @@
                     <title>Create Load Balancer (Required Attributes) Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-create-required-response.xml" parse="text"/>
+<xi:include href="samples/lb-create-required-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes) Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-create-required-response.json" parse="text"/>
+<xi:include href="samples/lb-create-required-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <para>To conserve IPv4 address space, Rackspace highly
@@ -2017,20 +2017,20 @@
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-create-required-sharedip-request.xml" parse="text"/>
+<xi:include href="samples/lb-create-required-sharedip-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
+<xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-create-required-sharedip-response.xml" parse="text"/>
+<xi:include href="samples/lb-create-required-sharedip-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
@@ -2038,7 +2038,7 @@
                         JSON
                     </title>
                     <programlisting>
-                        <xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
+<xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -2120,14 +2120,14 @@
                 <example>
                     <title>Update Load Balancer Attributes Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-lb-attributes-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Load Balancer Attributes Request: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
+<xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <para>All load balancers also have a status attribute to signify the current
@@ -2369,37 +2369,37 @@
                 <example>
                     <title>List Error Page Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-error-page.xml" parse="text"/>
+<xi:include href="samples/lb-list-error-page.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Error Page Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-error-page.json" parse="text"/>
+<xi:include href="samples/lb-list-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Error Page Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-add-error-page.xml" parse="text"/>
+<xi:include href="samples/lb-add-error-page.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Error Page Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-add-error-page.json" parse="text"/>
+<xi:include href="samples/lb-add-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Error Page Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-error-page.xml" parse="text"/>
+ <xi:include href="samples/lb-list-error-page.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Error Page Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-error-page.json" parse="text"/>
+<xi:include href="samples/lb-list-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -2507,7 +2507,7 @@
             <example>
                 <title>List Load Balancer stats Response: XML</title>
                 <programlisting language="xml">
-                    <xi:include href="samples/lb-stats.xml" parse="text"/>
+<xi:include href="samples/lb-stats.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -2515,7 +2515,7 @@
                     JSON
                 </title>
                 <programlisting language="javascript">
-                    <xi:include href="samples/lb-stats.json" parse="text"/>
+  <xi:include href="samples/lb-stats.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
@@ -2639,7 +2639,7 @@
                     <title>List Node Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
+  <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2653,13 +2653,13 @@
                     <title>List Node Response: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-node-response.json" parse="text"/>
+<xi:include href="samples/lb-list-node-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Node Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2672,7 +2672,7 @@
                 <example>
                     <title>List Nodes Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2685,13 +2685,13 @@
                 <example>
                     <title>List Nodes Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-nodes-response.json" parse="text"/>
+<xi:include href="samples/lb-list-nodes-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Nodes Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-nodes.xml" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -2746,7 +2746,7 @@
                     <title>Add Nodes Request: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
+<xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2759,7 +2759,7 @@
                 <example>
                     <title>Add Nodes Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
+<xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2772,7 +2772,7 @@
                 <example>
                     <title>Add Nodes Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
+<xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2786,7 +2786,7 @@
                     <title>Add Nodes Response: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
+<xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -2882,7 +2882,7 @@
                 <example>
                     <title>Update Node Condition Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <para security="writeronly">Writer: need to update the
@@ -2895,7 +2895,7 @@
                 <example>
                     <title>Update Node Condition Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-update-node-request.json" parse="text"/>
+<xi:include href="samples/lb-update-node-request.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3024,20 +3024,20 @@
                 <example>
                     <title>List Virtual IPs Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-vips-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Virtual IPs Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-vips-response.json" parse="text"/>
+<xi:include href="samples/lb-list-vips-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Virtual IPs Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-vips.xml" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3074,27 +3074,27 @@
                 <example>
                     <title>Add Virtual IP Version 6 Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-add-vip-v6-request.xml" parse="text"/>
+<xi:include href="samples/lb-add-vip-v6-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Virtual IP Version 6 Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-add-vip-v6-request.json" parse="text"/>
+<xi:include href="samples/lb-add-vip-v6-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Virtual IP Version 6 Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-add-vip-v6-response.xml" parse="text"/>
+<xi:include href="samples/lb-add-vip-v6-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Add Virtual IP Version 6 Response: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-add-vip-v6-response.json" parse="text"/>
+<xi:include href="samples/lb-add-vip-v6-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3252,14 +3252,14 @@
                 <example>
                     <title>Report Load Balancer Usage Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
+<xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Report Load Balancer Usage Response: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
+<xi:include href="samples/lb-report-usage-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3360,31 +3360,31 @@
                     <?dbfo keep-together="always"?>
                     <title>List Access List Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
+<xi:include href="samples/lb-retrieve-accesslist-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Access List Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
+<xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Access List Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-accesslist.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Access List Attributes Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-update-accesslist-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-accesslist-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Access List Attributes Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
+<xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3505,32 +3505,32 @@
                         <title>Monitor Connections Request: XML</title>
                         <?dbfo keep-together="always"?>
                         <programlisting language="xml">
-                            <xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
+<xi:include href="samples/lb-monitor-connect-request.xml" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor Connections Request: JSON</title>
                         <programlisting language="javascript">
-                            <xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
+ <xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor Connections Response: XML</title>
                         <programlisting language="xml">
-                            <xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
+<xi:include href="samples/lb-monitor-connect-response.xml" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor Connections Response: JSON</title>
                         <?dbfo keep-together="always"?>
                         <programlisting language="javascript">
-                            <xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
+  <xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>List Atom Health Monitor Response: XML</title>
                         <programlisting language="xml">
-                            <xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-healthmonitor.xml" parse="text"/>
                         </programlisting>
                     </example>
                 </section>
@@ -3583,26 +3583,26 @@
                     <example>
                         <title>Monitor HTTP Response: XML</title>
                         <programlisting language="xml">
-                            <xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
+<xi:include href="samples/lb-monitor-http-response.xml" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor HTTP Response: JSON</title>
                         <programlisting language="javascript">
-                            <xi:include href="samples/lb-monitor-http-response.json" parse="text"/>
+<xi:include href="samples/lb-monitor-http-response.json" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor HTTPS Response: XML</title>
                         <?dbfo keep-together="always"?>
                         <programlisting language="xml">
-                            <xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
+<xi:include href="samples/lb-monitor-https-response.xml" parse="text"/>
                         </programlisting>
                     </example>
                     <example>
                         <title>Monitor HTTPS Response: JSON</title>
                         <programlisting language="javascript">
-                            <xi:include href="samples/lb-monitor-https-response.json" parse="text"/>
+<xi:include href="samples/lb-monitor-https-response.json" parse="text"/>
                         </programlisting>
                     </example>
                 </section>
@@ -3678,33 +3678,33 @@
                 <example>
                     <title>List Session Persistence Configuration Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-persistence-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-persistence-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Session Persistence Configuration Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
+<xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Session Persistence Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-sessionpersistence.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>Set Session Persistence Type Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-set-persistence-request.xml" parse="text"/>
+<xi:include href="samples/lb-set-persistence-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>Set Session Persistence Type Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
+<xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3755,25 +3755,25 @@
                 <example>
                     <title>List Connection Logging Configuration Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-logging-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-logging-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Connection Logging Configuration Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-logging-response.json" parse="text"/>
+<xi:include href="samples/lb-list-logging-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Enable Connection Logging Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-enable-logging-request.xml" parse="text"/>
+<xi:include href="samples/lb-enable-logging-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Enable Connection Logging Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-enable-logging-request.json" parse="text"/>
+<xi:include href="samples/lb-enable-logging-request.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3864,31 +3864,31 @@
                     <title>List Connection Throttling Configuration Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-throttling-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-throttling-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Connection Throttling Configuration Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-throttling-response.json" parse="text"/>
+<xi:include href="samples/lb-list-throttling-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Connection Throttling Configuration Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-update-throttling-request.xml" parse="text"/>
+<xi:include href="samples/lb-update-throttling-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Connection Throttling Configuration Request: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
+<xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Atom Connection Throttling Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text"/>
+<xi:include href="samples/lb-atom-feed-by-connectionthrottle.xml" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -3934,13 +3934,13 @@
                 <example>
                     <title>List Load Balancing Protocols Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-protocols-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-protocols-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Load Balancing Protocols Response: JSON</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
+<xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -4037,13 +4037,13 @@
                 <example>
                     <title>List Load Balancing Algorithms Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-list-algorithms-response.xml" parse="text"/>
+<xi:include href="samples/lb-list-algorithms-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>List Load Balancing Algorithms Response: JSON</title>
                     <programlisting language="javascript">
-                        <xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
+<xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
                     </programlisting>
                 </example>
             </section>
@@ -4358,14 +4358,14 @@
                     <title>View Load Balancing SSL Termination
                         Configuration Response: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-ssl-termination-response.xml" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>View Load Balancing SSL Termination
                         Configuration Response: JSON</title>
                     <programlisting language="json">
-                        <xi:include href="samples/lb-ssl-termination-response.json" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <note>
@@ -4390,14 +4390,14 @@
                     <title>Update Load Balancing SSL Termination Full
                         Certification Request: XML</title>
                     <programlisting language="xml">
-                        <xi:include href="samples/lb-ssl-termination-request.xml" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
                     <title>Update Load Balancing SSL Termination Full
                         Certification Request: JSON</title>
                     <programlisting language="json">
-                        <xi:include href="samples/lb-ssl-termination-request.json" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-request.json" parse="text"/>
                     </programlisting>
                 </example>
                 <para>The examples to update the load balancers SSL
@@ -4407,14 +4407,14 @@
                     <title>Update Load Balancing SSL Termination
                         Attribute Request: XML</title>
                     <programlisting language="xml">
-                    <xi:include href="samples/lb-ssl-termination-request-attrs.xml" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-request-attrs.xml" parse="text"/>
                 </programlisting>
                 </example>
                 <example>
                     <title>Update Load Balancing SSL Termination
                         Attribute Request: JSON</title>
                     <programlisting language="json">
-                    <xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
+<xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
                 </programlisting>
                 </example>
                 <para> This operation does not require a request body. </para>
