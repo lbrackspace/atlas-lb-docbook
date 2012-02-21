@@ -845,6 +845,18 @@
                 </programlisting>
             </example>
             <example>
+                <title>Update Rate Limit Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-update-ratelimit-response.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Update Rate Limit Request: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
                 <title>Update Rate Limit Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-update-ratelimit-response.xml" parse="text"/>
