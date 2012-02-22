@@ -8,6 +8,11 @@
         <!ENTITY BATCH_DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
         <!ENTITY ndash "&#8211;">
         <!ENTITY mdash "&#8212;">
+        
+        <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
+        <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v1.1/">
+        <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v1.1/">
+        
         ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -59,6 +64,13 @@
                 <date>2012-02-17</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Updated endpoints for authentication
+                                for <xref linkend="request"/>.</para>
+                        </listitem>
                         <listitem>
                             <para>Updated Auth Response examples for
                                    <xref linkend="Authenticate-d1e171"
@@ -549,15 +561,15 @@
                     <listitem>
                         <para>US-based accounts authenticate through
                             <link
-                                    xlink:href="https://auth.api.rackspacecloud.com/v1.1"
-                                    >https://auth.api.rackspacecloud.com/v1.1</link>.
+                                xlink:href="&ENDPOINT-US;"
+                                >&ENDPOINT-US;</link>.
                         </para>
                     </listitem>
                     <listitem>
                         <para>UK-based accounts authenticate through
                             <link
-                                    xlink:href="https://lon.auth.api.rackspacecloud.com/v1.1"
-                                    >https://lon.auth.api.rackspacecloud.com/v1.1</link>.
+                                xlink:href="&ENDPOINT-UK;"
+                                >&ENDPOINT-UK;</link>.
                         </para>
                     </listitem>
                 </itemizedlist>
@@ -568,18 +580,16 @@
                 </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>If your account was created via<link
+                        <para>If your account was created via <link
                                 xlink:href="http://www.rackspacecloud.com"
                                 >http://www.rackspacecloud.com</link>,
-                            it is a US-based account.
-                        </para>
+                            it is a US-based account. </para>
                     </listitem>
                     <listitem>
-                        <para>If your account was created via<link
+                        <para>If your account was created via <link
                                 xlink:href="http:/www.rackspace.co.uk"
                                 >http:/www.rackspace.co.uk</link>, it
-                            is a UK-based account.
-                        </para>
+                            is a UK-based account. </para>
                     </listitem>
                 </itemizedlist>
                 <para>If you are unsure how your account was created,
