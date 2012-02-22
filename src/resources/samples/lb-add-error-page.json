@@ -1,6 +1,3 @@
-{"errorpage":
-    {"content":"<![CDATA[
-               <html> DEFAULT ERROR PAGE
-               </html>
-       ]]>"}
-}
+{"errorpage": 
+{"content":"\n<html>\n    DEFAULT ERROR PAGE\n</html>\n"}
+} 
