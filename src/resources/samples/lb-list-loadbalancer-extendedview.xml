@@ -27,13 +27,15 @@
                 ip="10.1.1.1"
                 port="80"
                 condition="ENABLED"
-                status="ONLINE" />
+                status="ONLINE"
+                type="PRIMARY"/>
         <node
                 nodeId="1411"
                 ip="10.1.1.2"
                 port="80"
                 condition="ENABLED"
-                status="ONLINE" />
+                status="ONLINE"
+                type="SECONDARY"/>
     </nodes>
     <sessionPersistence persistenceType="HTTP_COOKIE"/>
     <connectionLimits
