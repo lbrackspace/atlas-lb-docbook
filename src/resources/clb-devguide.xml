@@ -3040,7 +3040,7 @@
                 </example>
             </section>
         </section>
-            <section xml:id="AllowedDomain-d2f002e">
+            <section xml:id="AllowedDomains-d2f002e">
             <title>Allowed Domains</title>
             <section xml:id="List-allowed-domains-d2f002e">
                 <title>List Allowed Domains</title>
@@ -3095,6 +3095,7 @@
                     </programlisting>
                 </example>
             </section>
+           </section>
 
             <section xml:id="Add_Virtual_IP_Version_6">
                 <title>Add Virtual IP Version 6</title>
@@ -3226,7 +3227,6 @@
                     </para>
                 </note>
             </section>
-        </section>
         <section xml:id="Usage_Reports-d1e3009">
             <title>Usage Reports</title>
             <section xml:id="List_Usage-d1e3014">

@@ -2113,10 +2113,10 @@
             </para>
         </section>
 
-        <section xml:id="AllowedDomain-d2f002e">
+        <section xml:id="AllowedDomains-d2f002eM">
             <title>Allowed Domains</title>
-            <section xml:id="Allowed-domains-d2f002e">
-                <title>List Allowed Domains</title>
+            <section xml:id="Allowed-domains-d2f002eM">
+                <title>Allowed Domains Operations</title>
                 <informaltable rules="all">
                     <thead>
                         <tr align="center">
@@ -2133,6 +2133,13 @@
                             <td colspan="3">View a list of allowed domains.</td>
                         </tr>
                         <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/alloweddomains?matches={<code>domainname</code>}</td>
+                            <td colspan="3">For testing purposes one can supply domain name to verify it is allowed by the system.
+                                            The return is a list of matched domain names that the FQDN was found in.</td>
+                        </tr>
+                        <tr align="left">
                             <td colspan="1">&PUT;
                             </td>
                             <td colspan="3">/alloweddomains</td>
@@ -2141,10 +2148,10 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/alloweddomains/?name={domainname}</td>
+                            <td colspan="3">/alloweddomains?name={<code>domainname</code>}</td>
                             <td colspan="3">Remove an item from the list of allowed domains.
                                             Query param of the domain name in question must be
-                                            supplied to removed.</td>
+                                            supplied to remove.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2168,6 +2175,10 @@
                 </para>
                 <note>
                     <para>Currently only RackSpace based domain names are supported.
+                    </para>
+                    <para>
+                        One FQDN(fully qualified domain name) may contain only one 'A' or 'AAAA' record as per limitation
+                        of the system.
                     </para>
                 </note>
                 <example>

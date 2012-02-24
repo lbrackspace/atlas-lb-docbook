@@ -1,7 +1,4 @@
 {
-    "allowedDomain":[
-        {
-                "name":"rackspace.com"
+    "name":"rackspace.com"
 
-        }
-    ]}
+}
