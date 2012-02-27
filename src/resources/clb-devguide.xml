@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-02-17</pubdate>
+        <pubdate>2012-03-02</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-02-17</date>
+                <date>2012-03-02</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem
@@ -4105,6 +4105,14 @@
                     SSL Termination can be applied to an HTTP load
                     balancer, but not to an HTTPS load balancer. </para>
             </note>
+            <warning>
+                <para>If SSL is enabled on a load balancer that is
+                    configured with nodes that are NOT in the same
+                    datacenter, then decrypted traffic will be sent in
+                    clear text over the public internet to the
+                    external node(s) and will no longer be
+                    secure.</para>
+            </warning>
             <para>A combination of the following required and optional
                 attributes can be used to create the desired SSL
                 configuration per account load balancer: </para>
