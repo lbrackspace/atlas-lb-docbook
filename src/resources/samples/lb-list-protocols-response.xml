@@ -10,4 +10,8 @@
     <protocol name="POP3S" port="995" />
     <protocol name="SMTP" port="25" />
     <protocol name="TCP" port="0" />
+    <protocol name="DNC_TCP" port="53" />
+    <protocol name="DNS_UDP" port="53" />
+    <protocol name="UDP" port="0" />
+    <protocol name="UDP_STREAM" port="0" />
 </protocols>
