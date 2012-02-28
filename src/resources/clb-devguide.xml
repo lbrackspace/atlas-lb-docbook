@@ -3243,6 +3243,13 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
+                            <td colspan="3">/loadbalancers/billable?startTime=2010-12-15&amp;endTime=2011-5-1
+                                &amp;offset=2&amp;limit=2</td>
+                            <td colspan="3">List billable load balancers for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
                             <td colspan="3">/loadbalancers/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
                             <td colspan="3">List account level usage.</td>
                         </tr>
@@ -3304,6 +3311,18 @@
                         activity.
                     </para>
                 </note>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-loadbalancers-billable-paged.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): JSON</title>
+                    <programlisting language="json">
+<xi:include href="samples/lb-loadbalancers-billable-paged.json" parse="text"/>
+                    </programlisting>
+                </example>
                 <example>
                     <title>Report Load Balancer Usage Response: XML</title>
                     <programlisting language="xml">
