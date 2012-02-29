@@ -83,11 +83,7 @@
                 have the following prerequisites: <itemizedlist
                     spacing="compact">
                     <listitem>
-                        <para>Rackspace Cloud Servers account</para>
-                    </listitem>
-                    <listitem>
-                        <para>Rackspace Cloud Load Balancer
-                            account</para>
+                        <para>Rackspace Cloud account</para>
                     </listitem>
                     <listitem>
                         <para>Rackspace Cloud username and password,
@@ -150,8 +146,12 @@
                     </inlinemediaobject></para>
             </step>
             <step>
-                <para> Create a second Cloud Server by following Steps
-                    1-4.</para>
+                <para> Create a second Cloud Server by performing
+                    Steps 1-4 again.</para>
+                <remark>Writer: is there any info that will be needed
+                    later for each of these Cloud Servers that we
+                    should ask the user to record at this
+                    time?</remark>
             </step>
         </procedure>
     </section>
@@ -256,9 +256,9 @@
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="your_username" 
              key="your_api_key"/>' \
-<option>-H "Content-Type: application/xml"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://auth.api.rackspacecloud.com/v1.1/auth</uri></screen>
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
             </example>
             <para>You can see that the lines that are part of the cURL
                 command syntax have all been escaped with a backslash
@@ -267,9 +267,9 @@
             <screen><command>curl</command> <option>-i</option> <option>-d</option> \
  
              key="your_api_key"/>' \
-<option>-H "Content-Type: application/xml"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://auth.api.rackspacecloud.com/v1.1/auth</uri></screen>
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
             <para>However the lines <emphasis>within</emphasis> the
                 xml portion of the message are
                     <emphasis>not</emphasis> escaped with a backslash
@@ -330,7 +330,7 @@
             </itemizedlist></para>
         <para>Notice that you authenticate using a special URL for
             Cloud authentication services
-                (<code>https://auth.api.rackspacecloud.com/v1.1/auth</code>),
+                (<code>https://identity.api.rackspacecloud.com/v1.1/auth</code>),
             as shown in the following Authenticate Request examples.
             Note that the <code>v1.1</code> component in the URL
             indicates that you are using version 1.1 of the Cloud Auth
@@ -343,9 +343,9 @@
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="your_username" 
              key="your_api_key"/>' \
-<option>-H "Content-Type: application/xml"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://auth.api.rackspacecloud.com/v1.1/auth</uri></screen>
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
         </example>
         <example>
             <title>cURL Authenticate Request: JSON</title>
@@ -356,8 +356,8 @@
         "username": "your_username",  
         "key": "your_api_key"}  
     }' \
-<option>-H "Content-Type: application/json"</option> \
-<uri>https://auth.api.rackspacecloud.com/v1.1/auth</uri></programlisting>
+<option>-H 'Content-Type: application/json'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></programlisting>
             
         </example>
         <example>
@@ -464,14 +464,11 @@
             <title>Notes</title>
             <itemizedlist spacing="compact">
                 <listitem>
-                    <para>The Cloud Server that you use in <xref
-                            linkend="Create_Cloud_Server"/> must be
-                        located in the same data center where your
-                        load balancer resides in order to use
-                        ServiceNet connectivity. So if you operate
-                        against the ORD service endpoint, your Cloud
-                        Server must reside in the ORD data
-                        center.</para>
+                    <para>All examples in this guide assume that you
+                        are operating against the DFW data center,
+                        however if you are using a different data
+                        center, be sure to use the associated endpoint
+                        from the table above instead.</para>
                 </listitem>
             </itemizedlist>
         </note>
@@ -482,40 +479,111 @@
             Refer to <xref linkend="Generating_Auth_Token"/>.</para>
         <para>When making a Cloud Load Balancers API call, place the
             endpoint at the beginning of the request URL, for example:
-                (<code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/</code>),
-            as you can see in the cURL List Flavors Details Request
-            examples in <xref linkend="List_Flavors"/>. Note that the
-                <code>v1.0</code> component in the URL indicates that
-            you are using version 1.0 of the Cloud Load Balancers
+                (<code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/</code>),
+            as you can see in the cURL Create Load Balancer Request
+            examples in <xref linkend="Create_Load_Balancer"/>. Note
+            that the <code>v1.0</code> component in the URL indicates
+            that you are using version 1.0 of the Cloud Load Balancers
             API.</para>
     </section>
-    <section xml:id="List_Flavors">
-        <title>List Flavors</title>
-        <para> A flavor is an available hardware configuration for a
-            database instance. Each flavor has a unique combination of
-            memory capacity and priority for CPU time.</para>
-        <para>You need to use the List Flavors Details API call
-                (<code>/flavors/detail</code>) to find the available
-            configurations for your database instance, and then decide
-            which size you need.</para>
+    <section xml:id="Create_Load_Balancer">
+        <title>Create a Load Balancer</title>
+        <para> Cloud Load Balancers make it easy to develop scalable,
+            high-availability configurations in the Cloud. By
+            leveraging Cloud Load Balancers, you will be provided with
+            a dedicated IP address that you can use to reach your
+            service.</para>
+        <para>You need to use the Create Load Balancer API call
+                (<code>/loadbalancers</code>) to create a load
+            balancer with the configuration that you specify.</para>
+        <para>In this case, assume that you want to create a load
+            balancer with the following configuration:</para>
+        <itemizedlist>
+            <listitem>
+                <para>Protocol = HTTP(80)</para>
+            </listitem>
+            <listitem>
+                <para>Virtual IP Type = Public</para>
+            </listitem>
+            <listitem>
+                <para>Nodes = &lt;enter the IP addresses that you
+                    recorded for your Cloud Servers created in <xref
+                        linkend="Create_Cloud_Server"/>:</para>
+            </listitem>
+            <listitem>
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <para><code>&lt;node
+                                address="</code>&lt;IP address of
+                                FIRST cloud server><code>" port="80"
+                                   condition="ENABLED"/></code></para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                <code>&lt;node address="</code>&lt;IP
+                                address of SECOND cloud server><code>"
+                                   port="80"
+                                   condition="ENABLED"/></code></para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </listitem>
+        </itemizedlist>
         <para>This operation does not require a request body.</para>
-        <para>The following examples show the cURL requests for List
-            Flavors Details:</para>
+        <para>The following examples show the cURL requests for Create
+            Load Balancer:</para>
         <example>
-            <title>cURL List Flavors Details Request: XML</title>
-            <programlisting><command>curl -i</command> \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/flavors/detail</uri></programlisting>
+            <title>cURL Create Load Balancer Request: XML</title>
+            <programlisting><command>curl -i -d</command> \
+'&lt;?xml version="1.0" ?> 
+&lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+    name="a-new-loadbalancer"
+    port="80"
+    protocol="HTTP">
+    &lt;virtualIps>
+        &lt;virtualIp type="PUBLIC"/>
+    &lt;/virtualIps>
+    &lt;nodes>
+        &lt;node address="&lt;IP address of FIRST cloud server>" port="80" condition="ENABLED"/>
+        &lt;node address="&lt;IP address of SECOND cloud server>" port="80" condition="ENABLED"/>
+    &lt;/nodes>
+&lt;/loadBalancer>' \
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers'</uri></programlisting>
         </example>
         <example>
-            <title>cURL List Flavors Details Request: JSON</title>
-            <programlisting><command>curl -i</command> \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Accept: application/json"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/flavors/detail</uri></programlisting>
+            <title>cURL Create Load Balancer Request: JSON</title>
+            <programlisting><command>curl -i -d</command> \
+'{
+    "loadBalancer": {
+        "name": "a-new-loadbalancer",
+        "port": 80,
+        "protocol": "HTTP",
+        "virtualIps": [
+            {
+                "type": "PUBLIC"
+            }
+         ],
+        "nodes": [
+            {
+                "address": "&lt;IP address of FIRST cloud server>",
+                "port": 80,
+                "condition": "ENABLED"
+            }
+            {
+                "address": "&lt;IP address of SECOND cloud server>",
+                "port": 80,
+                "condition": "ENABLED"
+            }
+        ]
+    }
+}' \
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/json'</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
@@ -537,7 +605,7 @@
             Flavors Details:</para>
         <example>
             <title>List Flavors Details Response: XML</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/db-flavors-detail-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-create-required-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <example>
             <title>List Flavors Details Response: JSON</title>
