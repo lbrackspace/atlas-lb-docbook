@@ -2726,9 +2726,6 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>
-                    This operation does not require a request body.
-                </para>
                 <para>When a node is added, it is assigned a unique identifier that can be used
                     for mutating operations such as changing the condition or removing it.
                     Every load balancer is dual-homed on both the public Internet and ServiceNet; as a
