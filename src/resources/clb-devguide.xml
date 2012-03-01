@@ -3243,6 +3243,13 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
+                            <td colspan="3">/loadbalancers/billable?startTime=2010-12-15&amp;endTime=2011-5-1
+                                &amp;offset=2&amp;limit=2</td>
+                            <td colspan="3">List billable load balancers for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
                             <td colspan="3">/loadbalancers/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
                             <td colspan="3">List account level usage.</td>
                         </tr>
@@ -3304,6 +3311,18 @@
                         activity.
                     </para>
                 </note>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-loadbalancers-billable-paged.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): JSON</title>
+                    <programlisting language="json">
+<xi:include href="samples/lb-loadbalancers-billable-paged.json" parse="text"/>
+                    </programlisting>
+                </example>
                 <example>
                     <title>Report Load Balancer Usage Response: XML</title>
                     <programlisting language="xml">
@@ -4492,5 +4511,233 @@
                     body.</para>
             </simplesect>
         </section>
+
+        <section xml:id="Metadata-d1e2173">
+            <title>Metadata</title>
+            <para>Metadata can be associated with each load balancer for the client's personal use.
+                It is defined using key-value pairs where the key and value consist of alphanumeric
+                characters. A key is unique per load balancer.
+            </para>
+
+            <section xml:id="List_Metadata-d1e2218">
+                <title>List Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
+                            </td>
+                            <td colspan="3">List metadata associated with the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">List details of a specific metadata item.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <example>
+                    <title>List Metadata Response: XML</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-meta-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Metadata Response: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-meta-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List All Metadata Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-metadata-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List All Metadata Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-metadata-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Add_Metadata-d1e2379">
+                <title>Add Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &POST;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
+                            </td>
+                            <td colspan="3">Add a new metadata item to the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>When a metadata item is added, it is assigned a unique identifier that can be used
+                    for mutating operations such as changing the value attribute or removing it.
+                </para>
+                <example>
+                    <title>Add Metadata Request: XML</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-metadata-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-metadata-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-metadata-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Response: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-metadata-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Modify_Metadata-d1e2503">
+                <title>Modify Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &PUT;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">Modify the configuration of a metadata item on the
+                                load balancer.
+                            </td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <note>
+                    <para>The meta data item's id and key are immutable attributes and cannot be modified
+                        with a &PUT; request. Supplying an unsupported attribute will result in a
+                        <returnvalue>400 (badRequest)</returnvalue>
+                        fault. A load balancer supports
+                        a maximum of 25 metadata items.
+                    </para>
+                </note>
+                <example>
+                    <title>Update Metadata Value Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-update-meta-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Update Metadata Value Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-update-meta-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Remove_Metadata-d1e2675">
+                <title>Remove Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &DELETE;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">Remove a metadata item from the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+            </section>
+        </section>
+
     </chapter>
 </book>
