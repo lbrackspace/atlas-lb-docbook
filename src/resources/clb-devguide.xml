@@ -915,13 +915,16 @@
                 </table>
             </para>
             <para>
-                <emphasis role="bold">If load balancing Cloud Servers</emphasis>, you can determine the
-                appropriate region to select by viewing your Cloud Servers list and creating a load
-                balancer within the same region as the data center in which your Cloud Server
-                resides. When your resources reside in the same region as your load balancer, devices are in close
-                proximity to each other and can take
-                advantage of ServiceNet connectivity for free data transfer between services.
-            </para>
+                <emphasis role="bold">If load balancing Cloud
+                    Servers</emphasis>, you can determine the
+                appropriate region to select by viewing your Cloud
+                Servers list and creating a load balancer within the
+                same region as the datacenter in which your Cloud
+                Server resides. When your resources reside in the same
+                region as your load balancer, devices are in close
+                proximity to each other and can take advantage of
+                ServiceNet connectivity for free data transfer between
+                services. </para>
             <para>
                 <emphasis role="bold">If load balancing external servers</emphasis>, you can determine the
                 appropriate region to select by choosing the region that is geographically as close to your

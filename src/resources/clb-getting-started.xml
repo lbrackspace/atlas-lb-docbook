@@ -56,7 +56,7 @@
     </info>
     <section xml:id="DB_Doc_Change_History">
         <title>Document Change History</title>
-        <para>This version of the Developer Guide replaces and
+        <para>This version of the Getting Started replaces and
             obsoletes all previous versions. The most recent changes
             are described in the table below:</para>
         <?rax revhistory?>
@@ -95,9 +95,9 @@
     <section xml:id="Create_Cloud_Server">
         <title>Create a New Cloud Server</title>
         <note>
-            <para>If you are using an existing Cloud Server on your
-                account, skip this step and go directly to <xref
-                    linkend="Configure_Cloud_Server_DB"/>.</para>
+            <para>If you are using existing Cloud Servers on your
+                account, skip Steps 1-5 and go directly to Step 6
+                below.</para>
         </note>
         <para>Create a Cloud Server using the Cloud Servers section of
             the Control Panel (login here: <link
@@ -148,10 +148,19 @@
             <step>
                 <para> Create a second Cloud Server by performing
                     Steps 1-4 again.</para>
-                <remark>Writer: is there any info that will be needed
-                    later for each of these Cloud Servers that we
-                    should ask the user to record at this
-                    time?</remark>
+            </step>
+            <step>
+                <para>Record the IP addresses of your Cloud Servers below:<itemizedlist>
+                        <listitem>
+                            <para>FIRST Cloud Server IP Address =
+                                _______________________________________
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>SECOND Cloud Server IP Address =
+                                _______________________________________</para>
+                        </listitem>
+                    </itemizedlist></para>
             </step>
         </procedure>
     </section>
@@ -234,9 +243,10 @@
                 on Linux or Mac systems, copy and paste each example
                 from the HTML version of this guide into an ASCII
                 editor (for example <emphasis role="bold"
-                    >vi</emphasis>). Then modify each example with
-                your required account information and so forth, as
-                detailed in this guide.</para>
+                    >vi</emphasis> or <emphasis role="bold"
+                    >TextEdit</emphasis>). Then modify each example
+                with your required account information and so forth,
+                as detailed in this guide.</para>
             <note>
                 <para>The carriage returns in the cURL request
                     examples that are part of the cURL syntax are
@@ -375,6 +385,12 @@
             <title>Notes</title>
             <itemizedlist spacing="compact">
                 <listitem>
+                    <para>For all response examples in this guide, the
+                        field values you receive in your responses
+                        will vary from those shown here since they
+                        will be specific to your account.</para>
+                </listitem>
+                <listitem>
                     <para>The <code>id</code> attribute in the
                         Authenticate Response specifies the
                         authentication token. Tokens are valid for a
@@ -460,19 +476,23 @@
                 </tbody>
             </table>
         </para>
+        <para>
+            <emphasis role="bold">Since you are load balancing Cloud
+                Servers</emphasis> in this guide, you can determine
+            the appropriate endpoint to select by viewing your Cloud
+            Servers list and creating a load balancer within the same
+            region as the datacenter in which your Cloud Server
+            resides. When your resources reside in the same region as
+            your load balancer, devices are in close proximity to each
+            other and can take advantage of ServiceNet connectivity
+            for free data transfer between services. </para>
         <note>
-            <title>Notes</title>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>All examples in this guide assume that you
-                        are operating against the DFW data center,
-                        however if you are using a different data
-                        center, be sure to use the associated endpoint
-                        from the table above instead.</para>
-                </listitem>
-            </itemizedlist>
+            <para>All examples in this guide assume that you are
+                operating against the DFW datacenter, however if you
+                are using a different datacenter, be sure to use the
+                associated endpoint from the table above
+                instead.</para>
         </note>
-        <remark>Reviewer: is the bullet above correct?</remark>
         <para>Replace the sample account ID number,
                 <parameter>1234</parameter>, with your actual account
             number returned as part of the authentication response.
@@ -506,28 +526,24 @@
                 <para>Virtual IP Type = Public</para>
             </listitem>
             <listitem>
-                <para>Nodes = &lt;enter the IP addresses that you
-                    recorded for your Cloud Servers created in <xref
-                        linkend="Create_Cloud_Server"/>:</para>
-            </listitem>
-            <listitem>
-                <para>
-                    <itemizedlist>
-                        <listitem>
-                            <para><code>&lt;node
-                                address="</code>&lt;IP address of
-                                FIRST cloud server><code>" port="80"
-                                   condition="ENABLED"/></code></para>
-                        </listitem>
-                        <listitem>
-                            <para>
-                                <code>&lt;node address="</code>&lt;IP
-                                address of SECOND cloud server><code>"
-                                   port="80"
-                                   condition="ENABLED"/></code></para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
+                <para>Nodes = &lt;enter the IP address that you
+                    recorded for your first Cloud Servers created in
+                        <xref linkend="Create_Cloud_Server"/>:</para>
+                <itemizedlist>
+                    <listitem>
+                        <para><code>&lt;node address="</code>&lt;IP
+                            address of FIRST cloud server><code>"
+                                port="80" condition="ENABLED"/></code><note>
+                                <para>Although you could add the nodes
+                                   for both of your Cloud Servers in
+                                   this Create Load Balancer call, you
+                                   will instead add the node for your
+                                   second Cloud Server using the
+                                   separate Add Node call in <xref
+                                   linkend="Add_Node"/>.</para>
+                            </note></para>
+                    </listitem>
+                </itemizedlist>
             </listitem>
         </itemizedlist>
         <para>This operation does not require a request body.</para>
@@ -546,7 +562,6 @@
     &lt;/virtualIps>
     &lt;nodes>
         &lt;node address="&lt;IP address of FIRST cloud server>" port="80" condition="ENABLED"/>
-        &lt;node address="&lt;IP address of SECOND cloud server>" port="80" condition="ENABLED"/>
     &lt;/nodes>
 &lt;/loadBalancer>' \
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
@@ -573,11 +588,6 @@
                 "port": 80,
                 "condition": "ENABLED"
             }
-            {
-                "address": "&lt;IP address of SECOND cloud server>",
-                "port": 80,
-                "condition": "ENABLED"
-            }
         ]
     }
 }' \
@@ -601,96 +611,53 @@
                         and the request URL)</para>
                 </listitem>
             </itemizedlist></para>
-        <para>The following examples show the responses for List
-            Flavors Details:</para>
+        <para>The following examples show the responses for Create
+            Load Balancer:<remark>Writer: need to update the XML
+                Request example below to fix the lb name &amp; node
+                addresses, as provided by Uma/Trevor</remark></para>
         <example>
-            <title>List Flavors Details Response: XML</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-create-required-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <title>cURL Create Load Balancer  Response: XML</title>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-create-required-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <example>
-            <title>List Flavors Details Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/db-flavors-detail-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <title>cURL Create Load Balancer  Response: JSON</title>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-GS-create-required-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
-        <para>In the previous examples, you can see from the flavor
-                <code>name</code> that there are multiple flavors
-            available, including <code>medium</code> (with 1 virtual
-            CPU and 2 gigabytes of memory) and <code>tiny</code> (with
-            1 virtual CPU and 0.5 gigabytes of memory). </para>
-        <para>In this example, assume that you decide to use the tiny
-            flavor (id 1) to provide the needed capacity for your
-            database instance.</para>
+        <para>In the previous examples, you can see that one node
+            (with IP address "50.56.166.100") has been added to your
+            new load balancer with id 5355. You will need the load
+            balancer id for making the List Load Balancer Details call
+            in the next section.</para>
     </section>
     
-    <section xml:id="Create_DB_Instance">
-            <title>Create a Database Instance with a Database</title>
-            <para>A database instance is an isolated MySQL instance in
-            a single tenant environment on a shared physical host
-            machine. In the example below, you create a database
-            instance with a database using the tiny flavor and volume
-            size of 2 gigabytes (GB). </para>
-        <para>Refer to <link
-                xlink:href="http://docs-beta.rackspace.com/cdb/api/v1.0/cdb-devguide/content/POST_createDatabase__version__instances__instanceId__databases_databases.html"
-                >Create Database</link> in the <citetitle>Cloud
-                Database Developer Guide</citetitle> for the
-            restrictions for choosing the database name.</para>
-        <para>The example creates a database instance
-                <code>myrackinstance</code>, with a database named
-                <code>sampledb</code>, <code>utf8</code> character
-            set, and <code>utf8_general_ci</code> collation, using the
-            tiny flavor and volume size of 2 gigabytes (GB).</para>
-        <para>Notice that the request specifies the flavor reference
-                (<code>flavorRef</code>) to the tiny flavor (id 1)
-            that was returned by the List Flavors Details call:
-                <code>"https://ord.databases.api.rackspacecloud.com/v1.0/1234/flavors/1"</code>.
-            Refer to the response examples in <xref
-                linkend="List_Flavors"/>.</para>
-        <para>The following examples show the cURL requests for Create
-            Instance:</para>
+    <section xml:id="List_LB_Details">
+            <title>List Load Balancer Details</title>
+            <para>This operation provides detailed output for a
+            specific load balancer configured and associated with your
+            account. This operation is not capable of returning
+            details for a load balancer which has been deleted. </para>
+        <para>This operation does not require a request body. </para>
+        <para>The examples list the details for the load balancer
+            (with load_balancer_id, which you will need to replace in
+            the URL in the example below) that you created in the
+            previous section.</para>
+        <para>The following examples show the cURL requests for List
+            Load Balancer Details:</para>
         <example>
-            <title>cURL Create Instance Request : XML</title>
-            <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
-'&lt;?xml version="1.0" ?> 
-&lt;instance xmlns="http://docs.openstack.org/database/api/v1.0" 
-    name="myrackinstance" 
-    flavorRef= 
-      "https://ord.databases.api.rackspacecloud.com/v1.0/1234/flavors/1"> 
-    &lt;databases> 
-        &lt;database name="sampledb" character_set="utf8" 
-         collate="utf8_general_ci" /> 
-    &lt;/databases> 
-    &lt;volume size="2" /> 
-&lt;/instance>' \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Content-Type: application/xml"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/instances</uri></programlisting>
+            <title>cURL List Load Balancer Details Request :
+                XML</title>
+            <programlisting><command>curl</command> <option>-i</option>  \
+<option>-H 'X-Auth-Token: your_auth_token'</option>  \
+<option>-H 'Accept: application/xml'</option>  \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
         </example>
         <example>
-            <title>cURL Create Instance Request : JSON</title>
-            <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
-'{ 
-    "instance": { 
-        "name": "myrackinstance", 
-        "flavorRef": 
-"https://ord.databases.api.rackspacecloud.com/v1.0/1234/flavors/1", 
-        "databases": [ 
-            { 
-                "name": "sampledb", 
-                "character_set": "utf8", 
-                "collate": "utf8_general_ci" 
-            } 
-        ], 
-        "volume": 
-            { 
-                "size": "2" 
-            } 
-    } 
-}' \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Content-Type: application/json"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/instances</uri></programlisting>
+            <title>cURL List Load Balancer Details Request :
+                JSON</title>
+            <programlisting><command>curl</command> <option>-i</option>  \
+<option>-H 'X-Auth-Token: your_auth_token'</option>  \
+<option>-H 'Accept: application/json'</option>  \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
@@ -707,74 +674,76 @@
                         both the <code>X-Auth-Project-ID</code> header
                         and the request URL)</para>
                 </listitem>
+                <listitem>
+                    <para>load_balancer_id &mdash; as returned in your
+                        create load balancer response (must be
+                        replaced in both the
+                            <code>X-Auth-Project-ID</code> header and
+                        the request URL)</para>
+                </listitem>
             </itemizedlist></para>
-        <para>Also remember to replace the dummy account id
-                <code>1234</code> shown in the <code>flavorRef</code>
-            property for the examples with your actual account id:
-                <code>"https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/flavors/1"</code>.</para>
-        <para>The following examples show the Create Instance
-            responses:</para>
+        <para>The following examples show the List Load Balancer
+            Details responses:</para>
             
             <example>
-                <title>Create Instance Response: XML</title>
-                <programlisting language="xml"><xi:include href="../../src/resources/samples/db-create-database-instance-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+                <title>List Load Balancer Details Response:
+                XML</title>
+                <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-list-details-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
             </example>
             
             <example>
-                <title>Create Instance Response: JSON</title>
-                <programlisting language="xml"><xi:include href="../../src/resources/samples/db-create-database-instance-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+                <title>List Load Balancer Details Response:
+                JSON</title>
+                <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-list-details-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
             </example>
-        <para>You will need to specify the instance id returned (in
-            the response examples above:
-                <code>id="00ff11ee-22dd-33cc-44bb-55aa66007799"</code>)
-            on subsequent API calls that require it, for example
-            Create User.</para>
         </section>
-    <section xml:id="Create_DB_User">
-        <title>Create User</title>
-        <para>Create a new user within the database instance. The user
-            name and password are required.</para>
-        <para>This operation asynchronously provisions a new user
-                (<code>simplestUser</code>) and password
-                (<code>password</code>) for the specified database
-            instance (instance_id) and database
-            (<code>sampledb</code>), as specified in the request. </para>
-        <para>Once the request is validated and progress has started
-            on the provisioning process, a 202 Accepted response
-            object is returned.</para>
+    <section xml:id="Add_Node">
+        <title>Add Node</title>
+        <para>When a node is added to a load balancer, it is assigned
+            a unique identifier that can be used for mutating
+            operations such as changing the condition or removing
+            it.</para>
+        <para>For the node, enter the IP address that you recorded for
+            your second Cloud Server created in <xref
+                linkend="Create_Cloud_Server"/>. For example, for the
+            XML request, enter:</para>
+        <itemizedlist>
+            <listitem>
+                <para><code>&lt;node address="</code>&lt;IP address of
+                    SECOND cloud server><code>" port="80"
+                        condition="ENABLED"/></code></para>
+            </listitem>
+        </itemizedlist>
         <para xmlns="http://docbook.org/ns/docbook">The following
-            examples show the cURL requests for Create User:</para>
+            examples show the cURL requests for Add Node:</para>
         <example>
-            <title>cURL Create User Request: XML</title>
-            <programlisting><command>curl</command> <option>-d</option> \
+            <title>cURL Add Node Request: XML</title>
+            <programlisting><command>curl</command><option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
-&lt;users xmlns="http://docs.openstack.org/database/api/v1.0"> 
-    &lt;user name="simplestUser" 
-         password="password" database="sampledb"/> 
-&lt;/users>' \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Content-Type: application/xml"</option> \
-<option>-H "Accept: application/xml"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/instances/instance_id/users</uri></programlisting>
+&lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+    &lt;node address=&lt;IP address of SECOND cloud server>" port="80" condition="ENABLED" />
+&lt;/nodes>' \
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id/nodes'</uri></programlisting>
         </example>
         <example>
             <?dbfo keep-together="always"?>
-            <title>cURL Create User Request: JSON</title>
-            <programlisting><command>curl</command> <option>-d</option> \
-'{ 
-    "users": [ 
-        { 
-            "name": "simplestUser", 
-            "password": "password", 
-            "database": "sampledb" 
-        } 
-    ] 
+            <title>cURL Add Node Request: JSON</title>
+            <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
+'{
+    "nodes": [
+        {
+            "address": "&lt;IP address of SECOND cloud server>",
+            "port": 80,
+            "condition": "ENABLED"
+        }
+    ]
 }' \
-<option>-H "X-Auth-Token: your_auth_token"</option> \
-<option>-H "X-Auth-Project-ID: your_acct_id"</option> \
-<option>-H "Content-Type: application/json"</option> \
-<uri>https://ord.databases.api.rackspacecloud.com/v1.0/your_acct_id/instances/instance_id/users</uri></programlisting>
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/json'</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id/nodes'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values:<itemizedlist spacing="compact">
@@ -791,31 +760,75 @@
                         />)</para>
                 </listitem>
                 <listitem>
-                    <para>instance_id &mdash; as returned in your
-                        create instance response (see the examples in
-                            <xref linkend="Create_DB_Instance"
-                        />)</para>
+                    <para>load_balancer_id &mdash; as returned in your
+                        create load balancer response (see the
+                        examples in <xref
+                            linkend="Create_Load_Balancer"/>)</para>
                 </listitem>
             </itemizedlist></para>
         <para>This operation does not return a response body.</para>
-        <para>The following examples show the responses for Create
-            User:</para>
+        <para>The following examples show the responses for Add
+            Node:</para>
         <example>
-            <title>Create User Response: XML</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/db-create-users-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <title>Add Node Response: XML</title>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-add-nodes-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <example>
-            <title>Create User Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/db-create-users-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <title>Add Node Response: JSON</title>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-add-nodes-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
     </section>
-    <section xml:id="Configure_Cloud_Server_DB">
-        <title>Configuring an Application to Use Your Cloud
-            Database</title>
-        <para>If you are configuring an application to use your
-            database on a Cloud Server with your database instance,
-            you need to configure the application with the hostname
-            and username / password for the database.</para>
+    <section xml:id="Configure_Load_Balancer">
+        <title>Update Load Balancer Attributes</title>
+        <para>Assume that you want to change the algorithm for your
+            load balancer from RANDOM to LEAST_CONNECTIONS. You can
+            use the Update Load Balancer Attributes API call to
+            accomplish this task. This call allows you to change one
+            or more of the following load balancer attributes:<itemizedlist>
+                <listitem>
+                    <para>name</para>
+                </listitem>
+                <listitem>
+                    <para>algorithm</para>
+                </listitem>
+                <listitem>
+                    <para>protocol</para>
+                </listitem>
+                <listitem>
+                    <para>port</para>
+                </listitem>
+            </itemizedlist></para>
+        <para>The following examples show the Update Load Balancer
+            Attributes requests to change the algorithm to
+            LEAST_CONNECTIONS:</para>
+        <example>
+            <title>Update Load Balancer Attributes: XML</title>
+            <programlisting language="xml"><command>curl</command> <option>-i</option> <option>-d</option> \
+'&lt;?xml version="1.0" ?>
+&lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
+    algorithm="LEAST_CONNECTIONS" />' \
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/xml'</option> \
+<option>-H 'Accept: application/xml'</option> \
+<option>-X PUT</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+        </example>
+        <example>
+            <title>Update Load Balancer Attributes: JSON</title>
+            <programlisting language="xml"><command>curl</command> <option>-i</option> <option>-d</option> \
+'{"loadBalancer":{
+    "algorithm": "LEAST_CONNECTIONS"
+    }
+}' \
+<option>-H 'X-Auth-Token: your_auth_token'</option> \
+<option>-H 'Content-Type: application/json'</option> \
+<option>-X PUT</option> \
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+        </example>
+        <para>This operation does not return a response body.</para>
+        <para>You can now confirm the algorithm is changed by calling
+            List Load Balancer Details, as described in <xref
+                linkend="List_LB_Details"/>.</para>
     </section>
     <section xml:id="Configure_Cloud_Server_Routing">
         <title>Configuring Routing for Your Existing Cloud
