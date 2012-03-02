@@ -272,8 +272,8 @@
                 <screen><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="your_username" 
-             key="your_api_key"/>' \
+             username="<emphasis role="bold">your_username</emphasis>" 
+             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
@@ -284,7 +284,7 @@
                 next line:</para>
             <screen><command>curl</command> <option>-i</option> <option>-d</option> \
  
-             key="your_api_key"/>' \
+             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
@@ -295,8 +295,8 @@
                 processing:</para>
             <screen>'&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="your_username" 
-             key="your_api_key"/>' \
+             username="<emphasis role="bold">your_username</emphasis>" 
+             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
 </screen>
             <note>
                 <para>The final line of the xml message is escaped
@@ -307,10 +307,12 @@
             </note>
             <para>After you are finished modifying the text for the
                 cURL request example with your information (for
-                example <code>your_username</code> and
-                    <code>your_api_key</code>), paste it into your
-                terminal window. Then execute the cURL command by
-                pressing <guilabel>Enter</guilabel>.</para>
+                example <emphasis role="bold"
+                        ><code>your_username</code></emphasis> and
+                    <emphasis role="bold"
+                    ><code>your_api_key</code></emphasis>), paste it
+                into your terminal window. Then execute the cURL
+                command by pressing <guilabel>Enter</guilabel>.</para>
             <para>If you have trouble copying and pasting the examples
                 as described, try typing the entire example on one
                 long line, removing all the backslash line
@@ -334,16 +336,20 @@
         <para>Remember to replace the names in the Authenticate
             Request examples below with their respective values:<itemizedlist spacing="compact">
                 <listitem>
-                    <para>your_username &mdash; The username is your
-                        common Rackspace Cloud username, as supplied
-                        during registration.</para>
+                    <para><emphasis role="bold"
+                            >your_username</emphasis> &mdash; The
+                        username is your common Rackspace Cloud
+                        username, as supplied during
+                        registration.</para>
                 </listitem>
                 <listitem>
-                    <para>your_api_key &mdash; The key is your API
-                        access key. The key can be obtained from the
-                        Rackspace Cloud Control Panel in the <guimenu>Your Account</guimenu> /
-                        <guimenuitem>API
-                            Access</guimenuitem> section.</para>
+                    <para><emphasis role="bold"
+                            >your_api_key</emphasis> &mdash; The key
+                        is your API access key. The key can be
+                        obtained from the Rackspace Cloud Control
+                        Panel in the <guimenu>Your Account</guimenu> /
+                            <guimenuitem>API Access</guimenuitem>
+                        section.</para>
                 </listitem>
             </itemizedlist></para>
         <para>Notice that you authenticate using a special URL for
@@ -359,8 +365,8 @@
             <screen><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="your_username" 
-             key="your_api_key"/>' \
+             username="<emphasis role="bold">your_username</emphasis>" 
+             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
@@ -371,8 +377,8 @@
             <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
 '{ 
     "credentials": {  
-        "username": "your_username",  
-        "key": "your_api_key"}  
+        "username": "<emphasis role="bold">your_username</emphasis>",  
+        "key": "<emphasis role="bold">your_api_key</emphasis>"}  
     }' \
 <option>-H 'Content-Type: application/json'</option> \
 <uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></programlisting>
@@ -403,6 +409,10 @@
                         Authenticate Response specifies the
                         authentication token. Tokens are valid for a
                         finite duration.</para>
+                    <para>Remember to supply your authentication token
+                        wherever you see the field <emphasis
+                            role="bold">your_auth_token</emphasis> in
+                        the examples in this guide.</para>
                 </listitem>
                 <listitem>
                     <para> The <code>expires</code> attribute denotes
@@ -440,7 +450,9 @@
             '/' in the <code>publicURL</code> field. In this example,
             you can see that the account number is 1234. You need to
             specify your account number on most of the Cloud Load
-            Balancers API calls.</para>
+            Balancers API calls, wherever you see the field <emphasis
+                role="bold">your_acct_id</emphasis> specified in the
+            examples in this guide.</para>
         <para>After authentication, you can use cURL to perform &GET;,
             &DELETE;, &PUT;,  and &POST; requests for the Cloud Load
             Balancer API.</para>
@@ -504,10 +516,13 @@
         <para>Replace the sample account ID number,
                 <parameter>1234</parameter>, with your actual account
             number returned as part of the authentication response.
-            Refer to <xref linkend="Generating_Auth_Token"/>.</para>
+            Use your actual account number wherever you see the field
+                <emphasis role="bold">your_acct_id</emphasis>
+            specified in this guide. Refer to <xref
+                linkend="Generating_Auth_Token"/>.</para>
         <para>When making a Cloud Load Balancers API call, place the
             endpoint at the beginning of the request URL, for example:
-                (<code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/</code>),
+            (<code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><emphasis role="bold">your_acct_id</emphasis><code>/</code>),
             as you can see in the cURL Create Load Balancer Request
             examples in <xref linkend="Create_Load_Balancer"/>. Note
             that the <code>v1.0</code> component in the URL indicates
@@ -574,7 +589,7 @@
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
         </example>
         <example>
             <title>cURL Create Load Balancer Request: JSON</title>
@@ -600,22 +615,23 @@
 }' \
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
             that follow:<itemizedlist spacing="compact">
                 <listitem>
-                    <para>your_auth_token &mdash; as returned in your
+                    <para><emphasis role="bold"
+                        >your_auth_token</emphasis> &mdash; as returned in your
                         authentication response (see the response
                         examples in <xref
                             linkend="Generating_Auth_Token"/>)</para>
                 </listitem>
                 <listitem>
-                    <para>your_acct_id &mdash; as returned in your
-                        authentication response (must be replaced in
-                        both the <code>X-Auth-Project-ID</code> header
-                        and the request URL)</para>
+                    <para><emphasis role="bold"
+                            >your_acct_id</emphasis> &mdash; as
+                        returned in your authentication response (must
+                        be replaced in the request URL)</para>
                 </listitem>
             </itemizedlist></para>
         <para>The following examples show the responses for Create
@@ -626,13 +642,16 @@
         </example>
         <example>
             <title>cURL Create Load Balancer  Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-GS-create-required-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-create-required-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <para>In the previous examples, you can see that one node
             (with IP address "50.56.166.100") has been added to your
             new load balancer with id 5355. You will need the load
             balancer id for making the List Load Balancer Details call
-            in the next section.</para>
+            in the next section, and you should supply this value
+            wherever you see the field <emphasis role="bold"
+                >load_balancer_id</emphasis> in the examples in this
+            guide.</para>
     </section>
     
     <section xml:id="List_LB_Details">
@@ -643,9 +662,9 @@
             details for a load balancer which has been deleted. </para>
         <para>This operation does not require a request body. </para>
         <para>The examples list the details for the load balancer
-            (with load_balancer_id, which you will need to replace in
-            the URL in the example below) that you created in the
-            previous section.</para>
+            (with <emphasis role="bold">load_balancer_id</emphasis>,
+            which you will need to replace in the URL in the example
+            below) that you created in the previous section.</para>
         <para>The following examples show the cURL requests for List
             Load Balancer Details:</para>
         <example>
@@ -654,7 +673,7 @@
             <programlisting><command>curl</command> <option>-i</option>  \
 <option>-H 'X-Auth-Token: your_auth_token'</option>  \
 <option>-H 'Accept: application/xml'</option>  \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <example>
             <title>cURL List Load Balancer Details Request :
@@ -662,29 +681,29 @@
             <programlisting><command>curl</command> <option>-i</option>  \
 <option>-H 'X-Auth-Token: your_auth_token'</option>  \
 <option>-H 'Accept: application/json'</option>  \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
             that follow:<itemizedlist spacing="compact">
                 <listitem>
-                    <para>your_auth_token &mdash; as returned in your
-                        authentication response (see the response
-                        examples in <xref
+                    <para><emphasis role="bold"
+                            >your_auth_token</emphasis> &mdash; as
+                        returned in your authentication response (see
+                        the response examples in <xref
                             linkend="Generating_Auth_Token"/>)</para>
                 </listitem>
                 <listitem>
-                    <para>your_acct_id &mdash; as returned in your
-                        authentication response (must be replaced in
-                        both the <code>X-Auth-Project-ID</code> header
-                        and the request URL)</para>
+                    <para><emphasis role="bold"
+                            >your_acct_id</emphasis> &mdash; as
+                        returned in your authentication response (must
+                        be replaced in the request URL)</para>
                 </listitem>
                 <listitem>
-                    <para>load_balancer_id &mdash; as returned in your
-                        create load balancer response (must be
-                        replaced in both the
-                            <code>X-Auth-Project-ID</code> header and
-                        the request URL)</para>
+                    <para><emphasis role="bold"
+                            >load_balancer_id</emphasis> &mdash; as
+                        returned in your create load balancer response
+                        (must be replaced in the request URL)</para>
                 </listitem>
             </itemizedlist></para>
         <para>The following examples show the List Load Balancer
@@ -714,8 +733,8 @@
             XML request, enter:</para>
         <itemizedlist>
             <listitem>
-                <para><code>&lt;node address="</code>&lt;IP address of
-                    SECOND cloud server><code>" port="80"
+                <para><code>&lt;node address="</code>&lt;<emphasis role="bold">IP address of
+                    SECOND cloud server</emphasis>><code>" port="80"
                         condition="ENABLED"/></code></para>
             </listitem>
         </itemizedlist>
@@ -726,12 +745,12 @@
             <programlisting><command>curl</command><option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
 &lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    &lt;node address=&lt;IP address of SECOND cloud server>" port="80" condition="ENABLED" />
+    &lt;node address="&lt;<emphasis role="bold">IP address of SECOND cloud server</emphasis>>" port="80" condition="ENABLED" />
 &lt;/nodes>' \
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id/nodes'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
         </example>
         <example>
             <?dbfo keep-together="always"?>
@@ -740,7 +759,7 @@
 '{
     "nodes": [
         {
-            "address": "&lt;IP address of SECOND cloud server>",
+            "address": "&lt;<emphasis role="bold">IP address of SECOND cloud server</emphasis>>",
             "port": 80,
             "condition": "ENABLED"
         }
@@ -748,26 +767,29 @@
 }' \
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id/nodes'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values:<itemizedlist spacing="compact">
                 <listitem>
-                    <para>your_auth_token &mdash; as returned in your
-                        authentication response (see the examples in
-                            <xref linkend="Generating_Auth_Token"
-                        />)</para>
+                    <para><emphasis role="bold"
+                            >your_auth_token</emphasis> &mdash; as
+                        returned in your authentication response (see
+                        the examples in <xref
+                            linkend="Generating_Auth_Token"/>)</para>
                 </listitem>
                 <listitem>
-                    <para>your_acct_id &mdash; as returned in your
-                        authentication response (see the examples in
-                            <xref linkend="Generating_Auth_Token"
-                        />)</para>
+                    <para><emphasis role="bold"
+                            >your_acct_id</emphasis> &mdash; as
+                        returned in your authentication response (see
+                        the examples in <xref
+                            linkend="Generating_Auth_Token"/>)</para>
                 </listitem>
                 <listitem>
-                    <para>load_balancer_id &mdash; as returned in your
-                        create load balancer response (see the
-                        examples in <xref
+                    <para><emphasis role="bold"
+                            >load_balancer_id</emphasis> &mdash; as
+                        returned in your create load balancer response
+                        (see the examples in <xref
                             linkend="Create_Load_Balancer"/>)</para>
                 </listitem>
             </itemizedlist></para>
@@ -816,7 +838,7 @@
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <option>-X PUT</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <example>
             <title>Update Load Balancer Attributes: JSON</title>
@@ -828,7 +850,7 @@
 <option>-H 'X-Auth-Token: your_auth_token'</option> \
 <option>-H 'Content-Type: application/json'</option> \
 <option>-X PUT</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/your_acct_id/loadbalancers/load_balancer_id'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <para>This operation does not return a response body.</para>
         <para>You can now confirm that the algorithm is changed by
