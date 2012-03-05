@@ -404,6 +404,16 @@
                     xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf">
                 http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
             </para>
+            <para xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">For
+                information about getting started using Cloud Load
+                Balancers and Cloud Servers, refer to
+                    <citetitle>Getting Started with Rackspace Cloud
+                    Load Balancers and Servers</citetitle> at<link
+                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-getting-started-latest.pdf"
+                    >
+                        http://docs.rackspacecloud.com/loadbalancers/api/clb-getting-started-latest.pdf</link>.</para>
             <para>For more details about the Rackspace Cloud Load Balancer service, refer to<link
                     xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/loadbalancers/"
                     >http://www.rackspace.com/cloud/cloud_hosting_products/loadbalancers/</link>.
@@ -2726,12 +2736,13 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>When a node is added, it is assigned a unique identifier that can be used
-                    for mutating operations such as changing the condition or removing it.
-                    Every load balancer is dual-homed on both the public Internet and ServiceNet; as a
-                    result, nodes can either be internal ServiceNet addresses or addresses on the public
-                    Internet.
-                </para>
+                <para>When a node is added, it is assigned a unique
+                    identifier that can be used for management
+                    operations such as changing the condition or
+                    removing it. Every load balancer is dual-homed on
+                    both the public Internet and ServiceNet; as a
+                    result, nodes can either be internal ServiceNet
+                    addresses or addresses on the public Internet. </para>
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
@@ -4116,8 +4127,9 @@
             <para>A combination of the following required and optional
                 attributes can be used to create the desired SSL
                 configuration per account load balancer: </para>
-            <table rules="all" width="600">
+            <table rules="all" >
                 <caption>Attributes for SSL Termination</caption>
+                
                 <thead>
                     <tr align="center">
                         <td colspan="1">Name</td>
@@ -4136,12 +4148,10 @@
                             <para>The port on which the SSL
                                 termination load balancer will listen
                                 for secure traffic. </para>
-                            <note>
-                                <para> The securePort must be unique
-                                   to the existing LB protocol/port
-                                   combination. For example, port 443.
-                                </para>
-                            </note>
+                            <para> The securePort must be unique to
+                                the existing LB protocol/port
+                                combination. For example, port 443.
+                            </para>
                         </td>
                         <td colspan="1"> Yes </td>
                     </tr>
@@ -4153,11 +4163,9 @@
                         <td colspan="2">
                             <para>The private key for the SSL
                                 certificate. </para>
-                            <note>
-                                <para>The private key is validated and
-                                   verified against the provided
-                                   certificate(s).</para>
-                            </note>
+                            <para>The private key is validated and
+                                verified against the provided
+                                certificate(s).</para>
                         </td>
                         <td colspan="1"> Yes </td>
                     </tr>
@@ -4169,12 +4177,10 @@
                         <td colspan="2">
                             <para>The certificate used for SSL
                                 termination. </para>
-                            <note>
-                                <para>The certificate is validated and
-                                   verified against the key and
-                                   intermediate certificate if
-                                   provided.</para>
-                            </note>
+                            <para>The certificate is validated and
+                                verified against the key and
+                                intermediate certificate if
+                                provided.</para>
                         </td>
                         <td colspan="1"> Yes </td>
                     </tr>
@@ -4186,23 +4192,13 @@
                         <td colspan="2">
                             <para>The user's intermediate certificate
                                 used for SSL termination. </para>
-                            <note>
-                                <para>The intermediate certificate is
-                                   validated and verified against the
-                                   key and certificate credentials
-                                   provided.</para>
-                            </note>
+                            <para>The intermediate certificate is
+                                validated and verified against the key
+                                and certificate credentials
+                                provided.</para>
                         </td>
                         <td colspan="1">Yes, only when configuring
-                            Intermediate SSL Termination<footnote>
-                                <para> A user may only provide an
-                                   intermediateCertificate when
-                                   accompanied by a certificate,
-                                   private key, and securePort. It may
-                                   not be added to an existing SSL
-                                   configuration as a single attribute
-                                   in a future request. </para>
-                            </footnote></td>
+                            Intermediate SSL Termination [a]</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">
@@ -4214,14 +4210,12 @@
                         <td colspan="2">
                             <para>Determines if the load balancer is
                                 enabled to terminate SSL traffic. </para>
-                            <note>
-                                <para> If <code>enabled</code> =
+                            <para> If <code>enabled</code> =
                                    <code>false</code>, the load
-                                   balancer will retain its specified
-                                   SSL attributes, but will
+                                balancer will retain its specified SSL
+                                attributes, but will
                                    <emphasis>not</emphasis> terminate
-                                   SSL traffic.</para>
-                            </note>
+                                SSL traffic.</para>
                         </td>
                         <td colspan="1"> No </td>
                     </tr>
@@ -4236,16 +4230,23 @@
                             <para>Determines if the load balancer may
                                 accept <emphasis>only</emphasis>
                                 secure traffic. </para>
-                            <note>
-                                <para> If
-                                   <code>secureTrafficOnly</code> =
+                            <para> If <code>secureTrafficOnly</code> =
                                    <code>true</code>, the load
-                                   balancer will
-                                   <emphasis>not</emphasis> accept
-                                   non-secure traffic. </para>
-                            </note>
+                                balancer will <emphasis>not</emphasis>
+                                accept non-secure traffic. </para>
                         </td>
                         <td colspan="1"> No </td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="5">
+                            <para>[a] A user may only provide an
+                                intermediateCertificate when
+                                accompanied by a certificate, private
+                                key, and securePort. It may not be
+                                added to an existing SSL configuration
+                                as a single attribute in a future
+                                request. </para>
+                        </td>
                     </tr>
                 </tbody>
             </table>

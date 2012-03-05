@@ -27,8 +27,7 @@
          xmlns:m="http://www.w3.org/1998/Math/MathML"
          xmlns:html="http://www.w3.org/1999/xhtml"
          xml:id="cdb-getting-started"
-         class="specification"
-         status="draft">
+         class="specification">
 
     <info>
         <title>Getting Started with Rackspace Cloud Load Balancers and
@@ -39,10 +38,10 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-03-XX</pubdate>
+        <pubdate>2012-03-07</pubdate>
         <revhistory>
             <revision>
-                <date>2012-03-xx</date>
+                <date>2012-03-07</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -63,9 +62,10 @@
     <section xml:id="DB_Overview">
         <title>Overview</title>
         <para>Follow the steps described in this guide to use the
-            Rackspace Cloud Load Balancers API and Cloud Servers
-            section of Control Panel to create a load balancer to
-            balance traffic for your Rackspace Cloud Servers.</para>
+            Rackspace Cloud Load Balancers API and the Cloud Servers
+            section of the Control Panel to create a load balancer
+            configuration to balance traffic for your Rackspace Cloud
+            Servers.</para>
         <para>For details about using the Cloud Load Balancers API,
             refer to the <citetitle>Cloud Load Balancers Developer
                 Guide</citetitle>.</para>
@@ -546,7 +546,16 @@
                 <para>Protocol = HTTP(80)</para>
             </listitem>
             <listitem>
-                <para>Virtual IP Type = Public</para>
+                <para>Virtual IP Type = PUBLIC</para>
+                <note>
+                    <para>When your resources reside in the same
+                        region as your load balancer, devices are in
+                        close proximity to each other and can elect to
+                        take advantage of ServiceNet connectivity (by
+                        specifying Virtual IP Type = SERVICENET) for
+                        free data transfer between services if
+                        desired.</para>
+                </note>
             </listitem>
             <listitem>
                 <para>Nodes = &lt;enter the IP address that you
@@ -554,8 +563,8 @@
                         <xref linkend="Create_Cloud_Server"/>:</para>
                 <itemizedlist>
                     <listitem>
-                        <para><code>&lt;node address="</code>&lt;IP
-                            address of FIRST cloud server><code>"
+                        <para><code>&lt;node address="</code><emphasis role="bold">&lt;IP
+                            address of FIRST cloud server></emphasis><code>"
                                 port="80" condition="ENABLED"/></code><note>
                                 <para>Although you could add the nodes
                                    for both of your Cloud Servers in
@@ -583,10 +592,10 @@
         &lt;virtualIp type="PUBLIC"/>
     &lt;/virtualIps>
     &lt;nodes>
-        &lt;node address="&lt;IP address of FIRST cloud server>" port="80" condition="ENABLED"/>
+        &lt;node address=<emphasis role="bold">"&lt;IP address of FIRST cloud server>"</emphasis> port="80" condition="ENABLED"
     &lt;/nodes>
 &lt;/loadBalancer>' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
@@ -606,14 +615,14 @@
          ],
         "nodes": [
             {
-                "address": "&lt;IP address of FIRST cloud server>",
+                "address": "<emphasis role="bold">&lt;IP address of FIRST cloud server></emphasis>",
                 "port": 80,
                 "condition": "ENABLED"
             }
         ]
     }
 }' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/json'</option> \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
         </example>
@@ -671,7 +680,7 @@
             <title>cURL List Load Balancer Details Request :
                 XML</title>
             <programlisting><command>curl</command> <option>-i</option>  \
-<option>-H 'X-Auth-Token: your_auth_token'</option>  \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/xml'</option>  \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
@@ -679,7 +688,7 @@
             <title>cURL List Load Balancer Details Request :
                 JSON</title>
             <programlisting><command>curl</command> <option>-i</option>  \
-<option>-H 'X-Auth-Token: your_auth_token'</option>  \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/json'</option>  \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
@@ -724,7 +733,7 @@
     <section xml:id="Add_Node">
         <title>Add Node</title>
         <para>When a node is added to a load balancer, it is assigned
-            a unique identifier that can be used for mutating
+            a unique identifier that can be used for management
             operations such as changing the condition or removing
             it.</para>
         <para>For the node, enter the IP address that you recorded for
@@ -733,8 +742,9 @@
             XML request, enter:</para>
         <itemizedlist>
             <listitem>
-                <para><code>&lt;node address="</code>&lt;<emphasis role="bold">IP address of
-                    SECOND cloud server</emphasis>><code>" port="80"
+                <para><code>&lt;node address="</code><emphasis
+                        role="bold">&lt;IP address of SECOND cloud
+                        server></emphasis><code>" port="80"
                         condition="ENABLED"/></code></para>
             </listitem>
         </itemizedlist>
@@ -745,9 +755,9 @@
             <programlisting><command>curl</command><option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
 &lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
-    &lt;node address="&lt;<emphasis role="bold">IP address of SECOND cloud server</emphasis>>" port="80" condition="ENABLED" />
+    &lt;node address="<emphasis role="bold">&lt;IP address of SECOND cloud server></emphasis>" port="80" condition="ENABLED" />
 &lt;/nodes>' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
@@ -765,7 +775,7 @@
         }
     ]
 }' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/json'</option> \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
         </example>
@@ -834,7 +844,7 @@
 '&lt;?xml version="1.0" ?>
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     algorithm="LEAST_CONNECTIONS" />' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
 <option>-X PUT</option> \
@@ -847,7 +857,7 @@
     "algorithm": "LEAST_CONNECTIONS"
     }
 }' \
-<option>-H 'X-Auth-Token: your_auth_token'</option> \
+-H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/json'</option> \
 <option>-X PUT</option> \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
