@@ -1453,6 +1453,18 @@
                 </para>
             </note>
             <example>
+                <title>Add Suspension Request: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-suspension.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Add Suspension Request: JSON</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-create-suspension.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
                 <title>List Suspension Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-suspension.xml" parse="text"/>
@@ -1462,18 +1474,6 @@
                 <title>List Suspension Response: JSON</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-suspension.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Suspension Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Add Suspension Response: JSON</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-suspension.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
