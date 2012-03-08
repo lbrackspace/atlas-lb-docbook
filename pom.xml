@@ -144,6 +144,7 @@
                     
                 </executions>
 		<configuration>
+			     <socialIcons>1</socialIcons>
 		  <feedbackEmail>mike.asthalter@rackspace.com</feedbackEmail>
 		</configuration>
             </plugin>
