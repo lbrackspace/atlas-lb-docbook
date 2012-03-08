@@ -4118,9 +4118,9 @@
                     Termination feature. Examples of PII are HIPPA
                     protected health information, Gramm-Leach-Bliley
                     financial information, credit card information,
-                    and any personal data. Any of this information
-                    when disclosed could result in the theft of a
-                    person's identity.</para>
+                    and any personal data that when disclosed could
+                    result in the theft of the person's
+                    identity.</para>
             </note>
             <informaltable rules="all">
                 <thead>
