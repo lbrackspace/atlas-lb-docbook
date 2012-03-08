@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-03-07</pubdate>
+        <pubdate>2012-03-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,6 +60,37 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-03-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added note about ServiceNet in <xref
+                                   linkend="Service_Access_Endpoints-d1e517"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added note to customers describing
+                                who should not use SSL Termination in
+                                   <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Corrected note below Example 4.81
+                                "View Load Balancing SSL Termination
+                                Configuration Response: JSON" about
+                                wrapping the key/certificates in a
+                                newline character in Java in <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-03-07</date>
                 <revdescription>
@@ -82,6 +113,17 @@
                                    linkend="Determining_Limits_Programmatically-d1e1039"
                                 /> to fix limits and absolutelimits
                                 API calls. </para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Fixed Create Load Balancer (Required
+                                Attributes) Request: XML example to be
+                                consistent with the JSON example in
+                                   <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />.</para>
                         </listitem>
                         <listitem>
                             <para>Added <xref
@@ -935,6 +977,17 @@
                 proximity to each other and can take advantage of
                 ServiceNet connectivity for free data transfer between
                 services. </para>
+            <note xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">
+                <para>ServiceNet is an internal Rackspace-only,
+                    multi-tenant network connection within each
+                    Rackspace datacenter. ServiceNet IPs are not
+                    accessible via the public internet. Rackspace
+                    customers may configure resources to utilize an
+                    internal IP address so that traffic over the
+                    ServiceNet network is not billed.</para>
+            </note>
             <para>
                 <emphasis role="bold">If load balancing external servers</emphasis>, you can determine the
                 appropriate region to select by choosing the region that is geographically as close to your
@@ -4058,6 +4111,17 @@
         </section>
         <section xml:id="SSLTermination-d1e2479">
             <title>SSL Termination</title>
+            <note>
+                <para>Note to customers who have Personally
+                    Identifiable Information (PII) in their data. You
+                    should <emphasis>not</emphasis> be using the SSL
+                    Termination feature. Examples of PII are HIPPA
+                    protected health information, Gramm-Leach-Bliley
+                    financial information, credit card information,
+                    and any personal data. Any of this information
+                    when disclosed could result in the theft of a
+                    person's identity.</para>
+            </note>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">

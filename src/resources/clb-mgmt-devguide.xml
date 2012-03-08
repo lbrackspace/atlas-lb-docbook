@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-01-16</pubdate>
+        <pubdate>2012-03-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -69,6 +69,45 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-03-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Fixed Example 2.31 "Update Rate
+                                Limit Request: XML" in <xref
+                                   linkend="Rate_Limits-d1e1272"/> to
+                                use the correct namespace.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Fixed examples in <xref
+                                   linkend="Suspending_a_Load_Balancer-d1e2567"
+                                /> to show both requests and
+                                responses.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added information in <xref
+                                   linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                /> that the date parameters are
+                                required for the List Account Load
+                                Balancers Usage call.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added information in <xref
+                                   linkend="Zeus_Usage-d1e3672"/> that
+                                the date parameters are required for
+                                the List Zeus Usage calls.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The response examples for XML and
+                                JSON in <xref
+                                   linkend="Zeus_Usage-d1e3672"/> have
+                                been updated to show the correct
+                                responses.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-01-16</date>
                 <revdescription>
@@ -1522,7 +1561,7 @@
             </example>
         </section>
         <section xml:id="Account_Loadbalancers_and_Usage_Billing_-d1e2791">
-            <title>Account Loadbalancers and Usage (Billing)</title>
+            <title>Account Load Balancers and Usage (Billing)</title>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -1564,11 +1603,12 @@
                 <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
                 <errorcode>413</errorcode>)
             </simpara>
-            <para>
-                A user can list all load balancers and their usage for the given account using these methods. The
-                date parameters follow the yyyy-MM-dd date format. Please note that usage is retained for a
-                maximum of 90 days.  The startDate and endDate parameters are required for the call.
-            </para>
+            <para> A user can list all load balancers and their usage
+                for the given account using these methods. The date
+                parameters follow the yyyy-MM-dd date format. Please
+                note that usage is retained for a maximum of 90 days.
+                The <code>startDate</code> and <code>endDate</code>
+                parameters are required for the call. </para>
             <example>
                 <title>List Account Load Balancers Response: XML</title>
                 <programlisting language="xml">
@@ -1945,26 +1985,30 @@
                 </para>
             </note>
             <example>
-                <title>List Tickets for Load Balancer: XML</title>
+                <title>List Tickets for Load Balancer Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-ticket-response.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>List Tickets for Load Balancer: JSON</title>
+                <title>List Tickets for Load Balancer Response:
+                    JSON</title>
                 <?dbfo keep-together="always"?>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-list-ticket-response.json" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>Create Ticket for Load Balancer: XML</title>
+                <title>Create Ticket for Load Balancer Request:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-create-ticket-request.xml" parse="text" />
                 </programlisting>
             </example>
             <example>
-                <title>Create Ticket for Load Balancer: JSON</title>
+                <title>Create Ticket for Load Balancer Request:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-create-ticket-request.json" parse="text" />
                 </programlisting>
@@ -1976,23 +2020,25 @@
                 <thead>
                     <tr align="center">
                         <td colspan="1">Verb</td>
-                        <td colspan="4">URI</td>
-                        <td colspan="4">Description</td>
+                        <td colspan="3">URI</td>
+                        <td colspan="2">Description</td>
                         <td colspan="2">Access Level</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/management/hosts/usage?startDate=2011-05-01T00:00:00&amp;endDate=2011-05-31T00:00:00</td>
-                        <td colspan="4">View usage of Zeus hosts.</td>
+                        <td colspan="3"
+                            >/management/hosts/usage?startDate=2011-05-01T00:00:00<?sbr?>&amp;endDate=2011-05-31T00:00:00</td>
+                        <td colspan="2">View usage of Zeus hosts.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The date parameters are required for this call.  The resulting list displays all usage
-                occurring between the starting and ending dates provided, up to 31 days apart.
-            </para>
+            <para> The <code>startDate</code> and <code>endDate</code>
+                parameters are required for this call. The resulting
+                list displays all usage occurring between the starting
+                and ending dates provided, up to 31 days apart. </para>
             <example>
                 <title>List Zeus Usage Response: XML</title>
                 <programlisting language="xml">
@@ -2034,11 +2080,14 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The date parameters are optional. The results list all load balancer service
-                events that occurred between the start and end dates for a given account or a user
-                or author. By default the start date is 60 days from the time of the request and
-                the end date is the date of the request. The results list is inclusive for both dates.
-            </para>
+            <para> The <code>startDate</code> and <code>endDate</code>
+                parameters are optional. The results list all load
+                balancer service events that occurred between the
+                start and end dates for a given account or a user or
+                author. By default the start date is 60 days from the
+                time of the request and the end date is the date of
+                the request. The results list is inclusive for both
+                dates. </para>
             <example>
                 <title>List Account Events Response: XML</title>
                 <programlisting language="xml">
