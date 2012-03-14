@@ -88,8 +88,8 @@
 		<itemizedlist>
 			<title>Release Overview</title>
 			<listitem>
-				<para>Fixed bug to add X-Forwarded-Proto header to
-					HTTP loadbalancers which have SSL enabled.</para>
+				<para>Fixed bug to add X-Forwarded-Proto header to HTTP
+					loadbalancers that have SSL enabled.</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
