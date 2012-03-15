@@ -3053,7 +3053,7 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="3">/alloweddomains</td>
+                            <td colspan="3">/loadbalancers/alloweddomains</td>
                             <td colspan="3">View a list of allowed domains.</td>
                         </tr>
                     </tbody>
