@@ -4015,7 +4015,7 @@
                     </programlisting>
                 </example>
                 <note><para>UDP based protocols (i.e. DNS_UDP, UDP and UDP_STREAM) are not capable
-                      of utilizing the Health Monitor features. Also, SSL Termination is unavaiable while
+                      of utilizing the Health Monitor features. Also, SSL Termination is unavailable while
                       using UDP based protocols.</para></note>
             </section>
         </section>
