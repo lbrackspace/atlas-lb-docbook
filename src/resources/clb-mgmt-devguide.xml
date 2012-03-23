@@ -2161,6 +2161,104 @@
                 This operation does not return a response body.
             </para>
         </section>
+
+        <section xml:id="AllowedDomains-d2f002eM">
+            <title>Allowed Domains</title>
+            <section xml:id="Allowed-domains-d2f002eM">
+                <title>Allowed Domains Operations</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/alloweddomains</td>
+                            <td colspan="3">View a list of allowed domains.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/alloweddomains?matches={<code>domainname</code>}</td>
+                            <td colspan="3">For testing purposes one can supply domain name to verify it is allowed by the system.
+                                            The return is a list of matched domain names that the FQDN was found in.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&PUT;
+                            </td>
+                            <td colspan="3">/alloweddomains</td>
+                            <td colspan="3">Add an item to list of allowed domains.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&DELETE;
+                            </td>
+                            <td colspan="3">/alloweddomains?name={<code>domainname</code>}</td>
+                            <td colspan="3">Remove an item from the list of allowed domains.
+                                            Query param of the domain name in question must be
+                                            supplied to remove.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
+                    In order to submit a domain name as an address for the load balancer node the user must verify
+                    the domain is valid against the allowed domains list call.
+                </para>
+                <para>The operations/management users are allowed to submit new domains to the list of allowed domains.
+                </para>
+                <note>
+                    <para>Currently only RackSpace based domain names are supported.
+                    </para>
+                    <para>
+                        One FQDN(fully qualified domain name) may contain only one 'A' or 'AAAA' record as per limitation
+                        of the system.
+                    </para>
+                </note>
+                <example>
+                    <title>List Allowed Domains: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/allowed-domains.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Allowed Domains: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/allowed-domains.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Allowed Domains: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/add-allowed-domains.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Allowed Domains: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/add-allowed-domains.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+        </section>
+
         <section xml:id="Blacklist_Node_and_Access_List_Management-d1e3970">
             <title>Blacklist Node and Access List Management</title>
             <informaltable rules="all">
