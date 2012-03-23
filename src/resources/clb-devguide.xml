@@ -2065,7 +2065,7 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IPV4 and/or an IPV6 by issuing a &POST; and
+                    share a single virtual IPV4 and/or a single IPV6 by issuing a &POST; and
                     supplying a virtual IP ID instead of a type.
                     Additionally, this feature is highly desirable if
                     you wish to load balance both an unsecured and
@@ -2078,6 +2078,12 @@
                         Load balancers sharing a virtual IP
                         <emphasis>must</emphasis>
                         utilize a unique port.
+                        Also, to share both an IPV4
+                        as well as an IPV6 supply an
+                        extra <code>virtualIp</code> object
+                        to the <code>virtualIps</code> container
+                        with the desired <code>ID</code> being
+                        shared.
                     </para>
                 </note>
                 <example>
