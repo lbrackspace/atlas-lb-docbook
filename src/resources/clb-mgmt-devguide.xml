@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-03-09</pubdate>
+        <pubdate>2012-04-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -69,6 +69,50 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-04-03</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added management API calls for
+                                adding and retrieving allowable
+                                domains in <xref
+                                   linkend="AllowedDomains-d2f002eM"/>
+                                .</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added management API call to
+                                retrieve account-specific usage for
+                                all accounts for the given date range
+                                in <xref
+                                   linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                />. The response is paginated.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added management API call to
+                                retrieve load balancer-specific usage
+                                for all load balancers for the given
+                                date range. The response is
+                                paginated.Added information in <xref
+                                   linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added information in <xref
+                                   linkend="Zeus_Usage-d1e3672"/> that
+                                the date parameters are required for
+                                the List Zeus Usage calls.</para>
+                        </listitem>
+                        <listitem>
+                            <para>The response examples for XML and
+                                JSON in <xref
+                                   linkend="Zeus_Usage-d1e3672"/> have
+                                been updated to show the correct
+                                responses.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-03-09</date>
                 <revdescription>
@@ -1587,7 +1631,7 @@
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>
                         </td>
-                        <td colspan="4">Retrieve usage for all accounts for a single day.</td>
+                        <td colspan="4">Retrieve usage for all accounts for a <emphasis>single</emphasis> day.</td>
                         <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
                 </tbody>
@@ -1607,7 +1651,7 @@
                 for the given account using these methods. The date
                 parameters follow the yyyy-MM-dd date format. Please
                 note that usage is retained for a maximum of 90 days.
-                The <code>startDate</code> and <code>endDate</code>
+                The <code>startTime</code> and <code>endTime</code>
                 parameters are required for the call. </para>
             <example>
                 <title>List Account Load Balancers Response: XML</title>
@@ -2185,22 +2229,30 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3">/alloweddomains?matches={<code>domainname</code>}</td>
-                            <td colspan="3">For testing purposes one can supply domain name to verify it is allowed by the system.
-                                            The return is a list of matched domain names that the FQDN was found in.</td>
+                            <td colspan="3">For testing purposes, a
+                                domain name can be specified to verify
+                                it is allowed by the system. The query
+                                parameter for the specified domain
+                                name must be supplied. The response
+                                provides a list of matched domain
+                                names in which the FQDN was
+                                found.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
                             </td>
                             <td colspan="3">/alloweddomains</td>
-                            <td colspan="3">Add an item to list of allowed domains.</td>
+                            <td colspan="3">Add an item to the list of
+                                allowed domains.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
                             <td colspan="3">/alloweddomains?name={<code>domainname</code>}</td>
-                            <td colspan="3">Remove an item from the list of allowed domains.
-                                            Query param of the domain name in question must be
-                                            supplied to remove.</td>
+                            <td colspan="3">Specify an item to remove
+                                from the list of allowed domains. The
+                                query parameter for the specified
+                                domain name must be supplied.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -2216,19 +2268,20 @@
                 <para>
                     This operation does not require a request body.
                 </para>
-                <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
-                    In order to submit a domain name as an address for the load balancer node the user must verify
-                    the domain is valid against the allowed domains list call.
-                </para>
+                <para>The allowed domains are restrictions set for
+                    allowed domain names used for load balancer nodes.
+                    In order to submit a domain name as an address for
+                    the load balancer node, the user must verify the
+                    domain is valid against the List Allowed Domains
+                    call. </para>
                 <para>The operations/management users are allowed to submit new domains to the list of allowed domains.
                 </para>
                 <note>
-                    <para>Currently only RackSpace based domain names are supported.
-                    </para>
-                    <para>
-                        One FQDN(fully qualified domain name) may contain only one 'A' or 'AAAA' record as per limitation
-                        of the system.
-                    </para>
+                    <para>Currently only RackSpace-based domain names
+                        are supported. </para>
+                    <para> One FQDN (fully qualified domain name) may
+                        contain only one 'A' or 'AAAA' record as per
+                        limitation of the system. </para>
                 </note>
                 <example>
                     <title>List Allowed Domains: XML</title>
