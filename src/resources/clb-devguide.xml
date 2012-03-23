@@ -1945,7 +1945,10 @@
                     This header will contain the actual source address
                     of the client, which many web applications are
                     already designed to use when determining the
-                    source address for a request.
+                    source address for a request. Also, a HTTP load balancer will
+                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
+                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
+                    useful when using SSL termination.
                 </para>
                 <note>
                     <para>
@@ -2062,7 +2065,7 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IP by issuing a &POST; and
+                    share a single virtual IPV4 and/or an IPV6 by issuing a &POST; and
                     supplying a virtual IP ID instead of a type.
                     Additionally, this feature is highly desirable if
                     you wish to load balance both an unsecured and
