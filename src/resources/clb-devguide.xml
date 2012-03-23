@@ -3017,6 +3017,7 @@
                 </para>
             </section>
         </section>
+
         <section xml:id="Virtual_IPs-d1e2754">
             <title>Virtual IPs</title>
             <para>
@@ -3102,6 +3103,64 @@
                     </programlisting>
                 </example>
             </section>
+        </section>
+            <section xml:id="AllowedDomains-d2f002e">
+            <title>Allowed Domains</title>
+            <section xml:id="List-allowed-domains-d2f002e">
+                <title>List Allowed Domains</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/alloweddomains</td>
+                            <td colspan="3">View a list of allowed domains.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
+                    In order to submit a domain name as an address for the load balancer node the user must verify
+                    the domain is valid against the allowed domains list call.
+                </para>
+                <note>
+                    <para>Currently only RackSpace based domain names are supported.
+                    </para>
+                </note>
+                <example>
+                    <title>List Allowed Domains: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/allowed-domains.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Allowed Domains: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/allowed-domains.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+           </section>
+
             <section xml:id="Add_Virtual_IP_Version_6">
                 <title>Add Virtual IP Version 6</title>
                 <informaltable rules="all">
@@ -3232,7 +3291,6 @@
                     </para>
                 </note>
             </section>
-        </section>
         <section xml:id="Usage_Reports-d1e3009">
             <title>Usage Reports</title>
             <section xml:id="List_Usage-d1e3014">
@@ -4004,6 +4062,9 @@
 <xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
                     </programlisting>
                 </example>
+                <note><para>UDP based protocols (i.e. DNS_UDP, UDP and UDP_STREAM) are not capable
+                      of utilizing the Health Monitor features. Also, SSL Termination is unavaiable while
+                      using UDP based protocols.</para></note>
             </section>
         </section>
         <section xml:id="Algorithms-d1e4367">
