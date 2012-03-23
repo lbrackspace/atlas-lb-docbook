@@ -1590,6 +1590,26 @@
                         <td colspan="4">Retrieve usage for all accounts for a single day.</td>
                         <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4"
+                                >/accounts/usage?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
+                            <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
+                            <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;offset=<parameter>offset</parameter>&amp;limit=<parameter>limit</parameter>
+                        </td>
+                        <td colspan="4">Retrieves account specific usage for all accounts for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000</td>
+                        <td colspan="2">Support, Service Admin, Billing</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4"
+                                >/loadbalancers/usage?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
+                            <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
+                            <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;offset=<parameter>offset</parameter>&amp;limit=<parameter>limit</parameter>
+                        </td>
+                        <td colspan="4">Retrieves load balancer specific usage for all load balancers for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000</td>
+                        <td colspan="2">Support, Service Admin, Billing</td>
+                    </tr>
                 </tbody>
             </informaltable>
             <para>
@@ -1616,10 +1636,38 @@
                 </programlisting>
             </example>
             <example>
-                <title>List  Account Load Balancers Usage Response:
+                <title>List Account Load Balancers Usage Response:
                     XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-report-billing-response.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Accounts Usage Response (Paginated):
+                    XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-accounts-usage-response-paged.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Accounts Usage Response (Paginated):
+                    JSON</title>
+                <programlisting language="json">
+<xi:include href="samples/lb-accounts-usage-response-paged.json" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers Usage Response (Paginated):
+                    XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-loadbalancers-usage-response-paged.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>List Load Balancers Usage Response (Paginated):
+                    JSON</title>
+                <programlisting language="json">
+<xi:include href="samples/lb-loadbalancers-usage-response-paged.json" parse="text" />
                 </programlisting>
             </example>
         </section>

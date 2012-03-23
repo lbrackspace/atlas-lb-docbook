@@ -1,27 +1,19 @@
 {"protocols": [
         {
-            "name": "HTTP",
-            "port": 80
+            "name": "DNS_TCP",
+            "port": 53
+        },
+        {
+            "name": "DNS_UDP",
+            "port": 53
         },
         {
             "name": "FTP",
             "port": 21
         },
         {
-            "name": "IMAPv4",
-            "port": 143
-        },
-        {
-            "name": "POP3",
-            "port": 110
-        },
-        {
-            "name": "SMTP",
-            "port": 25
-        },
-        {
-            "name": "LDAP",
-            "port": 389
+            "name": "HTTP",
+            "port": 80
         },
         {
             "name": "HTTPS",
@@ -32,20 +24,40 @@
             "port": 993
         },
         {
-            "name": "POP3S",
-            "port": 995
+            "name": "IMAPv4",
+            "port": 143
+        },
+        {
+            "name": "LDAP",
+            "port": 389
         },
         {
             "name": "LDAPS",
             "port": 636
         },
         {
-            "name": "DNS_TCP",
-            "port": 53
+            "name": "MYSQL",
+            "port": 3306
         },
         {
-            "name": "DNS_UDP",
-            "port": 53
+            "name": "POP3",
+            "port": 110
+        },
+        {
+            "name": "POP3S",
+            "port": 995
+        },
+        {
+            "name": "SMTP",
+            "port": 25
+        },
+        {
+            "name": "TCP",
+            "port": 0
+        },
+        {
+            "name": "TCP_CLIENT_FIRST",
+            "port": 0
         },
         {
             "name": "UDP",
@@ -53,10 +65,6 @@
         },
         {
             "name": "UDP_STREAM",
-            "port": 0
-        },
-        {
-            "name": "TCP",
             "port": 0
         }
     ]
