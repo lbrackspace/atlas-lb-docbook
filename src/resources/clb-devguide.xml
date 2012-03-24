@@ -2804,7 +2804,13 @@
                     removing it. Every load balancer is dual-homed on
                     both the public Internet and ServiceNet; as a
                     result, nodes can either be internal ServiceNet
-                    addresses or addresses on the public Internet. </para>
+                    addresses or addresses on the public Internet.
+
+                    Domain names are also accepted with certain restrictions,
+                    please review the samples or view the
+                    <emphasis>AllowedDomains</emphasis> section
+                    for more details.</para>
+
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
@@ -3145,7 +3151,8 @@
                 </para>
                 <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
                     In order to submit a domain name as an address for the load balancer node the user must verify
-                    the domain is valid against the allowed domains list call.
+                    the domain is valid against the allowed domains list call. Once verfied simply supply the domain
+                    name in the place of the nodes address. Please see the <emphasis>Nodes</emphasis> section for examples.
                 </para>
                 <note>
                     <para>Currently only RackSpace based domain names are supported.
