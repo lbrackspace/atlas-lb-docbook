@@ -2858,14 +2858,13 @@
                     identifier that can be used for management
                     operations such as changing the condition or
                     removing it. Every load balancer is dual-homed on
-                    both the public Internet and ServiceNet; as a
+                    both the public Internet and ServiceNet. As a
                     result, nodes can either be internal ServiceNet
-                    addresses or addresses on the public Internet.
-
-                    Domain names are also accepted with certain restrictions,
-                    please review the samples or view the
-                    <emphasis>AllowedDomains</emphasis> section
-                    for more details.</para>
+                    addresses or addresses on the public Internet. </para>
+                <para>Domain names are also accepted with certain
+                    restrictions. See the examples below, and refer to
+                        <xref linkend="List-allowed-domains-d2f002e"/>
+                    for additional details.</para>
 
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
