@@ -110,6 +110,13 @@
                                 />).</para>
                         </listitem>
                         <listitem>
+                            <para>Fixed "View Load Balancing SSL
+                                Termination Configuration Response:
+                                JSON" example in <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</para>
+                        </listitem>
+                        <listitem>
                             <para>Metadata can be assigned to each
                                 load balancer (see <xref
                                    linkend="Metadata-d1e2173"
