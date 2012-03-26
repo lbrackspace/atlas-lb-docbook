@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-03-07</pubdate>
+        <pubdate>2012-04-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,6 +60,95 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-04-03</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>List Load Balancers call now
+                                displays the node count (see <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                />).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Allow users to specify primary and
+                                secondary nodes for their load
+                                balancers (see <xref
+                                   linkend="Add_Nodes-d1e2379"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added API call List Allowed Domains
+                                so users can see the list of allowable
+                                domains (see <xref
+                                   linkend="List-allowed-domains-d2f002e"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Valid domain names can be used to
+                                add nodes (see <xref
+                                   linkend="Add_Nodes-d1e2379"/> and
+                                   <xref
+                                   linkend="List-allowed-domains-d2f002e"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added API call List Billable Load
+                                Balancers to list an account's
+                                billable load balancers for a date
+                                range. (see <xref
+                                   linkend="Usage_Reports-d1e3009"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added new protocols such as TCP
+                                Client First, DNS, UDP, and MySQL (see
+                                   <xref linkend="Protocols-d1e4264"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Metadata can be assigned to each
+                                load balancer (see <xref
+                                   linkend="Metadata-d1e2173"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2012-03-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added note about ServiceNet in <xref
+                                   linkend="Service_Access_Endpoints-d1e517"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added note to customers describing
+                                who should not use SSL Termination in
+                                   <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Corrected note below Example 4.81
+                                "View Load Balancing SSL Termination
+                                Configuration Response: JSON" about
+                                wrapping the key/certificates in a
+                                newline character in Java in <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-03-07</date>
                 <revdescription>
@@ -82,6 +171,17 @@
                                    linkend="Determining_Limits_Programmatically-d1e1039"
                                 /> to fix limits and absolutelimits
                                 API calls. </para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Fixed Create Load Balancer (Required
+                                Attributes) Request: XML example to be
+                                consistent with the JSON example in
+                                   <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />.</para>
                         </listitem>
                         <listitem>
                             <para>Added <xref
@@ -935,6 +1035,17 @@
                 proximity to each other and can take advantage of
                 ServiceNet connectivity for free data transfer between
                 services. </para>
+            <note xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">
+                <para>ServiceNet is an internal Rackspace-only,
+                    multi-tenant network connection within each
+                    Rackspace datacenter. ServiceNet IPs are not
+                    accessible via the public internet. Rackspace
+                    customers may configure resources to utilize an
+                    internal IP address so that traffic over the
+                    ServiceNet network is not billed.</para>
+            </note>
             <para>
                 <emphasis role="bold">If load balancing external servers</emphasis>, you can determine the
                 appropriate region to select by choosing the region that is geographically as close to your
@@ -1892,7 +2003,10 @@
                     This header will contain the actual source address
                     of the client, which many web applications are
                     already designed to use when determining the
-                    source address for a request.
+                    source address for a request. Also, a HTTP load balancer will
+                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
+                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
+                    useful when using SSL termination.
                 </para>
                 <note>
                     <para>
@@ -2009,7 +2123,7 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IP by issuing a &POST; and
+                    share a single virtual IPV4 and/or a single IPV6 by issuing a &POST; and
                     supplying a virtual IP ID instead of a type.
                     Additionally, this feature is highly desirable if
                     you wish to load balance both an unsecured and
@@ -2022,6 +2136,12 @@
                         Load balancers sharing a virtual IP
                         <emphasis>must</emphasis>
                         utilize a unique port.
+                        Also, to share both an IPV4
+                        as well as an IPV6 supply an
+                        extra <code>virtualIp</code> object
+                        to the <code>virtualIps</code> container
+                        with the desired <code>ID</code> being
+                        shared.
                     </para>
                 </note>
                 <example>
@@ -2740,9 +2860,14 @@
                     identifier that can be used for management
                     operations such as changing the condition or
                     removing it. Every load balancer is dual-homed on
-                    both the public Internet and ServiceNet; as a
+                    both the public Internet and ServiceNet. As a
                     result, nodes can either be internal ServiceNet
                     addresses or addresses on the public Internet. </para>
+                <para>Domain names are also accepted with certain
+                    restrictions. See the examples below, and refer to
+                        <xref linkend="List-allowed-domains-d2f002e"/>
+                    for additional details.</para>
+
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
@@ -2955,15 +3080,13 @@
                     /nodes?id=<parameter>nodeId</parameter>&amp;id=
                     <parameter>nodeId</parameter>
                     The current default limit is ten ids per request. Any and all configuration data is immediately
-                    purged and
-                    is not recoverable. By chance one of the items in the list cannot be removed due to its current
-                    status
-                    a 400:BadRequest is returned along with the ids of the ones the system identified as potential
-                    failures for
-                    this request
+                    purged and is not recoverable. By chance if one of the items in the list cannot be removed due
+                    to its current status a 400:BadRequest is returned along with the ids of the ones the system
+                    identified as potential failures for this request
                 </para>
             </section>
         </section>
+
         <section xml:id="Virtual_IPs-d1e2754">
             <title>Virtual IPs</title>
             <para>
@@ -3049,6 +3172,70 @@
                     </programlisting>
                 </example>
             </section>
+        </section>
+            <section xml:id="AllowedDomains-d2f002e">
+            <title>Allowed Domains</title>
+            <section xml:id="List-allowed-domains-d2f002e">
+                <title>List Allowed Domains</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/alloweddomains</td>
+                            <td colspan="3">View a list of allowed domains.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <para>The allowed domains are restrictions set for the
+                    allowed domain names used for adding load balancer
+                    nodes. In order to submit a domain name as an
+                    address for the load balancer node to add, the
+                    user must verify that the domain is valid by using
+                    the List Allowed Domains call. Once verified,
+                    simply supply the domain name in place of the
+                    node's address in the Add Nodes call. Refer to
+                        <xref linkend="Add_Nodes-d1e2379"/> for
+                    examples. </para>
+                <note>
+                    <para>Currently only Rackspace-based domain names
+                        are supported. </para>
+                </note>
+                <example>
+                    <title>List Allowed Domains: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/allowed-domains.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Allowed Domains: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/allowed-domains.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+           </section>
+
             <section xml:id="Add_Virtual_IP_Version_6">
                 <title>Add Virtual IP Version 6</title>
                 <informaltable rules="all">
@@ -3179,7 +3366,6 @@
                     </para>
                 </note>
             </section>
-        </section>
         <section xml:id="Usage_Reports-d1e3009">
             <title>Usage Reports</title>
             <section xml:id="List_Usage-d1e3014">
@@ -3193,6 +3379,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/billable?startTime=2010-12-15&amp;endTime=2011-5-1
+                                &amp;offset=2&amp;limit=2</td>
+                            <td colspan="3">List billable load balancers for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000.</td>
+                        </tr>
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
@@ -3225,38 +3418,42 @@
                 <para>
                     This operation does not require a request body.
                 </para>
-                <para>The load balancer usage reports provide a view of all transfer activity, average
-                    number of connections, and number of virtual IPs associated with the load
-                    balancing service. Current usage represents all usage recorded within the
-                    preceding 24 hours. Values for both
-                    <code>incomingTransfer</code>
-                    and
-                    <code>outgoingTransfer</code>
-                    are expressed in bytes transferred. The
-                    optional
-                    <code>startTime</code>
-                    and
-                    <code>endTime</code>
-                    parameters can be used
-                    to filter all usage. If the
-                    <code>startTime</code>
-                    parameter is supplied but the
-                    <code>endTime</code>
-                    parameter is not, then all usage beginning with the
-                    <code>startTime</code>
-                    will be provided. Likewise, if the
-                    <code>endTime</code>
-                    parameter is supplied but the
-                    <code>startTime</code>
-                    parameter is not, then all usage will be returned up to the
-                    <code>endTime</code>
-                    specified.
-                </para>
+                <para>The load balancer usage reports provide a view
+                    of all transfer activity, average number of
+                    connections, and number of virtual IPs associated
+                    with the load balancing service. Current usage
+                    represents all usage recorded within the preceding
+                    24 hours. Values for both
+                        <code>incomingTransfer</code> and
+                        <code>outgoingTransfer</code> are expressed in
+                    bytes transferred. </para>
+                <para>The optional <code>startTime</code> and
+                        <code>endTime</code> parameters can be used to
+                    filter all usage. If the <code>startTime</code>
+                    parameter is supplied but the <code>endTime</code>
+                    parameter is not, then all usage beginning with
+                    the <code>startTime</code> will be provided.
+                    Likewise, if the <code>endTime</code> parameter is
+                    supplied but the <code>startTime</code> parameter
+                    is not, then all usage will be returned up to the
+                        <code>endTime</code> specified. </para>
                 <note>
                     <para>Historical usage data is available for up to 90 days of service
                         activity.
                     </para>
                 </note>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-loadbalancers-billable-paged.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Report Billable Load Balancers Response (Paginated): JSON</title>
+                    <programlisting language="json">
+<xi:include href="samples/lb-loadbalancers-billable-paged.json" parse="text"/>
+                    </programlisting>
+                </example>
                 <example>
                     <title>Report Load Balancer Usage Response: XML</title>
                     <programlisting language="xml">
@@ -3951,6 +4148,9 @@
 <xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
                     </programlisting>
                 </example>
+                <note><para>UDP based protocols (i.e. DNS_UDP, UDP and UDP_STREAM) are not capable
+                      of utilizing the Health Monitor features. Also, SSL Termination is unavailable while
+                      using UDP based protocols.</para></note>
             </section>
         </section>
         <section xml:id="Algorithms-d1e4367">
@@ -4058,6 +4258,17 @@
         </section>
         <section xml:id="SSLTermination-d1e2479">
             <title>SSL Termination</title>
+            <note>
+                <para>Note to customers who have Personally
+                    Identifiable Information (PII) in their data. You
+                    should <emphasis>not</emphasis> be using the SSL
+                    Termination feature. Examples of PII are HIPPA
+                    protected health information, Gramm-Leach-Bliley
+                    financial information, credit card information,
+                    and any personal data that when disclosed could
+                    result in the theft of the person's
+                    identity.</para>
+            </note>
             <informaltable rules="all">
                 <thead>
                     <tr align="center">
@@ -4432,5 +4643,254 @@
                     body.</para>
             </simplesect>
         </section>
+
+        <section xml:id="Metadata-d1e2173">
+            <title>Metadata</title>
+            <para>Metadata can be associated with each load balancer for the client's personal use.
+                It is defined using key-value pairs where the key and value consist of alphanumeric
+                characters. A key is unique per load balancer.
+            </para>
+
+            <section xml:id="List_Metadata-d1e2218">
+                <title>List Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
+                            </td>
+                            <td colspan="3">List all metadata
+                                associated with the load
+                                balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">List details of a specific metadata item.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <example>
+                    <title>List Specific Metadata Response:
+                        XML</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-meta-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Specific Metadata Response:
+                        JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-meta-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List All Metadata Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-metadata-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List All Metadata Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-metadata-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Add_Metadata-d1e2379">
+                <title>Add Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &POST;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
+                            </td>
+                            <td colspan="3">Add a new metadata item to the load balancer.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>When a metadata item is added, it is assigned a unique identifier that can be used
+                    for mutating operations such as changing the value attribute or removing it.
+                </para>
+                <example>
+                    <title>Add Metadata Request: XML</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-metadata-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-metadata-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-add-metadata-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Add Metadata Response: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-add-metadata-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Modify_Metadata-d1e2503">
+                <title>Modify Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &PUT;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">Modify the configuration of a metadata item on the
+                                load balancer.
+                            </td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <note>
+                    <para>The meta data item's id and key are immutable attributes and cannot be modified
+                        with a &PUT; request. Supplying an unsupported attribute will result in a
+                        <returnvalue>400 (badRequest)</returnvalue>
+                        fault. A load balancer supports
+                        a maximum of 25 metadata items.
+                    </para>
+                </note>
+                <example>
+                    <title>Update Metadata Value Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-update-meta-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Update Metadata Value Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-update-meta-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+            <section xml:id="Remove_Metadata-d1e2675">
+                <title>Remove Metadata</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &DELETE;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">Remove a metadata item from the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&BATCH_DELETE;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata?id=
+                                <parameter>metaId</parameter>
+                                &amp;id=
+                                <parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">Batch delete the metadata items given specified id list.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                    To batch delete metadata, provide a query parameter list of meta ids. For example:
+                    /metadata?id=<parameter>metaId</parameter>&amp;id=
+                    <parameter>metaId</parameter>
+                    The current default limit is ten ids per request. Any and all configuration data is immediately
+                    purged and is not recoverable. By chance if one of the items in the list cannot be removed due
+                    to its current status a 400:BadRequest is returned along with the ids of the ones the system
+                    identified as potential failures for this request
+                </para>
+            </section>
+        </section>
+
     </chapter>
 </book>

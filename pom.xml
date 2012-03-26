@@ -88,7 +88,7 @@
 			      <move todir="target/docbkx/webhelp/clb-releasenotes-external" failonerror="false">
 				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
 			      </move>
-			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-20111117.pdf" failonerror="false"/>
+			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-YYYYMMDD.pdf" failonerror="false"/>
 			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
 			    </postProcess>
                         </configuration>
@@ -110,12 +110,12 @@
                             <enableGoogleAnalytics>1</enableGoogleAnalytics>
                             <chapterAutolabel>0</chapterAutolabel>
                             <security>internal</security>
-                            <canonicalUrlBase>http://docs-beta.rackspace.com/internal/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
+                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content</canonicalUrlBase>
 			    <postProcess>
 			      <move todir="target/docbkx/webhelp/clb-releasenotes-internal" failonerror="false">
 				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
 			      </move>
-			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-internal-20111117.pdf" failonerror="false"/>
+			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-internal.pdf" failonerror="false"/>
 			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
 			    </postProcess>
                         </configuration>
@@ -139,9 +139,13 @@
                             <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
                             <includes>clb-getting-started.xml</includes>
                             <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content</canonicalUrlBase>
+			    <postProcess>
+			      <copy todir="target/docbkx/webhelp/clb-getting-started/content/images">
+				<fileset dir="src/resources/images" includes="**/*"/>
+			      </copy>
+			    </postProcess>
                         </configuration>
-                    </execution>
-                    
+                    </execution>                    
                 </executions>
 		<configuration>
 			     <socialIcons>1</socialIcons>
