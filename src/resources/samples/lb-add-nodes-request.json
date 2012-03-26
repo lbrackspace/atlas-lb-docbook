@@ -12,7 +12,7 @@
             "type":"SECONDARY"
         },
         {
-            "address": "10.2.2.2",
+            "address": "www.myrackspace.com",
             "port": 88,
             "condition": "ENABLED",
             "weight": 10,

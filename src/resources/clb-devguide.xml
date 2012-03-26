@@ -2001,7 +2001,10 @@
                     This header will contain the actual source address
                     of the client, which many web applications are
                     already designed to use when determining the
-                    source address for a request.
+                    source address for a request. Also, a HTTP load balancer will
+                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
+                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
+                    useful when using SSL termination.
                 </para>
                 <note>
                     <para>
@@ -2118,7 +2121,7 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IP by issuing a &POST; and
+                    share a single virtual IPV4 and/or a single IPV6 by issuing a &POST; and
                     supplying a virtual IP ID instead of a type.
                     Additionally, this feature is highly desirable if
                     you wish to load balance both an unsecured and
@@ -2131,6 +2134,12 @@
                         Load balancers sharing a virtual IP
                         <emphasis>must</emphasis>
                         utilize a unique port.
+                        Also, to share both an IPV4
+                        as well as an IPV6 supply an
+                        extra <code>virtualIp</code> object
+                        to the <code>virtualIps</code> container
+                        with the desired <code>ID</code> being
+                        shared.
                     </para>
                 </note>
                 <example>
@@ -2851,7 +2860,13 @@
                     removing it. Every load balancer is dual-homed on
                     both the public Internet and ServiceNet; as a
                     result, nodes can either be internal ServiceNet
-                    addresses or addresses on the public Internet. </para>
+                    addresses or addresses on the public Internet.
+
+                    Domain names are also accepted with certain restrictions,
+                    please review the samples or view the
+                    <emphasis>AllowedDomains</emphasis> section
+                    for more details.</para>
+
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
@@ -3192,7 +3207,8 @@
                 </para>
                 <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
                     In order to submit a domain name as an address for the load balancer node the user must verify
-                    the domain is valid against the allowed domains list call.
+                    the domain is valid against the allowed domains list call. Once verfied simply supply the domain
+                    name in the place of the nodes address. Please see the <emphasis>Nodes</emphasis> section for examples.
                 </para>
                 <note>
                     <para>Currently only Rackspace-based domain names

@@ -18,7 +18,7 @@
         "type":"SECONDARY"
     },
     {
-        "address": "10.2.2.2",
+        "address": "www.myrackspace.com",
         "id": 186,
         "port": 88,
         "status": "ONLINE",
