@@ -3206,11 +3206,16 @@
                 <para>
                     This operation does not require a request body.
                 </para>
-                <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
-                    In order to submit a domain name as an address for the load balancer node the user must verify
-                    the domain is valid against the allowed domains list call. Once verfied simply supply the domain
-                    name in the place of the nodes address. Please see the <emphasis>Nodes</emphasis> section for examples.
-                </para>
+                <para>The allowed domains are restrictions set for the
+                    allowed domain names used for adding load balancer
+                    nodes. In order to submit a domain name as an
+                    address for the load balancer node to add, the
+                    user must verify that the domain is valid by using
+                    the List Allowed Domains call. Once verified,
+                    simply supply the domain name in place of the
+                    node's address in the Add Nodes call. Refer to
+                        <xref linkend="Add_Nodes-d1e2379"/> for
+                    examples. </para>
                 <note>
                     <para>Currently only Rackspace-based domain names
                         are supported. </para>
