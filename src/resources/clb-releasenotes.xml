@@ -108,8 +108,8 @@
 					DNS, UDP, and MySQL.</para>
 			</listitem>
 			<listitem>
-				<para>Valid domain names can be used to add
-					nodes.</para>
+				<para>Valid, allowed, Rackspace-based domain names can be used to
+					add nodes.</para>
 			</listitem>
 			<listitem>
 				<para>Metadata can be assigned to each load
@@ -127,17 +127,17 @@
 					an account's billable load balancers for a date
 					range.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Added management API calls for adding and retrieving allowed
 					domains.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Added management API call Retrieve Account-Specific Usage to
 					retrieve account-specific usage for all accounts
 					for the given date range. The response is
 					paginated.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Added management API call Retrieve Load Balancer-Specific
 					Usage to retrieve load balancer-specific usage for
 					all load balancers for the given date range. The
