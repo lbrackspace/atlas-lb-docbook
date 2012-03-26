@@ -90,6 +90,8 @@
                         <listitem>
                             <para>Valid domain names can be used to
                                 add nodes (see <xref
+                                   linkend="Add_Nodes-d1e2379"/> and
+                                   <xref
                                    linkend="List-allowed-domains-d2f002e"
                                 />).</para>
                         </listitem>
