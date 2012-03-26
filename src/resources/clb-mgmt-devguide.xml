@@ -74,41 +74,29 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Added management API calls for
-                                adding and retrieving allowable
-                                domains in <xref
-                                   linkend="AllowedDomains-d2f002eM"/>
-                                .</para>
-                        </listitem>
-                        <listitem>
-                            <para>Added management API call to
-                                retrieve account-specific usage for
-                                all accounts for the given date range
-                                in <xref
+                            <para>Added management API call Retrieve
+                                Account- Specific Usage to retrieve
+                                account-specific usage for all
+                                accounts for the given date range in
+                                   <xref
                                    linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
                                 />. The response is paginated.</para>
                         </listitem>
                         <listitem>
-                            <para>Added management API call to
+                            <para>Added management API call Retrieve
+                                Load Balancer-Specific Usage to
                                 retrieve load balancer-specific usage
                                 for all load balancers for the given
-                                date range. The response is
-                                paginated.Added information in <xref
+                                date range in <xref
                                    linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                />. The response is paginated.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added management API calls for
+                                adding and retrieving allowable
+                                domains in <xref
+                                   linkend="AllowedDomains-d2f002eM"
                                 />.</para>
-                        </listitem>
-                        <listitem>
-                            <para>Added information in <xref
-                                   linkend="Zeus_Usage-d1e3672"/> that
-                                the date parameters are required for
-                                the List Zeus Usage calls.</para>
-                        </listitem>
-                        <listitem>
-                            <para>The response examples for XML and
-                                JSON in <xref
-                                   linkend="Zeus_Usage-d1e3672"/> have
-                                been updated to show the correct
-                                responses.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -1641,7 +1629,11 @@
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;offset=<parameter>offset</parameter>&amp;limit=<parameter>limit</parameter>
                         </td>
-                        <td colspan="4">Retrieves account specific usage for all accounts for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000</td>
+                        <td colspan="4">Retrieves account- specific
+                            usage for all accounts for the given date
+                            range. The response is paginated with a
+                            default limit of 500 and a maximum limit
+                            of 1000</td>
                         <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
                     <tr align="left">
@@ -1651,7 +1643,11 @@
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;offset=<parameter>offset</parameter>&amp;limit=<parameter>limit</parameter>
                         </td>
-                        <td colspan="4">Retrieves load balancer specific usage for all load balancers for the given date range. The response is paginated with a default limit of 500 and a maximum limit of 1000</td>
+                        <td colspan="4">Retrieves load balancer-
+                            specific usage for all load balancers for
+                            the given date range. The response is
+                            paginated with a default limit of 500 and
+                            a maximum limit of 1000</td>
                         <td colspan="2">Support, Service Admin, Billing</td>
                     </tr>
                 </tbody>

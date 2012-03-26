@@ -119,35 +119,35 @@
 				<para>List Load Balancers call now displays the node count.</para>
 			</listitem>
 			<listitem>
-				<para>Added public API  call XXXXXXX so users can see
-					the list of allowable domains.</para>
+				<para>Added public API call List Allowed Domains so users can see
+					the list of allowed domains.</para>
 			</listitem>
 			<listitem>
-				<para>Added public API call XXXXXXX to list an
-					account's billable load balancers for a date
+				<para>Added public API call List Billable Load Balancers to list
+					an account's billable load balancers for a date
 					range.</para>
 			</listitem>
 			<listitem>
-				<para>Added management API  call XXXXXXX for adding
-					and retrieving allowable domains.</para>
+				<para>Added management API calls for adding and retrieving allowed
+					domains.</para>
 			</listitem>
 			<listitem>
-				<para>Added management API call XXXXXXX to retrieve
-					account-specific usage for all accounts for the
-					given date range. The response is
+				<para>Added management API call Retrieve Account-Specific Usage to
+					retrieve account-specific usage for all accounts
+					for the given date range. The response is
 					paginated.</para>
 			</listitem>
 			<listitem>
-				<para>Added management API call XXXXXXX to retrieve
-					load balancer-specific usage for all load
-					balancers for the given date range. The response
-					is paginated.</para>
+				<para>Added management API call Retrieve Load Balancer-Specific
+					Usage to retrieve load balancer-specific usage for
+					all load balancers for the given date range. The
+					response is paginated.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Use actual time as directory/file name for
 					Hadoop logs in cloud files.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Deleted old Hadoop states from the state
 					table.</para>
 			</listitem>
