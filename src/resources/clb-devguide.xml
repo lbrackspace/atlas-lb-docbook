@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-03-09</pubdate>
+        <pubdate>2012-04-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,6 +60,64 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-04-03</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>List Load Balancers call now
+                                displays the node count (see <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                />).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Allow users to specify primary and
+                                secondary nodes for their load
+                                balancers (see <xref
+                                   linkend="Add_Nodes-d1e2379"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added API call List Allowed Domains
+                                so users can see the list of allowable
+                                domains (see <xref
+                                   linkend="List-allowed-domains-d2f002e"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Valid domain names can be used to
+                                add nodes (see <xref
+                                   linkend="Add_Nodes-d1e2379"/> and
+                                   <xref
+                                   linkend="List-allowed-domains-d2f002e"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added API call List Billable Load
+                                Balancers to list an account's
+                                billable load balancers for a date
+                                range. (see <xref
+                                   linkend="Usage_Reports-d1e3009"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added new protocols such as TCP
+                                Client First, DNS, UDP, and MySQL (see
+                                   <xref linkend="Protocols-d1e4264"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Metadata can be assigned to each
+                                load balancer (see <xref
+                                   linkend="Metadata-d1e2173"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-03-09</date>
                 <revdescription>
@@ -1945,7 +2003,10 @@
                     This header will contain the actual source address
                     of the client, which many web applications are
                     already designed to use when determining the
-                    source address for a request.
+                    source address for a request. Also, a HTTP load balancer will
+                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
+                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
+                    useful when using SSL termination.
                 </para>
                 <note>
                     <para>
@@ -2062,7 +2123,7 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IP by issuing a &POST; and
+                    share a single virtual IPV4 and/or a single IPV6 by issuing a &POST; and
                     supplying a virtual IP ID instead of a type.
                     Additionally, this feature is highly desirable if
                     you wish to load balance both an unsecured and
@@ -2075,6 +2136,12 @@
                         Load balancers sharing a virtual IP
                         <emphasis>must</emphasis>
                         utilize a unique port.
+                        Also, to share both an IPV4
+                        as well as an IPV6 supply an
+                        extra <code>virtualIp</code> object
+                        to the <code>virtualIps</code> container
+                        with the desired <code>ID</code> being
+                        shared.
                     </para>
                 </note>
                 <example>
@@ -2793,9 +2860,14 @@
                     identifier that can be used for management
                     operations such as changing the condition or
                     removing it. Every load balancer is dual-homed on
-                    both the public Internet and ServiceNet; as a
+                    both the public Internet and ServiceNet. As a
                     result, nodes can either be internal ServiceNet
                     addresses or addresses on the public Internet. </para>
+                <para>Domain names are also accepted with certain
+                    restrictions. See the examples below, and refer to
+                        <xref linkend="List-allowed-domains-d2f002e"/>
+                    for additional details.</para>
+
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
                     future_exs_type_attribute" when the type attribute
@@ -3134,13 +3206,19 @@
                 <para>
                     This operation does not require a request body.
                 </para>
-                <para>The allowed domains are restrictions set for allowed domain names used for load balancer nodes.
-                    In order to submit a domain name as an address for the load balancer node the user must verify
-                    the domain is valid against the allowed domains list call.
-                </para>
+                <para>The allowed domains are restrictions set for the
+                    allowed domain names used for adding load balancer
+                    nodes. In order to submit a domain name as an
+                    address for the load balancer node to add, the
+                    user must verify that the domain is valid by using
+                    the List Allowed Domains call. Once verified,
+                    simply supply the domain name in place of the
+                    node's address in the Add Nodes call. Refer to
+                        <xref linkend="Add_Nodes-d1e2379"/> for
+                    examples. </para>
                 <note>
-                    <para>Currently only RackSpace based domain names are supported.
-                    </para>
+                    <para>Currently only Rackspace-based domain names
+                        are supported. </para>
                 </note>
                 <example>
                     <title>List Allowed Domains: XML</title>
@@ -3340,33 +3418,25 @@
                 <para>
                     This operation does not require a request body.
                 </para>
-                <para>The load balancer usage reports provide a view of all transfer activity, average
-                    number of connections, and number of virtual IPs associated with the load
-                    balancing service. Current usage represents all usage recorded within the
-                    preceding 24 hours. Values for both
-                    <code>incomingTransfer</code>
-                    and
-                    <code>outgoingTransfer</code>
-                    are expressed in bytes transferred. The
-                    optional
-                    <code>startTime</code>
-                    and
-                    <code>endTime</code>
-                    parameters can be used
-                    to filter all usage. If the
-                    <code>startTime</code>
-                    parameter is supplied but the
-                    <code>endTime</code>
-                    parameter is not, then all usage beginning with the
-                    <code>startTime</code>
-                    will be provided. Likewise, if the
-                    <code>endTime</code>
-                    parameter is supplied but the
-                    <code>startTime</code>
-                    parameter is not, then all usage will be returned up to the
-                    <code>endTime</code>
-                    specified.
-                </para>
+                <para>The load balancer usage reports provide a view
+                    of all transfer activity, average number of
+                    connections, and number of virtual IPs associated
+                    with the load balancing service. Current usage
+                    represents all usage recorded within the preceding
+                    24 hours. Values for both
+                        <code>incomingTransfer</code> and
+                        <code>outgoingTransfer</code> are expressed in
+                    bytes transferred. </para>
+                <para>The optional <code>startTime</code> and
+                        <code>endTime</code> parameters can be used to
+                    filter all usage. If the <code>startTime</code>
+                    parameter is supplied but the <code>endTime</code>
+                    parameter is not, then all usage beginning with
+                    the <code>startTime</code> will be provided.
+                    Likewise, if the <code>endTime</code> parameter is
+                    supplied but the <code>startTime</code> parameter
+                    is not, then all usage will be returned up to the
+                        <code>endTime</code> specified. </para>
                 <note>
                     <para>Historical usage data is available for up to 90 days of service
                         activity.
@@ -4598,7 +4668,9 @@
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
                             </td>
-                            <td colspan="3">List metadata associated with the load balancer.</td>
+                            <td colspan="3">List all metadata
+                                associated with the load
+                                balancer.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">
@@ -4624,14 +4696,16 @@
                     This operation does not require a request body.
                 </para>
                 <example>
-                    <title>List Metadata Response: XML</title>
+                    <title>List Specific Metadata Response:
+                        XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-meta-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>List Metadata Response: JSON</title>
+                    <title>List Specific Metadata Response:
+                        JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-list-meta-response.json" parse="text"/>

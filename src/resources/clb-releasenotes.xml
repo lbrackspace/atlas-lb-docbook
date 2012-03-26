@@ -25,7 +25,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2012-03-22</pubdate>
+	<pubdate>2012-04-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -38,6 +38,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision>
+				<date>2012-04-03</date>
+				<revdescription>
+					<para>Updated for v1.10.16.</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-03-22</date>
 				<revdescription>
@@ -88,6 +94,100 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="clbv1.10.XX">
+		<title>v1.10.16, April 3, 2012 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Users can specify primary and secondary nodes for their load
+					balancers.</para>
+			</listitem>
+			<listitem>
+				<para>Added new protocols such as TCP Client First,
+					DNS, UDP, and MySQL.</para>
+			</listitem>
+			<listitem>
+				<para>Valid, allowed, Rackspace-based domain names can be used to
+					add nodes.</para>
+			</listitem>
+			<listitem>
+				<para>Metadata can be assigned to each load
+					balancer.</para>
+			</listitem>
+			<listitem>
+				<para>List Load Balancers call now displays the node count.</para>
+			</listitem>
+			<listitem>
+				<para>Added public API call List Allowed Domains so users can see
+					the list of allowed domains.</para>
+			</listitem>
+			<listitem>
+				<para>Added public API call List Billable Load Balancers to list
+					an account's billable load balancers for a date
+					range.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Added management API calls for adding and retrieving allowed
+					domains.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Added management API call Retrieve Account-Specific Usage to
+					retrieve account-specific usage for all accounts
+					for the given date range. The response is
+					paginated.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Added management API call Retrieve Load Balancer-Specific
+					Usage to retrieve load balancer-specific usage for
+					all load balancers for the given date range. The
+					response is paginated.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Use actual time as directory/file name for
+					Hadoop logs in cloud files.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Deleted old Hadoop states from the state
+					table.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed bug to allow sharing of IPV6 VIPs when creating a load
+					balancer.</para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug so that the same blacklist item/record cannot be
+					added multiple times.</para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug to return correct response when adding
+					an absolute limit that already exists.</para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug to update rate limit on the shadow
+					virtual server.</para>
+			</listitem>
+			<listitem>
+				<para>Deleting error page now returns a 202.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="clbv1.9.16">
 		<title>v1.9.16, March 22, 2012 </title>
