@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-05</pubdate>
+        <pubdate>2012-04-06</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-04-05</date>
+                <date>2012-04-06</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -1884,8 +1884,7 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3"
-                                    >/loadbalancers/
-                                <parameter>loadBalancerId</parameter>
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>
                             </td>
                             <td colspan="3">List details of the specified load balancer.</td>
                             <td colspan="2">JSON, XML, Atom</td>
@@ -2193,8 +2192,8 @@
                         <tr align="left">
                             <td colspan="1">&PUT;
                             </td>
-                            <td colspan="3">/loadbalancers/
-                                <parameter>loadBalancerId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>
                             </td>
                             <td colspan="3">Update the properties of a load balancer.</td>
                         </tr>
@@ -2375,8 +2374,8 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/
-                                <parameter>loadBalancerId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>
                             </td>
                             <td colspan="3">Remove a load balancer from the account.</td>
                         </tr>
@@ -2384,8 +2383,7 @@
                             <td colspan="1">&BATCH_DELETE;
                             </td>
                             <td colspan="3">
-                                /loadbalancers?id=
-                                <parameter>loadBalancerId</parameter>
+                                   /loadbalancers?id=<parameter>loadBalancerId</parameter>
                             </td>
                             <td colspan="3">Batch delete load balancers given specified id list.</td>
                         </tr>
