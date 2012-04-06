@@ -333,7 +333,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers by Virtual IP Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -345,7 +345,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers by Virtual IP Address Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -407,7 +407,7 @@
             </example>
             <example>
                 <title>List All Clusters Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -514,7 +514,7 @@
             </example>
             <example>
                 <title>List All Hosts Within Cluster Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -588,7 +588,7 @@
                 </example>
                 <example>
                     <title>Create Host Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-host.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -651,7 +651,7 @@
                 <example>
                     <title>Update Host Request: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -737,7 +737,7 @@
             <example>
                 <title>List All VIPs Within Cluster Response: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
@@ -749,7 +749,7 @@
             </example>
             <example>
                 <title>Assign IP Blocks Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
                 </programlisting>
             </example>
@@ -842,7 +842,7 @@
             <example>
                 <?dbfo keep-together="always"?>
                 <title>List Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
@@ -857,7 +857,7 @@
             <example>
                 <title>List Active Rate-Limited Load Balancers
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
                 </programlisting>
             </example>
@@ -872,7 +872,7 @@
                 <?dbfo keep-together="always"?>
                 <title>List Non-Standard Absolute Limit Account
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -886,7 +886,7 @@
             <example>
                 <title>List Non-Standard API Rate-Limited Account
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-apiratelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -899,7 +899,7 @@
             </example>
             <example>
                 <title>Set Rate Limit Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ratelimit-request.json" parse="text"/>
                 </programlisting>
             </example>
@@ -911,7 +911,7 @@
             </example>
             <example>
                 <title>Set Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -923,7 +923,7 @@
             </example>
             <example>
                 <title>Update Rate Limit Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -935,7 +935,7 @@
             </example>
             <example>
                 <title>Update Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1005,7 +1005,7 @@
             </example>
             <example>
                 <title>Update Host Assignment Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1020,7 +1020,7 @@
                 <title>Update Host Assignment for Multiple Load
                     Balancers with Specified Host Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1036,7 +1036,7 @@
                 <title>Update Host Assignment for Multiple Load
                     Balancers with Host Chosen by Algorithm Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1137,7 +1137,7 @@
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>List Available Backups for All Hosts Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-backups.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1149,7 +1149,7 @@
                 </example>
                 <example>
                     <title>List Available Backups for Specified Host Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-backups.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1187,7 +1187,7 @@
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>Add Subnet Mappings Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1199,7 +1199,7 @@
                 </example>
                 <example>
                     <title>Delete Subnet Mappings Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-delete-subnetmappings.json" parse="text" />
                     </programlisting>
                 </example>
@@ -1256,7 +1256,7 @@
             </example>
             <example>
                 <title>List Customers by Host or Cluster Name Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers-by-name.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1268,7 +1268,7 @@
             </example>
             <example>
                 <title>List Customers by Cluster Id Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers-by-id.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1280,7 +1280,7 @@
             </example>
             <example>
                 <title>List Customers Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1292,7 +1292,7 @@
             </example>
             <example>
                 <title>List Customer Count by Host Id Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customer-count-by-host-id.json" parse="text" />
                 </programlisting>
             </example>
@@ -1304,7 +1304,7 @@
             </example>
             <example>
                 <title>List Customer Count by Cluster Id Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customer-count-by-cluster-id.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1348,7 +1348,7 @@
             </example>
             <example>
                 <title>Health Check: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-health-check.json" parse="text" />
                 </programlisting>
             </example>
@@ -1401,7 +1401,7 @@
             </example>
             <example>
                 <title>Assign VIP Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1587,7 +1587,7 @@
             </example>
             <example>
                 <title>List Extended Load Balancer Details Response: XML</title>
-                <programlisting language="javascript"><?db-font-size 70% ?>
+                <programlisting language="json"><?db-font-size 70% ?>
 <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1888,7 +1888,7 @@
             </informaltable>
             <example>
                 <title>List Limits Groups Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-groups.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1999,7 +1999,7 @@
             </example>
             <example>
                 <title>Get Limits Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-get-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2013,7 +2013,7 @@
             <example>
                 <title>Add Limits Request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2025,7 +2025,7 @@
             </example>
             <example>
                 <title>Update Limits Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2083,7 +2083,7 @@
                 <title>List Tickets for Load Balancer Response:
                     JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ticket-response.json" parse="text" />
                 </programlisting>
             </example>
@@ -2097,7 +2097,7 @@
             <example>
                 <title>Create Ticket for Load Balancer Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ticket-request.json" parse="text" />
                 </programlisting>
             </example>
@@ -2135,7 +2135,7 @@
             </example>
             <example>
                 <title>List Zeus Usage Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2336,7 +2336,7 @@
                 <example>
                     <title>List Allowed Domains: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/allowed-domains.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2349,7 +2349,7 @@
                 <example>
                     <title>Add Allowed Domains: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/add-allowed-domains.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2416,7 +2416,7 @@
             <example>
                 <title>List Blacklist Response: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-blacklist.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2429,7 +2429,7 @@
             </example>
             <example>
                 <title>Create Blacklist Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-blacklist.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2478,7 +2478,7 @@
             </example>
             <example>
                 <title>List Jobs Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-jobs.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2490,7 +2490,7 @@
             </example>
             <example>
                 <title>List Job Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-job.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2541,7 +2541,7 @@
             </example>
             <example>
                 <title>Report Host Capacity Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2588,7 +2588,7 @@
             </example>
             <example>
                 <title>Report VIP Availability Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2633,7 +2633,7 @@
             </example>
             <example>
                 <title>Report Load Balancer Audit: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-audit-response.json" parse="text"/>
                 </programlisting>
             </example>
