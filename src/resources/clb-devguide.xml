@@ -2173,7 +2173,7 @@
                     <title>Create Load Balancer (Required Attributes with Shared IP) Response:
                         JSON
                     </title>
-                    <programlisting>
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
                     </programlisting>
                 </example>
