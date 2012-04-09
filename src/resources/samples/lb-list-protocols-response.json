@@ -66,6 +66,10 @@
         {
             "name": "UDP_STREAM",
             "port": 0
+        },
+        {
+            "name": "SFTP",
+            "port": 22
         }
     ]
 }
