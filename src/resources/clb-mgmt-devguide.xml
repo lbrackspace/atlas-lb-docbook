@@ -2638,5 +2638,55 @@
                 </programlisting>
             </example>
         </section>
+
+        <section xml:id="Load-balancer-state-history-d1e3774">
+            <title>Load Balancer State History</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="4">URI</td>
+                        <td colspan="4">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
+                        <td colspan="4">/management/loadbalancers/<parameter>accountId</parameter>/lbstatehistory</td>
+                        <td colspan="4">View state history for given account.</td>
+                        <td colspan="2">Operations</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                Normal Response Code(s):
+                <returnvalue>200</returnvalue>
+            </para>
+            <simpara> 
+                Error Response Code(s): 
+                loadBalancerFault (<errorcode>400</errorcode>,<errorcode>500</errorcode>),  serviceUnavailable (
+                <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
+                <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
+            </simpara>
+            <para> States are collected and stored in the state history table. Requesting a GET against
+                    this resource will list all available state information for the given account.
+            </para>
+            <para>
+                This operation does not require a request body.
+            </para>
+            <example>
+                <title>Load Balancer State History: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-state-history.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>Load Balancer State History: JSON</title>
+                <programlisting language="javascript">
+<xi:include href="samples/lb-state-history.json" parse="text"/>
+                </programlisting>
+            </example>
+        </section>
     </chapter>
 </book>
