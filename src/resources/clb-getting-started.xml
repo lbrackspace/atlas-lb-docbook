@@ -38,8 +38,21 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-03-07</pubdate>
+        <pubdate>2012-04-20</pubdate>
         <revhistory>
+            <revision>
+                <date>2012-04-20</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated service catalog information
+                                for authentication (see <xref
+                                   linkend="Generating_Auth_Token"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-03-07</date>
                 <revdescription>
@@ -433,19 +446,10 @@
                 </listitem>
             </itemizedlist>
         </note>
-        <para>The <code>publicURL</code> endpoint (for example
+        <para>The <code>publicURL</code> endpoints for the services
+            (for example
                 <code>https://servers.api.rackspacecloud.com/v1.0/1234</code>)
-            is also returned in the response.</para>
-        <note>
-            <para>The <code>serviceCatalog</code> that is returned in
-                the auth response, does not currently contain an entry
-                for <code>cloudLoadBalancers</code>. As a result,
-                service endpoints for load balancers are not contained
-                in the auth response. Therefore you will need to
-                select your service access/endpoint as described in
-                    <xref linkend="Service_Access_Endpoints-d1e753"
-                />.</para>
-        </note>
+            are also returned in the response.</para>
         <para>You will find the actual account number after the final
             '/' in the <code>publicURL</code> field. In this example,
             you can see that the account number is 1234. You need to
@@ -453,6 +457,14 @@
             Balancers API calls, wherever you see the field <emphasis
                 role="bold">your_acct_id</emphasis> specified in the
             examples in this guide.</para>
+        <para>Load balancing service endpoints are published in the
+            service catalog in the Auth response with the account
+            number, which is a required element of the service
+            endpoints. The examples shown here are for authentication
+            for US customers. Customers with UK-based accounts will
+            see different values in the service catalog. Refer to
+                <xref linkend="Service_Access_Endpoints-d1e753"/> for
+            more information about service endpoints. </para>
         <para>After authentication, you can use cURL to perform &GET;,
             &DELETE;, &PUT;,  and &POST; requests for the Cloud Load
             Balancer API.</para>
