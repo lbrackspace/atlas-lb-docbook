@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-20</pubdate>
+        <pubdate>2012-04-xx</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-04-20</date>
+                <date>2012-04-xx</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -71,9 +71,11 @@
                                 />).</para>
                         </listitem>
                         <listitem>
-                            <para>List Load Balancers call now
-                                displays the node count (see <xref
-                                   linkend="List_Load_Balancers-d1e1367"
+                            <para>Updated note for customers who are
+                                transferring certain types of
+                                Personally Identifiable Information
+                                (PII) (see <xref
+                                   linkend="SSLTermination-d1e2479"
                                 />).</para>
                         </listitem>
                     </itemizedlist>
@@ -263,12 +265,10 @@
                         <listitem>
                             <para>A default IPV6 is being provisioned
                                 when creating a load balancer. Refer
-                                to<xref
-                                        linkend="table_virtual_ip_types"/>.
+                                to <xref
+                                   linkend="table_virtual_ip_types"/>.
                                 (This was turned off in Release 1.6.13
-                                as a temporary mitigation
-                                strategy.)
-                            </para>
+                                as a temporary mitigation strategy.) </para>
                         </listitem>
                         <listitem>
                             <para>Added <xref
@@ -378,18 +378,18 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Added basic TCP load
-                                balancing to allow customers to
-                                load balance traffic for any
-                                TCP-based prototcol. See<xref linkend="Protocols-d1e4264"/>.
-                            </para>
+                            <para>Added basic TCP load balancing to
+                                allow customers to load balance
+                                traffic for any TCP-based prototcol.
+                                See <xref linkend="Protocols-d1e4264"
+                                />. </para>
                         </listitem>
                         <listitem>
-                            <para>An X-Forwarded-For (XFF) HTTP
-                                header is now automatically
-                                inserted for all inbound HTTP
-                                requests. See<xref linkend="Create_Load_Balancer-d1e1635"/>.
-                            </para>
+                            <para>An X-Forwarded-For (XFF) HTTP header
+                                is now automatically inserted for all
+                                inbound HTTP requests. See <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />. </para>
                         </listitem>
                         <listitem>
                             <para>Added programmatic support
@@ -400,24 +400,26 @@
                             </para>
                         </listitem>
                         <listitem>
-                            <para>Added support for batch
-                                delete of Load Balancers, Nodes,
-                                Virtual IPs, and Access List
-                                Entries. See<xref linkend="Remove_Load_Balancer-d1e2093"/>,<xref
-                                        linkend="Remove_Nodes-d1e2675"/>,
-                                <xref linkend="Remove_Virtual_IP-d1e2919"/>, and<xref
-                                        linkend="Manage_Access_Lists-d1e3187"/>, respectively.
-                            </para>
+                            <para>Added support for batch delete of
+                                Load Balancers, Nodes, Virtual IPs,
+                                and Access List Entries. See <xref
+                                   linkend="Remove_Load_Balancer-d1e2093"
+                                   />,<xref
+                                   linkend="Remove_Nodes-d1e2675"/>,
+                                   <xref
+                                   linkend="Remove_Virtual_IP-d1e2919"
+                                />, and<xref
+                                   linkend="Manage_Access_Lists-d1e3187"
+                                />, respectively. </para>
                         </listitem>
                         <listitem>
-                            <para>Updated<xref linkend="Absolute_Limits-d1e999"/>and added
-                                <code>absolutelimits</code>
-                                API
-                                call to
-                                <xref linkend="Determining_Limits_Programmatically-d1e1039"/>
-                                to return the current absolute
-                                limits for the account.
-                            </para>
+                            <para>Updated <xref
+                                   linkend="Absolute_Limits-d1e999"/>
+                                and added <code>absolutelimits</code>
+                                API call to <xref
+                                   linkend="Determining_Limits_Programmatically-d1e1039"
+                                /> to return the current absolute
+                                limits for the account. </para>
                         </listitem>
                         <listitem>
                             <para>Updated examples to match the
@@ -988,17 +990,14 @@
                             xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html"
                             >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html</link>.</para>
                 </tip>
-                <note>
-                    <para>Load balancing service endpoints are
-                        published in the service catalog in the Auth
-                        response with the account number, which is a
-                        required element of the service endpoints. The
-                        examples shown here are for authentication for
-                        US customers. Customers with UK-based accounts
-                        will see different values in the service
-                        catalog. Refer to the next section for more
-                        information about service endpoints. </para>
-                </note>
+                <para>Load balancer service endpoints are published in
+                    the service catalog in the Auth response with the
+                    account number, which is a required element of the
+                    service endpoints. The examples shown here are for
+                    authentication for US customers. Customers with
+                    UK-based accounts will see different values in the
+                    service catalog. Refer to the next section for
+                    more information about service endpoints. </para>
             </section>
         </section>
         <section xml:id="Service_Access_Endpoints-d1e517">
@@ -4291,15 +4290,12 @@
         <section xml:id="SSLTermination-d1e2479">
             <title>SSL Termination</title>
             <note>
-                <para>Note to customers who have Personally
-                    Identifiable Information (PII) in their data. You
-                    should <emphasis>not</emphasis> be using the SSL
-                    Termination feature. Examples of PII are HIPPA
-                    protected health information, Gramm-Leach-Bliley
-                    financial information, credit card information,
-                    and any personal data that when disclosed could
-                    result in the theft of the person's
-                    identity.</para>
+                <para>SSL termination should not be used when
+                    transferring certain types of Personally
+                    Identifiable Information (PII). For the definition
+                    of PII, see the Knowledge Center article at: <link
+                        xlink:href="http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii"
+                        >http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii</link>.</para>
             </note>
             <informaltable rules="all">
                 <thead>

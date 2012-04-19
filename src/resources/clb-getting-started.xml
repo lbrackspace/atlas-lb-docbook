@@ -38,10 +38,10 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-04-20</pubdate>
+        <pubdate>2012-04-xx</pubdate>
         <revhistory>
             <revision>
-                <date>2012-04-20</date>
+                <date>2012-04-xx</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -457,7 +457,7 @@
             Balancers API calls, wherever you see the field <emphasis
                 role="bold">your_acct_id</emphasis> specified in the
             examples in this guide.</para>
-        <para>Load balancing service endpoints are published in the
+        <para>Load balancer service endpoints are published in the
             service catalog in the Auth response with the account
             number, which is a required element of the service
             endpoints. The examples shown here are for authentication
