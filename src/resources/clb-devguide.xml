@@ -1863,8 +1863,8 @@
                     parameter
                     <emphasis>nodeaddress</emphasis>
                     to
-                    specify the IP address for the desired node. For
-                    example, using the URI
+                    specify the IP address or domain name for the desired
+                    node. For example, using the URI
                     <code>/loadbalancers?nodeaddress=10.1.1.1</code>
                     will search all load balancers for the account for
                     a node with IP address 10.1.1.1, and return a list
@@ -1872,8 +1872,7 @@
                     balancers attached:
                 </para>
                 <example>
-                    <title>List Load Balancers With Node Specified:
-                        XML
+                    <title>List Load Balancers With Node Specified: XML
                     </title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
