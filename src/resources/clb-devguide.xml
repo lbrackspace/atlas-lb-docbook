@@ -71,6 +71,18 @@
                                 />).</para>
                         </listitem>
                         <listitem>
+                            <para>Updated information for the
+                                   <emphasis>nodeaddress</emphasis>
+                                query parameter for finding out
+                                whether any load balancer for an
+                                account has a specific node attached
+                                to it: the parameter can specify the
+                                node using either a domain name or IP
+                                address (see <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                />.</para>
+                        </listitem>
+                        <listitem>
                             <para>Updated note for customers who are
                                 transferring certain types of
                                 Personally Identifiable Information
