@@ -3849,6 +3849,13 @@
                                 for HTTP load balancing only.
                             </td>
                         </tr>
+                        <tr align="left">
+                            <td colspan="1">SOURCE_IP</td>
+                            <td colspan="3">A session persistence mechanism that will keep track of the source ip
+                                which is mapped and able determine the destination back-end node. This is supported
+                                for HTTP pass-through(ssl termination) and non-HTTP load balancing only.
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <informaltable rules="all">
