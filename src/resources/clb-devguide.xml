@@ -4115,6 +4115,75 @@
                 </example>
             </section>
         </section>
+        <section xml:id="ContentCaching-d1e3358">
+            <title>Content Caching</title>
+            <section xml:id="Content-Caching-d1e3146">
+                <title>Content Caching</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">&GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/loadBalancerId/contentcaching</td>
+                            <td colspan="3">View current configuration of content caching.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&PUT;
+                            </td>
+                            <td colspan="3">/loadbalancers/loadBalancerId/contentcaching</td>
+                            <td colspan="3">Enable or disable content caching.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>,
+                    <returnvalue>202</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>This operation allows the user to view the current content caching
+                    configuration, enable content caching, or disable content caching.
+                </para>
+                <para>
+                    This operation does not require a request body.
+                </para>
+                <example>
+                    <title>List Content Caching Configuration Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-list-content-caching-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>List Content Caching Configuration Response: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-list-content-caching-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Enable Content Caching Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-enable-content-caching-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Enable Content Caching Request: JSON</title>
+                    <programlisting language="javascript">
+<xi:include href="samples/lb-enable-content-caching-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
+        </section>
         <section xml:id="Protocols-d1e4264">
             <title>Protocols</title>
             <section xml:id="List_Load_Balancing_Protocols-d1e4269">
