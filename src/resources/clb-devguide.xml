@@ -996,11 +996,12 @@
                         in parsing the service catalog. For Auth 2.0
                         (also known as the Cloud Identity Service),
                         you can see the service type attribute in the
-                        "Authentication Response with Headers" sample
-                        in the Cloud Identity Client Developer Guide
-                        at <link
-                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html"
-                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html</link>.</para>
+                        "Service Catalog in Authentication Response"
+                        samples in the <citetitle>Cloud Identity
+                            Client Developer Guide</citetitle> at
+                            <link
+                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
+                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html</link>.</para>
                 </tip>
                 <para>Load balancer service endpoints are published in
                     the service catalog in the Auth response with the
@@ -1775,7 +1776,7 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3">/loadbalancers</td>
-                            <td colspan="3">List all load balancers configured for the account (IDs, names and
+                            <td colspan="3">List all <glossterm baseform="load balancer">load balancers</glossterm> configured for the account (IDs, names and
                                 status only).
                             </td>
                             <td colspan="2">XML, JSON, Atom</td>
@@ -1871,7 +1872,7 @@
                     and irrecoverable.
                 </para>
                 <para>To find out if any load balancer for an account has
-                    a specific node attached to it, use the query
+                    a specific <glossterm>node</glossterm> attached to it, use the query
                     parameter
                     <emphasis>nodeaddress</emphasis>
                     to
@@ -2457,10 +2458,10 @@
         </section>
         <section xml:id="Erropage-d1e666">
             <title>Error Page</title>
-            <para>An error page is the html file that is shown to an
-                end user who is attempting to access a load balancer
-                node that is offline/unavailable.
-            </para>
+            <para>An <glossterm>error page</glossterm> is the html
+                file that is shown to an end user who is attempting to
+                access a load balancer <glossterm>node</glossterm>
+                that is offline/unavailable. </para>
             <section xml:id="default_error_page">
                 <title>Default Error Page</title>
                 <para>During provisioning, every load balancer is
@@ -2688,7 +2689,7 @@
         </section>
         <section xml:id="Nodes-d1e2173">
             <title>Nodes</title>
-            <para>The nodes defined by the load balancer are responsible for servicing the requests
+            <para>The <glossterm baseform="node">nodes</glossterm> defined by the load balancer are responsible for servicing the requests
                 received through the load balancer's virtual IP. By default, the load balancer
                 employs a basic health check that ensures the node is listening on its defined port.
                 The node is checked at the time of addition and at regular intervals as defined by
@@ -3131,12 +3132,12 @@
 
         <section xml:id="Virtual_IPs-d1e2754">
             <title>Virtual IPs</title>
-            <para>
-                A virtual IP (VIP) makes a load balancer accessible by clients. The load
-                balancing service supports either a public VIP, routable on the public Internet, or
-                a ServiceNet address, routable only within the region in which the load balancer
-                resides.
-            </para>
+            <para> A <glossterm>virtual IP</glossterm> (VIP) makes a
+                load balancer accessible by clients. The load
+                balancing service supports either a public VIP,
+                routable on the public Internet, or a ServiceNet
+                address, routable only within the region in which the
+                load balancer resides. </para>
             <table rules="all">
                 <caption>Virtual IP Types</caption>
                 <?dbfo keep-together="always"?>
@@ -3638,14 +3639,17 @@
         </section>
         <section xml:id="Monitors-d1e3370">
             <title>Monitors</title>
-            <para>The load balancing service includes a health monitoring operation which
-                periodically checks your back-end nodes to ensure they are responding correctly. If
-                a node is not responding, it is removed from rotation until the health monitor
-                determines that the node is functional. In addition to being performed periodically,
-                the health check also is performed against every node that is added to ensure that
-                the node is operating properly before allowing it to service traffic. Only one
-                health monitor is allowed to be enabled on a load balancer at a time.
-            </para>
+            <para>The load balancing service includes a health
+                monitoring operation which periodically checks your
+                back-end nodes to ensure they are responding
+                correctly. If a node is not responding, it is removed
+                from rotation until the <glossterm>health monitor</glossterm> determines that the node is
+                functional. In addition to being performed
+                periodically, the health check also is performed
+                against every node that is added to ensure that the
+                node is operating properly before allowing it to
+                service traffic. Only one health monitor is allowed to
+                be enabled on a load balancer at a time. </para>
             <para>
                 Every health monitor has a
                 <code>type</code>
@@ -3691,7 +3695,10 @@
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor
                             </td>
-                            <td colspan="3">Retrieve the health monitor configuration, if one exists.</td>
+                            <td colspan="3">Retrieve the
+                                   <glossterm>health
+                                   monitor</glossterm> configuration,
+                                if one exists.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
@@ -3859,7 +3866,7 @@
             <title>Sessions</title>
             <section xml:id="Manage_Session_Persistence-d1e3733">
                 <title>Manage Session Persistence</title>
-                <para>Session persistence is a feature of the load balancing service which
+                <para><glossterm baseform="session persistence">Session persistence</glossterm> is a feature of the load balancing service which
                     forces multiple requests from clients to be directed to the same node. This is
                     common with many web applications that do not inherently share application state
                     between back-end servers.
@@ -3980,7 +3987,8 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
-                            <td colspan="3">View current configuration of connection logging.</td>
+                            <td colspan="3">View current configuration
+                                of <glossterm>connection logging</glossterm>.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
@@ -4939,4 +4947,72 @@
         </section>
 
     </chapter>
+    <glossary>
+        <title>Glossary</title>
+        <glossentry xml:id="Connection-Logging-d1e022">
+            <glossterm>connection logging</glossterm>
+            <glossdef>
+                <para>The connection logging feature allows logs to be
+                    delivered to a Cloud Files account every hour. For
+                    HTTP-based protocol traffic, these are
+                    Apache-style access logs. For all other traffic,
+                    this is connection and transfer logging.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Error-Page-d1e018">
+            <glossterm>error page</glossterm>
+            <glossdef>
+                <para>An error page is the html file that is shown to
+                    the end user when an error in the service has been
+                    thrown. By default every virtual server is
+                    provided with the default error file. It is also
+                    possible to submit a custom error page via the
+                    Load Balancers API.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Health-Monitor-d1e020">
+            <glossterm>health monitor</glossterm>
+            <glossdef>
+                <para>A health monitor is a configurable feature of
+                    each load balancer. It is used to determine
+                    whether or not a back-end node is usable for
+                    processing a request. The load balancing service
+                    currently supports active health
+                    monitoring.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="LoadBalancer-d1e017">
+            <glossterm>load balancer</glossterm>
+            <glossdef>
+                <para>A load balancer is a logical device which belongs to a cloud account. It is used to distribute
+                    workloads between multiple back-end systems or services, based on the criteria defined as
+                    part of its configuration.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Node-d1e019">
+            <glossterm>node</glossterm>
+            <glossdef>
+                <para>A node is a back-end device providing a service on a specified IP and port.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Session-Persistence-d1e021">
+            <glossterm>session persistence</glossterm>
+            <glossdef>
+                <para>Session persistence is a feature of the load balancing service. It attempts to force
+                    subsequent connections to a service to be redirected to the same node as long as it is
+                    online.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Virtual-IP-d1e016">
+            <glossterm>virtual IP</glossterm>
+            <glossdef>
+                <para>A virtual IP is an Internet Protocol (IP)
+                    address configured on the load balancer for use by
+                    clients connecting to a service that is load
+                    balanced. Incoming connections are distributed to
+                    back-end nodes based on the configuration of the
+                    load balancer.</para>
+            </glossdef>
+        </glossentry>
+    </glossary>
 </book>
