@@ -86,7 +86,9 @@
                             <para>Updated note for customers who are
                                 transferring certain types of
                                 Personally Identifiable Information
-                                (PII) (see <xref
+                                (PII) and added information for
+                                x-forwarded-proto and x-forwarded-for
+                                headers (see <xref
                                    linkend="SSLTermination-d1e2479"
                                 />).</para>
                         </listitem>
@@ -2741,11 +2743,12 @@
                 independently from the primary node, allowing for a
                 more robust configuration.
             </para>
-            <para>
-                One or more secondary nodes can be added to a specified loadbalanecer so that if all the
-                primary nodes fail, traffic can be redirected to secondary nodes. The type attribute allows
-                configuration of the node as either <code>PRIMARY</code> or <code>SECONDARY</code>.
-            </para>
+            <para> One or more secondary nodes can be added to a
+                specified load balancer so that if all the primary
+                nodes fail, traffic can be redirected to secondary
+                nodes. The type attribute allows configuring the node
+                as either <code>PRIMARY</code> or
+                    <code>SECONDARY</code>. </para>
 
             <section xml:id="List_Nodes-d1e2218">
                 <title>List Nodes</title>
