@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-06</pubdate>
+        <pubdate>2012-05-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -70,12 +70,41 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2012-05-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added management API call for
+                                viewing load balancer state history in
+                                   <xref
+                                   linkend="Load-balancer-state-history-d1e3774"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples for  List Load
+                                Balancers Usage Response (Paginated)
+                                (see <xref
+                                   linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Modified management API call for
+                                listing recent load balancer service
+                                events for an account to add a date
+                                range (see <xref
+                                   linkend="Viewing_Events-d1e3739"
+                                />). </para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2012-04-06</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Added management API call Retrieve
-                                Account- Specific Usage to retrieve
+                                Account-Specific Usage to retrieve
                                 account-specific usage for all
                                 accounts for the given date range in
                                    <xref
@@ -1665,7 +1694,7 @@
             </simpara>
             <para> A user can list all load balancers and their usage
                 for the given account using these methods. The date
-                parameters follow the yyyy-MM-dd date format. Please
+                parameters follow the YYYY-MM-DD date format. Please
                 note that usage is retained for a maximum of 90 days.
                 The <code>startTime</code> and <code>endTime</code>
                 parameters are required for the call. </para>
@@ -2155,15 +2184,20 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
-                        <td colspan="4">List recent load balancer service events for this account
-                            within a date range.</td>
+                        <td colspan="4"
+                                >/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>YYYY-MM-DD</parameter>&amp;endDate=<parameter>YYYY-MM-DD</parameter></td>
+                        <td colspan="4">List recent load balancer
+                            service events for the specified account
+                            and date range.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/event/user/<parameter>username</parameter>?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
-                        <td colspan="4">List recent load balancer service events for this user within a date range</td>
+                        <td colspan="4"
+                                >/event/user/<parameter>username</parameter>?startDate=<parameter>YYYY-MM-DD</parameter>&amp;endDate=<parameter>YYYY-MM-DD</parameter></td>
+                        <td colspan="4">List recent load balancer
+                            service events for the specified  user and
+                            date range</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -2171,11 +2205,11 @@
             <para> The <code>startDate</code> and <code>endDate</code>
                 parameters are optional. The results list all load
                 balancer service events that occurred between the
-                start and end dates for a given account or a user or
-                author. By default the start date is 60 days from the
-                time of the request and the end date is the date of
-                the request. The results list is inclusive for both
-                dates. </para>
+                start and end dates for the specified account or a
+                specified user or author. By default the start date is
+                60 days from the time of the request and the end date
+                is the date of the request. The results list is
+                inclusive for both dates. </para>
             <example>
                 <title>List Account Events Response: XML</title>
                 <programlisting language="xml">
@@ -2607,7 +2641,8 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/audit/status?status={statuses}&amp;{changes-since}</td>
+                        <td colspan="4"
+                            >/audit/status?status=<parameter>statuses</parameter>&amp;<parameter>changes-since</parameter></td>
                         <td colspan="4">Generate a load balancer audit report.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
@@ -2618,11 +2653,12 @@
                 issues are specified for this report as ERROR, BUILD,
                 PENDING_DELETE, and PENDING_UPDATE statuses. Each
                 status can be specified in the query parameter of this
-                request in a comma-delimited list. For example:
+                request in a comma-delimited list, along with the date
+                since when the changes are requested. For example:
                     <code>/audit/status?status=error,build&amp;2011-5-16</code>.
                 The alerts returned with the load balancers in
                 question can be queried against using the alert id to
-                return a more detailed alert message. User must
+                return a more detailed alert message. The user must
                 provide the status to query against while attempting
                 to use this call. </para>
             <example>
@@ -2654,7 +2690,8 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/management/loadbalancers/<parameter>accountId</parameter>/lbstatehistory</td>
-                        <td colspan="4">View state history for given account.</td>
+                        <td colspan="4">View state history for
+                            specified account.</td>
                         <td colspan="2">Operations</td>
                     </tr>
                 </tbody>
@@ -2669,9 +2706,10 @@
                 <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
                 <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
             </simpara>
-            <para> States are collected and stored in the state history table. Requesting a GET against
-                    this resource will list all available state information for the given account.
-            </para>
+            <para> States are collected and stored in the state
+                history table. Requesting a GET against this resource
+                will list all available state information for the
+                specified account. </para>
             <para>
                 This operation does not require a request body.
             </para>

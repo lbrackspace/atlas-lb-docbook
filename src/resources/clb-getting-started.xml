@@ -38,10 +38,10 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-04-xx</pubdate>
+        <pubdate>2012-05-17</pubdate>
         <revhistory>
             <revision>
-                <date>2012-04-xx</date>
+                <date>2012-05-17</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -75,10 +75,10 @@
     <section xml:id="DB_Overview">
         <title>Overview</title>
         <para>Follow the steps described in this guide to use the
-            Rackspace Cloud Load Balancers API and the Cloud Servers
-            section of the Control Panel to create a load balancer
-            configuration to balance traffic for your Rackspace Cloud
-            Servers.</para>
+            Rackspace Cloud Load Balancers API and the Cloud
+            Servers<trademark/> section of the Control Panel to create
+            a load balancer configuration to balance traffic for your
+            Rackspace Cloud Servers.</para>
         <para>For details about using the Cloud Load Balancers API,
             refer to the <citetitle>Cloud Load Balancers Developer
                 Guide</citetitle>.</para>
@@ -689,7 +689,7 @@
         <para>The following examples show the cURL requests for List
             Load Balancer Details:</para>
         <example>
-            <title>cURL List Load Balancer Details Request :
+            <title>cURL List Load Balancer Details Request:
                 XML</title>
             <programlisting><command>curl</command> <option>-i</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
@@ -697,7 +697,7 @@
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <example>
-            <title>cURL List Load Balancer Details Request :
+            <title>cURL List Load Balancer Details Request:
                 JSON</title>
             <programlisting><command>curl</command> <option>-i</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \

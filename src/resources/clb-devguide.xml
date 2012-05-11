@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-xx</pubdate>
+        <pubdate>2012-05-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-04-xx</date>
+                <date>2012-05-17</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -80,7 +80,26 @@
                                 node using either a domain name or IP
                                 address (see <xref
                                    linkend="List_Load_Balancers-d1e1367"
-                                />.</para>
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples for load balancing
+                                protocols to include SFTP (see <xref
+                                   linkend="List_Load_Balancing_Protocols-d1e4269"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated response examples for load
+                                balancer usage to contain SSL data
+                                (see <xref
+                                   linkend="List_Usage-d1e3014"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added new <code>SOURCE_IP</code>
+                                session persistence mode (see <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                />).</para>
                         </listitem>
                         <listitem>
                             <para>Updated note for customers who are
@@ -2041,14 +2060,22 @@
                 </para>
                 <para>An HTTP load balancer will have the
                     X-Forwarded-For (XFF) HTTP header set by default.
-                    This header will contain the actual source address
-                    of the client, which many web applications are
-                    already designed to use when determining the
-                    source address for a request. Also, a HTTP load balancer will
-                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
-                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
-                    useful when using SSL termination.
-                </para>
+                    This header will contain the actual originating IP
+                    address of a client connecting to a web server
+                    through an HTTP proxy or load balancer, which many
+                    web applications are already designed to use when
+                    determining the source address for a request.
+                    (This header is also included on the Modify Load
+                    Balancer request if the protocol changes to
+                    reenable it.) </para>
+                <para>An HTTP load balancer will also include the
+                    X-Forwarded-Proto (XFP) HTTP header,  which has
+                    been added for identifying the originating
+                    protocol of an HTTP request as "http" or "https"
+                    depending on what protocol the client requested.
+                    This is specially useful when using SSL
+                    termination (refer to <xref
+                        linkend="SSLTermination-d1e2479"/>). </para>
                 <note>
                     <para>
                         A load balancer's name must be less than or equal to 128 characters.
@@ -2691,34 +2718,37 @@
         </section>
         <section xml:id="Nodes-d1e2173">
             <title>Nodes</title>
-            <para>The <glossterm baseform="node">nodes</glossterm> defined by the load balancer are responsible for servicing the requests
-                received through the load balancer's virtual IP. By default, the load balancer
-                employs a basic health check that ensures the node is listening on its defined port.
-                The node is checked at the time of addition and at regular intervals as defined by
-                the load balancer health check configuration. If a back-end node is not listening on
-                its port or does not meet the conditions of the defined active health check for the
-                load balancer, then the load balancer will not forward connections and its status
-                will be listed as<code>OFFLINE</code>. Only nodes that are in an
-                <code>ONLINE</code>
-                status will receive and be able to service traffic from the
-                load balancer.
-            </para>
-            <para>All nodes have an associated status that indicates whether the node is
-                <code>ONLINE</code>,<code>OFFLINE</code>, or<code>DRAINING</code>. Only nodes
-                that are in
-                <code>ONLINE</code>
-                status will receive and be able to service traffic
-                from the load balancer. The
-                <code>OFFLINE</code>
-                status represents a node that
-                cannot accept or service traffic. A node in
-                <code>DRAINING</code>
-                status represents
-                a node that stops the traffic manager from sending any additional new connections to
-                the node, but honors established sessions. If the traffic manager receives a request
-                and session persistence requires that the node is used, the traffic manager will use
-                it. The status is determined by the passive or active health monitors.
-            </para>
+            <para>The <glossterm baseform="node">nodes</glossterm>
+                defined by the load balancer are responsible for
+                servicing the requests received through the load
+                balancer's virtual IP. By default, the load balancer
+                employs a basic health check that ensures the node is
+                listening on its defined port. The node is checked at
+                the time of addition and at regular intervals as
+                defined by the load balancer health check
+                configuration. If a back-end node is not listening on
+                its port or does not meet the conditions of the
+                defined active health check for the load balancer,
+                then the load balancer will not forward connections
+                and its status will be listed as <code>OFFLINE</code>.
+                Only nodes that are in an <code>ONLINE</code> status
+                will receive and be able to service traffic from the
+                load balancer. </para>
+            <para>All nodes have an associated status that indicates
+                whether the node is <code>ONLINE</code>,
+                    <code>OFFLINE</code>, or <code>DRAINING</code>.
+                Only nodes that are in <code>ONLINE</code> status will
+                receive and be able to service traffic from the load
+                balancer. The <code>OFFLINE</code> status represents a
+                node that cannot accept or service traffic. A node in
+                    <code>DRAINING</code> status represents a node
+                that stops the traffic manager from sending any
+                additional new connections to the node, but honors
+                established sessions. If the traffic manager receives
+                a request and session persistence requires that the
+                node is used, the traffic manager will use it. The
+                status is determined by the passive or active health
+                monitors. </para>
             <para>If the
                 <code>WEIGHTED_ROUND_ROBIN</code>
                 load balancer algorithm mode is
@@ -3353,9 +3383,9 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips/
-                                <parameter>id</parameter>
-                            </td>
+                            <td colspan="3"
+                                >/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips/<parameter>virtualipId</parameter>
+                        </td>
                             <td colspan="3">Remove a virtual IP.</td>
                         </tr>
                         <tr align="left">
@@ -3562,8 +3592,8 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/
-                                <parameter>networkItemId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/<parameter>networkItemId</parameter>
                             </td>
                             <td colspan="3">Remove a network item from the access list.</td>
                         </tr>
@@ -3577,10 +3607,9 @@
                         <tr align="left">
                             <td colspan="1">&BATCH_DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId/</parameter>accesslist?id=
-                                <parameter>networkItemId</parameter>
-                                &amp;id=
-                                <parameter>networkItemId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId/</parameter>accesslist?id=<parameter>networkItemId</parameter>
+                                   &amp;id=<parameter>networkItemId</parameter>
                             </td>
                             <td colspan="3">Batch delete the access list network items given specified id list.</td>
                         </tr>
@@ -3893,10 +3922,13 @@
                         </tr>
                         <tr align="left">
                             <td colspan="1">SOURCE_IP</td>
-                            <td colspan="3">A session persistence mechanism that will keep track of the source ip
-                                which is mapped and able determine the destination back-end node. This is supported
-                                for HTTP pass-through(ssl termination) and non-HTTP load balancing only.
-                            </td>
+                            <td colspan="3">A session persistence
+                                mechanism that will keep track of the
+                                source IP address that is mapped and
+                                is able to determine the destination
+                                back-end node. This is supported for
+                                HTTP pass-through (SSL termination)
+                                and non-HTTP load balancing only. </td>
                         </tr>
                     </tbody>
                 </table>
@@ -4208,21 +4240,24 @@
 <xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
                     </programlisting>
                 </example>
-                <note><para>UDP based protocols (i.e. DNS_UDP, UDP and UDP_STREAM) are not capable
-                      of utilizing the Health Monitor features. Also, SSL Termination is unavailable while
-                      using UDP based protocols.</para></note>
+                <note><para>UDP based protocols (that is DNS_UDP, UDP, and UDP_STREAM) are
+                        not capable of utilizing the Health Monitor
+                        features. Also, SSL Termination is unavailable
+                        while using UDP based protocols.</para></note>
             </section>
         </section>
         <section xml:id="Algorithms-d1e4367">
             <title>Algorithms</title>
-            <para>All load balancers utilize an algorithm that defines how traffic should be
-                directed between back-end nodes. The default algorithm for newly created load
-                balancers is<code>RANDOM</code>, which can be overridden at creation time or
-                changed after the load balancer has been initially provisioned. The algorithm name
-                is to be constant within a major revision of the load balancing API, though new
-                algorithms may be created with a unique algorithm name within a given major revision
-                of the service API.
-            </para>
+            <para>All load balancers utilize an algorithm that defines
+                how traffic should be directed between back-end nodes.
+                The default algorithm for newly created load balancers
+                is <code>RANDOM</code>, which can be overridden at
+                creation time or changed after the load balancer has
+                been initially provisioned. The algorithm name is to
+                be constant within a major revision of the load
+                balancing API, though new algorithms may be created
+                with a unique algorithm name within a given major
+                revision of the service API. </para>
             <table rules="all">
                 <caption>Load Balancing Algorithms</caption>
                 <thead>
@@ -4378,11 +4413,29 @@
                 Connection Logging is enabled on an SSL load balancer,
                 it will also be enabled on the shadow server and Cloud
                 Files logs will contain log files for both. </para>
-            <note>
-                <para>SSL Termination may only be configured on load
-                    balancers with non-secure protocols. For example,
-                    SSL Termination can be applied to an HTTP load
-                    balancer, but not to an HTTPS load balancer. </para>
+            <note><title>Notes</title>
+                <itemizedlist>
+                    <listitem>
+                        <para>SSL Termination may only be configured
+                            on load balancers with non-secure
+                            protocols. For example, SSL Termination
+                            can be applied to an HTTP load balancer,
+                            but not to an HTTPS load balancer. </para>
+                    </listitem>
+                    <listitem>
+                        <para>SSL-terminated load balancers decrypt
+                            the traffic at the traffic manager and
+                            pass unencrypted traffic to the back-end
+                            node. Because of this, the customer's
+                            back-end nodes don't know what protocol
+                            the client requested. Therefore the
+                            X-Forwarded-Proto (XFP) header has been
+                            added for identifying the originating
+                            protocol of an HTTP request as "http" or
+                            "https" depending on what protocol the
+                            client requested.</para>
+                    </listitem>
+                </itemizedlist>
             </note>
             <warning>
                 <para>If SSL is enabled on a load balancer that is
@@ -4691,7 +4744,6 @@
 <xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
                 </programlisting>
                 </example>
-                <para> This operation does not require a request body. </para>
                 <para>There is no example for the Delete Load
                     Balancing SSL Termination Request. </para>
                 <para>This operation does not require a request
