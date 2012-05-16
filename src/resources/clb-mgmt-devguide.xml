@@ -74,13 +74,6 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Added management API call for
-                                viewing load balancer state history in
-                                   <xref
-                                   linkend="Load-balancer-state-history-d1e3774"
-                                />.</para>
-                        </listitem>
-                        <listitem>
                             <para>Updated examples for  List Load
                                 Balancers Usage Response (Paginated)
                                 (see <xref
@@ -94,6 +87,13 @@
                                 range (see <xref
                                    linkend="Viewing_Events-d1e3739"
                                 />). </para>
+                        </listitem>
+                        <listitem>
+                            <para>Added management API call for
+                                viewing load balancer state history in
+                                   <xref
+                                   linkend="Load-balancer-state-history-d1e3774"
+                                />.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -410,13 +410,14 @@
                 Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
-            <simpara>
-                Error Response Code(s):
-                loadBalancerManagementFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
-                <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
-                <errorcode>413</errorcode>)
-            </simpara>
+            <simpara> Error Response Code(s):
+                loadBalancerManagementFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable
+                    (<errorcode>503</errorcode>), unauthorized (
+                    <errorcode>401</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
             <para>
                 The cluster operations are used for retrieving descriptive information about load balancing
                 clusters.
@@ -2608,12 +2609,15 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The virtual IP availability report provides insight into the availability of
-                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
-                supplies an estimated runway of available capacity based on historical provisioning
-                activity. The historical period consists of one week, reported as
-                <code>allocatedPublicIpAddressesInLastSevenDays</code> and
-                <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
+            <para>The virtual IP availability report provides insight
+                into the availability of both public and ServiceNet IP
+                addresses that are provisioned to a cluster. It also
+                supplies an estimated runway of available capacity
+                based on historical provisioning activity. The
+                historical period consists of one week, reported as
+                    <code>allocatedPublicIpAddressesInLastSevenDays</code>
+                and
+                    <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
             <example>
                 <title>Report VIP Availability Response: XML</title>
                 <programlisting language="xml">
@@ -2648,9 +2652,9 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The load balancer audit report provides insight
-                into the load balancers that may have issues. These
-                issues are specified for this report as ERROR, BUILD,
+            <para>The load balancer audit report provides insight into
+                the load balancers that may have issues. These issues
+                are specified for this report as ERROR, BUILD,
                 PENDING_DELETE, and PENDING_UPDATE statuses. Each
                 status can be specified in the query parameter of this
                 request in a comma-delimited list, along with the date
@@ -2662,13 +2666,15 @@
                 provide the status to query against while attempting
                 to use this call. </para>
             <example>
-                <title>Report Load Balancer Audit: XML</title>
+                <title>Report Load Balancer Audit Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-audit-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Report Load Balancer Audit: JSON</title>
+                <title>Report Load Balancer Audit Response:
+                    JSON</title>
                 <programlisting language="json">
 <xi:include href="samples/lb-audit-response.json" parse="text"/>
                 </programlisting>
@@ -2696,31 +2702,31 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>
+            <para>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
             </para>
-            <simpara> 
-                Error Response Code(s): 
-                loadBalancerFault (<errorcode>400</errorcode>,<errorcode>500</errorcode>),  serviceUnavailable (
-                <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
-                <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
-            </simpara>
-            <para> States are collected and stored in the state
-                history table. Requesting a GET against this resource
-                will list all available state information for the
-                specified account. </para>
-            <para>
-                This operation does not require a request body.
-            </para>
+            <simpara> Error Response Code(s):  loadBalancerFault
+                    (<errorcode>400</errorcode>,<errorcode>500</errorcode>), 
+                serviceUnavailable (
+                <errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>),  badRequest (
+                    <errorcode>400</errorcode>),  overLimit
+                    (<errorcode>413</errorcode>)  </simpara>
+            <para>States are collected and stored in the state history
+                table. Requesting a GET against this resource will
+                list all available state information for the specified
+                account. </para>
+            <para>This operation does not require a request body. </para>
             <example>
-                <title>Load Balancer State History: XML</title>
+                <title>Load Balancer State History Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-state-history.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Load Balancer State History: JSON</title>
+                <title>Load Balancer State History Response:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-state-history.json" parse="text"/>
                 </programlisting>

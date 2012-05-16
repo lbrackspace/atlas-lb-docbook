@@ -41,7 +41,7 @@
 			<revision>
 				<date>2012-05-17</date>
 				<revdescription>
-					<para>Updated for v1.11.12.</para>
+					<para>Updated for v1.11.15.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -102,7 +102,7 @@
 		<?rax revhistory?>
 	</chapter>
 	<chapter xml:id="clbv1.11.xx">
-		<title>v1.11.12, May 17, 2012 </title>
+		<title>v1.11.15, May 17, 2012 </title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
