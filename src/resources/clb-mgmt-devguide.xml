@@ -425,9 +425,9 @@
             <para>
                 The &GET; response contains attributes that are generated and immutable:
                 <code>numberOfLoadBalancingConfigurations</code>,
-                <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>, and
-                <code>utilization</code>. A cluster's attributes are calculated based
-                on configurations associated with this cluster.
+                <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>,
+                <code>utilization</code>, and <code>status</code>. A cluster's attributes
+                are calculated based on configurations associated with this cluster.
             </para>
             <example>
                 <title>List All Clusters Response: XML</title>

@@ -8,7 +8,8 @@
                 "numberOfLoadBalancingConfigurations": 410,
                 "numberOfUniqueCustomers": 348,
                 "numberOfHostMachines": 8,
-                "utilization": "59%"
+                "utilization": "59%",
+                "status": "INACTIVE"
             },
             {
                 "id": 2,
@@ -18,7 +19,8 @@
                 "numberOfLoadBalancingConfigurations": 580,
                 "numberOfUniqueCustomers": 490,
                 "numberOfHostMachines": 8,
-                "utilization": "76%"
+                "utilization": "76%",
+                "status": "INACTIVE"
             }
         ]
     }
