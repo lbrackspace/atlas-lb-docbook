@@ -3898,11 +3898,53 @@
             <title>Sessions</title>
             <section xml:id="Manage_Session_Persistence-d1e3733">
                 <title>Manage Session Persistence</title>
-                <para><glossterm baseform="session persistence">Session persistence</glossterm> is a feature of the load balancing service which
-                    forces multiple requests from clients to be directed to the same node. This is
-                    common with many web applications that do not inherently share application state
-                    between back-end servers.
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&GET; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>List session persistence
+                                configuration.</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&PUT; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Enable session persistence.</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&DELETE; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Disable session persistence.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>202</returnvalue>
                 </para>
+                <simpara>Error Response Code(s): loadbalancerFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para><glossterm baseform="session persistence"
+                        >Session persistence</glossterm> is a feature
+                    of the load balancing service that forces multiple
+                    requests from clients to be directed to the same
+                    node. This is common with many web applications
+                    that do not inherently share application state
+                    between back-end servers. Two session persistence
+                    modes are available, as described in the following
+                    table:</para>
                 <table rules="all">
                     <caption>Session Persistence Modes</caption>
                     <?dbfo keep-together="always"?>
@@ -3932,45 +3974,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <informaltable rules="all">
-                    <thead>
-                        <tr align="center">
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td>&GET;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>List session persistence configuration.</td>
-                        </tr>
-                        <tr align="left">
-                            <td>&PUT;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>Enable session persistence.</td>
-                        </tr>
-                        <tr align="left">
-                            <td>&DELETE;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>Disable session persistence.</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-                <para>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>,
-                    <returnvalue>202</returnvalue>
-                </para>
-                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
                 <example>
                     <title>List Session Persistence Configuration Response: XML</title>
                     <programlisting language="xml">
