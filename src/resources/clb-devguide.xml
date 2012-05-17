@@ -4827,9 +4827,9 @@
 
         <section xml:id="Metadata-d1e2173">
             <title>Metadata</title>
-            <para>Metadata can be associated with each load balancer for the client's personal use.
-                It is defined using key-value pairs where the key and value consist of alphanumeric
-                characters. A key is unique per load balancer.
+            <para>Metadata can be associated with each load balancer and each node for the
+                client's personal use.  It is defined using key-value pairs where the key and
+                value consist of alphanumericcharacters. A key is unique per load balancer.
             </para>
 
             <section xml:id="List_Metadata-d1e2218">
@@ -4849,16 +4849,29 @@
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
                             </td>
-                            <td colspan="3">List all metadata
-                                associated with the load
-                                balancer.</td>
+                            <td colspan="3">List all metadata associated with the load balancer.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">
                                 &GET;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
-                                <parameter>metaId</parameter>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/<parameter>metaId</parameter>
+                            </td>
+                            <td colspan="3">List details of a specific metadata item.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata
+                            </td>
+                            <td colspan="3">List all metadata associated with the node.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata/<parameter>metaId</parameter>
                             </td>
                             <td colspan="3">List details of a specific metadata item.</td>
                         </tr>
@@ -4917,12 +4930,14 @@
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td colspan="1">
-                                &POST;
-                            </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata
-                            </td>
+                            <td colspan="1">&POST;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata</td>
                             <td colspan="3">Add a new metadata item to the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&POST;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata</td>
+                            <td colspan="3">Add a new metadata item to the node.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -4977,15 +4992,14 @@
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td colspan="1">
-                                &PUT;
-                            </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
-                                <parameter>metaId</parameter>
-                            </td>
-                            <td colspan="3">Modify the configuration of a metadata item on the
-                                load balancer.
-                            </td>
+                            <td colspan="1">&PUT;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/<parameter>metaId</parameter></td>
+                            <td colspan="3">Modify the configuration of a metadata item on the load balancer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&PUT;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata/<parameter>metaId</parameter></td>
+                            <td colspan="3">Modify the configuration of a metadata item on the node.</td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -5002,7 +5016,7 @@
                     <para>The meta data item's id and key are immutable attributes and cannot be modified
                         with a &PUT; request. Supplying an unsupported attribute will result in a
                         <returnvalue>400 (badRequest)</returnvalue>
-                        fault. A load balancer supports
+                        fault. A load balancer and a node supports
                         a maximum of 25 metadata items.
                     </para>
                 </note>
@@ -5031,22 +5045,23 @@
                     </thead>
                     <tbody>
                         <tr align="left">
-                            <td colspan="1">
-                                &DELETE;
-                            </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/
-                                <parameter>metaId</parameter>
-                            </td>
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata/<parameter>metaId</parameter></td>
                             <td colspan="3">Remove a metadata item from the load balancer.</td>
                         </tr>
                         <tr align="left">
-                            <td colspan="1">&BATCH_DELETE;
-                            </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata?id=
-                                <parameter>metaId</parameter>
-                                &amp;id=
-                                <parameter>metaId</parameter>
-                            </td>
+                            <td colspan="1">&BATCH_DELETE;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/metadata?id=<parameter>metaId</parameter>&amp;id=<parameter>metaId</parameter></td>
+                            <td colspan="3">Batch delete the metadata items given specified id list.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&DELETE;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata/<parameter>metaId</parameter></td>
+                            <td colspan="3">Remove a metadata item from the node.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">&BATCH_DELETE;</td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/<parameter>nodeId</parameter>/metadata?id=<parameter>metaId</parameter>&amp;id=<parameter>metaId</parameter></td>
                             <td colspan="3">Batch delete the metadata items given specified id list.</td>
                         </tr>
                     </tbody>
