@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-06</pubdate>
+        <pubdate>2012-05-18</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -70,12 +70,48 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2012-05-18</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added cluster <code>status</code> to
+                                the management API call to get
+                                clusters (see the examples in <xref
+                                   linkend="Clusters-d1e443"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples for List Load
+                                Balancers Usage Response (Paginated)
+                                (see <xref
+                                   linkend="Account_Loadbalancers_and_Usage_Billing_-d1e2791"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Modified management API call for
+                                listing recent load balancer service
+                                events for an account to add a date
+                                range (see <xref
+                                   linkend="Viewing_Events-d1e3739"
+                                />). </para>
+                        </listitem>
+                        <listitem>
+                            <para>Added management API call for
+                                viewing load balancer state history in
+                                   <xref
+                                   linkend="Load-balancer-state-history-d1e3774"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2012-04-06</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Added management API call Retrieve
-                                Account- Specific Usage to retrieve
+                                Account-Specific Usage to retrieve
                                 account-specific usage for all
                                 accounts for the given date range in
                                    <xref
@@ -333,7 +369,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers by Virtual IP Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-id.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -345,7 +381,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers by Virtual IP Address Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancers-by-vip-address.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -381,13 +417,14 @@
                 Normal Response Code(s):
                 <returnvalue>200</returnvalue>
             </para>
-            <simpara>
-                Error Response Code(s):
-                loadBalancerManagementFault (<errorcode>400</errorcode>,
-                <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>), unauthorized (
-                <errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>), overLimit (
-                <errorcode>413</errorcode>)
-            </simpara>
+            <simpara> Error Response Code(s):
+                loadBalancerManagementFault
+                    (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable
+                    (<errorcode>503</errorcode>), unauthorized (
+                    <errorcode>401</errorcode>), badRequest
+                    (<errorcode>400</errorcode>), overLimit
+                    (<errorcode>413</errorcode>) </simpara>
             <para>
                 The cluster operations are used for retrieving descriptive information about load balancing
                 clusters.
@@ -395,9 +432,9 @@
             <para>
                 The &GET; response contains attributes that are generated and immutable:
                 <code>numberOfLoadBalancingConfigurations</code>,
-                <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>, and
-                <code>utilization</code>. A cluster's attributes are calculated based
-                on configurations associated with this cluster.
+                <code>numberOfUniqueCustomers</code>, <code>numberOfHostMachines</code>,
+                <code>utilization</code>, and <code>status</code>. A cluster's attributes
+                are calculated based on configurations associated with this cluster.
             </para>
             <example>
                 <title>List All Clusters Response: XML</title>
@@ -407,7 +444,7 @@
             </example>
             <example>
                 <title>List All Clusters Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-clusters-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -514,7 +551,7 @@
             </example>
             <example>
                 <title>List All Hosts Within Cluster Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-hosts-clusters-clusterid-hosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -588,7 +625,7 @@
                 </example>
                 <example>
                     <title>Create Host Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-host.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -651,7 +688,7 @@
                 <example>
                     <title>Update Host Request: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-host-hostid.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -737,7 +774,7 @@
             <example>
                 <title>List All VIPs Within Cluster Response: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-virtualips-clusters-clusterid-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
@@ -749,7 +786,7 @@
             </example>
             <example>
                 <title>Assign IP Blocks Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-clusters-clusterid-virtualipblocks.json" parse="text"/>
                 </programlisting>
             </example>
@@ -842,7 +879,7 @@
             <example>
                 <?dbfo keep-together="always"?>
                 <title>List Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
                 </programlisting>
             </example>
@@ -857,7 +894,7 @@
             <example>
                 <title>List Active Rate-Limited Load Balancers
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
                 </programlisting>
             </example>
@@ -872,7 +909,7 @@
                 <?dbfo keep-together="always"?>
                 <title>List Non-Standard Absolute Limit Account
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -886,7 +923,7 @@
             <example>
                 <title>List Non-Standard API Rate-Limited Account
                     Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-apiratelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -899,7 +936,7 @@
             </example>
             <example>
                 <title>Set Rate Limit Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ratelimit-request.json" parse="text"/>
                 </programlisting>
             </example>
@@ -911,7 +948,7 @@
             </example>
             <example>
                 <title>Set Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -923,7 +960,7 @@
             </example>
             <example>
                 <title>Update Rate Limit Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -935,7 +972,7 @@
             </example>
             <example>
                 <title>Update Rate Limit Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1005,7 +1042,7 @@
             </example>
             <example>
                 <title>Update Host Assignment Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-loadbalancer-host.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1020,7 +1057,7 @@
                 <title>Update Host Assignment for Multiple Load
                     Balancers with Specified Host Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-loadbalancer-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1036,7 +1073,7 @@
                 <title>Update Host Assignment for Multiple Load
                     Balancers with Host Chosen by Algorithm Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-loadbalancer-random-reassignhosts.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1137,7 +1174,7 @@
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>List Available Backups for All Hosts Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-backups.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1149,7 +1186,7 @@
                 </example>
                 <example>
                     <title>List Available Backups for Specified Host Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-backups.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1187,7 +1224,7 @@
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>Add Subnet Mappings Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-subnetmappings.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1199,7 +1236,7 @@
                 </example>
                 <example>
                     <title>Delete Subnet Mappings Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-delete-subnetmappings.json" parse="text" />
                     </programlisting>
                 </example>
@@ -1256,7 +1293,7 @@
             </example>
             <example>
                 <title>List Customers by Host or Cluster Name Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers-by-name.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1268,7 +1305,7 @@
             </example>
             <example>
                 <title>List Customers by Cluster Id Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers-by-id.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1280,7 +1317,7 @@
             </example>
             <example>
                 <title>List Customers Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customers.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1292,7 +1329,7 @@
             </example>
             <example>
                 <title>List Customer Count by Host Id Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customer-count-by-host-id.json" parse="text" />
                 </programlisting>
             </example>
@@ -1304,7 +1341,7 @@
             </example>
             <example>
                 <title>List Customer Count by Cluster Id Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-customer-count-by-cluster-id.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1348,7 +1385,7 @@
             </example>
             <example>
                 <title>Health Check: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-health-check.json" parse="text" />
                 </programlisting>
             </example>
@@ -1401,7 +1438,7 @@
             </example>
             <example>
                 <title>Assign VIP Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-virtualips.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1587,7 +1624,7 @@
             </example>
             <example>
                 <title>List Extended Load Balancer Details Response: XML</title>
-                <programlisting language="javascript"><?db-font-size 70% ?>
+                <programlisting language="json"><?db-font-size 70% ?>
 <xi:include href="samples/lb-list-loadbalancer-extendedview.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1665,7 +1702,7 @@
             </simpara>
             <para> A user can list all load balancers and their usage
                 for the given account using these methods. The date
-                parameters follow the yyyy-MM-dd date format. Please
+                parameters follow the YYYY-MM-DD date format. Please
                 note that usage is retained for a maximum of 90 days.
                 The <code>startTime</code> and <code>endTime</code>
                 parameters are required for the call. </para>
@@ -1888,7 +1925,7 @@
             </informaltable>
             <example>
                 <title>List Limits Groups Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-groups.json" parse="text"/>
                 </programlisting>
             </example>
@@ -1999,7 +2036,7 @@
             </example>
             <example>
                 <title>Get Limits Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-get-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2013,7 +2050,7 @@
             <example>
                 <title>Add Limits Request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2025,7 +2062,7 @@
             </example>
             <example>
                 <title>Update Limits Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-update-absolute-limits.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2083,7 +2120,7 @@
                 <title>List Tickets for Load Balancer Response:
                     JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-ticket-response.json" parse="text" />
                 </programlisting>
             </example>
@@ -2097,7 +2134,7 @@
             <example>
                 <title>Create Ticket for Load Balancer Request:
                     JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-ticket-request.json" parse="text" />
                 </programlisting>
             </example>
@@ -2135,7 +2172,7 @@
             </example>
             <example>
                 <title>List Zeus Usage Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-host-usage-records.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2155,15 +2192,20 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>yyyy-mm-dd</parameter>&amp;endDate=<parameter>yyyy-mm-dd</parameter></td>
-                        <td colspan="4">List recent load balancer service events for this account
-                            within a date range.</td>
+                        <td colspan="4"
+                                >/event/account/<parameter>accountId</parameter>/loadbalancer?startDate=<parameter>YYYY-MM-DD</parameter>&amp;endDate=<parameter>YYYY-MM-DD</parameter></td>
+                        <td colspan="4">List recent load balancer
+                            service events for the specified account
+                            and date range.</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/event/user/<parameter>username</parameter></td>
-                        <td colspan="4">List recent load balancer service events for this user within a date range</td>
+                        <td colspan="4"
+                                >/event/user/<parameter>username</parameter>?startDate=<parameter>YYYY-MM-DD</parameter>&amp;endDate=<parameter>YYYY-MM-DD</parameter></td>
+                        <td colspan="4">List recent load balancer
+                            service events for the specified  user and
+                            date range</td>
                         <td colspan="2">Support, Service Admin</td>
                     </tr>
                 </tbody>
@@ -2171,11 +2213,11 @@
             <para> The <code>startDate</code> and <code>endDate</code>
                 parameters are optional. The results list all load
                 balancer service events that occurred between the
-                start and end dates for a given account or a user or
-                author. By default the start date is 60 days from the
-                time of the request and the end date is the date of
-                the request. The results list is inclusive for both
-                dates. </para>
+                start and end dates for the specified account or a
+                specified user or author. By default the start date is
+                60 days from the time of the request and the end date
+                is the date of the request. The results list is
+                inclusive for both dates. </para>
             <example>
                 <title>List Account Events Response: XML</title>
                 <programlisting language="xml">
@@ -2336,7 +2378,7 @@
                 <example>
                     <title>List Allowed Domains: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/allowed-domains.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2349,7 +2391,7 @@
                 <example>
                     <title>Add Allowed Domains: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/add-allowed-domains.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2416,7 +2458,7 @@
             <example>
                 <title>List Blacklist Response: JSON</title>
                 <?dbfo keep-together="always"?>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-blacklist.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2429,7 +2471,7 @@
             </example>
             <example>
                 <title>Create Blacklist Request: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-create-blacklist.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2478,7 +2520,7 @@
             </example>
             <example>
                 <title>List Jobs Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-jobs.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2490,7 +2532,7 @@
             </example>
             <example>
                 <title>List Job Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-job.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2541,7 +2583,7 @@
             </example>
             <example>
                 <title>Report Host Capacity Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-capacityreport.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2574,12 +2616,15 @@
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The virtual IP availability report provides insight into the availability of
-                both public and ServiceNet IP addresses that are provisioned to a cluster. It also
-                supplies an estimated runway of available capacity based on historical provisioning
-                activity. The historical period consists of one week, reported as
-                <code>allocatedPublicIpAddressesInLastSevenDays</code> and
-                <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
+            <para>The virtual IP availability report provides insight
+                into the availability of both public and ServiceNet IP
+                addresses that are provisioned to a cluster. It also
+                supplies an estimated runway of available capacity
+                based on historical provisioning activity. The
+                historical period consists of one week, reported as
+                    <code>allocatedPublicIpAddressesInLastSevenDays</code>
+                and
+                    <code>allocatedServiceNetAddressesInLastSevenDays</code>. </para>
             <example>
                 <title>Report VIP Availability Response: XML</title>
                 <programlisting language="xml">
@@ -2588,7 +2633,7 @@
             </example>
             <example>
                 <title>Report VIP Availability Response: JSON</title>
-                <programlisting language="javascript">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-availabilityreport.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2607,33 +2652,37 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="4">/audit/status?status={statuses}&amp;{changes-since}</td>
+                        <td colspan="4"
+                            >/audit/status?status=<parameter>statuses</parameter>&amp;<parameter>changes-since</parameter></td>
                         <td colspan="4">Generate a load balancer audit report.</td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <para> The load balancer audit report provides insight
-                into the load balancers that may have issues. These
-                issues are specified for this report as ERROR, BUILD,
+            <para>The load balancer audit report provides insight into
+                the load balancers that may have issues. These issues
+                are specified for this report as ERROR, BUILD,
                 PENDING_DELETE, and PENDING_UPDATE statuses. Each
                 status can be specified in the query parameter of this
-                request in a comma-delimited list. For example:
+                request in a comma-delimited list, along with the date
+                since when the changes are requested. For example:
                     <code>/audit/status?status=error,build&amp;2011-5-16</code>.
                 The alerts returned with the load balancers in
                 question can be queried against using the alert id to
-                return a more detailed alert message. User must
+                return a more detailed alert message. The user must
                 provide the status to query against while attempting
                 to use this call. </para>
             <example>
-                <title>Report Load Balancer Audit: XML</title>
+                <title>Report Load Balancer Audit Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-audit-response.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Report Load Balancer Audit: JSON</title>
-                <programlisting language="javascript">
+                <title>Report Load Balancer Audit Response:
+                    JSON</title>
+                <programlisting language="json">
 <xi:include href="samples/lb-audit-response.json" parse="text"/>
                 </programlisting>
             </example>
@@ -2654,35 +2703,37 @@
                     <tr align="left">
                         <td colspan="1">&GET;</td>
                         <td colspan="4">/management/loadbalancers/<parameter>accountId</parameter>/lbstatehistory</td>
-                        <td colspan="4">View state history for given account.</td>
+                        <td colspan="4">View state history for
+                            specified account.</td>
                         <td colspan="2">Operations</td>
                     </tr>
                 </tbody>
             </informaltable>
-            <para>
-                Normal Response Code(s):
-                <returnvalue>200</returnvalue>
+            <para>Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
             </para>
-            <simpara> 
-                Error Response Code(s): 
-                loadBalancerFault (<errorcode>400</errorcode>,<errorcode>500</errorcode>),  serviceUnavailable (
-                <errorcode>503</errorcode>), unauthorized (<errorcode>401</errorcode>),  badRequest (
-                <errorcode>400</errorcode>),  overLimit (<errorcode>413</errorcode>) 
-            </simpara>
-            <para> States are collected and stored in the state history table. Requesting a GET against
-                    this resource will list all available state information for the given account.
-            </para>
-            <para>
-                This operation does not require a request body.
-            </para>
+            <simpara> Error Response Code(s):  loadBalancerFault
+                    (<errorcode>400</errorcode>,<errorcode>500</errorcode>), 
+                serviceUnavailable (
+                <errorcode>503</errorcode>), unauthorized
+                    (<errorcode>401</errorcode>),  badRequest (
+                    <errorcode>400</errorcode>),  overLimit
+                    (<errorcode>413</errorcode>)  </simpara>
+            <para>States are collected and stored in the state history
+                table. Requesting a GET against this resource will
+                list all available state information for the specified
+                account. </para>
+            <para>This operation does not require a request body. </para>
             <example>
-                <title>Load Balancer State History: XML</title>
+                <title>Load Balancer State History Response:
+                    XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-state-history.xml" parse="text"/>
                 </programlisting>
             </example>
             <example>
-                <title>Load Balancer State History: JSON</title>
+                <title>Load Balancer State History Response:
+                    JSON</title>
                 <programlisting language="javascript">
 <xi:include href="samples/lb-state-history.json" parse="text"/>
                 </programlisting>

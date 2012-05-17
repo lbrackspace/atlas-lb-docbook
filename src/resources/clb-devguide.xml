@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-04-06</pubdate>
+        <pubdate>2012-05-18</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -60,6 +60,60 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-05-18</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated service catalog information
+                                for authentication (see <xref
+                                   linkend="Authenticate-d1e171"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated information for the
+                                   <emphasis>nodeaddress</emphasis>
+                                query parameter for finding out
+                                whether any load balancer for an
+                                account has a specific node attached
+                                to it: the parameter can specify the
+                                node using either a domain name or IP
+                                address (see <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples for load balancing
+                                protocols to include SFTP (see <xref
+                                   linkend="List_Load_Balancing_Protocols-d1e4269"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated response examples for load
+                                balancer usage to contain SSL data
+                                (see <xref
+                                   linkend="List_Usage-d1e3014"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added new <code>SOURCE_IP</code>
+                                session persistence mode (see <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated note for customers who are
+                                transferring certain types of
+                                Personally Identifiable Information
+                                (PII) and added information for
+                                x-forwarded-proto and x-forwarded-for
+                                headers (see <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-04-06</date>
                 <revdescription>
@@ -244,12 +298,10 @@
                         <listitem>
                             <para>A default IPV6 is being provisioned
                                 when creating a load balancer. Refer
-                                to<xref
-                                        linkend="table_virtual_ip_types"/>.
+                                to <xref
+                                   linkend="table_virtual_ip_types"/>.
                                 (This was turned off in Release 1.6.13
-                                as a temporary mitigation
-                                strategy.)
-                            </para>
+                                as a temporary mitigation strategy.) </para>
                         </listitem>
                         <listitem>
                             <para>Added <xref
@@ -359,18 +411,18 @@
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
-                            <para>Added basic TCP load
-                                balancing to allow customers to
-                                load balance traffic for any
-                                TCP-based prototcol. See<xref linkend="Protocols-d1e4264"/>.
-                            </para>
+                            <para>Added basic TCP load balancing to
+                                allow customers to load balance
+                                traffic for any TCP-based prototcol.
+                                See <xref linkend="Protocols-d1e4264"
+                                />. </para>
                         </listitem>
                         <listitem>
-                            <para>An X-Forwarded-For (XFF) HTTP
-                                header is now automatically
-                                inserted for all inbound HTTP
-                                requests. See<xref linkend="Create_Load_Balancer-d1e1635"/>.
-                            </para>
+                            <para>An X-Forwarded-For (XFF) HTTP header
+                                is now automatically inserted for all
+                                inbound HTTP requests. See <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />. </para>
                         </listitem>
                         <listitem>
                             <para>Added programmatic support
@@ -381,24 +433,26 @@
                             </para>
                         </listitem>
                         <listitem>
-                            <para>Added support for batch
-                                delete of Load Balancers, Nodes,
-                                Virtual IPs, and Access List
-                                Entries. See<xref linkend="Remove_Load_Balancer-d1e2093"/>,<xref
-                                        linkend="Remove_Nodes-d1e2675"/>,
-                                <xref linkend="Remove_Virtual_IP-d1e2919"/>, and<xref
-                                        linkend="Manage_Access_Lists-d1e3187"/>, respectively.
-                            </para>
+                            <para>Added support for batch delete of
+                                Load Balancers, Nodes, Virtual IPs,
+                                and Access List Entries. See <xref
+                                   linkend="Remove_Load_Balancer-d1e2093"
+                                   />,<xref
+                                   linkend="Remove_Nodes-d1e2675"/>,
+                                   <xref
+                                   linkend="Remove_Virtual_IP-d1e2919"
+                                />, and<xref
+                                   linkend="Manage_Access_Lists-d1e3187"
+                                />, respectively. </para>
                         </listitem>
                         <listitem>
-                            <para>Updated<xref linkend="Absolute_Limits-d1e999"/>and added
-                                <code>absolutelimits</code>
-                                API
-                                call to
-                                <xref linkend="Determining_Limits_Programmatically-d1e1039"/>
-                                to return the current absolute
-                                limits for the account.
-                            </para>
+                            <para>Updated <xref
+                                   linkend="Absolute_Limits-d1e999"/>
+                                and added <code>absolutelimits</code>
+                                API call to <xref
+                                   linkend="Determining_Limits_Programmatically-d1e1039"
+                                /> to return the current absolute
+                                limits for the account. </para>
                         </listitem>
                         <listitem>
                             <para>Updated examples to match the
@@ -770,7 +824,7 @@
                             <area xml:id="credentials.json.key"
                                   units="linecolumn" coords="5 15"/>
                         </areaspec>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/credentials.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
@@ -801,20 +855,19 @@
                     <programlistingco>
                         <areaspec>
                             <area xml:id="auth.xml.token.expires"
-                                  units="linecolumn" coords="6 18"/>
+                                units="linecolumn" coords="10 13"/>
                             <area xml:id="auth.xml.service.catalog"
-                                units="linecolumn" coords="7 18"/>
+                                units="linecolumn" coords="11 18"/>
                             <area xml:id="auth.xml.service.name"
-                                units="linecolumn" coords="8 19"/>
+                                units="linecolumn" coords="12 19"/>
                             <area xml:id="auth.xml.sc.s.e.region"
-                                  units="linecolumn" coords="10 18"/>
+                                units="linecolumn" coords="13 24"/>
                             <area xml:id="auth.xml.sc.s.e.v1d"
-                                  units="linecolumn" coords="11 21"/>
+                                units="linecolumn" coords="13 40"/>
                             <area xml:id="auth.xml.sc.s.e.pu"
-                                  units="linecolumn" coords="12 21"/>
+                                units="linecolumn" coords="14 19"/>
                             <area xml:id="auth.xml.sc.s.e.iu"
-                                  units="linecolumn" coords="13 23"/>
-                            
+                                units="linecolumn" coords="42 21"/>
                         </areaspec>
                         <programlisting language="xml">
 <xi:include href="samples/auth.xml" parse="text"/>
@@ -826,22 +879,21 @@
                     <programlistingco>
                         <areaspec>
                             <area xml:id="auth.json.token.expires"
-                                  units="linecolumn" coords="6 23"/>
+                                units="linecolumn" coords="69 24"/>
                             <area xml:id="auth.json.service.catalog"
-                                units="linecolumn" coords="8 25"/>
-                            <area xml:id="auth.json.service.name"
                                 units="linecolumn" coords="9 25"/>
+                            <area xml:id="auth.json.service.name"
+                                units="linecolumn" coords="15 29"/>
                             <area xml:id="auth.json.sc.s.e.region"
-                                  units="linecolumn" coords="11 30"/>
+                                units="linecolumn" coords="18 31"/>
                             <area xml:id="auth.json.sc.s.e.v1d"
-                                  units="linecolumn" coords="12 33"/>
+                                units="linecolumn" coords="30 34"/>
                             <area xml:id="auth.json.sc.s.e.pu"
-                                  units="linecolumn" coords="13 33"/>
+                                units="linecolumn" coords="17 34"/>
                             <area xml:id="auth.json.sc.s.e.iu"
-                                  units="linecolumn" coords="14 35"/>
-                            
+                                units="linecolumn" coords="27 36"/>
                         </areaspec>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/auth.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
@@ -864,17 +916,20 @@
                             a token until it expires. </para>
                     </callout>
                         <callout arearefs="auth.xml.service.catalog">
-                            <para>The service catalog lists the services 
-                            this user can access. In this example, the user can 
-                            access two compute services (Cloud Servers OpenStack
-                            and Cloud Servers) and two object storage services 
-                            (Cloud Files Content Distribution Network (CDN), 
-                            and Cloud Files). The catalog listing for each 
-                            service provides at least one endpoint URL for 
-                            that service. Other information, such as regions 
-                            and versions and tenants, is provided if it's 
-                            relevant to this user's access to this service.
-                            </para>
+                            <para>The service catalog lists the
+                            services this user can access. In this
+                            example, the user can access two compute
+                            services (Cloud Servers OpenStack and
+                            Cloud Servers) and two object storage
+                            services (Cloud Files Content Distribution
+                            Network (CDN), and Cloud Files), as well
+                            as Cloud Load Balancers, and so forth. The
+                            catalog listing for each service provides
+                            at least one endpoint URL for that
+                            service. Other information, such as
+                            regions and versions and tenants, is
+                            provided if it's relevant to this user's
+                            access to this service. </para>
                         </callout>
                         <callout arearefs="auth.xml.service.name">
                             <para>The service name attribute identifies 
@@ -962,21 +1017,21 @@
                         in parsing the service catalog. For Auth 2.0
                         (also known as the Cloud Identity Service),
                         you can see the service type attribute in the
-                        "Authentication Response with Headers" sample
-                        in the Cloud Identity Client Developer Guide
-                        at <link
-                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html"
-                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Request_Response_Types-d1e149.html</link>.</para>
+                        "Service Catalog in Authentication Response"
+                        samples in the <citetitle>Cloud Identity
+                            Client Developer Guide</citetitle> at
+                            <link
+                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
+                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html</link>.</para>
                 </tip>
-                <note>
-                    <para>Currently, load balancing service endpoints are not
-                        published in the Auth response with the
-                        account number, which is a required element of
-                        the service endpoints. Refer to the next
-                        section for details about service
-                        endpoints.
-                    </para>
-                </note>
+                <para>Load balancer service endpoints are published in
+                    the service catalog in the Auth response with the
+                    account number, which is a required element of the
+                    service endpoints. The examples shown here are for
+                    authentication for US customers. Customers with
+                    UK-based accounts will see different values in the
+                    service catalog. Refer to the next section for
+                    more information about service endpoints. </para>
             </section>
         </section>
         <section xml:id="Service_Access_Endpoints-d1e517">
@@ -1438,7 +1493,7 @@
                 </example>
                 <example>
                     <title>List Rate Limits Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1451,7 +1506,7 @@
                 </example>
                 <example>
                     <title>List Absolute Limits Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-absolute-limits-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1742,7 +1797,7 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3">/loadbalancers</td>
-                            <td colspan="3">List all load balancers configured for the account (IDs, names and
+                            <td colspan="3">List all <glossterm baseform="load balancer">load balancers</glossterm> configured for the account (IDs, names and
                                 status only).
                             </td>
                             <td colspan="2">XML, JSON, Atom</td>
@@ -1805,7 +1860,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1838,12 +1893,12 @@
                     and irrecoverable.
                 </para>
                 <para>To find out if any load balancer for an account has
-                    a specific node attached to it, use the query
+                    a specific <glossterm>node</glossterm> attached to it, use the query
                     parameter
                     <emphasis>nodeaddress</emphasis>
                     to
-                    specify the IP address for the desired node. For
-                    example, using the URI
+                    specify the IP address or domain name for the desired
+                    node. For example, using the URI
                     <code>/loadbalancers?nodeaddress=10.1.1.1</code>
                     will search all load balancers for the account for
                     a node with IP address 10.1.1.1, and return a list
@@ -1851,8 +1906,7 @@
                     balancers attached:
                 </para>
                 <example>
-                    <title>List Load Balancers With Node Specified:
-                        XML
+                    <title>List Load Balancers With Node Specified: XML
                     </title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
@@ -1863,7 +1917,7 @@
                     <title>List Load Balancers With Node Specified:
                         JSON
                     </title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-response-with-node.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -1942,7 +1996,7 @@
                 </example>
                 <example>
                     <title>List Load Balancers Details Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-details-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2006,14 +2060,22 @@
                 </para>
                 <para>An HTTP load balancer will have the
                     X-Forwarded-For (XFF) HTTP header set by default.
-                    This header will contain the actual source address
-                    of the client, which many web applications are
-                    already designed to use when determining the
-                    source address for a request. Also, a HTTP load balancer will
-                    include the X-Forwarded-For (XFP) HTTP header whih specifies the
-                    wether the protocol is secure(HTTPS) or not(HTTP). This is specially
-                    useful when using SSL termination.
-                </para>
+                    This header will contain the actual originating IP
+                    address of a client connecting to a web server
+                    through an HTTP proxy or load balancer, which many
+                    web applications are already designed to use when
+                    determining the source address for a request.
+                    (This header is also included on the Modify Load
+                    Balancer request if the protocol changes to
+                    reenable it.) </para>
+                <para>An HTTP load balancer will also include the
+                    X-Forwarded-Proto (XFP) HTTP header,  which has
+                    been added for identifying the originating
+                    protocol of an HTTP request as "http" or "https"
+                    depending on what protocol the client requested.
+                    This is specially useful when using SSL
+                    termination (refer to <xref
+                        linkend="SSLTermination-d1e2479"/>). </para>
                 <note>
                     <para>
                         A load balancer's name must be less than or equal to 128 characters.
@@ -2095,7 +2157,7 @@
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes) Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-required-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2121,7 +2183,7 @@
                 </example>
                 <example>
                     <title>Create Load Balancer (Required Attributes) Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-required-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2159,7 +2221,7 @@
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Request: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-required-sharedip-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2173,7 +2235,7 @@
                     <title>Create Load Balancer (Required Attributes with Shared IP) Response:
                         JSON
                     </title>
-                    <programlisting>
+                    <programlisting language="json">
 <xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2262,7 +2324,7 @@
                 <example>
                     <title>Update Load Balancer Attributes Request: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-lb-attributes-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2425,10 +2487,10 @@
         </section>
         <section xml:id="Erropage-d1e666">
             <title>Error Page</title>
-            <para>An error page is the html file that is shown to an
-                end user who is attempting to access a load balancer
-                node that is offline/unavailable.
-            </para>
+            <para>An <glossterm>error page</glossterm> is the html
+                file that is shown to an end user who is attempting to
+                access a load balancer <glossterm>node</glossterm>
+                that is offline/unavailable. </para>
             <section xml:id="default_error_page">
                 <title>Default Error Page</title>
                 <para>During provisioning, every load balancer is
@@ -2509,7 +2571,7 @@
                 </example>
                 <example>
                     <title>List Error Page Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2521,7 +2583,7 @@
                 </example>
                 <example>
                     <title>Add Error Page Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2533,7 +2595,7 @@
                 </example>
                 <example>
                     <title>Add Error Page Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-error-page.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2649,41 +2711,44 @@
                 <title>List Load Balancers Stats Response:
                     JSON
                 </title>
-                <programlisting language="javascript">
+                <programlisting language="json">
   <xi:include href="samples/lb-stats.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
         <section xml:id="Nodes-d1e2173">
             <title>Nodes</title>
-            <para>The nodes defined by the load balancer are responsible for servicing the requests
-                received through the load balancer's virtual IP. By default, the load balancer
-                employs a basic health check that ensures the node is listening on its defined port.
-                The node is checked at the time of addition and at regular intervals as defined by
-                the load balancer health check configuration. If a back-end node is not listening on
-                its port or does not meet the conditions of the defined active health check for the
-                load balancer, then the load balancer will not forward connections and its status
-                will be listed as<code>OFFLINE</code>. Only nodes that are in an
-                <code>ONLINE</code>
-                status will receive and be able to service traffic from the
-                load balancer.
-            </para>
-            <para>All nodes have an associated status that indicates whether the node is
-                <code>ONLINE</code>,<code>OFFLINE</code>, or<code>DRAINING</code>. Only nodes
-                that are in
-                <code>ONLINE</code>
-                status will receive and be able to service traffic
-                from the load balancer. The
-                <code>OFFLINE</code>
-                status represents a node that
-                cannot accept or service traffic. A node in
-                <code>DRAINING</code>
-                status represents
-                a node that stops the traffic manager from sending any additional new connections to
-                the node, but honors established sessions. If the traffic manager receives a request
-                and session persistence requires that the node is used, the traffic manager will use
-                it. The status is determined by the passive or active health monitors.
-            </para>
+            <para>The <glossterm baseform="node">nodes</glossterm>
+                defined by the load balancer are responsible for
+                servicing the requests received through the load
+                balancer's virtual IP. By default, the load balancer
+                employs a basic health check that ensures the node is
+                listening on its defined port. The node is checked at
+                the time of addition and at regular intervals as
+                defined by the load balancer health check
+                configuration. If a back-end node is not listening on
+                its port or does not meet the conditions of the
+                defined active health check for the load balancer,
+                then the load balancer will not forward connections
+                and its status will be listed as <code>OFFLINE</code>.
+                Only nodes that are in an <code>ONLINE</code> status
+                will receive and be able to service traffic from the
+                load balancer. </para>
+            <para>All nodes have an associated status that indicates
+                whether the node is <code>ONLINE</code>,
+                    <code>OFFLINE</code>, or <code>DRAINING</code>.
+                Only nodes that are in <code>ONLINE</code> status will
+                receive and be able to service traffic from the load
+                balancer. The <code>OFFLINE</code> status represents a
+                node that cannot accept or service traffic. A node in
+                    <code>DRAINING</code> status represents a node
+                that stops the traffic manager from sending any
+                additional new connections to the node, but honors
+                established sessions. If the traffic manager receives
+                a request and session persistence requires that the
+                node is used, the traffic manager will use it. The
+                status is determined by the passive or active health
+                monitors. </para>
             <para>If the
                 <code>WEIGHTED_ROUND_ROBIN</code>
                 load balancer algorithm mode is
@@ -2708,11 +2773,12 @@
                 independently from the primary node, allowing for a
                 more robust configuration.
             </para>
-            <para>
-                One or more secondary nodes can be added to a specified loadbalanecer so that if all the
-                primary nodes fail, traffic can be redirected to secondary nodes. The type attribute allows
-                configuration of the node as either <code>PRIMARY</code> or <code>SECONDARY</code>.
-            </para>
+            <para> One or more secondary nodes can be added to a
+                specified load balancer so that if all the primary
+                nodes fail, traffic can be redirected to secondary
+                nodes. The type attribute allows configuring the node
+                as either <code>PRIMARY</code> or
+                    <code>SECONDARY</code>. </para>
 
             <section xml:id="List_Nodes-d1e2218">
                 <title>List Nodes</title>
@@ -2792,7 +2858,7 @@
                 <example>
                     <title>List Node Response: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-node-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2824,7 +2890,7 @@
                 </para>
                 <example>
                     <title>List Nodes Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-nodes-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2901,7 +2967,7 @@
                 </para>
                 <example>
                     <title>Add Nodes Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -2928,7 +2994,7 @@
                 <example>
                     <title>Add Nodes Response: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-nodes-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3037,7 +3103,7 @@
                 </para>
                 <example>
                     <title>Update Node Condition Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-node-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3099,12 +3165,12 @@
 
         <section xml:id="Virtual_IPs-d1e2754">
             <title>Virtual IPs</title>
-            <para>
-                A virtual IP (VIP) makes a load balancer accessible by clients. The load
-                balancing service supports either a public VIP, routable on the public Internet, or
-                a ServiceNet address, routable only within the region in which the load balancer
-                resides.
-            </para>
+            <para> A <glossterm>virtual IP</glossterm> (VIP) makes a
+                load balancer accessible by clients. The load
+                balancing service supports either a public VIP,
+                routable on the public Internet, or a ServiceNet
+                address, routable only within the region in which the
+                load balancer resides. </para>
             <table rules="all">
                 <caption>Virtual IP Types</caption>
                 <?dbfo keep-together="always"?>
@@ -3170,7 +3236,7 @@
                 </example>
                 <example>
                     <title>List Virtual IPs Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-vips-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3239,7 +3305,7 @@
                 <example>
                     <title>List Allowed Domains: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/allowed-domains.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3284,7 +3350,7 @@
                 </example>
                 <example>
                     <title>Add Virtual IP Version 6 Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-vip-v6-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3298,7 +3364,7 @@
                 <example>
                     <title>Add Virtual IP Version 6 Response: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-vip-v6-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3317,9 +3383,9 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips/
-                                <parameter>id</parameter>
-                            </td>
+                            <td colspan="3"
+                                >/loadbalancers/<parameter>loadBalancerId</parameter>/virtualips/<parameter>virtualipId</parameter>
+                        </td>
                             <td colspan="3">Remove a virtual IP.</td>
                         </tr>
                         <tr align="left">
@@ -3473,7 +3539,7 @@
                 <example>
                     <title>Report Load Balancer Usage Response: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3526,8 +3592,8 @@
                         <tr align="left">
                             <td colspan="1">&DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/
-                                <parameter>networkItemId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/accesslist/<parameter>networkItemId</parameter>
                             </td>
                             <td colspan="3">Remove a network item from the access list.</td>
                         </tr>
@@ -3541,10 +3607,9 @@
                         <tr align="left">
                             <td colspan="1">&BATCH_DELETE;
                             </td>
-                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId/</parameter>accesslist?id=
-                                <parameter>networkItemId</parameter>
-                                &amp;id=
-                                <parameter>networkItemId</parameter>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId/</parameter>accesslist?id=<parameter>networkItemId</parameter>
+                                   &amp;id=<parameter>networkItemId</parameter>
                             </td>
                             <td colspan="3">Batch delete the access list network items given specified id list.</td>
                         </tr>
@@ -3580,7 +3645,7 @@
                 </example>
                 <example>
                     <title>List Access List Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-retrieve-accesslist-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3598,7 +3663,7 @@
                 </example>
                 <example>
                     <title>Update Access List Attributes Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-accesslist-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3606,14 +3671,17 @@
         </section>
         <section xml:id="Monitors-d1e3370">
             <title>Monitors</title>
-            <para>The load balancing service includes a health monitoring operation which
-                periodically checks your back-end nodes to ensure they are responding correctly. If
-                a node is not responding, it is removed from rotation until the health monitor
-                determines that the node is functional. In addition to being performed periodically,
-                the health check also is performed against every node that is added to ensure that
-                the node is operating properly before allowing it to service traffic. Only one
-                health monitor is allowed to be enabled on a load balancer at a time.
-            </para>
+            <para>The load balancing service includes a health
+                monitoring operation which periodically checks your
+                back-end nodes to ensure they are responding
+                correctly. If a node is not responding, it is removed
+                from rotation until the <glossterm>health monitor</glossterm> determines that the node is
+                functional. In addition to being performed
+                periodically, the health check also is performed
+                against every node that is added to ensure that the
+                node is operating properly before allowing it to
+                service traffic. Only one health monitor is allowed to
+                be enabled on a load balancer at a time. </para>
             <para>
                 Every health monitor has a
                 <code>type</code>
@@ -3659,7 +3727,10 @@
                             </td>
                             <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/healthmonitor
                             </td>
-                            <td colspan="3">Retrieve the health monitor configuration, if one exists.</td>
+                            <td colspan="3">Retrieve the
+                                   <glossterm>health
+                                   monitor</glossterm> configuration,
+                                if one exists.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
@@ -3725,7 +3796,7 @@
                     </example>
                     <example>
                         <title>Monitor Connections Request: JSON</title>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
  <xi:include href="samples/lb-monitor-connect-request.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -3738,7 +3809,7 @@
                     <example>
                         <title>Monitor Connections Response: JSON</title>
                         <?dbfo keep-together="always"?>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
   <xi:include href="samples/lb-monitor-connect-response.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -3803,7 +3874,7 @@
                     </example>
                     <example>
                         <title>Monitor HTTP Response: JSON</title>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/lb-monitor-http-response.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -3816,7 +3887,7 @@
                     </example>
                     <example>
                         <title>Monitor HTTPS Response: JSON</title>
-                        <programlisting language="javascript">
+                        <programlisting language="json">
 <xi:include href="samples/lb-monitor-https-response.json" parse="text"/>
                         </programlisting>
                     </example>
@@ -3827,11 +3898,53 @@
             <title>Sessions</title>
             <section xml:id="Manage_Session_Persistence-d1e3733">
                 <title>Manage Session Persistence</title>
-                <para>Session persistence is a feature of the load balancing service which
-                    forces multiple requests from clients to be directed to the same node. This is
-                    common with many web applications that do not inherently share application state
-                    between back-end servers.
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td>Verb</td>
+                            <td>URI</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td>&GET; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>List session persistence
+                                configuration.</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&PUT; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Enable session persistence.</td>
+                        </tr>
+                        <tr align="left">
+                            <td>&DELETE; </td>
+                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>Disable session persistence.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para> Normal Response Code(s):
+                        <returnvalue>200</returnvalue>,
+                        <returnvalue>202</returnvalue>
                 </para>
+                <simpara>Error Response Code(s): loadbalancerFault
+                        (<errorcode>400</errorcode>,
+                        <errorcode>500</errorcode>),
+                    serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>),
+                    badRequest (<errorcode>400</errorcode>), overLimit
+                        (<errorcode>413</errorcode>) </simpara>
+                <para><glossterm baseform="session persistence"
+                        >Session persistence</glossterm> is a feature
+                    of the load balancing service that forces multiple
+                    requests from clients to be directed to the same
+                    node. This is common with many web applications
+                    that do not inherently share application state
+                    between back-end servers. Two session persistence
+                    modes are available, as described in the following
+                    table:</para>
                 <table rules="all">
                     <caption>Session Persistence Modes</caption>
                     <?dbfo keep-together="always"?>
@@ -3851,52 +3964,16 @@
                         </tr>
                         <tr align="left">
                             <td colspan="1">SOURCE_IP</td>
-                            <td colspan="3">A session persistence mechanism that will keep track of the source ip
-                                which is mapped and able determine the destination back-end node. This is supported
-                                for HTTP pass-through(ssl termination) and non-HTTP load balancing only.
-                            </td>
+                            <td colspan="3">A session persistence
+                                mechanism that will keep track of the
+                                source IP address that is mapped and
+                                is able to determine the destination
+                                back-end node. This is supported for
+                                HTTP pass-through (SSL termination)
+                                and non-HTTP load balancing only. </td>
                         </tr>
                     </tbody>
                 </table>
-                <informaltable rules="all">
-                    <thead>
-                        <tr align="center">
-                            <td>Verb</td>
-                            <td>URI</td>
-                            <td>Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td>&GET;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>List session persistence configuration.</td>
-                        </tr>
-                        <tr align="left">
-                            <td>&PUT;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>Enable session persistence.</td>
-                        </tr>
-                        <tr align="left">
-                            <td>&DELETE;
-                            </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
-                            <td>Disable session persistence.</td>
-                        </tr>
-                    </tbody>
-                </informaltable>
-                <para>
-                    Normal Response Code(s):
-                    <returnvalue>200</returnvalue>,
-                    <returnvalue>202</returnvalue>
-                </para>
-                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
-                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
-                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
-                    overLimit (<errorcode>413</errorcode>)
-                </simpara>
                 <example>
                     <title>List Session Persistence Configuration Response: XML</title>
                     <programlisting language="xml">
@@ -3905,7 +3982,7 @@
                 </example>
                 <example>
                     <title>List Session Persistence Configuration Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-persistence-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3925,7 +4002,7 @@
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>Set Session Persistence Type Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-set-persistence-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3948,7 +4025,8 @@
                             <td colspan="1">&GET;
                             </td>
                             <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
-                            <td colspan="3">View current configuration of connection logging.</td>
+                            <td colspan="3">View current configuration
+                                of <glossterm>connection logging</glossterm>.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
@@ -3982,7 +4060,7 @@
                 </example>
                 <example>
                     <title>List Connection Logging Configuration Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-logging-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -3994,7 +4072,7 @@
                 </example>
                 <example>
                     <title>Enable Connection Logging Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-enable-logging-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4091,7 +4169,7 @@
                 </example>
                 <example>
                     <title>List Connection Throttling Configuration Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-throttling-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4103,7 +4181,7 @@
                 </example>
                 <example>
                     <title>Update Connection Throttling Configuration Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-throttling-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4234,21 +4312,24 @@
 <xi:include href="samples/lb-list-protocols-response.json" parse="text"/>
                     </programlisting>
                 </example>
-                <note><para>UDP based protocols (i.e. DNS_UDP, UDP and UDP_STREAM) are not capable
-                      of utilizing the Health Monitor features. Also, SSL Termination is unavailable while
-                      using UDP based protocols.</para></note>
+                <note><para>UDP based protocols (that is DNS_UDP, UDP, and UDP_STREAM) are
+                        not capable of utilizing the Health Monitor
+                        features. Also, SSL Termination is unavailable
+                        while using UDP based protocols.</para></note>
             </section>
         </section>
         <section xml:id="Algorithms-d1e4367">
             <title>Algorithms</title>
-            <para>All load balancers utilize an algorithm that defines how traffic should be
-                directed between back-end nodes. The default algorithm for newly created load
-                balancers is<code>RANDOM</code>, which can be overridden at creation time or
-                changed after the load balancer has been initially provisioned. The algorithm name
-                is to be constant within a major revision of the load balancing API, though new
-                algorithms may be created with a unique algorithm name within a given major revision
-                of the service API.
-            </para>
+            <para>All load balancers utilize an algorithm that defines
+                how traffic should be directed between back-end nodes.
+                The default algorithm for newly created load balancers
+                is <code>RANDOM</code>, which can be overridden at
+                creation time or changed after the load balancer has
+                been initially provisioned. The algorithm name is to
+                be constant within a major revision of the load
+                balancing API, though new algorithms may be created
+                with a unique algorithm name within a given major
+                revision of the service API. </para>
             <table rules="all">
                 <caption>Load Balancing Algorithms</caption>
                 <thead>
@@ -4336,7 +4417,7 @@
                 </example>
                 <example>
                     <title>List Load Balancing Algorithms Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-algorithms-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4345,15 +4426,12 @@
         <section xml:id="SSLTermination-d1e2479">
             <title>SSL Termination</title>
             <note>
-                <para>Note to customers who have Personally
-                    Identifiable Information (PII) in their data. You
-                    should <emphasis>not</emphasis> be using the SSL
-                    Termination feature. Examples of PII are HIPPA
-                    protected health information, Gramm-Leach-Bliley
-                    financial information, credit card information,
-                    and any personal data that when disclosed could
-                    result in the theft of the person's
-                    identity.</para>
+                <para>SSL termination should not be used when
+                    transferring certain types of Personally
+                    Identifiable Information (PII). For the definition
+                    of PII, see the Knowledge Center article at: <link
+                        xlink:href="http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii"
+                        >http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii</link>.</para>
             </note>
             <informaltable rules="all">
                 <thead>
@@ -4407,11 +4485,29 @@
                 Connection Logging is enabled on an SSL load balancer,
                 it will also be enabled on the shadow server and Cloud
                 Files logs will contain log files for both. </para>
-            <note>
-                <para>SSL Termination may only be configured on load
-                    balancers with non-secure protocols. For example,
-                    SSL Termination can be applied to an HTTP load
-                    balancer, but not to an HTTPS load balancer. </para>
+            <note><title>Notes</title>
+                <itemizedlist>
+                    <listitem>
+                        <para>SSL Termination may only be configured
+                            on load balancers with non-secure
+                            protocols. For example, SSL Termination
+                            can be applied to an HTTP load balancer,
+                            but not to an HTTPS load balancer. </para>
+                    </listitem>
+                    <listitem>
+                        <para>SSL-terminated load balancers decrypt
+                            the traffic at the traffic manager and
+                            pass unencrypted traffic to the back-end
+                            node. Because of this, the customer's
+                            back-end nodes don't know what protocol
+                            the client requested. Therefore the
+                            X-Forwarded-Proto (XFP) header has been
+                            added for identifying the originating
+                            protocol of an HTTP request as "http" or
+                            "https" depending on what protocol the
+                            client requested.</para>
+                    </listitem>
+                </itemizedlist>
             </note>
             <warning>
                 <para>If SSL is enabled on a load balancer that is
@@ -4720,7 +4816,6 @@
 <xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
                 </programlisting>
                 </example>
-                <para> This operation does not require a request body. </para>
                 <para>There is no example for the Delete Load
                     Balancing SSL Termination Request. </para>
                 <para>This operation does not require a request
@@ -4793,7 +4888,7 @@
                     <title>List Specific Metadata Response:
                         JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-meta-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4805,7 +4900,7 @@
                 </example>
                 <example>
                     <title>List All Metadata Response: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-list-metadata-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4852,7 +4947,7 @@
                 </example>
                 <example>
                     <title>Add Metadata Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-metadata-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4865,7 +4960,7 @@
                 <example>
                     <title>Add Metadata Response: JSON</title>
                     <?dbfo keep-together="always"?>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-add-metadata-response.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4919,7 +5014,7 @@
                 </example>
                 <example>
                     <title>Update Metadata Value Request: JSON</title>
-                    <programlisting language="javascript">
+                    <programlisting language="json">
 <xi:include href="samples/lb-update-meta-request.json" parse="text"/>
                     </programlisting>
                 </example>
@@ -4979,4 +5074,72 @@
         </section>
 
     </chapter>
+    <glossary>
+        <title>Glossary</title>
+        <glossentry xml:id="Connection-Logging-d1e022">
+            <glossterm>connection logging</glossterm>
+            <glossdef>
+                <para>The connection logging feature allows logs to be
+                    delivered to a Cloud Files account every hour. For
+                    HTTP-based protocol traffic, these are
+                    Apache-style access logs. For all other traffic,
+                    this is connection and transfer logging.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Error-Page-d1e018">
+            <glossterm>error page</glossterm>
+            <glossdef>
+                <para>An error page is the html file that is shown to
+                    the end user when an error in the service has been
+                    thrown. By default every virtual server is
+                    provided with the default error file. It is also
+                    possible to submit a custom error page via the
+                    Load Balancers API.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Health-Monitor-d1e020">
+            <glossterm>health monitor</glossterm>
+            <glossdef>
+                <para>A health monitor is a configurable feature of
+                    each load balancer. It is used to determine
+                    whether or not a back-end node is usable for
+                    processing a request. The load balancing service
+                    currently supports active health
+                    monitoring.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="LoadBalancer-d1e017">
+            <glossterm>load balancer</glossterm>
+            <glossdef>
+                <para>A load balancer is a logical device which belongs to a cloud account. It is used to distribute
+                    workloads between multiple back-end systems or services, based on the criteria defined as
+                    part of its configuration.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Node-d1e019">
+            <glossterm>node</glossterm>
+            <glossdef>
+                <para>A node is a back-end device providing a service on a specified IP and port.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Session-Persistence-d1e021">
+            <glossterm>session persistence</glossterm>
+            <glossdef>
+                <para>Session persistence is a feature of the load balancing service. It attempts to force
+                    subsequent connections to a service to be redirected to the same node as long as it is
+                    online.</para>
+            </glossdef>
+        </glossentry>
+        <glossentry xml:id="Virtual-IP-d1e016">
+            <glossterm>virtual IP</glossterm>
+            <glossdef>
+                <para>A virtual IP is an Internet Protocol (IP)
+                    address configured on the load balancer for use by
+                    clients connecting to a service that is load
+                    balanced. Incoming connections are distributed to
+                    back-end nodes based on the configuration of the
+                    load balancer.</para>
+            </glossdef>
+        </glossentry>
+    </glossary>
 </book>
