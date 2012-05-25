@@ -282,7 +282,7 @@
             <example>
                 <title>cURL Authenticate Request: XML</title>
                 <?dbfo keep-together="always"?>
-                <screen><command>curl</command> <option>-i</option> <option>-d</option> \
+                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="<emphasis role="bold">your_username</emphasis>" 
@@ -295,7 +295,7 @@
                 command syntax have all been escaped with a backslash
                 ('\') to indicate that the command continues on the
                 next line:</para>
-            <screen><command>curl</command> <option>-i</option> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
  
              key="<emphasis role="bold">your_api_key</emphasis>"/>' \
 <option>-H 'Content-Type: application/xml'</option> \
@@ -306,7 +306,7 @@
                     <emphasis>not</emphasis> escaped with a backslash
                 ('\') in order to avoid issues with the xml
                 processing:</para>
-            <screen>'&lt;?xml version="1.0" encoding="UTF-8"?>  
+            <screen language="bash">'&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="<emphasis role="bold">your_username</emphasis>" 
              key="<emphasis role="bold">your_api_key</emphasis>"/>' \
@@ -375,7 +375,7 @@
         <example>
             <title>cURL Authenticate Request: XML</title>
             <?dbfo keep-together="always"?>
-            <screen><command>curl</command> <option>-i</option> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
              username="<emphasis role="bold">your_username</emphasis>" 
@@ -387,7 +387,7 @@
         <example>
             <title>cURL Authenticate Request: JSON</title>
             <?dbfo keep-together="always"?>
-            <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '{ 
     "credentials": {  
         "username": "<emphasis role="bold">your_username</emphasis>",  
@@ -403,7 +403,7 @@
         </example>
         <example>
             <title>Authenticate Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/auth.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="json"><xi:include href="../../src/resources/samples/auth.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <para>The authentication token <code>id</code> is returned
             along with an <code>expires</code> attribute that
@@ -594,7 +594,7 @@
             Load Balancer:</para>
         <example>
             <title>cURL Create Load Balancer Request: XML</title>
-            <programlisting><command>curl -i -d</command> \
+            <programlisting language="bash"><command>curl -i -d</command> \
 '&lt;?xml version="1.0" ?> 
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     name="a-new-loadbalancer"
@@ -614,7 +614,7 @@
         </example>
         <example>
             <title>cURL Create Load Balancer Request: JSON</title>
-            <programlisting><command>curl -i -d</command> \
+            <programlisting language="bash"><command>curl -i -d</command> \
 '{
     "loadBalancer": {
         "name": "a-new-loadbalancer",
@@ -658,12 +658,12 @@
         <para>The following examples show the responses for Create
             Load Balancer:</para>
         <example>
-            <title>cURL Create Load Balancer  Response: XML</title>
+            <title>Create Load Balancer Response: XML</title>
             <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-create-required-response.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <example>
             <title>cURL Create Load Balancer  Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-create-required-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="json"><xi:include href="../../src/resources/samples/lb-gs-create-required-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <para>In the previous examples, you can see that one node
             (with IP address "50.56.166.100") has been added to your
@@ -691,7 +691,7 @@
         <example>
             <title>cURL List Load Balancer Details Request:
                 XML</title>
-            <programlisting><command>curl</command> <option>-i</option>  \
+            <programlisting language="bash"><command>curl</command> <option>-i</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/xml'</option>  \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
@@ -699,7 +699,7 @@
         <example>
             <title>cURL List Load Balancer Details Request:
                 JSON</title>
-            <programlisting><command>curl</command> <option>-i</option>  \
+            <programlisting language="bash"><command>curl</command> <option>-i</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/json'</option>  \
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
@@ -739,7 +739,7 @@
             <example>
                 <title>List Load Balancer Details Response:
                 JSON</title>
-                <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-list-details-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+                <programlisting language="json"><xi:include href="../../src/resources/samples/lb-gs-list-details-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
             </example>
         </section>
     <section xml:id="Add_Node">
@@ -764,7 +764,7 @@
             examples show the cURL requests for Add Node:</para>
         <example>
             <title>cURL Add Node Request: XML</title>
-            <programlisting><command>curl</command><option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command><option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
 &lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     &lt;node address="<emphasis role="bold">&lt;IP address of SECOND cloud server></emphasis>" port="80" condition="ENABLED" />
@@ -777,7 +777,7 @@
         <example>
             <?dbfo keep-together="always"?>
             <title>cURL Add Node Request: JSON</title>
-            <programlisting><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '{
     "nodes": [
         {
@@ -823,7 +823,7 @@
         </example>
         <example>
             <title>Add Node Response: JSON</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/lb-gs-add-nodes-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="json"><xi:include href="../../src/resources/samples/lb-gs-add-nodes-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
     </section>
     <section xml:id="Configure_Load_Balancer">
@@ -847,12 +847,13 @@
                     <para>port</para>
                 </listitem>
             </itemizedlist></para>
-        <para>The following examples show the Update Load Balancer
-            Attributes requests to change the algorithm to
+        <para>The following examples show the cURL requests for Update
+            Load Balancer Attributes to change the algorithm to
             LEAST_CONNECTIONS:</para>
         <example>
-            <title>Update Load Balancer Attributes: XML</title>
-            <programlisting language="xml"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <title>cURL Update Load Balancer Attributes Request:
+                XML</title>
+            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?>
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     algorithm="LEAST_CONNECTIONS" />' \
@@ -863,8 +864,9 @@
 <uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
         </example>
         <example>
-            <title>Update Load Balancer Attributes: JSON</title>
-            <programlisting language="xml"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <title>cURL Update Load Balancer Attributes Request:
+                JSON</title>
+            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '{"loadBalancer":{
     "algorithm": "LEAST_CONNECTIONS"
     }
