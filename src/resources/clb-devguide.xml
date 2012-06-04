@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-05-18</pubdate>
+        <pubdate>2012-06-06</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-05-18</date>
+                <date>2012-06-06</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -4244,6 +4244,226 @@
                         not capable of utilizing the Health Monitor
                         features. Also, SSL Termination is unavailable
                         while using UDP-based protocols.</para></note>
+                <para>See the table below for descriptions of the
+                    protocols.</para>
+                <table rules="all">
+                    <caption>Load Balancing Protocols</caption>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="2">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>DNS_TCP</code>
+                            </td>
+                            <td colspan="3">This protocol works with
+                                IPv6 and allows your DNS server to
+                                receive traffic using TCP port 53. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>DNS_UDP</code>
+                            </td>
+                            <td colspan="3">This protocol works with
+                                IPv6 and allows your DNS server to
+                                receive traffic using UDP port
+                                53.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>FTP</code>
+                            </td>
+                            <td colspan="3">The File Transfer Protocol
+                                defines how files are transported over
+                                the Internet. It is typically used
+                                when downloading or uploading files to
+                                or from web servers.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>HTTP</code>
+                            </td>
+                            <td colspan="3">The Hypertext Transfer
+                                Protocol defines how communications
+                                occur on the Internet between clients
+                                and web servers. For example, if you
+                                request a web page in your browser,
+                                HTTP defines how the web server
+                                fetches the page and returns it your
+                                browser.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>HTTPS</code>
+                            </td>
+                            <td colspan="3">The Hypertext Transfer
+                                Protocol over Secure Socket Layer
+                                (SSL) provides encrypted communication
+                                over the Internet. It securely
+                                verifies the authenticity of the web
+                                server you are communicating
+                                with. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>IMAPS</code>
+                            </td>
+                            <td colspan="3">The Internet Message
+                                Application Protocol over Secure
+                                Socket Layer (SSL) defines how an
+                                email client, such as Microsoft
+                                Outlook, retrieves and transfers email
+                                messages with a mail server.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>IMAPv2</code>
+                            </td>
+                            <td colspan="3">Version 2 of IMAPS.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>IMAPv3</code>
+                            </td>
+                            <td colspan="3">Version 3 of IMAPS.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>IMAPv4</code>
+                            </td>
+                            <td colspan="3">Version 4, the current
+                                version of IMAPS.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>LDAP</code>
+                            </td>
+                            <td colspan="3">The Lightweight Directory
+                                Access Protocol provides access to
+                                distributed directory information
+                                services over the Internet. This
+                                protocol is typically used to access a
+                                large set of hierarchical records,
+                                such as corporate email or a telephone
+                                directory. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>LDAPS</code>
+                            </td>
+                            <td colspan="3">The Lightweight Directory
+                                Access Protocol over Secure Socket
+                                Layer (SSL).</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>MYSQL</code>
+                            </td>
+                            <td colspan="3">This protocol allows
+                                communication with MySQL, an open
+                                source database management
+                                system.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>POP3</code>
+                            </td>
+                            <td colspan="3">The Post Office Protocol
+                                is one of the two most common
+                                protocols for communciation between
+                                email clients and email servers.
+                                Version 3 is the current standard of
+                                POP.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>POP3S</code>
+                            </td>
+                            <td colspan="3">Post Office Protocol over
+                                Secure Socket Layer.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>SFTP</code>
+                            </td>
+                            <td colspan="3">The SSH File Transfer
+                                Protocol is a secure file transfer and
+                                management protocol. This protocol
+                                assumes the files are using a secure
+                                channel, such as SSH, and that the
+                                identity of the client is available to
+                                the protocol. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>SMTP</code>
+                            </td>
+                            <td colspan="3">The Simple Mail Transfer
+                                Protocol is used by electronic mail
+                                servers to send and receive email
+                                messages. Email clients use this
+                                protocol to relay messages to another
+                                computer or web server, but use IMAP
+                                or POP to send and receive
+                                messages.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>TCP</code>
+                            </td>
+                            <td colspan="3">The Transmission Control
+                                Protocol is a part of the Transport
+                                Layer protocol and is one of the core
+                                protocols of the Internet Protocol
+                                Suite. It provides a reliable, ordered
+                                delivery of a stream of bytes from one
+                                program on a computer to another
+                                program on another computer.
+                                Applications that require an ordered
+                                and reliable delivery of packets use
+                                this protocol. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>TCP_CLIE
+                                   (TCP_CLIENT_FIRST)</code>
+                            </td>
+                            <td colspan="3">This protocol is similiar
+                                to TCP, but is more efficient when a
+                                client is expected to write the data
+                                first.</td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>UDP</code>
+                            </td>
+                            <td colspan="3">The User Datagram Protocol
+                                provides a datagram service
+                                that emphasizes speed over
+                                reliability, It works well with
+                                applications that provide security
+                                through other measures. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>UDP_STRE (UDP_STREAM)</code>
+                            </td>
+                            <td colspan="3">This protocol is designed
+                                to stream media over networks and is
+                                built on top of UDP.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <note>
+                    <para>UDP-Based protocols (DNS_UDP, UDP, and
+                        UDP_STREAM) have the following limitations.
+                        They are not capable of using the Health
+                        Monitor features. Also, SSL Termination is
+                        unavailable when using UDP-based ports.</para>
+                </note>
             </section>
         </section>
         <section xml:id="Algorithms-d1e4367">
