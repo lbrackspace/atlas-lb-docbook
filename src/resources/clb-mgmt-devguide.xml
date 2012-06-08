@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-06-06</pubdate>
+        <pubdate>2012-06-13</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -69,6 +69,19 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-06-13</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated links for API documentation
+                                (see <xref
+                                   linkend="Additional_Resources-d1e241"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-06-06</date>
                 <revdescription>
@@ -295,9 +308,9 @@
                 </itemizedlist> You can download the current version
                 of the Rackspace Cloud Load Balancers Developer Guide
                 from <link
-                    xlink:href="http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf"
+                    xlink:href="http://docs.rackspace.com/loadbalancers/api/clb-devguide-latest.pdf"
                     >
-                    http://docs.rackspacecloud.com/loadbalancers/api/clb-devguide-latest.pdf</link>. </para>
+                    http://docs.rackspace.com/loadbalancers/api/clb-devguide-latest.pdf</link>. </para>
         </section>
     </chapter>
     <chapter xml:id="Management_API_Operations-d1e268">
