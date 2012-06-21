@@ -386,6 +386,41 @@
                         section.</para>
                 </listitem>
             </itemizedlist></para>
+        <para> To access the Authentication Service, you must know
+            whether your account is US-based or UK-based: </para>
+        <itemizedlist spacing="compact">
+            <listitem>
+                <para> US-based accounts authenticate through <link
+                        xlink:href="&ENDPOINT-US;"
+                        >&ENDPOINT-US;</link>. </para>
+            </listitem>
+            <listitem>
+                <para> UK-based accounts authenticate through <link
+                        xlink:href="&ENDPOINT-UK;"
+                        >&ENDPOINT-UK;</link>. </para>
+            </listitem>
+        </itemizedlist>
+        <para> Your account may be based in either the US or the UK;
+            this is not determined by your physical location but by
+            the location of the Rackspace retail site which was used
+            to create your account: </para>
+        <itemizedlist spacing="compact">
+            <listitem>
+                <para> If your account was created via <link
+                        xlink:href="http://www.rackspacecloud.com"
+                        >http://www.rackspacecloud.com</link>, it is a
+                    US-based account. </para>
+            </listitem>
+            <listitem>
+                <para> If your account was created via <link
+                        xlink:href="http://www.rackspace.co.uk"
+                        >http://www.rackspace.co.uk</link>, it is a
+                    UK-based account. </para>
+            </listitem>
+        </itemizedlist>
+        <para> If you are unsure how your account was created, use the
+            Rackspace contact information at either site to ask for
+            help. </para>
         <para>Notice that you authenticate using a special URL for
             Cloud authentication services
                 (<code>https://identity.api.rackspacecloud.com/v1.1/auth</code>),

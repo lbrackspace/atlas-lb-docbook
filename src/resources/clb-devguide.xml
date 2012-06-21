@@ -61,6 +61,23 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2012-06-xx</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Corrected link to Knowledge Center
+                                article on content caching (see <xref
+                                   linkend="ContentCaching-d1e3358"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2012-06-13</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
@@ -795,8 +812,8 @@
                     </listitem>
                     <listitem>
                         <para>If your account was created via <link
-                                xlink:href="http:/www.rackspace.co.uk"
-                                >http:/www.rackspace.co.uk</link>, it
+                                xlink:href="http://www.rackspace.co.uk"
+                                >http://www.rackspace.co.uk</link>, it
                             is a UK-based account. </para>
                     </listitem>
                 </itemizedlist>
@@ -4908,7 +4925,7 @@
                 server.</para>
             <para>For more information about content caching, refer to
                 the following Knowledge Center article: <link
-                    xlink:href="http://www.rackspace.com/knowledge_center/node/2330"
+                    xlink:href="http://www.rackspace.com/knowledge_center/content/content-caching-cloud-load-balancers"
                     >Content Caching for Cloud Load
                 Balancers</link>.</para>
                 <para>This operation does not require a request body. </para>
