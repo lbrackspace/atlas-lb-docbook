@@ -4195,6 +4195,11 @@
                 <code>type</code>
                 attribute to signify what kind of monitor it is.
             </para>
+            <para>
+                The user can supply an optional
+                <code>hostHeader</code> field for HTTP and HTTPS health monitor
+                which allows a specifying a host for which the health monitors will check.
+            </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
                 <?dbfo keep-together="always"?>
