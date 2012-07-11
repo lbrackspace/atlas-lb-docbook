@@ -25,7 +25,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2012-06-13</pubdate>
+	<pubdate>2012-07-18</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -38,6 +38,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision>
+				<date>2012-07-18</date>
+				<revdescription>
+					<para>Updated for v1.13.4.</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2012-06-13</date>
 				<revdescription>
@@ -106,6 +112,46 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="clbv1.13.4">
+		<title>v1.13.4, July 18, 2012 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Ability to set hostHeader when creating an HTTP
+					and HTTPS health monitor.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>USL integration. For more information, refer to: <link
+						xlink:href="https://wiki.mosso.com/display/cseng/LBaaS+AHUSL+Integration+Information"
+						>https://wiki.mosso.com/display/cseng/LBaaS+AHUSL+Integration+Information</link>.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist security="internal">
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed bug where reassigning hosts was not
+					working in the management API.</para>
+			</listitem>
+			<listitem>
+				<para>Fixed bug where cron job that deleted load
+					balancers was failing due to user pages.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="clbv1.12.8">
 		<title>v1.12.9, June 13, 2012 </title>

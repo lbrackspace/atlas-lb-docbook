@@ -47,7 +47,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-06-13</pubdate>
+        <pubdate>2012-07-18</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +61,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-06-xx</date>
+                <date>2012-07-18</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem
@@ -69,10 +69,26 @@
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
                             xmlns:html="http://www.w3.org/1999/xhtml"
                             xmlns:db="http://docbook.org/ns/docbook">
-                            <para>Corrected link to Knowledge Center
-                                article on content caching (see <xref
-                                   linkend="ContentCaching-d1e3358"
-                                />).</para>
+                            <para> An optional <code>hostHeader</code>
+                                field is supported for the HTTP and
+                                HTTPS health monitor. See <xref
+                                   linkend="Monitor_HTTP_and_HTTPS-d1e3635"
+                                />.</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Added additional information on the
+                                secondary nodes failover feature. See
+                                   <xref
+                                   linkend="Active_Health_Monitor-d1e336"
+                                />,  <xref
+                                   linkend="Modify_Nodes-d1e2503"/>,
+                                and <xref
+                                   linkend="Monitor_Connections-d1e3536"
+                                /> for details.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -700,32 +716,30 @@
                     traffic. Active health monitoring is not applied
                     by default and must be enabled per load balancer.
                 </para>
-                <para>The active health monitor can use one of three types of probes:
-                    <itemizedlist spacing="compact">
+                <para>The active health monitor can use one of three
+                    types of probes: <itemizedlist spacing="compact">
                         <listitem>
-                            <para>
-                                connect
-                            </para>
+                            <para> connect </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                HTTP
-                            </para>
+                            <para> HTTP </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                HTTPS
-                            </para>
+                            <para> HTTPS </para>
                         </listitem>
-                    </itemizedlist>
-                    These probes are executed at configured intervals; in the event of a failure, the node
-                    status changes to
-                    <code>OFFLINE</code>
-                    and the node will not receive traffic. If, after running a subsequent test, the probe
-                    detects that the node has recovered, then the node's status is changed to
-                    <code>ONLINE</code>
-                    and it is capable of servicing requests.
-                </para>
+                    </itemizedlist> These probes are executed at
+                    configured intervals; in the event of a failure,
+                    the node status changes to <code>OFFLINE</code>
+                    and the node will not receive traffic. If, after
+                    running a subsequent test, the probe detects that
+                    the node has recovered, then the node's status is
+                    changed to <code>ONLINE</code> and it is capable
+                    of servicing requests. If active health monitoring
+                    is enabled, a customer can then specify a
+                    secondary node for routing traffic in the event of
+                    a primary node failure. See <xref
+                        linkend="Modify_Nodes-d1e2503"/> for more
+                    information on secondary nodes.</para>
             </section>
         </section>
         <section xml:id="Session_Persistence-d1e376">
@@ -3444,7 +3458,16 @@
                                    <code>SECONDARY</code> are only in
                                    the rotation to receive traffic
                                    from the load balancer when all the
-                                   primary nodes fail.</para>
+                                   primary nodes fail. This provides a
+                                   failover feature that automatically
+                                   routes traffic to the secondary
+                                   node in the event that the primary
+                                   node is disabled or in a failing
+                                   state. Note that active health
+                                   monitoring must be enabled on the
+                                   load balancer to enable the
+                                   failover feature to the secondary
+                                   node.</para>
                                    </listitem>
                                    </itemizedlist></para>
                             </td>
@@ -4195,11 +4218,6 @@
                 <code>type</code>
                 attribute to signify what kind of monitor it is.
             </para>
-            <para>
-                The user can supply an optional
-                <code>hostHeader</code> field for HTTP and HTTPS health monitor
-                which allows a specifying a host for which the health monitors will check.
-            </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
                 <?dbfo keep-together="always"?>
@@ -4280,6 +4298,13 @@
                         post-processing or protocol specific health
                         checks. It includes several configurable
                         properties. </para>
+                    <para>As part of your strategy for monitoring
+                        connections you should consider defining
+                        secondary nodes that provide failover for
+                        effectively routing traffic in case the
+                        primary node fails. See <xref
+                            linkend="Modify_Nodes-d1e2503"/> for
+                        additional information.</para>
                     <para>The following table lists the required and
                         optional attributes for Monitor
                         Connections:</para>
@@ -4379,6 +4404,10 @@
                         connect monitor and includes additional
                         attributes that are used to evaluate the HTTP
                         response. </para>
+                    <para> The user can supply an optional
+                            <code>hostHeader</code> attribute for the
+                        HTTP and HTTPS health monitor to specify a
+                        host for which the health monitors will check. </para>
                     <para>The following table lists the required and
                         optional attributes for Monitor HTTP and
                         HTTPS:</para>
@@ -4425,16 +4454,15 @@
                                 <td colspan="1">Yes</td>
                             </tr>
                             <tr>
-                                <td colspan="1">timeout</td>
+                                <td colspan="1">hostHeader</td>
                                 <td colspan="3">
-                                   <para>Maximum number of seconds to
-                                   wait for a connection to be
-                                   established before timing out. Must
-                                   be a number between 1 and 300.
-                                   </para>
+                                    <para>The name of a host for which
+                                   the health monitors will
+                                   check.</para>
                                 </td>
-                                <td colspan="1">Yes</td>
+                                <td colspan="1">No</td>
                             </tr>
+                            
                             <tr>
                                 <td colspan="1">path</td>
                                 <td colspan="3">
@@ -4450,6 +4478,17 @@
                                    will be used to evaluate the HTTP
                                    status code returned in the
                                    response. </para>
+                                </td>
+                                <td colspan="1">Yes</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">timeout</td>
+                                <td colspan="3">
+                                    <para>Maximum number of seconds to
+                                        wait for a connection to be
+                                        established before timing out. Must
+                                        be a number between 1 and 300.
+                                    </para>
                                 </td>
                                 <td colspan="1">Yes</td>
                             </tr>
