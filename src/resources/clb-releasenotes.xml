@@ -41,7 +41,7 @@
 			<revision>
 				<date>2012-07-17</date>
 				<revdescription>
-					<para>Updated for v1.13.4.</para>
+					<para>Updated for v1.13.5.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -113,8 +113,8 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.13.4">
-		<title>v1.13.4, July 17, 2012 </title>
+	<chapter xml:id="clbv1.13.5">
+		<title>v1.13.5, July 17, 2012 </title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
@@ -127,13 +127,19 @@
 						>https://wiki.mosso.com/display/cseng/LBaaS+AHUSL+Integration+Information</link>.</para>
 			</listitem>
 		</itemizedlist>
-		<itemizedlist security="internal">
+		<itemizedlist>
 			<title>Resolved Issues</title>
 			<listitem>
+				<para>Fixed bug where changing the condition of a node
+					to anything except enabled on the last node threw
+					an error, but still changed the status in the
+					database.</para>
+			</listitem>
+			<listitem security="internal">
 				<para>Fixed bug where reassigning hosts was not
 					working in the management API.</para>
 			</listitem>
-			<listitem>
+			<listitem security="internal">
 				<para>Fixed bug where cron job that deleted load
 					balancers was failing due to user pages.</para>
 			</listitem>
