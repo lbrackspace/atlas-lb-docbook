@@ -21,6 +21,8 @@
         <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
         <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v1.1/">
         <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v1.1/">
+        <!ENTITY ENDPOINT-US-20 "https://identity.api.rackspacecloud.com/v2.0/">
+        <!ENTITY ENDPOINT-UK-20 "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
 
 <article version="5.0"
@@ -42,13 +44,25 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-06-13</pubdate>
+        <pubdate>2012-07-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2012-07-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated for Auth 2.0 (refer to <xref
+                                   linkend="Generating_Auth_Token"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-06-13</date>
                 <revdescription>
@@ -136,9 +150,9 @@
                 below.</para>
         </note>
         <para>Create a Cloud Server using the Cloud Servers section of
-            the Control Panel (login here: <link
-                xlink:href="https://manage.rackspacecloud.com/pages/Login.jsp;jsessionid=9AA14CFBD45D76A627F75FD95A854642.cp-n01"
-                >Control Panel Login</link>).</para>
+            the Cloud Control Panel (login here: <link
+                xlink:href="http://mycloud.rackspace.com/">Control
+                Panel Login</link>).</para>
         <note>
             <para>You can also create a Cloud Server using the Cloud
                 Servers API. Refer to the <citetitle><link
@@ -147,16 +161,19 @@
                 details.</para>
         </note>
         <procedure>
-            <title>To create a Cloud Server using the Control
+            <title>To create a Cloud Server using the Cloud Control
                 Panel:</title>
             <step>
-                <para>Open the <guimenu>Hosting</guimenu> section,
-                    then click <guimenuitem>Cloud
-                        Servers</guimenuitem>.</para>
+                <para>Click <guimenuitem>Servers</guimenuitem> to view
+                    the Cloud Servers page.</para>
             </step>
             <step>
-                <para>To create a new server, click <guibutton>Add
-                        Server</guibutton>.</para>
+                <para> Using the <guimenu>Region</guimenu> drop-down
+                    menu, select the appropriate region, depending on
+                    whether you want to create a first generation
+                    Cloud Server or a next generation Cloud Server.
+                    (The type of Cloud Server does not matter for this
+                    exercise.)</para>
             </step>
             <step>
                 <para> Select an image from a list of different
@@ -165,21 +182,16 @@
                 <para><inlinemediaobject>
                         <imageobject>
                             <imagedata
-                                fileref="images/Choose_CS_Image.png"
+                                fileref="images/Choose_CS_Image_CCP.png"
                                 contentwidth="6in"/>
                         </imageobject>
                     </inlinemediaobject></para>
             </step>
             <step>
-                <para> Specify a name and select a size for your Cloud
-                    Server, then click <guibutton>Create
+                <para> Specify the <guilabel>Server Name</guilabel>
+                    and select a <guilabel>Size</guilabel> for your
+                    Cloud Server, then click <guibutton>Create
                         Server</guibutton>. </para>
-                <para><inlinemediaobject>
-                        <imageobject>
-                            <imagedata fileref="images/Create_CS.png"
-                                contentwidth="6in"/>
-                        </imageobject>
-                    </inlinemediaobject></para>
             </step>
             <step>
                 <para> Create a second Cloud Server by performing
@@ -188,7 +200,7 @@
             <step>
                 <para>Record the IP addresses of your Cloud Servers
                     below (from the information displayed in the Cloud
-                    Servers section of the Control Panel):<itemizedlist>
+                    Servers section of the Cloud Control Panel):<itemizedlist>
                         <listitem>
                             <para>FIRST Cloud Server IP Address =
                                 _______________________________________
@@ -308,32 +320,40 @@
                 <?dbfo keep-together="always"?>
                 <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
-&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="<emphasis role="bold">your_username</emphasis>" 
-             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
-<option>-H 'Content-Type: application/xml'</option> \
-<option>-H 'Accept: application/xml'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
+ &lt;auth&gt;   
+    &lt;apiKeyCredentials     
+        xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"     
+        username="<emphasis role="bold">your_username</emphasis>"     
+        apiKey="<emphasis role="bold">your_api_key</emphasis>"/&gt;   
+ &lt;/auth&gt;<option>'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
             </example>
             <para>You can see that the lines that are part of the cURL
                 command syntax have all been escaped with a backslash
                 ('\') to indicate that the command continues on the
                 next line:</para>
             <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
- 
-             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
-<option>-H 'Content-Type: application/xml'</option> \
-<option>-H 'Accept: application/xml'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
+  
+   
+(... lines within the xml portion of the message are not shown in this example)
+(... the example only shows lines that are part of cURL syntax)     
+     
+    
+   
+ &lt;/auth&gt;<option>'</option> \
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
             <para>However the lines <emphasis>within</emphasis> the
                 xml portion of the message are
                     <emphasis>not</emphasis> escaped with a backslash
                 ('\') in order to avoid issues with the xml
                 processing:</para>
             <screen language="bash">'&lt;?xml version="1.0" encoding="UTF-8"?>  
-&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="<emphasis role="bold">your_username</emphasis>" 
-             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
+ &lt;auth&gt;   
+    &lt;apiKeyCredentials     
+        xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"     
+        username="<emphasis role="bold">your_username</emphasis>"     
+        apiKey="<emphasis role="bold">your_api_key</emphasis>"/&gt;   
+ &lt;/auth&gt;<option>'</option> \
 </screen>
             <note>
                 <para>The final line of the xml message is escaped
@@ -384,9 +404,12 @@
                             >your_api_key</emphasis> &mdash; The key
                         is your API access key. The key can be
                         obtained from the Rackspace Cloud Control
-                        Panel in the <guimenu>Your Account</guimenu> /
-                            <guimenuitem>API Access</guimenuitem>
-                        section.</para>
+                        Panel in the <guimenu>&lt;Your
+                            Account></guimenu> / <guimenuitem>API
+                            Access</guimenuitem> section (login here:
+                            <link
+                            xlink:href="http://mycloud.rackspace.com/"
+                            >Control Panel Login</link>).</para>
                 </listitem>
             </itemizedlist></para>
         <para> To access the Authentication Service, you must know
@@ -394,13 +417,13 @@
         <itemizedlist spacing="compact">
             <listitem>
                 <para> US-based accounts authenticate through <link
-                        xlink:href="&ENDPOINT-US;"
-                        >&ENDPOINT-US;</link>. </para>
+                        xlink:href="&ENDPOINT-US-20;"
+                        >&ENDPOINT-US-20;</link>. </para>
             </listitem>
             <listitem>
                 <para> UK-based accounts authenticate through <link
-                        xlink:href="&ENDPOINT-UK;"
-                        >&ENDPOINT-UK;</link>. </para>
+                        xlink:href="&ENDPOINT-UK-20;"
+                        >&ENDPOINT-UK-20;</link>. </para>
             </listitem>
         </itemizedlist>
         <para> Your account may be based in either the US or the UK;
@@ -426,43 +449,47 @@
             help. </para>
         <para>Notice that you authenticate using a special URL for
             Cloud authentication services
-                (<code>https://identity.api.rackspacecloud.com/v1.1/auth</code>),
+                (<code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>),
             as shown in the following Authenticate Request examples.
-            Note that the <code>v1.1</code> component in the URL
-            indicates that you are using version 1.1 of the Cloud Auth
+            Note that the <code>v2.0</code> component in the URL
+            indicates that you are using version 2.0 of the Cloud Auth
             API.</para>
         <example>
             <title>cURL Authenticate Request: XML</title>
             <?dbfo keep-together="always"?>
             <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
-&lt;credentials xmlns="http://docs.rackspacecloud.com/auth/api/v1.1" 
-             username="<emphasis role="bold">your_username</emphasis>" 
-             key="<emphasis role="bold">your_api_key</emphasis>"/>' \
+&lt;auth>
+   &lt;apiKeyCredentials
+      xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
+         username="<emphasis role="bold">your_username</emphasis>" 
+         apiKey="<emphasis role="bold">your_api_key</emphasis>"/>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></screen>
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
         </example>
         <example>
             <title>cURL Authenticate Request: JSON</title>
             <?dbfo keep-together="always"?>
-            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
-'{ 
-    "credentials": {  
-        "username": "<emphasis role="bold">your_username</emphasis>",  
-        "key": "<emphasis role="bold">your_api_key</emphasis>"}  
+            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+'{
+    "auth":
+    {
+       "RAX-KSKEY:apiKeyCredentials":
+       {  
+          "username": "<emphasis role="bold">your_username</emphasis>",  
+          "apiKey": "<emphasis role="bold">your_api_key</emphasis>"}  
     }' \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v1.1/auth'</uri></programlisting>
-            
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
         </example>
         <example>
             <title>Authenticate Response: XML</title>
-            <programlisting language="xml"><xi:include href="../../src/resources/samples/auth.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="xml"><xi:include href="../../src/resources/samples/auth-20.xml" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <example>
             <title>Authenticate Response: JSON</title>
-            <programlisting language="json"><xi:include href="../../src/resources/samples/auth.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
+            <programlisting language="json"><xi:include href="../../src/resources/samples/auth-20.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
         <para>The authentication token <code>id</code> is returned
             along with an <code>expires</code> attribute that
@@ -507,12 +534,12 @@
         </note>
         <para>The <code>publicURL</code> endpoints for the services
             (for example
-                <code>https://servers.api.rackspacecloud.com/v1.0/1234</code>)
+                <code>https://servers.api.rackspacecloud.com/v1.0/1100111</code>)
             are also returned in the response.</para>
         <para>You will find the actual account number after the final
             '/' in the <code>publicURL</code> field. In this example,
-            you can see that the account number is 1234. You need to
-            specify your account number on most of the Cloud Load
+            you can see that the account number is 1100111. You need
+            to specify your account number on most of the Cloud Load
             Balancers API calls, wherever you see the field <emphasis
                 role="bold">your_acct_id</emphasis> specified in the
             examples in this guide.</para>
@@ -549,20 +576,17 @@
                     <tr align="left">
                         <td colspan="1">Chicago (ORD)</td>
                         <td colspan="4">
-                            <code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code>
-                            <parameter>1234</parameter>/ </td>
+                            <code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">Dallas/Ft. Worth (DFW) </td>
                         <td colspan="4">
-                            <code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code>
-                            <parameter>1234</parameter>/ </td>
+                            <code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">London (LON)</td>
                         <td colspan="4">
-                            <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code>
-                            <parameter>1234</parameter>/ </td>
+                            <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
                     </tr>
                 </tbody>
             </table>
