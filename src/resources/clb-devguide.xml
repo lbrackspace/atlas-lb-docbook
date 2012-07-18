@@ -49,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-07-17</pubdate>
+        <pubdate>2012-07-19</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,6 +62,26 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-07-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Updated information on the
+                                secondary nodes failover feature. See
+                                   <xref
+                                   linkend="Active_Health_Monitor-d1e336"
+                                /> and <xref
+                                   linkend="Monitors-d1e3370"/> for
+                                details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-07-17</date>
                 <revdescription>
@@ -744,12 +764,12 @@
                     running a subsequent test, the probe detects that
                     the node has recovered, then the node's status is
                     changed to <code>ONLINE</code> and it is capable
-                    of servicing requests. If active health monitoring
-                    is enabled, a customer can then specify a
-                    secondary node for routing traffic in the event of
-                    a primary node failure. See <xref
-                        linkend="Modify_Nodes-d1e2503"/> for more
-                    information on secondary nodes.</para>
+                    of servicing requests. </para>
+                <para>If active health monitoring is enabled, a
+                    customer can then specify a secondary node for
+                    routing traffic in the event of a primary node
+                    failure. See <xref linkend="Modify_Nodes-d1e2503"
+                    /> for more information on secondary nodes.</para>
             </section>
         </section>
         <section xml:id="Session_Persistence-d1e376">
@@ -4287,6 +4307,14 @@
                 node is operating properly before allowing it to
                 service traffic. Only one health monitor is allowed to
                 be enabled on a load balancer at a time. </para>
+            <para>As part of your strategy for monitoring connections,
+                you should consider defining secondary nodes that
+                provide failover for effectively routing traffic in
+                case the primary node fails. This is an additional
+                feature that will ensure you remain up in case your
+                primary node fails. See <xref
+                    linkend="Modify_Nodes-d1e2503"/> for additional
+                information.</para>
             <para>
                 Every health monitor has a
                 <code>type</code>
@@ -4372,13 +4400,6 @@
                         post-processing or protocol specific health
                         checks. It includes several configurable
                         properties. </para>
-                    <para>As part of your strategy for monitoring
-                        connections you should consider defining
-                        secondary nodes that provide failover for
-                        effectively routing traffic in case the
-                        primary node fails. See <xref
-                            linkend="Modify_Nodes-d1e2503"/> for
-                        additional information.</para>
                     <para>The following table lists the required and
                         optional attributes for Monitor
                         Connections:</para>
