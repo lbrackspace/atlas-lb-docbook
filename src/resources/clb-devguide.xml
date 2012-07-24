@@ -49,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-07-19</pubdate>
+        <pubdate>2012-07-24</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,6 +62,23 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-07-24</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Updated description for SOURCE_IP
+                                session persistence mode. See <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                /> for details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-07-19</date>
                 <revdescription>
@@ -4731,8 +4748,8 @@
                                 source IP address that is mapped and
                                 is able to determine the destination
                                 back-end node. This is supported for
-                                HTTP pass-through (SSL termination)
-                                and non-HTTP load balancing only. </td>
+                                HTTPS pass-through and non-HTTP load
+                                balancing only. </td>
                         </tr>
                     </tbody>
                 </table>
