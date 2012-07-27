@@ -49,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-07-24</pubdate>
+        <pubdate>2012-07-27</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,6 +62,23 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-07-27</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Updated description for content
+                                caching. See <xref
+                                   linkend="ContentCaching-d1e3358"/>
+                                for details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-07-24</date>
                 <revdescription>
@@ -1200,7 +1217,7 @@
                         Cloud Identity Service), refer to the
                             <citetitle>Cloud Identity Client Developer
                             Guide</citetitle> at <link
-                            xlink:href="docs.rackspace.com"
+                                xlink:href="http://docs.rackspace.com"
                             >http://docs.rackspace.com/</link>.</para>
                 </tip>
                 <para>Load balancer service endpoints are published in
@@ -5072,13 +5089,12 @@
             <para>When content caching is enabled, recently-accessed
                 files are stored on the load balancer for easy
                 retrieval by web clients. Content caching improves the
-                performance of a web site by temporarily storing data
-                that was recently accessed. While it's cached,
-                requests for that data will be served by the load
-                balancer instead of making another query to a web
-                server behind it. The result is improved response
-                times for those requests and less load on the web
-                server.</para>
+                performance of high traffic web sites by temporarily
+                storing data that was recently accessed. While it's
+                cached, requests for that data will be served by the
+                load balancer, which in turn reduces load off the back
+                end nodes. The result is improved response times for
+                those requests and less load on the web server.</para>
             <para>For more information about content caching, refer to
                 the following Knowledge Center article: <link
                     xlink:href="http://www.rackspace.com/knowledge_center/content/content-caching-cloud-load-balancers"
