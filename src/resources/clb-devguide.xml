@@ -12,6 +12,8 @@
         <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
         <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v1.1/">
         <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v1.1/">
+        <!ENTITY ENDPOINT-US-20 "https://identity.api.rackspacecloud.com/v2.0/">
+        <!ENTITY ENDPOINT-UK-20 "https://lon.identity.api.rackspacecloud.com/v2.0/">
         
         ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
@@ -47,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-06-13</pubdate>
+        <pubdate>2012-07-27</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,7 +63,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-06-xx</date>
+                <date>2012-07-27</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem
@@ -69,10 +71,88 @@
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
                             xmlns:html="http://www.w3.org/1999/xhtml"
                             xmlns:db="http://docbook.org/ns/docbook">
-                            <para>Corrected link to Knowledge Center
-                                article on content caching (see <xref
-                                   linkend="ContentCaching-d1e3358"
+                            <para> Updated description for content
+                                caching. See <xref
+                                   linkend="ContentCaching-d1e3358"/>
+                                for details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2012-07-24</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Updated description for SOURCE_IP
+                                session persistence mode. See <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                /> for details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2012-07-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Updated information on the
+                                secondary nodes failover feature. See
+                                   <xref
+                                   linkend="Active_Health_Monitor-d1e336"
+                                /> and <xref
+                                   linkend="Monitors-d1e3370"/> for
+                                details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
+                <date>2012-07-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Updated for Auth 2.0 (refer to <xref
+                                   linkend="Authentication-d1e699"
                                 />).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> An optional <code>hostHeader</code>
+                                field is supported for the HTTP and
+                                HTTPS health monitor. See <xref
+                                   linkend="Monitor_HTTP_and_HTTPS-d1e3635"
+                                />.</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para> Added additional information on the
+                                secondary nodes failover feature. See
+                                   <xref
+                                   linkend="Active_Health_Monitor-d1e336"
+                                />, <xref
+                                   linkend="Modify_Nodes-d1e2503"/>,
+                                and <xref
+                                   linkend="Monitor_Connections-d1e3536"
+                                /> for details.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -700,32 +780,30 @@
                     traffic. Active health monitoring is not applied
                     by default and must be enabled per load balancer.
                 </para>
-                <para>The active health monitor can use one of three types of probes:
-                    <itemizedlist spacing="compact">
+                <para>The active health monitor can use one of three
+                    types of probes: <itemizedlist spacing="compact">
                         <listitem>
-                            <para>
-                                connect
-                            </para>
+                            <para> connect </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                HTTP
-                            </para>
+                            <para> HTTP </para>
                         </listitem>
                         <listitem>
-                            <para>
-                                HTTPS
-                            </para>
+                            <para> HTTPS </para>
                         </listitem>
-                    </itemizedlist>
-                    These probes are executed at configured intervals; in the event of a failure, the node
-                    status changes to
-                    <code>OFFLINE</code>
-                    and the node will not receive traffic. If, after running a subsequent test, the probe
-                    detects that the node has recovered, then the node's status is changed to
-                    <code>ONLINE</code>
-                    and it is capable of servicing requests.
-                </para>
+                    </itemizedlist> These probes are executed at
+                    configured intervals; in the event of a failure,
+                    the node status changes to <code>OFFLINE</code>
+                    and the node will not receive traffic. If, after
+                    running a subsequent test, the probe detects that
+                    the node has recovered, then the node's status is
+                    changed to <code>ONLINE</code> and it is capable
+                    of servicing requests. </para>
+                <para>If active health monitoring is enabled, a
+                    customer can then specify a secondary node for
+                    routing traffic in the event of a primary node
+                    failure. See <xref linkend="Modify_Nodes-d1e2503"
+                    /> for more information on secondary nodes.</para>
             </section>
         </section>
         <section xml:id="Session_Persistence-d1e376">
@@ -784,18 +862,14 @@
                 </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para>US-based accounts authenticate through
-                            <link
-                                xlink:href="&ENDPOINT-US;"
-                                >&ENDPOINT-US;</link>.
-                        </para>
+                        <para> US-based accounts authenticate through
+                                <link xlink:href="&ENDPOINT-US-20;"
+                                >&ENDPOINT-US-20;</link>. </para>
                     </listitem>
                     <listitem>
-                        <para>UK-based accounts authenticate through
-                            <link
-                                xlink:href="&ENDPOINT-UK;"
-                                >&ENDPOINT-UK;</link>.
-                        </para>
+                        <para> UK-based accounts authenticate through
+                                <link xlink:href="&ENDPOINT-UK-20;"
+                                >&ENDPOINT-UK-20;</link>. </para>
                     </listitem>
                 </itemizedlist>
                 <para>Your account may be based in either the US or
@@ -825,21 +899,12 @@
             <section xml:id="Authenticate-d1e171">
                 <title>Retrieving the Authentication Token</title>
                 <informaltable rules="all">
-                    <thead>
-                        <tr>
-                            <td colspan="1">Verb</td>
-                            <td colspan="1">URI</td>
-                            <td colspan="4">Description</td>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
-                            <td colspan="1">&POST;
-                            </td>
-                            <td colspan="1">/auth</td>
-                            <td colspan="4">Authenticate to receive a
-                                token and a service catalog.
-                            </td>
+                            <td colspan="1">&POST; </td>
+                            <td colspan="1"> v2.0/tokens </td>
+                            <td colspan="4"> Authenticate to receive a
+                                token and a service catalog. </td>
                         </tr>
                     </tbody>
                 </informaltable>
@@ -854,21 +919,29 @@
                     (<errorcode>500</errorcode>),
                     serviceUnavailable (<errorcode>503</errorcode>)
                 </simpara>
-                <para>The authenticate operation provides clients
-                    with an authentication token and a list of
-                    regional cloud endpoints.
-                </para>
+                <para> The authenticate operation provides clients with
+                    an authentication token and a list of regional
+                    cloud endpoints. The sample requests and responses
+                    in this section illustrate a general case. In your
+                    authentication request, use your own credentials
+                    rather than the sample values shown here for
+                        <code>username</code> and <code>apiKey</code>.
+                    When you authenticate successfully, the response
+                    to your authentication request will include a
+                    catalog of the services to which you have
+                    subscribed rather than the sample values shown
+                    here.</para>
                 <example>
                     <title>Auth Request: XML</title>
                     <programlistingco>
                         <areaspec>
                             <area xml:id="credentials.xml.user"
-                                  units="linecolumn" coords="5 23"/>
+                                units="linecolumn" coords="13 17"/>
                             <area xml:id="credentials.xml.key"
-                                  units="linecolumn" coords="6 18"/>
+                                units="linecolumn" coords="14 15"/>
                         </areaspec>
                         <programlisting language="xml">
-<xi:include href="samples/credentials.xml" parse="text"/>
+<xi:include href="samples/lb-credentials-20.xml" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -877,12 +950,12 @@
                     <programlistingco>
                         <areaspec>
                             <area xml:id="credentials.json.user"
-                                  units="linecolumn" coords="4 20"/>
+                                units="linecolumn" coords="14 22"/>
                             <area xml:id="credentials.json.key"
-                                  units="linecolumn" coords="5 15"/>
+                                units="linecolumn" coords="15 20"/>
                         </areaspec>
                         <programlisting language="json">
-<xi:include href="samples/credentials.json" parse="text"/>
+<xi:include href="samples/lb-credentials-20.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -895,39 +968,38 @@
                     <callout arearefs="credentials.xml.key">
                         <para>The key is your API access key. The key
                             can be obtained from the Rackspace Cloud
-                            Control Panel in the
-                            <guimenu>Your
-                                Account
-                            </guimenu>
-                            /
-                            <guimenuitem>API
-                                Access
-                            </guimenuitem>
-                            section.
-                        </para>
+                            Control Panel in the <guimenu>&lt;Your
+                                Account></guimenu> / <guimenuitem>API
+                                Access </guimenuitem> section (login
+                            here: <link
+                                xlink:href="http://mycloud.rackspace.com/"
+                                >Control Panel Login</link>). </para>
                     </callout>
                 </calloutlist>
                 <example>
                     <title>Auth Response: XML</title>
                     <programlistingco>
                         <areaspec>
-                            <area xml:id="auth.xml.token.expires"
-                                units="linecolumn" coords="10 13"/>
-                            <area xml:id="auth.xml.service.catalog"
-                                units="linecolumn" coords="11 18"/>
-                            <area xml:id="auth.xml.service.name"
-                                units="linecolumn" coords="12 19"/>
-                            <area xml:id="auth.xml.sc.s.e.region"
-                                units="linecolumn" coords="13 24"/>
-                            <area xml:id="auth.xml.sc.s.e.v1d"
-                                units="linecolumn" coords="13 40"/>
-                            <area xml:id="auth.xml.sc.s.e.pu"
-                                units="linecolumn" coords="14 19"/>
-                            <area xml:id="auth.xml.sc.s.e.iu"
-                                units="linecolumn" coords="42 21"/>
+                            <area xml:id="response.xml.namespaces"
+                                units="linecolumn" coords="7 9"/>
+                            <area xml:id="response.xml.token"
+                                units="linecolumn" coords="12 10"/>
+                            <area xml:id="response.xml.role"
+                                units="linecolumn" coords="14 12"/>
+                            <area xml:id="response.xml.catalog"
+                                units="linecolumn" coords="19 21"/>
+                            <area xml:id="response.xml.servicetype"
+                                units="linecolumn" coords="43 34"/>
+                            <area xml:id="response.xml.servicename"
+                                units="linecolumn" coords="43 54"/>
+                            <area xml:id="response.xml.region"
+                                units="linecolumn" coords="44 30"/>
+                            <area xml:id="response.xml.tenant"
+                                units="linecolumn" coords="45 66"/>
+                            <area xml:id="response.xml.url"
+                                units="linecolumn" coords="46 9"/>
                         </areaspec>
-                        <programlisting language="xml">
-<xi:include href="samples/auth.xml" parse="text"/>
+                        <programlisting language="xml"><xi:include href="samples/auth-20.xml" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
@@ -935,109 +1007,178 @@
                     <title>Auth Response: JSON</title>
                     <programlistingco>
                         <areaspec>
-                            <area xml:id="auth.json.token.expires"
-                                units="linecolumn" coords="69 24"/>
-                            <area xml:id="auth.json.service.catalog"
-                                units="linecolumn" coords="9 25"/>
-                            <area xml:id="auth.json.service.name"
-                                units="linecolumn" coords="15 29"/>
-                            <area xml:id="auth.json.sc.s.e.region"
-                                units="linecolumn" coords="18 31"/>
-                            <area xml:id="auth.json.sc.s.e.v1d"
-                                units="linecolumn" coords="30 34"/>
-                            <area xml:id="auth.json.sc.s.e.pu"
-                                units="linecolumn" coords="17 34"/>
-                            <area xml:id="auth.json.sc.s.e.iu"
-                                units="linecolumn" coords="27 36"/>
+                            <area xml:id="response.json.namespaces"
+                                units="linecolumn" coords="200 1"/>
+                            <area xml:id="response.json.token"
+                                units="linecolumn" coords="9 8"/>
+                            <area xml:id="response.json.role"
+                                units="linecolumn" coords="16 12"/>
+                            <area xml:id="response.json.catalog"
+                                units="linecolumn" coords="29 8"/>
+                            <area xml:id="response.json.servicetype"
+                                units="linecolumn" coords="102 16"/>
+                            <area xml:id="response.json.servicename"
+                                units="linecolumn" coords="101 16"/>
+                            <area xml:id="response.json.region"
+                                units="linecolumn" coords="94 24"/>
+                            <area xml:id="response.json.tenant"
+                                units="linecolumn" coords="91 24"/>
+                            <area xml:id="response.json.url"
+                                units="linecolumn" coords="92 24"/>
                         </areaspec>
-                        <programlisting language="json">
-<xi:include href="samples/auth.json" parse="text"/>
+                        <programlisting language="json"><xi:include href="samples/auth-20.json" parse="text"/>
                         </programlisting>
                     </programlistingco>
                 </example>
+                <note>
+                    <para>The information shown in the Auth Response
+                        examples is for US-based accounts. If you
+                        authenticate against the UK-endpoint for auth,
+                        you will see the service catalog information
+                        for UK-based accounts.</para>
+                </note>
                 <calloutlist>
-                    <callout arearefs="auth.xml.token.expires">
-                        <para>This token can be presented to a service
-                            as evidence of authentication. Tokens are
-                            valid for a finite duration.</para> 
-                        <para>The
-                                <code>expires</code> attribute denotes
-                            the time after which the token will
-                            automatically become invalid. A token may
-                            be manually revoked before the time
-                            identified by the <code>expires</code>
-                            attribute; <code>expires</code> predicts a
+                    <callout arearefs="response.xml.namespaces">
+                        <para> In XML responses only, a list of
+                            namespaces identifies API extensions that
+                            add functionality to the core API. </para>
+                        <para> </para>
+                    </callout>
+                    <callout arearefs="response.xml.token">
+                        <para> This token can be presented to a
+                            service as evidence of authentication.
+                            Tokens are valid for a finite duration; a
+                            token's default lifespan is twenty-four
+                            hours. </para>
+                        <para> The token's <code>expires</code>
+                            attribute denotes the time after which the
+                            token will automatically become invalid. A
+                            token may be manually revoked before the
+                            time identified by the
+                                <code>expires</code> attribute;
+                                <code>expires</code> predicts a
                             token's maximum possible lifespan but does
                             not guarantee that it will reach that
                             lifespan. Clients are encouraged to cache
                             a token until it expires. </para>
+                        <para> </para>
                     </callout>
-                        <callout arearefs="auth.xml.service.catalog">
-                            <para>The service catalog lists the
-                            services this user can access. In this
-                            example, the user can access two compute
+                    <callout arearefs="response.xml.role">
+                        <para> Users can be assigned multiple roles,
+                            with each role providing specific
+                            privileges. In this example,
+                                <code>jsmith</code> is the
+                            administrative user for the account,
+                            holding the fully-privileged
+                                <code>identity:admin</code> role.
+                            Other users might hold other roles with
+                            different privileges. Roles need not be
+                            associated with actual job functions such
+                            as Administrator, Operator, Developer,
+                            Tester, or Trainer. </para>
+                        <para> </para>
+                    </callout>
+                    <callout arearefs="response.xml.catalog">
+                        <para> The service catalog lists the services
+                            this user can access. In this example, the
+                            user can access one database service, one
+                            loadbalancing service, two compute
                             services (Cloud Servers OpenStack and
-                            Cloud Servers) and two object storage
+                            Cloud Servers), two object storage
                             services (Cloud Files Content Distribution
-                            Network (CDN), and Cloud Files), as well
-                            as Cloud Load Balancers, and so forth. The
-                            catalog listing for each service provides
-                            at least one endpoint URL for that
-                            service. Other information, such as
-                            regions and versions and tenants, is
+                            Network (CDN), and Cloud Files),  and one
+                            DNS service. The catalog listing for each
+                            service provides at least one endpoint URL
+                            for that service. Other information, such
+                            as regions, versions, and tenants, is
                             provided if it's relevant to this user's
                             access to this service. </para>
-                        </callout>
-                        <callout arearefs="auth.xml.service.name">
-                            <para>The service name attribute identifies 
-                            each unique service in the catalog. Once a 
-                            service is created, its name does not change.
-                            </para>
-                        </callout>
-                    <callout arearefs="auth.xml.sc.s.e.region">
-                        <para>A service may expose endpoints in
+                        <para> </para>
+                    </callout>
+                    <callout arearefs="response.xml.servicetype">
+                        <para> The service type attribute identifies
+                            services that perform similar functions,
+                            whatever those services might be named. In
+                            this example, the services named
+                            cloudServers and cloudServersOpenstack are
+                            both identified as
+                                <code>type="compute"</code>,
+                            identifying them as compute services even
+                            though the word "compute" does not appear
+                            in their names. </para>
+                        <important>
+                            <para>Use service type as the primary
+                                value for locating a service. If
+                                multiple endpoints of the same service
+                                type exist in the same region, use
+                                service name as the tiebreaker.</para>
+                        </important>
+                        <para> </para>
+                    </callout>
+                    <callout arearefs="response.xml.servicename">
+                        <para> The service name attribute identifies
+                            each unique service in the catalog. Once a
+                            service is created, its name does not
+                            change. However, new services of the same
+                            service type may be added to the catalog
+                            with new names. </para>
+                        <important>
+                            <para> If you are programmatically parsing
+                                an authentication response, use
+                                service type rather than service name
+                                as the basis for determining whether a
+                                user has access to a particular kind
+                                of service. Service type is stable
+                                across all releases; new service types
+                                may be developed, but existing service
+                                types are not renamed. In this
+                                example, <code>type="compute"</code>
+                                identifies all the available compute
+                                services, one of which is named
+                                cloudServers and one of which is named
+                                cloudServersOpenStack. New compute
+                                service names may be added in future
+                                releases; whatever the compute
+                                services are named, you can always
+                                recognize them by parsing for
+                                   <code>type="compute"</code> in the
+                                authentication response's service
+                                catalog. </para>
+                        </important>
+                        <para> </para>
+                    </callout>
+                    <callout arearefs="response.xml.region">
+                        <para> A service may expose endpoints in
                             different regions. Regional endpoints
                             allow clients to provision resources in a
-                            manner that provides high availability.</para>
-                            
-                            <para>Some services are not region-specific. 
-                            These services supply a single non-regional 
-                            endpoint and do not provide access to internal URLs.
-                        </para>
+                            manner that provides high availability. </para>
+                        <para> Some services are not region-specific.
+                            These services supply a single
+                            non-regional endpoint and do not provide
+                            access to internal URLs. </para>
+                        <para> </para>
                     </callout>
-                    <callout arearefs="auth.xml.sc.s.e.v1d">
-                        <para>The
-                            <code>v1Default</code>
-                            attribute
-                            denotes that an endpoint is being returned
-                            in version 1.0 of the Cloud Authentication
-                            Service. The default value of
-                            <code>v1Default</code>
-                            is
-                            <code>false</code>; clients should
-                            assume the value is
-                            <code>false</code>
-                            when the attribute is missing. Auth 1.0
-                            does not offer support for regional
-                            endpoints and therefore only returns one
-                            endpoint per service. Resources stored in
-                            endpoints where
-                            <code>v1Default</code> is <code>false</code>
-                            will not be seen by
-                            Auth 1.0 clients.
-                        </para>
+                    <callout arearefs="response.xml.tenant">
+                        <para> Some services recognize specification
+                            of a tenant. If a service does recognize
+                            tenants, the format of the tenant
+                            specification is defined only by the
+                            service; for details about whether and how
+                            to specify a tenant, check the
+                            documentation for the service you are
+                            using.</para>
+                        <para> </para>
                     </callout>
-                    <callout
-                            arearefs="auth.xml.sc.s.e.pu auth.xml.sc.s.e.iu">
-                        <para>An endpoint can be assigned public and
+                    <callout arearefs="response.xml.url">
+                        <para> An endpoint can be assigned public and
                             internal URLs. A public URL is accessible
                             from anywhere. Access to a public URL
                             usually incurs traffic charges. Internal
                             URLs are only accessible to services
                             within the same region. Access to an
-                            internal URL is free of charge.
-                        </para>
-                    </callout>                 
+                            internal URL is free of charge. </para>
+                        <para> </para>
+                    </callout>
                 </calloutlist>
                 <para>Authentication tokens are typically valid for 24
                     hours. Applications should be designed to
@@ -1071,15 +1212,13 @@
                         compute services such as cloudServers and
                         cloudServersOpenStack. Some developers have
                         found the service type attribute to be useful
-                        in parsing the service catalog. For Auth 2.0
-                        (also known as the Cloud Identity Service),
-                        you can see the service type attribute in the
-                        "Service Catalog in Authentication Response"
-                        samples in the <citetitle>Cloud Identity
-                            Client Developer Guide</citetitle> at
-                            <link
-                            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                            >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html</link>.</para>
+                        in parsing the service catalog. For additional
+                        information on Auth 2.0 (also known as the
+                        Cloud Identity Service), refer to the
+                            <citetitle>Cloud Identity Client Developer
+                            Guide</citetitle> at <link
+                                xlink:href="http://docs.rackspace.com"
+                            >http://docs.rackspace.com/</link>.</para>
                 </tip>
                 <para>Load balancer service endpoints are published in
                     the service catalog in the Auth response with the
@@ -1105,13 +1244,13 @@
                     <code>publicURL</code> field returned by the
                 authentication response. In <xref
                     linkend="auth_response_json"/>, the account id is
-                    <code>322781</code>, as you can see from the
+                    <code>1100111</code>, as you can see from the
                     <code>publicURL</code> field for
-                    <code>cloudServers</code>:<code
+                    <code>cloudLoadBalancers</code>:<code
                     xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns:m="http://www.w3.org/1998/Math/MathML"
                     xmlns:html="http://www.w3.org/1999/xhtml"
-                    >"https://servers.api.rackspacecloud.com/v1.0/322781"</code>.
+                    >"https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/1100111"</code>.
                     <table rules="all">
                     <?dbfo keep-together="always"?>
                     <caption>Regionalized Service Endpoints</caption>
@@ -1125,17 +1264,20 @@
                         <tr align="left">
                             <td colspan="1">Chicago (ORD)</td>
                             <td colspan="4">
-                                <code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
+                                <code>https://ord.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">Dallas/Ft. Worth (DFW) </td>
                             <td colspan="4">
-                                <code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
+                                <code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">London (LON)</td>
                             <td colspan="4">
-                                <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
+                                <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -3444,7 +3586,16 @@
                                    <code>SECONDARY</code> are only in
                                    the rotation to receive traffic
                                    from the load balancer when all the
-                                   primary nodes fail.</para>
+                                   primary nodes fail. This provides a
+                                   failover feature that automatically
+                                   routes traffic to the secondary
+                                   node in the event that the primary
+                                   node is disabled or in a failing
+                                   state. Note that active health
+                                   monitoring must be enabled on the
+                                   load balancer to enable the
+                                   failover feature to the secondary
+                                   node.</para>
                                    </listitem>
                                    </itemizedlist></para>
                             </td>
@@ -4190,15 +4341,18 @@
                 node is operating properly before allowing it to
                 service traffic. Only one health monitor is allowed to
                 be enabled on a load balancer at a time. </para>
+            <para>As part of your strategy for monitoring connections,
+                you should consider defining secondary nodes that
+                provide failover for effectively routing traffic in
+                case the primary node fails. This is an additional
+                feature that will ensure you remain up in case your
+                primary node fails. See <xref
+                    linkend="Modify_Nodes-d1e2503"/> for additional
+                information.</para>
             <para>
                 Every health monitor has a
                 <code>type</code>
                 attribute to signify what kind of monitor it is.
-            </para>
-            <para>
-                The user can supply an optional
-                <code>hostHeader</code> field for HTTP and HTTPS health monitor
-                which allows a specifying a host for which the health monitors will check.
             </para>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
@@ -4379,6 +4533,10 @@
                         connect monitor and includes additional
                         attributes that are used to evaluate the HTTP
                         response. </para>
+                    <para> The user can supply an optional
+                            <code>hostHeader</code> attribute for the
+                        HTTP and HTTPS health monitor to specify a
+                        host for which the health monitors will check. </para>
                     <para>The following table lists the required and
                         optional attributes for Monitor HTTP and
                         HTTPS:</para>
@@ -4425,16 +4583,15 @@
                                 <td colspan="1">Yes</td>
                             </tr>
                             <tr>
-                                <td colspan="1">timeout</td>
+                                <td colspan="1">hostHeader</td>
                                 <td colspan="3">
-                                   <para>Maximum number of seconds to
-                                   wait for a connection to be
-                                   established before timing out. Must
-                                   be a number between 1 and 300.
-                                   </para>
+                                    <para>The name of a host for which
+                                   the health monitors will
+                                   check.</para>
                                 </td>
-                                <td colspan="1">Yes</td>
+                                <td colspan="1">No</td>
                             </tr>
+                            
                             <tr>
                                 <td colspan="1">path</td>
                                 <td colspan="3">
@@ -4450,6 +4607,17 @@
                                    will be used to evaluate the HTTP
                                    status code returned in the
                                    response. </para>
+                                </td>
+                                <td colspan="1">Yes</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">timeout</td>
+                                <td colspan="3">
+                                    <para>Maximum number of seconds to
+                                        wait for a connection to be
+                                        established before timing out. Must
+                                        be a number between 1 and 300.
+                                    </para>
                                 </td>
                                 <td colspan="1">Yes</td>
                             </tr>
@@ -4597,8 +4765,8 @@
                                 source IP address that is mapped and
                                 is able to determine the destination
                                 back-end node. This is supported for
-                                HTTP pass-through (SSL termination)
-                                and non-HTTP load balancing only. </td>
+                                HTTPS pass-through and non-HTTP load
+                                balancing only. </td>
                         </tr>
                     </tbody>
                 </table>
@@ -4921,13 +5089,12 @@
             <para>When content caching is enabled, recently-accessed
                 files are stored on the load balancer for easy
                 retrieval by web clients. Content caching improves the
-                performance of a web site by temporarily storing data
-                that was recently accessed. While it's cached,
-                requests for that data will be served by the load
-                balancer instead of making another query to a web
-                server behind it. The result is improved response
-                times for those requests and less load on the web
-                server.</para>
+                performance of high traffic web sites by temporarily
+                storing data that was recently accessed. While it's
+                cached, requests for that data will be served by the
+                load balancer, which in turn reduces load off the back
+                end nodes. The result is improved response times for
+                those requests and less load on the web server.</para>
             <para>For more information about content caching, refer to
                 the following Knowledge Center article: <link
                     xlink:href="http://www.rackspace.com/knowledge_center/content/content-caching-cloud-load-balancers"
