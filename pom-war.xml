@@ -137,7 +137,7 @@
                             <pdfUrl>../../../clb-getting-started-latest.pdf</pdfUrl>
                             <enableDisqus>1</enableDisqus>
                             <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
-                            <includes>clb-getting-started-war-version.xml</includes>
+                            <includes>clb-tutorial.xml</includes>
                             <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content</canonicalUrlBase>
 			    <postProcess>
 			      <copy todir="target/docbkx/webhelp/clb-getting-started/content/images">
