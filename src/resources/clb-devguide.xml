@@ -681,6 +681,13 @@
     </info>
     <chapter xml:id="Overview-d1e82">
         <title>Overview</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>concept</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>1</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <section xml:id="Intended_Audience-d1e87">
             <title>Intended Audience</title>
             <para>This guide is intended for software developers who want to create applications using
@@ -743,6 +750,13 @@
     <chapter xml:id="Concepts-d1e233">
         <?dbhtml stop-chunking?>
         <title>Concepts</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>concept</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>2</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>To use the Rackspace Cloud Load Balancers API effectively, you should understand several key
             concepts:
         </para>
@@ -840,6 +854,13 @@
     </chapter>
     <chapter xml:id="General_API_Information-d1e395">
         <title>General API Information</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>concept</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>2</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>Ideas explained here are relevant to all operations of the API. For details of specific API operations,
             see the "API Operations" chapter.
         </para>
@@ -1989,6 +2010,13 @@
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>apiref</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>1</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>This chapter explains specific API operations. For ideas relevant to all API operations, see the "General
             API Information" chapter.
         </para>
