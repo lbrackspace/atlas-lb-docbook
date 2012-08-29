@@ -1969,6 +1969,143 @@
                 </tbody>
             </table>
         </section>
+        <section xml:id="Compatible_Load_Balancing_Protocols-d1e4269">
+                <title>Compatible shared Load Balancing Protocols</title>
+
+                <para>Load balancers utilizing shared virtual ips must select
+                    unique ports unless the load balancer protocol is designed
+                    to work together on the same port. This section will provide
+                    information on the available and comptible protocols allowed
+                    to break the unique port rule.
+                </para>
+
+                <note>
+                    <para>Only a select set of protocols will be allowed to share
+                        the same port across shared load balancers.
+                    </para>
+                </note>
+                <para>See the table below for descriptions of the
+                    protocols.
+                </para>
+                <table rules="all">
+                    <caption>DNS Compatible Load Balancing Protocols</caption>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="2">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>DNS_TCP</code>
+                            </td>
+                            <td colspan="3">This protocol works with
+                                IPv6 and allows your DNS server to
+                                receive traffic using TCP port 53.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>DNS_UDP</code>
+                            </td>
+                            <td colspan="3">This protocol works with
+                                IPv6 and allows your DNS server to
+                                receive traffic using UDP port
+                                53.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <note>
+                    <para>Above protocols are compatible and good for load
+                        balancing DNS based applications. These cannot be combined with
+                        the protocols below.
+                    </para>
+                </note>
+
+                <table rules="all">
+                    <caption>TCP Compatible Load Balancing Protocols</caption>
+
+                    <thead>
+                        <tr align="center">
+                            <td colspan="2">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>TCP</code>
+                            </td>
+                            <td colspan="3">The Transmission Control
+                                Protocol is a part of the Transport
+                                Layer protocol and is one of the core
+                                protocols of the Internet Protocol
+                                Suite. It provides a reliable, ordered
+                                delivery of a stream of bytes from one
+                                program on a computer to another
+                                program on another computer.
+                                Applications that require an ordered
+                                and reliable delivery of packets use
+                                this protocol.
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>TCP_CLIENT_FIRST</code>
+                            </td>
+                            <td colspan="3">This protocol is similiar
+                                to TCP, but is more efficient when a
+                                client is expected to write the data
+                                first.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <para><emphasis>IS COMPATIBLE WITH...</emphasis></para>
+
+                <table rules="all">
+                    <caption>UDP Compatible Load Balancing Protocols</caption>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="2">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>UDP</code>
+                            </td>
+                            <td colspan="3">The User Datagram Protocol
+                                provides a datagram service
+                                that emphasizes speed over
+                                reliability, It works well with
+                                applications that provide security
+                                through other measures. 
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="2">
+                                <code>UDP_STREAM</code>
+                            </td>
+                            <td colspan="3">This protocol is designed
+                                to stream media over networks and is
+                                built on top of UDP.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <note>
+                    <para>The protocols above are compatible
+                        and can be interchanged to achieve the
+                        proper set up for the users TCP/UDP
+                        based application.
+                    </para>
+                </note>
+            </section>
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>
@@ -2542,6 +2679,14 @@
                         to the <code>virtualIps</code> container
                         with the desired <code>ID</code> being
                         shared.
+                    </para>
+                </note>
+                <note>
+                    <para>
+                        Additionally: Load balancers sharing virtual ips
+                        can utilize TCP/UDP and DNS based protocols on the same port.
+                        Please see section: <emphasis>Compatible Load Balancing Protocols</emphasis>
+                        for more details.
                     </para>
                 </note>
                 <example>
