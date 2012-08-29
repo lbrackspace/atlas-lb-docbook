@@ -39,6 +39,12 @@
         </abstract>
     	<revhistory>
 			<revision>
+				<date>2012-08-31</date>
+				<revdescription>
+					<para>Updated for v1.14.4.</para>
+				</revdescription>
+			</revision>
+            <revision>
 				<date>2012-08-21</date>
 				<revdescription>
 					<para>Updated for v1.13.7.</para>
@@ -118,6 +124,33 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+    <chapter xml:id="clbv1.14.4">
+		<title>v1.14.4, August 31, 2012 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Ability to share UDP and TCP based protocols on the
+                    same port.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>rDNS capability is added.</para>
+            </listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="clbv1.13.7">
 		<title>v1.13.7, August 21, 2012 </title>
