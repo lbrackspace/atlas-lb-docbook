@@ -29,8 +29,7 @@
                 draft changes to support BATCH DELETE remain in this
                 source XML but are excluded from the generated PDF and
                 HTML. Search for "security=writeronly" to identify
-                those changes.
-            </remark>
+                those changes. </remark>
         </annotation>
         <author>
             <personname>
@@ -71,8 +70,9 @@
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
                             xmlns:html="http://www.w3.org/1999/xhtml"
                             xmlns:db="http://docbook.org/ns/docbook">
-                            <para> Updated XML example for Modify
-                                Node. See <xref
+                            <para> Updated  <xref
+                                   linkend="Date_Time_Format"/>  XML
+                                example for Modify Node. See <xref
                                    linkend="Modify_Nodes-d1e2503"/>
                                 for details.</para>
                         </listitem>
@@ -762,10 +762,10 @@
         </para>
         <section xml:id="Load_Balancer-d1e243">
             <title>Load Balancer</title>
-            <para>A load balancer is a logical device which belongs to a cloud account. It is used
-                to distribute workloads between multiple back-end systems or services, based on the
-                criteria defined as part of its configuration.
-            </para>
+            <para>A load balancer is a logical device which belongs to
+                a cloud account. It is used to distribute workloads
+                between multiple back-end systems or services, based
+                on the criteria defined as part of its configuration. </para>
         </section>
         <section xml:id="Virtual_IP-d1e252">
             <title>Virtual IP</title>
