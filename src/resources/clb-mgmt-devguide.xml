@@ -315,6 +315,13 @@
     </chapter>
     <chapter xml:id="Management_API_Operations-d1e268">
         <title>Management API Operations</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>apiref-mgmt</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>1</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>
             These API operations relate to administration of the environment that enables and supports the load balancing service for all customers.
             The scope of these operations is wide, relating to the overall operating environment rather than to a single customer.
@@ -1406,6 +1413,13 @@
     </chapter>
     <chapter xml:id="Extended_Customer_API_Operations-d1e2413">
         <title>Extended Customer API Operations</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>apiref-mgmt</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>2</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>
             These API operations relate to support of load balancing service activities on behalf of a specific customer.
             The scope of these operations is narrow, relating to the needs of a single customer.
@@ -2553,6 +2567,13 @@
     </chapter>
     <chapter xml:id="Reports-d1e4257">
         <title>Reports</title>
+        <info>
+            <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+                <raxm:type>concept</raxm:type>
+                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:priority>2</raxm:priority>
+            </raxm:metadata> 
+        </info>
         <para>
             Various reports are available, currently focused on load balancing hosts, virtual IPs and audits.
         </para>
