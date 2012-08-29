@@ -39,21 +39,18 @@
         </abstract>
     	<revhistory>
 			<revision>
-<<<<<<< HEAD
 				<date>2012-08-31</date>
 				<revdescription>
 					<para>Updated for v1.14.4.</para>
 				</revdescription>
 			</revision>
             <revision>
-=======
 				<date>2012-08-21</date>
 				<revdescription>
 					<para>Updated for v1.13.7.</para>
 				</revdescription>
 			</revision>
 			<revision>
->>>>>>> 888102c977425642f4d1744463579f4540c66058
 				<date>2012-07-17</date>
 				<revdescription>
 					<para>Updated for v1.13.5.</para>
@@ -138,7 +135,7 @@
 			</listitem>
 			<listitem security="internal">
 				<para>rDNS capability is added.</para>
-    </listitem>
+            </listitem>
 		</itemizedlist>
 		<itemizedlist>
 			<title>Resources</title>
