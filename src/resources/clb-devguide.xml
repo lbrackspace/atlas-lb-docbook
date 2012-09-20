@@ -48,7 +48,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-08-02</pubdate>
+        <pubdate>2012-09-19</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,6 +61,34 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-09-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Added the ability to share UDP and
+                                TCP based load balancer protocols on
+                                the same port. See <xref
+                                   linkend="Compatible_Load_Balancing_Protocols-d1e4269"
+                                /> for details.</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Added information on pricing and
+                                service level. See <xref
+                                   linkend="Pricing_SLA-d1e1362"/> for
+                                details.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-08-02</date>
                 <revdescription>
@@ -744,7 +772,22 @@
             <para>You can also follow updates and announcements via
                 twitter at <link
                     xlink:href="http://www.twitter.com/Rackspace"
-                    >http://www.twitter.com/Rackspace</link>. </para>
+                    >http://www.twitter.com/Rackspace</link>.</para>
+        </section>
+        <section xml:id="Pricing_SLA-d1e1362"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+            xmlns:html="http://www.w3.org/1999/xhtml">
+            <title>Pricing and Service Level</title>
+            <para>Cloud Load Balancers is part of the Rackspace Cloud
+                and your use through the API will be billed as per the
+                pricing schedule at <link
+                    xlink:href="http://www.rackspace.com/cloud/public/loadbalancers/pricing/"
+                    >http://www.rackspace.com/cloud/public/loadbalancers/pricing/</link>. </para>
+            <para>The Service Level Agreement (SLA) for Cloud Load
+                Balancers is available at <link
+                    xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers"
+                    >http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers</link>.</para>
         </section>
     </chapter>
     <chapter xml:id="Concepts-d1e233">
@@ -1138,7 +1181,7 @@
                             services that perform similar functions,
                             whatever those services might be named. In
                             this example, the services named
-                            cloudServers and cloudServersOpenstack are
+                            cloudServers and cloudServersOpenStack are
                             both identified as
                                 <code>type="compute"</code>,
                             identifying them as compute services even
@@ -2008,23 +2051,26 @@
             </table>
         </section>
         <section xml:id="Compatible_Load_Balancing_Protocols-d1e4269">
-                <title>Compatible shared Load Balancing Protocols</title>
+                <title>Compatible Shared Load Balancing
+                Protocols</title>
 
-                <para>Load balancers utilizing shared virtual ips must select
-                    unique ports unless the load balancer protocol is designed
-                    to work together on the same port. This section will provide
-                    information on the available and comptible protocols allowed
-                    to break the unique port rule.
-                </para>
+                <para>Load balancers utilizing shared Virtual IPs must
+                select <emphasis>unique</emphasis> ports unless the
+                load balancer protocols used are designed to work
+                together on the same port. This section provides
+                information on the compatible load balancer protocols
+                that are designed to share UDP and TCP based protocols
+                on the same port. </para>
 
                 <note>
-                    <para>Only a select set of protocols will be allowed to share
-                        the same port across shared load balancers.
-                    </para>
+                    <para>Only a select set of protocols are allowed
+                    to share the same port across shared load
+                    balancers. </para>
                 </note>
-                <para>See the table below for descriptions of the
-                    protocols.
-                </para>
+                <para>See the tables below for the descriptions of
+                these protocols. </para>
+            <para>The first of these tables lists the DNS compatible
+                load balancing protocols:</para>
                 <table rules="all">
                     <caption>DNS Compatible Load Balancing Protocols</caption>
                     <thead>
@@ -2056,11 +2102,18 @@
                     </tbody>
                 </table>
                 <note>
-                    <para>Above protocols are compatible and good for load
-                        balancing DNS based applications. These cannot be combined with
-                        the protocols below.
-                    </para>
+                    <para>The TCP and UDP protocols listed in the
+                    table above are compatible and good for load
+                    balancing DNS based applications. These
+                        <emphasis>cannot</emphasis> be combined with
+                    the TCP and UDP protocols listed in the tables
+                    below. </para>
                 </note>
+            <para>The TCP and UDP protocols listed in the following
+                tables are compatible for sharing TCP and UDP based
+                protocols on the same port. These protocols can be
+                interchanged to achieve the proper setup for the
+                user's TCP/UDP based application.</para>
 
                 <table rules="all">
                     <caption>TCP Compatible Load Balancing Protocols</caption>
@@ -2077,32 +2130,27 @@
                                 <code>TCP</code>
                             </td>
                             <td colspan="3">The Transmission Control
-                                Protocol is a part of the Transport
-                                Layer protocol and is one of the core
-                                protocols of the Internet Protocol
-                                Suite. It provides a reliable, ordered
-                                delivery of a stream of bytes from one
-                                program on a computer to another
-                                program on another computer.
-                                Applications that require an ordered
-                                and reliable delivery of packets use
-                                this protocol.
-                            </td>
+                            Protocol (TCP) is a part of the Transport
+                            Layer Protocol and is one of the core
+                            protocols of the Internet Protocol Suite.
+                            It provides a reliable, ordered delivery
+                            of a stream of bytes from one program on a
+                            computer to another program on another
+                            computer. Applications that require an
+                            ordered and reliable delivery of packets
+                            use this protocol. </td>
                         </tr>
                         <tr align="left">
                             <td colspan="2">
                                 <code>TCP_CLIENT_FIRST</code>
                             </td>
-                            <td colspan="3">This protocol is similiar
-                                to TCP, but is more efficient when a
-                                client is expected to write the data
-                                first.
-                            </td>
+                            <td colspan="3">This protocol is similar
+                            to TCP, but is more efficient when a
+                            client is expected to write the data
+                            first. </td>
                         </tr>
                     </tbody>
                 </table>
-
-                <para><emphasis>IS COMPATIBLE WITH...</emphasis></para>
 
                 <table rules="all">
                     <caption>UDP Compatible Load Balancing Protocols</caption>
@@ -2118,12 +2166,10 @@
                                 <code>UDP</code>
                             </td>
                             <td colspan="3">The User Datagram Protocol
-                                provides a datagram service
-                                that emphasizes speed over
-                                reliability, It works well with
-                                applications that provide security
-                                through other measures. 
-                            </td>
+                            (UDP) provides a datagram service
+                            that emphasizes speed over reliability. It
+                            works well with applications that provide
+                            security through other measures.  </td>
                         </tr>
                         <tr align="left">
                             <td colspan="2">
@@ -2136,13 +2182,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <note>
-                    <para>The protocols above are compatible
-                        and can be interchanged to achieve the
-                        proper set up for the users TCP/UDP
-                        based application.
-                    </para>
-                </note>
             </section>
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
@@ -2714,25 +2753,29 @@
                     same load balancing configuration to support
                         <code>HTTP</code> and<code>HTTPS</code>. </para>
                 <note>
-                    <para>
-                        Load balancers sharing a virtual IP
-                        <emphasis>must</emphasis>
-                        utilize a unique port.
-                        Also, to share both an IPV4
-                        as well as an IPV6 supply an
-                        extra <code>virtualIp</code> object
-                        to the <code>virtualIps</code> container
-                        with the desired <code>ID</code> being
-                        shared.
-                    </para>
-                </note>
-                <note>
-                    <para>
-                        Additionally: Load balancers sharing virtual ips
-                        can utilize TCP/UDP and DNS based protocols on the same port.
-                        Please see section: <emphasis>Compatible Load Balancing Protocols</emphasis>
-                        for more details.
-                    </para>
+                    <title>Notes</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para> Load balancers sharing a Virtual IP
+                                   <emphasis>must</emphasis> utilize a
+                                unique port. Also, to share both an
+                                IPV4 as well as an IPV6, you must
+                                supply an extra <code>virtualIp</code>
+                                object to the <code>virtualIps</code>
+                                container with the desired
+                                   <code>ID</code> being shared.
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para> In addition, load balancers sharing
+                                Virtual IPs can utilize certain
+                                compatible TCP/UDP and DNS based
+                                protocols on the same port. Please see
+                                   <xref
+                                   linkend="Compatible_Load_Balancing_Protocols-d1e4269"
+                                /> for more details. </para>
+                        </listitem>
+                    </itemizedlist>
                 </note>
                 <example>
                     <title>Create Load Balancer (Required Attributes with Shared IP) Request: XML</title>
