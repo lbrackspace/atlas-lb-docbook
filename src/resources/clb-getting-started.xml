@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE article [
+<!DOCTYPE book [
         <!-- Some useful entities borrowed from HTML -->
         <!ENTITY ndash  "&#x2013;">
         <!ENTITY mdash  "&#x2014;">
@@ -25,32 +25,46 @@
         <!ENTITY ENDPOINT-UK-20 "https://lon.identity.api.rackspacecloud.com/v2.0/">
 ]>
 
-<article version="5.0"
+<book version="5.0"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:svg="http://www.w3.org/2000/svg"
          xmlns:m="http://www.w3.org/1998/Math/MathML"
          xmlns:html="http://www.w3.org/1999/xhtml"
-         xml:id="clb-getting-started"
-         class="specification">
+         xml:id="clb-getting-started">
+    <?rax title.font.size="35px" subtitle.font.size="20px"?>
+    <title>Rackspace Cloud Load Balancers Getting Started Guide</title>
+    <titleabbrev>Rackspace Cloud LB and Servers Getting Started Guide</titleabbrev>
 
-    <info>
-        <title>Getting Started with Rackspace Cloud Load Balancers and
-            Servers</title>
+    <info>       
         <copyright>
             <year>2011</year>
             <year>2012</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
-        <pubdate>2012-08-02</pubdate>
+        <productname>Rackspace Cloud Load Balancers</productname>
+        <pubdate>2012-10-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2012-10-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added information for pricing and
+                                service level (refer to <xref
+                                   linkend="Pricing_SLA-d1e1362"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-08-02</date>
                 <revdescription>
@@ -119,14 +133,14 @@
       <raxm:priority>1</raxm:priority>
     </raxm:metadata> 
     </info>
-    <section xml:id="DB_Doc_Change_History">
+    <chapter xml:id="DB_Doc_Change_History">
         <title>Document Change History</title>
         <para>This version of the Getting Started replaces and
             obsoletes all previous versions. The most recent changes
             are described in the table below:</para>
         <?rax revhistory?>
-    </section>
-    <section xml:id="DB_Overview">
+    </chapter>
+    <chapter xml:id="DB_Overview">
         <title>Overview</title>
         <para>Follow the steps described in this guide to use the
             Rackspace Cloud Load Balancers API and the Cloud
@@ -159,9 +173,33 @@
                     </listitem>
                 </itemizedlist></para>
         </section>
-    </section>
-    <section xml:id="Create_Cloud_Server">
+        <section xml:id="Pricing_SLA-d1e1362">
+            <title>Pricing and Service Level</title>
+            <para>Cloud Load Balancers is part of the Rackspace Cloud
+                and your use through the API will be billed as per the
+                pricing schedule at <link
+                    xlink:href="http://www.rackspace.com/cloud/public/loadbalancers/pricing/"
+                    >http://www.rackspace.com/cloud/public/loadbalancers/pricing/</link>.
+                Cloud Servers is also part of the Rackspace Cloud and
+                your use through the Control Panel will be billed as
+                per the pricing schedule at <link
+                    xlink:href="http://www.rackspace.com/cloud/public/servers/pricing/"
+                    >http://www.rackspace.com/cloud/public/servers/pricing/</link>.</para>
+            <para>The Service Level Agreements (SLAs) for Cloud Load
+                Balancers and Cloud Servers are available at <link
+                    xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers"
+                    >http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers</link>
+                and <link
+                    xlink:href="http://www.rackspace.com/cloud/legal/sla/"
+                    >http://www.rackspace.com/cloud/legal/sla/</link>
+                respectively.</para>
+        </section>
+    </chapter>
+    <chapter xml:id="Create_Cloud_Server">
         <title>Create a New Cloud Server</title>
+        <para>In this chapter you will create two new Cloud Servers
+            (or use two existing Cloud Servers) to set up as nodes for
+            your load balancer.</para>
         <note>
             <para>If you are using existing Cloud Servers on your
                 account, skip Steps 1-5 and go directly to Step 6
@@ -231,8 +269,8 @@
                     </itemizedlist></para>
             </step>
         </procedure>
-    </section>
-    <section xml:id="DB_Sending_API_Requests">
+    </chapter>
+    <chapter xml:id="DB_Sending_API_Requests">
         <title>Send Requests to the API</title>
         <para>You have several options for sending requests through an
             API: </para>
@@ -278,7 +316,7 @@
                 <varlistentry>
                     <term><option>-d</option></term>
                     <listitem>
-                        <para>Sends the specified data in a post
+                        <para>Sends the specified data in a POST
                             request to the HTTP server.</para>
                     </listitem>
                 </varlistentry>
@@ -292,14 +330,19 @@
                 <varlistentry>
                     <term><option>-H HEADER</option></term>
                     <listitem>
-                        <para>Specify an HTTP header in the request.</para>
+                        <para>Specifies an HTTP header in the
+                            request.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><option>-X PUT</option></term>
+                    <term><option>-X</option></term>
                     <listitem>
-                        <para>Sends the specified data in a put
-                            request to the HTTP server.</para>
+                        <para>Specifies the request method to use when
+                            communicating with the HTTP server. The
+                            specified request is used instead of the
+                            default method, which is GET. For example,
+                                <option>-X PUT</option> specifies to
+                            use the PUT request method.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -393,8 +436,8 @@
                 long line, removing all the backslash line
                 continuation characters.</para>
         </section>
-    </section>
-    <section xml:id="Generating_Auth_Token">
+    </chapter>
+    <chapter xml:id="Generating_Auth_Token">
         <title>Generate an Authentication Token</title>
         <para>You need to generate a token whether you use cURL or a
             ReST client.</para>
@@ -575,13 +618,12 @@
             &DELETE;, &PUT;,  and &POST; requests for the Cloud Load
             Balancer API.</para>
         
-    </section>
-    <section xml:id="Service_Access_Endpoints-d1e753">
+    </chapter>
+    <chapter xml:id="Service_Access_Endpoints-d1e753">
         <title>Service Access/Endpoints</title>
         <para>Specify a region to operate against by selecting an
             endpoint from the table below to use for your Cloud Load
             Balancer API calls.</para>
-        <?rax-fo keep-with-next?>
         <para>
             <table rules="all">
                 <?dbfo keep-together="always"?>
@@ -643,8 +685,8 @@
             that the <code>v1.0</code> component in the URL indicates
             that you are using version 1.0 of the Cloud Load Balancers
             API.</para>
-    </section>
-    <section xml:id="Create_Load_Balancer">
+    </chapter>
+    <chapter xml:id="Create_Load_Balancer">
         <title>Create a Load Balancer</title>
         <para> Cloud Load Balancers make it easy to develop scalable,
             high-availability configurations in the Cloud. By
@@ -776,9 +818,9 @@
             wherever you see the field <emphasis role="bold"
                 >load_balancer_id</emphasis> in the examples in this
             guide.</para>
-    </section>
+    </chapter>
     
-    <section xml:id="List_LB_Details">
+    <chapter xml:id="List_LB_Details">
             <title>List Load Balancer Details</title>
             <para>This operation provides detailed output for a
             specific load balancer configured and associated with your
@@ -844,8 +886,8 @@
                 JSON</title>
                 <programlisting language="json"><xi:include href="../../src/resources/samples/lb-gs-list-details-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
             </example>
-        </section>
-    <section xml:id="Add_Node">
+        </chapter>
+    <chapter xml:id="Add_Node">
         <title>Add Node</title>
         <para>When a node is added to a load balancer, it is assigned
             a unique identifier that can be used for management
@@ -928,8 +970,8 @@
             <title>Add Node Response: JSON</title>
             <programlisting language="json"><xi:include href="../../src/resources/samples/lb-gs-add-nodes-response.json" parse="text"><xi:fallback>Missing code sample! <?rax fail?></xi:fallback></xi:include></programlisting>
         </example>
-    </section>
-    <section xml:id="Configure_Load_Balancer">
+    </chapter>
+    <chapter xml:id="Configure_Load_Balancer">
         <title>Update Load Balancer Attributes</title>
         <para>Assume that you want to change the algorithm for your
             load balancer from RANDOM to LEAST_CONNECTIONS. You can
@@ -991,5 +1033,5 @@
         <para>This concludes the <citetitle>Getting
                 Started</citetitle>. Thank you for using Rackspace
             Cloud products.</para>
-    </section>
-</article>
+    </chapter>
+</book>

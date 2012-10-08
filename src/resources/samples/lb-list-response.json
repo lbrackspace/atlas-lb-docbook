@@ -7,7 +7,7 @@
             "port":80,
             "algorithm":"RANDOM",
             "status":"ACTIVE",
-            "nodeCount":"3",
+            "nodeCount":3,
             "virtualIps":[
                 {
                     "id":403,
@@ -30,7 +30,7 @@
             "port":80,
             "algorithm":"RANDOM",
             "status":"ACTIVE",
-            "nodeCount":"4",
+            "nodeCount":4,
             "virtualIps":[
                 {
                     "id":401,

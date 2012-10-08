@@ -25,7 +25,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2012-08-21</pubdate>
+	<pubdate>2012-10-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -39,9 +39,9 @@
         </abstract>
     	<revhistory>
 			<revision>
-				<date>2012-08-31</date>
+				<date>2012-10-09</date>
 				<revdescription>
-					<para>Updated for v1.14.4.</para>
+					<para>Updated for v1.15.17.</para>
 				</revdescription>
 			</revision>
             <revision>
@@ -125,16 +125,29 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-    <chapter xml:id="clbv1.14.4">
-		<title>v1.14.4, August 31, 2012 </title>
+    <chapter xml:id="clbv1.15.17">
+		<title>v1.15.17, October 9, 2012 </title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
-				<para>Ability to share UDP and TCP based protocols on the
-                    same port.</para>
+				<para>Ability to share UDP and TCP based protocols on
+					the same port.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para><link security="internal"
+					xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A403598"
+					>D-08841: </link>Fixed error that caused a DB
+					constraint when cleaning up the DB for expired
+					load balancers from cron and ones that had either
+					SSLTermination Records or UserPages.</para>
 			</listitem>
 			<listitem security="internal">
-				<para>rDNS capability is added.</para>
+				<para>Fixed error handling and logging to verify and properly
+					handle the cases for suspension/deletion and
+					timing of usage records.</para>
             </listitem>
 		</itemizedlist>
 		<itemizedlist>
