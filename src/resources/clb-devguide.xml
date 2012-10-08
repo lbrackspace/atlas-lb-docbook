@@ -48,7 +48,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-09-19</pubdate>
+        <pubdate>2012-10-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,9 +62,29 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2012-09-19</date>
+                <date>2012-10-09</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Added information on pricing and
+                                service level. See <xref
+                                   linkend="Pricing_SLA-d1e1362"/> for
+                                details.</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Corrected our date/time format from
+                                RFC 822 to RFC 8601. See <xref
+                                   linkend="Date_Time_Format"/> for
+                                details.</para>
+                        </listitem>
                         <listitem
                             xmlns:svg="http://www.w3.org/2000/svg"
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
@@ -81,10 +101,23 @@
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
                             xmlns:html="http://www.w3.org/1999/xhtml"
                             xmlns:db="http://docbook.org/ns/docbook">
-                            <para>Added information on pricing and
-                                service level. See <xref
-                                   linkend="Pricing_SLA-d1e1362"/> for
-                                details.</para>
+                            <para>Updated example for List Load
+                                Balancers Response: JSON to show that
+                                it returns an integer for
+                                   <code>nodeCount</code> rather than
+                                a string. See <xref
+                                   linkend="List_Load_Balancers-d1e1367"
+                                /> for details.</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml"
+                            xmlns:db="http://docbook.org/ns/docbook">
+                            <para>Added note about proper certificate
+                                ordering. See <xref
+                                   linkend="SSLTermination-d1e2479"/>
+                                for details.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -1989,10 +2022,9 @@
                  xmlns:m="http://www.w3.org/1998/Math/MathML"
                  xmlns:html="http://www.w3.org/1999/xhtml" xml:id="Date_Time_Format">
             <title>Date/Time Format</title>
-            <para>The Load Balancer service uses an ISO-8601
-                compliant date format for the display and consumption
-                of date/time values.
-            </para>
+            <para>The Load Balancer service uses an ISO 8601 compliant
+                date format for the display and consumption of
+                date/time values. </para>
             <example>
                 <title>Load Balancer Service Date/Time Format</title>
                 <programlisting>yyyy-MM-dd'T'HH:mm:ssZ</programlisting>
@@ -2002,7 +2034,7 @@
                 <para>May 19th, 2011 at 8:07:08 AM, GMT-5 would have
                     the following format:
                 </para>
-                <programlisting>2011-05-19T08:07:08-0500</programlisting>
+                <programlisting>2011-05-19T08:07:08-05:00</programlisting>
             </example>
             <table rules="all">
                 <caption>Explanation of Date/Time Format
@@ -2045,7 +2077,10 @@
                     </tr>
                     <tr>
                         <td>Z</td>
-                        <td>RFC-822 timezone (offset from GMT)</td>
+                        <td>RFC 8601 timezone (offset from GMT). If Z
+                            is not replaced with the offset from GMT,
+                            it indicates a <code>00:00</code>
+                            offset.</td>
                     </tr>
                 </tbody>
             </table>
@@ -5747,8 +5782,8 @@
                     transferring certain types of Personally
                     Identifiable Information (PII). For the definition
                     of PII, see the Knowledge Center article at: <link
-                        xlink:href="http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii"
-                        >http://www.rackspace.com/knowledge_center/content/definition-personally-identifiable-information-or-pii</link>.</para>
+                        xlink:href="http://www.rackspace.com/knowledge_center/article/definition-of-personally-identifiable-information-pii"
+                        >http://www.rackspace.com/knowledge_center/article/definition-of-personally-identifiable-information-pii</link>.</para>
             </note>
             <informaltable rules="all">
                 <thead>
@@ -5785,7 +5820,8 @@
                     (<errorcode>503</errorcode>), unauthorized
                     (<errorcode>401</errorcode>), badRequest
                     (<errorcode>400</errorcode>), overLimit
-                    (<errorcode>413</errorcode>) </simpara>
+                    (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>404</errorcode>) </simpara>
             <para> The SSL Termination feature allows a load balancer
                 user to terminate SSL traffic at the load balancer
                 layer versus at the web server layer. A user may
@@ -5823,6 +5859,13 @@
                             protocol of an HTTP request as "http" or
                             "https" depending on what protocol the
                             client requested.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Not every service will return
+                            certificates in the proper order. Please
+                            verify that your chain of certificates
+                            matches that of walking up the chain from
+                            the domain to the CA root.</para>
                     </listitem>
                 </itemizedlist>
             </note>
@@ -6077,13 +6120,16 @@
                 <example>
                     <title>View Load Balancing SSL Termination
                         Configuration Response: XML</title>
+                    
                     <programlisting language="xml">
 <xi:include href="samples/lb-ssl-termination-response.xml" parse="text"/>
                     </programlisting>
                 </example>
+                
                 <example>
                     <title>View Load Balancing SSL Termination
                         Configuration Response: JSON</title>
+                    
                     <programlisting language="json">
 <xi:include href="samples/lb-ssl-termination-response.json" parse="text"/>
                     </programlisting>
@@ -6106,9 +6152,11 @@
                 <para>The examples to update the load balancers SSL
                     termination full certification request are shown
                     below:</para>
+                
                 <example>
                     <title>Update Load Balancing SSL Termination Full
                         Certification Request: XML</title>
+                    
                     <programlisting language="xml">
 <xi:include href="samples/lb-ssl-termination-request.xml" parse="text"/>
                     </programlisting>
@@ -6116,6 +6164,7 @@
                 <example>
                     <title>Update Load Balancing SSL Termination Full
                         Certification Request: JSON</title>
+                    
                     <programlisting language="json">
 <xi:include href="samples/lb-ssl-termination-request.json" parse="text"/>
                     </programlisting>
@@ -6126,6 +6175,7 @@
                 <example>
                     <title>Update Load Balancing SSL Termination
                         Attribute Request: XML</title>
+                    
                     <programlisting language="xml">
 <xi:include href="samples/lb-ssl-termination-request-attrs.xml" parse="text"/>
                 </programlisting>
@@ -6133,6 +6183,7 @@
                 <example>
                     <title>Update Load Balancing SSL Termination
                         Attribute Request: JSON</title>
+                    
                     <programlisting language="json">
 <xi:include href="samples/lb-ssl-termination-request-attrs.json" parse="text"/>
                 </programlisting>

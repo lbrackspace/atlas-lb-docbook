@@ -45,7 +45,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-09-19</pubdate>
+        <pubdate>2012-10-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -53,7 +53,7 @@
         </legalnotice>
         <revhistory>
             <revision>
-                <date>2012-09-19</date>
+                <date>2012-10-09</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -316,7 +316,7 @@
                 <varlistentry>
                     <term><option>-d</option></term>
                     <listitem>
-                        <para>Sends the specified data in a post
+                        <para>Sends the specified data in a POST
                             request to the HTTP server.</para>
                     </listitem>
                 </varlistentry>
@@ -330,14 +330,19 @@
                 <varlistentry>
                     <term><option>-H HEADER</option></term>
                     <listitem>
-                        <para>Specify an HTTP header in the request.</para>
+                        <para>Specifies an HTTP header in the
+                            request.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><option>-X PUT</option></term>
+                    <term><option>-X</option></term>
                     <listitem>
-                        <para>Sends the specified data in a put
-                            request to the HTTP server.</para>
+                        <para>Specifies the request method to use when
+                            communicating with the HTTP server. The
+                            specified request is used instead of the
+                            default method, which is GET. For example,
+                                <option>-X PUT</option> specifies to
+                            use the PUT request method.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
