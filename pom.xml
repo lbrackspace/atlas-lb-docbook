@@ -1,157 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.rackspace.cloud.docs.loadbalancers.docbook</groupId>
-    <artifactId>docbook-conversions</artifactId>
-    <version>1.0.0</version>
-
-    <name>Loadbalancing Public API Spec</name>
-    <packaging>jar</packaging>
-       <pluginRepositories>
-           <pluginRepository>
-               <id>rackspace-research</id>
-               <name>Rackspace Research Repository</name>
-       <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-           </pluginRepository>
-       </pluginRepositories>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.rackspace.cloud.api</groupId>
-                <artifactId>clouddocs-maven-plugin</artifactId>
-                <!-- this <version> relates only to the *plugin* used for document formatting -->
-                <!-- the version of the *API* that is the subject of the document is indicated within each document -->
-                <version>1.5.0</version>
-                <executions>
-                    <execution>
-                        <id>g1</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <xincludeSupported>true</xincludeSupported>
-                            <sourceDirectory>src/resources</sourceDirectory>
-                            <highlightSource>false</highlightSource>
-                            <!-- this is the Rackspace-internal service developer guide formerly known as ManagementAPISpec.xml -->
-			    <security>internal</security>
-                            <includes>clb-mgmt-devguide.xml</includes>
-			    <pdfUrl>../../clb-mgmt-devguide-internal.pdf</pdfUrl>
-			    <enableDisqus>intranet</enableDisqus>
-			    <canonicalUrlBase>http://docs-beta.rackspace.com/internal/cdns/api/v1.0/cdns-mgmt-devguide/content</canonicalUrlBase>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>g2</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <xincludeSupported>true</xincludeSupported>
-                            <sourceDirectory>src/resources</sourceDirectory>
-                            <highlightSource>false</highlightSource>
-                            <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
-                            <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
-			    <pdfUrl>../../../clb-devguide-latest.pdf</pdfUrl>
-                            <enableDisqus>1</enableDisqus>
-			    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
-                            <includes>clb-devguide.xml</includes>
-			    <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
-                        </configuration>
-                    </execution> 
-                    <!-- MA: added this to generate public release notes -->
-                    <execution>
-                        <id>g3</id>
-                        <goals>
-                            <goal>generate-webhelp</goal>
-                            <goal>generate-pdf</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <xincludeSupported>true</xincludeSupported>
-                            <sourceDirectory>src/resources</sourceDirectory>
-                            <highlightSource>false</highlightSource>
-                            <pdfUrl>../../../clb-releasenotes-latest.pdf</pdfUrl>
-                            <includes>clb-releasenotes.xml</includes>
-                            <enableDisqus>1</enableDisqus>
-                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
-                            <chapterAutolabel>0</chapterAutolabel>
-                            <security>external</security>
-                            <canonicalUrlBase>http://docs-beta.rackspace.com/internal/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
-			    <postProcess>
-			      <move todir="target/docbkx/webhelp/clb-releasenotes-external" failonerror="false">
-				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
-			      </move>
-			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-YYYYMMDD.pdf" failonerror="false"/>
-			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
-			    </postProcess>
-                        </configuration>
-                    </execution>                                       
-                    <execution>
-                        <id>g4</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <xincludeSupported>true</xincludeSupported>
-                            <sourceDirectory>src/resources</sourceDirectory>
-                            <highlightSource>false</highlightSource>
-                            <pdfUrl>../../../clb-releasenotes-latest.pdf</pdfUrl>
-                            <includes>clb-releasenotes.xml</includes>
-                            <enableDisqus>intranet</enableDisqus>
-                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
-                            <chapterAutolabel>0</chapterAutolabel>
-                            <security>internal</security>
-                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content</canonicalUrlBase>
-			    <postProcess>
-			      <move todir="target/docbkx/webhelp/clb-releasenotes-internal" failonerror="false">
-				<fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
-			      </move>
-			      <move file="target/docbkx/pdf/clb-releasenotes.pdf" tofile="target/docbkx/pdf/clb-releasenotes-internal.pdf" failonerror="false"/>
-			      <delete file="target/docbkx/pdf/clb-releasenotes.fo" failonerror="false"/>
-			    </postProcess>
-                        </configuration>
-                    </execution>
-                    
-                    <execution>
-                        <id>g5</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <xincludeSupported>true</xincludeSupported>
-                            <sourceDirectory>src/resources</sourceDirectory>
-                            <highlightSource>false</highlightSource>
-                            <!-- this is the public-facing client Getting Started guide -->
-                            <!-- this document that will be published as clb-getting-started-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
-                            <pdfUrl>../../../clb-getting-started-latest.pdf</pdfUrl>
-                            <enableDisqus>1</enableDisqus>
-                            <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
-                            <includes>clb-getting-started.xml</includes>
-                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content</canonicalUrlBase>
-			    <postProcess>
-			      <copy todir="target/docbkx/webhelp/clb-getting-started/content/images">
-				<fileset dir="src/resources/images" includes="**/*"/>
-			      </copy>
-			    </postProcess>
-                        </configuration>
-                    </execution>                    
-                </executions>
-		<configuration>
-			     <socialIcons>1</socialIcons>
-		  <feedbackEmail>mike.asthalter@rackspace.com</feedbackEmail>
-		</configuration>
-            </plugin>
-        </plugins>
-    </build>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.rackspace.cloud.apidocs</groupId>
+  <artifactId>cloud-loadbalancers</artifactId>
+  <version>1.0.0</version>
+  <name>Loadbalancing Public API Spec</name>
+  <packaging>jar</packaging>    
+  <build>
+    <plugins>
+      <plugin>
+	<groupId>com.rackspace.cloud.api</groupId>
+	<artifactId>clouddocs-maven-plugin</artifactId>
+	<!-- this <version> relates only to the *plugin* used for document formatting -->
+	<!-- the version of the *API* that is the subject of the document is indicated within each document -->
+	<version>1.5.1-SNAPSHOT</version>
+	<executions>
+	  <execution>
+	    <id>clb-mgmt-devguide-internal</id>
+	    <goals>
+	      <goal>generate-webhelp</goal>
+	    </goals>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <!-- this is the Rackspace-internal service developer guide formerly known as ManagementAPISpec.xml -->
+	      <includes>clb-mgmt-devguide.xml</includes>
+	      <security>internal</security>
+	      <enableGoogleAnalytics>0</enableGoogleAnalytics>
+	      <enableDisqus>intranet</enableDisqus>
+	      <canonicalUrlBase>http://docs-internal.rackspace.com/internal/cdns/api/v1.0/cdns-mgmt-devguide/content</canonicalUrlBase>
+	    </configuration>
+	  </execution>
+	  <execution>
+	    <id>clb-devguide-external</id>
+	    <goals>
+	      <goal>generate-webhelp</goal>
+	    </goals>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
+	      <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
+	      <includes>clb-devguide.xml</includes>
+	      <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
+	    </configuration>
+	  </execution> 
+	  <!-- MA: added this to generate public release notes -->
+	  <execution>
+	    <id>clb-releasenotes-external</id>
+	    <goals>
+	      <goal>generate-webhelp</goal>
+	    </goals>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <includes>clb-releasenotes.xml</includes>
+	      <chapterAutolabel>0</chapterAutolabel>
+	      <canonicalUrlBase>http://docs.rackspace.com/clb/api/v1.0/clb-releasenote/content</canonicalUrlBase>
+	      <postProcess>
+		<move todir="target/docbkx/webhelp/clb-releasenotes-external" failonerror="false">
+		  <fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
+		</move>
+	      </postProcess>
+	    </configuration>
+	  </execution>                                       
+	  <execution>
+	    <id>clb-releasenotes-internal</id>
+	    <goals>
+	      <goal>generate-webhelp</goal>
+	    </goals>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <includes>clb-releasenotes.xml</includes>
+	      <enableDisqus>intranet</enableDisqus>
+	      <chapterAutolabel>0</chapterAutolabel>
+	      <security>internal</security>
+	      <enableGoogleAnalytics>0</enableGoogleAnalytics>
+	      <canonicalUrlBase>http://docs-internal.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content</canonicalUrlBase>
+	      <postProcess>
+		<move todir="target/docbkx/webhelp/clb-releasenotes-internal" failonerror="false">
+		  <fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
+		</move>
+	      </postProcess>
+	    </configuration>
+	  </execution>                    
+	  <execution>
+	    <id>clb-getting-started-external</id>
+	    <goals>
+	      <goal>generate-webhelp</goal>
+	    </goals>
+	    <phase>generate-sources</phase>
+	    <configuration>
+	      <!-- this is the public-facing client Getting Started guide -->
+	      <!-- this document that will be published as clb-getting-started-latest.pdf at http://docs.rackspacecloud.com/api/ --> 
+	      <includes>clb-getting-started.xml</includes>
+	      <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content</canonicalUrlBase>
+	    </configuration>
+	  </execution>                    
+	</executions>
+	<configuration>
+	  <!-- Global config for all docs -->
+	  <sourceDirectory>src/resources</sourceDirectory>
+	  <enableDisqus>1</enableDisqus>
+	  <socialIcons>1</socialIcons>
+	  <enableGoogleAnalytics>1</enableGoogleAnalytics>
+	  <feedbackEmail>mike.asthalter@rackspace.com</feedbackEmail>
+	  <highlightSource>false</highlightSource>
+	  <showXslMessages>true</showXslMessages>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-assembly-plugin</artifactId>
+	<version>2.3</version>
+	<configuration>
+	  <descriptors>
+	    <descriptor>includewars.xml</descriptor>
+	  </descriptors>
+	</configuration>
+	<executions>
+	  <execution>
+	    <id>assembly</id>
+	    <goals>
+	      <goal>single</goal>
+	    </goals>
+	    <phase>package</phase>
+	  </execution>
+	</executions>
+      </plugin>
+    </plugins>
+    <defaultGoal>generate-webhelp</defaultGoal> 
+  </build>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>rackspace-research</id>
+      <name>Rackspace Research Repository</name>
+      <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <scm>
+    <connection>scm:git:ssh://git@github.com:lbrackspace/atlas-lb-docbook.git</connection>
+  </scm>
+  <distributionManagement>
+    <site>
+      <id>docs-stagging</id>
+      <url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
+    </site>
+    <repository>
+      <id>docs-stagging</id>
+      <name>docs-stagging</name>
+      <url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
+    </repository>
+  </distributionManagement>
 </project>

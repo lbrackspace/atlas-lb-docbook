@@ -11,19 +11,6 @@
         <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
         <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 
-        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Check_mark_23x20_02.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
-
-        <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Arrow_east.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
         ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -287,6 +274,11 @@
                 </revdescription>
             </revision>
         </revhistory>
+	<raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	  <raxm:displayname>API Management Developer Guide</raxm:displayname>
+	  <raxm:product version="v1.0">loadbalancers</raxm:product>
+	  <raxm:priority>30</raxm:priority>
+	</raxm:metadata> 
     </info>
     <chapter xml:id="Overview-d1e85">
         <title>Overview</title>
@@ -331,7 +323,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>apiref-mgmt</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>1</raxm:priority>
             </raxm:metadata> 
         </info>
@@ -1429,7 +1421,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>apiref-mgmt</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>2</raxm:priority>
             </raxm:metadata> 
         </info>
@@ -2583,7 +2575,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>concept</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>2</raxm:priority>
             </raxm:metadata> 
         </info>
