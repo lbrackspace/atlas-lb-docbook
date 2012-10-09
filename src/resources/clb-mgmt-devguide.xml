@@ -55,7 +55,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-06-13</pubdate>
+        <pubdate>2012-10-09</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -69,6 +69,19 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-10-09</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated examples for List Load
+                                Balancers (see <xref
+                                   linkend="List_Load_Balancers-d1e281"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-06-13</date>
                 <revdescription>
