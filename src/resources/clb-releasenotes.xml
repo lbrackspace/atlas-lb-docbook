@@ -41,7 +41,7 @@
 			<revision security="internal">
 				<date>2012-10-25</date>
 				<revdescription>
-					<para>Updated for v1.15.19.</para>
+					<para>Updated for v1.15.20.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -142,13 +142,14 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-    <chapter xml:id="clbv1.15.20">
+    <chapter xml:id="clbv1.15.20" security="internal">
 		<title>v1.15.20, October 20, 2012 </title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
-				<para><link security="internal" xlink:href="https://?"
-						>V1-B-34873</link>Added additional call for
+				<para><link security="internal" 
+					xlink:href="https://www15.v1host.com/RACKSPCE/Search.mvc/advanced?q=B-34873#!/sDBW/assetstream/baseAssetStream/Story:415332"
+						>B-34873: </link>Added additional call for
 					management account load balancers
 					(extendedAccountLoadBalancers) that retrieves
 					required data for accountLoadBalancers plus
