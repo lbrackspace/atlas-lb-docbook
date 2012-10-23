@@ -137,13 +137,13 @@
         </plugins>
         <defaultGoal>generate-webhelp</defaultGoal>
     </build>
-     <pluginRepositories>
-       <pluginRepository>
-         <id>rackspace-research</id>
-         <name>Rackspace Research Repository</name>
-         <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-       </pluginRepository>
-     </pluginRepositories>
+    <!-- <pluginRepositories> -->
+    <!--   <pluginRepository> -->
+    <!--     <id>rackspace-research</id> -->
+    <!--     <name>Rackspace Research Repository</name> -->
+    <!--     <url>http://maven.research.rackspacecloud.com/content/groups/public/</url> -->
+    <!--   </pluginRepository> -->
+    <!-- </pluginRepositories> -->
     <profiles>
         <profile>
             <id>Rackspace Research Repositories</id>
