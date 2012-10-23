@@ -18,12 +18,8 @@
             <holder>Rackspace US, Inc.</holder>
         </copyright>
 	<raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-	  <raxm:types>
-	    <raxm:type>tutorial</raxm:type>
-	  </raxm:types>
-	  <raxm:products>
-	    <raxm:product>clb</raxm:product>
-	  </raxm:products>
+	  <raxm:type>tutorial</raxm:type>
+	  <raxm:product>loadbalancers</raxm:product>
 	  <raxm:priority>1</raxm:priority>
 	</raxm:metadata> 
     </info>

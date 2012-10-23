@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:accountLoadBalancers xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0" accountId="1106">
-    <ns2:accountLoadBalancer
-            loadBalancerId="61"
-            loadBalancerName="test1"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTP"
-            status="DELETED"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="62"
-            loadBalancerName="test2"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTPS"
-            status="DELETED"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="66"
-            loadBalancerName="My first loadbalancer"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTP"
-            status="ACTIVE"/>
-    <ns2:accountLoadBalancer
-            loadBalancerId="75"
-            loadBalancerName="test3"
-            clusterId="1"
-            clusterName="Cluster Delta"
-            protocol="HTTPS"
-            status="DELETED"/>
+<ns2:accountLoadBalancers xmlns:ns2="http://docs.openstack.org/loadbalancers/api/management/v1.0" accountId="5805065">
+    <ns2:accountLoadBalancer loadBalancerId="321" loadBalancerName="a-new-loadbalancer" clusterId="1" clusterName="DEV"
+                              protocol="HTTP" status="BUILD"/>
+    <ns2:accountLoadBalancer loadBalancerId="322" loadBalancerName="a-new-loadbalancer" clusterId="1" clusterName="DEV"
+                              protocol="HTTP" status="ACTIVE"/>
 </ns2:accountLoadBalancers>

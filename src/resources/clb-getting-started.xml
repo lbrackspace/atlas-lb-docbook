@@ -147,9 +147,9 @@
             </revision>           
         </revhistory>
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-      <raxm:type>tutorial</raxm:type>
-      <raxm:product>clb</raxm:product>
-      <raxm:priority>1</raxm:priority>
+      <raxm:displayname>Getting Started Guide</raxm:displayname>
+      <raxm:product version="v1.0">loadbalancers</raxm:product>
+      <raxm:priority>10</raxm:priority>
     </raxm:metadata> 
     </info>
     <chapter xml:id="DB_Doc_Change_History">

@@ -11,19 +11,6 @@
         <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
         <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 
-        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Check_mark_23x20_02.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
-
-        <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-        <imageobject>
-        <imagedata fileref="img/Arrow_east.svg"
-        format="SVG" scale="60"/>
-        </imageobject>
-        </inlinemediaobject>'>
         ]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -287,6 +274,11 @@
                 </revdescription>
             </revision>
         </revhistory>
+	<raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	  <raxm:displayname>API Management Developer Guide</raxm:displayname>
+	  <raxm:product version="v1.0">loadbalancers</raxm:product>
+	  <raxm:priority>30</raxm:priority>
+	</raxm:metadata> 
     </info>
     <chapter xml:id="Overview-d1e85">
         <title>Overview</title>
@@ -331,7 +323,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>apiref-mgmt</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>1</raxm:priority>
             </raxm:metadata> 
         </info>
@@ -1429,7 +1421,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>apiref-mgmt</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>2</raxm:priority>
             </raxm:metadata> 
         </info>
@@ -1691,6 +1683,14 @@
                     </tr>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
+                        <td colspan="4">
+                            /accounts/<parameter>accountId</parameter>/extendedloadbalancers
+                        </td>
+                        <td colspan="4">Retrieve a list of load balancers on this account with extended details including virtual IPs.</td>
+                        <td colspan="2">Support, Service Admin</td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">&GET;</td>
                         <td colspan="4"
                                 >/accounts/billing?startTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
                             <parameter>HH</parameter>:<parameter>mm</parameter>:<parameter>ss</parameter>&amp;endTime=<parameter>YYYY</parameter>-<parameter>MM</parameter>-<parameter>DD</parameter>T
@@ -1750,6 +1750,24 @@
                 <title>List Account Load Balancers Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-account-loadbalancers.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Account Load Balancers Response: JSON</title>
+                <programlisting language="json">
+<xi:include href="samples/lb-list-account-loadbalancers.json" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Extended Account Load Balancers Response: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-account-loadbalancers-extended.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Extended Account Load Balancers Response: JSON</title>
+                <programlisting language="json">
+<xi:include href="samples/lb-list-account-loadbalancers-extended.json" parse="text"/>
                 </programlisting>
             </example>
             <example>
@@ -2583,7 +2601,7 @@
         <info>
             <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
                 <raxm:type>concept</raxm:type>
-                <raxm:product version="v1.0">clb</raxm:product>
+                <raxm:product version="v1.0">loadbalancers</raxm:product>
                 <raxm:priority>2</raxm:priority>
             </raxm:metadata> 
         </info>

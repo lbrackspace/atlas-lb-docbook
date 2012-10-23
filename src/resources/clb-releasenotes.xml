@@ -45,6 +45,12 @@
 				</revdescription>
 			</revision>
 			<revision>
+				<date>2012-10-20</date>
+				<revdescription>
+					<para>Updated for v1.15.23.</para>
+				</revdescription>
+			</revision>
+            <revision>
 				<date>2012-10-09</date>
 				<revdescription>
 					<para>Updated for v1.15.17.</para>
@@ -123,6 +129,11 @@
 				</revdescription>
 			</revision>
     	</revhistory>
+    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+      <raxm:displayname>Release Notes</raxm:displayname>
+      <raxm:product version="v1.0">loadbalancers</raxm:product>
+      <raxm:priority>10</raxm:priority>
+    </raxm:metadata> 
     </info>
 	<chapter xml:id="doc_change_history">
 		<title>Document Change History</title>
@@ -131,16 +142,27 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.15.19" security="internal">
-		<title>v1.15.19, October 25, 2012 </title>
+    <chapter xml:id="clbv1.15.20">
+		<title>v1.15.20, October 20, 2012 </title>
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>New Features</title>
 			<listitem>
-				<para>Updated PTR record management for load balancer CRUD
-					operations.</para>
+				<para><link security="internal" xlink:href="https://?"
+						>V1-B-34873</link>Added additional call for
+					management account load balancers
+					(extendedAccountLoadBalancers) that retrieves
+					required data for accountLoadBalancers plus
+					virtualIps.</para>
 			</listitem>
 		</itemizedlist>
-		<itemizedlist>
+    	<itemizedlist>
+    		<title>Resolved Issues</title>
+    		<listitem>
+    			<para>Updated PTR record management for load balancer CRUD
+    				operations.</para>
+    		</listitem>
+		</itemizedlist>
+    	<itemizedlist>
 			<title>Resources</title>
 			<listitem>
 				<para><link
