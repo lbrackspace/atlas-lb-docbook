@@ -4007,6 +4007,65 @@
                     identified as potential failures for this request
                 </para>
             </section>
+            <section xml:id="Node-Events-d1e264">
+                <title>View Node Service Events</title>
+                <informaltable rules="all">
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Verb</td>
+                            <td colspan="3">URI</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">
+                                &GET;
+                            </td>
+                            <td colspan="3">/loadbalancers/<parameter>loadBalancerId</parameter>/nodes/events
+                            </td>
+                            <td colspan="3">Retrieve node service events.</td>
+                        </tr>
+                    </tbody>
+                </informaltable>
+                <para>
+                    Normal Response Code(s):
+                    <returnvalue>200</returnvalue>
+                </para>
+                <simpara>Error Response Code(s): loadbalancerFault (<errorcode>400</errorcode>,
+                    <errorcode>500</errorcode>), serviceUnavailable (<errorcode>503</errorcode>),
+                    unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
+                    overLimit (<errorcode>413</errorcode>)
+                </simpara>
+                <para>
+                    This operation does not require a request body.
+                    The Node Service Events call will retrieve a list of events
+                    associated with the activity between the node and the load balancer.
+                    The events report errors found with the node.
+                    The 'DetailedMessage' provides the detailed reason for the error.
+                    The events can be processed as JSON, XML and ATOM.
+                    This call has pagination and a list limit of 100 events.
+
+                </para>
+                <example>
+                    <title>View Node service events: XML</title>
+                    <programlisting language="xml">
+<                       xi:include href="samples/node-service-events-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>View Node servie events: JSON</title>
+                    <programlisting language="json">
+                            <xi:include href="samples/node-service-events-response.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>View Node service events: ATOM</title>
+                    <programlisting language="json">
+                            <xi:include href="samples/node-service-events-atom-feed.xml" parse="text"/>
+                    </programlisting>
+                </example>
+            </section>
         </section>
 
         <section xml:id="Virtual_IPs-d1e2754">
