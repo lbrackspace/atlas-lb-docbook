@@ -6,6 +6,7 @@
         "port": 80,
         "algorithm":"RANDOM",
         "status":"ACTIVE",
+        "timeout": 30,
         "connectionLogging":{
             "enabled":true
         },

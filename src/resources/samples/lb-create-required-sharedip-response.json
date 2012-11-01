@@ -6,6 +6,7 @@
         "port": 83,
         "algorithm": "RANDOM",
         "status": "BUILD",
+        "timeout": 30,
         "cluster": {
             "name": "ztm-n01.staging1.lbaas.rackspace.net"
         },

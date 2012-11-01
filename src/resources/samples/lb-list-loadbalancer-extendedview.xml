@@ -7,6 +7,7 @@
         port="80"
         algorithm="RANDOM"
         status="ACTIVE"
+        timeout="30"
         totalActiveConnections="340"
         ipv4Servicenet="10.0.0.0"
         ipv4Public="1.2.3.4"

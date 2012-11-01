@@ -6,6 +6,7 @@
         "protocol":"HTTP",
         "algorithm":"RANDOM",
         "status":"BUILD",
+        "timeout": 30,
         "cluster":{
             "name":"host2_cluster1"
         },

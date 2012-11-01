@@ -4,7 +4,8 @@
     algorithm="RANDOM"
     protocol="HTTP"
     port="83"
-    status="BUILD">
+    status="BUILD"
+    timeout="30">
     <virtualIps>
         <virtualIp
             id="39"

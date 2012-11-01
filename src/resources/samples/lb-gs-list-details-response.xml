@@ -4,7 +4,8 @@
     protocol="HTTP"
     port="80"
     algorithm="RANDOM"
-    status="ACTIVE">
+    status="ACTIVE"
+    timeout="30">
     <connectionLogging enabled="false" />
     <virtualIps>
         <virtualIp

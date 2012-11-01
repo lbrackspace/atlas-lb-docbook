@@ -2673,6 +2673,13 @@
                             <td colspan="1">No</td>
                         </tr>
                         <tr>
+                            <td colspan="1">timeout</td>
+                            <td colspan="3">The timeout value for
+                                the load balancer and communications with its nodes.
+                                Defaults to 30 seconds with a max 120 seconds. </td>
+                            <td colspan="1">No</td>
+                        </tr>
+                        <tr>
                             <td colspan="1">sessionPersistence</td>
                             <td colspan="3">Specifies whether multiple
                                 requests from clients are directed to
@@ -2919,6 +2926,11 @@
                             <code>port</code>
                         </para>
                     </listitem>
+                    <listitem>
+                        <para>
+                            <code>timeout</code>
+                        </para>
+                    </listitem>
                 </itemizedlist>
                 <para>
                     This operation does not return a response body.
@@ -2987,6 +2999,14 @@
                             <td colspan="1">port</td>
                             <td colspan="3">Port number for the
                                 service you are load balancing.</td>
+                            <td colspan="1">No</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1">timeout</td>
+                            <td colspan="3">The timeout value for
+                                the load balancer and communications with its nodes.
+                                Defaults to 30 seconds with a max 120 seconds.</td>
                             <td colspan="1">No</td>
                         </tr>
                         
