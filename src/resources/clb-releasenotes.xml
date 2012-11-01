@@ -38,6 +38,12 @@
         	</para>
         </abstract>
     	<revhistory>
+            <revision security="internal">
+				<date>2012-11-06</date>
+				<revdescription>
+					<para>Updated for v1.16.0.</para>
+				</revdescription>
+			</revision>
 			<revision security="internal">
 				<date>2012-10-25</date>
 				<revdescription>
@@ -135,6 +141,38 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+    <chapter xml:id="clbv1.16.0" security="internal">
+		<title>v1.16.0, November 6, 2012 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><link security="internal"
+						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/?"
+						>B-?: </link>Added Health Monitoring based logging with ATOM and API formatted feeds.
+                        See: 4.4.5. View Node Service Events</para>
+			</listitem>
+            <listitem>
+				<para><link security="internal"
+						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/?"
+						>B-?: </link>Added timeout option to load balancer.
+                        See: 4.1.3. Create Load Balancer for description of timeout and usage</para>
+			</listitem>
+		</itemizedlist>
+    	<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
     <chapter xml:id="clbv1.15.22" security="internal">
 		<title>v1.15.22, October 25, 2012 </title>
