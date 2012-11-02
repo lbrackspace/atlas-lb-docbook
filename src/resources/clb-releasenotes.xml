@@ -159,6 +159,13 @@
                         See: 4.1.3. Create Load Balancer for description of timeout and usage</para>
 			</listitem>
 		</itemizedlist>
+        <itemizedlist>
+    		<title>Resolved Issues</title>
+    		<listitem>
+    			<para>Updated Shared Ips section 4.1.3 with samples for
+                      ipv4/ipv6 combonations. </para>
+    		</listitem>
+		</itemizedlist>
     	<itemizedlist>
 			<title>Resources</title>
 			<listitem>
