@@ -2862,6 +2862,33 @@
 <xi:include href="samples/lb-create-required-sharedip-response.json" parse="text"/>
                     </programlisting>
                 </example>
+                <example>
+                    <title>Create Load Balancer (Required Attributes with Shared IPV4 and IPV6) Request: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-create-required-shared-ipv4-ipv6-request.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Create Load Balancer (Required Attributes with Shared IPV4 and IPV6) Request: JSON</title>
+                    <?dbfo keep-together="always"?>
+                    <programlisting language="json">
+<xi:include href="samples/lb-create-required-shared-ipv4-ipv6-request.json" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Create Load Balancer (Required Attributes with Shared IPV4 and IPV6) Response: XML</title>
+                    <programlisting language="xml">
+<xi:include href="samples/lb-create-required-shared-ipv4-ipv6-response.xml" parse="text"/>
+                    </programlisting>
+                </example>
+                <example>
+                    <title>Create Load Balancer (Required Attributes with Shared IPV4 and IPV6) Response:
+                        JSON
+                    </title>
+                    <programlisting language="json">
+<xi:include href="samples/lb-create-required-shared-ipv4-ipv6-response.json" parse="text"/>
+                    </programlisting>
+                </example>
             </section>
             <section xml:id="Update_Load_Balancer_Attributes-d1e1812">
                 <title>Update Load Balancer Attributes</title>
