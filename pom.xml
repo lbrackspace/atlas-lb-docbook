@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rackspace.cloud.apidocs</groupId>
-    <artifactId>cloud-loadbalancers</artifactId>
+    <artifactId>loadbalancers-docs</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>Loadbalancing Public API Spec</name>
     <packaging>jar</packaging>
@@ -169,15 +169,4 @@
     <scm>
         <connection>scm:git:ssh://git@github.com:lbrackspace/atlas-lb-docbook.git</connection>
     </scm>
-    <distributionManagement>
-        <site>
-            <id>docs-stagging</id>
-            <url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-        </site>
-        <repository>
-            <id>docs-stagging</id>
-            <name>docs-stagging</name>
-            <url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-        </repository>
-    </distributionManagement>
 </project>
