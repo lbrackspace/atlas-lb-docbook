@@ -48,7 +48,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-10-25</pubdate>
+        <pubdate>2012-11-08</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,6 +61,40 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-11-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated <xref
+                                   linkend="Paginated_Collections-d1e786"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added <code>timeout</code> option to
+                                load balancer. Refer to <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                /> for the description of
+                                   <code>timeout</code> and its
+                                usage.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated Shared IPs information with
+                                samples for IPv4/IPv6 combinations.
+                                Refer to <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added section for Health Monitoring
+                                based logging with ATOM and API
+                                formatted feeds. Refer to <xref
+                                   linkend="Node-Events-d1e264"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-10-25</date>
                 <revdescription>
@@ -1554,18 +1588,37 @@
         </section>
         <section xml:id="Paginated_Collections-d1e786">
             <title>Paginated Collections</title>
-            <para>To reduce load on the service, list operations will return a maximum of 100 items
-                at a time. To navigate the collection, the
-                <code>limit</code>
-                and
-                <code>marker</code>
-                parameters (for example,
-                <code>?limit=50&amp;marker=1</code>
-                ) can be set in the URI. If a marker beyond the end of a list is given, an empty list is
-                returned. Note that list operations never return
-                <returnvalue>404</returnvalue>
-                (itemNotFound) faults.
-            </para>
+            <para>To reduce load on the service, list operations will
+                return a maximum limit of 100 items at a time. This is
+                referred to as <emphasis>pagination</emphasis>. If a
+                request supplies no limit or one that exceeds the
+                configured default limit, the default is used
+                instead.</para>
+            <para>Pagination provides the ability to limit the size of
+                the returned data as well as retrieve a specified
+                subset of a large data set. Pagination has two key
+                concepts: limit and marker. <emphasis>Limit</emphasis>
+                is the restriction on the maximum number of items for
+                that type that can be returned.
+                    <emphasis>Marker</emphasis> is a reference to an
+                object's id and will begin the list of paged results
+                at that particular resource. In this case, the
+                resource is a load balancer, so the marker will be the
+                load balancer id at which to begin the list of the
+                paged results. To navigate the collection, the
+                    <code>limit</code> and <code>marker</code>
+                parameters can be set in the URI. For example,
+                    <code>?limit=10&amp;marker=1234</code> will
+                display a maximum of 10 load balancers in the
+                paginated results, beginning with the load balancer
+                whose id is 1234.</para>
+            <para>There is also an <code>offset</code> parameter that
+                can be used as a count of the number of objects from
+                where the paginated list will be started.</para>
+            <para> If a marker beyond the end of a list is given, an
+                empty list is returned. Note that list operations
+                never return <returnvalue>404</returnvalue>
+                (itemNotFound) faults. </para>
         </section>
         <section xml:id="Limits-d1e807">
             <title>Limits</title>
@@ -2674,9 +2727,10 @@
                         </tr>
                         <tr>
                             <td colspan="1">timeout</td>
-                            <td colspan="3">The timeout value for
-                                the load balancer and communications with its nodes.
-                                Defaults to 30 seconds with a max 120 seconds. </td>
+                            <td colspan="3">The timeout value for the
+                                load balancer and communications with
+                                its nodes. Defaults to 30 seconds with
+                                a maximum of 120 seconds. </td>
                             <td colspan="1">No</td>
                         </tr>
                         <tr>
@@ -2802,36 +2856,36 @@
                     recommends sharing Virtual IPs between your load
                     balancers. If you have at least one load balancer,
                     you may create subsequent load balancers that
-                    share a single virtual IPV4 and/or a single IPV6 by issuing a &POST; and
-                    supplying a virtual IP ID instead of a type.
-                    Additionally, this feature is highly desirable if
-                    you wish to load balance both an unsecured and
-                    secure protocol using one IP or DNS name. For
-                    example, this method makes it possible to use the
-                    same load balancing configuration to support
-                        <code>HTTP</code> and<code>HTTPS</code>. </para>
+                    share a single virtual IPv4 and/or a single IPv6
+                    by issuing a &POST; and supplying a virtual IP ID
+                    instead of a type. Additionally, this feature is
+                    highly desirable if you wish to load balance both
+                    an unsecured and secure protocol using one IP or
+                    DNS name. For example, this method makes it
+                    possible to use the same load balancing
+                    configuration to support <code>HTTP</code>
+                        and<code>HTTPS</code>. </para>
                 <note>
                     <title>Notes</title>
                     <itemizedlist>
                         <listitem>
-                            <para> Load balancers sharing a Virtual IP
+                            <para>Load balancers sharing a Virtual IP
                                    <emphasis>must</emphasis> utilize a
                                 unique port. Also, to share both an
-                                IPV4 as well as an IPV6, you must
+                                IPv4 as well as an IPv6, you must
                                 supply an extra <code>virtualIp</code>
                                 object to the <code>virtualIps</code>
                                 container with the desired
-                                   <code>ID</code> being shared.
-                            </para>
+                                   <code>ID</code> being shared. </para>
                         </listitem>
                         <listitem>
-                            <para> In addition, load balancers sharing
+                            <para>In addition, load balancers sharing
                                 Virtual IPs can utilize certain
                                 compatible TCP/UDP and DNS based
                                 protocols on the same port. Please see
                                    <xref
                                    linkend="Compatible_Load_Balancing_Protocols-d1e4269"
-                                /> for more details. </para>
+                                /> for more details.</para>
                         </listitem>
                     </itemizedlist>
                 </note>
@@ -4054,16 +4108,19 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>
-                    This operation does not require a request body.
-                    To batch delete nodes, provide a query parameter list of node ids. For example:
-                    /nodes?id=<parameter>nodeId</parameter>&amp;id=
-                    <parameter>nodeId</parameter>
-                    The current default limit is ten ids per request. Any and all configuration data is immediately
-                    purged and is not recoverable. By chance if one of the items in the list cannot be removed due
-                    to its current status a 400:BadRequest is returned along with the ids of the ones the system
-                    identified as potential failures for this request
-                </para>
+                <para>To batch delete nodes, provide a query parameter
+                    list of node ids. For example:
+                        /nodes?id=<parameter>nodeId</parameter>&amp;id=
+                        <parameter>nodeId</parameter> The current
+                    default limit is ten ids per request. Any and all
+                    configuration data is immediately purged and is
+                    not recoverable. By chance if one of the items in
+                    the list cannot be removed due to its current
+                    status a 400:BadRequest is returned along with the
+                    ids of the ones the system identified as potential
+                    failures for this request </para>
+                <para>This operation does not require a request
+                    body.</para>
             </section>
             <section xml:id="Node-Events-d1e264">
                 <title>View Node Service Events</title>
@@ -4095,17 +4152,17 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>
-                    This operation does not require a request body.
-                    The Node Service Events call will retrieve a list of events
-                    associated with the activity between the node and the load balancer.
-
-                    The events report errors found with the node.
-                    The 'DetailedMessage' provides the detailed reason for the error.
-                    The events can be processed as JSON, XML and ATOM.
-                    This call has pagination and a list limit of 100 events.
-                    Events will be stored for 90 days.
-                </para>
+                <para>The View Node Service Events call will retrieve
+                    a list of events associated with the activity
+                    between the node and the load balancer. The events
+                    report errors found with the node. The
+                        <code>detailedMessage</code> provides the
+                    detailed reason for the error. The events can be
+                    processed as JSON, XML, and ATOM. This call has
+                    pagination and a list limit of 100 events. Events
+                    will be stored for 90 days. </para>
+                <para> This operation does not require a request
+                    body.</para>
                 <example>
                     <title>View Node Service Events: XML</title>
                     <programlisting language="xml">
