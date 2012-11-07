@@ -4107,19 +4107,19 @@
                     Events will be stored for 90 days.
                 </para>
                 <example>
-                    <title>View Node service events: XML</title>
+                    <title>View Node Service Events: XML</title>
                     <programlisting language="xml">
                         <xi:include href="samples/node-service-events-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>View Node servie events: JSON</title>
+                    <title>View Node Service Events: JSON</title>
                     <programlisting language="json">
                         <xi:include href="samples/node-service-events-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>View Node service events: ATOM</title>
+                    <title>View Node Service Events: ATOM</title>
                     <programlisting language="json">
                         <xi:include href="samples/node-service-events-atom-feed.xml" parse="text"/>
                     </programlisting>
