@@ -2863,8 +2863,8 @@
                     an unsecured and secure protocol using one IP or
                     DNS name. For example, this method makes it
                     possible to use the same load balancing
-                    configuration to support <code>HTTP</code>
-                        and<code>HTTPS</code>. </para>
+                    configuration to support <code>HTTP</code> and
+                        <code>HTTPS</code>. </para>
                 <note>
                     <title>Notes</title>
                     <itemizedlist>
