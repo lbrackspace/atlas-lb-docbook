@@ -38,6 +38,12 @@
         	</para>
         </abstract>
     	<revhistory>
+            <revision security="internal">
+				<date>2012-11-20</date>
+				<revdescription>
+					<para>Updated for v1.16.7.</para>
+				</revdescription>
+			</revision>
             <revision>
 				<date>2012-11-08</date>
 				<revdescription>
@@ -141,6 +147,36 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+    <chapter xml:id="clbv1.16.7">
+		<title>v1.16.7, November 20, 2012 </title>
+        <itemizedlist>
+    		<title>Resolved Issues</title>
+    		<listitem>
+    			<para>Update USL entry with resourceName attribute for BRM. <link
+						xlink:href=""link</link>
+					for details.</para>
+    		</listitem>
+        <listitem>
+    			<para>Support can no longer 'sync' a suspended load balancer. <link
+						xlink:href=""link</link>
+					for details.</para>
+    		</listitem>
+		</itemizedlist>
+    	<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
     <chapter xml:id="clbv1.16.4">
 		<title>v1.16.4, November 8, 2012 </title>
