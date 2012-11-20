@@ -167,8 +167,8 @@
 					through.</para>
     		</listitem>
 			<listitem>
-				<para>HTTP request log format change to add backend
-					node connected to.</para>
+				<para>Added HTTP request logging format change to include the node
+					that was used for the connection.</para>
 			</listitem>
 		</itemizedlist>
     	<itemizedlist>
