@@ -41,7 +41,7 @@
             <revision security="internal">
 				<date>2012-11-20</date>
 				<revdescription>
-					<para>Updated for v1.16.7.</para>
+					<para>Updated for v1.16.8.</para>
 				</revdescription>
 			</revision>
             <revision>
@@ -148,8 +148,8 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.16.7" security="internal">
-		<title>v1.16.7, November 20, 2012 </title>
+	<chapter xml:id="clbv1.16.8" security="internal">
+		<title>v1.16.8, November 20, 2012 </title>
         <itemizedlist>
     		<title>Resolved Issues</title>
     		<listitem>
@@ -166,6 +166,10 @@
 					reduce the amount of logs that OPS has to sift
 					through.</para>
     		</listitem>
+			<listitem>
+				<para>HTTP request log format change to add backend
+					node connected to.</para>
+			</listitem>
 		</itemizedlist>
     	<itemizedlist>
 			<title>Resources</title>
