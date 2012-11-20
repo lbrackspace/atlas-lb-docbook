@@ -160,6 +160,11 @@
     			<para>Support can no longer 'sync' a suspended load
 					balancer.</para>
     		</listitem>
+            <listitem>
+    			<para>Update removal of >90 days old lbs to properly
+                    handle no ssl termination, this will reduce the amount of
+                    logs OPS has to sift through. </para>
+    		</listitem>
 		</itemizedlist>
     	<itemizedlist>
 			<title>Resources</title>
