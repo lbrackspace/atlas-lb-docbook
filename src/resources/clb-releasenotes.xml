@@ -161,9 +161,10 @@
 					balancer.</para>
     		</listitem>
             <listitem>
-    			<para>Update removal of >90 days old lbs to properly
-                    handle no ssl termination, this will reduce the amount of
-                    logs OPS has to sift through. </para>
+    			<para>Updated removal of load balancers more than 90 days old
+					to properly handle no SSL Termination. This will
+					reduce the amount of logs that OPS has to sift
+					through.</para>
     		</listitem>
 		</itemizedlist>
     	<itemizedlist>
