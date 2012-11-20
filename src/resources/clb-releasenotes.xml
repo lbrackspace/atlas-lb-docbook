@@ -25,7 +25,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2012-11-08</pubdate>
+	<pubdate>2012-11-20</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -148,19 +148,17 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-    <chapter xml:id="clbv1.16.7">
+	<chapter xml:id="clbv1.16.7" security="internal">
 		<title>v1.16.7, November 20, 2012 </title>
         <itemizedlist>
     		<title>Resolved Issues</title>
     		<listitem>
-    			<para>Update USL entry with resourceName attribute for BRM. <link
-						xlink:href=""></link>
-					for details.</para>
+    			<para>Updated USL entry with resourceName attribute for
+					BRM.</para>
     		</listitem>
         <listitem>
-    			<para>Support can no longer 'sync' a suspended load balancer. <link
-						xlink:href=""></link>
-					for details.</para>
+    			<para>Support can no longer 'sync' a suspended load
+					balancer.</para>
     		</listitem>
 		</itemizedlist>
     	<itemizedlist>

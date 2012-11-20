@@ -48,7 +48,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-11-08</pubdate>
+        <pubdate>2012-11-20</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,6 +61,23 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2012-11-20</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Updated note for specifying
+                                attributes for connection throttling
+                                (refer to <xref
+                                   linkend="Throttle_Connections-d1e4057"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-11-08</date>
                 <revdescription>
@@ -3749,7 +3766,9 @@
                     nodes. The type attribute allows configuring the
                     node as either PRIMARY or SECONDARY.</para>
                 <para>Domain names are also accepted with certain
-                    restrictions.</para>
+                    restrictions. Refer to <xref
+                        linkend="List-allowed-domains-d2f002e"/> for
+                    additional details.</para>
                 <para>The following table lists the required and
                     optional attributes for Add Nodes:</para>
                 <table rules="all">
@@ -3824,9 +3843,6 @@
                         
                     </tbody>
                 </table>
-                <para>See the examples below, and refer to <xref
-                        linkend="List-allowed-domains-d2f002e"/> for
-                    additional details.</para>
 
                 <para security="writeronly">Writer: need to update the
                     example below from the "Next Release /
@@ -5458,10 +5474,10 @@
                     </tbody>
                 </table>
                 <note>
-                    <para><emphasis>At least one</emphasis> of the
-                        required attributes must be specified in the
-                        Update Throttling Configuration
-                        request.</para>
+                    <para> You need to specify all of the attributes
+                        when initially creating the connection
+                        throttle, however when you update an existing
+                        setting you can pass as few as one attribute. </para>
                 </note>
                 <example>
                     <title>List Connection Throttling Configuration Response: XML</title>
