@@ -3,6 +3,7 @@
         "name": "a-new-loadbalancer",
         "id": 144,
         "protocol": "HTTP",
+        "halfClosed": "true",
         "port": 83,
         "algorithm": "RANDOM",
         "status": "BUILD",

@@ -186,6 +186,43 @@
 			</listitem>
 		</itemizedlist>
 	</chapter>
+    <chapter xml:id="clbv1.16.12">
+		<title>v1.16.12, December 20, 2012 </title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><link security="internal"
+						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/????"
+						>B-????: </link>Added Half-Closed support on the load balancer. <link
+						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/????"
+						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/????</link>
+					for details.</para>
+			</listitem>
+		</itemizedlist>
+        <itemizedlist>
+    		<title>Resolved Issues</title>
+    		<listitem>
+    			<para>Timeout not being mapped until value set. Timeout value now visible with default. <link
+						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/???"
+						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/???</link>
+					for details.</para>
+    		</listitem>
+		</itemizedlist>
+    	<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
     <chapter xml:id="clbv1.16.4">
 		<title>v1.16.4, November 8, 2012 </title>
 		<itemizedlist>

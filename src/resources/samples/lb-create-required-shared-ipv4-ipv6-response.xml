@@ -3,6 +3,7 @@
     name="a-new-loadbalancer"
     algorithm="RANDOM"
     protocol="HTTP"
+    halfclosed="false"
     port="83"
     status="BUILD"
     timeout="30">

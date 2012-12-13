@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0" id="2198" name="a-new-loadbalancer"
-              algorithm="RANDOM" protocol="HTTP" port="80" status="BUILD" timeout="30">
+              algorithm="RANDOM" protocol="HTTP" halfClosed="false" port="80" status="BUILD" timeout="30">
     <virtualIps>
         <virtualIp id="13" address="10.0.0.16" ipVersion="IPV4" type="PUBLIC"/>
         <virtualIp id="9000135" address="fd24:f480:ce44:91bc:1af2:15ff:0000:0003" ipVersion="IPV6" type="PUBLIC"/>

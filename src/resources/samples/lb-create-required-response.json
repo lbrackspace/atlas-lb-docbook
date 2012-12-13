@@ -4,6 +4,7 @@
         "id":2200,
         "port":80,
         "protocol":"HTTP",
+        "halfClosed":"false",
         "algorithm":"RANDOM",
         "status":"BUILD",
         "timeout": 30,

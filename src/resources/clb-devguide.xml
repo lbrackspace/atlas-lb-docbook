@@ -2663,6 +2663,12 @@
                             <td colspan="1">Yes</td>
                         </tr>
                         <tr>
+                            <td colspan="1">halfClosed</td>
+                            <td colspan="3">Enable or Disable
+                            Half-Close support for the loadbalancer.</td>
+                            <td colspan="1">No</td>
+                        </tr>
+                        <tr>
                             <td colspan="1">virtualIps</td>
                             <td colspan="3">Type of virtualIp to add
                                 along with the creation of a load
@@ -3021,6 +3027,11 @@
                     </listitem>
                     <listitem>
                         <para>
+                            <code>halfClosed</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
                             <code>port</code>
                         </para>
                     </listitem>
@@ -3079,6 +3090,16 @@
                                    <xref linkend="Protocols-d1e4264"/>
                                 for a table of available
                                 protocols.</td>
+                            <td colspan="1">No</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">halfClosed</td>
+                            <td colspan="3">Half-Closed support
+                                provides the ability for one end
+                                of the connection to terminate its
+                                output, while still receiving data
+                                from the other end. Only available
+                                for TCP/TCP_CLIENT_FIRST protocols.</td>
                             <td colspan="1">No</td>
                         </tr>
                         
