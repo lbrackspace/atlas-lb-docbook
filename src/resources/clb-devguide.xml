@@ -6038,6 +6038,7 @@
                     (<errorcode>401</errorcode>), badRequest
                     (<errorcode>400</errorcode>), overLimit
                     (<errorcode>413</errorcode>), itemNotFound
+                    (<errorcode>422</errorcode>), unprocessableEntity
                     (<errorcode>404</errorcode>) </simpara>
             <para> The SSL Termination feature allows a load balancer
                 user to terminate SSL traffic at the load balancer
