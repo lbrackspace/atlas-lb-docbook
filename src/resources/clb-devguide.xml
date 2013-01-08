@@ -44,11 +44,12 @@
             <year>2010</year>
             <year>2011</year>
             <year>2012</year>
+            <year>2013</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-11-20</pubdate>
+        <pubdate>2013-01-08</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -61,6 +62,24 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-01-08</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added Half-Closed support for load
+                                balancers (refer to <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                /> and <xref
+                                   linkend="Update_Load_Balancer_Attributes-d1e1812"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-11-20</date>
                 <revdescription>
@@ -2665,7 +2684,13 @@
                         <tr>
                             <td colspan="1">halfClosed</td>
                             <td colspan="3">Enable or Disable
-                            Half-Close support for the loadbalancer.</td>
+                                Half-Closed support for the load
+                                balancer. Half-Closed support provides
+                                the ability for one end of the
+                                connection to terminate its output,
+                                while still receiving data from the
+                                other end. Only available for
+                                TCP/TCP_CLIENT_FIRST protocols.</td>
                             <td colspan="1">No</td>
                         </tr>
                         <tr>
@@ -3094,12 +3119,9 @@
                         </tr>
                         <tr>
                             <td colspan="1">halfClosed</td>
-                            <td colspan="3">Half-Closed support
-                                provides the ability for one end
-                                of the connection to terminate its
-                                output, while still receiving data
-                                from the other end. Only available
-                                for TCP/TCP_CLIENT_FIRST protocols.</td>
+                            <td colspan="3">Enable or Disable
+                                Half-Closed support for the load
+                                balancer.</td>
                             <td colspan="1">No</td>
                         </tr>
                         
@@ -6038,8 +6060,8 @@
                     (<errorcode>401</errorcode>), badRequest
                     (<errorcode>400</errorcode>), overLimit
                     (<errorcode>413</errorcode>), itemNotFound
-                    (<errorcode>422</errorcode>), unprocessableEntity
-                    (<errorcode>404</errorcode>) </simpara>
+                    (<errorcode>404</errorcode>), unprocessableEntity
+                    (<errorcode>422</errorcode>)</simpara>
             <para> The SSL Termination feature allows a load balancer
                 user to terminate SSL traffic at the load balancer
                 layer versus at the web server layer. A user may

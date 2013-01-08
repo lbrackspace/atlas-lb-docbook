@@ -21,11 +21,12 @@
 			<year>2010</year>
 			<year>2011</year>
 			<year>2012</year>
+			<year>2013</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2012-11-20</pubdate>
+	<pubdate>2013-01-08</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -38,6 +39,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision>
+				<date>2013-01-08</date>
+				<revdescription>
+					<para>Updated for v1.16.11.</para>
+				</revdescription>
+			</revision>
             <revision security="internal">
 				<date>2012-11-20</date>
 				<revdescription>
@@ -148,6 +155,53 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
+	<chapter xml:id="clbv1.16.11">
+		<title>v1.16.11, January 8, 2013</title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><link security="internal"
+					xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/Summary?oidToken=Story:259986"
+						>B-27058: </link>Added Half-Closed support on
+					the load balancer. Refer to <link
+						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Create_Load_Balancer-d1e1635.html"
+						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Create_Load_Balancer-d1e1635.html</link>
+					and <link
+						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Update_Load_Balancer_Attributes-d1e1812.html"
+						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Update_Load_Balancer_Attributes-d1e1812.html</link>
+					for details.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para><link security="internal"
+						xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A493905"
+						>D-10314: </link>Timeout was previously not
+					being mapped until the user set its value. This
+					has been fixed so a default timeout value is now
+					mapped and displayed in the response if the user
+					has not set the value. Refer to <link
+						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Create_Load_Balancer-d1e1635.html"
+						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/Create_Load_Balancer-d1e1635.html</link>
+					for details about timeout.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
 	<chapter xml:id="clbv1.16.8" security="internal">
 		<title>v1.16.8, November 20, 2012 </title>
         <itemizedlist>
@@ -170,43 +224,6 @@
 				<para>Added HTTP request logging format change to include the node
 					that was used for the connection.</para>
 			</listitem>
-		</itemizedlist>
-    	<itemizedlist>
-			<title>Resources</title>
-			<listitem>
-				<para><link
-						xlink:href="http://docs.rackspace.com/api/"
-						>Cloud Load Balancers Developer
-					Guide</link></para>
-			</listitem>
-			<listitem>
-				<para><link
-						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
-						>Product Feedback Forum</link></para>
-			</listitem>
-		</itemizedlist>
-	</chapter>
-    <chapter xml:id="clbv1.16.12">
-		<title>v1.16.12, December 20, 2012 </title>
-		<itemizedlist>
-			<title>New Features</title>
-			<listitem>
-				<para><link security="internal"
-						xlink:href="https://www15.v1host.com/RACKSPCE/story.mvc/????"
-						>B-????: </link>Added Half-Closed support on the load balancer. <link
-						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/????"
-						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/????</link>
-					for details.</para>
-			</listitem>
-		</itemizedlist>
-        <itemizedlist>
-    		<title>Resolved Issues</title>
-    		<listitem>
-    			<para>Timeout not being mapped until value set. Timeout value now visible with default. <link
-						xlink:href="http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/???"
-						>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content/???</link>
-					for details.</para>
-    		</listitem>
 		</itemizedlist>
     	<itemizedlist>
 			<title>Resources</title>
