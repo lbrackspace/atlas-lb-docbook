@@ -49,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-01-08</pubdate>
+        <pubdate>2013-01-15</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,6 +62,22 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-01-15</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added note about port attribute for
+                                Create Load Balancer (refer to <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-01-08</date>
                 <revdescription>
@@ -2771,7 +2787,8 @@
                             <td colspan="1">port</td>
                             <td colspan="3">Port number for the
                                 service you are load balancing.</td>
-                            <td colspan="1">No</td>
+                            <td colspan="1">Refer to Notes below
+                                table</td>
                         </tr>
                         <tr>
                             <td colspan="1">timeout</td>
@@ -2796,12 +2813,27 @@
                 </table>
                 
                 <note>
-                    <para>
-                        Users may configure all documented features of the load balancer at creation
-                        time by simply providing the additional elements or attributes in the
-                        request. This document provides an overview of all the features the load
-                        balancing service supports.
-                    </para>
+                     <title>Notes</title>
+                    <itemizedlist>
+                        <listitem><para>Users may configure all documented features of the load balancer
+                                at creation time by simply providing
+                                the additional elements or attributes
+                                in the request. This document provides
+                                an overview of all the features the
+                                load balancing service supports. </para>
+                        </listitem>
+                        <listitem><para>Any protocol that is not listed in the List Load Balancing
+                                Protocols Response (see <xref
+                                   linkend="List_Load_Balancing_Protocols-d1e4269"
+                                />), or is in the list but port=0,
+                                requires port to be set. For example
+                                the TCP protocol is in the list,
+                                however it specifies port as 0
+                                   (<code>&lt;protocol name="TCP"
+                                   port="0" /&gt;</code>), therefore
+                                it requires port to be set. </para></listitem>
+                    </itemizedlist>
+                    
                 </note>
                 <para> You must specify the type of virtualIp to add
                     along with the creation of a load balancer. The
