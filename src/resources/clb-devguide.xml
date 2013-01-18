@@ -5639,7 +5639,7 @@
                     xlink:href="http://www.rackspace.com/knowledge_center/content/content-caching-cloud-load-balancers"
                     >Content Caching for Cloud Load
                 Balancers</link>.</para>
-                <para>This operation does not require a request body. </para>
+                <para>This operation does not require a request body for GET requests. </para>
                 <example>
                     <title>List Content Caching Configuration Response: XML</title>
                     <programlisting language="xml">
@@ -5652,14 +5652,16 @@
 <xi:include href="samples/lb-list-content-caching-response.json" parse="text"/>
                     </programlisting>
                 </example>
+
+            <para> You must supply a body for PUT requests, please see examples.</para>
                 <example>
-                    <title>Enable Content Caching Request: XML</title>
+                    <title>Enable Content Caching PUT Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-enable-content-caching-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Enable Content Caching Request: JSON</title>
+                    <title>Enable Content Caching PUT Request: JSON</title>
                     <programlisting language="javascript">
 <xi:include href="samples/lb-enable-content-caching-request.json" parse="text"/>
                     </programlisting>
