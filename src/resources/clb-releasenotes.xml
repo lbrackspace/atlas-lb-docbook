@@ -40,6 +40,12 @@
         </abstract>
     	<revhistory>
     		<revision security="internal">
+				<date>2013-02-05</date>
+				<revdescription>
+					<para>Updated for v1.17.9.</para>
+				</revdescription>
+			</revision>
+            <revision security="internal">
 				<date>2013-01-15</date>
 				<revdescription>
 					<para>Updated for v1.16.14.</para>
@@ -161,7 +167,38 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.16.14" security="internal">
+	<chapter xml:id="clbv1.17.9" security="internal">
+		<title>v1.16.14, January 15, 2013</title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Added Repose Integration. This allows LBaaS to use a scalable
+                    service to maintain authentication and rate limits.
+                </para>
+			</listitem>
+		</itemizedlist>
+        <itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Update XML parsing to verify potential DTD exploits.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+    <chapter xml:id="clbv1.16.14" security="internal">
 		<title>v1.16.14, January 15, 2013</title>
 		<itemizedlist>
 			<title>Resolved Issues</title>
