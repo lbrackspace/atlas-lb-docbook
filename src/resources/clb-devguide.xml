@@ -1086,8 +1086,7 @@
                 <code>X-Auth-Token</code>
                 HTTP header. Customers
                 obtain this token by first using the Rackspace Cloud
-                Authentication Service and supplying a valid username
-                and API access key.
+                Authentication Service and supplying authentiation credentials.
             </para>
             <section xml:id="request">
                 <title>Geographic Endpoints</title>
@@ -1096,7 +1095,7 @@
                     APIs and is itself a ReSTful web service.
                 </para>
                 <para>To access the Authentication Service, you must
-                    know whether your account is US-based or UK-based:
+                    know whether which regioin your account is based:
                 </para>
                 <itemizedlist spacing="compact">
                     <listitem>
@@ -1694,7 +1693,8 @@
             <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to
                 manage capacity and prevent abuse of the system. The system recognizes two kinds of
                 limits: rate limits and absolute limits. Rate limits are thresholds that are reset
-                after a certain amount of time passes. Absolute limits are fixed.
+                after a certain amount of time passes. Absolute limits are fixed. Rate limits are
+                process via the Repose service. Please see: www.openrepose.org
             </para>
             <note>
                 <para>
@@ -1910,7 +1910,7 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="1">/loadbalancers/limits</td>
+                            <td colspan="1">/limits</td>
                             <td colspan="3">Return the current rate limits for the account.</td>
                         </tr>
                         <tr align="left">

@@ -903,9 +903,11 @@
                 permitted to transit a given load balancer. This
                 action can be taken when a particular load balancer is
                 servicing questionable traffic, the victim of a DDoS,
-                and so forth. To define a rate limit, the caller must
-                supply a ticket id, maximum number of connections per
-                second, and an expiration time. </para>
+                and so forth. To define a rate limit, the service admin
+                must make an Auth/Identity v2.0 call to add or remove the user from groups.
+                Please view the Authe Admin API Spec here:
+                http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls.html
+            </para>
             <para>
                 Additionally, rate limit information is returned as part of the "extended details of a load
                 balancer", which is documented below.
@@ -924,21 +926,6 @@
                 </programlisting>
             </example>
             <example>
-                <?dbfo keep-together="always"?>
-                <title>List Active Rate-Limited Load Balancers
-                    Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-ratelimited-loadbalancers.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Active Rate-Limited Load Balancers
-                    Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-list-ratelimited-loadbalancers.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
                 <title>List Non-Standard Absolute Limit Account
                     Response: XML</title>
                 <programlisting language="xml">
@@ -953,69 +940,14 @@
 <xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
                 </programlisting>
             </example>
-            <example>
-                <title>List Non-Standard API Rate-Limited Account
-                    Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-apiratelimit-accounts.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Non-Standard API Rate-Limited Account
-                    Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-list-apiratelimit-accounts.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <?dbfo keep-together="always"?>
-                <title>Set Rate Limit Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-ratelimit-request.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Set Rate Limit Request: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-create-ratelimit-request.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Set Rate Limit Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-create-ratelimit-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Set Rate Limit Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-create-ratelimit-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Rate Limit Request: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-ratelimit-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Rate Limit Request: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Rate Limit Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-update-ratelimit-response.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>Update Rate Limit Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-update-ratelimit-response.json" parse="text"/>
-                </programlisting>
-            </example>
+
+            <para>
+                Addtionally, for more information of how LBaaS rate limits and authentication is
+                handled via Repose service please view the wiki located at:
+                https://one.rackspace.com/display/clb/Cloud+Load+Balancers+Repose+Implementation
+
+                Or for more information regard Repose directly, see here: www.openrepose.org
+            </para>
         </section>
         <section xml:id="Associations_Between_Load_Balancers_and_Host_Machines-d1e1610">
             <title>Associations Between Load Balancers and Host Machines</title>
