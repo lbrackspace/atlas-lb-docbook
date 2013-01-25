@@ -63,6 +63,23 @@
         </abstract>
         <revhistory>
             <revision>
+                <date>2013-01-XX</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added information about request body
+                                for GET and PUT requests for Content
+                                Caching (refer to <xref
+                                   linkend="ContentCaching-d1e3358"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
+            <revision>
                 <date>2013-01-15</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
@@ -5653,7 +5670,8 @@
                     </programlisting>
                 </example>
 
-            <para> You must supply a body for PUT requests, please see examples.</para>
+            <para> You must supply a body for PUT requests, please see
+                the following examples.</para>
                 <example>
                     <title>Enable Content Caching PUT Request: XML</title>
                     <programlisting language="xml">
