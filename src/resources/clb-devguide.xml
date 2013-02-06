@@ -49,7 +49,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-01-15</pubdate>
+        <pubdate>2013-02-05</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -63,7 +63,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2013-01-XX</date>
+                <date>2013-02-05</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem
@@ -75,6 +75,35 @@
                                 Caching (refer to <xref
                                    linkend="ContentCaching-d1e3358"
                                 />).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added information about rate limits
+                                and Repose (refer to <xref
+                                   linkend="Limits-d1e807"/>).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Modified call to get the current
+                                rate limits for the account (refer to
+                                   <xref
+                                   linkend="Determining_Limits_Programmatically-d1e1039"
+                                />).</para>
+                        </listitem>
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added note about the authentication
+                                token's expiration time being
+                                formatted differently in the US and UK
+                                (refer to <xref
+                                   linkend="Authenticate-d1e171"/>
+                                ).</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -1083,11 +1112,10 @@
             <para>Every ReST request against the Load Balancers
                 Service requires the inclusion of a specific
                 authorization token, supplied by the
-                <code>X-Auth-Token</code>
-                HTTP header. Customers
+                    <code>X-Auth-Token</code> HTTP header. Customers
                 obtain this token by first using the Rackspace Cloud
-                Authentication Service and supplying authentiation credentials.
-            </para>
+                Authentication Service and supplying valid
+                authentication credentials. </para>
             <section xml:id="request">
                 <title>Geographic Endpoints</title>
                 <para>The Rackspace Cloud Authentication Service
@@ -1095,8 +1123,7 @@
                     APIs and is itself a ReSTful web service.
                 </para>
                 <para>To access the Authentication Service, you must
-                    know whether which regioin your account is based:
-                </para>
+                    know the region in which your account is based: </para>
                 <itemizedlist spacing="compact">
                     <listitem>
                         <para> US-based accounts authenticate through
@@ -1169,7 +1196,7 @@
                     subscribed rather than the sample values shown
                     here.</para>
                 <example>
-                    <title>Auth Request: XML</title>
+                    <title>Auth Request for US Endpoint: XML</title>
                     <programlistingco>
                         <areaspec>
                             <area xml:id="credentials.xml.user"
@@ -1183,7 +1210,7 @@
                     </programlistingco>
                 </example>
                 <example>
-                    <title>Auth Request: JSON</title>
+                    <title>Auth Request for US Endpoint: JSON</title>
                     <programlistingco>
                         <areaspec>
                             <area xml:id="credentials.json.user"
@@ -1214,7 +1241,7 @@
                     </callout>
                 </calloutlist>
                 <example>
-                    <title>Auth Response: XML</title>
+                    <title>Auth Response for US Endpoint: XML</title>
                     <programlistingco>
                         <areaspec>
                             <area xml:id="response.xml.namespaces" units="linecolumn" coords="7 9"/>
@@ -1233,7 +1260,7 @@
                     </programlistingco>
                 </example>
                 <example xml:id="auth_response_json">
-                    <title>Auth Response: JSON</title>
+                    <title>Auth Response for US Endpoint: JSON</title>
                     <programlistingco>
                         <areaspec>
                             <area xml:id="response.json.namespaces" units="linecolumn" coords="200 1"/>
@@ -1282,6 +1309,15 @@
                             not guarantee that it will reach that
                             lifespan. Clients are encouraged to cache
                             a token until it expires. </para>
+                        <note>
+                            <para>The token's expiration time is
+                                formatted differently in the US and
+                                UK. These response examples show the
+                                US format. For examples of the UK
+                                format please refer to <link
+                                   xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_authenticate_v2.0_tokens_.html"
+                                   >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_authenticate_v2.0_tokens_.html</link>.</para>
+                        </note>
                         <para> </para>
                     </callout>
                     <callout arearefs="response.xml.dfltregion">
@@ -1690,12 +1726,14 @@
         </section>
         <section xml:id="Limits-d1e807">
             <title>Limits</title>
-            <para>All accounts, by default, have a preconfigured set of thresholds (or limits) to
-                manage capacity and prevent abuse of the system. The system recognizes two kinds of
-                limits: rate limits and absolute limits. Rate limits are thresholds that are reset
-                after a certain amount of time passes. Absolute limits are fixed. Rate limits are
-                process via the Repose service. Please see: www.openrepose.org
-            </para>
+            <para>All accounts, by default, have a preconfigured set
+                of thresholds (or limits) to manage capacity and
+                prevent abuse of the system. The system recognizes two
+                kinds of limits: rate limits and absolute limits. Rate
+                limits are thresholds that are reset after a certain
+                amount of time passes. Absolute limits are fixed. Rate
+                limits are processed via the Repose service. Please
+                refer to: <link xlink:href="www.openrepose.org">www.openrepose.org</link>. </para>
             <note>
                 <para>
                     If the default limits are too low for your particular application, please contact
@@ -3388,13 +3426,12 @@
             </section>
             <section xml:id="custom_error_page">
                 <title>Custom Error Page</title>
-                <para>A single custom error page may be added per
-                    account load balancer with an HTTP protocol. Page
+                <para>A single custom error page may be added to a
+                    load balancer with an HTTP-based protocol. Page
                     updates will override existing content. If a
                     custom error page is deleted, or the load balancer
                     is changed to a non-HTTP protocol, the default
-                    error page will be restored.
-                </para>
+                    error page will be restored. </para>
             </section>
 
             <section xml:id="List_Errorpage-d1e2218">
@@ -5670,8 +5707,8 @@
                     </programlisting>
                 </example>
 
-            <para> You must supply a body for PUT requests, please see
-                the following examples.</para>
+            <para> You must supply a body for PUT requests. Please see
+                the following examples:</para>
                 <example>
                     <title>Enable Content Caching PUT Request: XML</title>
                     <programlisting language="xml">
@@ -6171,7 +6208,7 @@
             </warning>
             <para>A combination of the following required and optional
                 attributes can be used to create the desired SSL
-                configuration per account load balancer: </para>
+                configuration per load balancer: </para>
             <para>The following table lists the required and optional
                 attributes for Update/Configure SSL
                 Termination:</para>

@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-01-15</pubdate>
+	<pubdate>2013-02-05</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -168,13 +168,13 @@
 		<?rax revhistory?>
 	</chapter>
 	<chapter xml:id="clbv1.17.9" security="internal">
-		<title>v1.16.14, January 15, 2013</title>
+		<title>v1.17.9, February 5, 2013</title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
-				<para>Added Repose Integration. This allows LBaaS to use a scalable
-                    service to maintain authentication and rate limits.
-                </para>
+				<para>Added Repose integration. This allows the load balancer
+					service to use a scalable service to maintain
+					authentication and rate limits.</para>
 			</listitem>
 		</itemizedlist>
         <itemizedlist>

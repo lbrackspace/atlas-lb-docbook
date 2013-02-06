@@ -38,11 +38,12 @@
             <year>2010</year>
             <year>2011</year>
             <year>2012</year>
+            <year>2013</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-10-25</pubdate>
+        <pubdate>2013-02-05</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -56,6 +57,19 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-02-05</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added information and examples for
+                                rate limits and Repose (see <xref
+                                   linkend="Rate_Limits-d1e1272"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-10-25</date>
                 <revdescription>
@@ -903,11 +917,18 @@
                 permitted to transit a given load balancer. This
                 action can be taken when a particular load balancer is
                 servicing questionable traffic, the victim of a DDoS,
-                and so forth. To define a rate limit, the service admin
-                must make an Auth/Identity v2.0 call to add or remove the user from groups.
-                Please view the Authe Admin API Spec here:
-                http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/GET_listGroups_v2.0_RAX-GRPADM_groups_Group_Calls.html
-            </para>
+                and so forth. </para>
+            <para>To modify a rate limit, the service administrator
+                typically makes an Auth/Identity v2.0 call to remove a
+                user from their previous group (if needed) and then
+                adds the user to a group with the appropriate rate
+                limits for that user. Please refer to the
+                    <citetitle>Cloud Identity Admin Developer
+                    Guide</citetitle> at <link
+                    xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Group_Calls.html"
+                    >http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Group_Calls.html</link>
+                for information about adding and removing users from
+                groups.</para>
             <para>
                 Additionally, rate limit information is returned as part of the "extended details of a load
                 balancer", which is documented below.
@@ -941,13 +962,15 @@
                 </programlisting>
             </example>
 
-            <para>
-                Addtionally, for more information of how LBaaS rate limits and authentication is
-                handled via Repose service please view the wiki located at:
-                https://one.rackspace.com/display/clb/Cloud+Load+Balancers+Repose+Implementation
-
-                Or for more information regard Repose directly, see here: www.openrepose.org
-            </para>
+            <para> Addtionally, for more information on how load
+                balancer rate limits and authentication is handled via
+                the Repose service please see the wiki located at
+                    <link
+                    xlink:href="https://one.rackspace.com/display/clb/Cloud+Load+Balancers+Repose+Implementation"
+                    >https://one.rackspace.com/display/clb/Cloud+Load+Balancers+Repose+Implementation</link>.
+                Or for more information regarding Repose directly,
+                refer to <link xlink:href="www.openrepose.org "
+                    >www.openrepose.org</link>. </para>
         </section>
         <section xml:id="Associations_Between_Load_Balancers_and_Host_Machines-d1e1610">
             <title>Associations Between Load Balancers and Host Machines</title>

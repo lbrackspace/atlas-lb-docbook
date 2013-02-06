@@ -41,17 +41,31 @@
         <copyright>
             <year>2011</year>
             <year>2012</year>
+            <year>2013</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2012-10-25</pubdate>
+        <pubdate>2013-02-05</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2013-02-05</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Corrected cURL Create Load Balancer
+                                Request: XML example (refer to <xref
+                                   linkend="Create_Load_Balancer"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2012-10-25</date>
                 <revdescription>
@@ -768,7 +782,7 @@
         &lt;virtualIp type="PUBLIC"/>
     &lt;/virtualIps>
     &lt;nodes>
-        &lt;node address=<emphasis role="bold">"&lt;IP address of FIRST cloud server>"</emphasis> port="80" condition="ENABLED"
+        &lt;node address=<emphasis role="bold">"&lt;IP address of FIRST cloud server>"</emphasis> port="80" condition="ENABLED"/> 
     &lt;/nodes>
 &lt;/loadBalancer>' \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
