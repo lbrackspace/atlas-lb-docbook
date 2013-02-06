@@ -167,6 +167,30 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
+    <chapter xml:id="clbv1.17.10" security="internal">
+		<title>v1.17.9, February 6, 2013</title>
+        <itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Updating service_event 'Data too long' issue. Allowing for proper deletion
+                after ptr deletion. </para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
 	<chapter xml:id="clbv1.17.9" security="internal">
 		<title>v1.17.9, February 5, 2013</title>
 		<itemizedlist>
