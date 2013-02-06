@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-02-05</pubdate>
+	<pubdate>2013-02-06</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -39,6 +39,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision security="internal">
+				<date>2013-02-06</date>
+				<revdescription>
+					<para>Updated for v1.17.10.</para>
+				</revdescription>
+			</revision>
     		<revision security="internal">
 				<date>2013-02-05</date>
 				<revdescription>
@@ -168,12 +174,15 @@
 		<?rax revhistory?>
 	</chapter>
     <chapter xml:id="clbv1.17.10" security="internal">
-		<title>v1.17.9, February 6, 2013</title>
+		<title>v1.17.10, February 6, 2013</title>
         <itemizedlist>
 			<title>Resolved Issues</title>
 			<listitem>
-				<para>Updating service_event 'Data too long' issue. Allowing for proper deletion
-                after ptr deletion. </para>
+				<para><link security="internal"
+					xlink:href="https://www15.v1host.com/RACKSPCE/defect.mvc/Summary?oidToken=Defect%3A542941"
+						>D-11222: </link>Updating service_event 'Data
+					too long' issue. Allowing for proper deletion
+					after ptr deletion. </para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
