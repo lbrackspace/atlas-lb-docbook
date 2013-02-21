@@ -4971,6 +4971,11 @@
                     </tr>
                 </tbody>
             </table>
+            <note>
+                    <para> When removing a health monitor the nodes that have failed and
+                    are in in OFFLINE status as well as enabled will return to ONLINE after the
+                    health monitor is removed. </para>
+                </note>
             <section xml:id="Monitor_Health-d1e3434">
                 <title>Monitor Health</title>
                 <informaltable rules="all">
