@@ -4947,6 +4947,12 @@
                 <code>type</code>
                 attribute to signify what kind of monitor it is.
             </para>
+            <note>
+                <para>Upon deletion of a Health Monitor of any type,
+                every node on that loadbalancer will have its status
+                updated to "ONLINE" regardless of the health of the
+                node.</para>
+            </note>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
                 <?dbfo keep-together="always"?>
