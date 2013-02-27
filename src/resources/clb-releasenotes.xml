@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-02-08</pubdate>
+	<pubdate>2013-02-26</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -39,7 +39,7 @@
         	</para>
         </abstract>
     	<revhistory>
-			<revision security="internal">
+			<revision>
 				<date>2013-02-26</date>
 				<revdescription>
 					<para>Updated for v1.17.14.</para>
@@ -180,24 +180,26 @@
     </info>
 	<chapter xml:id="doc_change_history">
 		<title>Document Change History</title>
-		<para>This version of the Developer Guide replaces and obsoletes all
+		<para>This version of the Release Notes replaces and obsoletes all
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.14" security="internal">
+	<chapter xml:id="clbv1.17.14">
 		<title>v1.17.14, February 26, 2013</title>
 		<itemizedlist>
 			<title>Resolved Issues</title>
 			<listitem>
-				<para>When deleting health monitor the enabled nodes
-                 will now return to the 'online' status.
-                </para>
+				<para>When deleting a health monitor of any type, every node on
+					that load balancer that is enabled or has failed
+					and is in OFFLINE status is now returned to the
+					ONLINE status regardless of the health of the
+					node.</para>
 			</listitem>
-            <listitem>
-				<para>Logs will now be uploaded to the correct DC based off of
-                    environmental region, this will eliminate the billing issues for files.
-                </para>
+			<listitem security="internal">
+				<para>Logs are now uploaded to the correct datacenter based on the
+					environmental region. This eliminates the billing
+					issues for files.</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>

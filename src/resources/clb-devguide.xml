@@ -24,13 +24,6 @@
     <title>Rackspace Cloud Load Balancers Developer Guide</title>
     <titleabbrev>Rackspace Cloud LB Dev Guide</titleabbrev>
     <info>
-        <annotation>
-            <remark>For 2011-06-29 republication to support IPv6,
-                draft changes to support BATCH DELETE remain in this
-                source XML but are excluded from the generated PDF and
-                HTML. Search for "security=writeronly" to identify
-                those changes. </remark>
-        </annotation>
         <author>
             <personname>
                 <firstname/>
@@ -49,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-02-05</pubdate>
+        <pubdate>2013-02-26</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -62,6 +55,22 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-02-26</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Added note about deleting a health
+                                monitor of any type (refer to <xref
+                                   linkend="Monitors-d1e3370"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-02-05</date>
                 <revdescription>
@@ -2601,21 +2610,6 @@
                     coming from our load balancers for the purpose of
                     creating more robust firewall rules.
                 </para>
-                <annotation>
-                    <remark>
-                        For 2011-06-29 republication to support IPv6, "security=writeronly"
-                        prevented draft changes to this XML from appearing in generated PDF and
-                        HTML. That doesn't work within sample code, so one-line changes were made to
-                        delete reference to "sourceAddress' in included samples:
-                        lb-list-details-request.xml (delete line 42 &lt;sourceAddresses
-                        ipv4Servicenet="178.1.1.1" ipv6Servicenet="::1" ipv4Public="192.1.1.1"
-                        ipv6Public="fd24:f480:ce44:91bc:711b:be4c:0000:007b"/> )
-                        lb-list-details-response.json (delete lines 57-62 "sourceAddresses":{
-                        "ipv6Servicenet":"::1",
-                        "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
-                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" })
-                    </remark>
-                </annotation>
                 <example>
                     <title>List Load Balancer Details Response: XML</title>
                     <programlisting language="xml">
@@ -2935,20 +2929,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <annotation>
-                    <remark>For 2011-06-29 republication to support IPv6, "security=writeronly"
-                        prevented draft changes to this XML from appearing in generated PDF and
-                        HTML. That doesn't work within sample code, so one-line changes were made to
-                        delete reference to "sourceAddress' in included samples:
-                        lb-create-required-response.xml (delete line 15 &lt;sourceAddresses
-                        ipv4Servicenet="178.1.1.1" ipv6Servicenet="::1" ipv4Public="192.1.1.1"
-                        ipv6Public="fd24:f480:ce44:91bc:711b:be4c:0000:007b"/> )
-                        lb-create-required-response.json (delete lines 40-45 "sourceAddresses":{
-                        "ipv6Servicenet":"::1",
-                        "ipv6Public":"fd24:f480:ce44:91bc:711b:be4c:0000:007b",
-                        "ipv4Servicenet":"178.1.1.1", "ipv4Public":"192.1.1.1" },)
-                    </remark>
-                </annotation>
+                
                 <example>
                     <title>Create Load Balancer (Required Attributes) Request: XML</title>
                     <programlisting language="xml">
@@ -3709,20 +3690,7 @@
                 and the nodes do not already have an
                 assigned weight, the service will automatically set the weight to "1" for all nodes.
             </para>
-            <para security="writeronly">Nodes that are primary have the option of having a
-                failover node. A failover node will take traffic from
-                the specified primary node that has gone down or is in
-                other error states. The user can specify multiple
-                failover nodes when adding a node to a pre-configured
-                load balancer. The first and last node must remain a
-                primary node. If attempting to update or delete the
-                last primary node, a BadRequestException is thrown,
-                requiring at least one primary node to remain on the
-                load balancer at all times. The weightings and
-                conditions for a failover node can be specified
-                independently from the primary node, allowing for a
-                more robust configuration.
-            </para>
+            
             <para> One or more secondary nodes can be added to a
                 specified load balancer so that if all the primary
                 nodes fail, traffic can be redirected to secondary
@@ -3784,13 +3752,7 @@
                         algorithms.
                     </para>
                 </note>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>List Node Response: XML</title>
                     <?dbfo keep-together="always"?>
@@ -3798,13 +3760,7 @@
   <xi:include href="samples/lb-list-node-response.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>List Node Response: JSON</title>
                     <?dbfo keep-together="always"?>
@@ -3818,26 +3774,14 @@
 <xi:include href="samples/lb-atom-feed-by-node-id.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>List Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-nodes-response.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>List Nodes Response: JSON</title>
                     <programlisting language="json">
@@ -3973,13 +3917,7 @@
                     </tbody>
                 </table>
 
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+               
                 <example>
                     <title>Add Nodes Request: XML</title>
                     <?dbfo keep-together="always"?>
@@ -3987,39 +3925,21 @@
 <xi:include href="samples/lb-add-nodes-request.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>Add Nodes Request: JSON</title>
                     <programlisting language="json">
 <xi:include href="samples/lb-add-nodes-request.json" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>Add Nodes Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-add-nodes-response.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>Add Nodes Response: JSON</title>
                     <?dbfo keep-together="always"?>
@@ -4185,26 +4105,14 @@
                         </tr>
                     </tbody>
                 </table>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>Modify Node Condition Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-update-node-request.xml" parse="text"/>
                     </programlisting>
                 </example>
-                <para security="writeronly">Writer: need to update the
-                    example below from the "Next Release /
-                    future_exs_type_attribute" when the type attribute
-                    (=PRIMARY/FAIL_OVER) is released to production by
-                    copying the code example from there to the samples
-                    directory.
-                </para>
+                
                 <example>
                     <title>Modify Node Condition Request: JSON</title>
                     <programlisting language="json">
@@ -4947,12 +4855,6 @@
                 <code>type</code>
                 attribute to signify what kind of monitor it is.
             </para>
-            <note>
-                <para>Upon deletion of a Health Monitor of any type,
-                every node on that loadbalancer will have its status
-                updated to "ONLINE" regardless of the health of the
-                node.</para>
-            </note>
             <table rules="all">
                 <caption>Health Monitor Types</caption>
                 <?dbfo keep-together="always"?>
@@ -4978,10 +4880,12 @@
                 </tbody>
             </table>
             <note>
-                    <para> When removing a health monitor the nodes that have failed and
-                    are in in OFFLINE status as well as enabled will return to ONLINE after the
-                    health monitor is removed. </para>
-                </note>
+                <para>When deleting a health monitor of any type,
+                    every node on that load balancer that is enabled
+                    or has failed and is in OFFLINE status will have
+                    its status updated to ONLINE regardless of the
+                    health of the node.</para>
+            </note>
             <section xml:id="Monitor_Health-d1e3434">
                 <title>Monitor Health</title>
                 <informaltable rules="all">
