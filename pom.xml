@@ -28,9 +28,7 @@
                             <security>internal</security>
                             <enableGoogleAnalytics>0</enableGoogleAnalytics>
                             <enableDisqus>intranet</enableDisqus>
-                            <canonicalUrlBase>
-                                http://docs-internal.rackspace.com/internal/cdns/api/v1.0/cdns-mgmt-devguide/content
-                            </canonicalUrlBase>
+                            <canonicalUrlBase>http://docs-internal.rackspace.com/loadbalancers/api/v1.0/clb-mgmt-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
                     <execution>
@@ -43,8 +41,7 @@
                             <!-- this is the public-facing client developer guide formerly known as PublicAPISpec.xml -->
                             <!-- this document that will be published as clb-devguide-latest.pdf at http://docs.rackspacecloud.com/api/ -->
                             <includes>clb-devguide.xml</includes>
-                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content
-                            </canonicalUrlBase>
+                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
                     <!-- MA: added this to generate public release notes -->
@@ -57,8 +54,7 @@
                         <configuration>
                             <includes>clb-releasenotes.xml</includes>
                             <chapterAutolabel>0</chapterAutolabel>
-                            <canonicalUrlBase>http://docs.rackspace.com/clb/api/v1.0/clb-releasenote/content
-                            </canonicalUrlBase>
+                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content</canonicalUrlBase>
                             <postProcess>
                                 <move todir="target/docbkx/webhelp/clb-releasenotes-external" failonerror="false">
                                     <fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
@@ -78,9 +74,7 @@
                             <chapterAutolabel>0</chapterAutolabel>
                             <security>internal</security>
                             <enableGoogleAnalytics>0</enableGoogleAnalytics>
-                            <canonicalUrlBase>
-                                http://docs-internal.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content
-                            </canonicalUrlBase>
+                            <canonicalUrlBase>http://docs-internal.rackspace.com/loadbalancers/api/v1.0/clb-releasenotes/content</canonicalUrlBase>
                             <postProcess>
                                 <move todir="target/docbkx/webhelp/clb-releasenotes-internal" failonerror="false">
                                     <fileset dir="target/docbkx/webhelp/clb-releasenotes"/>
@@ -98,9 +92,7 @@
                             <!-- this is the public-facing client Getting Started guide -->
                             <!-- this document that will be published as clb-getting-started-latest.pdf at http://docs.rackspacecloud.com/api/ -->
                             <includes>clb-getting-started.xml</includes>
-                            <canonicalUrlBase>
-                                http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content
-                            </canonicalUrlBase>
+                            <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-getting-started/content</canonicalUrlBase>
                         </configuration>
                     </execution>
                 </executions>
