@@ -40,6 +40,12 @@
         </abstract>
     	<revhistory>
 			<revision>
+				<date>2013-03-19</date>
+				<revdescription>
+					<para>Updated for v1.17.18.</para>
+				</revdescription>
+			</revision>
+            <revision>
 				<date>2013-02-26</date>
 				<revdescription>
 					<para>Updated for v1.17.14.</para>
@@ -185,7 +191,35 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.14">
+	<chapter xml:id="clbv1.17.18">
+		<title>v1.17.18, March 19, 2013</title>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Updated AHUSL to handle referenceId for
+                corrected usage.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Added configuration 'ahusl_logs_requests'
+                to print all AHUSL entries.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+    <chapter xml:id="clbv1.17.14">
 		<title>v1.17.14, February 26, 2013</title>
 		<itemizedlist>
 			<title>Resolved Issues</title>
