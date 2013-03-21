@@ -192,7 +192,7 @@
 		<?rax revhistory?>
 	</chapter>
 	<chapter xml:id="clbv1.17.18" security="internal">
-		<title>v1.17.18, March 21, 2013</title>
+		<title>v1.17.19, March 21, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
 			<listitem>
@@ -203,6 +203,11 @@
 				<para>Added configuration <code>ahusl_logs_requests</code> to
 					print all AHUSL (Atom Hopper Usage Service Layer)
 					entries.</para>
+			</listitem>
+            <listitem security="internal">
+				<para>Updated logs app, ArchiveLogsJobs is now ran in its own cron interval
+                    Configuration added 'job.repeat.archive.interval' was added to hadoop-logs.conf
+                    for this.</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
