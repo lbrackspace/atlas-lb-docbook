@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-02-26</pubdate>
+	<pubdate>2013-03-21</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -39,8 +39,8 @@
         	</para>
         </abstract>
     	<revhistory>
-			<revision>
-				<date>2013-03-19</date>
+    		<revision security="internal">
+				<date>2013-03-21</date>
 				<revdescription>
 					<para>Updated for v1.17.18.</para>
 				</revdescription>
@@ -191,17 +191,18 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.18">
-		<title>v1.17.18, March 19, 2013</title>
-		<itemizedlist>
+	<chapter xml:id="clbv1.17.18" security="internal">
+		<title>v1.17.18, March 21, 2013</title>
+		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
 			<listitem>
-				<para>Updated AHUSL to handle referenceId for
-                corrected usage.</para>
+				<para>Added referenceId value/behavior for corrected usage
+					records.</para>
 			</listitem>
 			<listitem security="internal">
-				<para>Added configuration 'ahusl_logs_requests'
-                to print all AHUSL entries.</para>
+				<para>Added configuration <code>ahusl_logs_requests</code> to
+					print all AHUSL (Atom Hopper Usage Service Layer)
+					entries.</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
