@@ -40,6 +40,12 @@
         </abstract>
     	<revhistory>
     		<revision security="internal">
+				<date>2013-03-22</date>
+				<revdescription>
+					<para>Updated for v1.17.20.</para>
+				</revdescription>
+			</revision>
+            <revision security="internal">
 				<date>2013-03-21</date>
 				<revdescription>
 					<para>Updated for v1.17.19.</para>
@@ -192,6 +198,31 @@
 		<?rax revhistory?>
 	</chapter>
 	<chapter xml:id="clbv1.17.19" security="internal">
+		<title>v1.17.20, March 22, 2013</title>
+		<itemizedlist security="internal">
+			<title>Resolved Issues</title>
+			<listitem security="internal">
+				<para>HOTFIX: Added configuration <code>ahusl_logs_fail_requests</code> to
+					control all AHUSL (Atom Hopper Usage Service Layer)
+					failed entry requests.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+    <chapter xml:id="clbv1.17.19" security="internal">
 		<title>v1.17.19, March 21, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
