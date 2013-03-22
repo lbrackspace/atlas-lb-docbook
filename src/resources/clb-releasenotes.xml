@@ -197,7 +197,7 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.19" security="internal">
+	<chapter xml:id="clbv1.17.20" security="internal">
 		<title>v1.17.20, March 22, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
