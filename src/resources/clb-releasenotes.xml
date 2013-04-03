@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-04-02</pubdate>
+	<pubdate>2013-04-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -40,9 +40,9 @@
         </abstract>
     	<revhistory>
     		<revision security="internal">
-				<date>2013-04-02</date>
+				<date>2013-04-03</date>
 				<revdescription>
-					<para>Updated for v1.17.20.</para>
+					<para>Updated for v1.17.23.</para>
 				</revdescription>
 			</revision>
             <revision security="internal">
@@ -197,14 +197,26 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.20" security="internal">
-		<title>v1.17.20, April 2, 2013</title>
+	<chapter xml:id="clbv1.17.23" security="internal">
+		<title>v1.17.23, April 3, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
 			<listitem security="internal">
-				<para>HOTFIX: Added configuration <code>ahusl_logs_fail_requests</code> to
-					control all AHUSL (Atom Hopper Usage Service Layer)
-					failed entry requests.</para>
+				<para>Fixed issues with Atom Hopper processing.
+				</para>
+			</listitem>
+			<listitem security="internal">
+				<para>More tracking on the entries as well as alerts
+					and service events are generated for better
+					tracking and monitoring.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Updated AHUSL (Atom Hopper Usage Service Layer)
+					to handle referenceId for corrected usage.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Added configuration <code>ahusl_logs_fail_requests</code> to
+					print all AHUSL entries.</para>
 			</listitem>
 		</itemizedlist>
 		<itemizedlist>
