@@ -40,6 +40,12 @@
         </abstract>
     	<revhistory>
     		<revision security="internal">
+				<date>2013-04-23</date>
+				<revdescription>
+					<para>Updated for v1.17.26.</para>
+				</revdescription>
+			</revision>
+            <revision security="internal">
 				<date>2013-04-03</date>
 				<revdescription>
 					<para>Updated for v1.17.23.</para>
@@ -197,7 +203,31 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.23" security="internal">
+	<chapter xml:id="clbv1.17.26" security="internal">
+		<title>v1.17.26, April 23, 2013</title>
+		<itemizedlist security="internal">
+			<title>Resolved Issues</title>
+			<listitem security="internal">
+				<para>Update Data Center Regions to Support SYD
+				</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+    <chapter xml:id="clbv1.17.23" security="internal">
 		<title>v1.17.23, April 3, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
