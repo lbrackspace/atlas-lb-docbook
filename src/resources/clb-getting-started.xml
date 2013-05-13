@@ -177,9 +177,9 @@
         <title>Overview</title>
         <para>Follow the steps described in this guide to use the
             Rackspace Cloud Load Balancers API and the Cloud
-            Servers<trademark/> section of the Control Panel to create
-            a load balancer configuration to balance traffic for your
-            Rackspace Cloud Servers.</para>
+            Servers<trademark/> section of the Rackspace Cloud Control
+            Panel to create a load balancer configuration to balance
+            traffic for your Rackspace Cloud Servers.</para>
         <para>For details about using the Cloud Load Balancers API,
             refer to the <citetitle>Cloud Load Balancers Developer
                 Guide</citetitle> at <link
@@ -214,8 +214,8 @@
                     xlink:href="http://www.rackspace.com/cloud/public/loadbalancers/pricing/"
                     >http://www.rackspace.com/cloud/public/loadbalancers/pricing/</link>.
                 Cloud Servers is also part of the Rackspace Cloud and
-                your use through the Control Panel will be billed as
-                per the pricing schedule at <link
+                your use through the Cloud Control Panel will be
+                billed as per the pricing schedule at <link
                     xlink:href="http://www.rackspace.com/cloud/public/servers/pricing/"
                     >http://www.rackspace.com/cloud/public/servers/pricing/</link>.</para>
             <para>The Service Level Agreements (SLAs) for Cloud Load
@@ -240,8 +240,8 @@
         </note>
         <para>Create a Cloud Server using the Cloud Servers section of
             the Cloud Control Panel (login here: <link
-                xlink:href="http://mycloud.rackspace.com/">Control
-                Panel Login</link>).</para>
+                xlink:href="http://mycloud.rackspace.com/">Cloud Control
+                Panel</link>).</para>
         <note>
             <para>You can also create a Cloud Server using the Cloud
                 Servers API. Refer to the <citetitle><link
@@ -503,7 +503,7 @@
                             Access</guimenuitem> section (login here:
                             <link
                             xlink:href="http://mycloud.rackspace.com/"
-                            >Control Panel Login</link>).</para>
+                            >Cloud Control Panel</link>).</para>
                 </listitem>
             </itemizedlist></para>
         <para> To access the Authentication Service, you must know
@@ -1060,9 +1060,9 @@
                 linkend="List_LB_Details"/>.</para>
         <para>You can also view the information for the load balancer
             you have created by clicking <guilabel>Load
-                Balancers</guilabel> in the <guimenu>Hosting</guimenu>
-            section of the Control Panel. Then click the name of the
-            load balancer to view the details.</para>
+                Balancers</guilabel> near the top of the Cloud Control
+            Panel. Then click the name of the load balancer to view
+            the details.</para>
         <para>This concludes the <citetitle>Getting
                 Started</citetitle>. Thank you for using Rackspace
             Cloud products.</para>
