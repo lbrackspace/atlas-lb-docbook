@@ -875,55 +875,9 @@
                 <tbody>
                     <tr align="left">
                         <td colspan="1">&GET;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td colspan="3">Retrieve the rate limit information for a specified load
-                            balancer.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/activeratelimits</td>
-                        <td colspan="3">Retrieve all currently rate
-                            limited load balancers.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/customlimitaccounts</td>
-                        <td colspan="3">Retrieve all accounts with
-                            custom absolute limits.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&GET;</td>
-                        <td colspan="5">/clusters/<parameter>clusterId</parameter>/apiratelimit</td>
-                        <td colspan="3">Retrieve all accounts that are
-                            API rate limited.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&POST;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td colspan="3">Impose a new rate limit on the specified load balancer.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&PUT;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td colspan="3">Modify the expiration time and/or ticket associated with the
-                            rate limit.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/ratelimit</td>
-                        <td colspan="3">Immediately remove the defined rate limit.</td>
-                        <td colspan="2">Service Admin</td>
-                    </tr>
-                    <tr align="left">
-                        <td colspan="1">&DELETE;</td>
-                        <td colspan="5">/loadbalancers/<parameter>loadBalancerId</parameter>/removeoldlimits</td>
-                        <td colspan="3">Immediately remove expired limits.</td>
+                        <td colspan="5">/limits/</td>
+                        <td colspan="3">Retrieve the rate limit information for a specified account.
+                        </td>
                         <td colspan="2">Service Admin</td>
                     </tr>
                 </tbody>
@@ -945,38 +899,6 @@
                     >http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/Group_Calls.html</link>
                 for information about adding and removing users from
                 groups.</para>
-            <para>
-                Additionally, rate limit information is returned as part of the "extended details of a load
-                balancer", which is documented below.
-            </para>
-            <example>
-                <title>List Rate Limit Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-ratelimit.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <?dbfo keep-together="always"?>
-                <title>List Rate Limit Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-list-ratelimit.json" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <title>List Non-Standard Absolute Limit Account
-                    Response: XML</title>
-                <programlisting language="xml">
-<xi:include href="samples/lb-list-absolutelimit-accounts.xml" parse="text"/>
-                </programlisting>
-            </example>
-            <example>
-                <?dbfo keep-together="always"?>
-                <title>List Non-Standard Absolute Limit Account
-                    Response: JSON</title>
-                <programlisting language="json">
-<xi:include href="samples/lb-list-absolutelimit-accounts.json" parse="text"/>
-                </programlisting>
-            </example>
 
             <para> Addtionally, for more information on how load
                 balancer rate limits and authentication is handled via

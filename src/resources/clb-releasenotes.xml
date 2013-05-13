@@ -39,7 +39,13 @@
         	</para>
         </abstract>
     	<revhistory>
-    		<revision security="internal">
+    		<revision>
+				<date>2013-05-28</date>
+				<revdescription>
+					<para>Updated for v1.18.1.</para>
+				</revdescription>
+			</revision>
+            <revision security="internal">
 				<date>2013-04-28</date>
 				<revdescription>
 					<para>Updated for v1.17.29.</para>
@@ -209,7 +215,30 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.17.29" security="internal">
+	<chapter xml:id="clbv1.18.1" >
+		<title>v1.18.1, May 28, 2013</title>
+		<itemizedlist security="internal">
+			<title>New Features</title>
+			<listitem security="internal">
+				<para>Hadoop HortonWorks(HDP) Support</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+    <chapter xml:id="clbv1.17.29" security="internal">
 		<title>v1.17.29, April 28, 2013</title>
 		<itemizedlist security="internal">
 			<title>Resolved Issues</title>
