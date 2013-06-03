@@ -1572,6 +1572,12 @@
                                 <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
                             </td>
                         </tr>
+                        <tr align="left">
+                            <td colspan="1">Sydney (SYD)</td>
+                            <td colspan="4">
+                                <code>https://syd.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </para>
