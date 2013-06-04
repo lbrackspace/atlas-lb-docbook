@@ -46,13 +46,25 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-02-05</pubdate>
+        <pubdate>2013-06-04</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2013-06-04</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated to use term Cloud Control
+                                Panel (rather than Control Panel)
+                                throughout.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-02-05</date>
                 <revdescription>
