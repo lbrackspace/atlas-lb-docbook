@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-06-04</pubdate>
+        <pubdate>2013-06-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,6 +55,22 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-06-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Updated authentication information.
+                                See <xref
+                                   linkend="Geographic_Endpoints_dle621"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-06-04</date>
                 <revdescription>
@@ -621,7 +637,9 @@
                             xmlns:m="http://www.w3.org/1998/Math/MathML"
                             xmlns:html="http://www.w3.org/1999/xhtml">
                             <para>Updated endpoints for authentication
-                                for <xref linkend="request"/>.</para>
+                                for <xref
+                                   linkend="Geographic_Endpoints_dle621"
+                                />.</para>
                         </listitem>
                         <listitem>
                             <para>Updated Auth Response examples for
@@ -1157,24 +1175,24 @@
                 obtain this token by first using the Rackspace Cloud
                 Authentication Service and supplying valid
                 authentication credentials. </para>
-            <section xml:id="request">
+            <section xml:id="Geographic_Endpoints_dle621">
                 <title>Geographic Endpoints</title>
                 <para>The Rackspace Cloud Authentication Service
                     serves as the entry point to all Rackspace Cloud
                     APIs and is itself a ReSTful web service.
                 </para>
-                <para>To access the Authentication Service, you must
-                    know the region in which your account is based: </para>
+                <para> You can use either of the following endpoints
+                    to access the Authentication Service, regardless
+                    of US or UK identities: </para>
                 <itemizedlist spacing="compact">
                     <listitem>
-                        <para> US-based accounts authenticate through
-                                <link xlink:href="&ENDPOINT-US-20;"
-                                >&ENDPOINT-US-20;</link>. </para>
+                        <para><link xlink:href="&ENDPOINT-US-20;"
+                                >&ENDPOINT-US-20;</link>
+                        </para>
                     </listitem>
                     <listitem>
-                        <para> UK-based accounts authenticate through
-                                <link xlink:href="&ENDPOINT-UK-20;"
-                                >&ENDPOINT-UK-20;</link>. </para>
+                        <para><link xlink:href="&ENDPOINT-UK-20;"
+                                >&ENDPOINT-UK-20;</link></para>
                     </listitem>
                 </itemizedlist>
                 <para>Your account may be based in either the US or
@@ -1196,10 +1214,6 @@
                             is a UK-based account. </para>
                     </listitem>
                 </itemizedlist>
-                <para>If you are unsure how your account was created,
-                    use the Rackspace contact information at either
-                    site to ask for help.
-                </para>
             </section>
             <section xml:id="Authenticate-d1e171">
                 <title>Retrieving the Authentication Token</title>

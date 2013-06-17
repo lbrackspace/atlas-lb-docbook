@@ -46,13 +46,32 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-06-04</pubdate>
+        <pubdate>2013-06-17</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2013-06-17</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated authentication information.
+                                See <xref
+                                   linkend="Generating_Auth_Token"
+                                />.</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added information for Sydney (SYD)
+                                endpoint (see <xref
+                                   linkend="Service_Access_Endpoints-d1e753"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-06-04</date>
                 <revdescription>
@@ -518,18 +537,18 @@
                             >Cloud Control Panel</link>).</para>
                 </listitem>
             </itemizedlist></para>
-        <para> To access the Authentication Service, you must know
-            whether your account is US-based or UK-based: </para>
+        <para> You can use either of the following endpoints to access
+            the Authentication Service, regardless of US or UK
+            identities: </para>
         <itemizedlist spacing="compact">
             <listitem>
-                <para> US-based accounts authenticate through <link
-                        xlink:href="&ENDPOINT-US-20;"
-                        >&ENDPOINT-US-20;</link>. </para>
+                <para><link xlink:href="&ENDPOINT-US-20;"
+                        >&ENDPOINT-US-20;</link>
+                </para>
             </listitem>
             <listitem>
-                <para> UK-based accounts authenticate through <link
-                        xlink:href="&ENDPOINT-UK-20;"
-                        >&ENDPOINT-UK-20;</link>. </para>
+                <para><link xlink:href="&ENDPOINT-UK-20;"
+                        >&ENDPOINT-UK-20;</link></para>
             </listitem>
         </itemizedlist>
         <para> Your account may be based in either the US or the UK;
@@ -550,12 +569,9 @@
                     UK-based account. </para>
             </listitem>
         </itemizedlist>
-        <para> If you are unsure how your account was created, use the
-            Rackspace contact information at either site to ask for
-            help. </para>
         <para>Notice that you authenticate using a special URL for
-            Cloud authentication services
-                (<code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>),
+            Cloud authentication services. For example, you may use
+                <code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>,
             as shown in the following Authenticate Request examples.
             Note that the <code>v2.0</code> component in the URL
             indicates that you are using version 2.0 of the Cloud Auth
@@ -694,6 +710,12 @@
                         <td colspan="1">London (LON)</td>
                         <td colspan="4">
                             <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">Sydney (SYD)</td>
+                        <td colspan="4">
+                            <code>https://syd.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                        </td>
                     </tr>
                 </tbody>
             </table>
