@@ -42,7 +42,7 @@
 			<revision>
 				<date>2013-06-25</date>
 				<revdescription>
-					<para>Updated for v1.18.6.</para>
+					<para>Updated for v1.18.9.</para>
 				</revdescription>
 			</revision>
 			<revision security="internal">
@@ -228,8 +228,8 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.18.6">
-		<title>v1.18.6, June 25, 2013</title>
+	<chapter xml:id="clbv1.18.9">
+		<title>v1.18.9, June 25, 2013</title>
 		<itemizedlist security="internal">
 			<title>New Features</title>
 			<listitem>
