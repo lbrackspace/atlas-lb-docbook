@@ -26,7 +26,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2013-06-07</pubdate>
+	<pubdate>2013-06-25</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -39,6 +39,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision>
+				<date>2013-06-25</date>
+				<revdescription>
+					<para>Updated for v1.18.6.</para>
+				</revdescription>
+			</revision>
 			<revision security="internal">
 				<date>2013-06-07</date>
 				<revdescription>
@@ -212,7 +218,7 @@
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
       <raxm:displayname>Release Notes</raxm:displayname>
       <raxm:product version="v1.0">loadbalancers</raxm:product>
-      <raxm:priority>10</raxm:priority>
+      <raxm:priority>30</raxm:priority>
     </raxm:metadata> 
     </info>
 	<chapter xml:id="doc_change_history">
@@ -221,6 +227,41 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="clbv1.18.6">
+		<title>v1.18.6, June 25, 2013</title>
+		<itemizedlist security="internal">
+			<title>New Features</title>
+			<listitem>
+				<para>Provided a packaged tool to allow for processing logs
+					separately if needed.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed a race condition that was causing some very large logs
+					to get corrupted for customers.</para>
+			</listitem>
+			<listitem security="internal">
+				<para>Fixed the SOAP API endpoint so that the SOAP calls are sent
+					to the correct node.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="clbv1.18.2_config" security="internal">
 		<title>v1.18.2 Configuration Changes, June 7, 2013</title>
