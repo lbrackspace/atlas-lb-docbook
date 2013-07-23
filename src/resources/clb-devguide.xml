@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-06-17</pubdate>
+        <pubdate>2013-07-23</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,6 +55,22 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2013-07-23</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                            xmlns:html="http://www.w3.org/1999/xhtml">
+                            <para>Updated information for session
+                                persistence. See <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-06-17</date>
                 <revdescription>
@@ -5275,12 +5291,43 @@
                 <para><glossterm baseform="session persistence"
                         >Session persistence</glossterm> is a feature
                     of the load balancing service that forces multiple
-                    requests from clients to be directed to the same
-                    node. This is common with many web applications
-                    that do not inherently share application state
-                    between back-end servers. Two session persistence
-                    modes are available, as described in the following
-                    table:</para>
+                    requests, of the same protocol, from clients to be
+                    directed to the same node. This is common with
+                    many web applications that do not inherently share
+                    application state between back-end servers. Two
+                    session persistence modes are available, as
+                    described in the following table:</para>
+                <table rules="all">
+                    <caption>Session Persistence Modes</caption>
+                    <?dbfo keep-together="always"?>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="1">Name</td>
+                            <td colspan="3">Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr align="left">
+                            <td colspan="1">HTTP_COOKIE</td>
+                            <td colspan="3">A session persistence
+                                mechanism that inserts an HTTP cookie
+                                and is used to determine the
+                                destination back-end node. This is
+                                supported for HTTP load balancing
+                                only. </td>
+                        </tr>
+                        <tr align="left">
+                            <td colspan="1">SOURCE_IP</td>
+                            <td colspan="3">A session persistence
+                                mechanism that will keep track of the
+                                source IP address that is mapped and
+                                is able to determine the destination
+                                back-end node. This is supported for
+                                HTTPS pass-through and non-HTTP load
+                                balancing only. </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <para>The following table lists the required and
                     optional attributes for Enable Session
                     Persistence:</para>
@@ -5308,35 +5355,42 @@
                         </tr>
                     </tbody>
                 </table>
-                <table rules="all">
-                    <caption>Session Persistence Modes</caption>
-                    <?dbfo keep-together="always"?>
-                    <thead>
-                        <tr align="center">
-                            <td colspan="1">Name</td>
-                            <td colspan="3">Description</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr align="left">
-                            <td colspan="1">HTTP_COOKIE</td>
-                            <td colspan="3">A session persistence mechanism that inserts an HTTP cookie and
-                                is used to determine the destination back-end node. This is supported
-                                for HTTP load balancing only.
-                            </td>
-                        </tr>
-                        <tr align="left">
-                            <td colspan="1">SOURCE_IP</td>
-                            <td colspan="3">A session persistence
-                                mechanism that will keep track of the
-                                source IP address that is mapped and
-                                is able to determine the destination
-                                back-end node. This is supported for
-                                HTTPS pass-through and non-HTTP load
-                                balancing only. </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <para>You can only set one of the session persistence
+                    modes on a load balancer, and it can only support
+                    one protocol, so if you set HTTP_COOKIE mode for
+                    an HTTP load balancer, then it will support
+                    session persistence for HTTP requests only.
+                    Likewise, if you set SOURCE_IP mode for an HTTPS
+                    load balancer, then it will support session
+                    persistence for HTTPS requests only.</para>
+                <para>If you want to support session persistence for
+                    both HTTP and HTTPS requests concurrently, then
+                    you have 2 choices:<itemizedlist>
+                        <listitem>
+                            <para>Use two load balancers, one
+                                configured for session persistence for
+                                HTTP requests and the other configured
+                                for session persistence for HTTPS
+                                requests. That way, the load balancers
+                                together will support session
+                                persistence for both HTTP and HTTPS
+                                requests concurrently, with each load
+                                balancer supporting one of the
+                                protocols. </para>
+                        </listitem>
+                        <listitem>
+                            <para>Use one load balancer, configure it
+                                for session persistence for HTTP
+                                requests, and then enable SSL
+                                termination for that load balancer
+                                (refer to <xref
+                                   linkend="SSLTermination-d1e2479"/>
+                                for details). The load balancer will
+                                then support session persistence for
+                                both HTTP and HTTPS requests
+                                concurrently.</para>
+                        </listitem>
+                    </itemizedlist></para>
                 <example>
                     <title>List Session Persistence Configuration Response: XML</title>
                     <programlisting language="xml">
