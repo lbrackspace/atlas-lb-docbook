@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-07-23</pubdate>
+        <pubdate>2013-08-27</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,6 +55,20 @@
             </para>
         </abstract>
         <revhistory>
+            <revision xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">
+                <date>2013-08-27</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added <xref
+                                   linkend="role_based_access_control"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-07-23</date>
                 <revdescription>
@@ -2471,6 +2485,130 @@
                     </tbody>
                 </table>
             </section>
+        <section xml:id="role_based_access_control"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+            xmlns:html="http://www.w3.org/1999/xhtml">
+            <title>Role Based Access Control (RBAC)</title>
+            <para>Role Based Access Control (RBAC) restricts access to
+                the capabilities of Rackspace Cloud services,
+                including the Cloud Load Balancers API, to authorized
+                users only. RBAC enables Rackspace Cloud customers to
+                specify which account users of their Cloud account
+                have access to which Cloud Load Balancers API service
+                capabilities, based on roles defined by Rackspace (see
+                    <xref linkend="cloud_lbs_roles_capabilities"/>).
+                The permissions to perform certain operations in Cloud
+                Load Balancers API – create, read, update, delete 
+                – are assigned to specific roles, and these roles can
+                be assigned by the Cloud account admin user to account
+                users of the account. </para>
+            <section xml:id="assigning_roles_to_account_users">
+                <title>Assigning Roles to Account Users</title>
+                <para>The account admin user (identity:user-admin) can
+                    create account users on the account and then
+                    assign roles to the account users. The roles grant
+                    the account users specific permissions for
+                    accessing the capabilities of the Cloud Load
+                    Balancers service. Only one Cloud account admin
+                    user is allowed per account, and it is assigned by
+                    default to any Rackspace Cloud account when the
+                    account is created.</para>
+                <para> See the <citetitle>Cloud Identity Client
+                        Developer Guide</citetitle> for information on
+                    how to perform the following tasks:<itemizedlist>
+                        <listitem>
+                            <para>Create account users (see <link
+                                   xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_.html"
+                                   >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_.html</link>)</para>
+                        </listitem>
+                        <listitem>
+                            <para>Assign roles to account users (see
+                                   <link
+                                   xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html"
+                                   >http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html</link>)</para>
+                        </listitem>
+                    </itemizedlist></para>
+                <note>
+                    <para>The account admin user (identity:user-admin)
+                        role cannot hold any additional roles because
+                        it already has full access to all capabilities
+                        by default. </para>
+                </note>
+            </section>
+            <section xml:id="roles_for_cloud_lbs">
+                <title>Roles Available for Cloud Load
+                    Balancers</title>
+                <para>Currently, three roles can be used to access the
+                    Cloud Load Balancers API. These roles, admin,
+                    creator, and observer apply to this specific
+                    product. The following table describes these roles
+                    and their permissions. </para>
+                <table rules="all" width="70%"
+                    xml:id="cloud_lbs_roles_capabilities">
+                    <caption>Cloud Load Balancers Product Roles and
+                        Capabilities</caption>
+                    <col width="30%"/>
+                    <col width="70%"/>
+                    <?dbfo keep-together="always"?>
+                    <thead>
+                        <tr align="center">
+                            <td>Role Name</td>
+                            <td>Role Permissions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>lbaas:admin</td>
+                            <td> Create, Read, Update, and Delete
+                                permissions across a specific product,
+                                where access is granted</td>
+                        </tr>
+                        <tr>
+                            <td>lbaas:creator</td>
+                            <td> Create, Read and Update permissions
+                                across a specific product, where
+                                access is granted</td>
+                        </tr>
+                        <tr>
+                            <td>lbaas:observer</td>
+                            <td> Read permission across a specific
+                                product, where access is granted</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <para>In addition, there are two global roles which
+                    apply to all products. The following table
+                    describes these roles and their
+                    permissions.</para>
+                <table rules="all" width="70%">
+                    <caption>Cloud Load Balancers Global Roles and
+                        Capabilities</caption>
+                    <col width="30%"/>
+                    <col width="70%"/>
+                    <?dbfo keep-together="always"?>
+                    <thead>
+                        <tr align="center">
+                            <td>Role Name</td>
+                            <td>Role Permissions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>admin</td>
+                            <td> Create, Read, Update, and Delete
+                                permissions across multiple products,
+                                where access is granted</td>
+                        </tr>
+                        <tr>
+                            <td>observer</td>
+                            <td> Read permission across multiple
+                                products, where access is granted</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
     </chapter>
     <chapter xml:id="API_Operations-d1e1354">
         <title>API Operations</title>

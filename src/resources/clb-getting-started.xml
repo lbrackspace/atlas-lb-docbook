@@ -976,7 +976,7 @@
             examples show the cURL requests for Add Node:</para>
         <example>
             <title>cURL Add Node Request: XML</title>
-            <programlisting language="bash"><command>curl</command><option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
 &lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     &lt;node address="<emphasis role="bold">&lt;IP address of SECOND cloud server></emphasis>" port="80" condition="ENABLED" />
