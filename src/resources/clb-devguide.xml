@@ -2525,8 +2525,8 @@
                         <listitem>
                             <para>Assign roles to account users (see
                                    <link
-                                   xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html"
-                                   >http://docs.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html</link>)</para>
+                                       xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html"
+                                       >http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html</link>)</para>
                         </listitem>
                     </itemizedlist></para>
                 <note>
@@ -2607,6 +2607,11 @@
                         </tr>
                     </tbody>
                 </table>
+                <para>Refer to the following Knowledge Center article
+                    for access permissions information for each API
+                    operation <link
+                        xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-cloud-load-balancers-as-a-service-lbaas"
+                        >http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-cloud-load-balancers-as-a-service-lbaas</link>.</para>
             </section>
         </section>
     </chapter>
