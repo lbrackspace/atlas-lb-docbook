@@ -1335,6 +1335,52 @@
                 </programlisting>
             </example>
         </section>
+        <section xml:id="Callback-d1e2342">
+            <title>ZeusEvents-Callback</title>
+            <informaltable rules="all">
+                <thead>
+                    <tr align="center">
+                        <td colspan="1">Verb</td>
+                        <td colspan="5">URI</td>
+                        <td colspan="3">Description</td>
+                        <td colspan="2">Access Level</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="left">
+                        <td colspan="1">&POST;</td>
+                        <td colspan="5">/management/zeusevent</td>
+                        <td colspan="3">Creates a callback for ZeusEvents used to track node status within the system.</td>
+                        <td colspan="2">Service Admin</td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>
+                This will allow a service to submit messages or callback that will be processed by the system and handled
+                accordingly depending on the message contents. The message must follow a specific format as specified in the below example.
+            </para>
+
+            <para>Examples: </para>
+            <para>
+                <parameter>Fail: 'WARN monitors/571432_62203 monitorfail Monitor has detected a failure in node '10.1.1.1:443': Invalid HTTP response received; premature end of headers'</parameter>
+            </para>
+            <para>
+                <parameter>OK: 'INFO monitors/571432_62203 monitorok Monitor is working for node '10.1.1.1:443'</parameter>
+            </para>
+            <example>
+                <?dbfo keep-together="always"?>
+                <title>ZeusEvent: XML</title>
+                <programlisting language="xml">
+<xi:include href="samples/zeus-event.xml" parse="text" />
+                </programlisting>
+            </example>
+            <example>
+                <title>ZeusEvent: JSON</title>
+                <programlisting language="json">
+<xi:include href="samples/zeus-event.json" parse="text" />
+                </programlisting>
+            </example>
+        </section>
     </chapter>
     <chapter xml:id="Extended_Customer_API_Operations-d1e2413">
         <title>Extended Customer API Operations</title>
