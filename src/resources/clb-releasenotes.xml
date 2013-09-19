@@ -42,7 +42,7 @@
 			<revision>
 				<date>2013-09-19</date>
 				<revdescription>
-					<para>Updated for v1.19.14 (DFW, ORD, and LON only) .</para>
+					<para>Updated for v1.19.14.</para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -240,13 +240,8 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.19.14_DFW_ORD_LON">
-		<title>v1.19.14, September 19, 2013 (DFW, ORD, and LON only)</title>
-		<note>
-			<para>This release is for the DFW, ORD, and LON datacenters only.
-				This is already released for the SYD and IAD
-				datacenters.</para>
-		</note>
+	<chapter xml:id="clbv1.19.14">
+		<title>v1.19.14, September 19, 2013</title>
 		<itemizedlist>
 			<title>New Features</title>
 			<listitem>
