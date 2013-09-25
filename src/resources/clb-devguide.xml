@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-09-11</pubdate>
+        <pubdate>2013-09-26</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -58,7 +58,7 @@
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
-                <date>2013-09-11</date>
+                <date>2013-09-26</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -1627,6 +1627,12 @@
                             </td>
                         </tr>
                         <tr align="left">
+                            <td colspan="1">Northern Virginia (IAD) </td>
+                            <td colspan="4">
+                                <code>https://iad.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                            </td>
+                        </tr>
+                        <tr align="left">
                             <td colspan="1">London (LON)</td>
                             <td colspan="4">
                                 <code>https://lon.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
@@ -2691,7 +2697,7 @@
                     operations are permitted to invoke which calls,
                     please review <link
                         xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
-                        > the Knowledge Center article</link>.</para>
+                        >the Knowledge Center article</link>.</para>
             </section>
         </section>
     </chapter>
