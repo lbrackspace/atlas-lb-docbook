@@ -46,13 +46,26 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-06-17</pubdate>
+        <pubdate>2013-09-26</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2013-09-26</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added information for Northern
+                                Virginia (IAD) endpoint (see <xref
+                                   linkend="Service_Access_Endpoints-d1e753"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-06-17</date>
                 <revdescription>
@@ -705,6 +718,12 @@
                         <td colspan="1">Dallas/Ft. Worth (DFW) </td>
                         <td colspan="4">
                             <code>https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/ </td>
+                    </tr>
+                    <tr align="left">
+                        <td colspan="1">Northern Virginia (IAD) </td>
+                        <td colspan="4">
+                            <code>https://iad.loadbalancers.api.rackspacecloud.com/v1.0/</code><parameter>1234</parameter>/
+                        </td>
                     </tr>
                     <tr align="left">
                         <td colspan="1">London (LON)</td>
