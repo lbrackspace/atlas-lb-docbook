@@ -66,6 +66,12 @@
                                    linkend="role_based_access_control"
                                 />.</para>
                         </listitem>
+                        <listitem>
+                            <para>Added information for Northern
+                                Virginia (IAD) endpoint (see <xref
+                                   linkend="Service_Access_Endpoints-d1e517"
+                                />).</para>
+                        </listitem>
                     </itemizedlist>
                 </revdescription>
             </revision>
