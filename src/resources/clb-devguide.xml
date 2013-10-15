@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-09-26</pubdate>
+        <pubdate>2013-10-15</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,6 +55,25 @@
             </para>
         </abstract>
         <revhistory>
+            <revision xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">
+                <date>2013-10-15</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                /> to indicate that nodes are no
+                                longer a required attribute for
+                                creating a new load balancer. It is
+                                also now possible to delete or disable
+                                a load balancer's last remaining
+                                node.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
@@ -3045,7 +3064,7 @@
                                 load balancer. Refer to the request
                                 examples in this section for the
                                 required xml/json format.</td>
-                            <td colspan="1">Yes</td>
+                            <td colspan="1">No</td>
                         </tr>
                         <tr>
                             <td colspan="1">protocol</td>
@@ -3241,13 +3260,15 @@
                 </table>
                 
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Request: XML</title>
+                    <title>Create Load Balancer (Required Attributes
+                        with Node) Request: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-create-required-request.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Request: JSON</title>
+                    <title>Create Load Balancer (Required Attributes
+                        with Node) Request: JSON</title>
                     <programlisting language="json">
 <xi:include href="samples/lb-create-required-request.json" parse="text"/>
                     </programlisting>
@@ -3266,14 +3287,16 @@
                     firewall rules.
                 </para>
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Response: XML</title>
+                    <title>Create Load Balancer (Required Attributes
+                        with Node) Response: XML</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-create-required-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>Create Load Balancer (Required Attributes) Response: JSON</title>
+                    <title>Create Load Balancer (Required Attributes
+                        with Node) Response: JSON</title>
                     <programlisting language="json">
 <xi:include href="samples/lb-create-required-response.json" parse="text"/>
                     </programlisting>
@@ -4472,9 +4495,9 @@
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
                 <para>To batch delete nodes, provide a query parameter
-                    list of node ids. For example:
+                    list of node ids (for example:
                         /nodes?id=<parameter>nodeId</parameter>&amp;id=
-                        <parameter>nodeId</parameter> The current
+                        <parameter>nodeId</parameter>). The current
                     default limit is ten ids per request. Any and all
                     configuration data is immediately purged and is
                     not recoverable. By chance if one of the items in
@@ -5056,7 +5079,7 @@
                     populated access list already exists for the load
                     balancer, it will be appended to with subsequent
                     &POST; requests. One access list may include up to
-                    100 network items A single address or subnet
+                    100 network items. A single address or subnet
                     definition is considered unique and cannot be
                     duplicated between items in an access list. </para>
                 <para>The following table lists the required and
