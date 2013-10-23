@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-10-22</pubdate>
+        <pubdate>2013-10-29</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -55,6 +55,25 @@
             </para>
         </abstract>
         <revhistory>
+            <revision xmlns:svg="http://www.w3.org/2000/svg"
+                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                xmlns:html="http://www.w3.org/1999/xhtml">
+                <date>2013-10-29</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added information for HTTPS
+                                redirection feature (see the
+                                description for the httpsRedirect
+                                attribute in <xref
+                                   linkend="Create_Load_Balancer-d1e1635"
+                                /> and <xref
+                                   linkend="Update_Load_Balancer_Attributes-d1e1812"
+                                /> for details).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
@@ -1063,24 +1082,26 @@
         </section>
         <section xml:id="Additional_Resources-d1e207">
             <title>Additional Resources</title>
-            <para>You can download the most current version of this document from the Rackspace Cloud website at<link
-                    xlink:href="http://docs.rackspace.com/loadbalancers/api/clb-devguide-latest.pdf">
-                http://docs.rackspace.com/loadbalancers/api/clb-devguide-latest.pdf</link>.
-            </para>
+            <para>You can download the most current version of this
+                document from the Rackspace Cloud website at <link
+                    xlink:href="http://docs.rackspace.com/"
+                    xmlns:svg="http://www.w3.org/2000/svg"
+                    xmlns:m="http://www.w3.org/1998/Math/MathML"
+                    xmlns:html="http://www.w3.org/1999/xhtml"
+                    >http://docs.rackspace.com/</link>. </para>
             <para xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">For
                 information about getting started using Cloud Load
                 Balancers and Cloud Servers, refer to
                     <citetitle>Getting Started with Rackspace Cloud
-                    Load Balancers and Servers</citetitle> at<link
-                    xlink:href="http://docs.rackspace.com/loadbalancers/api/clb-getting-started-latest.pdf"
-                    >
-                        http://docs.rackspace.com/loadbalancers/api/clb-getting-started-latest.pdf</link>.</para>
+                    Load Balancers and Servers</citetitle> at <link
+                    xlink:href="http://docs.rackspace.com/"
+                    >http://docs.rackspace.com/</link>.</para>
             <para>For more details about the Rackspace Cloud Load
                 Balancer service, refer to <link
-                    xlink:href="http://www.rackspace.com/cloud/cloud_hosting_products/loadbalancers/"
-                    >http://www.rackspace.com/cloud/cloud_hosting_products/loadbalancers/</link>.
+                    xlink:href="http://www.rackspace.com/cloud/load-balancing/"
+                    >http://www.rackspace.com/cloud/load-balancing/</link>.
                 This site also offers links to Rackspace's official
                 support channels, including knowledge base articles,
                 forums, phone, chat, and email. </para>
@@ -1097,12 +1118,12 @@
             <para>Cloud Load Balancers is part of the Rackspace Cloud
                 and your use through the API will be billed as per the
                 pricing schedule at <link
-                    xlink:href="http://www.rackspace.com/cloud/public/loadbalancers/pricing/"
-                    >http://www.rackspace.com/cloud/public/loadbalancers/pricing/</link>. </para>
+                    xlink:href="http://www.rackspace.com/cloud/load-balancing/pricing/"
+                    >http://www.rackspace.com/cloud/load-balancing/pricing/</link>. </para>
             <para>The Service Level Agreement (SLA) for Cloud Load
                 Balancers is available at <link
-                    xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers"
-                    >http://www.rackspace.com/cloud/legal/sla/#cloud_load_balancers</link>.</para>
+                    xlink:href="http://www.rackspace.com/information/legal/cloud/sla#cloud_load_balancers"
+                    >http://www.rackspace.com/information/legal/cloud/sla#cloud_load_balancers</link>.</para>
         </section>
     </chapter>
     <chapter xml:id="Concepts-d1e233">
@@ -3000,28 +3021,25 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>This operation asynchronously provisions a new load
-                    balancer based on the configuration defined in the
-                    request object. Once the request is validated and
-                    progress has started on the provisioning process,
-                    a response object will be returned. The object
-                    will contain a unique identifier and status of the
-                    request. Using the identifier, the caller can
-                    check on the progress of the operation by
-                    performing a &GET; on
-                    <code>loadbalancers/id</code>. If the
+                <para>This operation asynchronously provisions a new
+                    load balancer based on the configuration defined
+                    in the request object. Once the request is
+                    validated and progress has started on the
+                    provisioning process, a response object will be
+                    returned. The object will contain a unique
+                    identifier and status of the request. Using the
+                    identifier, the caller can check on the progress
+                    of the operation by performing a &GET; on
+                        <code>loadbalancers/id</code>. If the
                     corresponding request cannot be fulfilled due to
-                    insufficient or invalid data, an
-                    <code>HTTP</code>
-                    <returnvalue>400 (Bad Request)</returnvalue>
-                    error
+                    insufficient or invalid data, an <code>HTTP</code>
+                    <returnvalue>400 (Bad Request)</returnvalue> error
                     response will be returned with information
                     regarding the nature of the failure in the body of
                     the response. Failures in the validation process
                     are non-recoverable and require the caller to
                     correct the cause of the failure and &POST; the
-                    request again.
-                </para>
+                    request again.</para>
                 <para>An HTTP load balancer will have the
                     X-Forwarded-For (XFF) HTTP header set by default.
                     This header will contain the actual originating IP
@@ -3097,7 +3115,7 @@
                         </tr>
                         <tr>
                             <td colspan="1">halfClosed</td>
-                            <td colspan="3">Enable or Disable
+                            <td colspan="3">Enables or disables
                                 Half-Closed support for the load
                                 balancer. Half-Closed support provides
                                 the ability for one end of the
@@ -3205,6 +3223,32 @@
                                    linkend="Manage_Session_Persistence-d1e3733"
                                 /> for the required xml/json
                                 format.</td>
+                            <td colspan="1">No</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">httpsRedirect</td>
+                            <td colspan="3">Enables or disables HTTP
+                                to HTTPS redirection for the load
+                                balancer. When enabled, any HTTP
+                                request will return status code 301
+                                (Moved Permanently), and the requestor
+                                will be redirected to the requested
+                                URL via the HTTPS protocol on port
+                                443. For example, <link
+                                   xlink:href="http://example.com/page.html"
+                                   >http://example.com/page.html</link>
+                                would be redirected to <link
+                                   xlink:href="https://example.com/page.html"
+                                   >https://example.com/page.html</link>.
+                                Only available for HTTPS protocol
+                                   (<code>port=443</code>), or HTTP
+                                Protocol with a properly configured
+                                SSL Termination
+                                   (<code>secureTrafficOnly=true</code>,
+                                   <code>securePort=443</code>); refer
+                                to <xref
+                                   linkend="SSLTermination-d1e2479"
+                                />.</td>
                             <td colspan="1">No</td>
                         </tr>
                     </tbody>
@@ -3486,6 +3530,11 @@
                             <code>timeout</code>
                         </para>
                     </listitem>
+                    <listitem>
+                        <para>
+                            <code>httpsRedirect</code>
+                        </para>
+                    </listitem>
                 </itemizedlist>
                 <para>
                     This operation does not return a response body.
@@ -3569,6 +3618,29 @@
                             <td colspan="3">The timeout value for
                                 the load balancer and communications with its nodes.
                                 Defaults to 30 seconds with a max 120 seconds.</td>
+                            <td colspan="1">No</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">httpsRedirect</td>
+                            <td colspan="3">Enables or disables HTTP
+                                to HTTPS redirection for the load
+                                balancer. When enabled, any HTTP
+                                request will return status code 301
+                                (Moved Permanently), and the requestor
+                                will be redirected to the requested
+                                URL via the HTTPS protocol on port
+                                443. For example, <link
+                                   xlink:href="http://example.com/page.html"
+                                   >http://example.com/page.html</link>
+                                would be redirected to <link
+                                   xlink:href="https://example.com/page.html"
+                                   >https://example.com/page.html</link>.
+                                Only available for HTTPS protocol
+                                   (<code>port=443</code>), or HTTP
+                                Protocol with a properly configured
+                                SSL Termination
+                                   (<code>secureTrafficOnly=true</code>,
+                                   <code>securePort=443</code>).</td>
                             <td colspan="1">No</td>
                         </tr>
                         
@@ -6501,6 +6573,21 @@
                             verify that your chain of certificates
                             matches that of walking up the chain from
                             the domain to the CA root.</para>
+                    </listitem>
+                    <listitem>
+                        <para>To be used with HTTP to HTTPS
+                            redirection, <code>securePort</code> must
+                            be set to <code>443</code> and
+                                <code>secureTrafficOnly</code> must be
+                                <code>true</code>. Refer to the
+                            description for the
+                                <code>httpsRedirect</code> attribute
+                            in <xref
+                                linkend="Create_Load_Balancer-d1e1635"
+                                xmlns:svg="http://www.w3.org/2000/svg"
+                                xmlns:m="http://www.w3.org/1998/Math/MathML"
+                                xmlns:html="http://www.w3.org/1999/xhtml"
+                            /> for details.</para>
                     </listitem>
                 </itemizedlist>
             </note>
