@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-10-29</pubdate>
+        <pubdate>2013-11-05</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -58,13 +58,14 @@
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
-                <date>2013-10-29</date>
+                <date>2013-11-05</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
                             <para>Added information for HTTPS
                                 redirection feature (see the
-                                description for the httpsRedirect
+                                description for the
+                                   <code>httpsRedirect</code>
                                 attribute in <xref
                                    linkend="Create_Load_Balancer-d1e1635"
                                 /> and <xref
@@ -2906,17 +2907,16 @@
                     balancers attached:
                 </para>
                 <example>
-                    <title>List Load Balancers With Node Specified: XML
-                    </title>
+                    <title>List Load Balancers With Node Specified
+                        Response: XML </title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="xml">
 <xi:include href="samples/lb-list-response-with-node.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>List Load Balancers With Node Specified:
-                        JSON
-                    </title>
+                    <title>List Load Balancers With Node Specified
+                        Response: JSON </title>
                     <programlisting language="json">
 <xi:include href="samples/lb-list-response-with-node.json" parse="text"/>
                     </programlisting>
@@ -4642,19 +4642,22 @@
                 <para> This operation does not require a request
                     body.</para>
                 <example>
-                    <title>View Node Service Events: XML</title>
+                    <title>View Node Service Events Response:
+                        XML</title>
                     <programlisting language="xml">
                         <xi:include href="samples/node-service-events-response.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>View Node Service Events: JSON</title>
+                    <title>View Node Service Events Response:
+                        JSON</title>
                     <programlisting language="json">
                         <xi:include href="samples/node-service-events-response.json" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>View Node Service Events: ATOM</title>
+                    <title>View Node Service Events Response:
+                        ATOM</title>
                     <programlisting language="json">
                         <xi:include href="samples/node-service-events-atom-feed.xml" parse="text"/>
                     </programlisting>
@@ -4796,13 +4799,13 @@
                         are supported. </para>
                 </note>
                 <example>
-                    <title>List Allowed Domains: XML</title>
+                    <title>List Allowed Domains Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/allowed-domains.xml" parse="text"/>
                     </programlisting>
                 </example>
                 <example>
-                    <title>List Allowed Domains: JSON</title>
+                    <title>List Allowed Domains Response: JSON</title>
                     <?dbfo keep-together="always"?>
                     <programlisting language="json">
 <xi:include href="samples/allowed-domains.json" parse="text"/>
@@ -5011,13 +5014,15 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/usage?startTime=2010-12-15&amp;endTime=2011-5-1</td>
                             <td colspan="3">List historical usage.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/usage/current</td>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/usage/current</td>
                             <td colspan="3">List current usage.</td>
                         </tr>
                     </tbody>
@@ -5221,6 +5226,30 @@
                     items in an access list, or the entire accesslist,
                     and the other for deletion of a specific network
                     item in the access list. </para>
+                <note><title>Notes</title>
+                    <itemizedlist>
+                        <listitem>
+                            <para>A POST request with multiple items
+                                appends the items, but not necessarily
+                                in order. For example, if you POST 5
+                                items to a list already containing
+                                some items, the 5 added items will
+                                become the last 5 items in the list,
+                                but they could appear in any order
+                                relative to each other.</para>
+                        </listitem>
+                        <listitem>
+                            <para>A DELETE operation on
+                                   /loadbalancers/<parameter>loadBalancerId</parameter>/accesslist,
+                                where this represents an attempt to
+                                remove an entire access list when no
+                                access list exists, will result in a
+                                400 error with the message "Must
+                                supply one or more id's to process
+                                this request."</para>
+                        </listitem>
+                    </itemizedlist>
+                </note>
                 <example>
                     <?dbfo keep-together="always"?>
                     <title>List Access List Response: XML</title>
@@ -5611,18 +5640,18 @@
                     <tbody>
                         <tr align="left">
                             <td>&GET; </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sessionpersistence</td>
                             <td>List session persistence
                                 configuration.</td>
                         </tr>
                         <tr align="left">
                             <td>&PUT; </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sessionpersistence</td>
                             <td>Enable session persistence.</td>
                         </tr>
                         <tr align="left">
                             <td>&DELETE; </td>
-                            <td>/loadbalancers/loadBalancerId/sessionpersistence</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/sessionpersistence</td>
                             <td>Disable session persistence.</td>
                         </tr>
                     </tbody>
@@ -5791,14 +5820,16 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/connectionlogging</td>
                             <td colspan="3">View current configuration
                                 of <glossterm>connection logging</glossterm>.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/connectionlogging</td>
+                            <td colspan="3"
+                                   >/loadbalancers/<parameter>loadBalancerId</parameter>/connectionlogging</td>
                             <td colspan="3">Enable or disable connection logging.</td>
                         </tr>
                     </tbody>
@@ -5884,19 +5915,19 @@
                         <tr align="left">
                             <td>&GET;
                             </td>
-                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/connectionthrottle</td>
                             <td>List connection throttling configuration.</td>
                         </tr>
                         <tr align="left">
                             <td>&PUT;
                             </td>
-                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/connectionthrottle</td>
                             <td>Update throttling configuration.</td>
                         </tr>
                         <tr align="left">
                             <td>&DELETE;
                             </td>
-                            <td>/loadbalancers/loadBalancerId/connectionthrottle</td>
+                            <td>/loadbalancers/<parameter>loadBalancerId</parameter>/connectionthrottle</td>
                             <td>Remove connection throttling configurations.</td>
                         </tr>
                     </tbody>
@@ -6033,13 +6064,15 @@
                         <tr align="left">
                             <td colspan="1">&GET;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/contentcaching</td>
+                            <td colspan="3"
+                                >/loadbalancers/<parameter>loadBalancerId</parameter>/contentcaching</td>
                             <td colspan="3">View current configuration of content caching.</td>
                         </tr>
                         <tr align="left">
                             <td colspan="1">&PUT;
                             </td>
-                            <td colspan="3">/loadbalancers/loadBalancerId/contentcaching</td>
+                            <td colspan="3"
+                                >/loadbalancers/<parameter>loadBalancerId</parameter>/contentcaching</td>
                             <td colspan="3">Enable or disable content caching.</td>
                         </tr>
                     </tbody>

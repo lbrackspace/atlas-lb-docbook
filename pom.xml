@@ -44,6 +44,10 @@
                             <canonicalUrlBase>http://docs.rackspace.com/loadbalancers/api/v1.0/clb-devguide/content</canonicalUrlBase>
                         </configuration>
                     </execution>
+                    
+                    <!-- MA: wadl version for Devguide goes here -->
+                    
+                    
                     <!-- MA: added this to generate public release notes -->
                     <execution>
                         <id>clb-releasenotes-external</id>
