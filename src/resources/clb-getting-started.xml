@@ -46,13 +46,26 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-10-23</pubdate>
+        <pubdate>2013-11-19</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2013-11-19</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Added additional information for
+                                using cURL commands. See <xref
+                                   linkend="DB_using-curl-cli"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-10-23</date>
                 <revdescription>
@@ -401,60 +414,158 @@
                 directly without using one of the client APIs. </para>
             <para>The following cURL command-line options will be used
                 in this guide to run the examples:</para>
-            <variablelist>
-                <title>cURL Command-Line Options</title>
-                <varlistentry>
-                    <term><option>-d</option></term>
-                    <listitem>
-                        <para>Sends the specified data in a POST
-                            request to the HTTP server.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term><option>-i</option></term>
-                    <listitem>
-                        <para>Includes the HTTP header in the
-                            output.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term><option>-H HEADER</option></term>
-                    <listitem>
-                        <para>Specifies an HTTP header in the
-                            request.</para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term><option>-X</option></term>
-                    <listitem>
-                        <para>Specifies the request method to use when
-                            communicating with the HTTP server. The
-                            specified request is used instead of the
-                            default method, which is GET. For example,
-                                <option>-X PUT</option> specifies to
-                            use the PUT request method.</para>
-                    </listitem>
-                </varlistentry>
-            </variablelist>
+            <table xml:id="curl_options" rules="all" width="75%">
+                <caption>cURL Command-Line Options</caption>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <option>-d</option>
+                        </td>
+                        <td>
+                            <para>Sends the specified data in a &POST;
+                                request to the HTTP server. Use this
+                                option to send a JSON or XML request
+                                body to the server.</para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <option>-H</option>
+                        </td>
+                        <td>
+                            <para>Specifies an extra HTTP header in
+                                the request. You can specify any
+                                number of extra headers. Precede each
+                                header with the <option>-H</option>
+                                option. </para>
+                            <para>Common headers in Rackspace API
+                                requests are:<itemizedlist>
+                                   <listitem>
+                                   <para><literal>Content-Type</literal>.
+                                   Required for operations with a
+                                   request body. </para>
+                                   <para>Specifies the format of the
+                                   request body. The syntax for the
+                                   <literal>Content-Type</literal>
+                                   header is:</para>
+                                   <screen><computeroutput>Content-Type: application/<parameter>format</parameter></computeroutput></screen>
+                                   <para>Where
+                                   <parameter>format</parameter> is
+                                   either <literal>json</literal> or
+                                   <literal>xml</literal>.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para><literal>X-Auth-Project-Id</literal>.
+                                   Optional. Specifies the project ID,
+                                   which can be your account number or
+                                   another value.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para><literal>Accept</literal>.
+                                   Optional. </para>
+                                   <para>Specifies the format of the
+                                   response body. The syntax for the
+                                   <literal>Accept</literal> header
+                                   is:</para>
+                                   <screen><computeroutput>Accept: application/<parameter>format</parameter></computeroutput></screen>
+                                   <para>Where
+                                   <parameter>format</parameter> is
+                                   either <literal>json</literal> or
+                                   <literal>xml</literal>. Default is
+                                   <literal>json</literal>.</para>
+                                   </listitem>
+                                   <listitem>
+                                   <para><literal>X-Auth-Token</literal>.
+                                   Required. Specifies the
+                                   authentication token.</para>
+                                   </listitem>
+                                </itemizedlist></para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <option>-i</option>
+                        </td>
+                        <td>
+                            <para>Includes the HTTP header in the
+                                output. </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <option>-s</option>
+                        </td>
+                        <td>
+                            <para>Silent or quiet mode. Does not show
+                                progress or error messages. Makes cURL mute.<note>
+                                   <para>If your cURL command is not
+                                   generating any output, try
+                                   replacing the <code>-s</code>
+                                   option with <code>-i</code>.</para>
+                                </note>
+                            </para>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <option>-X</option>
+                        </td>
+                        <td>
+                            <para>Specifies the request method to use
+                                when communicating with the HTTP
+                                server. The specified request is used
+                                instead of the default method, which
+                                is &GET;. </para>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <note>
-                <para>If you have the tools, you can run the cURL JSON
-                    request examples with the following options to
-                    format the output from cURL: <command>&lt;curl
-                        JSON request example> | python
-                        -mjson.tool</command>.</para>
+                <title>ppxml</title>
+                <para>For commands that return an XML response, you
+                    can append the following code to the command to
+                    call <code>ppxml</code> to pretty-print output: </para>
+                <programlisting language="bash" role="gutter: false">| ppxml</programlisting>
+                <para>If you do not want to pretty-print XML output,
+                    omit this code. </para>
+                <para>In order to use <code>ppxml</code>, you need to
+                    set the <code>ppxml</code> alias as
+                    follows:</para>
+                <programlisting language="bash" role="gutter: false"><?db-font-size 50%?><prompt>$</prompt> alias ppxml='python -c "import sys, xml.dom.minidom; print xml.dom.minidom.parseString(sys.stdin.read()).toprettyxml()"'</programlisting>
+            </note>
+            <note xml:id="json_tool">
+                <title>json.tool</title>
+                <para>For commands that return a JSON response, you
+                    can append the following code to the command to
+                    call the json.tool to pretty-print output: </para>
+                <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
+                <para>To use the json.tool, import the json module.
+                    For information about the json.tool, see <link
+                        xlink:href="http://docs.python.org/2/library/json.html"
+                        >json — JSON encoder and decoder</link>. </para>
+                <para>If you do not want to pretty-print JSON output,
+                    omit this code. </para>
             </note>
         </section>
         <section xml:id="DB_copy_paste_examples">
             <title>Copying and Pasting cURL Request Examples into a
                 Terminal Window</title>
             <para>To run the cURL request examples shown in this guide
-                on Linux or Mac systems, copy and paste each example
-                from the HTML version of this guide into an ASCII
-                editor (for example <emphasis role="bold"
-                    >vi</emphasis> or <emphasis role="bold"
-                    >TextEdit</emphasis>). Then modify each example
-                with your required account information and so forth,
-                as detailed in this guide.</para>
+                on Linux or Mac systems, select the desired example
+                from the HTML version of this guide by clicking the
+                Select Text icon to the right of the example and then
+                select Edit->Copy. Then paste it into an ASCII editor
+                (for example <emphasis role="bold">vi</emphasis> or
+                    <emphasis role="bold">TextEdit</emphasis>). Next
+                modify the example with your required account
+                information and so forth, as detailed in this
+                guide.</para>
             <note>
                 <para>The carriage returns in the cURL request
                     examples that are part of the cURL syntax are
@@ -605,7 +716,7 @@
         <example>
             <title>cURL Authenticate Request: XML</title>
             <?dbfo keep-together="always"?>
-            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '&lt;?xml version="1.0" encoding="UTF-8"?>  
 &lt;auth>
    &lt;apiKeyCredentials
@@ -615,12 +726,12 @@
 &lt;/auth>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri> | ppxml</screen>
         </example>
         <example>
             <title>cURL Authenticate Request: JSON</title>
             <?dbfo keep-together="always"?>
-            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '{
     "auth":
     {
@@ -631,7 +742,7 @@
     }  
 }' \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri> | python -m json.tool</screen>
         </example>
         <example>
             <title>Authenticate Response: XML</title>
@@ -843,7 +954,7 @@
             Load Balancer:</para>
         <example>
             <title>cURL Create Load Balancer Request: XML</title>
-            <programlisting language="bash"><command>curl -i -d</command> \
+            <programlisting language="bash"><command>curl -s -d</command> \
 '&lt;?xml version="1.0" ?> 
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     name="a-new-loadbalancer"
@@ -859,11 +970,11 @@
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri> | ppxml</programlisting>
         </example>
         <example>
             <title>cURL Create Load Balancer Request: JSON</title>
-            <programlisting language="bash"><command>curl -i -d</command> \
+            <programlisting language="bash"><command>curl -s -d</command> \
 '{
     "loadBalancer": {
         "name": "a-new-loadbalancer",
@@ -885,7 +996,7 @@
 }' \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers'</uri> | python -m json.tool</programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
@@ -940,18 +1051,18 @@
         <example>
             <title>cURL List Load Balancer Details Request:
                 XML</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option>  \
+            <programlisting language="bash"><command>curl</command> <option>-s</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/xml'</option>  \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri> | ppxml</programlisting>
         </example>
         <example>
             <title>cURL List Load Balancer Details Request:
                 JSON</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option>  \
+            <programlisting language="bash"><command>curl</command> <option>-s</option>  \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>'  \
 <option>-H 'Accept: application/json'</option>  \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>'</uri> | python -m json.tool</programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values for all the cURL examples
@@ -1013,7 +1124,7 @@
             examples show the cURL requests for Add Node:</para>
         <example>
             <title>cURL Add Node Request: XML</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?> 
 &lt;nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
     &lt;node address="<emphasis role="bold">&lt;IP address of SECOND cloud server></emphasis>" port="80" condition="ENABLED" />
@@ -1021,12 +1132,12 @@
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/xml'</option> \
 <option>-H 'Accept: application/xml'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri> | ppxml</programlisting>
         </example>
         <example>
             <?dbfo keep-together="always"?>
             <title>cURL Add Node Request: JSON</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '{
     "nodes": [
         {
@@ -1038,7 +1149,7 @@
 }' \
 -H 'X-Auth-Token: <emphasis role="bold">your_auth_token</emphasis>' \
 <option>-H 'Content-Type: application/json'</option> \
-<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri></programlisting>
+<uri>'https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/</uri><emphasis role="bold">your_acct_id</emphasis><uri>/loadbalancers/</uri><emphasis role="bold">load_balancer_id</emphasis><uri>/nodes'</uri> | python -m json.tool</programlisting>
         </example>
         <para>Remember to replace the names in the examples above with
             their actual respective values:<itemizedlist spacing="compact">
@@ -1102,7 +1213,7 @@
         <example>
             <title>cURL Update Load Balancer Attributes Request:
                 XML</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '&lt;?xml version="1.0" ?>
 &lt;loadBalancer xmlns="http://docs.openstack.org/loadbalancers/api/v1.0"
     algorithm="LEAST_CONNECTIONS" />' \
@@ -1115,7 +1226,7 @@
         <example>
             <title>cURL Update Load Balancer Attributes Request:
                 JSON</title>
-            <programlisting language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <programlisting language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '{"loadBalancer":{
     "algorithm": "LEAST_CONNECTIONS"
     }

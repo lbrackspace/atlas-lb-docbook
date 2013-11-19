@@ -42,7 +42,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-11-07</pubdate>
+        <pubdate>2013-11-19</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -58,7 +58,7 @@
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
-                <date>2013-11-07</date>
+                <date>2013-11-19</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -71,6 +71,11 @@
                                 /> and <xref
                                    linkend="Update_Load_Balancer_Attributes-d1e1812"
                                 /> for details).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added new Notes section in <xref
+                                   linkend="Manage_Access_Lists-d1e3187"
+                                />.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
