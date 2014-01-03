@@ -42,17 +42,31 @@
             <year>2011</year>
             <year>2012</year>
             <year>2013</year>
+            <year>2014</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-12-11</pubdate>
+        <pubdate>2014-01-03</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
             </annotation>
         </legalnotice>
         <revhistory>
+            <revision>
+                <date>2014-01-03</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Corrected link to product
+                                information for the Load Balancers
+                                service. See <xref
+                                   linkend="DB_Overview"/>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-12-11</date>
                 <revdescription>
@@ -267,15 +281,15 @@
         <para>For details about using the Cloud Load Balancers API,
             refer to the <citetitle>Cloud Load Balancers Developer
                 Guide</citetitle> at <link
-                xlink:href="http://docs.rackspace.com/">
-                http://docs.rackspace.com/</link>.</para>
+                xlink:href="http://docs.rackspace.com/"
+                >http://docs.rackspace.com/</link>.</para>
         <para>For more details about the Rackspace Cloud Load
             Balancers service, refer to <link
-                xlink:href="http://http://www.rackspace.com/cloud/load-balancing/"
-                >http://http://www.rackspace.com/cloud/load-balancing/</link>.This
-            site also offers links to Rackspace's official support
-            channels, including knowledge base articles, forums,
-            phone, chat, and email.</para>
+                xlink:href="http://www.rackspace.com/cloud/load-balancing/"
+                >http://www.rackspace.com/cloud/load-balancing/</link>.
+            This site also offers links to Rackspace's official
+            support channels, including knowledge base articles,
+            forums, phone, chat, and email.</para>
         <section xml:id="Prerequisites_Examples">
             <title>Prerequisites for Running Examples</title>
             <para>In order to run the examples in this guide, you must
