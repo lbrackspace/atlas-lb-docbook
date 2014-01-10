@@ -43,7 +43,7 @@
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2014-01-08</pubdate>
+        <pubdate>2014-01-10</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -59,7 +59,7 @@
             <revision xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:m="http://www.w3.org/1998/Math/MathML"
                 xmlns:html="http://www.w3.org/1999/xhtml">
-                <date>2014-01-08</date>
+                <date>2014-01-10</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -70,6 +70,13 @@
                                 /> and <xref
                                    linkend="List_Load_Balancing_Protocols-d1e4269"
                                 />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added  422 response
+                                (unprocessableEntity) to the list of
+                                Error Response Codes for <xref
+                                   linkend="Manage_Session_Persistence-d1e3733"
+                                />.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -5690,7 +5697,9 @@
                     serviceUnavailable (<errorcode>503</errorcode>),
                     unauthorized (<errorcode>401</errorcode>),
                     badRequest (<errorcode>400</errorcode>), overLimit
-                        (<errorcode>413</errorcode>) </simpara>
+                        (<errorcode>413</errorcode>),
+                    unprocessableEntity
+                    (<errorcode>422</errorcode>)</simpara>
                 <para><glossterm baseform="session persistence"
                         >Session persistence</glossterm> is a feature
                     of the load balancing service that forces multiple
