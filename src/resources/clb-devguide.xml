@@ -74,7 +74,8 @@
                         <listitem>
                             <para>Added  422 response
                                 (unprocessableEntity) to the list of
-                                Error Response Codes for <xref
+                                Error Response Codes and a note about
+                                it for <xref
                                    linkend="Manage_Session_Persistence-d1e3733"
                                 />.</para>
                         </listitem>
@@ -5706,10 +5707,22 @@
                     requests, of the same protocol, from clients to be
                     directed to the same node. This is common with
                     many web applications that do not inherently share
-                    application state between back-end servers. <note>
-                        <para>Changing the protocol or port for a load
-                            balancer will disable session
-                            persistence.</para>
+                    application state between back-end servers. <note><title>Notes</title>
+                        <itemizedlist>
+                            <listitem>
+                                <para>Changing the protocol or port
+                                   for a load balancer will disable
+                                   session persistence.</para>
+                            </listitem>
+                            <listitem>
+                                <para>If you try to DELETE the session
+                                   persistence configuration when
+                                   session persistence is already
+                                   disabled, a 422 response
+                                   (unprocessableEntity) is
+                                   returned.</para>
+                            </listitem>
+                        </itemizedlist>
                     </note></para>
                 <para>Two session persistence modes are available, as
                     described in the following table:</para>
