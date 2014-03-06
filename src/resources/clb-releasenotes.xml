@@ -27,7 +27,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2014-02-26</pubdate>
+	<pubdate>2014-03-07</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -40,6 +40,12 @@
         	</para>
         </abstract>
     	<revhistory>
+			<revision>
+				<date>2014-03-07</date>
+				<revdescription>
+					<para>Updated for v1.20.15.</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-02-26</date>
 				<revdescription>
@@ -270,6 +276,40 @@
 			previous versions. The most recent changes are described
 			in the table below:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="clbv1.20.15">
+		<title>v1.20.15, March 7, 2014</title>
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed issue where deleting error pages caused load balancer
+					to go into an ERROR state if SSL termination was
+					subsequently enabled. </para>
+			</listitem>
+			<listitem>
+				<para>Fixed concurrency issue where deleting nodes on a load
+					balancer would not always be honored. </para>
+			</listitem>
+			<listitem>
+				<para>Fixed issue where updating the connection throttle was
+					causing load balancers created prior to the
+					1.19.32 release to go into an ERROR state. </para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Resources</title>
+			<listitem>
+				<para><link
+						xlink:href="http://docs.rackspace.com/api/"
+						>Cloud Load Balancers Developer
+					Guide</link></para>
+			</listitem>
+			<listitem>
+				<para><link
+						xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/23181-cloud-load-balancers"
+						>Product Feedback Forum</link></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="clbv1.19.32">
 		<title>v1.19.32, February 26, 2014</title>
