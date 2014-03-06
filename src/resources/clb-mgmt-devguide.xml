@@ -1418,7 +1418,7 @@
                 </tbody>
             </informaltable>
             <para>
-                This feature allows a user to provision a new PUBLIC or SERVICENET address to the specified load
+                This feature allows a user to provision a new PUBLIC or SERVICENET IPv4 address to the specified load
                 balancer. This feature is restricted because a user must justify the need for additional IP
                 addresses due to IANA requirements. Thus, a support ticket is required and must be supplied in the
                 request. An example of a reasonable justification would be the need to have a dedicated IP address
