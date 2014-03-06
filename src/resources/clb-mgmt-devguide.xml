@@ -873,7 +873,7 @@
                 </programlisting>
             </example>
         </section>
-        <section xml:id="Rate_Limits-d1e1272">
+<!--        <section xml:id="Rate_Limits-d1e1272">
             <title>Rate Limits</title>
             <informaltable rules="all">
                 <thead>
@@ -921,7 +921,7 @@
                 Or for more information regarding Repose directly,
                 refer to <link xlink:href="www.openrepose.org "
                     >www.openrepose.org</link>. </para>
-        </section>
+        </section> -->
         <section xml:id="Associations_Between_Load_Balancers_and_Host_Machines-d1e1610">
             <title>Associations Between Load Balancers and Host Machines</title>
             <informaltable rules="all">
@@ -1898,7 +1898,7 @@
                 </programlisting>
             </example>
         </section>
-        <section xml:id="API_Rate_Limiting-d1e3233">
+<!--        <section xml:id="API_Rate_Limiting-d1e3233">
             <title>API Rate Limiting</title>
             <informaltable rules="all">
                 <thead>
@@ -1960,7 +1960,7 @@
 <xi:include href="samples/lb-list-groups.json" parse="text"/>
                 </programlisting>
             </example>
-        </section>
+        </section> -->
         <section xml:id="Absolute_Limits-d1e3397">
             <title>Absolute Limits</title>
             <informaltable rules="all">
