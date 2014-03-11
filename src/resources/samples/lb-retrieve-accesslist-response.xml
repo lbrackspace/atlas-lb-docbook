@@ -1,4 +1,5 @@
-<accessList xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<accessList>
     <networkItem
         id="1000"
         address="206.160.165.40"

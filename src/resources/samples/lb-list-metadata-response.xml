@@ -1,4 +1,5 @@
-<metadata xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<metadata>
   <meta id="1" key="color">red</meta>
   <meta id="2" key="label">web-load-balancer</meta>
 </metadata>

@@ -1,4 +1,5 @@
-<nodes xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<nodes>
     <node
         address="10.1.1.1"
         id="185"

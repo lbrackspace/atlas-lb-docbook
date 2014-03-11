@@ -1,4 +1,5 @@
-<loadBalancerUsage xmlns="http://docs.openstack.org/loadbalancers/api/v1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<loadBalancerUsage>
     <loadBalancerUsageRecord
             id="394"
             averageNumConnections="0.0"

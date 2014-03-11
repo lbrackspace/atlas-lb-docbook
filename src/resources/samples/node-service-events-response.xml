@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <nodeServiceEvents>
     <nodeServiceEvent nodeId="373" detailedMessage="Node is ok" id="7"
                       loadbalancerId="323" accountId="406271" author="Rackspace Cloud" title="Node Status Updated"
