@@ -4104,6 +4104,13 @@
                         at any one time.
                     </para>
                 </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">currentConn</emphasis>
+                        &ndash; Number of simultaneous connections
+                        active at the time of the request.
+                    </para>
+                </listitem>
             </itemizedlist>
             <para>This operation does not require a request body.</para>
             <example>
