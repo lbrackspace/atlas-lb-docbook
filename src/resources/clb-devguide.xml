@@ -6667,7 +6667,7 @@
                         <para>SSL-terminated load balancers decrypt
                             the traffic at the traffic manager and
                             pass unencrypted traffic to the back-end
-                            node. Because of this, the customer's
+                            node(Unless reEncryptionEnabled is set to True).
                             back-end nodes don't know what protocol
                             the client requested. Therefore the
                             X-Forwarded-Proto (XFP) header has been
@@ -6681,7 +6681,9 @@
                             certificates in the proper order. Please
                             verify that your chain of certificates
                             matches that of walking up the chain from
-                            the domain to the CA root.</para>
+                            the domain to the CA root. Or more simply
+                            the chain starts with the users certificate at
+                            the top ending with the CA root at the bottom.</para>
                     </listitem>
                     <listitem>
                         <para>To be used with HTTP to HTTPS
@@ -6826,6 +6828,20 @@
                         <td colspan="1"> No </td>
                     </tr>
                     <tr align="left">
+                        <td colspan="1">
+                            <code>reEncryptionEnabl<?sbr?>ed</code>
+                        </td>
+                        <td colspan="1">
+                            <code>false</code>
+                        </td>
+                        <td colspan="2">
+                            <para>Determines if the load balancer will 
+                                <emphasis>re-encrypt</emphasis>  ssl connections to that backend node. </para>
+                            <para>If <code>reEncryptionEnabled</code> = <code>true</code> the load balancer will decrypt the incoming ssl traffic and insert helper headers such as <emphasis>X-Forwarded-For</emphasis>, <emphasis>X-Forwarded-Proto</emphasis>, and <emphasis>X-Forwared-Port</emphasis> before re-encrypting the connection to the back end node.  </para>
+                        </td>
+                        <td colspan="1"> No </td>
+                    </tr>
+                    <tr align="left">
                         <td colspan="5">
                             <para>[a] A user may only provide an
                                 intermediateCertificate when
@@ -6834,6 +6850,10 @@
                                 added to an existing SSL configuration
                                 as a single attribute in a future
                                 request. </para>
+
+                            <para>[b] to configure a load balancer for 
+                                  re-encryption you must set secureTrafficOnly
+                                  = true</para>
                         </td>
                     </tr>
                 </tbody>
@@ -6969,14 +6989,14 @@
                     <para>All requests to SSL termination in the JSON
                         format require the key/certificates to be in
                         "proper" JSON format, meaning that all raw
-                        line feed characters should be wrapped in a
-                        newline character. So if the user pastes in
-                        the key from a <filename>mykey.key</filename>
+                        line feed characters should be escaped with the
+                        newline escape sequence '\n'. So if the user pastes 
+                        in the key from a <filename>mykey.key</filename>
                         file, JSON will not properly handle the field.
                         The key/certificates can be wrapped in a
                         newline character in Java, for example, using
-                            <code>string.replaceAll("\n",
-                            "\\n")</code>. Please refer to the
+                            <code>string.replaceAll("\n", "\\n")</code>. 
+                        Please refer to the
                         examples above for working, "pre-formatted"
                         examples. </para>
                 </note>
