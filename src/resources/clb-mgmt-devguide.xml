@@ -1897,6 +1897,12 @@
 <xi:include href="samples/lb-list-alerts.xml" parse="text"/>
                 </programlisting>
             </example>
+            <example>
+                <title>List Alerts Response: JSON</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-alerts.json" parse="text"/>
+                </programlisting>
+            </example>
         </section>
         <section xml:id="API_Rate_Limiting-d1e3233">
             <title>API Rate Limiting</title>
