@@ -1,16 +1,20 @@
-{"virtualIpBlocks": [
-        {
-            "firstIp": "10.0.0.5",
-            "lastIp": "10.0.0.5"
-        },
-        {
-            "firstIp": "172.16.0.64",
-            "lastIp": "172.16.0.64"
-        },
-        {
-            "firstIp": "192.168.0.3",
-            "lastIp": "192.168.0.3"
-        }
-    ],
+{
+  "virtualIpBlocks": {
+    "virtualIpBlocks": [
+      {
+        "firstIp": "10.0.0.5", 
+        "lastIp": "10.0.0.253"
+      }, 
+      {
+        "firstIp": "172.16.0.64", 
+        "lastIp": "172.16.0.128"
+      }, 
+      {
+        "firstIp": "192.168.0.3", 
+        "lastIp": "192.168.0.100"
+      }
+    ], 
     "type": "SERVICENET"
+  }
 }
+
