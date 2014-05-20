@@ -1,15 +1,9 @@
 <mgmt:hostCapacityReports xmlns:mgmt="http://docs.openstack.org/loadbalancers/api/management/v1.0">
-    <mgmt:hostCapacityReport hostId="1" 
-                             hostName="ztm-n01.staging1.lbaas.rackspace.net" 
+    <mgmt:hostCapacityReport hostId="1"
+                             hostName="FirstBestHost"
                              totalConcurrentConnectionCapacity="150000"/>
-    <mgmt:hostCapacityReport hostId="2" 
-                             hostName="ztm-n02.staging1.lbaas.rackspace.net"
-                             totalConcurrentConnectionCapacity="150000"/>
-    <mgmt:hostCapacityReport hostId="3" 
-                             hostName="ztm-n04.staging1.lbaas.rackspace.net"
-                             totalConcurrentConnectionCapacity="150000"/>
-    <mgmt:hostCapacityReport hostId="4"
-                             hostName="ztm-n03.staging1.lbaas.rackspace.net"
+    <mgmt:hostCapacityReport hostId="2"
+                             hostName="SecondBestHost"
                              totalConcurrentConnectionCapacity="150000"/>
 </mgmt:hostCapacityReports>
 

@@ -1,24 +1,14 @@
 {
   "hostCapacityReports": [
     {
-      "totalConcurrentConnectionCapacity": 150000, 
-      "hostName": "ztm-n01.staging1.lbaas.rackspace.net", 
+      "totalConcurrentConnectionCapacity": 150000,
+      "hostName": "FirstBestHost",
       "hostId": 1
-    }, 
+    },
     {
-      "totalConcurrentConnectionCapacity": 150000, 
-      "hostName": "ztm-n02.staging1.lbaas.rackspace.net", 
+      "totalConcurrentConnectionCapacity": 150000,
+      "hostName": "SecondBestHost",
       "hostId": 2
-    }, 
-    {
-      "totalConcurrentConnectionCapacity": 150000, 
-      "hostName": "ztm-n04.staging1.lbaas.rackspace.net", 
-      "hostId": 3
-    }, 
-    {
-      "totalConcurrentConnectionCapacity": 150000, 
-      "hostName": "ztm-n03.staging1.lbaas.rackspace.net", 
-      "hostId": 4
-    }
+    },
   ]
 }
