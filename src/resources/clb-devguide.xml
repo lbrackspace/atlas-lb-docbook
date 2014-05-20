@@ -4104,7 +4104,17 @@
                         at any one time.
                     </para>
                 </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">currentConn</emphasis>
+                        &ndash; Number of simultaneous connections
+                        active at the time of the request.
+                    </para>
+                </listitem>
             </itemizedlist>
+            <para>The information is duplicated for SSL Termination.  However,
+            if the Load Balancer is not SSL Terminated, the appropriate
+            information will be left without a value.</para>
             <para>This operation does not require a request body.</para>
             <example>
                 <title>List Load Balancer stats Response: XML</title>

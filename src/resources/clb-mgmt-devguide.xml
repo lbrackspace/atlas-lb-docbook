@@ -680,12 +680,22 @@
                     </listitem>
                     <listitem>
                         <para>
+                            <code>managementRestInterface</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
                             <code>trafficManagerName</code>
                         </para>
                     </listitem>
                     <listitem>
                         <para>
                             <code>soapEndpointActive</code>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            <code>restEndpointActive</code>
                         </para>
                     </listitem>
                     <listitem>
@@ -1895,6 +1905,12 @@
                 <title>List Alerts Response: XML</title>
                 <programlisting language="xml">
 <xi:include href="samples/lb-list-alerts.xml" parse="text"/>
+                </programlisting>
+            </example>
+            <example>
+                <title>List Alerts Response: JSON</title>
+                <programlisting language="xml">
+<xi:include href="samples/lb-list-alerts.json" parse="text"/>
                 </programlisting>
             </example>
         </section>
