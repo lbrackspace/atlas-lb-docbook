@@ -27,7 +27,7 @@
 		</copyright>
         <releaseinfo>API v1.0</releaseinfo>
     	<productname>Rackspace Cloud Load Balancers</productname>
-	<pubdate>2014-03-24</pubdate>
+	<pubdate>2014-05-21</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -40,14 +40,8 @@
         	</para>
         </abstract>
     	<revhistory>
-			<revision security="writeronly">
-				<date>2014-04-17</date>
-				<revdescription>
-					<para>Updated for v1.20.32.</para>
-				</revdescription>
-			</revision>
 			<revision>
-				<date>2014-05-20</date>
+				<date>2014-05-21</date>
 				<revdescription>
 					<para>Updated for v1.21.12.</para>
 				</revdescription>
@@ -289,14 +283,37 @@
 			in the table below:</para>
 		<?rax revhistory?>
 	</chapter>
-	<chapter xml:id="clbv1.20.32" security="writeronly">
-		<title>v1.20.32, April 17, 2014</title>
+	<chapter xml:id="clbv1.21.12">
+		<title>v1.21.12, May 21, 2014</title>
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Added additional field <code>currentConn</code>
+					to stats call for better connection
+					tracking.</para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml" security="internal">
+				<para>Implemented private cluster ability.</para>
+			</listitem>
+		</itemizedlist>
 		<itemizedlist>
 			<title>Resolved Issues</title>
+			<listitem>
+				<para>Updated stats call to properly track SSL virtual
+					servers.</para>
+			</listitem>
 			<listitem>
 				<para>Fixed a bug where modifying certain attributes
 					of a load balancer with HTTPS Redirect enabled
 					could cause an ERROR state. </para>
+			</listitem>
+			<listitem security="internal">
+				<para>Fixed HostEndpointPoller Failure due to stats
+					updates.</para>
 			</listitem>
 			<listitem security="internal">
 				<para>Updated HTTPS Redirect virtual servers to use the "discard"

@@ -39,11 +39,12 @@
             <year>2011</year>
             <year>2012</year>
             <year>2013</year>
+            <year>2014</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1.0</releaseinfo>
         <productname>Rackspace Cloud Load Balancers</productname>
-        <pubdate>2013-06-04</pubdate>
+        <pubdate>2014-05-20</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the template.</remark>
@@ -57,6 +58,39 @@
             </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2014-05-20</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Updated response examples for
+                                listing a cluster and lists of
+                                clusters (see <xref
+                                   linkend="Clusters-d1e443"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated attributes and examples for
+                                Creating a New Host API call (see
+                                   <xref
+                                   linkend="Creating_a_New_Host-d1e827"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Added JSON example for List Alerts
+                                Response API call (see <xref
+                                   linkend="Listing_and_Acknowledging_Alerts-d1e3019"
+                                />).</para>
+                        </listitem>
+                        <listitem>
+                            <para>Updated examples for Host Capacity
+                                Reports API calls (see <xref
+                                   linkend="Host_Capacity-d1e4265"
+                                />).</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2013-06-04</date>
                 <revdescription>
@@ -1909,7 +1943,7 @@
             </example>
             <example>
                 <title>List Alerts Response: JSON</title>
-                <programlisting language="xml">
+                <programlisting language="json">
 <xi:include href="samples/lb-list-alerts.json" parse="text"/>
                 </programlisting>
             </example>
