@@ -5173,7 +5173,8 @@
             <title>Access Lists</title>
             <para>The access list management feature allows fine-grained network access controls to
                 be applied to the load balancer's virtual IP address. A single IP address, multiple
-                IP addresses, or entire network subnets can be added as a<code>networkItem</code>.
+                IP addresses, or entire network subnets can be added as a
+                <code>networkItem</code>.
                 Items that are configured with the
                 <code>ALLOW</code>
                 type will always take
