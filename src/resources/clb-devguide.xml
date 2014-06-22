@@ -4675,7 +4675,7 @@
                     the list cannot be removed due to its current
                     status a 400:BadRequest is returned along with the
                     ids of the ones the system identified as potential
-                    failures for this request </para>
+                    failures for this request.</para>
                 <para>This operation does not require a request
                     body.</para>
             </section>
