@@ -5971,7 +5971,7 @@
                     </tbody>
                 </table>
                 <para>
-                    This operation does not require a request body.
+                    This operation requires a request body.
                 </para>
                 <example>
                     <title>List Connection Logging Configuration Response: XML</title>
