@@ -5249,7 +5249,7 @@
                     unauthorized (<errorcode>401</errorcode>), badRequest (<errorcode>400</errorcode>),
                     overLimit (<errorcode>413</errorcode>)
                 </simpara>
-                <para>This operation does not require a request body.</para>
+                <para>Only the GET action requires a request body.</para>
                 <para> When issuing a &POST; to add to an access list,
                     one or more network items are required. If a
                     populated access list already exists for the load
