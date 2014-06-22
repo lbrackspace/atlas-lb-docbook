@@ -6642,7 +6642,7 @@
                     <tr align="left">
                         <td>&GET; </td>
                         <td>/loadbalancers/<parameter>loadBalancerId</parameter>/ssltermination</td>
-                        <td>View the load balancers SSL termination configuration.</td>
+                        <td>View the load balancer's SSL termination configuration.</td>
                     </tr>
                     <tr align="left">
                         <td>&PUT; </td>
