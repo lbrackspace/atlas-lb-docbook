@@ -3632,8 +3632,8 @@
                     <tbody>
                         <tr>
                             <td colspan="1">name</td>
-                            <td colspan="3">Name of the load balancer
-                                to create. The name must be 128
+                            <td colspan="3">Update the load balancer to
+                                this name.  The name must be 128
                                 characters or less in length, and all
                                 UTF-8 characters are valid. Refer to
                                    <link
