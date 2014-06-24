@@ -4131,6 +4131,56 @@
                         active at the time of the request.
                     </para>
                 </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">connectTimeOutSsl</emphasis>
+                        &ndash; SSL connections closed by this load balancer
+                        because the 'connect_timeout' interval was exceeded.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">connectErrorSsl</emphasis>
+                        &ndash; Number of SSL transaction or protocol erros
+                        in this load balancer.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">connectFailureSsl</emphasis>
+                        &ndash; Number of SSL conection failuers in this load
+                        balancer.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">dataTimedOutSsl</emphasis>
+                        &ndash; SSL connections closed by this load balancer
+                        because the 'timeout' interval was exceeded.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">keepAliveTimedOutSsl</emphasis>
+                        &ndash; SSL connections closed by this load balancer
+                        because the 'keepalive_timeout' interval was
+                        exceeded.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <emphasis role="bold">maxConnSsl</emphasis>
+                        &ndash; Maximum number of simultaneous SSL connections
+                        this load balancer has processed a any one time.
+                    </para>
+                </listitem>
+                <listitem>
+                     <para>
+                         <emphasis role="bold">currentConnSsl</emphasis>
+                         &ndash; Number of simultaneous SSL connections
+                         active at the time of the request.
+                     </para>
+                </listitem>
             </itemizedlist>
             <para>The information is duplicated for SSL Termination.  However,
             if the Load Balancer is not SSL Terminated, the appropriate
