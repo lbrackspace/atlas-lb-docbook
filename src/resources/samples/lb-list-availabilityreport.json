@@ -1,4 +1,4 @@
-{"virtualipavailabilityreport": {
+{"virtualIpAvailabilityReport": {
         "clusterId": 1,
         "clusterName": "My Little Cluster",
         "totalPublicIpAddresses": 254,
