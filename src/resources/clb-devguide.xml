@@ -5205,6 +5205,18 @@
                     </programlisting>
                 </example>
                 <example>
+                   <title>Report Account Level Usage Respons: XML</title>
+                   <programlisting language="xml">
+<xi:inclue href="samples/lb-loadbalancers-account-usage.xml" parse="text"/>
+                   </programlisting>
+                </example>
+                <example>
+                   <title>Report Account Level Usage Respons: JSON</title>
+                   <programlisting language="json">
+<xi:inclue href="samples/lb-loadbalancers-account-usage.json" parse="text"/>
+                   </programlisting>
+                </example>
+                <example>
                     <title>Report Load Balancer Usage Response: XML</title>
                     <programlisting language="xml">
 <xi:include href="samples/lb-report-usage-response.xml" parse="text"/>
@@ -5216,6 +5228,18 @@
                     <programlisting language="json">
 <xi:include href="samples/lb-report-usage-response.json" parse="text"/>
                     </programlisting>
+                </example>
+                <example>
+                   <title>List Current Usage Respons: XML</title>
+                   <programlisting language="xml">
+<xi:inclue href="samples/lb-list-current-usage.xml" parse="text"/>
+                   </programlisting>
+                </example>
+                <example>
+                   <title>List Current Usage Respons: JSON</title>
+                   <programlisting language="json">
+<xi:inclue href="samples/lb-list-current-usage.json" parse="text"/>
+                   </programlisting>
                 </example>
             </section>
         </section>
