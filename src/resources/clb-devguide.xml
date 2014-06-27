@@ -5205,16 +5205,16 @@
                     </programlisting>
                 </example>
                 <example>
-                   <title>Report Account Level Usage Respons: XML</title>
+                   <title>List Account Level Usage: XML</title>
                    <programlisting language="xml">
-<xi:inclue href="samples/lb-loadbalancers-account-usage.xml" parse="text"/>
+<xi:include href="samples/lb-loadbalancers-account-usage.xml" parse="text"/>
                    </programlisting>
                 </example>
                 <example>
-                   <title>Report Account Level Usage Respons: JSON</title>
+                   <title>List Account Level Usage: JSON</title>
                    <programlisting language="json">
-<xi:inclue href="samples/lb-loadbalancers-account-usage.json" parse="text"/>
-                   </programlisting>
+<xi:include href="samples/lb-loadbalancers-account-usage.json" parse="text"/>
+                    </programlisting>
                 </example>
                 <example>
                     <title>Report Load Balancer Usage Response: XML</title>
@@ -5230,15 +5230,15 @@
                     </programlisting>
                 </example>
                 <example>
-                   <title>List Current Usage Respons: XML</title>
+                   <title>Report Current Usage Response: XML</title>
                    <programlisting language="xml">
-<xi:inclue href="samples/lb-list-current-usage.xml" parse="text"/>
+<xi:include href="samples/lb-list-current-usage.xml" parse="text"/>
                    </programlisting>
                 </example>
                 <example>
-                   <title>List Current Usage Respons: JSON</title>
+                   <title>Report Current Usage Response: JSON</title>
                    <programlisting language="json">
-<xi:inclue href="samples/lb-list-current-usage.json" parse="text"/>
+<xi:include href="samples/lb-list-current-usage.xml" parse="text"/>
                    </programlisting>
                 </example>
             </section>
